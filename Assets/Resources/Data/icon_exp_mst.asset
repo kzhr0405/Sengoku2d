@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c781b02adba4c9849827adf1f9b56114, type: 3}
+  m_Name: icon_exp_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    exp: "\u6D77\u6226\u9069\u6B63\u3092\u8868\u3057\u307E\u3059\u3002\u4E0A\u306E\u5B89\u5B85\u8239\u3001\u4E2D\u306E\u95A2\u8239\u3001\u4E0B\u306E\u5C0F\u65E9\u8239\u3068\u4E09\u7A2E\u3042\u308B\u3088\u3046\u3067\u3059\u305E\u3002"
+    expEng: Skill for ship battle. There are 3 types Atake(High), Seki(Mid), Kobaya(Low)
+  - id: 2
+    exp: "\u91D1\u3067\u3059\u306A\u3002\u90E8\u968A\u8A13\u7DF4\u3084\u5185\u653F\u65BD\u8A2D\u306E\u5EFA\u8A2D\u3001\u5916\u4EA4\u306A\u3069\u69D8\u3005\u306A\u7528\u9014\u304C\u3054\u3056\u3044\u307E\u3059\u3002"
+    expEng: Money. It is for soldier Lv-up, building, diplomacy, and so on.
+  - id: 3
+    exp: "\u5175\u7CE7\u3067\u3059\u306A\u3002\u8179\u304C\u6E1B\u3063\u3066\u306F\u6226\u306F\u3067\u304D\u307E\u305B\u306C\u305E\u3002\u4E94\u5206\u9593\u306B\u4E00\u3064\u56DE\u5FA9\u3059\u308B\u3088\u3046\u3067\u3059\u3002"
+    expEng: Stamina. It needs for almost action. It counts up by every 5 min.
+  - id: 4
+    exp: "\u6B66\u5C06\u73E0\u3001\u7A00\u6709\u306A\u54C1\u3067\u3059\u305E\u3002\u30AC\u30C1\u30E3\u6B66\u5C06\u767B\u7528\u3084\u671D\u5EF7\u63A8\u85A6\u72B6\u306E\u8CFC\u5165\u306A\u3069\u3067\u4F7F\u7528\u3057\u307E\u3059\u3002"
+    expEng: Stone. It is for hiring new soldier mainly.
+  - id: 5
+    exp: "\u99AC\u306E\u7523\u5730\u3002\u3053\u306E\u56FD\u3092\u652F\u914D\u3059\u308B\u3068\u99AC\u751F\u7523\u304C\u51FA\u6765\u7533\u3059\u3002\u6216\u3044\u306F\u652F\u914D\u3057\u3066\u3044\u308B\u5927\u540D\u3068\u4EA4\u6613\u51FA\u6765\u307E\u3059\u305E\u3002"
+    expEng: "Horse\u2010breeding country. You can build a Stable if you conquered
+      here. Otherwise you can get it by trading."
+  - id: 6
+    exp: "\u9244\u7832\u306E\u7523\u5730\u3002\u3053\u306E\u56FD\u3092\u652F\u914D\u3059\u308B\u3068\u9244\u7832\u751F\u7523\u304C\u51FA\u6765\u7533\u3059\u3002\u6216\u3044\u306F\u652F\u914D\u3057\u3066\u3044\u308B\u5927\u540D\u3068\u4EA4\u6613\u51FA\u6765\u307E\u3059\u305E\u3002"
+    expEng: Gun producting country. You can build a Gun Blacksmith if you conquered
+      here. Otherwise you can get it by trading.
+  - id: 7
+    exp: "\u9271\u5C71\u3002\u9271\u5C71\u3092\u958B\u767A\u3057\u3001\u3059\u3079\u3066\u306E\u5B63\u7BC0\u3067\u91D1\u53CE\u76CA\u3092\u5F97\u308B\u3053\u3068\u304C\u51FA\u6765\u7533\u3059\u3002\u662F\u975E\u652F\u914D\u4E0B\u306B\u304A\u3055\u3081\u305F\u3044\u3068\u3053\u308D\u3067\u3059\u306A\u3002"
+    expEng: Mine. You can gain money profit if you conquered here. You should occupy
+      this country.
+  - id: 8
+    exp: "\u5FCD\u306E\u91CC\u3002\u3053\u306E\u56FD\u3092\u652F\u914D\u3059\u308B\u3068\u5FCD\u8005\u306E\u751F\u7523\u304C\u51FA\u6765\u7533\u3059\u3002\u6216\u3044\u306F\u652F\u914D\u3057\u3066\u3044\u308B\u5927\u540D\u3068\u4EA4\u6613\u51FA\u6765\u307E\u3059\u305E\u3002"
+    expEng: Ninja lives in country. You can build a Ninja Town if you conquered here.
+      Otherwise you can get it by trading.
+  - id: 9
+    exp: "\u5357\u86EE\u4EBA\u306E\u5BC4\u6E2F\u5730\u3002\u57FA\u7763\u6559\u306E\u52B9\u679C\u304C\u4E8C\u500D\u306B\u306A\u308A\u7533\u3059\u3002\u5357\u86EE\u5BFA\u306E\u5EFA\u8A2D\u3092\u304A\u52E7\u3081\u3044\u305F\u3057\u307E\u3059\u305E\u3002"
+    expEng: Western ship port. Effect of Christian will be double . I'd like to recommend
+      you to build a Church.
+  - id: 10
+    exp: "\u5E1D\u3002\u671D\u5EF7\u5DE5\u4F5C\u3092\u884C\u3046\u3053\u3068\u304C\u51FA\u6765\u307E\u3059\u305E\u3002\u305F\u3060\u3057\u7D39\u4ECB\u72B6\u304C\u5FC5\u8981\u3067\u3059\u3002"
+    expEng: Emperor. You can do politics work in royal court. But you need the letter
+      of introduction.
+  - id: 11
+    exp: "\u5546\u4EBA\u3002\u535A\u591A\u3001\u583A\u306E\u5546\u4EBA\u3092\u53D6\u5F15\u3092\u3059\u308B\u3053\u3068\u304C\u51FA\u6765\u307E\u3059\u305E\u3002\u305F\u3060\u3057\u7D39\u4ECB\u72B6\u304C\u5FC5\u8981\u3067\u3059\u3002"
+    expEng: Trader. You can make a deal with marchants in Hakata or Sakai town. But
+      you need the letter of introduction.

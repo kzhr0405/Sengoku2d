@@ -1,0 +1,534 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d1c256bc8fc29142a32e8bca61fc473, type: 3}
+  m_Name: kahou_bugu_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: bugu
+    kahouName: "\u873B\u86C9\u5207"
+    kahouRank: S
+    kahouExp: "\u6226\u56FD\u6642\u4EE3\u306E\u6B66\u5C06\u672C\u591A\u5FE0\u52DD\u304C\u611B\u7528\u3057\u305F\u4E8B\u3067\u77E5\u3089\u308C\u308B\u5929\u4E0B\u4E09\u540D\u69CD\u3068\u547C\u3070\u308C\u305F\u69CD\u3002\u6226\u5834\u3067\u69CD\u3092\u7ACB\u3066\u3066\u3044\u305F\u3068\u3053\u308D\u306B\u98DB\u3093\u3067\u304D\u305F\u873B\u86C9\u304C\u5F53\u305F\u3063\u3066\u4E8C\u3064\u306B\u5207\u308C\u305F\u305F\u3081\u305D\u306E\u540D\u304C\u3064\u3044\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Tonbokiri
+    kahouExpEng: This spear is the one of the most famous in the japanese history
+      known as favorite of  warrior Tadakatsu Honda. It got its name as a dragonfly
+      that flew to where he spearred in the battlefield struck and it was cut to two.
+    kahouTargetEng: Attack
+  - id: 2
+    kahouType: bugu
+    kahouName: "\u5927\u5178\u592A\u5149\u4E16"
+    kahouRank: A
+    kahouExp: "\u8DB3\u5229\u5C06\u8ECD\u5BB6\u79D8\u8535\u306E\u91CD\u539A\u306A\u592A\u5200\u3002\u8C4A\u81E3\u79C0\u5409\u3001\u524D\u7530\u5229\u5BB6\u306B\u6E21\u3063\u305F\u5F8C\u3001\u524D\u7530\u5BB6\u306E\u4F1D\u5BB6\u306E\u5B9D\u5200\u3068\u306A\u3063\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Odenta mitsuyo
+    kahouExpEng: The heavy swords of the Ashikaga Shogun 's treasure. After crossing
+      to Toyotomi Hideyoshi and Maeda Toshiya, it became a master of the Maeda family's
+      traditional family.
+    kahouTargetEng: Attack
+  - id: 3
+    kahouType: bugu
+    kahouName: "\u7AE5\u5B50\u5207\u5B89\u7DB1"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u4E94\u5263\u306E\uFF11\u3064\u3002\u6E90\u983C\u5149\u304C\u5927\u6C5F\u5C71\u306E\u9152\u5451\u7AE5\u5B50\u3092\u9000\u6CBB\u3057\u305F\u5200\u3068\u4F1D\u308F\u308B\u3002\u8DB3\u5229\u5C06\u8ECD\u5BB6\u304B\u3089\u7E54\u7530\u4FE1\u9577\u3001\u8C4A\u81E3\u79C0\u5409\u3001\u5FB3\u5DDD\u5BB6\u3089\u306B\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Dojikiri yasutsuna
+    kahouExpEng: One of the five swords. Shigeru Genji is transmitted as a sword that
+      has exterminated Okayama's drinking boys. It was transmitted from Ashikaga Shogun
+      to Oda Nobunaga, Toyotomi Hideyoshi, Tokugawa family.
+    kahouTargetEng: Attack
+  - id: 4
+    kahouType: bugu
+    kahouName: "\u718A\u91CE\u4E09\u6240\u6A29\u73FE"
+    kahouRank: C
+    kahouExp: "\u5099\u524D\u9577\u8239\u306E\u540D\u5DE5\u30FB\u9577\u5149\u306E\u4F5C\u3002\u718A\u91CE\u5730\u65B9\u306E\u8C6A\u65CF\u30FB\u4E5D\u9B3C\u5BB6\u306B\u4F1D\u6765\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Kumano sansyo gongen
+    kahouExpEng: A work by master Nagamitsu. Brought to the Kumon family in Kumano
+      district.
+    kahouTargetEng: Attack
+  - id: 5
+    kahouType: bugu
+    kahouName: "\u5999\u898B\u5927\u83E9\u85A9"
+    kahouRank: C
+    kahouExp: "\u938C\u5009\u6642\u4EE3\u3001\u5409\u5CA1\u4E00\u6587\u5B57\u6D3E\u306E\u540D\u5DE5\u30FB\u52A9\u5149\u304C\u713C\u304D\u4E0A\u3052\u305F\u592A\u5200\u3002\u4E09\u4EE3\u5C06\u8ECD\u30FB\u5FB3\u5DDD\u5BB6\u5149\u306E\u4F69\u5200\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Myoken daibosatsu
+    kahouExpEng: masterpiece created by Sukemitsu who is one of yoshioka ichimonji
+      party in Kamakura period.The Third Generation General, Tokugawa Iemitsu's sword.
+    kahouTargetEng: Attack
+  - id: 6
+    kahouType: bugu
+    kahouName: "\u978D\u5207\u666F\u79C0"
+    kahouRank: C
+    kahouExp: "\u4F0A\u9054\u653F\u5B97\u611B\u7528\u306E\u5200\u3002\u671D\u9BAE\u51FA\u5175\u3067\u6575\u306E\u982D\u3092\u771F\u4E8C\u3064\u306B\u3057\u305F\u4E0A\u306B\u99AC\u306E\u978D\u307E\u3067\u5207\u308C\u305F\u3068\u3044\u3046\u9038\u8A71\u304B\u3089\u300C\u978D\u65AC\u308A\u300D\u306E\u7570\u540D\u3092\u3082\u3064\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Kurakiri Kagehide
+    kahouExpEng: Masamune Date favorite sword. Kurakiri 's alias is from anecdotes
+      that the horse' s saddle has broken down after making enemy 's head two true.
+    kahouTargetEng: Attack
+  - id: 7
+    kahouType: bugu
+    kahouName: "\u96F7\u5207"
+    kahouRank: C
+    kahouExp: "\u6238\u6B21\u9451\u9023\u306E\u4F69\u5200\u3002\u521D\u540D\u306F\u300C\u5343\u9CE5\u300D\u3002\u9451\u9023\u304C\u6226\u5834\u3067\u843D\u96F7\u306B\u906D\u3063\u305F\u969B\u3001\u3053\u306E\u5200\u3067\u96F7\u795E\u3092\u65AC\u3063\u305F\u969B\u306B\u6539\u540D\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Raikiri
+    kahouExpEng: Sword of Akitsura Bekki . Initial name was "Chidori." but when Akitsura
+      struck a lightning strike on the battlefield, it was renamed as "Raikiri" means
+      "kill Thunder God".
+    kahouTargetEng: Attack
+  - id: 8
+    kahouType: bugu
+    kahouName: "\u751F\u99D2\u5149\u5FE0"
+    kahouRank: C
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u306E\u611B\u5200\u306E\uFF11\u3064\u3002\u5099\u524D\u9577\u8239\u5149\u5FE0\u306E\u4F5C\u3002\u4FE1\u9577\u306F\u5149\u5FE0\u306E\u5200\u3092\u597D\u3093\u3067\u53CE\u96C6\u3057\u300132\u632F\u3082\u306E\u5200\u3092\u6709\u3057\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Ikoma mitsutada
+    kahouExpEng: Nobunaga Oda's favorite sword. Work by Bizen Osafune Mitsutada. Nobunaga
+      collected swords of Mitsuhito and said that he had 32 swords.
+    kahouTargetEng: Attack
+  - id: 9
+    kahouType: bugu
+    kahouName: "\u7A32\u8449\u6C5F"
+    kahouRank: C
+    kahouExp: "\u7A32\u8449\u91CD\u901A\u306E\u611B\u5200\u3002\u300C\u6C5F\u300D\u3068\u306F\u8D8A\u4E2D\u56FD\u306E\u5200\u5DE5\u30FB\u7FA9\u5F18\u306E\u4F5C\u3067\u3042\u308B\u3053\u3068\u3092\u3042\u3089\u308F\u3059\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Inabagou
+    kahouExpEng: Love sword of Inaba Shigemichi. "Jiang" is the work of Yoshihiro
+      Swordman of Yue China.
+    kahouTargetEng: Attack
+  - id: 10
+    kahouType: bugu
+    kahouName: "\u5B97\u4E09\u5DE6\u6587\u5B57"
+    kahouRank: B
+    kahouExp: "\u4E09\u597D\u653F\u9577\u304C\u6B66\u7530\u4FE1\u864E\u306B\u8D08\u5448\u3057\u305F\u5200\u3002\u306E\u3061\u306B\u4ECA\u5DDD\u7FA9\u5143\u306E\u4F69\u5200\u3068\u306A\u3063\u305F\u306E\u3067\u300C\u7FA9\u5143\u5DE6\u6587\u5B57\u300D\u3068\u3082\u3002\u6876\u72ED\u9593\u5408\u6226\u3067\u7E54\u7530\u4FE1\u9577\u304C\u5165\u624B\u3057\u3001\u81EA\u3089\u306E\u5DEE\u6599\u3068\u3057\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Souza samonji
+    kahouExpEng: Sword that President Miyoshi Masanaga presented to Nobutora Takeda.
+      Later it became a sword of Yoshimoto Imagawa, so it was also called "Yoshimoto
+      samonji". Nobunaga Oda obtained by Okehazama Battle.
+    kahouTargetEng: Attack
+  - id: 11
+    kahouType: bugu
+    kahouName: "\u65E5\u5149\u52A9\u771F"
+    kahouRank: B
+    kahouExp: "\u5FB3\u5DDD\u5BB6\u5EB7\u81EA\u6162\u306E\u7F8E\u5200\u3002\u5730\u91D1\u306E\u5F37\u3055\u3001\u5203\u6587\u306E\u7F8E\u3057\u3055\u306F\u3001\u6BD4\u985E\u306A\u304D\u4ED5\u4E0A\u304C\u308A\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Nikko sukezane
+    kahouExpEng: Tokugawa Ieyasu boasts a beautiful sword. The strength of the metal,
+      the beauty of the cutting edge, unrivaled finish.
+    kahouTargetEng: Attack
+  - id: 12
+    kahouType: bugu
+    kahouName: "\u3078\u3057\u5207\u9577\u8C37\u90E8"
+    kahouRank: B
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u306E\u4F69\u5200\u3002\u68DA\u306E\u4E0B\u306B\u9003\u3052\u8FBC\u3093\u3060\u8336\u574A\u4E3B\u3092\u4FE1\u9577\u304C\u68DA\u3054\u3068\u5727\u3057\u5207\u3063\u305F\u3068\u3044\u3046\u3053\u3068\u304B\u3089\u3053\u306E\u540D\u304C\u3064\u3044\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Heshikiri hasebe
+    kahouExpEng: "Nobunaga Oda's  sword. This name came from the fact that Nobunaga
+      crushed the tea bowl who ran away under the shelf along with the shelf.\u3002"
+    kahouTargetEng: Attack
+  - id: 13
+    kahouType: bugu
+    kahouName: "\u7B39\u7A42\u69CD"
+    kahouRank: B
+    kahouExp: "\u7A42\u5148\u304C\u7B39\u306E\u8449\u306E\u5F62\u3092\u3057\u3066\u3044\u308B\u69CD\u3002\u6700\u3082\u4E00\u822C\u7684\u306A\u69CD\u3067\u3001\u591A\u304F\u306E\u96D1\u5175\u304C\u4F7F\u7528\u3057\u3066\u3044\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Sasaho Spear
+    kahouExpEng: A spear with its head in the form of bamboo leaves. It was the most
+      common lance and many soldiers were using it.
+    kahouTargetEng: Attack
+  - id: 14
+    kahouType: bugu
+    kahouName: "\u83CA\u5730\u69CD"
+    kahouRank: B
+    kahouExp: "\u77ED\u5200\u306E\u67C4\u3092\u305D\u306E\u307E\u307E\u4F38\u3070\u3057\u305F\u3088\u3046\u306A\u5F62\u3092\u3057\u305F\u7247\u5203\u306E\u69CD\u3002\u8EFD\u304F\u3066\u4F7F\u3044\u3084\u3059\u3044\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Kikuchi Spear
+    kahouExpEng: A single-edged spear shaped like a stalk of a short sword stretched
+      as it is. It is light and easy to use.
+    kahouTargetEng: Attack
+  - id: 15
+    kahouType: bugu
+    kahouName: "\u4E09\u65E5\u6708\u5B97\u8FD1"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u4E94\u5263\u306E\u4E00\u632F\u308A\u3002\u534A\u6708\u5F62\u306E\u6A21\u69D8\u304C\u4E26\u3093\u3067\u3044\u308B\u305F\u3081\u3001\u3053\u306E\u540D\u3067\u547C\u3070\u308C\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Mikazuki munechika
+    kahouExpEng: One of the five swords. Because of the lined moon pattern, it is
+      called with this name. Mikazuki means Crescent Moon.
+    kahouTargetEng: Attack
+  - id: 16
+    kahouType: bugu
+    kahouName: "\u5927\u5305\u5E73"
+    kahouRank: S
+    kahouExp: "\u611B\u5200\u5BB6\u3067\u3082\u3042\u3063\u305F\u6C60\u7530\u8F1D\u653F\u81EA\u6162\u306E\u8C6A\u5200\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Ookanehira
+    kahouExpEng: Terumasa Ikeda favorite sword.
+    kahouTargetEng: Attack
+  - id: 17
+    kahouType: bugu
+    kahouName: "\u6570\u73E0\u4E38\u6052\u6B21"
+    kahouRank: S
+    kahouExp: "\u65E5\u84EE\u304C\u4FE1\u8005\u304B\u3089\u5BC4\u9032\u3055\u308C\u3066\u4EE5\u6765\u3001\u611B\u7528\u3057\u3066\u3044\u305F\u3068\u3044\u3046\u5200\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Jyuzumaru tsunetsugu
+    kahouExpEng: Since Nichiren was donated by believers, he used to love swords.
+    kahouTargetEng: Attack
+  - id: 18
+    kahouType: bugu
+    kahouName: "\u5451\u53D6"
+    kahouRank: S
+    kahouExp: "\u8C4A\u81E3\u79C0\u5409\u304C\u798F\u5CF6\u6B63\u5247\u306B\u4E0E\u3048\u305F\u69CD\u3002\u9ED2\u7530\u9577\u653F\u306E\u5BB6\u81E3\u6BCD\u91CC\u592A\u5175\u885B\u304C\u6B63\u5247\u3068\u306E\u5451\u307F\u52DD\u8CA0\u306B\u52DD\u3061\u8B72\u308A\u53D7\u3051\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Nomitori
+    kahouExpEng: A spear that Hideyoshi Toyotomi gave to Masanori Fukushima and finnaly
+      Tomonobu Mori won the drinking game with Masanori and got it.
+    kahouTargetEng: Attack
+  - id: 19
+    kahouType: bugu
+    kahouName: "\u7247\u938C\u69CD"
+    kahouRank: A
+    kahouExp: "\u52A0\u85E4\u6E05\u6B63\u611B\u7528\u306E\u69CD\u3002\u3082\u3068\u306F\u5341\u6587\u5B57\u69CD\u3060\u304C\u671D\u9BAE\u51FA\u5175\u3067\u6E05\u6B63\u304C\u864E\u3092\u9000\u6CBB\u3057\u305F\u3068\u304D\u3001\u69CD\u306E\u4E21\u5074\u306E\u938C\u306E\u3046\u3061\u7247\u65B9\u3092\u565B\u307F\u7815\u304B\u308C\u7247\u938C\u306B\u306A\u3063\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Katakama Spear
+    kahouExpEng: Kiyomasu Kato favorite spear. Originally a cross spear but when Kiyomasa
+      exiled the tiger in the Korean battle, one of the sickles on both sides of the
+      spear was chewed and became a sickle.
+    kahouTargetEng: Attack
+  - id: 20
+    kahouType: bugu
+    kahouName: "\u5343\u9CE5\u69CD"
+    kahouRank: B
+    kahouExp: "\u5DE6\u53F3\u306E\u938C\u304C\u7A42\u5148\u306B\u5411\u304B\u3063\u3066\u53CD\u3063\u3066\u3044\u308B\u69D8\u3092\u5343\u9CE5\u306B\u898B\u7ACB\u3066\u3066\u3053\u3046\u547C\u3076\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 4
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Chidori Spear
+    kahouExpEng: As if the left and right sickles are warping towards the ears, look
+      like staggered and call like this.
+    kahouTargetEng: Attack
+  - id: 21
+    kahouType: bugu
+    kahouName: "\u5F53\u9EBB\u9298\u8599\u5200"
+    kahouRank: C
+    kahouExp: "\u938C\u5009\u6642\u4EE3\u306B\u4F5C\u3089\u308C\u305F\u8599\u5200\u3002\u8C6A\u58EE\u3055\u304C\u611F\u3058\u3089\u308C\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 2
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Taimamei Halberd
+    kahouExpEng: Naginata made in Kamakura period. It is felt spectacular.
+    kahouTargetEng: Attack
+  - id: 22
+    kahouType: bugu
+    kahouName: "\u9ED2\u6F06\u67C4\u8599\u5200"
+    kahouRank: C
+    kahouExp: "\u5BA4\u753A\u6642\u4EE3\u306B\u4F5C\u3089\u308C\u305F\u8599\u5200\u3002\u67C4\u306B\u9ED2\u6F06\u304C\u307B\u3069\u3053\u3055\u308C\u305F\u4E00\u822C\u7684\u306A\u3082\u306E\u3067\u3042\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 1
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Kokushitsugara Halberd
+    kahouExpEng: Naginata made in Muromachi period. It is a common thing with black
+      lacquer on the handle.
+    kahouTargetEng: Attack
+  - id: 23
+    kahouType: bugu
+    kahouName: "\u7686\u6731\u69CD"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u7121\u53CC\u3068\u8A89\u308C\u9AD8\u3044\u524D\u7530\u6176\u6B21\u611B\u7528\u306E\u540D\u69CD\u3002\u4E0A\u6749\u5BB6\u3067\u306F\u8A31\u3055\u308C\u305F\u8005\u306E\u307F\u304C\u8EAB\u306B\u4ED8\u3051\u3089\u308C\u308B\u69CD\u3067\u3042\u308A\u3001\u4ED6\u5BB6\u81E3\u304B\u3089\u306E\u7FA8\u671B\u3092\u4E00\u8EAB\u306B\u96C6\u3081\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Kaisyu Spear
+    kahouExpEng: A famous spear of Keiji Maeda, a honorable name of the universe.
+      In the Uesugi family, only those who were forgiven are spears to be worn, collecting
+      envy from other vassals.
+    kahouTargetEng: Attack
+  - id: 24
+    kahouType: bugu
+    kahouName: "\u52A9\u5149\u9298\u8599\u5200"
+    kahouRank: S
+    kahouExp: "\u5409\u5CA1\u4E00\u6587\u5B57\u6D3E\u30FB\u52A9\u5149\u4F5C\u306E\u8599\u5200\u3002\u5730\u5203\u306F\u9759\u304B\u306B\u51B4\u3048\u308F\u305F\u308A\u3001\u5178\u96C5\u306E\u8DA3\u304D\u3059\u3089\u6F02\u3046\u3002\u524D\u7530\u5BB6\u306B\u4F1D\u6765\u3057\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Sukemitsumei Halberd
+    kahouExpEng: Naginata of Yoshioka ichimonji party Sukemitsu's work. The ground
+      edge is silent quietly, and the taste of elegance drifts. It came to the Maeda
+      family.
+    kahouTargetEng: Attack
+  - id: 25
+    kahouType: bugu
+    kahouName: "\u9B3C\u4E38\u56FD\u7DB1"
+    kahouRank: A
+    kahouExp: "\u938C\u5009\u5E55\u5E9C\u306E\u57F7\u6A29\u5317\u6761\u5BB6\u4F1D\u6765\u306E\u5200\u3002\u5317\u6761\u5BB6\u6EC5\u4EA1\u5F8C\u306F\u3001\u65B0\u7530\u7FA9\u8C9E\u3084\u8DB3\u5229\u5C06\u8ECD\u5BB6\u3001\u7E54\u7530\u4FE1\u9577\u3001\u8C4A\u81E3\u79C0\u5409\u306A\u3069\u6642\u306E\u6A29\u529B\u8005\u304C\u6240\u6709\u3057\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Onimaru kunitsuna
+    kahouExpEng: The sword of the Houjyo family of Kamakura shogunate. After the destruction
+      of the Hojyo family, it was owned by powerful persons such as Yoshisada Nitta,
+      Ashikaga Shogunate, Nobunaga Oda, Hideyoshi Toyotomi.
+    kahouTargetEng: Attack
+  - id: 26
+    kahouType: bugu
+    kahouName: "\u5341\u6587\u5B57\u69CD"
+    kahouRank: A
+    kahouExp: "\u4E2D\u5FC3\u306E\u5203\u306E\u5DE6\u53F3\u306B\u5C0F\u3055\u306A\u5203\u304C\u4E0A\u5411\u304D\u306B\u3064\u3044\u305F\u69CD\u3002\u5B9D\u8535\u9662\u80E4\u6804\u304C\u7DE8\u307F\u51FA\u3057\u305F\u5B9D\u8535\u9662\u6D41\u69CD\u8853\u3067\u306F\u3001\u3053\u306E\u5341\u6587\u5B57\u69CD\u3092\u4F7F\u3046\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Jyumonji Spear
+    kahouExpEng: A spear with a small blade pointing upwards on the left and right
+      of the center blade. This cross spear is used in Hozoin spear technic.
+    kahouTargetEng: Attack
+  - id: 27
+    kahouType: bugu
+    kahouName: "\u9B3C\u5207\u5B89\u7DB1"
+    kahouRank: B
+    kahouExp: "\u6E90\u7FA9\u4EF2\u304C\u6238\u96A0\u5C71\u4E2D\u3067\u9B3C\u3092\u65AC\u3063\u305F\u3068\u4F1D\u3048\u3089\u308C\u308B\u6E90\u5BB6\u91CD\u4EE3\u306E\u540D\u5200\u3002\u5FB3\u5DDD\u79C0\u5FE0\u304B\u3089\u671D\u5EF7\u306B\u732E\u4E0A\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Onikiri yasutsuna
+    kahouExpEng: A sword that Yoshinaka Minamoto slashed demons in togakushi. It was
+      presented to the emperial court from Hidetada Tokugawa.
+    kahouTargetEng: Attack
+  - id: 28
+    kahouType: bugu
+    kahouName: "\u6CA2\u7009\u69CD"
+    kahouRank: C
+    kahouExp: "\u5DE6\u53F3\u306E\u938C\u304C\u67C4\u306B\u5411\u304B\u3063\u3066\u53CD\u3063\u3066\u3044\u308B\u69D8\u3092\u6CA2\u7009\u306E\u8449\u306B\u898B\u7ACB\u3066\u3066\u3053\u3046\u547C\u3076\u3002\u7A81\u3044\u3066\u5F15\u304F\u969B\u306B\u938C\u3067\u5F15\u3063\u639B\u3051\u3089\u308C\u308B\u5229\u70B9\u3092\u6301\u3064\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Omodaka Spear
+    kahouExpEng: Left and right sickles are warping towards the handle as a leaf of
+      rice brown. It has the advantage that it can be hooked by a sickle when pushing
+      and pulling.
+    kahouTargetEng: Attack
+  - id: 29
+    kahouType: bugu
+    kahouName: "\u7247\u5C71\u4E00\u6587\u5B57"
+    kahouRank: C
+    kahouExp: "\u938C\u5009\u6642\u4EE3\u306B\u4F5C\u3089\u308C\u305F\u8599\u5200\u3002\u4E00\u6587\u5B57\u6D3E\u306E\u5200\u5DE5\u306E\u624B\u306B\u3088\u308B\u3082\u306E\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Katayama ichimonji
+    kahouExpEng: Naginata made in the Kamakura period. Thing by one of a swordmaster
+      in Ichimonji party.
+    kahouTargetEng: Attack
+  - id: 30
+    kahouType: bugu
+    kahouName: "\u6CD5\u57CE\u5BFA"
+    kahouRank: C
+    kahouExp: "\u6C5F\u6238\u6642\u4EE3\u306B\u4F5C\u3089\u308C\u305F\u8599\u5200\u3002\u8599\u5200\u306F\u938C\u5009\u6642\u4EE3\u306E\u3082\u306E\u304C\u6700\u3082\u512A\u308C\u3001\u6226\u56FD\u6642\u4EE3\u672B\u4EE5\u964D\u306F\u8599\u5200\u306E\u9700\u8981\u304C\u6E1B\u308A\u3001\u512A\u54C1\u306B\u4E4F\u3057\u3044\u3068\u3044\u308F\u308C\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Houjyoji
+    kahouExpEng: Naginata made in Edo period. Naginata is the most excellent made
+      in Kamakura period, and since the end of the Warring States Period the demand
+      for Naginata has decreased, and it is said that it's poor in quality.
+    kahouTargetEng: Attack
+  - id: 31
+    kahouType: bugu
+    kahouName: "\u7121\u9298\u9577\u5DFB"
+    kahouRank: C
+    kahouExp: "\u7121\u9298\u306E\u9577\u5DFB\u3002\u9577\u5DFB\u306F\u8599\u5200\u306E\u5200\u8EAB\u3092\u9577\u304F\u3057\u305F\u3082\u306E\u3002\u4EBA\u99AC\u306E\u8DB3\u3092\u8599\u304E\u6255\u3046\u3053\u3068\u306B\u7528\u3044\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Mumei nagamaki
+    kahouExpEng: Unnamed Nagamaki. Nagamaki is a long Naginata. It was used for cutting
+      down a enemy's leg.
+    kahouTargetEng: Attack
+  - id: 32
+    kahouType: bugu
+    kahouName: "\u65E5\u5149\u4E00\u6587\u5B57"
+    kahouRank: A
+    kahouExp: "\u5317\u6761\u65E9\u96F2\u304C\u624B\u306B\u5165\u308C\u3066\u4EE5\u964D\u3001\u5317\u6761\u5BB6\u306E\u5BB6\u5B9D\u3068\u306A\u3063\u305F\u5200\u3002\u5C0F\u7530\u539F\u5F81\u4F10\u306E\u969B\u306B\u3001\u5317\u6761\u5BB6\u3068\u306E\u548C\u5E73\u5DE5\u4F5C\u306B\u6D3B\u8E8D\u3057\u305F\u9ED2\u7530\u5B98\u5175\u885B\u306B\u4E0E\u3048\u3089\u308C\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Nikko ichimonji
+    kahouExpEng: A sword that became a heirloom of the Hojyo family since Soun Hojyo
+      obtained it. In the case of Odawara conquest, it was given to Yoshitaka Kuroda
+      who was active in peaceful work with Hojyo.
+    kahouTargetEng: Attack
+  - id: 33
+    kahouType: bugu
+    kahouName: "\u9577\u5149\u9298\u8599\u5200"
+    kahouRank: A
+    kahouExp: "\u540D\u5DE5\u9577\u5149\u4F5C\u306E\u8599\u5200\u3002\u76F4\u5200\u8ABF\u3067\u5730\u5473\u3067\u306F\u3042\u308B\u304C\u3001\u3080\u3057\u308D\u6B66\u9AA8\u3067\u529B\u5F37\u3044\u4F5C\u98A8\u3092\u611F\u3058\u3055\u305B\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Nagamitsumei Halberd
+    kahouExpEng: Naginata by Nagamitsu. Although it is plain but straight, it makes
+      you feel strong style with martial bones.
+    kahouTargetEng: Attack
+  - id: 34
+    kahouType: bugu
+    kahouName: "\u5999\u6CD5\u84EE\u83EF\u7D4C"
+    kahouRank: B
+    kahouExp: "\u4F0A\u52E2\u6851\u540D\u306E\u5200\u5DE5\u6751\u6B63\u304C\u3001\u65E5\u84EE\u306E\u547D\u65E5\u306B\u969B\u3057\u3066\u935B\u3048\u305F\u5200\u3002\u6751\u6B63\u306E\u4E2D\u3067\u3082\u5091\u4F5C\u3068\u540D\u9AD8\u304F\u3001\u4F50\u8CC0\u85E9\u4E3B\u934B\u5CF6\u5BB6\u306B\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Myohourengekyo
+    kahouExpEng: Sword kuwana 's swordwork Muramasa created at the death of Nichiren.
+      Mr. Muramasa is famous as a masterpiece, and it was transmitted to the Nagoshima
+      family of Saga lord.
+    kahouTargetEng: Attack

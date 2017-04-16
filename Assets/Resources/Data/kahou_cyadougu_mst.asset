@@ -1,0 +1,1246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9225996281ee444a96f48b06695e50, type: 3}
+  m_Name: kahou_cyadougu_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: cyadougu
+    kahouName: "\u4E5D\u5341\u4E5D\u9AEA\u8304\u5B50"
+    kahouRank: S
+    kahouExp: "\u5BA4\u753A\u5E55\u5E9C\u306E\u4E09\u4EE3\u5C06\u8ECD\u8DB3\u5229\u7FA9\u6E80\u304C\u6240\u6709\u3057\u305F\u5510\u7269\u8336\u5165\u3002\u305D\u306E\u5F8C\u6226\u56FD\u6642\u4EE3\u306E\u6B66\u5C06\u677E\u6C38\u4E45\u79C0\u306B\u6E21\u3063\u305F\u3002\u5929\u4E0B\u4E09\u8304\u5B50\u306E\u4E00\u3064\u306B\u5165\u308A\u3001\u305D\u306E\u4E2D\u3067\u3082\u6700\u3082\u9AD8\u3044\u8A55\u4FA1\u3092\u5F97\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Tsukumo Nasu
+    kahouExpEng: Tango tea entrusted by Yoshimitsu Ashikaga 3rd Generals of Muromachi
+      Shogunate. After that it went to the samurai Hisahide Matsunaga in the Warring
+      States Period. It was counted as one of the 3 Nasu masterpieces, and has the
+      highest evaluation among them.
+    kahouTargetEng: Exp
+  - id: 2
+    kahouType: cyadougu
+    kahouName: "\u56FD\u53F8\u8304\u5B50"
+    kahouRank: A
+    kahouExp: "\u5929\u4E0B\u4E09\u8304\u5B50\u306E\uFF11\u3064\u3002\u4F0A\u52E2\u56FD\u53F8\u30FB\u5317\u7560\u5BB6\u304C\u6240\u6709\u3057\u305F\u5510\u7269\u8336\u5165\u3002\u5F8C\u306B\u677E\u82B1\u5802\u662D\u4E57\u306B\u6E21\u308A\u516B\u5E61\u540D\u7269\u968F\u4E00\u3068\u3057\u3066\u8CDE\u8CDB\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Kokushi Nasu
+    kahouExpEng: One of the 3 Nasu masterpieaces. Tea ceremony owned by Kitabatake
+      family. it was praised as the best by Shokado Syoujyo.
+    kahouTargetEng: Exp
+  - id: 3
+    kahouType: cyadougu
+    kahouName: "\u5B89\u56FD\u5BFA\u80A9\u885D"
+    kahouRank: C
+    kahouExp: "\u6240\u6709\u8005\u306E\u5B89\u56FD\u5BFA\u6075\u74CA\u306B\u7531\u6765\u3059\u308B\u5510\u7269\u8336\u5165\u3002\u5FE0\u8208\u306E\u5B50\u30FB\u5FE0\u5229\u306F\u9818\u5185\u306E\u98E2\u9949\u306E\u969B\u8CA7\u6C11\u6551\u6E08\u306E\u305F\u3081\u3001\u3053\u308C\u3092\u58F2\u3063\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Ankokuji Katatsuki
+    kahouExpEng: Tea container originating from owner Ekei Ankokuji. Tadatoshi Hosokawa
+      sold this for famine in the territory to save the poor.
+    kahouTargetEng: Exp
+  - id: 4
+    kahouType: cyadougu
+    kahouName: "\u7B52\u4E95\u80A9\u885D"
+    kahouRank: C
+    kahouExp: "\u6240\u6709\u8005\u306E\u7B52\u4E95\u9806\u6176\u306B\u7531\u6765\u3059\u308B\u53E4\u702C\u6238\u8336\u5165\u3002\u306E\u3061\u306B\u5FB3\u5DDD\u5BB6\u5EB7\u306E\u6240\u6709\u3068\u306A\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Tsutsui Katatsuki
+    kahouExpEng: Furuseo tea container originating from owner Jyunkei Tsutsui. Later
+      it was owned by Ieyasu Tokugawa.
+    kahouTargetEng: Exp
+  - id: 5
+    kahouType: cyadougu
+    kahouName: "\u7AF9\u4E2D\u5C0F\u80A9\u885D"
+    kahouRank: C
+    kahouExp: "\u6240\u6709\u8005\u306E\u7AF9\u4E2D\u534A\u5175\u885B\u91CD\u6CBB\u306B\u7531\u6765\u3059\u308B\u5510\u7269\u80A9\u885D\u8336\u5165\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Dakenakako Katatsuki
+    kahouExpEng: Tea container originating from owner Shigeharu Takenaka.
+    kahouTargetEng: Exp
+  - id: 6
+    kahouType: cyadougu
+    kahouName: "\u7B51\u7D2B\u80A9\u885D"
+    kahouRank: C
+    kahouExp: "\u5510\u7269\u8336\u5165\u3002\u7B51\u7D2B\u306B\u3042\u3063\u305F\u305F\u3081\u3053\u306E\u540D\u304C\u4F1D\u308F\u308B\u3002\u8C4A\u81E3\u79C0\u5409\u3001\u5FB3\u5DDD\u5BB6\u5EB7\u306A\u3069\u304C\u6240\u6709\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Chikushi Katatsuki
+    kahouExpEng: Tea container. This name is transmitted because it was in Chikushi.
+      Toyotomi Hideyoshi, Tokugawa Ieyasu etc owned.
+    kahouTargetEng: Exp
+  - id: 7
+    kahouType: cyadougu
+    kahouName: "\u677E\u524D\u80A9\u885D"
+    kahouRank: C
+    kahouExp: "\u53E4\u702C\u6238\u8336\u5165\u3002\u4F50\u7AF9\u5BB6\u304B\u3089\u5E55\u5E9C\u306B\u732E\u3058\u3089\u308C\u305F\u5F8C\u3001\u5FB3\u5DDD\u5C06\u8ECD\u5BB6\u79D8\u8535\u306E\u8336\u5668\u3068\u306A\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Matsumae Katatsuki
+    kahouExpEng: Furusato tea container. After being contributed to the shogunate
+      from the Satake family, it becomes a treasure of Shogun Tokugawa.
+    kahouTargetEng: Exp
+  - id: 8
+    kahouType: cyadougu
+    kahouName: "\u5C71\u540D\u80A9\u885D"
+    kahouRank: C
+    kahouExp: "\u6240\u6709\u8005\u306E\u4F46\u99AC\u306E\u5927\u540D\u30FB\u5C71\u540D\u5BB6\u306B\u7531\u6765\u3059\u308B\u5510\u7269\u80A9\u885D\u8336\u5165\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Yamana Katatsuki
+    kahouExpEng: Tea container originating from the owners' Yamana family.
+    kahouTargetEng: Exp
+  - id: 9
+    kahouType: cyadougu
+    kahouName: "\u672C\u9858\u5BFA\u80A9\u885D"
+    kahouRank: B
+    kahouExp: "\u5510\u7269\u80A9\u885D\u8336\u5165\u3002\u300C\u80A9\u885D\u8336\u5165\u300D\u306F\u305D\u306E\u540D\u306E\u5982\u304F\u80A9\u306E\u3064\u3044\u3066\u3044\u308B\u8336\u5165\u306E\u3053\u3068\u3092\u6307\u3059\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Honganji Katatsuki
+    kahouExpEng: Tea container. Its shape has a shoulder like its name.
+    kahouTargetEng: Exp
+  - id: 10
+    kahouType: cyadougu
+    kahouName: "\u672C\u80FD\u5BFA\u6587\u7433"
+    kahouRank: B
+    kahouExp: "\u671D\u5009\u5BB6\u6EC5\u4EA1\u5F8C\u3001\u7E54\u7530\u4FE1\u9577\u306E\u624B\u306B\u6E21\u308B\u3002\u306E\u3061\u306B\u4FE1\u9577\u304C\u672C\u80FD\u5BFA\u306B\u5BC4\u9032\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Honnouji Bunrin
+    kahouExpEng: After the Asakura family died, they passed to Nobunaga Oda. Nobunaga
+      later donated to Honnoji.
+    kahouTargetEng: Exp
+  - id: 11
+    kahouType: cyadougu
+    kahouName: "\u4E0A\u6749\u74E2\u7BAA"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u516D\u74E2\u7BAA\u306E\uFF11\u3064\u3002\u4E0A\u6749\u666F\u52DD\u304C\u6240\u6709\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Uesugi Hyotan
+    kahouExpEng: One of the 6 hyotan. Kagekatsu Uesugi owned.
+    kahouTargetEng: Exp
+  - id: 12
+    kahouType: cyadougu
+    kahouName: "\u73E0\u5149\u6587\u7433"
+    kahouRank: S
+    kahouExp: "\u73E0\u5149\u304C\u6240\u6301\u3057\u3066\u3044\u305F\u540D\u7269\u306E\u4E00\u54C1\u3002\u7E54\u7530\u4FE1\u9577\u306E\u624B\u306B\u3082\u6E21\u3063\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Jyuko Bunrin
+    kahouExpEng: A dish of the specialty that Jyuko possessed. Nobunaga Oda owned
+      it.
+    kahouTargetEng: Exp
+  - id: 13
+    kahouType: cyadougu
+    kahouName: "\u521D\u82B1\u80A9\u885D"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u4E09\u80A9\u885D\u306E\uFF11\u3064\u3002\u694A\u8CB4\u5983\u306E\u6CB9\u58F7\u3067\u3042\u3063\u305F\u3068\u3082\u4F1D\u3048\u3089\u308C\u308B\u3002\u8DB3\u5229\u7FA9\u653F\u304C\u547D\u540D\u3057\u3001\u7E54\u7530\u4FE1\u9577\u3001\u8C4A\u81E3\u79C0\u5409\u3089\u304C\u6240\u6709\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Hatsuhana Katatsuki
+    kahouExpEng: It is one of the 3 Katatsuki.  It is also told that it was an oil
+      pot of Yang Qin. Named by Yoshimasa Ashikaga, it is owned by Nobunaga Oda, Hideyoshi
+      Toyotomi.
+    kahouTargetEng: Exp
+  - id: 14
+    kahouType: cyadougu
+    kahouName: "\u5BCC\u58EB\u8304\u5B50"
+    kahouRank: A
+    kahouExp: "\u5929\u4E0B\u4E09\u8304\u5B50\u306E\uFF11\u3064\u3002\u8DB3\u5229\u7FA9\u8F1D\u3001\u8C4A\u81E3\u79C0\u5409\u306A\u3069\u3092\u7D4C\u3066\u3001\u524D\u7530\u5BB6\u306E\u6240\u6709\u3068\u306A\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Fuji Nasu
+    kahouExpEng: One of the 3 Nasu. Yoshiteru Ashikaga, Hideyoshi Toyotomi owned it
+      and finally belonged to Maeda family.
+    kahouTargetEng: Exp
+  - id: 15
+    kahouType: cyadougu
+    kahouName: "\u4F3C\u305F\u308A\u8304\u5B50"
+    kahouRank: A
+    kahouExp: "\u4EE3\u4FA1\u304C100\u8CAB\u3067\u3042\u308A\u3001\u4E5D\u5341\u4E5D\u9AEA\u8304\u5B50\u306E\u4EE3\u4FA1\u3067\u3042\u308B99\u8CAB\u3067\u3042\u308B\u306E\u3068\u4F3C\u3066\u3044\u308B\u305F\u3081\u3001\u3053\u306E\u540D\u304C\u3064\u3044\u305F\u3002\u5927\u53CB\u5B97\u9E9F\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Nitari Nasu
+    kahouExpEng: Its price was 100 kan and similar to 99 kan of Tsukumo Nasu and named
+      like this.It  was owned by Otomo Sorin.
+    kahouTargetEng: Exp
+  - id: 16
+    kahouType: cyadougu
+    kahouName: "\u677E\u672C\u8304\u5B50"
+    kahouRank: B
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u304B\u3089\u8C4A\u81E3\u79C0\u5409\u3001\u5FB3\u5DDD\u5BB6\u5EB7\u3068\u5929\u4E0B\u4EBA\u306E\u624B\u3092\u6E21\u308A\u6B69\u3044\u305F\u8336\u5668\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Matsumoto Nasu
+    kahouExpEng: Nobunaga Oda and Hideyoshi Toyotomi, Ieyasu Tokugawa owned this tea
+      thing.
+    kahouTargetEng: Exp
+  - id: 17
+    kahouType: cyadougu
+    kahouName: "\u9178\u6F3F\u6587\u7433"
+    kahouRank: C
+    kahouExp: "\u5510\u7269\u6587\u7433\u8336\u5165\u3002\u5FB3\u5DDD\u5BB6\u5EB7\u3088\u308A\u9152\u4E95\u5FE0\u4E16\u306B\u8D08\u3089\u308C\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Hoozuki Bunrin
+    kahouExpEng: Bunrin Tea pot. It was awarded to Takayo Sakai from Ieyasu Tokugawa.
+    kahouTargetEng: Exp
+  - id: 18
+    kahouType: cyadougu
+    kahouName: "\u7A32\u8449\u74E2\u7BAA"
+    kahouRank: C
+    kahouExp: "\u5929\u4E0B\u516D\u74E2\u7BAA\u306E\uFF11\u3064\u3002\u7A32\u8449\u5BB6\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u305F\u3081\u3053\u306E\u540D\u304C\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Inaba Hyotan
+    kahouExpEng: One of the 6 hyotan.  Inaba family owned it.
+    kahouTargetEng: Exp
+  - id: 19
+    kahouType: cyadougu
+    kahouName: "\u4E5D\u9B3C\u6587\u7433"
+    kahouRank: C
+    kahouExp: "\u4E5D\u9B3C\u5609\u9686\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u3053\u3068\u306B\u7531\u6765\u3002\u306E\u3061\u306B\u5FB3\u5DDD\u79C0\u5FE0\u3001\u5FB3\u5DDD\u5BB6\u5149\u304C\u6240\u6709\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Kuki Bunrin
+    kahouExpEng: This name is derived from what Kumaki Yoshitaka owned. Later Hidetada
+      Tokugawa , Iemitsu Tokugawa owned.
+    kahouTargetEng: Exp
+  - id: 20
+    kahouType: cyadougu
+    kahouName: "\u5442\u5B8B\u58FA"
+    kahouRank: B
+    kahouExp: "\u4E2D\u56FD\u5357\u90E8\u304B\u3089\u30EB\u30BD\u30F3\u7D4C\u7531\u3067\u8F38\u5165\u3055\u308C\u305F\u58F7\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Ruson Tsubo
+    kahouExpEng: Fonts imported from Luzon from South China.
+    kahouTargetEng: Exp
+  - id: 21
+    kahouType: cyadougu
+    kahouName: "\u5E73\u8718\u86DB\u91DC"
+    kahouRank: S
+    kahouExp: "\u5E73\u3089\u306A\u5F62\u304C\u5730\u3092\u9019\u3046\u8718\u86DB\u3092\u9023\u60F3\u3055\u305B\u308B\u3053\u3068\u304B\u3089\u540D\u4ED8\u3051\u3089\u308C\u305F\u3002\u677E\u6C38\u4E45\u79C0\u304C\u7E54\u7530\u4FE1\u9577\u304B\u3089\u306E\u5F15\u6E21\u3057\u3092\u62D2\u307F\u3001\u706B\u85AC\u3092\u8A70\u3081\u81EA\u7206\u3057\u305F\u3053\u3068\u3067\u6709\u540D\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Hiragumo Gama
+    kahouExpEng: It was named for reminiscent of a spider with a flat shape crawling
+      on the ground. Hisahide Matsunaga refused to give it to Nobunaga Oda and he
+      suicide bombing with this item.
+    kahouTargetEng: Exp
+  - id: 22
+    kahouType: cyadougu
+    kahouName: "\u4E59\u5FA1\u524D\u91DC"
+    kahouRank: A
+    kahouExp: "\u4E59\u5FA1\u524D\u3068\u306F\u304A\u591A\u798F\u3092\u610F\u5473\u3059\u308B\u3002\u7E54\u7530\u4FE1\u9577\u304C\u67F4\u7530\u52DD\u5BB6\u306B\u8D08\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Otogoze Gama
+    kahouExpEng: Otogoze means with a lot of happy. Nobunaga Oda presented to Katsuie
+      Shibata.
+    kahouTargetEng: Exp
+  - id: 23
+    kahouType: cyadougu
+    kahouName: "\u5927\u8B1B\u5802\u91DC"
+    kahouRank: B
+    kahouExp: "\u6BD4\u53E1\u5C71\u5EF6\u66A6\u5BFA\u306E\u9999\u7089\u3092\u91DC\u306B\u8EE2\u7528\u3057\u305F\u3082\u306E\u3002\u80F4\u306E\u4E0A\u90E8\u306B\u300C\u5927\u8B1B\u5802\u300D\u306E\u6587\u5B57\u304C\u92F3\u3089\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Daikodo Gama
+    kahouExpEng: It is a diversion of Hiezan Enryakuji 's incense burner to a pot.
+      The letter of "Great auditorium" is cast in the upper part of the torso.
+    kahouTargetEng: Exp
+  - id: 24
+    kahouType: cyadougu
+    kahouName: "\u9752\u78C1\u99AC\u8757\u7D46"
+    kahouRank: S
+    kahouExp: "\u5E73\u91CD\u76DB\u304C\u4E2D\u56FD\u304B\u3089\u8D08\u3089\u308C\u305F\u9752\u78C1\u8336\u7897\u3002\u8DB3\u5229\u7FA9\u653F\u3001\u89D2\u5009\u5BB6\u306A\u3069\u306B\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Seiji Bakohan
+    kahouExpEng: A celadon bowl which was gifted to Kiyoshige Taira by China. Yoshimasa
+      Ashikaga , Kakura family and others owned it.
+    kahouTargetEng: Exp
+  - id: 25
+    kahouType: cyadougu
+    kahouName: "\u52A0\u8CC0\u4E95\u6238"
+    kahouRank: A
+    kahouExp: "\u5927\u4E95\u6238\u306E\u671D\u9BAE\u8336\u7897\u3002\u559C\u5DE6\u885B\u9580\u3001\u7D30\u5DDD\u3068\u3068\u3082\u306B\u5929\u4E0B\u306E\u4E09\u4E95\u6238\u306E\uFF11\u3064\u3002\u524D\u7530\u5BB6\u304C\u6240\u6709\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Kaga Ido
+    kahouExpEng: Big Ido Korean bowl. It is one of 3 ido with Kizaemon, Hosokawa.
+      Maeda family owned it.
+    kahouTargetEng: Exp
+  - id: 26
+    kahouType: cyadougu
+    kahouName: "\u8D64\u697D\u81E8\u6E08"
+    kahouRank: B
+    kahouExp: "\u8D64\u697D\u8336\u7897\u3002\u9577\u6B21\u90CE\u4F5C\u3067\u5229\u4F11\u4E03\u7A2E\u306E1\u3064\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Akaraku Rinzai
+    kahouExpEng: Red tea-thing. it was made by Cyojiro and counted as one of Rikyu
+      7 items.
+    kahouTargetEng: Exp
+  - id: 27
+    kahouType: cyadougu
+    kahouName: "\u5927\u5185\u7B52"
+    kahouRank: S
+    kahouExp: "\u5468\u9632\u5927\u5185\u5BB6\u304C\u6240\u6709\u3002\u5E95\u306B\u5411\u304B\u3063\u3066\u3059\u307C\u3093\u3060\u7B52\u5F62\u3092\u3057\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Oouchi Dutsu
+    kahouExpEng: Owned by Suou Ouchi family. It has a hollow cylindrical shape towards
+      the bottom.
+    kahouTargetEng: Exp
+  - id: 28
+    kahouType: cyadougu
+    kahouName: "\u591C\u9577"
+    kahouRank: A
+    kahouExp: "\u7AF9\u88FD\u82B1\u5165\u3002\u5343\u5229\u4F11\u304C\u8C4A\u81E3\u79C0\u5409\u306E\u5C0F\u7530\u539F\u5F81\u4F10\u306B\u5F93\u8ECD\u3057\u305F\u969B\u306B\u4F0A\u8C46\u97EE\u5C71\u306E\u7AF9\u3067\u4F5C\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Yonaga
+    kahouExpEng: Bamboo flower vase. Rikyu Sen made it by bamboo in Izu Nirayama when
+      he came into the Odawara conquest of Hideyoshi Toyotomi.
+    kahouTargetEng: Exp
+  - id: 29
+    kahouType: cyadougu
+    kahouName: "\u6CEA"
+    kahouRank: S
+    kahouExp: "\u8336\u6753\u3002\u8C4A\u81E3\u79C0\u5409\u306B\u5207\u8179\u3092\u547D\u3058\u3089\u308C\u305F\u5343\u5229\u4F11\u304C\u305D\u306E\u6B7B\u306B\u969B\u3057\u3066\u81EA\u3089\u524A\u3063\u305F\u3082\u306E\u3002\u53E4\u7530\u7E54\u90E8\u306B\u4E0E\u3048\u3089\u308C\u3001\u9298\u306F\u5229\u4F11\u306E\u6B7B\u3092\u5072\u3093\u3060\u91CD\u7136\u306B\u3088\u308B\u3082\u306E\u3068\u4F1D\u3048\u3089\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Namida
+    kahouExpEng: Tea ladle. Rikyu Sen, who was ordered to harakiri by Hideyoshi Toyotomi
+      and made it  at the time of his death. Given to Oribe Furuta , the name is to
+      keep remembering the death of Rikyu.
+    kahouTargetEng: Exp
+  - id: 30
+    kahouType: cyadougu
+    kahouName: "\u7B39\u306E\u8449"
+    kahouRank: A
+    kahouExp: "\u8336\u6753\u3002\u8DB3\u5229\u7FA9\u653F\u306E\u4F5C\u3067\u3042\u308A\u3001\u6771\u5C71\u5FA1\u7269\u306B\u540D\u3092\u9023\u306D\u308B\u3002\u306E\u3061\u306E\u7B39\u306E\u8449\u578B\u8336\u6753\u306E\u539F\u578B\u3068\u306A\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Sasanoha
+    kahouExpEng: Tea ladle. It is a work of Yoshimasa Ashikaga. It becomed the prototype
+      of bamboo leaf-type tea ladle.
+    kahouTargetEng: Exp
+  - id: 31
+    kahouType: cyadougu
+    kahouName: "\u6B66\u8535\u91CE"
+    kahouRank: B
+    kahouExp: "\u8336\u6753\u3002\u5C0F\u5800\u9060\u5DDE\u306E\u4F5C\u3002\u52A0\u8CC0\u524D\u7530\u5BB6\u6240\u6709\u306E\u5BCC\u58EB\u8304\u5B50\u306B\u6DFB\u3048\u3089\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Musashino
+    kahouExpEng: Tea ladle. Work by Enshu Kobori. It is attached to Fuji nasu owned
+      by Kaga Maeda family.
+    kahouTargetEng: Exp
+  - id: 32
+    kahouType: cyadougu
+    kahouName: "\u6962\u67F4\u80A9\u885D"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u4E09\u80A9\u885D\u306E\uFF11\u3064\u3002\u4E5D\u5DDE\u5F81\u4F10\u306E\u969B\u3001\u964D\u4F0F\u306E\u5370\u306B\u8C4A\u81E3\u79C0\u5409\u3078\u732E\u4E0A\u3055\u308C\u308B\u304C\u3001\u306E\u3061\u306B\u6D88\u606F\u4E0D\u660E\u3068\u306A\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Narashiba Katatsuki
+    kahouExpEng: One of the 3 Katatsuki. At the time of the conquest of Kyushu, it
+      was presented to Toyotomi Hideyoshi as a sign of surrender but later became
+      unknown.
+    kahouTargetEng: Exp
+  - id: 33
+    kahouType: cyadougu
+    kahouName: "\u9752\u78C1\u677E\u672C"
+    kahouRank: S
+    kahouExp: "\u307B\u3093\u306E\u308A\u9752\u5473\u3092\u5E2F\u3073\u305F\u898B\u76EE\u9E97\u3057\u3044\u8336\u7897\u3002\u672C\u80FD\u5BFA\u306E\u5909\u3067\u713C\u5931\u3057\u305F\u5E7B\u306E\u4E00\u54C1\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Seiji Matsumoto
+    kahouExpEng: A slightly bluish tastefully beautiful bowl. A phantom item which
+      was burned down at Honno-ji incident.
+    kahouTargetEng: Exp
+  - id: 34
+    kahouType: cyadougu
+    kahouName: "\u5712\u57CE\u5BFA"
+    kahouRank: S
+    kahouExp: "\u5343\u5229\u4F11\u304C\u5C0F\u7530\u539F\u5F81\u4F10\u306B\u5F93\u8ECD\u3057\u305F\u969B\u306B\u3001\u4F0A\u8C46\u97EE\u5C71\u306E\u7AF9\u3067\u88FD\u4F5C\u3002\u6C34\u306E\u3082\u308C\u308B\u3068\u3053\u308D\u304C\u98A8\u60C5\u3068\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Onjyoji
+    kahouExpEng: When Sen no Rikyu served in the conquest of Odawara, He made it with
+      Bamboo of Izu Nirayama. The place where the water leaked was considered as a
+      elegance.
+    kahouTargetEng: Exp
+  - id: 35
+    kahouType: cyadougu
+    kahouName: "\u963F\u5F25\u9640\u5802\u91DC"
+    kahouRank: A
+    kahouExp: "\u5343\u5229\u4F11\u304C\u8FBB\u4E0E\u6B21\u90CE\u306B\u547D\u3058\u3066\u4F5C\u3089\u305B\u305F\u4E00\u54C1\u3002\u8C4A\u81E3\u79C0\u5409\u306E\u547D\u3067\u963F\u5F25\u9640\u5BFA\u306B\u8D08\u3089\u308C\u305F\u3053\u3068\u306B\u7531\u6765\u3059\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Amidadou Gama
+    kahouExpEng: A masterpiece made by Sen no Rikyu ordered by Tsuji Yujiro. It is
+      derived from what he gave to Amida Temple by Toyotomi Hideyoshi's order.
+    kahouTargetEng: Exp
+  - id: 36
+    kahouType: cyadougu
+    kahouName: "\u9ED2\u697D\u6771\u967D\u574A"
+    kahouRank: A
+    kahouExp: "\u9ED2\u697D\u8336\u7897\u3002\u9577\u6B21\u90CE\u4F5C\u3067\u5229\u4F11\u4E03\u7A2E\u306E\uFF11\u3064\u3002\u8584\u4F5C\u308A\u3067\u61D0\u306E\u5E83\u3044\u59FF\u3092\u3057\u3066\u304A\u308A\u3001\u60A0\u3068\u3057\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Kuroraku Toyobo
+    kahouExpEng: Black tea bowl. Cyojirois one of 7 disciples of Rikyu. It is made
+      as thin and has a wide pocket.
+    kahouTargetEng: Exp
+  - id: 37
+    kahouType: cyadougu
+    kahouName: "\u5C3A\u516B"
+    kahouRank: A
+    kahouExp: "\u5343\u5229\u4F11\u304C\u5C0F\u7530\u539F\u5F81\u4F10\u306B\u5F93\u8ECD\u3057\u305F\u969B\u306B\u3001\u4F0A\u8C46\u97EE\u5C71\u306E\u7AF9\u3067\u4F5C\u308A\u3001\u306E\u3061\u306B\u79C0\u5409\u306B\u732E\u4E0A\u3057\u305F\u3002\u5229\u4F11\u304C\u81EA\u5BB3\u3057\u305F\u969B\u3001\u79C0\u5409\u306B\u58CA\u3055\u308C\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Syakuhachi
+    kahouExpEng: When Rikyu Sen served in the conquest of Odawara, He made it with
+      Bamboo of Izu Nirayama and later presented to Hideyoshi. When Rikyu did harakiri,
+      it was said to have been broken by Hideyoshi.
+    kahouTargetEng: Exp
+  - id: 38
+    kahouType: cyadougu
+    kahouName: "\u6253\u66C7\u5927\u6D77"
+    kahouRank: B
+    kahouExp: "\u67FF\u8272\u306E\u5730\u306B\u6D6E\u304B\u3076\u9ED2\u3044\u6A21\u69D8\u304C\u66C7\u96F2\u306E\u3088\u3046\u3067\u3042\u308B\u3053\u3068\u304B\u3089\u3001\u8DB3\u5229\u7FA9\u653F\u304C\u547D\u540D\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Uchigumori Daikai
+    kahouExpEng: Yoshimasa Ashikaga named it because the black pattern floating on
+      the persimmon-colored ground is like a cloud.
+    kahouTargetEng: Exp
+  - id: 39
+    kahouType: cyadougu
+    kahouName: "\u9045\u685C\u80A9\u885D"
+    kahouRank: B
+    kahouExp: "\u521D\u82B1\u80A9\u885D\u3088\u308A\u62AB\u9732\u304C\u9045\u308C\u305F\u305F\u3081\u3001\u91D1\u8449\u96C6\u306E\u6B4C\u306B\u3061\u306A\u3093\u3067\u8DB3\u5229\u7FA9\u653F\u304C\u547D\u540D\u3057\u305F\u3002\u85E4\u5802\u9AD8\u864E\u3084\u677E\u5E73\u5FE0\u660E\u3089\u3092\u7D4C\u3066\u3001\u5FB3\u5DDD\u5C06\u8ECD\u5BB6\u306B\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Osozakura Katatsuki
+    kahouExpEng: Yoshimasa Ashikaga named from Kinyo-syu. Todo Takatora and Matsudaira
+      Tadaaki,  Shogun Tokugawa owned it.
+    kahouTargetEng: Exp
+  - id: 40
+    kahouType: cyadougu
+    kahouName: "\u9054\u78E8\u5802\u91DC"
+    kahouRank: B
+    kahouExp: "\u4EAC\u90FD\u9AD8\u6850\u9662\u3067\u6E05\u5DCC\u548C\u5C1A\u304C\u5EFA\u7ACB\u3057\u305F\u5802\u5185\u306E\u9999\u7089\u3092\u91DC\u3068\u3057\u305F\u306E\u306B\u7531\u6765\u3059\u308B\u3002\u300C\u9054\u78E8\u5802\u300D\u306E\u6D6E\u304D\u51FA\u3057\u6587\u5B57\u304C\u3042\u308B\u3082\u306E\u3082\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Darumadou Gama
+    kahouExpEng: It comes from changing the incense burner to a kettle at Kyoto Kotoin.
+      There are some which have embossed characters of "Daruma-do".
+    kahouTargetEng: Exp
+  - id: 41
+    kahouType: cyadougu
+    kahouName: "\u6709\u697D\u4E95\u6238"
+    kahouRank: B
+    kahouExp: "\u5927\u4E95\u6238\u671D\u9BAE\u8336\u7897\u3002\u7E54\u7530\u6709\u697D\u658E\u306E\u540D\u3067\u77E5\u3089\u308C\u308B\u7E54\u7530\u9577\u76CA\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u3002\u5927\u4E95\u6238\u306E\u4E2D\u3067\u3082\u6700\u3082\u8A89\u308C\u9AD8\u3044\u540D\u7269\u306E\uFF11\u3064\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Uraku Ido
+    kahouExpEng: Oido Korean cup. Oda urakusai possessed it. It is one of the highest
+      grade in oido specialties.
+    kahouTargetEng: Exp
+  - id: 42
+    kahouType: cyadougu
+    kahouName: "\u8CA8\u72C4"
+    kahouRank: B
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u304C\u6240\u6709\u3057\u3066\u3044\u3066\u672C\u80FD\u5BFA\u306E\u5909\u3067\u713C\u5931\u3057\u305F\u3082\u306E\u3001\u831C\u5C4B\u5B97\u4F50\u304C\uFF16\uFF10\uFF10\u8CAB\u3067\u8CB7\u3044\u53D6\u3063\u305F\u3082\u306E\u306E\uFF12\u3064\u304C\u540D\u7269\u3068\u3057\u3066\u77E5\u3089\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Kateki
+    kahouExpEng: There are two types of this item. One owned by Nobunaga Oda was lost
+      by Honnouji Incident and the other was taken over by Akeneya Soza with 600 kan.
+    kahouTargetEng: Exp
+  - id: 43
+    kahouType: cyadougu
+    kahouName: "\u88FE\u91CE"
+    kahouRank: C
+    kahouExp: "\u8336\u6E6F\u306E\u540D\u4EBA\u30FB\u73E0\u5149\u304C\u300C\u9060\u5C71\u304C\u4E0B\u306B\u304A\u308A\u3066\u3044\u308B\u300D\u3068\u8A55\u3057\u305F\u3053\u3068\u306B\u3088\u308B\u547D\u540D\u3068\u4F1D\u3048\u3089\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Susono
+    kahouExpEng: It's naming came from the eveluation as "Toyama is underneath." by
+      tea master Jyuko.
+    kahouTargetEng: Exp
+  - id: 44
+    kahouType: cyadougu
+    kahouName: "\u5175\u5EAB"
+    kahouRank: C
+    kahouExp: "\u6442\u6D25\u5175\u5EAB\u3067\u8352\u6728\u6751\u91CD\u304C\u62FE\u3044\u4E0A\u3052\u305F\u3053\u3068\u304B\u3089\u3053\u306E\u540D\u304C\u3064\u3044\u305F\u3002\u8C4A\u81E3\u79C0\u5409\u304C\u5927\u91D1\u3067\u8B72\u308A\u53D7\u3051\u3001\u7E54\u7530\u4FE1\u9577\u306E\u6B21\u7537\u30FB\u4FE1\u96C4\u306B\u8D08\u3063\u305F\u3068\u3044\u308F\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Hyogo
+    kahouExpEng: This name came from what Araki Murashige picked it up. It is said
+      that Hideyoshi  Toyotomi bought it by big money and gave it to Nobukatsu Oda
+      who is the second son  of Nobunaga.
+    kahouTargetEng: Exp
+  - id: 45
+    kahouType: cyadougu
+    kahouName: "\u308A\u3093\u304D\u58FA"
+    kahouRank: C
+    kahouExp: "\u53E4\u7530\u7E54\u90E8\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u3002\u671D\u9BAE\u5F79\u304B\u3089\u5E30\u3063\u305F\u969B\u306B\u3001\u592B\u4EBA\u304C\u5AC9\u59AC\u5FC3\u304B\u3089\u3053\u306E\u58F7\u3092\u6253\u3061\u5272\u3063\u305F\u3068\u3055\u308C\u3001\u3053\u306E\u540D\u304C\u3064\u304F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Rinki Tsubo
+    kahouExpEng: Owned by Oribe Furuta. When returning from the battle of Korea, it
+      is said that his wife broke down this pot by jealousy, it got this name.
+    kahouTargetEng: Exp
+  - id: 46
+    kahouType: cyadougu
+    kahouName: "\u5341\u4E8C\u652F\u91DC"
+    kahouRank: C
+    kahouExp: "\u5341\u4E8C\u652F\u3092\u3042\u3057\u3089\u3063\u305F\u6587\u5B57\u3084\u5F62\u304C\u3001\u80F4\u306B\u307B\u3069\u3053\u3055\u308C\u305F\u3082\u306E\u3092\u3044\u3046\u3002\u5F53\u9EBB\u5BFA\u4E2D\u30CE\u574A\u306B\u6240\u8535\u3055\u308C\u3066\u3044\u308B\u5341\u4E8C\u652F\u91DC\u306F\u7279\u306B\u8457\u540D\u3067\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Jyunishi Gama
+    kahouExpEng: Shapes carved with the twelve signs are those on the torso. The twelve
+      kettles kept in Toma Temple are particularly prominent.
+    kahouTargetEng: Exp
+  - id: 47
+    kahouType: cyadougu
+    kahouName: "\u82A6\u5C4B\u91DC"
+    kahouRank: C
+    kahouExp: "\u7B51\u524D\u9060\u8CC0\u5DDD\u306E\u6CB3\u53E3\u4ED8\u8FD1\u306B\u3042\u308B\u82A6\u5C4B\u3067\u4F5C\u3089\u308C\u305F\u91DC\u306E\u7DCF\u79F0\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Ashiya Gama
+    kahouExpEng: Generic name of a shuttle made from Ashiya near the mouth of Chikuzen
+      Onga river.
+    kahouTargetEng: Exp
+  - id: 48
+    kahouType: cyadougu
+    kahouName: "\u5C3B\u5F35\u91DC"
+    kahouRank: C
+    kahouExp: "\u305D\u306E\u540D\u306E\u901A\u308A\u5C3B\u304C\u5F35\u3063\u305F\u5F62\u3092\u3057\u3066\u3044\u308B\u3002\u5343\u5229\u4F11\u304C\u597D\u3093\u3067\u4F7F\u3063\u305F\u3068\u4F1D\u3048\u3089\u308C\u3066\u304A\u308A\u3001\u8FBB\u4E0E\u6B21\u90CE\u306E\u4F5C\u3067\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Owari Gama
+    kahouExpEng: As its name suggests, it is shaped like a buttock. It is saied that
+      Rikyu Sen  preferred it and it is the work of Yojiro Tsuji.
+    kahouTargetEng: Exp
+  - id: 49
+    kahouType: cyadougu
+    kahouName: "\u8352\u6728\u9AD8\u9E97"
+    kahouRank: C
+    kahouExp: "\u3082\u3068\u5343\u5229\u4F11\u306E\u54C1\u3067\u3042\u3063\u305F\u304C\u3001\u8352\u6728\u6751\u91CD\u306B\u6E21\u308B\u3002\u91C9\u304C\u306A\u3060\u3089\u304B\u3067\u7F8E\u3057\u304F\u67D4\u3089\u304B\u3044\u3002\u67D3\u4ED8\u8336\u7897\u3068\u3057\u3066\u306F\u521D\u3081\u3066\u8336\u4F1A\u8A18\u306B\u767B\u5834\u3059\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Araki Kourai
+    kahouExpEng: Firstly Rikyu Sen owned it but passed to Murashige Araki. The glaze
+      is smooth, beautiful and soft. As a dyed tea bowl, it appears in the tea ceremony
+      book for the first time.
+    kahouTargetEng: Exp
+  - id: 50
+    kahouType: cyadougu
+    kahouName: "\u96F2\u9DB4\u5339\u7530\u7B52"
+    kahouRank: C
+    kahouExp: "\uFF14\u7FBD\u306E\u9DB4\u3068\uFF14\u3064\u306E\u83CA\u4E38\u7D0B\u306E\u6A21\u69D8\u304C\u3042\u308B\u3002\u4EAC\u90FD\u306E\u8C6A\u5546\u30FB\u5339\u7530\u5B97\u89B3\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u306E\u3067\u3001\u3053\u306E\u540D\u304C\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Unkaku Hikita Dutsu
+    kahouExpEng: There are four cranes and four chrysanthemum patterns. It is owned
+      by Soukan Hikita, a trading company in Kyoto, so it was called as this name.
+    kahouTargetEng: Exp
+  - id: 51
+    kahouType: cyadougu
+    kahouName: "\u67F4\u7530\u4E95\u6238"
+    kahouRank: C
+    kahouExp: "\u9752\u4E95\u6238\u7279\u6709\u306E\u6B66\u9AA8\u306A\u5473\u308F\u3044\u304C\u969B\u7ACB\u3064\u9038\u54C1\u3002\u5168\u4F53\u306B\u30D3\u30EF\u8272\u304C\u6EF2\u3080\u3002\u7E54\u7530\u5BB6\u81E3\u7B46\u982D\u306E\u67F4\u7530\u52DD\u5BB6\u304C\u7E54\u7530\u4FE1\u9577\u304B\u3089\u62DD\u9818\u3057\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Shibata Ido
+    kahouExpEng: A gem that stands out with its tasteful taste. Louquet color blurs
+      throughout. Shibata Katsuie, the leader of the vassal, received it from Nobunaga
+      Oda.
+    kahouTargetEng: Exp
+  - id: 52
+    kahouType: cyadougu
+    kahouName: "\u4E09\u5CF6\u6876"
+    kahouRank: C
+    kahouExp: "\u59FF\u304C\u6876\u306B\u4F3C\u3066\u3044\u308B\u306E\u3067\u3001\u3053\u306E\u540D\u304C\u3042\u308B\u3002\u5343\u5229\u4F11\u304C\u6240\u6709\u3057\u3001\u305D\u306E\u9577\u7537\u30FB\u5343\u9053\u5B89\u306A\u3069\u3092\u7D4C\u3066\u5C3E\u5F35\u5FB3\u5DDD\u5BB6\u306B\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Mishima Oke
+    kahouExpEng: Because its appearance resembles a tub, it has this name. It is owned
+      by Rikyu Sen, passed through his eldest son, Doan Sen and others, and was transmitted
+      to the Owari Tokugawa family.
+    kahouTargetEng: Exp
+  - id: 53
+    kahouType: cyadougu
+    kahouName: "\u7D75\u5FD7\u91CE\u536F\u82B1\u58BB"
+    kahouRank: C
+    kahouExp: "\u5FD7\u91CE\u8336\u7897\u3002\u300C\u5C71\u91CC\u306E\u536F\u82B1\u58BB\u306E\u306A\u304B\u3064\u307F\u8DEF\u96EA\u8E0F\u307F\u308F\u3051\u3057\u5FC3\u5730\u3053\u305D\u3059\u308C\u300D\u306E\u6B4C\u306B\u3061\u306A\u3080\u3002\u5FD7\u91CE\u713C\u306E\u539A\u3044\u91C9\u3092\u96EA\u306B\u306A\u305E\u3089\u3048\u305F\u3001\u7F8E\u3057\u3044\u8336\u7897\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Eshino Unohanagaki
+    kahouExpEng: Shino tea bowl. Its name derived from japanese poem. it is beautiful
+      bowl that likened shino's thick glaze to snow.
+    kahouTargetEng: Exp
+  - id: 54
+    kahouType: cyadougu
+    kahouName: "\u9B5A\u5C4B\u98EF\u6AC3\u9AD8\u9E97"
+    kahouRank: C
+    kahouExp: "\u671D\u9BAE\u8336\u7897\u306E\u5927\u540D\u7269\u3002\u5F62\u304C\u3084\u3084\u3086\u304C\u3093\u3067\u304A\u308A\u3001\u3044\u3073\u3064\u306A\u5F62\u3092\u3057\u305F\u9AD8\u9E97\u8336\u7897\u3067\u3042\u308B\u305F\u3081\u3001\u3053\u306E\u540D\u304C\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Totoya Ibitsu Gourai
+    kahouExpEng: A great specialty of Korean tea bowl. It is called as this name because
+      it is a gorgeed tea bowl with a slightly distorted shape and an irregular shape.
+    kahouTargetEng: Exp
+  - id: 55
+    kahouType: cyadougu
+    kahouName: "\u65C5\u6795"
+    kahouRank: C
+    kahouExp: "\u59E5\u53E3\u3068\u5186\u7B52\u72B6\u306E\u7D20\u6734\u306A\u5F62\u304C\u7279\u5FB4\u3002\u5C0F\u5F62\u306E\u65C5\u6795\u306B\u306A\u305E\u3089\u3048\u3066\u3053\u3046\u547C\u3070\u308C\u308B\u3002\u80CC\u306B\u7A74\u3092\u3042\u3051\u3001\u5E8A\u67F1\u306B\u639B\u3051\u3066\u639B\u82B1\u5165\u3068\u3057\u3066\u7528\u3044\u3089\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Tabimakura
+    kahouExpEng: It features a rustic shape. It is called like a small pillow. Drill
+      a hole in the back, hang it on the pedestal and it is used as a floral pot.
+    kahouTargetEng: Exp
+  - id: 56
+    kahouType: cyadougu
+    kahouName: "\u6625\u96E8"
+    kahouRank: C
+    kahouExp: "\u8336\u4EBA\u3068\u3057\u3066\u540D\u9AD8\u3044\u9060\u5DDE\u304C\u512A\u308C\u305F\u8336\u5668\u306B\u9078\u5B9A\u3057\u305F\u300C\u4E2D\u8208\u540D\u7269\u300D\u306E\uFF11\u3064\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Syunu
+    kahouExpEng: One of the "specialty products of the Cyuko" that Professor Ensyu
+      who was famous as a tea person selected as an excellent teaware.
+    kahouTargetEng: Exp
+  - id: 57
+    kahouType: cyadougu
+    kahouName: "\u304B\u3089\u305F\u3061"
+    kahouRank: C
+    kahouExp: "\u8DA3\u306F\u3001\u307E\u3059\u3089\u304A\u3001\u525B\u6BC5\u3002\u53E3\u304C\u4E00\u90E8\u5272\u308C\u3066\u3044\u3066\u3001\u673D\u3061\u3066\u306A\u304A\u7ACB\u3061\u7D9A\u3051\u308B\u304C\u5982\u304D\u69D8\u306F\u3001\u89B3\u308B\u8005\u306B\u529B\u5F37\u3055\u3092\u611F\u3058\u3055\u305B\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Karatachi
+    kahouExpEng: It style is manliness. fortitude. The mouth is partly broken and
+      making the viewer feel powerful.
+    kahouTargetEng: Exp
+  - id: 58
+    kahouType: cyadougu
+    kahouName: "\u87F2\u55B0"
+    kahouRank: C
+    kahouExp: "\u305D\u306E\u540D\u306E\u901A\u308A\u3001\u87F2\u55B0\u306E\u8DE1\u304C\u3042\u308B\u3082\u306E\u3092\u7DCF\u79F0\u3057\u3066\u3053\u3046\u547C\u3076\u3002\u6709\u540D\u306A\u3082\u306E\u3067\u306F\u5343\u5229\u4F11\u3001\u53E4\u7530\u91CD\u7136\u3001\u7D30\u5DDD\u5FE0\u8208\u3001\u5343\u5B97\u65E6\u306E\u4F5C\u306A\u3069\u304C\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Mushikui
+    kahouExpEng: As the name implies, it collectively refers to those with traces
+      of bugs. For famous things, there are some works of Rukyu Sen, Oribe Furuta,
+      Tadaoki Hosokawa etc.
+    kahouTargetEng: Exp
+  - id: 59
+    kahouType: cyadougu
+    kahouName: "\u843D\u66C7"
+    kahouRank: C
+    kahouExp: "\u5343\u5229\u4F11\u4F5C\u3002\u8C4A\u81E3\u79C0\u5409\u304C\u597D\u307F\u306B\u7121\u7406\u306B\u66F2\u3052\u3088\u3046\u3068\u3057\u305F\u3068\u3053\u308D\u3092\u4F8D\u533B\u30FB\u5FB3\u96F2\u8ED2\u304C\u8ACC\u3081\u3001\u62DD\u9818\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Ochigumori
+    kahouExpEng: Rikyu Sen's work. Hideyoshi Toyotomi tried to bend it but doctor
+      Tokuunken persuaded him to stop and received it.
+    kahouTargetEng: Exp
+  - id: 60
+    kahouType: cyadougu
+    kahouName: "\u767D\u5C71"
+    kahouRank: C
+    kahouExp: "\u91D1\u68EE\u5B97\u548C\u4F5C\u3002\u300C\u767D\u5C71\u3075\u308A\u306B\u3051\u308B\u53CB\u3068\u3084\u3053\u308C\u3092\u306A\u304B\u3080\u3089\u3093\u96F2\u3064\u3082\u308A\u306B\u3057\u3053\u3057\u306E\u3057\u3089\u5C71\u300D\u3068\u52A0\u8CC0\u767D\u5C71\u3092\u611B\u3067\u305F\u548C\u6B4C\u304C\u7B52\u66F8\u4ED8\u306B\u6DFB\u3048\u3089\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Hakusan
+    kahouExpEng: Sowa Kanamori's work. Japanese poem to expresss the love Kaga white
+      mountain was attached to this item.
+    kahouTargetEng: Exp
+  - id: 61
+    kahouType: cyadougu
+    kahouName: "\u65B0\u7530\u80A9\u885D"
+    kahouRank: S
+    kahouExp: "\u5929\u4E0B\u4E09\u80A9\u885D\u306E\uFF11\u3064\u3002\u6751\u7530\u73E0\u5149\u304C\u6240\u6709\u3057\u305F\u306E\u3061\u3001\u4E09\u597D\u653F\u9577\u3001\u5927\u53CB\u5B97\u9E9F\u3001\u7E54\u7530\u4FE1\u9577\u3001\u8C4A\u81E3\u79C0\u5409\u3089\u306B\u6E21\u308B\u3002\u5927\u5742\u843D\u57CE\u5F8C\u306F\u5FB3\u5DDD\u5BB6\u306E\u5BB6\u5B9D\u3068\u306A\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Nitta Katatsuki
+    kahouExpEng: One of the 3 katatsuki. After Jyuko Murata owned it and it passed
+      to Masanaga Miyoshi, Sorin Ootomo, Nobunaga Oda, Hideyoshi Toyotomi. After Osaka
+      castle was broken, it became the treasure of Tokugawa family.
+    kahouTargetEng: Exp
+  - id: 62
+    kahouType: cyadougu
+    kahouName: "\u677E\u5CF6"
+    kahouRank: S
+    kahouExp: "\u8868\u9762\u306B\u591A\u304F\u306E\u7624\u304C\u3042\u308A\u3001\u5965\u5DDE\u306E\u540D\u52DD\u30FB\u677E\u5CF6\u3092\u9023\u60F3\u3055\u305B\u308B\u305F\u3081\u3001\u3053\u306E\u540D\u304C\u3042\u308B\u3002\u4E09\u597D\u5BB6\u3001\u4ECA\u4E95\u5B97\u4E45\u3092\u7D4C\u3066\u7E54\u7530\u4FE1\u9577\u306B\u732E\u4E0A\u3055\u308C\u3001\u672C\u80FD\u5BFA\u306E\u5909\u3067\u713C\u5931\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Matsushima
+    kahouExpEng: There are many nubs on the surface, this name is reminiscent of Matsushima
+      of Oshu. After Miyoshiya and Sokyu Imai, it was presented to Nobunaga Oda, and
+      it was destroyed by the Honnoji incident.
+    kahouTargetEng: Exp
+  - id: 63
+    kahouType: cyadougu
+    kahouName: "\u5BCC\u58EB\u5F62\u91DC"
+    kahouRank: S
+    kahouExp: "\u8336\u6E6F\u91DC\u3002\u53E3\u304C\u72ED\u304F\u3001\u80F4\u306B\u304B\u3051\u3066\u88FE\u5E83\u306E\u5F62\u3092\u3057\u3066\u3044\u308B\u69D8\u304C\u5BCC\u58EB\u5C71\u306E\u5F62\u306B\u4F3C\u3066\u3044\u308B\u3053\u3068\u304B\u3089\u3001\u3053\u3046\u547C\u3070\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Fujinari Gama
+    kahouExpEng: Teahouse. It was called it due to the shape resembles Mt.Fuji as
+      the mouth is narrow and hemispherical shape over the torso,
+    kahouTargetEng: Exp
+  - id: 64
+    kahouType: cyadougu
+    kahouName: "\u9ED2\u697D\u5927\u9ED2"
+    kahouRank: S
+    kahouExp: "\u9577\u6B21\u90CE\u4F5C\u306E\u9ED2\u697D\u8336\u7897\u3002\u5229\u4F11\u4E03\u7A2E\u306E\uFF11\u3064\u3002\u5927\u632F\u308A\u306A\u9ED2\u8336\u7897\u3067\u3042\u308B\u3053\u3068\u304B\u3089\u3001\u3053\u306E\u540D\u304C\u4ED8\u3051\u3089\u308C\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Kuroraku Ooguro
+    kahouExpEng: Black tea bowl by Cyojiro who is one of the disciple of Rikyu. It
+      was called like this because of that bowl is big black cup.
+    kahouTargetEng: Exp
+  - id: 65
+    kahouType: cyadougu
+    kahouName: "\u7D30\u5DDD\u4E95\u6238"
+    kahouRank: S
+    kahouExp: "\u671D\u9BAE\u8336\u7897\u3002\u5929\u4E0B\u306E\u4E09\u4E95\u6238\u306E\uFF11\u3064\u3002\u5229\u4F11\u4E03\u54F2\u306E\uFF11\u4EBA\u30FB\u7D30\u5DDD\u5FE0\u8208\u304C\u6240\u6301\u3057\u3066\u3044\u305F\u305F\u3081\u3053\u3046\u547C\u3070\u308C\u308B\u3002\u59FF\u3068\u3044\u3044\u3001\u91C9\u3068\u3044\u3044\u683C\u8ABF\u9AD8\u304D\u540D\u7269\u4E2D\u306E\u540D\u7269\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Hosokawa Ido
+    kahouExpEng: Korean tea bowl. One of the 3 ido. It is called because it was possessed
+      by Tadaoki Hosokawa, one of the Noritoshi of Rikyu. Appearance is good, glaze
+      and famous specialty in good rich design.
+    kahouTargetEng: Exp
+  - id: 66
+    kahouType: cyadougu
+    kahouName: "\u5F31\u6CD5\u5E2B"
+    kahouRank: S
+    kahouExp: "\u8336\u6753\u3002\u4E5E\u98DF\u5B97\u65E6\u3068\u3082\u547C\u3070\u308C\u308B\u5343\u5229\u4F11\u306E\u5B6B\u30FB\u5343\u5B97\u65E6\u306E\u4F5C\u3067\u3001\u6700\u9AD8\u7D1A\u306B\u5C5E\u3059\u308B\u9038\u54C1\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Yorobooshi
+    kahouExpEng: One of best grade of tea ladle which made by Sotan Sen. It is also
+      called as Kojiki Sotan.
+    kahouTargetEng: Exp
+  - id: 67
+    kahouType: cyadougu
+    kahouName: "\u73E0\u5149\u5C0F\u8304\u5B50"
+    kahouRank: A
+    kahouExp: "\u73E0\u5149\u540D\u7269\u306E\uFF11\u3064\u3067\u3001\u5929\u4E0B\u56DB\u8304\u5B50\u306B\u3082\u6570\u3048\u3089\u308C\u308B\u3002\u6EDD\u5DDD\u4E00\u76CA\u304C\u6069\u8CDE\u3068\u3057\u3066\u671B\u3093\u3060\u304C\u53F6\u308F\u305A\u5606\u3044\u305F\u3068\u3044\u3046\u3002\u672C\u80FD\u5BFA\u306E\u5909\u3067\u713C\u5931\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Jyukou Konasu
+    kahouExpEng: It is one of Jyuko specialties, it is also counted in the 4 nasu.
+      Although Kazumasu Takigawa wanted it as an award, he coud not get it. It was
+      lost at Honnoji incident.
+    kahouTargetEng: Exp
+  - id: 68
+    kahouType: cyadougu
+    kahouName: "\u7D39\u9D0E\u8304\u5B50"
+    kahouRank: A
+    kahouExp: "\u6F22\u4F5C\u8304\u5B50\u8336\u5165\u3002\u98F4\u8272\u3092\u3057\u305F\u5C0F\u3055\u306A\u8336\u5165\u3067\u3001\u5929\u4E0B\u56DB\u8304\u5B50\u306E\uFF11\u3064\u306B\u6570\u3048\u3089\u308C\u308B\u3002\u8336\u4EBA\u30FB\u6B66\u91CE\u7D39\u9D0E\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u305F\u3081\u3001\u3053\u306E\u540D\u304C\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Jyouou Nasu
+    kahouExpEng: Nasu Tea pot. It is counted one of the 4 nasu. Tea master Jyouou
+      Takeno owned it.
+    kahouTargetEng: Exp
+  - id: 69
+    kahouType: cyadougu
+    kahouName: "\u677E\u82B1"
+    kahouRank: A
+    kahouExp: "\u4E2D\u56FD\u5357\u90E8\u3067\u4F5C\u3089\u308C\u305F\u8449\u8336\u58F7\u3002\u677E\u5CF6\u3001\u4E09\u65E5\u6708\u3068\u306A\u3089\u3076\u5929\u4E0B\u4E09\u540D\u58F7\u306E\uFF11\u3064\u3002\u6751\u7530\u73E0\u5149\u304B\u3089\u7E54\u7530\u4FE1\u9577\u3001\u8C4A\u81E3\u79C0\u5409\u3092\u7D4C\u3066\u3001\u5C3E\u5F35\u5FB3\u5DDD\u5BB6\u3078\u3068\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Syouka
+    kahouExpEng: Tea pot made in southern China. It is one of the 3 best tea pot with
+      Matsushima, Mikazuki. From Jyuko Murata,  Nobunaga Oda, Hideyoshi Toyotomi owned
+      and Owari Tokugawa family got it.
+    kahouTargetEng: Exp
+  - id: 70
+    kahouType: cyadougu
+    kahouName: "\u559C\u5DE6\u885B\u9580\u4E95\u6238"
+    kahouRank: A
+    kahouExp: "\u5927\u4E95\u6238\u671D\u9BAE\u8336\u7897\u3002\u5929\u4E0B\u306E\u4E09\u4E95\u6238\u306E\uFF11\u3064\u306B\u6570\u3048\u3089\u308C\u308B\u9038\u54C1\u3002\u3053\u306E\u8336\u7897\u3092\u6240\u6709\u3059\u308B\u8005\u306B\u306F\u816B\u308C\u7269\u306E\u795F\u308A\u304C\u3042\u308B\u3068\u3044\u3046\u8A71\u304C\u4F1D\u308F\u3063\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Kizaemon Ido
+    kahouExpEng: Oido Korean tea cup. A gem counted in one of the 3 ido. It is believed
+      someone who owns this bowl has a curse.
+    kahouTargetEng: Exp
+  - id: 71
+    kahouType: cyadougu
+    kahouName: "\u7389\u9730"
+    kahouRank: A
+    kahouExp: "\u4F1D\u8AAC\u306E\u8336\u6753\u3002\u5927\u5742\u51AC\u306E\u9663\u4E2D\u3001\u53E4\u7530\u91CD\u7136\u304C\u7AF9\u3092\u524A\u3063\u3066\u8336\u6753\u3092\u4F5C\u3063\u3066\u3044\u305F\u3068\u3053\u308D\u3001\u9298\u306F\u91CD\u7136\u306E\u79BF\u982D\u3092\u57CE\u5185\u304B\u3089\u306E\u7832\u5F3E\u304C\u304B\u3059\u3063\u305F\u3053\u3068\u306B\u3061\u306A\u3093\u3060\u3082\u306E\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Tamaarare
+    kahouExpEng: 'The legendary tea ladle. During the Osaka winter war, When Oribe
+      Furuta shaved bamboo to make this tea ladle,  the bullet from the castle grazed
+      his bald head and it was called as like this. '
+    kahouTargetEng: Exp
+  - id: 72
+    kahouType: cyadougu
+    kahouName: "\u5186\u4E57\u574A\u80A9\u885D"
+    kahouRank: B
+    kahouExp: "\u672C\u80FD\u5BFA\u306E\u5909\u306E\u707D\u798D\u306B\u898B\u821E\u308F\u308C\u305F\u5F8C\u3001\u5186\u4E57\u574A\u5B8B\u5186\u304C\u713C\u3051\u8DE1\u3088\u308A\u62FE\u3044\u4E0A\u3052\u305F\u3053\u3068\u304B\u3089\u3053\u306E\u540D\u304C\u3064\u3044\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Enjyobou Katatsuki
+    kahouExpEng: After being hit by the disaster of the Honnouji Temple, this name
+      came from the fact that Souen Enjyobou picked it up from the burnned place.
+    kahouTargetEng: Exp
+  - id: 73
+    kahouType: cyadougu
+    kahouName: "\u5B97\u7121\u80A9\u885D"
+    kahouRank: B
+    kahouExp: "\u6F22\u4F5C\u80A9\u885D\u8336\u5165\u3002\u3072\u3073\u5272\u308C\u304C\u5168\u4F53\u306B\u3042\u308B\u7F8E\u3057\u3044\u8336\u5165\u3002\u4F50\u7AF9\u7FA9\u5BA3\u304C\u611B\u7528\u3057\u3066\u3044\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Soumu Katatsuki
+    kahouExpEng: A masterpiece of tea container with beautiful cracks throughout.
+      Satake  Yoshinobu had favorite.
+    kahouTargetEng: Exp
+  - id: 74
+    kahouType: cyadougu
+    kahouName: "\u7389\u57A3\u6587\u7433"
+    kahouRank: B
+    kahouExp: "\u6843\u5C71\u6642\u4EE3\u304B\u3089\u3059\u3067\u306B\u65B0\u7530\u80A9\u885D\u306A\u3069\u3068\u3068\u3082\u306B\u3001\u5510\u7269\u8336\u5165\u306E\u4EE3\u8868\u4F5C\u3068\u3057\u3066\u540D\u9AD8\u3044\u4E00\u54C1\u3067\u3042\u3063\u305F\u3068\u3044\u3046\u3002\u7E54\u7530\u6709\u697D\u658E\u3001\u8C4A\u81E3\u79C0\u983C\u306A\u3069\u304C\u6240\u6301\u3057\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Tamagaki Bunrin
+    kahouExpEng: 'It had been the famous masterpieace as same rank as Nitta Katatsuki
+      in samurai era. Urakusai Oda, Hideyori Toyotomi owned it. '
+    kahouTargetEng: Exp
+  - id: 75
+    kahouType: cyadougu
+    kahouName: "\u5BAE\u738B\u80A9\u885D"
+    kahouRank: B
+    kahouExp: "\u5BAE\u738B\u5927\u592B\u9053\u4E09\u304C\u6240\u6709\u3057\u3066\u3044\u305F\u3053\u3068\u304B\u3089\u547D\u540D\u3055\u308C\u305F\u3002\u8C4A\u81E3\u79C0\u5409\u3001\u5FB3\u5DDD\u5BB6\u5EB7\u306E\u6240\u8535\u3068\u306A\u308A\u3001\u306E\u3061\u306B\u5927\u5742\u590F\u306E\u9663\u306E\u6226\u529F\u3092\u8868\u3055\u308C\u305F\u4E95\u4F0A\u76F4\u5B5D\u304C\u62DD\u9818\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Miyaou Katatsuki
+    kahouExpEng: It was named because of Miyaou Dosan owned it. Hideyoshi Toyotomi,
+      Ieyasu Tokugawa owned and later Naotaka Ii was presented as the reward of good
+      warriors of the Osaka summer war.
+    kahouTargetEng: Exp
+  - id: 76
+    kahouType: cyadougu
+    kahouName: "\u6A4B\u7ACB"
+    kahouRank: B
+    kahouExp: "\u8449\u8336\u58F7\u3002\u4E39\u5F8C\u56FD\u3067\u767A\u898B\u3055\u308C\u305F\u305F\u3081\u3001\u540D\u52DD\u30FB\u5929\u306E\u6A4B\u7ACB\u306B\u3061\u306A\u3093\u3067\u540D\u4ED8\u3051\u3089\u308C\u305F\u3002\u4F98\u3073\u3092\u611F\u3058\u3055\u305B\u308B\u59FF\u306E\u305F\u3081\u3001\u5343\u5229\u4F11\u306B\u611B\u7528\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Hashidate
+    kahouExpEng: Tea leave pot. It was discovered in Tango country, it was named after
+      the scenic spot   Heven bridge. It was patronized by Rikyu Sen because of the
+      appearance that makes me feel wabi-sabi.
+    kahouTargetEng: Exp
+  - id: 77
+    kahouType: cyadougu
+    kahouName: "\u59E5\u53E3\u91DC"
+    kahouRank: B
+    kahouExp: "\u8336\u6E6F\u91DC\u306E\u4E00\u7A2E\u3002\u53E3\u4F5C\u308A\u304C\u3001\u6B6F\u306E\u629C\u3051\u305F\u8001\u5A46\u306B\u4F3C\u3066\u3044\u308B\u3053\u3068\u304B\u3089\u3053\u3046\u547C\u3070\u308C\u308B\u3002\u5343\u5229\u4F11\u3092\u306F\u3058\u3081\u3001\u591A\u304F\u306E\u8336\u4EBA\u306B\u611B\u7528\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Ubakuchi Gama
+    kahouExpEng: A kind of teakettle. It is called like this because it resembles
+      an old woman with a tooth missing. It was loved by many tea men including Rikyu
+      Sen.
+    kahouTargetEng: Exp
+  - id: 78
+    kahouType: cyadougu
+    kahouName: "\u8D64\u697D\u65E9\u8239"
+    kahouRank: B
+    kahouExp: "\u8D64\u697D\u8336\u7897\u3002\u9577\u6B21\u90CE\u4F5C\u3067\u5229\u4F11\u4E03\u7A2E\u306E\uFF11\u3064\u3002\u5229\u4F11\u304C\u8336\u4F1A\u306E\u305F\u3081\u9AD8\u9E97\u304B\u3089\u65E9\u8239\u3067\u904B\u3070\u305B\u305F\u3068\u507D\u3063\u3066\u8A9E\u3063\u305F\u3068\u3044\u3046\u9038\u8A71\u304B\u3089\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Akaraku Hayafune
+    kahouExpEng: Red tea bowl created by Cyojiro.  From the anecdote that Rikyu told
+      him to have brought it from Koryo with a haste for a tea ceremony.
+    kahouTargetEng: Exp
+  - id: 79
+    kahouType: cyadougu
+    kahouName: "\u66DC\u5909\u7A32\u8449\u5929\u76EE"
+    kahouRank: B
+    kahouExp: "\u6700\u3082\u6709\u540D\u306A\u66DC\u5909\u5929\u76EE\u8336\u7897\u3002\u5185\u5074\u306E\u9ED2\u5730\u306B\uFF17\u8272\u306E\u661F\u7D0B\u304C\u6D6E\u304B\u3076\u3001\u5996\u3057\u304F\u7F8E\u3057\u3044\u5149\u3092\u653E\u3064\u8336\u7897\u3067\u3042\u308B\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Youhen Tenmoku Cyawan
+    kahouExpEng: The most famous Youhen Tenmoku tea bowl. A seven-color star pattern
+      floats on the inner black ground, it is a bowl that releases a mysteriously
+      beautiful light.
+    kahouTargetEng: Exp
+  - id: 80
+    kahouType: cyadougu
+    kahouName: "\u4E09\u5CF6\u85E4\u88B4"
+    kahouRank: B
+    kahouExp: "\u671D\u9BAE\u8336\u7897\u3002\u7E54\u7530\u6709\u697D\u658E\u304C\u6240\u6301\u3057\u3001\u306E\u3061\u306B\u5FB3\u5DDD\u7FA9\u76F4\u304C\u8B72\u308A\u53D7\u3051\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Mishima Fuji Bakama
+    kahouExpEng: Korean tea bowl. Urakusai Oda possessed, later acquired by Yoshinao
+      Tokugawa.
+    kahouTargetEng: Exp
+  - id: 81
+    kahouType: cyadougu
+    kahouName: "\u7070\u88AB\u8679\u5929\u76EE"
+    kahouRank: B
+    kahouExp: "\u7897\u306E\u6A21\u69D8\u304C\u8679\u3092\u9023\u60F3\u3055\u305B\u308B\u305F\u3081\u3053\u306E\u540D\u304C\u3042\u308B\u3002\u6771\u5C71\u5FA1\u7269\u304B\u3089\u6771\u5927\u5BFA\u3001\u4EAC\u4E09\u4E95\u5BB6\u3001\u82E5\u72ED\u9152\u4E95\u5BB6\u306A\u3069\u306B\u4F1D\u308F\u3063\u305F\u3002"
+    kahouTarget: "\u6226\u529F"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Haikatsuki Tenmoku
+    kahouExpEng: This name is because the pattern of the bowl reminiscent of a rainbow.
+      From Higashiyama to Todaiji Temple, Kyoto Mitsui family, and finally Wakasa
+      Sakai family owned.
+    kahouTargetEng: Exp

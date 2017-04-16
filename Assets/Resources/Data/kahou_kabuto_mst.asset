@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e9520aa20ac7c46a71a9e73d56df05, type: 3}
+  m_Name: kahou_kabuto_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: kabuto
+    kahouName: "\u9E7F\u89D2\u8107\u7ACB\u515C"
+    kahouRank: S
+    kahouExp: "\u672C\u591A\u5FE0\u52DD\u304C\u611B\u7528\u3057\u305F\u515C\u3002\u9E7F\u306E\u89D2\u3092\u304B\u305F\u3069\u3063\u305F\u5927\u304D\u306A\u98FE\u308A\u304C\u7279\u5FB4\u7684\u3067\u3042\u308B\u3002\u9E7F\u306E\u89D2\u306E\u98FE\u308A\u306F\u3001\u5897\u6C34\u3057\u305F\u5DDD\u3092\u9E7F\u304C\u5FE0\u52DD\u3092\u6848\u5185\u3059\u308B\u3088\u3046\u306B\u6E21\u3063\u3066\u3044\u305F\u3053\u3068\u306B\u3061\u306A\u3080\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Deer Horn Helmet
+    kahouExpEng: Tadakatsu Honda's favorite one. A large decoration that shaped the
+      horn of a deer is characteristic. The decoration of the horn of the deer is
+      due to the deer was crossing flood  river  as if the deer guides him.
+    kahouTargetEng: ATK
+  - id: 2
+    kahouType: kabuto
+    kahouName: "\u4E00\u306E\u8C37\u515C"
+    kahouRank: A
+    kahouExp: "\u677F\u72B6\u306E\u98FE\u308A\u3092\u982D\u4E0A\u306B\u914D\u3057\u305F\u515C\u3002\u524D\u65B9\u306B\u3084\u3084\u4E38\u3081\u305F\u677F\u306F\u3001\u6E90\u5E73\u5408\u6226\u306E\u53E4\u6226\u5834\u30FB\u4E00\u306E\u8C37\u3092\u304B\u305F\u3069\u3063\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Ichinodani Helmet
+    kahouExpEng: A helmet with a plate-like decoration on the head. The board rounded
+      a little in the front is one which shaped the old battlefield / Ichinodani of
+      Genpei battle.
+    kahouTargetEng: ATK
+  - id: 3
+    kahouType: kabuto
+    kahouName: "\u98EF\u7DB1\u6A29\u73FE\u4ED8\u515C"
+    kahouRank: B
+    kahouExp: "\u524D\u7ACB\u306B\u91D1\u306E\u98EF\u7DB1\u6A29\u73FE\u3092\u636E\u3048\u305F\u515C\u3002\u98EF\u7DB1\u6A29\u73FE\u306F\u4E0D\u52D5\u660E\u738B\u306E\u5316\u8EAB\u3068\u3044\u308F\u308C\u3001\u6226\u56FD\u671F\u306B\u4FE1\u4EF0\u3055\u308C\u3066\u3044\u305F\u795E\u4ECF\u306E\uFF11\u3064\u3002\u4FE1\u5FC3\u6DF1\u3044\u3053\u3068\u3067\u77E5\u3089\u308C\u308B\u4E0A\u6749\u8B19\u4FE1\u611B\u7528\u306E\u515C\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Izuna Gongen Helmet
+    kahouExpEng: A helmet with a gold Izuna Gongen set in front. It is said that Izuna
+      Gongen is an Fudo Myoou, one of the god who was believed in the Sengoku period.
+      Kenshin Uesugi belived him.
+    kahouTargetEng: ATK
+  - id: 4
+    kahouType: kabuto
+    kahouName: "\u9BF0\u5C3E\u515C"
+    kahouRank: C
+    kahouExp: "\u5909\u308F\u308A\u515C\u306E\u4E00\u7A2E\u3002\u9BF0\uFF08\u306A\u307E\u305A\uFF09\u304C\u9006\u7ACB\u3061\u3057\u305F\u304B\u306E\u3088\u3046\u306B\u8133\u5929\u3088\u308A\u9AD8\u304F\u9AD8\u304F\u7A81\u8D77\u3057\u305F\u5F62\u304C\u5370\u8C61\u7684\u306A\u515C\u3002\u84B2\u751F\u6C0F\u90F7\u3084\u524D\u7530\u5229\u5BB6\u306A\u3069\u304C\u597D\u3093\u3067\u7740\u7528\u3057\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Catfish Tail Helmet
+    kahouExpEng: An odd helmet which catfish shape protruding higher than the brain
+      is impressive. Ujisato Gamo  and Toshiie Maeda liked to wear it.
+    kahouTargetEng: ATK
+  - id: 5
+    kahouType: kabuto
+    kahouName: "\u516D\u5341\u4E8C\u9593\u7B4B\u515C"
+    kahouRank: C
+    kahouExp: "62\u672C\u306E\u7B4B\u3092\u9262\u306E\u5929\u8FBA\u304B\u3089\u653E\u5C04\u72B6\u306B\u4E0B\u308D\u3057\u305F\u7B4B\u515C\u3002\u6226\u56FD\u671F\u306B\u306F\u4EE5\u524D\u306B\u898B\u3089\u308C\u305F\u3088\u3046\u306A\u7B4B\u306B\u661F\u3092\u914D\u3057\u305F\u661F\u515C\u306F\u898B\u3089\u308C\u305A\u3001\u7B4B\u515C\u304C\u4E3B\u6D41\u3067\u3042\u308B\u3002\u6B66\u7530\u4FE1\u7384\u304C\u6240\u6709\u3057\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: 62 lines Helmet
+    kahouExpEng: Helmet which has 62 lines. There is no star helmet which was familier
+      before Sengoku Period. Shingen Takeda owned it.
+    kahouTargetEng: ATK
+  - id: 6
+    kahouType: kabuto
+    kahouName: "\u5341\u4E8C\u9593\u7B4B\u515C"
+    kahouRank: C
+    kahouExp: "\u5317\u6761\u6C0F\u5EB7\u304C\u6240\u6709\u3057\u305F\u515C\u3068\u4F1D\u3048\u3089\u308C\u308B\u3002\u9ED2\u6F06\u304C\u5168\u4F53\u306B\u307B\u3069\u3053\u3055\u308C\u3001\u5439\u8FD4\u3057\u306B\u306F\u5317\u6761\u5BB6\u306E\u5BB6\u7D0B\u300C\u5317\u6761\u9C57\u300D\u304C\u6253\u305F\u308C\u3066\u3044\u308B\u3002\u7B4B\u515C\u306F\u597D\u307F\u306B\u3088\u308A\u7B4B\u306E\u6570\u3082\u69D8\u3005\u3067\u3042\u3063\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: 12 lines Helmet
+    kahouExpEng: Ujiyasu Hojyo owned it. The black lacquer is painted in the whole,
+      and the family crest of the Hojyo "Hojyo Scala" is struck.
+    kahouTargetEng: ATK
+  - id: 7
+    kahouType: kabuto
+    kahouName: "\u4E8C\u5341\u4E8C\u9593\u7B4B\u515C"
+    kahouRank: C
+    kahouExp: "\u897F\u56FD\u306E\u7FA4\u96C4\u30FB\u5927\u53CB\u7FA9\u93AE\u304C\u6240\u6709\u3057\u305F\u515C\u3002\u5439\u8FD4\u3057\u306B\u5927\u53CB\u5BB6\u306E\u5BB6\u7D0B\u300C\u674F\u8449\u300D\u304C\u6253\u305F\u308C\u3066\u3044\u308B\u3002\u6731\u8272\u306E\u9262\u306B\u91D1\u8272\u306E\u7B4B\u3092\u5DE1\u3089\u305B\u305F\u8C6A\u83EF\u306A\u7B4B\u515C\u3067\u3042\u308B\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: 22 lines Helmet
+    kahouExpEng: Yoshishige Otomo owned it.The family crest of Otomo "Leaf of apricot"
+      is struck. It is a luxurious helmet that with golden lines on red body.
+    kahouTargetEng: ATK
+  - id: 8
+    kahouType: kabuto
+    kahouName: "\u690E\u5B9F\u5F62\u515C"
+    kahouRank: C
+    kahouExp: "\u690E\u306E\u5B9F\u3092\u9262\u306E\u5F62\u306B\u304B\u305F\u3069\u3063\u305F\u515C\u3002\u9CE5\u5C45\u5143\u5FE0\u3089\u6226\u56FD\u6B66\u5C06\u304C\u7528\u3044\u305F\u3002\u690D\u7269\u3092\u304B\u305F\u3069\u3063\u305F\u515C\u306F\u4ED6\u306B\u3001\u7AF9\u306E\u7BC0\u3001\u3044\u304C\u3050\u308A\u3001\u6843\u3001\u671D\u9854\u3001\u3056\u304F\u308D\u3001\u80E1\u6843\u306A\u3069\u304C\u3042\u308B\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Acorn Style Helmet
+    kahouExpEng: A helmet like an acron. Mototada Torii liked it.
+    kahouTargetEng: ATK
+  - id: 9
+    kahouType: kabuto
+    kahouName: "\u9244\u9306\u5730\u7B4B\u515C"
+    kahouRank: C
+    kahouExp: "\u9244\u9306\u5730\u5857\u308A\u3092\u307B\u3069\u3053\u3057\u305F\u7B4B\u515C\u3002\u9298\u306F\u300C\u76F8\u5DDE\u5C0F\u7530\u539F\u4F4F\u660E\u73CD\u52DD\u5BB6\u4F5C\u300D\u3068\u3042\u308B\u3002\u5C0F\u7530\u539F\u57CE\u4E0B\u306F\u5B89\u5168\u306A\u305F\u3081\u3001\u69D8\u3005\u306A\u6280\u8853\u8005\u304C\u79FB\u308A\u4F4F\u3093\u3067\u3001\u6587\u5316\u304C\u82B1\u958B\u3044\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Iron Rust Helmet
+    kahouExpEng: Iron Helmet.  Because Odawara Castle is safe, various engineers moved
+      and the culture was blossomed.
+    kahouTargetEng: ATK
+  - id: 10
+    kahouType: kabuto
+    kahouName: "\u99AC\u85FA\u5F8C\u7ACB\u4ED8\u515C"
+    kahouRank: S
+    kahouExp: "\u8C4A\u81E3\u79C0\u5409\u611B\u7528\u306E\u515C\u3002\u99AC\u85FA\u306E\u8449\u3092\u3042\u3057\u3089\u3063\u305F\u5F8C\u7ACB\u304C\u5149\u8F2A\u306E\u5982\u304F\u958B\u304D\u7ACB\u3064\u3001\u79C0\u5409\u597D\u307F\u306E\u6D3E\u624B\u306A\u515C\u3002\u4E5D\u5DDE\u5E73\u5B9A\u306E\u969B\u306B\u306F\u3001\u3053\u308C\u3092\u7740\u7528\u3057\u3066\u51FA\u9663\u3057\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Iris leaf Halo Helmet
+    kahouExpEng: Hideyoshi Toyotomi's favorite one. Iris leaf open like a halo of
+      budda. He went to Kyushu Conquest with this item.
+    kahouTargetEng: ATK
+  - id: 11
+    kahouType: kabuto
+    kahouName: "\u91D1\u8986\u8F2A\u7B4B\u515C"
+    kahouRank: S
+    kahouExp: "\u6700\u4E0A\u7FA9\u5149\u304C\u6240\u6709\u306E\u515C\u3002\u9262\u306F\u9ED2\u6F06\u3092\u307B\u3069\u3053\u3057\u3066\u3001\u7B4B\u306B\u91D1\u306E\u8986\u8F2A\u3092\u304B\u3051\u305F\u3082\u306E\u3002\u771F\u5411\u306B\u306F\u7CBE\u5DE7\u83CA\u900F\u3057\u306E\u4E09\u936C\u5F62\u306E\u524D\u7ACB\u3092\u636E\u3048\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Gold Ring Helmet
+    kahouExpEng: Helmet owned by Yoshimitsu Mogami. It was painted with black lacquer
+      and put gold ring in lines.
+    kahouTargetEng: ATK
+  - id: 12
+    kahouType: kabuto
+    kahouName: "\u4E09\u65E5\u6708\u515C"
+    kahouRank: A
+    kahouExp: "\u4E09\u65E5\u6708\u306E\u524D\u7ACB\u3092\u307B\u3069\u3053\u3057\u305F\u515C\u3002\u4E09\u65E5\u6708\u306E\u5927\u304D\u3055\u306F\u69D8\u3005\u3067\u3042\u308A\u3001\u4F0A\u9054\u653F\u5B97\u3084\u5C71\u4E2D\u9E7F\u4E4B\u4ECB\u3089\u304C\u597D\u3093\u3067\u7528\u3044\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Crescent Moon Helmet
+    kahouExpEng: Crescent Moon Helmet. Masamune Date and Shikanosuke Yamanaka liked
+      it to wear.
+    kahouTargetEng: ATK
+  - id: 13
+    kahouType: kabuto
+    kahouName: "\u9280\u767D\u6A80\u5857\u515C"
+    kahouRank: A
+    kahouExp: "\u9ED2\u7530\u5B5D\u9AD8\u304C\u5BB6\u81E3\u306B\u4E0E\u3048\u305F\u5408\u5B50\u5F62\u306E\u515C\u3002\u5408\u5B50\u5F62\u3068\u306F\u84CB\u4ED8\u306E\u6F06\u7897\u3092\u304B\u305F\u3069\u3063\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Silver Sandalwood Helmet
+    kahouExpEng: A helmet that Yoshitaka Kuroda gave to his vassal. The design of
+      the shape came from lacquered bowl.
+    kahouTargetEng: ATK
+  - id: 14
+    kahouType: kabuto
+    kahouName: "\u5510\u51A0\u5F62\u515C"
+    kahouRank: B
+    kahouExp: "\u4E2D\u56FD\u306E\u51A0\u3092\u304B\u305F\u3069\u3063\u305F\u5909\u308F\u308A\u515C\u306E\uFF11\u3064\u3002\u5E3D\u5B50\u306E\u5F8C\u65B9\u306B\u7E93\u3092\u53D6\u308A\u4ED8\u3051\u305F\u7D20\u6734\u306A\u5F62\u3060\u304C\u3001\u8107\u7ACB\u306B\u69D8\u3005\u306A\u98FE\u308A\u3092\u3064\u3051\u3066\u500B\u6027\u3092\u6F14\u51FA\u3057\u305F\u3002\u85E4\u5802\u9AD8\u864E\u3082\u611B\u7528\u3057\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Tang Style Helmet
+    kahouExpEng: Chinese Hat Style. Takatora Todo liked it.
+    kahouTargetEng: ATK
+  - id: 15
+    kahouType: kabuto
+    kahouName: "\u9577\u70CF\u5E3D\u5B50\u5F62\u515C"
+    kahouRank: B
+    kahouExp: "\u70CF\u5E3D\u5B50\u5F62\u306E\u515C\u3002\u5DF1\u3092\u5927\u304D\u304F\u898B\u305B\u3001\u6575\u3092\u5A01\u5727\u3059\u308B\u305F\u3081\u591A\u304F\u306E\u6B66\u5C06\u304C\u597D\u3093\u3060\u3002\u52A0\u85E4\u6E05\u6B63\u306F\u3055\u3089\u306B\u70CF\u5E3D\u5B50\u3092\u5927\u304D\u304F\u3057\u305F\u3082\u306E\u3092\u7528\u3044\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Noble Style Helmet
+    kahouExpEng: Helmet like noble hat. A lot of samurai prefered to wear it to show
+      his body size bigger than actual and intimidate enemy. Kiyomasa Kato liked it.
+    kahouTargetEng: ATK
+  - id: 16
+    kahouType: kabuto
+    kahouName: "\u71D5\u5C3E\u5F62\u515C"
+    kahouRank: B
+    kahouExp: "\u71D5\u306E\u4E8C\u80A1\u5C3E\u3092\u304B\u305F\u3069\u3063\u305F\u515C\u3002\u9CE5\u306E\u5F62\u4EE5\u5916\u306B\u3082\u8776\u3001\u873B\u86C9\u3001\u514E\u306E\u8033\u306A\u3069\u3092\u304B\u305F\u3069\u3063\u305F\u515C\u3092\u7740\u3051\u3001\u6226\u5834\u3067\u5165\u308A\u4E71\u308C\u3066\u6226\u3063\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Swallowtail Helmet
+    kahouExpEng: It is a swallowtail style. There a lot of samurais who were animal
+      and insect like helmets for example, Butterfly, dragonfly, rabbit ears.
+    kahouTargetEng: ATK
+  - id: 17
+    kahouType: kabuto
+    kahouName: "\u91D1\u7B94\u62BC\u6804\u87BA\u5F62\u515C"
+    kahouRank: B
+    kahouExp: "\u672C\u591A\u5BB6\u4F1D\u6765\u3068\u8A00\u308F\u308C\u308B\u515C\u3002\u666E\u901A\u306E\u515C\u306E\u4E0A\u306B\u3001\u548C\u7D19\u3092\u6804\u87BA\u306E\u5F62\u306B\u5857\u308A\u56FA\u3081\u3066\u91D1\u7B94\u3092\u8CBC\u3063\u305F\u3082\u306E\u304C\u53D6\u308A\u4ED8\u3051\u3066\u3042\u308B\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Gold Screw Helmet
+    kahouExpEng: It is a treasure of Honda family. Golden Screw is attached on normal
+      helmet.
+    kahouTargetEng: ATK
+  - id: 18
+    kahouType: kabuto
+    kahouName: "\u5927\u6C34\u725B\u8107\u7ACB\u515C"
+    kahouRank: A
+    kahouExp: "\u6C34\u725B\u306E\u89D2\u3092\u304B\u305F\u3069\u3063\u305F\u5927\u304D\u306A\u98FE\u308A\u304C\u7279\u5FB4\u7684\u306A\u515C\u3002\u9ED2\u7530\u9577\u653F\u304C\u611B\u7528\u3057\u3066\u3044\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Large Buffalo Helmet
+    kahouExpEng: Helmet featuring large ornaments shaped like buffalo horns. Nagamasa
+      Kuroda used it regularly.
+    kahouTargetEng: ATK
+  - id: 19
+    kahouType: kabuto
+    kahouName: "\u5927\u91D8\u5F8C\u7ACB\u515C"
+    kahouRank: B
+    kahouExp: "\u5F8C\u7ACB\u306B\u5927\u304D\u306A\u91D8\u306E\u98FE\u308A\u304C\u7279\u5FB4\u7684\u306A\u515C\u3002\u5FB3\u5DDD\u5BB6\u5EB7\u3082\u3053\u306E\u5F62\u306E\u515C\u3092\u7528\u3044\u305F\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Big Nail Helmet
+    kahouExpEng: A helmet featuring large nail ornaments. Ieyasu Tokugawa also used
+      this form of helmet.
+    kahouTargetEng: ATK
+  - id: 20
+    kahouType: kabuto
+    kahouName: "\u5E06\u7ACB\u8C9D\u524D\u7ACB\u515C"
+    kahouRank: B
+    kahouExp: "\u702C\u6238\u5185\u6D77\u306B\u8987\u3092\u5531\u3048\u3066\u3044\u305F\u56E0\u5CF6\u6C34\u8ECD\u30FB\u6751\u4E0A\u5BB6\u306B\u4F1D\u308F\u308B\u515C\u3002\u524D\u7ACB\u306F\u6C34\u8ECD\u3089\u3057\u3044\u5E06\u7ACB\u8C9D\u3067\u3001\u91D1\u8272\u304C\u307E\u3076\u3057\u3044\u3002"
+    kahouTarget: "\u7D71\u7387"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Scallop Helmet
+    kahouExpEng: A helmet transmitted to the Murakami family who was advocating for
+      the Seto Sea. It is like a scallops with gold painted.
+    kahouTargetEng: ATK

@@ -1,0 +1,429 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437dfb13cf595224d948ccebf0011d28, type: 3}
+  m_Name: saku_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    typ: kobu
+    name: "\u9F13\u821E"
+    effection: "\u6FC0\u52B1\u3057\u58EB\u6C17\u3092\u4E0A\u3052\u308B\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u3044\u308B\u5473\u65B9\u306E\u653B\u6483\u529B\u3092A%\u4E0A\u3052\u308B\u3002"
+    lv1: 3
+    lv2: 4
+    lv3: 5
+    lv4: 6
+    lv5: 7
+    lv6: 8
+    lv7: 9
+    lv8: 10
+    lv9: 11
+    lv10: 12
+    lv11: 13
+    lv12: 14
+    lv13: 15
+    lv14: 17
+    lv15: 19
+    lv16: 21
+    lv17: 23
+    lv18: 25
+    lv19: 27
+    lv20: 30
+    shipFlg: 1
+    nameEng: Raise
+    effectionEng: Increase ABC% attack of tapped player unit by boosting their morale.
+  - id: 2
+    typ: hokyu
+    name: "\u8377\u99C4"
+    effection: "\u5C0F\u8377\u99C4\u968A\u3092\u6D3E\u5175\u3059\u308B\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u3044\u308B\u5473\u65B9\u306E\u5175\u529B\u3092A\u56DE\u5FA9\u3059\u308B\u3002"
+    lv1: 300
+    lv2: 400
+    lv3: 500
+    lv4: 600
+    lv5: 800
+    lv6: 1000
+    lv7: 1200
+    lv8: 1400
+    lv9: 1600
+    lv10: 1900
+    lv11: 2200
+    lv12: 2500
+    lv13: 2800
+    lv14: 3100
+    lv15: 3500
+    lv16: 3900
+    lv17: 4300
+    lv18: 4700
+    lv19: 5100
+    lv20: 6000
+    shipFlg: 1
+    nameEng: 'Recover '
+    effectionEng: Recover ABC hp of tapped player unit by suppling food.
+  - id: 3
+    typ: hukuhei
+    name: "\u4F0F\u5175"
+    effection: "\u4F0F\u5175\u653B\u6483\u3092\u4ED5\u639B\u3051\u308B\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u81EA\u90E8\u968A\u3068\u540C\u3058\u5175\u529B\u3092\u6301\u3064\u4F0F\u5175\u3092A\u968A\u51FA\u73FE\u3055\u305B\u308B\u3002"
+    lv1: 1
+    lv2: 2
+    lv3: 3
+    lv4: 4
+    lv5: 5
+    lv6: 6
+    lv7: 7
+    lv8: 8
+    lv9: 9
+    lv10: 10
+    lv11: 11
+    lv12: 12
+    lv13: 13
+    lv14: 14
+    lv15: 15
+    lv16: 16
+    lv17: 17
+    lv18: 18
+    lv19: 19
+    lv20: 20
+    shipFlg: 1
+    nameEng: Ambush
+    effectionEng: Create ABC ambush unit in tapped area.
+  - id: 4
+    typ: mizuzeme
+    name: "\u6C34\u653B"
+    effection: "\u6C34\u653B\u3081\u3092\u4ED5\u639B\u3051\u308B\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u6575\u5473\u65B9\u554F\u308F\u305A\u5175\u529BA%\u3092\u6E1B\u5C11\u3055\u305B\u308B\u7BC4\u56F2\u653B\u6483\u3002\u9244\u7832\u968A\u3001\u5F13\u968A\u3078\u306F\u30C0\u30E1\u30FC\u30B8\u4E8C\u500D\u3002"
+    lv1: 3
+    lv2: 4
+    lv3: 5
+    lv4: 6
+    lv5: 7
+    lv6: 8
+    lv7: 9
+    lv8: 10
+    lv9: 11
+    lv10: 12
+    lv11: 13
+    lv12: 14
+    lv13: 15
+    lv14: 17
+    lv15: 19
+    lv16: 21
+    lv17: 23
+    lv18: 25
+    lv19: 27
+    lv20: 30
+    shipFlg: 0
+    nameEng: Flood
+    effectionEng: Give ABC% damage in all units of tapped area by flood. Double effect
+      for gun & bow unit.
+  - id: 5
+    typ: yasenchikujyo
+    name: "\u91CE\u6226\u7BC9\u57CE"
+    effection: "\u99AC\u9632\u67F5\u3092\u666E\u8ACB\u3059\u308B\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u6575\u306E\u79FB\u52D5\u3092\u59A8\u3052\u308B\u8010\u4E45\u529BA\u306E\u67F5\u3092\u4F5C\u308B\u3002"
+    lv1: 1000
+    lv2: 1200
+    lv3: 1400
+    lv4: 1600
+    lv5: 1900
+    lv6: 2200
+    lv7: 2500
+    lv8: 2900
+    lv9: 3300
+    lv10: 3700
+    lv11: 4000
+    lv12: 4500
+    lv13: 5000
+    lv14: 5600
+    lv15: 6200
+    lv16: 6800
+    lv17: 7500
+    lv18: 8300
+    lv19: 9100
+    lv20: 10000
+    shipFlg: 0
+    nameEng: Fence
+    effectionEng: Create fence with ABC hp in tapped area.
+  - id: 6
+    typ: 'kakei '
+    name: "\u706B\u8A08"
+    effection: "\u713C\u304D\u8A0E\u3061\u3092\u4ED5\u639B\u3051\u308B\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u6575\u5473\u65B9\u554F\u308F\u305A\u5175\u529BA%\u3092\u6E1B\u5C11\u3055\u305B\u308B\u7BC4\u56F2\u653B\u6483\u3002\u69CD\u968A\u3001\u9A0E\u99AC\u968A\u3078\u306F\u30C0\u30E1\u30FC\u30B8\u4E8C\u500D\u3002"
+    lv1: 3
+    lv2: 4
+    lv3: 5
+    lv4: 6
+    lv5: 7
+    lv6: 8
+    lv7: 9
+    lv8: 10
+    lv9: 11
+    lv10: 12
+    lv11: 13
+    lv12: 14
+    lv13: 15
+    lv14: 17
+    lv15: 19
+    lv16: 21
+    lv17: 23
+    lv18: 25
+    lv19: 27
+    lv20: 30
+    shipFlg: 0
+    nameEng: Burn
+    effectionEng: Give ABC% damage in all units of tapped area by burning. Double
+      effect for spear & carvery unit.
+  - id: 7
+    typ: kengou
+    name: "\u5263\u8C6A"
+    effection: "\u96C7\u3044\u5165\u308C\u305F\u5263\u8C6A\u306B\u3088\u308B\u653B\u6483\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u5473\u65B9\u7DCF\u5927\u5C06\u306E\u80FD\u529B\u306B\u6E96\u62E0\u3057\u305F\u5263\u8C6A\u3092\u51FA\u73FE\u3055\u305B\u308B\u3002"
+    lv1: 0
+    lv2: 0
+    lv3: 0
+    lv4: 0
+    lv5: 0
+    lv6: 0
+    lv7: 0
+    lv8: 0
+    lv9: 0
+    lv10: 0
+    lv11: 0
+    lv12: 0
+    lv13: 0
+    lv14: 0
+    lv15: 0
+    lv16: 0
+    lv17: 0
+    lv18: 0
+    lv19: 0
+    lv20: 0
+    shipFlg: 0
+    nameEng: Samurai
+    effectionEng: Invite samurai with status according to leader's status in tapped
+      area.
+  - id: 8
+    typ: seiyouigaku
+    name: "\u897F\u6D0B\u533B\u5B66"
+    effection: "\u5357\u86EE\u6E21\u6765\u306E\u533B\u5B66\u3002\u7B56\u7565\u306B\u30661\u56DE\u4F7F\u7528\u53EF\u80FD\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u3044\u308B\u5C06\u5175\u306E\u5175\u529B\u309220%\u56DE\u5FA9\u3002"
+    lv1: 0
+    lv2: 0
+    lv3: 0
+    lv4: 0
+    lv5: 0
+    lv6: 0
+    lv7: 0
+    lv8: 0
+    lv9: 0
+    lv10: 0
+    lv11: 0
+    lv12: 0
+    lv13: 0
+    lv14: 0
+    lv15: 0
+    lv16: 0
+    lv17: 0
+    lv18: 0
+    lv19: 0
+    lv20: 0
+    shipFlg: 1
+    nameEng: Medical
+    effectionEng: One time usage. Recover 20% hp of tapped player unit by western
+      medical care.
+  - id: 9
+    typ: engosyageki
+    name: "\u63F4\u8B77\u5C04\u6483"
+    effection: "\u5357\u86EE\u4EBA\u306B\u3088\u308B\u63F4\u8B77\u7832\u6483\u3002\u7B56\u7565\u306B\u30661\u56DE\u4F7F\u7528\u53EF\u80FD\u3002\u9678\u6226\u3067\u306F\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u6575\u5473\u65B9\u554F\u308F\u305A20%\u3092\u6E1B\u5C11\u3055\u305B\u308B\u7BC4\u56F2\u653B\u6483\u3002\u6D77\u6226\u6642\u306F\u5357\u86EE\u8239\u304C\u99C6\u3051\u4ED8\u3051\u308B\u3002"
+    lv1: 0
+    lv2: 0
+    lv3: 0
+    lv4: 0
+    lv5: 0
+    lv6: 0
+    lv7: 0
+    lv8: 0
+    lv9: 0
+    lv10: 0
+    lv11: 0
+    lv12: 0
+    lv13: 0
+    lv14: 0
+    lv15: 0
+    lv16: 0
+    lv17: 0
+    lv18: 0
+    lv19: 0
+    lv20: 0
+    shipFlg: 1
+    nameEng: Cover Fire
+    effectionEng: One time usage. Reduce 20% hp of tapped all unit by cover fire of
+      western ship. In a ship battle, create western ship unit.
+  - id: 10
+    typ: nanbanyouhei
+    name: "\u9244\u7832\u50AD\u5175"
+    effection: "\u5357\u86EE\u4EBA\u50AD\u5175\u3002\u7B56\u7565\u306B\u30661\u56DE\u4F7F\u7528\u53EF\u80FD\u3002\u30BF\u30C3\u30D7\u7B87\u6240\u306B\u7DCF\u5927\u5C06\u914D\u4E0B\u5175\u306E\u80FD\u529B\u3092\u6301\u3064\u9244\u7832\u968A5\u90E8\u968A\u3092\u51FA\u73FE\u3055\u305B\u308B\u3002"
+    lv1: 0
+    lv2: 0
+    lv3: 0
+    lv4: 0
+    lv5: 0
+    lv6: 0
+    lv7: 0
+    lv8: 0
+    lv9: 0
+    lv10: 0
+    lv11: 0
+    lv12: 0
+    lv13: 0
+    lv14: 0
+    lv15: 0
+    lv16: 0
+    lv17: 0
+    lv18: 0
+    lv19: 0
+    lv20: 0
+    shipFlg: 0
+    nameEng: Mercenary
+    effectionEng: One time usage. Create 5 gun units with status according to the
+      leader's status on tapped area.
+  - id: 11
+    typ: gokui
+    name: "\u4E00\u5200\u6D41\u6975\u610F"
+    effection: "\u4E00\u5200\u6D41\u6975\u610F\u306B\u3088\u308B\u5168\u4F53\u653B\u6483\u3002\u73FE\u5728\u8996\u3048\u3066\u3044\u308B\u6575\u672C\u90E8\u968A\u306E\u5175\u529B\u3092\u6700\u5927A%\u524A\u308B\u3002"
+    lv1: 5
+    lv2: 6
+    lv3: 7
+    lv4: 8
+    lv5: 9
+    lv6: 10
+    lv7: 11
+    lv8: 12
+    lv9: 13
+    lv10: 15
+    lv11: 17
+    lv12: 19
+    lv13: 21
+    lv14: 23
+    lv15: 26
+    lv16: 29
+    lv17: 32
+    lv18: 35
+    lv19: 39
+    lv20: 45
+    shipFlg: 0
+    nameEng: Single Sword
+    effectionEng: Single sword secret attack all visible enemy main units and reduce
+      ABC% hp.
+  - id: 12
+    typ: gokui
+    name: "\u4E00\u306E\u592A\u5200\u6975\u610F"
+    effection: "\u4E00\u306E\u592A\u5200\u6975\u610F\u306B\u3088\u308B\u5168\u4F53\u653B\u6483\u3002\u73FE\u5728\u8996\u3048\u3066\u3044\u308B\u6575\u90E8\u968A\u3092\u305D\u308C\u305E\u308CA%\u306E\u78BA\u7387\u3067\u4E00\u6483\u306B\u3066\u58CA\u6EC5\u3055\u305B\u308B\u3002\u5931\u6557\u3059\u308B\u3068\u81EA\u8ECD\u5175\u529B\u304C\u6E1B\u5C11\u3059\u308B\u3002"
+    lv1: 10
+    lv2: 10
+    lv3: 11
+    lv4: 11
+    lv5: 12
+    lv6: 12
+    lv7: 13
+    lv8: 13
+    lv9: 14
+    lv10: 14
+    lv11: 15
+    lv12: 16
+    lv13: 17
+    lv14: 18
+    lv15: 19
+    lv16: 20
+    lv17: 22
+    lv18: 24
+    lv19: 27
+    lv20: 30
+    shipFlg: 0
+    nameEng: First Sword
+    effectionEng: First sword secret destroy all visible enemy main units with ABC%.
+      If it failed it reduce hp of player unit.
+  - id: 13
+    typ: gokui
+    name: "\u5C0F\u592A\u5200\u6975\u610F"
+    effection: "\u5C0F\u592A\u5200\u6975\u610F\u306B\u3088\u308B\u5168\u4F53\u653B\u6483\u3002\u73FE\u5728\u8996\u3048\u3066\u3044\u308B\u6575\u5B50\u90E8\u968A\u3092\u6700\u5927A\u4F53\u524A\u308B\u3002"
+    lv1: 1
+    lv2: 1
+    lv3: 2
+    lv4: 2
+    lv5: 3
+    lv6: 3
+    lv7: 4
+    lv8: 4
+    lv9: 5
+    lv10: 5
+    lv11: 6
+    lv12: 6
+    lv13: 7
+    lv14: 7
+    lv15: 8
+    lv16: 8
+    lv17: 9
+    lv18: 10
+    lv19: 11
+    lv20: 12
+    shipFlg: 0
+    nameEng: Small Sword
+    effectionEng: Small sword secret attack all visible enemy units and reduce ABC
+      child unit.
+  - id: 14
+    typ: gokui
+    name: "\u65B0\u9670\u6D41\u6975\u610F"
+    effection: "\u9580\u4E0B\u53EC\u96C6\u306B\u3088\u308A\u3001\u305D\u308C\u305E\u308CA%\u306E\u78BA\u7387\u3067\u758B\u7530\u666F\u517C\u3001\u5B9D\u8535\u9662\u80E4\u6804\u3001\u305D\u306E\u4E8C\u500D\u306E\u78BA\u7387\u3067\u795E\u5F8C\u5B97\u6CBB\u3001\u5965\u5C71\u516C\u91CD\u3092\u51FA\u6483\u3055\u305B\u308B\u3002"
+    lv1: 20
+    lv2: 27
+    lv3: 29
+    lv4: 31
+    lv5: 33
+    lv6: 35
+    lv7: 37
+    lv8: 39
+    lv9: 42
+    lv10: 45
+    lv11: 48
+    lv12: 51
+    lv13: 54
+    lv14: 57
+    lv15: 60
+    lv16: 63
+    lv17: 67
+    lv18: 71
+    lv19: 75
+    lv20: 60
+    shipFlg: 0
+    nameEng: Shinkage Sword
+    effectionEng: Shinkage style invite disciples and Hikita and Hozoin with ABC%,
+      and Jingo and Okuyama with double ratio.
+  - id: 15
+    typ: gokui
+    name: "\u67F3\u751F\u65B0\u9670\u6D41\u6975\u610F"
+    effection: "\u67F3\u751F\u65B0\u9670\u6D41\u5965\u7FA9\u306B\u3088\u308B\u5168\u4F53\u653B\u6483\u3002\u73FE\u5728\u8996\u3048\u3066\u3044\u308B\u6575\u306E\u5B50\u90E8\u968A\u306B\u3044\u308B\u9580\u5F1F\u306B\u547C\u3073\u304B\u3051\u6700\u5927A\u4F53\u3001\u81EA\u8ECD\u306B\u5BDD\u8FD4\u3048\u3055\u305B\u308B\u3002"
+    lv1: 1
+    lv2: 1
+    lv3: 1
+    lv4: 2
+    lv5: 2
+    lv6: 2
+    lv7: 3
+    lv8: 3
+    lv9: 3
+    lv10: 4
+    lv11: 4
+    lv12: 4
+    lv13: 5
+    lv14: 5
+    lv15: 5
+    lv16: 6
+    lv17: 6
+    lv18: 6
+    lv19: 7
+    lv20: 6
+    shipFlg: 0
+    nameEng: Yagyu Shinkage Sword
+    effectionEng: Yagyu shinkage style let enemy betray ABC child units.

@@ -1,0 +1,1404 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276985ca29835c24782ca6414c53afec, type: 3}
+  m_Name: kuni_mapping_mst
+  m_EditorClassIdentifier: 
+  param:
+  - Souce: 1
+    Open: 2
+    linkStageId: stage1,3
+    ArrowX: -200
+    ArrowY: -300
+  - Souce: 1
+    Open: 3
+    linkStageId: stage8
+    ArrowX: -500
+    ArrowY: 280
+  - Souce: 1
+    Open: 4
+    linkStageId: stage1
+    ArrowX: -30
+    ArrowY: 360
+  - Souce: 2
+    Open: 1
+    linkStageId: stage1,9
+    ArrowX: -380
+    ArrowY: 350
+  - Souce: 2
+    Open: 3
+    linkStageId: stage1
+    ArrowX: -250
+    ArrowY: 350
+  - Souce: 2
+    Open: 4
+    linkStageId: stage1
+    ArrowX: -230
+    ArrowY: 360
+  - Souce: 2
+    Open: 5
+    linkStageId: stage9
+    ArrowX: 150
+    ArrowY: -250
+  - Souce: 2
+    Open: 6
+    linkStageId: stage8
+    ArrowX: 200
+    ArrowY: 0
+  - Souce: 2
+    Open: 7
+    linkStageId: stage1,2,3
+    ArrowX: -300
+    ArrowY: -300
+  - Souce: 2
+    Open: 8
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: -100
+  - Souce: 3
+    Open: 1
+    linkStageId: stage3,7
+    ArrowX: 180
+    ArrowY: 140
+  - Souce: 3
+    Open: 2
+    linkStageId: stage8
+    ArrowX: 90
+    ArrowY: -350
+  - Souce: 3
+    Open: 8
+    linkStageId: stage1
+    ArrowX: -400
+    ArrowY: -330
+  - Souce: 3
+    Open: 9
+    linkStageId: stage1,2
+    ArrowX: -500
+    ArrowY: 0
+  - Souce: 4
+    Open: 1
+    linkStageId: stage6
+    ArrowX: -420
+    ArrowY: 0
+  - Souce: 4
+    Open: 2
+    linkStageId: stage5
+    ArrowX: -380
+    ArrowY: -350
+  - Souce: 4
+    Open: 6
+    linkStageId: stage1,2
+    ArrowX: 210
+    ArrowY: -330
+  - Souce: 4
+    Open: 10
+    linkStageId: stage2,3
+    ArrowX: -450
+    ArrowY: 0
+  - Souce: 4
+    Open: 11
+    linkStageId: stage3,6
+    ArrowX: 150
+    ArrowY: 0
+  - Souce: 4
+    Open: 12
+    linkStageId: stage6
+    ArrowX: 150
+    ArrowY: 0
+  - Souce: 4
+    Open: 13
+    linkStageId: stage4
+    ArrowX: 150
+    ArrowY: 300
+  - Souce: 5
+    Open: 2
+    linkStageId: stage4,9
+    ArrowX: -400
+    ArrowY: 300
+  - Souce: 5
+    Open: 6
+    linkStageId: stage10
+    ArrowX: 100
+    ArrowY: 360
+  - Souce: 5
+    Open: 14
+    linkStageId: stage5
+    ArrowX: 200
+    ArrowY: -320
+  - Souce: 5
+    Open: 7
+    linkStageId: stage3
+    ArrowX: -500
+    ArrowY: 0
+  - Souce: 5
+    Open: 15
+    linkStageId: stage2
+    ArrowX: -420
+    ArrowY: -330
+  - Souce: 6
+    Open: 2
+    linkStageId: stage2,4,5
+    ArrowX: -520
+    ArrowY: -10
+  - Souce: 6
+    Open: 4
+    linkStageId: stage1
+    ArrowX: -330
+    ArrowY: 360
+  - Souce: 6
+    Open: 5
+    linkStageId: stage2,3
+    ArrowX: -200
+    ArrowY: -330
+  - Souce: 6
+    Open: 14
+    linkStageId: stage1,4
+    ArrowX: -100
+    ArrowY: -340
+  - Souce: 6
+    Open: 11
+    linkStageId: stage4,8
+    ArrowX: -100
+    ArrowY: 360
+  - Souce: 6
+    Open: 16
+    linkStageId: stage2,3,7
+    ArrowX: 50
+    ArrowY: 50
+  - Souce: 6
+    Open: 17
+    linkStageId: stage1
+    ArrowX: 220
+    ArrowY: 220
+  - Souce: 7
+    Open: 2
+    linkStageId: stage8,9
+    ArrowX: 100
+    ArrowY: 200
+  - Souce: 7
+    Open: 5
+    linkStageId: stage6
+    ArrowX: 220
+    ArrowY: 200
+  - Souce: 7
+    Open: 15
+    linkStageId: stage6
+    ArrowX: 150
+    ArrowY: -300
+  - Souce: 7
+    Open: 8
+    linkStageId: stage6
+    ArrowX: -450
+    ArrowY: 130
+  - Souce: 7
+    Open: 21
+    linkStageId: stage4
+    ArrowX: 50
+    ArrowY: -200
+  - Souce: 8
+    Open: 2
+    linkStageId: stage8
+    ArrowX: 220
+    ArrowY: -320
+  - Souce: 8
+    Open: 3
+    linkStageId: stage1,3
+    ArrowX: 80
+    ArrowY: 350
+  - Souce: 8
+    Open: 7
+    linkStageId: stage9,10
+    ArrowX: 210
+    ArrowY: 0
+  - Souce: 8
+    Open: 9
+    linkStageId: stage9
+    ArrowX: -250
+    ArrowY: 360
+  - Souce: 8
+    Open: 19
+    linkStageId: stage9
+    ArrowX: -500
+    ArrowY: 300
+  - Souce: 8
+    Open: 20
+    linkStageId: stage4
+    ArrowX: -400
+    ArrowY: -280
+  - Souce: 8
+    Open: 21
+    linkStageId: stage2
+    ArrowX: 210
+    ArrowY: 50
+  - Souce: 8
+    Open: 22
+    linkStageId: stage9
+    ArrowX: -400
+    ArrowY: -200
+  - Souce: 8
+    Open: 23
+    linkStageId: stage4
+    ArrowX: -520
+    ArrowY: 50
+  - Souce: 8
+    Open: 24
+    linkStageId: stage6,7
+    ArrowX: -500
+    ArrowY: 320
+  - Souce: 9
+    Open: 3
+    linkStageId: stage3,5
+    ArrowX: 180
+    ArrowY: -50
+  - Souce: 9
+    Open: 8
+    linkStageId: stage3
+    ArrowX: -170
+    ArrowY: -350
+  - Souce: 9
+    Open: 19
+    linkStageId: stage2
+    ArrowX: -500
+    ArrowY: -120
+  - Souce: 10
+    Open: 4
+    linkStageId: stage10
+    ArrowX: 180
+    ArrowY: -300
+  - Souce: 11
+    Open: 4
+    linkStageId: stage4,7
+    ArrowX: -500
+    ArrowY: 280
+  - Souce: 11
+    Open: 6
+    linkStageId: stage1,2
+    ArrowX: -100
+    ArrowY: -350
+  - Souce: 11
+    Open: 12
+    linkStageId: stage6
+    ArrowX: 50
+    ArrowY: 330
+  - Souce: 11
+    Open: 16
+    linkStageId: stage7
+    ArrowX: 180
+    ArrowY: -300
+  - Souce: 12
+    Open: 4
+    linkStageId: stage7
+    ArrowX: -500
+    ArrowY: -20
+  - Souce: 12
+    Open: 11
+    linkStageId: stage5,8
+    ArrowX: -400
+    ArrowY: -250
+  - Souce: 12
+    Open: 13
+    linkStageId: stage1,7,8
+    ArrowX: -100
+    ArrowY: 100
+  - Souce: 12
+    Open: 16
+    linkStageId: stage9
+    ArrowX: 0
+    ArrowY: -360
+  - Souce: 12
+    Open: 38
+    linkStageId: stage8,10
+    ArrowX: -100
+    ArrowY: 300
+  - Souce: 13
+    Open: 4
+    linkStageId: stage9
+    ArrowX: -500
+    ArrowY: -250
+  - Souce: 13
+    Open: 12
+    linkStageId: stage3,7
+    ArrowX: -450
+    ArrowY: -300
+  - Souce: 13
+    Open: 38
+    linkStageId: stage5,7
+    ArrowX: 220
+    ArrowY: 0
+  - Souce: 13
+    Open: 39
+    linkStageId: stage3
+    ArrowX: 0
+    ArrowY: -340
+  - Souce: 14
+    Open: 5
+    linkStageId: stage1
+    ArrowX: -500
+    ArrowY: -320
+  - Souce: 14
+    Open: 6
+    linkStageId: stage4
+    ArrowX: -260
+    ArrowY: 360
+  - Souce: 14
+    Open: 17
+    linkStageId: stage1
+    ArrowX: 150
+    ArrowY: 320
+  - Souce: 14
+    Open: 40
+    linkStageId: stage4
+    ArrowX: 220
+    ArrowY: -100
+  - Souce: 15
+    Open: 5
+    linkStageId: stage6,8
+    ArrowX: -50
+    ArrowY: 300
+  - Souce: 15
+    Open: 7
+    linkStageId: stage4
+    ArrowX: -500
+    ArrowY: 200
+  - Souce: 15
+    Open: 18
+    linkStageId: stage5
+    ArrowX: -300
+    ArrowY: -350
+  - Souce: 15
+    Open: 21
+    linkStageId: stage8,9
+    ArrowX: -480
+    ArrowY: -100
+  - Souce: 16
+    Open: 6
+    linkStageId: stage3
+    ArrowX: -500
+    ArrowY: -300
+  - Souce: 16
+    Open: 11
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: 50
+  - Souce: 16
+    Open: 12
+    linkStageId: stage10
+    ArrowX: -250
+    ArrowY: 360
+  - Souce: 16
+    Open: 38
+    linkStageId: stage1
+    ArrowX: -480
+    ArrowY: 300
+  - Souce: 16
+    Open: 39
+    linkStageId: stage6
+    ArrowX: 150
+    ArrowY: 320
+  - Souce: 16
+    Open: 17
+    linkStageId: stage5
+    ArrowX: 210
+    ArrowY: -320
+  - Souce: 17
+    Open: 6
+    linkStageId: stage4
+    ArrowX: -500
+    ArrowY: 250
+  - Souce: 17
+    Open: 14
+    linkStageId: stage3
+    ArrowX: -450
+    ArrowY: -300
+  - Souce: 17
+    Open: 16
+    linkStageId: stage1,2
+    ArrowX: -450
+    ArrowY: 150
+  - Souce: 17
+    Open: 39
+    linkStageId: stage8
+    ArrowX: 0
+    ArrowY: 360
+  - Souce: 17
+    Open: 40
+    linkStageId: stage3,4,5
+    ArrowX: 100
+    ArrowY: -350
+  - Souce: 17
+    Open: 41
+    linkStageId: stage1,4
+    ArrowX: 210
+    ArrowY: -200
+  - Souce: 17
+    Open: 42
+    linkStageId: stage9
+    ArrowX: 150
+    ArrowY: 250
+  - Souce: 18
+    Open: 15
+    linkStageId: stage9
+    ArrowX: -150
+    ArrowY: 360
+  - Souce: 18
+    Open: 21
+    linkStageId: stage7,8
+    ArrowX: -500
+    ArrowY: 250
+  - Souce: 19
+    Open: 8
+    linkStageId: stage3
+    ArrowX: -70
+    ArrowY: -350
+  - Souce: 19
+    Open: 9
+    linkStageId: stage7,8
+    ArrowX: 100
+    ArrowY: 0
+  - Souce: 19
+    Open: 24
+    linkStageId: stage3,5
+    ArrowX: -100
+    ArrowY: -300
+  - Souce: 19
+    Open: 25
+    linkStageId: stage9
+    ArrowX: -520
+    ArrowY: -100
+  - Souce: 19
+    Open: 26
+    linkStageId: stage5
+    ArrowX: -420
+    ArrowY: 330
+  - Souce: 20
+    Open: 8
+    linkStageId: stage10
+    ArrowX: 180
+    ArrowY: 360
+  - Souce: 20
+    Open: 21
+    linkStageId: stage3
+    ArrowX: 200
+    ArrowY: 330
+  - Souce: 20
+    Open: 22
+    linkStageId: stage7
+    ArrowX: -350
+    ArrowY: 300
+  - Souce: 20
+    Open: 32
+    linkStageId: stage9
+    ArrowX: -300
+    ArrowY: -250
+  - Souce: 20
+    Open: 33
+    linkStageId: stage1,3
+    ArrowX: -400
+    ArrowY: 300
+  - Souce: 21
+    Open: 7
+    linkStageId: stage8
+    ArrowX: -250
+    ArrowY: 350
+  - Souce: 21
+    Open: 8
+    linkStageId: stage6
+    ArrowX: -400
+    ArrowY: 300
+  - Souce: 21
+    Open: 15
+    linkStageId: stage7,8
+    ArrowX: 100
+    ArrowY: 200
+  - Souce: 21
+    Open: 18
+    linkStageId: stage5,10
+    ArrowX: 0
+    ArrowY: -250
+  - Souce: 21
+    Open: 20
+    linkStageId: stage3
+    ArrowX: -520
+    ArrowY: -30
+  - Souce: 22
+    Open: 8
+    linkStageId: stage7,10
+    ArrowX: 150
+    ArrowY: 200
+  - Souce: 22
+    Open: 20
+    linkStageId: stage4
+    ArrowX: -160
+    ArrowY: -350
+  - Souce: 22
+    Open: 33
+    linkStageId: stage2
+    ArrowX: -520
+    ArrowY: -300
+  - Souce: 22
+    Open: 29
+    linkStageId: stage3
+    ArrowX: -500
+    ArrowY: -150
+  - Souce: 22
+    Open: 28
+    linkStageId: stage1,2
+    ArrowX: -520
+    ArrowY: 280
+  - Souce: 22
+    Open: 23
+    linkStageId: stage2,3,4
+    ArrowX: -200
+    ArrowY: 350
+  - Souce: 23
+    Open: 8
+    linkStageId: stage7
+    ArrowX: 200
+    ArrowY: -150
+  - Souce: 23
+    Open: 22
+    linkStageId: stage1,5
+    ArrowX: 30
+    ArrowY: -350
+  - Souce: 23
+    Open: 24
+    linkStageId: stage1,4
+    ArrowX: 50
+    ArrowY: 300
+  - Souce: 23
+    Open: 25
+    linkStageId: stage1,2,5,7
+    ArrowX: 50
+    ArrowY: 220
+  - Souce: 23
+    Open: 28
+    linkStageId: stage2,4
+    ArrowX: -480
+    ArrowY: -100
+  - Souce: 24
+    Open: 8
+    linkStageId: stage3,7
+    ArrowX: 30
+    ArrowY: -200
+  - Souce: 24
+    Open: 23
+    linkStageId: stage7
+    ArrowX: -400
+    ArrowY: -200
+  - Souce: 24
+    Open: 19
+    linkStageId: stage3,9
+    ArrowX: -150
+    ArrowY: 330
+  - Souce: 24
+    Open: 25
+    linkStageId: stage8
+    ArrowX: -500
+    ArrowY: 220
+  - Souce: 25
+    Open: 26
+    linkStageId: stage5
+    ArrowX: -120
+    ArrowY: 350
+  - Souce: 25
+    Open: 19
+    linkStageId: stage3
+    ArrowX: 210
+    ArrowY: 210
+  - Souce: 25
+    Open: 24
+    linkStageId: stage1
+    ArrowX: 220
+    ArrowY: 0
+  - Souce: 25
+    Open: 23
+    linkStageId: stage6,7
+    ArrowX: -200
+    ArrowY: -300
+  - Souce: 26
+    Open: 25
+    linkStageId: stage10
+    ArrowX: -480
+    ArrowY: -330
+  - Souce: 26
+    Open: 19
+    linkStageId: stage4
+    ArrowX: 220
+    ArrowY: -80
+  - Souce: 27
+    Open: 28
+    linkStageId: stage6,8
+    ArrowX: -30
+    ArrowY: -320
+  - Souce: 28
+    Open: 22
+    linkStageId: stage1
+    ArrowX: 220
+    ArrowY: -250
+  - Souce: 28
+    Open: 29
+    linkStageId: stage2
+    ArrowX: -50
+    ArrowY: -350
+  - Souce: 28
+    Open: 30
+    linkStageId: stage1,4,7
+    ArrowX: -400
+    ArrowY: -300
+  - Souce: 28
+    Open: 27
+    linkStageId: stage2
+    ArrowX: -150
+    ArrowY: 360
+  - Souce: 28
+    Open: 23
+    linkStageId: stage3,9
+    ArrowX: 200
+    ArrowY: 200
+  - Souce: 29
+    Open: 22
+    linkStageId: stage2,4
+    ArrowX: 200
+    ArrowY: 0
+  - Souce: 29
+    Open: 33
+    linkStageId: stage4
+    ArrowX: -200
+    ArrowY: -300
+  - Souce: 29
+    Open: 31
+    linkStageId: stage8
+    ArrowX: -520
+    ArrowY: -250
+  - Souce: 29
+    Open: 30
+    linkStageId: stage2,9
+    ArrowX: -400
+    ArrowY: 250
+  - Souce: 29
+    Open: 28
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: 360
+  - Souce: 30
+    Open: 28
+    linkStageId: stage1,3,7
+    ArrowX: -200
+    ArrowY: 200
+  - Souce: 30
+    Open: 29
+    linkStageId: stage8,9
+    ArrowX: 200
+    ArrowY: -100
+  - Souce: 30
+    Open: 31
+    linkStageId: stage2
+    ArrowX: -250
+    ArrowY: -330
+  - Souce: 31
+    Open: 30
+    linkStageId: stage8
+    ArrowX: -100
+    ArrowY: 360
+  - Souce: 31
+    Open: 29
+    linkStageId: stage7
+    ArrowX: 200
+    ArrowY: 300
+  - Souce: 31
+    Open: 33
+    linkStageId: stage7
+    ArrowX: 200
+    ArrowY: 0
+  - Souce: 31
+    Open: 32
+    linkStageId: stage10
+    ArrowX: 180
+    ArrowY: -300
+  - Souce: 31
+    Open: 34
+    linkStageId: stage8
+    ArrowX: -250
+    ArrowY: -350
+  - Souce: 32
+    Open: 20
+    linkStageId: stage2
+    ArrowX: 200
+    ArrowY: 360
+  - Souce: 32
+    Open: 33
+    linkStageId: stage6
+    ArrowX: 150
+    ArrowY: 360
+  - Souce: 32
+    Open: 31
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: 300
+  - Souce: 32
+    Open: 34
+    linkStageId: stage2
+    ArrowX: -500
+    ArrowY: 0
+  - Souce: 32
+    Open: 35
+    linkStageId: stage8,9
+    ArrowX: -250
+    ArrowY: -340
+  - Souce: 33
+    Open: 22
+    linkStageId: stage4
+    ArrowX: 120
+    ArrowY: 250
+  - Souce: 33
+    Open: 29
+    linkStageId: stage7
+    ArrowX: -300
+    ArrowY: 330
+  - Souce: 33
+    Open: 31
+    linkStageId: stage5,8,9
+    ArrowX: -430
+    ArrowY: 0
+  - Souce: 33
+    Open: 32
+    linkStageId: stage10
+    ArrowX: -80
+    ArrowY: -350
+  - Souce: 33
+    Open: 20
+    linkStageId: stage6,7
+    ArrowX: 150
+    ArrowY: -200
+  - Souce: 34
+    Open: 31
+    linkStageId: stage1
+    ArrowX: -300
+    ArrowY: 360
+  - Souce: 34
+    Open: 32
+    linkStageId: stage6,7
+    ArrowX: 180
+    ArrowY: 0
+  - Souce: 34
+    Open: 35
+    linkStageId: stage10
+    ArrowX: 150
+    ArrowY: -300
+  - Souce: 34
+    Open: 36
+    linkStageId: stage4,6
+    ArrowX: -200
+    ArrowY: -330
+  - Souce: 35
+    Open: 32
+    linkStageId: stage3
+    ArrowX: 0
+    ArrowY: 350
+  - Souce: 35
+    Open: 34
+    linkStageId: stage4
+    ArrowX: -480
+    ArrowY: 250
+  - Souce: 35
+    Open: 36
+    linkStageId: stage4,8
+    ArrowX: -510
+    ArrowY: -100
+  - Souce: 35
+    Open: 37
+    linkStageId: stage5
+    ArrowX: -350
+    ArrowY: -300
+  - Souce: 36
+    Open: 34
+    linkStageId: stage1
+    ArrowX: -200
+    ArrowY: 360
+  - Souce: 36
+    Open: 35
+    linkStageId: stage4
+    ArrowX: 100
+    ArrowY: 100
+  - Souce: 36
+    Open: 37
+    linkStageId: stage9,10
+    ArrowX: 150
+    ArrowY: -350
+  - Souce: 37
+    Open: 35
+    linkStageId: stage1,2
+    ArrowX: -180
+    ArrowY: 360
+  - Souce: 37
+    Open: 36
+    linkStageId: stage2
+    ArrowX: -450
+    ArrowY: 350
+  - Souce: 38
+    Open: 16
+    linkStageId: stage4
+    ArrowX: -310
+    ArrowY: -330
+  - Souce: 38
+    Open: 39
+    linkStageId: stage1,4,7
+    ArrowX: 120
+    ArrowY: 0
+  - Souce: 38
+    Open: 12
+    linkStageId: stage5
+    ArrowX: -450
+    ArrowY: 200
+  - Souce: 38
+    Open: 13
+    linkStageId: stage1
+    ArrowX: -230
+    ArrowY: 340
+  - Souce: 39
+    Open: 16
+    linkStageId: stage5
+    ArrowX: -400
+    ArrowY: -260
+  - Souce: 39
+    Open: 38
+    linkStageId: stage3
+    ArrowX: -400
+    ArrowY: -250
+  - Souce: 39
+    Open: 13
+    linkStageId: stage3
+    ArrowX: -350
+    ArrowY: 340
+  - Souce: 39
+    Open: 17
+    linkStageId: stage2,6
+    ArrowX: -100
+    ArrowY: -330
+  - Souce: 39
+    Open: 42
+    linkStageId: stage10
+    ArrowX: 200
+    ArrowY: -220
+  - Souce: 39
+    Open: 51
+    linkStageId: stage1
+    ArrowX: 180
+    ArrowY: 50
+  - Souce: 40
+    Open: 14
+    linkStageId: stage10
+    ArrowX: -520
+    ArrowY: 220
+  - Souce: 40
+    Open: 17
+    linkStageId: stage9
+    ArrowX: -200
+    ArrowY: 340
+  - Souce: 40
+    Open: 41
+    linkStageId: stage1,3
+    ArrowX: 180
+    ArrowY: 200
+  - Souce: 41
+    Open: 40
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: -200
+  - Souce: 41
+    Open: 17
+    linkStageId: stage8
+    ArrowX: -480
+    ArrowY: 250
+  - Souce: 41
+    Open: 42
+    linkStageId: stage8
+    ArrowX: -150
+    ArrowY: 350
+  - Souce: 41
+    Open: 43
+    linkStageId: stage3
+    ArrowX: 190
+    ArrowY: -50
+  - Souce: 41
+    Open: 44
+    linkStageId: stage4
+    ArrowX: 100
+    ArrowY: 300
+  - Souce: 42
+    Open: 39
+    linkStageId: stage10
+    ArrowX: -480
+    ArrowY: 150
+  - Souce: 42
+    Open: 17
+    linkStageId: stage7
+    ArrowX: -480
+    ArrowY: -250
+  - Souce: 42
+    Open: 41
+    linkStageId: stage4,8
+    ArrowX: -100
+    ArrowY: -300
+  - Souce: 42
+    Open: 44
+    linkStageId: stage7,10
+    ArrowX: 220
+    ArrowY: -120
+  - Souce: 42
+    Open: 45
+    linkStageId: stage2
+    ArrowX: 200
+    ArrowY: 250
+  - Souce: 42
+    Open: 51
+    linkStageId: stage7
+    ArrowX: -200
+    ArrowY: 350
+  - Souce: 43
+    Open: 41
+    linkStageId: stage7
+    ArrowX: -520
+    ArrowY: -100
+  - Souce: 43
+    Open: 44
+    linkStageId: stage6
+    ArrowX: -300
+    ArrowY: 320
+  - Souce: 43
+    Open: 46
+    linkStageId: stage3
+    ArrowX: -350
+    ArrowY: 350
+  - Souce: 43
+    Open: 47
+    linkStageId: stage7
+    ArrowX: -120
+    ArrowY: 360
+  - Souce: 43
+    Open: 48
+    linkStageId: stage6,7
+    ArrowX: 180
+    ArrowY: 0
+  - Souce: 44
+    Open: 41
+    linkStageId: stage8
+    ArrowX: -500
+    ArrowY: -300
+  - Souce: 44
+    Open: 42
+    linkStageId: stage5
+    ArrowX: -510
+    ArrowY: 200
+  - Souce: 44
+    Open: 43
+    linkStageId: stage3,7
+    ArrowX: 150
+    ArrowY: -350
+  - Souce: 44
+    Open: 45
+    linkStageId: stage3
+    ArrowX: -230
+    ArrowY: 330
+  - Souce: 44
+    Open: 46
+    linkStageId: stage2
+    ArrowX: 100
+    ArrowY: 300
+  - Souce: 45
+    Open: 42
+    linkStageId: stage5,7
+    ArrowX: -520
+    ArrowY: -200
+  - Souce: 45
+    Open: 44
+    linkStageId: stage2,9,10
+    ArrowX: -100
+    ArrowY: -330
+  - Souce: 45
+    Open: 46
+    linkStageId: stage4,9
+    ArrowX: 200
+    ArrowY: -50
+  - Souce: 45
+    Open: 53
+    linkStageId: stage8
+    ArrowX: -50
+    ArrowY: 350
+  - Souce: 46
+    Open: 44
+    linkStageId: stage3
+    ArrowX: -450
+    ArrowY: -200
+  - Souce: 46
+    Open: 45
+    linkStageId: stage7,9,10
+    ArrowX: -450
+    ArrowY: 0
+  - Souce: 46
+    Open: 43
+    linkStageId: stage7,8
+    ArrowX: -90
+    ArrowY: -350
+  - Souce: 46
+    Open: 47
+    linkStageId: stage4,8
+    ArrowX: 180
+    ArrowY: 50
+  - Souce: 47
+    Open: 46
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: 0
+  - Souce: 47
+    Open: 43
+    linkStageId: stage8,10
+    ArrowX: -400
+    ArrowY: -330
+  - Souce: 47
+    Open: 48
+    linkStageId: stage8
+    ArrowX: 120
+    ArrowY: -200
+  - Souce: 47
+    Open: 49
+    linkStageId: stage1,3
+    ArrowX: 150
+    ArrowY: 200
+  - Souce: 48
+    Open: 43
+    linkStageId: stage5,10
+    ArrowX: -520
+    ArrowY: -100
+  - Souce: 48
+    Open: 47
+    linkStageId: stage6
+    ArrowX: -480
+    ArrowY: 350
+  - Souce: 48
+    Open: 49
+    linkStageId: stage6
+    ArrowX: -400
+    ArrowY: 300
+  - Souce: 48
+    Open: 50
+    linkStageId: stage7
+    ArrowX: 30
+    ArrowY: 280
+  - Souce: 49
+    Open: 47
+    linkStageId: stage3,6
+    ArrowX: -480
+    ArrowY: 0
+  - Souce: 49
+    Open: 48
+    linkStageId: stage8,9
+    ArrowX: -100
+    ArrowY: -200
+  - Souce: 49
+    Open: 50
+    linkStageId: stage5
+    ArrowX: 200
+    ArrowY: 200
+  - Souce: 49
+    Open: 54
+    linkStageId: stage1,9
+    ArrowX: -300
+    ArrowY: 350
+  - Souce: 50
+    Open: 48
+    linkStageId: stage1
+    ArrowX: -450
+    ArrowY: -320
+  - Souce: 50
+    Open: 49
+    linkStageId: stage7
+    ArrowX: -500
+    ArrowY: -100
+  - Souce: 50
+    Open: 56
+    linkStageId: stage4
+    ArrowX: -250
+    ArrowY: 360
+  - Souce: 51
+    Open: 39
+    linkStageId: stage3,10
+    ArrowX: -480
+    ArrowY: -150
+  - Souce: 51
+    Open: 42
+    linkStageId: stage1,4
+    ArrowX: -70
+    ArrowY: -350
+  - Souce: 51
+    Open: 52
+    linkStageId: stage7
+    ArrowX: 200
+    ArrowY: 330
+  - Souce: 51
+    Open: 53
+    linkStageId: stage8,10
+    ArrowX: 210
+    ArrowY: 80
+  - Souce: 52
+    Open: 51
+    linkStageId: stage9
+    ArrowX: -450
+    ArrowY: -300
+  - Souce: 52
+    Open: 53
+    linkStageId: stage1,2
+    ArrowX: 50
+    ArrowY: -300
+  - Souce: 52
+    Open: 54
+    linkStageId: stage10
+    ArrowX: 220
+    ArrowY: 200
+  - Souce: 52
+    Open: 55
+    linkStageId: stage9
+    ArrowX: 150
+    ArrowY: 300
+  - Souce: 53
+    Open: 51
+    linkStageId: stage8
+    ArrowX: -480
+    ArrowY: 0
+  - Souce: 53
+    Open: 52
+    linkStageId: stage1,10
+    ArrowX: -250
+    ArrowY: 280
+  - Souce: 53
+    Open: 54
+    linkStageId: stage10
+    ArrowX: 220
+    ArrowY: 350
+  - Souce: 53
+    Open: 45
+    linkStageId: stage1,5,9
+    ArrowX: 0
+    ArrowY: -350
+  - Souce: 54
+    Open: 52
+    linkStageId: stage3
+    ArrowX: -510
+    ArrowY: 120
+  - Souce: 54
+    Open: 53
+    linkStageId: stage4
+    ArrowX: -500
+    ArrowY: -340
+  - Souce: 54
+    Open: 55
+    linkStageId: stage10
+    ArrowX: -400
+    ArrowY: 300
+  - Souce: 54
+    Open: 49
+    linkStageId: stage9,10
+    ArrowX: -200
+    ArrowY: -350
+  - Souce: 54
+    Open: 57
+    linkStageId: stage4,5
+    ArrowX: 200
+    ArrowY: 100
+  - Souce: 55
+    Open: 52
+    linkStageId: stage6,8
+    ArrowX: -300
+    ArrowY: -250
+  - Souce: 55
+    Open: 54
+    linkStageId: stage4
+    ArrowX: 50
+    ArrowY: -100
+  - Souce: 56
+    Open: 50
+    linkStageId: stage2
+    ArrowX: -500
+    ArrowY: -250
+  - Souce: 56
+    Open: 57
+    linkStageId: stage2,9
+    ArrowX: -350
+    ArrowY: 200
+  - Souce: 56
+    Open: 58
+    linkStageId: stage2
+    ArrowX: 200
+    ArrowY: 100
+  - Souce: 57
+    Open: 54
+    linkStageId: stage9
+    ArrowX: -510
+    ArrowY: 50
+  - Souce: 57
+    Open: 56
+    linkStageId: stage9
+    ArrowX: 0
+    ArrowY: -340
+  - Souce: 57
+    Open: 58
+    linkStageId: stage10
+    ArrowX: 220
+    ArrowY: -340
+  - Souce: 57
+    Open: 59
+    linkStageId: stage10
+    ArrowX: 200
+    ArrowY: 200
+  - Souce: 57
+    Open: 61
+    linkStageId: stage7
+    ArrowX: 180
+    ArrowY: 250
+  - Souce: 57
+    Open: 62
+    linkStageId: stage6,7
+    ArrowX: -150
+    ArrowY: 360
+  - Souce: 58
+    Open: 56
+    linkStageId: stage5,10
+    ArrowX: -450
+    ArrowY: -200
+  - Souce: 58
+    Open: 57
+    linkStageId: stage8
+    ArrowX: -510
+    ArrowY: 150
+  - Souce: 58
+    Open: 59
+    linkStageId: stage6
+    ArrowX: 0
+    ArrowY: 360
+  - Souce: 58
+    Open: 60
+    linkStageId: stage3
+    ArrowX: 150
+    ArrowY: 320
+  - Souce: 58
+    Open: 65
+    linkStageId: stage3
+    ArrowX: 170
+    ArrowY: -340
+  - Souce: 59
+    Open: 58
+    linkStageId: stage10
+    ArrowX: 0
+    ArrowY: -350
+  - Souce: 59
+    Open: 57
+    linkStageId: stage8
+    ArrowX: -510
+    ArrowY: -50
+  - Souce: 59
+    Open: 60
+    linkStageId: stage1,6
+    ArrowX: 220
+    ArrowY: 0
+  - Souce: 59
+    Open: 61
+    linkStageId: stage8
+    ArrowX: -300
+    ArrowY: 330
+  - Souce: 60
+    Open: 58
+    linkStageId: stage4
+    ArrowX: -300
+    ArrowY: -300
+  - Souce: 60
+    Open: 59
+    linkStageId: stage2,5,6
+    ArrowX: -400
+    ArrowY: 300
+  - Souce: 60
+    Open: 65
+    linkStageId: stage1,6
+    ArrowX: 0
+    ArrowY: -340
+  - Souce: 61
+    Open: 63
+    linkStageId: stage3
+    ArrowX: 80
+    ArrowY: 360
+  - Souce: 61
+    Open: 62
+    linkStageId: stage7,8
+    ArrowX: -400
+    ArrowY: 200
+  - Souce: 61
+    Open: 57
+    linkStageId: stage6,8
+    ArrowX: -400
+    ArrowY: -200
+  - Souce: 61
+    Open: 59
+    linkStageId: stage9
+    ArrowX: 0
+    ArrowY: -250
+  - Souce: 62
+    Open: 57
+    linkStageId: stage5
+    ArrowX: 0
+    ArrowY: -330
+  - Souce: 62
+    Open: 64
+    linkStageId: stage1,5,7
+    ArrowX: 180
+    ArrowY: 200
+  - Souce: 62
+    Open: 63
+    linkStageId: stage3
+    ArrowX: 180
+    ArrowY: 320
+  - Souce: 62
+    Open: 61
+    linkStageId: stage3,10
+    ArrowX: 180
+    ArrowY: -100
+  - Souce: 63
+    Open: 64
+    linkStageId: stage3
+    ArrowX: -350
+    ArrowY: 100
+  - Souce: 63
+    Open: 62
+    linkStageId: stage8
+    ArrowX: -500
+    ArrowY: -60
+  - Souce: 63
+    Open: 61
+    linkStageId: stage4
+    ArrowX: -100
+    ArrowY: -360
+  - Souce: 64
+    Open: 62
+    linkStageId: stage8,9
+    ArrowX: -400
+    ArrowY: -250
+  - Souce: 64
+    Open: 63
+    linkStageId: stage1,3,4,9
+    ArrowX: 180
+    ArrowY: 0
+  - Souce: 65
+    Open: 58
+    linkStageId: stage1,6,8
+    ArrowX: -500
+    ArrowY: 300
+  - Souce: 65
+    Open: 60
+    linkStageId: stage5,9
+    ArrowX: -450
+    ArrowY: 300

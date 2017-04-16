@@ -1,0 +1,382 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1091dec92c18469d7870559eaaa59, type: 3}
+  m_Name: daimyo_mst
+  m_EditorClassIdentifier: 
+  param:
+  - daimyoId: 1
+    daimyoName: "\u7E54\u7530\u4FE1\u9577"
+    colorR: 255
+    colorG: 50
+    colorB: 50
+    busyoId: 19
+    senryoku: 100
+    daimyoNameEng: Nobunaga Oda
+  - daimyoId: 2
+    daimyoName: "\u658E\u85E4\u7FA9\u9F8D"
+    colorR: 94
+    colorG: 135
+    colorB: 255
+    busyoId: 23
+    senryoku: 90
+    daimyoNameEng: Yoshitatsu Saito
+  - daimyoId: 3
+    daimyoName: "\u4ECA\u5DDD\u7FA9\u5143"
+    colorR: 200
+    colorG: 120
+    colorB: 0
+    busyoId: 24
+    senryoku: 120
+    daimyoNameEng: Yoshimoto Imagawa
+  - daimyoId: 4
+    daimyoName: "\u5317\u7560\u5177\u6559"
+    colorR: 150
+    colorG: 255
+    colorB: 135
+    busyoId: 55
+    senryoku: 80
+    daimyoNameEng: Tomonori Kitabatake
+  - daimyoId: 5
+    daimyoName: "\u671D\u5009\u7FA9\u666F"
+    colorR: 30
+    colorG: 255
+    colorB: 0
+    busyoId: 30
+    senryoku: 80
+    daimyoNameEng: Yoshikage Asakura
+  - daimyoId: 6
+    daimyoName: "\u6D45\u4E95\u9577\u653F"
+    colorR: 180
+    colorG: 200
+    colorB: 235
+    busyoId: 31
+    senryoku: 100
+    daimyoNameEng: Nagamasa Azai
+  - daimyoId: 7
+    daimyoName: "\u59C9\u5C0F\u8DEF\u983C\u7DB1"
+    colorR: 255
+    colorG: 130
+    colorB: 0
+    busyoId: 48
+    senryoku: 80
+    daimyoNameEng: Yoritsuna Anegakouji
+  - daimyoId: 8
+    daimyoName: "\u6B66\u7530\u4FE1\u7384"
+    colorR: 255
+    colorG: 230
+    colorB: 0
+    busyoId: 5
+    senryoku: 130
+    daimyoNameEng: Shingen Takeda
+  - daimyoId: 9
+    daimyoName: "\u516D\u89D2\u7FA9\u8CE2"
+    colorR: 70
+    colorG: 50
+    colorB: 210
+    busyoId: 43
+    senryoku: 90
+    daimyoNameEng: Yoshikata Rokkaku
+  - daimyoId: 10
+    daimyoName: "\u677E\u6C38\u4E45\u79C0"
+    colorR: 30
+    colorG: 110
+    colorB: 25
+    busyoId: 33
+    senryoku: 100
+    daimyoNameEng: Hisahide Matsunaga
+  - daimyoId: 11
+    daimyoName: "\u6B66\u7530\u7FA9\u7D71"
+    colorR: 240
+    colorG: 255
+    colorB: 40
+    busyoId: 171
+    senryoku: 80
+    daimyoNameEng: Yoshizumi Takeda
+  - daimyoId: 12
+    daimyoName: "\u7560\u5C71\u9AD8\u653F"
+    colorR: 195
+    colorG: 105
+    colorB: 50
+    busyoId: 198
+    senryoku: 80
+    daimyoNameEng: Takamasa Hatakeyama
+  - daimyoId: 13
+    daimyoName: "\u672C\u9858\u5BFA\u9855\u5982"
+    colorR: 250
+    colorG: 90
+    colorB: 255
+    busyoId: 29
+    senryoku: 110
+    daimyoNameEng: Kennyo Honganji
+  - daimyoId: 14
+    daimyoName: "\u8DB3\u5229\u7FA9\u8F1D"
+    colorR: 180
+    colorG: 255
+    colorB: 115
+    busyoId: 32
+    senryoku: 100
+    daimyoNameEng: Yoshiteru Ashikaga
+  - daimyoId: 15
+    daimyoName: "\u6CE2\u591A\u91CE\u79C0\u6CBB"
+    colorR: 135
+    colorG: 30
+    colorB: 30
+    busyoId: 54
+    senryoku: 80
+    daimyoNameEng: Hideharu Hatano
+  - daimyoId: 16
+    daimyoName: "\u7560\u5C71\u7FA9\u7DB1"
+    colorR: 180
+    colorG: 255
+    colorB: 0
+    busyoId: 44
+    senryoku: 80
+    daimyoNameEng: Yoshitsuna Hatakeyama
+  - daimyoId: 17
+    daimyoName: "\u4E0A\u6749\u8B19\u4FE1"
+    colorR: 255
+    colorG: 70
+    colorB: 235
+    busyoId: 1
+    senryoku: 130
+    daimyoNameEng: Kenshin Uesugi
+  - daimyoId: 18
+    daimyoName: "\u795E\u4FDD\u9577\u8077"
+    colorR: 255
+    colorG: 255
+    colorB: 0
+    busyoId: 165
+    senryoku: 80
+    daimyoNameEng: Nagatomo Jinbou
+  - daimyoId: 19
+    daimyoName: "\u5317\u6761\u6C0F\u5EB7"
+    colorR: 0
+    colorG: 80
+    colorB: 255
+    busyoId: 34
+    senryoku: 130
+    daimyoNameEng: Ujiyasu Hojyo
+  - daimyoId: 20
+    daimyoName: "\u91CC\u898B\u7FA9\u582F"
+    colorR: 240
+    colorG: 240
+    colorB: 40
+    busyoId: 119
+    senryoku: 80
+    daimyoNameEng: Yoshitaka Satomi
+  - daimyoId: 21
+    daimyoName: "\u7D50\u57CE\u6674\u671D"
+    colorR: 150
+    colorG: 140
+    colorB: 70
+    busyoId: 21
+    senryoku: 90
+    daimyoNameEng: Harutomo Yuuki
+  - daimyoId: 22
+    daimyoName: "\u5B87\u90FD\u5BAE\u5E83\u7DB1"
+    colorR: 0
+    colorG: 255
+    colorB: 255
+    busyoId: 104
+    senryoku: 80
+    daimyoNameEng: HIrotsuna Utsunomiya
+  - daimyoId: 23
+    daimyoName: "\u4F50\u7AF9\u7FA9\u91CD"
+    colorR: 255
+    colorG: 165
+    colorB: 0
+    busyoId: 20
+    senryoku: 100
+    daimyoNameEng: Yoshishige Satake
+  - daimyoId: 24
+    daimyoName: "\u76F8\u99AC\u7FA9\u80E4"
+    colorR: 190
+    colorG: 100
+    colorB: 100
+    busyoId: 68
+    senryoku: 100
+    daimyoNameEng: Yoshitane Soma
+  - daimyoId: 25
+    daimyoName: "\u6700\u4E0A\u7FA9\u5B88"
+    colorR: 100
+    colorG: 200
+    colorB: 255
+    busyoId: 72
+    senryoku: 100
+    daimyoNameEng: Yoshimori Mogami
+  - daimyoId: 26
+    daimyoName: "\u8606\u540D\u76DB\u6C0F"
+    colorR: 210
+    colorG: 155
+    colorB: 215
+    busyoId: 60
+    senryoku: 100
+    daimyoNameEng: Moriuji Ashina
+  - daimyoId: 27
+    daimyoName: "\u4F0A\u9054\u8F1D\u5B97"
+    colorR: 100
+    colorG: 255
+    colorB: 40
+    busyoId: 27
+    senryoku: 100
+    daimyoNameEng: Terumune Date
+  - daimyoId: 28
+    daimyoName: "\u5B89\u6771\u611B\u5B63"
+    colorR: 255
+    colorG: 90
+    colorB: 90
+    busyoId: 103
+    senryoku: 100
+    daimyoNameEng: Chikasue Ando
+  - daimyoId: 29
+    daimyoName: "\u5927\u5D0E\u7FA9\u76F4"
+    colorR: 170
+    colorG: 75
+    colorB: 170
+    busyoId: 101
+    senryoku: 100
+    daimyoNameEng: Yoshinao Osaki
+  - daimyoId: 30
+    daimyoName: "\u5357\u90E8\u6674\u653F"
+    colorR: 255
+    colorG: 200
+    colorB: 75
+    busyoId: 67
+    senryoku: 100
+    daimyoNameEng: Harumasa Nanbu
+  - daimyoId: 31
+    daimyoName: "\u4E09\u597D\u9577\u6176"
+    colorR: 0
+    colorG: 130
+    colorB: 255
+    busyoId: 28
+    senryoku: 120
+    daimyoNameEng: Nagayoshi Miyoshi
+  - daimyoId: 32
+    daimyoName: "\u4E00\u8272\u7FA9\u5E78"
+    colorR: 145
+    colorG: 160
+    colorB: 20
+    busyoId: 191
+    senryoku: 90
+    daimyoNameEng: Isshiki Yoshiyuki
+  - daimyoId: 33
+    daimyoName: "\u5C71\u540D\u8C4A\u5B9A"
+    colorR: 100
+    colorG: 255
+    colorB: 85
+    busyoId: 183
+    senryoku: 80
+    daimyoNameEng: Toyosada Yamana
+  - daimyoId: 34
+    daimyoName: "\u8D64\u677E\u6674\u653F"
+    colorR: 95
+    colorG: 120
+    colorB: 255
+    busyoId: 197
+    senryoku: 90
+    daimyoNameEng: Harumasa Akamatsu
+  - daimyoId: 35
+    daimyoName: "\u5C3C\u5B50\u6674\u4E45"
+    colorR: 210
+    colorG: 120
+    colorB: 255
+    busyoId: 26
+    senryoku: 110
+    daimyoNameEng: Haruhisa Amago
+  - daimyoId: 36
+    daimyoName: "\u6D66\u4E0A\u5B97\u666F"
+    colorR: 140
+    colorG: 255
+    colorB: 170
+    busyoId: 96
+    senryoku: 90
+    daimyoNameEng: Munekage Urakami
+  - daimyoId: 37
+    daimyoName: "\u4E09\u6751\u5BB6\u89AA"
+    colorR: 110
+    colorG: 110
+    colorB: 20
+    busyoId: 83
+    senryoku: 80
+    daimyoNameEng: Iechika Mimura
+  - daimyoId: 38
+    daimyoName: "\u6BDB\u5229\u5143\u5C31"
+    colorR: 255
+    colorG: 220
+    colorB: 0
+    busyoId: 9
+    senryoku: 120
+    daimyoNameEng: Motonari Mouri
+  - daimyoId: 39
+    daimyoName: "\u6CB3\u91CE\u901A\u5BA3"
+    colorR: 200
+    colorG: 255
+    colorB: 255
+    busyoId: 91
+    senryoku: 80
+    daimyoNameEng: Michinobu Kono
+  - daimyoId: 40
+    daimyoName: "\u9577\u5B97\u6211\u90E8\u5143\u89AA"
+    colorR: 0
+    colorG: 255
+    colorB: 0
+    busyoId: 25
+    senryoku: 100
+    daimyoNameEng: Motochika Cyosokabe
+  - daimyoId: 41
+    daimyoName: "\u5927\u53CB\u5B97\u9E9F"
+    colorR: 80
+    colorG: 170
+    colorB: 45
+    busyoId: 39
+    senryoku: 120
+    daimyoNameEng: Sorin Otomo
+  - daimyoId: 42
+    daimyoName: "\u9F8D\u9020\u5BFA\u9686\u4FE1"
+    colorR: 255
+    colorG: 10
+    colorB: 10
+    busyoId: 53
+    senryoku: 100
+    daimyoNameEng: Takanobu Ryuzouji
+  - daimyoId: 43
+    daimyoName: "\u76F8\u826F\u7FA9\u967D"
+    colorR: 255
+    colorG: 170
+    colorB: 170
+    busyoId: 47
+    senryoku: 80
+    daimyoNameEng: Yoshiharu Sagara
+  - daimyoId: 44
+    daimyoName: "\u4F0A\u6771\u7FA9\u7950"
+    colorR: 130
+    colorG: 75
+    colorB: 255
+    busyoId: 88
+    senryoku: 80
+    daimyoNameEng: Yoshisuke Ito
+  - daimyoId: 45
+    daimyoName: "\u5CF6\u6D25\u8CB4\u4E45"
+    colorR: 75
+    colorG: 75
+    colorB: 255
+    busyoId: 38
+    senryoku: 100
+    daimyoNameEng: Takahisa Shimazu
+  - daimyoId: 46
+    daimyoName: "\u5B97\u7FA9\u8ABF"
+    colorR: 0
+    colorG: 255
+    colorB: 0
+    busyoId: 56
+    senryoku: 70
+    daimyoNameEng: Yoshishige Sou

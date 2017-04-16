@@ -1,0 +1,2368 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d40b8fd932aa148b7076b3c2654e64, type: 3}
+  m_Name: serihu_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    name: "\u4E0A\u6749\u8B19\u4FE1"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u6211\u3001\u6BD8\u6C99\u9580\u5929\u306E\u5316\u8EAB\u306A\u308A\u3002\u8CB4\u6BBF\u306B\u4E0E\u529B\u81F4\u3059\u3002"
+    tsuihouMsg: "\u6975\u697D\u3082 \u5730\u7344\u3082\u5148\u306F \u6709\u660E\u306E
+      \u6708\u306E\u5FC3\u306B\u61F8\u304B\u308B\u96F2\u306A\u3057\u3002\u3055\u3089\u3070\uFF01"
+    senpouMsg: "\u6211\u6B64\u308C\u3088\u308A\u4E0B\u7B56\u3092\u63A1\u308A\u3001\u6B7B\u5730\u306B\u5165\u308A\u3066\u5F8C\u5DFB\u3092\u65AD\u305F\u3093\u3002\u8005\u5171\u53C2\u308B\u305E\uFF01"
+    nameEng: Kenshin Uesugi
+    touyouMsgEng: I'm an incarnation of Bosyamonten. I will help you.
+    tsuihouMsgEng: There is no cloud in my heart even in heven or hell. Good Bye!
+    senpouMsgEng: I'm going into the jaws of death!
+  - id: 2
+    name: "\u53EF\u5150\u5409\u9577"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u7B39\u306E\u624D\u8535\u3001\u63A8\u53C2\uFF01\u69CD\u50CD\u304D\u671F\u5F85\u3057\u3066\u4E0B\u3055\u3044\u307E\u305B\u3002"
+    tsuihouMsg: "\u307E\u3060\u307E\u3060\u6226\u50CD\u304D\u3067\u304D\u308B\u304C\u2026\u3002\u7121\u5FF5\u3001\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u639B\u304B\u3063\u3066\u3053\u3093\u304B\u3044\uFF01\u7B39\u3092\u304F\u308F\u3048\u3055\u305B\u3066\u3084\u308B\uFF01"
+    nameEng: Yoshinaga Kani
+    touyouMsgEng: My nickname is Saizo of bamboo! I'm famous as spearman.
+    tsuihouMsgEng: My lord!  I can help you more!
+    senpouMsgEng: Come on! You'll bite bamboo!
+  - id: 3
+    name: "\u672C\u591A\u5FE0\u52DD"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u5929\u4E0B\u7121\u53CC\u306E\u9397\u306E\u529B\u3001\u5FA1\u898B\u305B\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u616E\u3042\u308B\u4EBA\u306E\u529F\u540D\u306F\u3001\u58EB\u5352\u3092\u4E0B\u77E5\u3057\u3066\u529F\u540D\u3092\u6210\u3057\u5F97\u308B\u3068\u8A00\u3046\u306B\u2026\u3002\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\uFF01\u53EA\u3005\u5207\u308A\u6368\u3066\u3044\uFF01"
+    nameEng: Tadakatsu Honda
+    touyouMsgEng: I can show you my unparalleled power of spear.
+    tsuihouMsgEng: Person who is always saying that I am in trouble is poor at dealing
+      with retainers.
+    senpouMsgEng: Charge, ALL!! Follow me my son!!
+  - id: 4
+    name: "\u67F4\u7530\u52DD\u5BB6"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u9B3C\u67F4\u7530\u6B64\u308C\u306B\u3042\u308A\u3002\u6BBF\u306B\u5FE0\u8AA0\u3092\u8A93\u3044\u7533\u3059\u3002"
+    tsuihouMsg: "\u5922\u8DEF\u511A\u304D\u3053\u3068\u3088\u3002\u6226\u5834\u3067\u76F8\u898B\u3048\u307E\u3057\u3087\u3046\u305E\u3002"
+    senpouMsg: "\u639B\u304B\u308C\u3001\u639B\u304B\u308C\u3043\uFF01"
+    nameEng: Katsuie Shibata
+    touyouMsgEng: Demon Shibata here. I devote my power to you.
+    tsuihouMsgEng: It is so fleeting. I want to see you at battle field.
+    senpouMsgEng: Sic him! Sic him!
+  - id: 5
+    name: "\u6B66\u7530\u4FE1\u7384"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u7532\u6590\u306E\u864E\u3001\u63A8\u53C2\uFF01\u98A8\u6797\u706B\u5C71\u3092\u4F53\u73FE\u3057\u3066\u307F\u305B\u3088\u3046\u3002"
+    tsuihouMsg: "\u70BA\u305B\u3070\u6210\u308B \u70BA\u3055\u306D\u3070\u6210\u3089\u306C\u6210\u308B\u696D\u3092
+      \u6210\u3089\u306C\u3068\u6368\u3064\u308B\u4EBA\u306E\u306F\u304B\u306A\u304D\u3002\u3055\u3089\u3070\u3058\u3083\uFF01"
+    senpouMsg: "\u4FB5\u7565\u3059\u308B\u3053\u3068\u706B\u306E\u5982\u304F\u3001\u6B66\u7530\u8ECD\u56E3\u3086\u3051\u3044\uFF01"
+    nameEng: Shingen Takeda
+    touyouMsgEng: Tiger of Kai here. I will become Furinkazan.
+    tsuihouMsgEng: If you put your mind to it, you can accomplish anything. See you!
+    senpouMsgEng: Conquer like a fire! Go! Takeda soldiers!
+  - id: 6
+    name: "\u9ED2\u7530\u9577\u653F"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u9732\u6255\u3044\u306F\u3001\u79C1\u306B\u304A\u4EFB\u305B\u3092\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u307E\u3060\u3058\u3083\u5341\u5206\u306B\u5F15\u304D\u3064\u3051\u3088\u2026
+      \u3088\u3057\u6483\u3066\u3048\u3063\uFF01"
+    nameEng: Nagamasa Kuroda
+    touyouMsgEng: It's my humble preasure. Please leave it to me regarding battle.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 7
+    name: "\u4F50\u7AF9\u7FA9\u5BA3"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u7FA9\u5BA3\u8EAB\u547D\u306B\u304B\u3051\u3066\u6069\u306B\u5831\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u7121\u5FF5\u3001\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u5929\u306E\u7406\u306F\u6211\u306B\u6709\u308A\u3002\u8005\u5171\u53C2\u308B\u305E\uFF01\u7A81\u3051\u3084\u30FC\uFF01"
+    nameEng: Yoshinobu Satake
+    touyouMsgEng: I'm Yoshinobu, I know the meaning of obligation.
+    tsuihouMsgEng: Oh Lord... See you.
+    senpouMsgEng: Luck with me! Follow me!
+  - id: 8
+    name: "\u6C60\u7530\u6052\u8208"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u5102\u3092\u653E\u308A\u51FA\u305D\u3046\u3058\u3083\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u3055\u305B\u3066\u304F\u308C\u308B\u308F\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u7A81\u6483\u3058\u3083\uFF01\u6575 \u4E00\u4EBA\u6B8B\u3089\u305A\u8E74\u6563\u3089\u305B\uFF01"
+    nameEng: Tsuneoki Ikeda
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 9
+    name: "\u6BDB\u5229\u5143\u5C31"
+    rank: S
+    heisyu: YM
+    touyouMsg: "\u4E00\u672C\u306E\u77E2\u3082\u3001\u675F\u306B\u306A\u308C\u3070\u6298\u308C\u307E\u305B\u306C\u3002\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u5BB6\u5185\u306E\u8005\u3092\u5931\u3046\u3068\u3044\u3046\u3053\u3068\u306F\u3001\u624B\u8DB3\u3092\u65AC\u308B\u3088\u3046\u306A\u3082\u306E\u3067\u3042\u308A\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u601D\u60D1\u901A\u308A\u3088\u3002\u3042\u3084\u3064\u306E\u52D5\u304D\u3001\u624B\u306B\u53D6\u308B\u3088\u3046\u306B\u5206\u304B\u308B\u308F\u3002"
+    nameEng: Motonari Mouri
+    touyouMsgEng: Single arrow will not be broken if it becomes a bunch. I will swear
+      my loyality.
+    tsuihouMsgEng: Losing your retainer is like cutting your limbs.
+    senpouMsgEng: That's what I thought. It's easy to grasp his thought!
+  - id: 10
+    name: "\u4ED9\u77F3\u79C0\u4E45"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u5102\u3092\u653E\u308A\u51FA\u305D\u3046\u3058\u3083\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u3055\u305B\u3066\u304F\u308C\u308B\u308F\uFF01"
+    senpouMsg: "\u62BC\u305B\u3001\u62BC\u305B\u3043\uFF01\u3053\u306E\u307E\u307E\u62BC\u3057\u6F70\u3057\u3066\u3084\u308B\u308F\uFF01"
+    nameEng: Hidehisa Sengoku
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 11
+    name: "\u8C4A\u81E3\u79C0\u5409"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u733F\u3081\u304C\u3001\u63A8\u53C2\u3067\u3084\u3002\u6BBF\u306E\u8987\u9053\u306B\u52A0\u52E2\u3057\u307E\u3059\u304C\u3084\u3002"
+    tsuihouMsg: "\u7551\u4ED5\u4E8B\u306B\u3067\u3082\u623B\u308A\u307E\u3059\u304B\u3044\u306E\u3046\u3002\u3055\u3089\u3070\u3067\u3084\uFF01"
+    senpouMsg: "\u795E\u901F\u306E\u4E00\u6483\u3060\u304E\u3083\u3041\uFF01\u5927\u5C06\u306E\u9996\u53D6\u3063\u3066\u624B\u67C4\u6319\u3052\u3055\u305B\u3066\u3082\u3089\u3046\u3060\u3067\u3084\uFF01"
+    nameEng: Hideyoshi Toyotomi
+    touyouMsgEng: Hey monkey here. I will support your military rule, my lord.
+    tsuihouMsgEng: I'm gonna back to the farm field work. See you!
+    senpouMsgEng: Rapidity! Attack headquarter directoly!
+  - id: 12
+    name: "\u4F0A\u9054\u653F\u5B97"
+    rank: S
+    heisyu: TP
+    touyouMsg: "\u5965\u5DDE\u306E\u72EC\u773C\u7ADC\u3001\u63A8\u53C2\uFF01\u5929\u4E0B\u53D6\u308A\u306B\u529B\u3092\u304A\u8CB8\u3057\u3057\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u66C7\u308A\u306A\u304D\u5FC3\u306E\u6708\u3092\u3055\u304D\u7ACB\u3066\u3066
+      \u6D6E\u4E16\u306E\u95C7\u3092\u7167\u3089\u3057\u3066\u305E\u884C\u304F\u3002\u307E\u305F\u6226\u5834\u3067\u304A\u4F1A\u3044\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u6483\u3066\u3048\u3047\uFF01"
+    nameEng: Masamune Date
+    touyouMsgEng: Osyu the One-Eyed Dragon has come. I will lend you my power to take
+      a world.
+    tsuihouMsgEng: I will go in the darkness with my moon. See you at battle field!
+    senpouMsgEng: Ready! Aim! Fire ALL!
+  - id: 13
+    name: "\u698A\u539F\u5EB7\u653F"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u9732\u6255\u3044\u306F\u3001\u79C1\u306B\u304A\u4EFB\u305B\u3092\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u4E0D\u52D5\u660E\u738B\u306E\u3054\u52A0\u8B77\u3042\u308C\uFF01\u7121\u3068\u306A\u308A\u9032\u3081\u3001\u9032\u3081\uFF01"
+    nameEng: Yasumasa Sakakibara
+    touyouMsgEng: It's my humble preasure. Please leave it to me regarding battle.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: ' Acalathe God of Fire bless you! Go!'
+  - id: 14
+    name: "\u5F8C\u85E4\u57FA\u6B21"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u9732\u6255\u3044\u306F\u3001\u79C1\u306B\u304A\u4EFB\u305B\u3092\u3002"
+    tsuihouMsg: "\u6226\u306B\u52DD\u6557\u306F\u3064\u304D\u3082\u306E\u3002\u8CA0\u3051\u6226\u306E\u5EA6\u306B\u9AF7\u3092\u843D\u3068\u3057\u3066\u3044\u305F\u3089\u3001\u751F\u6DAF\u3001\u6BDB\u304C\u63C3\u3046\u4E8B\u304C\u306A\u3044\u308F\u3044\u3002"
+    senpouMsg: "\u5B64\u8ECD\u596E\u95D8\u3001\u63F4\u8ECD\u306F\u7121\u3057\u3002\u3053\u3053\u305E\u624B\u67C4\u306E\u7ACB\u3066\u6642\u3088\uFF01\u7A81\u3051\u3047\uFF01"
+    nameEng: Mototsugu Goto
+    touyouMsgEng: It's my humble preasure. Please leave it to me regarding battle.
+    tsuihouMsgEng: Victory depends on the luck of the day...
+    senpouMsgEng: Fight alone, No Reinforcement. It's a time to do a meritorious deed!
+  - id: 15
+    name: "\u7AF9\u4E2D\u91CD\u6CBB"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u6BBF\u306E\u8987\u9053\u3001\u3053\u306E\u667A\u8B00\u306B\u3066\u304A\u52A9\u3051\u3057\u307E\u3057\u3087\u3046\u3002"
+    tsuihouMsg: "\u6BBF\u3001\u5929\u4E0B\u3092\u3001\u304D\u3063\u3068\u5929\u4E0B\u3092\u304A\u53D6\u308A\u306A\u3055\u308C\u2026\u3002\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u75BE\u3068\u304D\u3053\u3068\u3053\u305D\u5F37\u3055\u3088\uFF01\u99C6\u3051\u308D\u3001\u99C6\u3051\u308D\uFF01"
+    nameEng: Shigeharu Takenaka
+    touyouMsgEng: It's my humble preasure.  I can support your glorious road by my
+      wisdom.
+    tsuihouMsgEng: My lord, my lord... I hope you conquer  the whole world...
+    senpouMsgEng: Lightning attack! Run run!
+  - id: 16
+    name: "\u524D\u7530\u5229\u5BB6"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u69CD\u306E\u53C8\u5DE6\u3001\u52A0\u52E2\u4ED5\u308A\u5019\uFF01"
+    tsuihouMsg: "\u6687\u306B\u306A\u308B\u306E\u3046\u3002\u95BB\u9B54\u725B\u982D\u99AC\u982D\u3069\u3082\u76F8\u624B\u306B\u3072\u3068\u6226\u3067\u3082\u3057\u3066\u304F\u308C\u3088\u3046\u304B\u306E\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01\u9996\u7D1A\u3092\u6319\u3052\u3066\u624B\u67C4\u3068\u305B\u3044\uFF01"
+    nameEng: Toshiie Maeda
+    touyouMsgEng: Spearmen Mataza support you.
+    tsuihouMsgEng: I'm gonna battle with Enma King of Hell.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 17
+    name: "\u6700\u4E0A\u7FA9\u5149"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u7FBD\u5DDE\u306E\u72D0\u304C\u5929\u4E0B\u53D6\u308A\u306B\u529B\u3092\u304A\u8CB8\u3057\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u9BAD\u3067\u3082\u6355\u308A\u306B\u884C\u304F\u304B\u306E\u3046\u3002\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u5F15\u5C0E\u3092\u6E21\u3057\u304F\u308C\u308B\u308F\uFF01\u7A81\u8CAB\uFF01"
+    nameEng: Yoshiaki Mogami
+    touyouMsgEng: Me Usyu Fox will help your glory.
+    tsuihouMsgEng: I'm gonna go fishing salmon. See you.
+    senpouMsgEng: My family wins absolutely!
+  - id: 18
+    name: "\u5FB3\u5DDD\u5BB6\u5EB7"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u4E09\u6CB3\u6B66\u58EB\u306E\u529B\u3001\u5FA1\u898B\u305B\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u582A\u5FCD\u306F\u7121\u4E8B\u9577\u4E45\u306E\u57FA\u3067\u3059\u305E\u3002\u5FC5\u8981\u3068\u3042\u308C\u3070\u307E\u305F\u304A\u547C\u3073\u304F\u3060\u3055\u308C\u3002"
+    senpouMsg: "\u53AD\u96E2\u7A62\u571F\u6B23\u6C42\u6D44\u571F\uFF01\u6B7B\u3092\u6050\u308C\u308B\u306A\u3001\u7A81\u304D\u9032\u3081\u3044\uFF01"
+    nameEng: Ieyasu Tokugawa
+    touyouMsgEng: I can show you the power of mikawa samurai!
+    tsuihouMsgEng: 'Forbearance is the root of all quietness and assurance forever.
+      Look upon the wrath of thy enemy. '
+    senpouMsgEng: Do not be afraid of death, keep pushing!
+  - id: 19
+    name: "\u7E54\u7530\u4FE1\u9577"
+    rank: S
+    heisyu: TP
+    touyouMsg: "\u9762\u767D\u3044\u3002\u7B2C\u516D\u5929\u9B54\u738B\u304C\u4E0E\u529B\u3044\u305F\u305D\u3046\u3002"
+    tsuihouMsg: "\u662F\u975E\u3082\u306A\u3057\u3002"
+    senpouMsg: "\u5F3E\u306E\u5D50\u3092 \u898B\u821E\u3063\u3066\u304F\u308C\u3088\u3046\uFF01\u6483\u3061\u65B9\u306F\u3058\u3081\u3044\uFF01"
+    nameEng: Nobunaga Oda
+    touyouMsgEng: Good, Big Number Six Heavenly Deity can support you.
+    tsuihouMsgEng: I have no choice...
+    senpouMsgEng: Ready! Aim! Fire ALL!
+  - id: 20
+    name: "\u4F50\u7AF9\u7FA9\u91CD"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u9B3C\u7FA9\u91CD\u3001\u63A8\u53C2\uFF01\u677F\u6771\u6B66\u8005\u306E\u529B\u5FA1\u898B\u305B\u3057\u307E\u3057\u3087\u3046\u3002"
+    tsuihouMsg: "\u307E\u3060\u307E\u3060\u69CD\u50CD\u304D\u3067\u304D\u307E\u3059\u305E\u2026\u3002\u7121\u5FF5\u3001\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u6211\u6B64\u308C\u3088\u308A\u9B3C\u3068\u306A\u308A\u3066\u6B7B\u5730\u306B\u5165\u3089\u3093\u3002\u8005\u5171\u53C2\u308B\u305E\uFF01"
+    nameEng: Yoshishige Satake
+    touyouMsgEng: "Demon Yoshishige\uFF01I will show you my power of bando samurai."
+    tsuihouMsgEng: My lord!  I can help you more!
+    senpouMsgEng: I'll be demon and enter the dead place! Come on all!
+  - id: 21
+    name: "\u7D50\u57CE\u6674\u671D"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u95A2\u6771\u516B\u5C4B\u5F62\u306E\u4E00\u89D2\u3001\u7D50\u57CE\u5BB6\u304C\u52A0\u52E2\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u308C\u306F\u624B\u53B3\u3057\u3085\u3046\u3054\u3056\u3044\u307E\u3059\u306A\u3002\u307E\u305F\u3069\u3053\u305E\u3067\u304A\u4F1A\u3044\u3057\u307E\u3057\u3087\u3046\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Harutomo Yuuki
+    touyouMsgEng: The one of the Kanto 8 samurai, Yuki family will assist you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 22
+    name: "\u5927\u4E45\u4FDD\u5FE0\u96A3"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u91D1\u52D8\u5B9A\u306F\u304A\u4EFB\u305B\u3042\u308C\u3002"
+    tsuihouMsg: "\u8AB0\u305E\u304C\u8B92\u8A00\u3067\u3082\u306A\u3055\u3044\u307E\u3057\u305F\u3002\u3069\u3046\u304B\u3054\u518D\u8003\u4E0B\u3055\u308C\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Tadachika Okubo
+    touyouMsgEng: It's my humble preasure. Please leave it to me regarding finance.
+    tsuihouMsgEng: Are there slanderous tongues about me? Please reconsider!
+    senpouMsgEng: Commence attack!
+  - id: 23
+    name: "\u658E\u85E4\u7FA9\u9F8D"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u540D\u65CF\u571F\u5C90\u306E\u8840\u306B\u6D41\u308C\u308B\u876E\u6BBA\u3057\u304C\u529B\u3001\u3054\u89A7\u4E0B\u3055\u308C\u3002"
+    tsuihouMsg: "\u540D\u65CF\u571F\u5C90\u306E\u8840\u3092\u5F15\u304F\u5102\u3092\u8FFD\u653E\u3058\u3083\u3068\uFF1F\u3044\u3064\u304B\u5F8C\u6094\u3055\u305B\u3066\u304F\u308C\u308B\u308F\uFF01"
+    senpouMsg: "\u5F15\u5C0E\u3092\u6E21\u3057\u304F\u308C\u308B\u308F\uFF01\u7A81\u8CAB\uFF01"
+    nameEng: Yoshitatsu Saito
+    touyouMsgEng: Plese take a look my power of slaughter killer.
+    tsuihouMsgEng: "Someday you\u2019ll be sorry."
+    senpouMsgEng: My family wins absolutely!
+  - id: 24
+    name: "\u4ECA\u5DDD\u7FA9\u5143"
+    rank: S
+    heisyu: YM
+    touyouMsg: "\u6D77\u9053\u4E00\u306E\u5F13\u53D6\u308A\u306E\u529B\u898B\u305B\u3066\u304F\u308C\u3088\u3046\u3002"
+    tsuihouMsg: "\u6211\u3089\u4ECA\u5DDD\u306F\u3001\u308C\u3063\u304D\u3068\u3057\u305F\u8DB3\u5229\u4E00\u65CF\u3002\u305D\u306E\u5102\u3092\u3053\u3053\u307E\u3067\u865A\u4EEE\u306B\u3057\u3088\u3046\u3068\u306F\uFF01"
+    senpouMsg: "\u72D9\u3044\u3092\u5B9A\u3081\u3088\uFF01\u5C04\u308C\u3044\u3001\u5C04\u308C\u3044\uFF01"
+    nameEng: Yoshimoto Imagawa
+    touyouMsgEng: I'm No.1 shooter in this island.
+    tsuihouMsgEng: "Someday you\u2019ll be sorry for me."
+    senpouMsgEng: Aim! Loose!
+  - id: 25
+    name: "\u9577\u5B97\u6211\u90E8\u5143\u89AA"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u9732\u6255\u3044\u306F\u3001\u9B3C\u82E5\u5B50\u306B\u304A\u4EFB\u305B\u3092\u3002"
+    tsuihouMsg: "\u3067\u306F\u67D0\u3001\u3053\u308C\u3088\u308A\u5929\u4E0B\u306B\u5FC3\u3092\u8CED\u3051\u307E\u3059\u305E\u3002\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u7A81\u8CAB\u3058\u3083\u3042\uFF01\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Motochika Cyosokabe
+    touyouMsgEng: It's my humble preasure. Please leave it to me demon child regarding
+      battle.
+    tsuihouMsgEng: '...So I''m gonna conquer the whole country from now on.'
+    senpouMsgEng: 'Follow me! '
+  - id: 26
+    name: "\u5C3C\u5B50\u6674\u4E45"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u618E\u304D\u6BDB\u5229\u3092\u5012\u3059\u305F\u3081\u306A\u308C\u3070\u4ED5\u65B9\u306A\u3057\u3002\u52A0\u52E2\u3044\u305F\u3057\u307E\u3059\u305E"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Haruhisa Amago
+    touyouMsgEng: I can support you to defeat Hatred Mouri.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Commence attack!
+  - id: 27
+    name: "\u4F0A\u9054\u8F1D\u5B97"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u5102\u3092\u6B32\u3057\u3044\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u5B9C\u3057\u3044\u3001\u304A\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u60C5\u3051\u306F\u7121\u7528\u3067\u3059\u305E\u3002\u5929\u7FD4\u3051\u308B\u7ADC\u3068\u6210\u308A\u306A\u3055\u308C\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u7A81\u6483\u3058\u3083\uFF01\u6575 \u4E00\u4EBA\u6B8B\u3089\u305A\u8E74\u6563\u3089\u305B\uFF01"
+    nameEng: Terumune Date
+    touyouMsgEng: Um... You want to hire me... OK, I will support you.
+    tsuihouMsgEng: Take what you can. Give nothing back!
+    senpouMsgEng: Charge, ALL!!
+  - id: 28
+    name: "\u4E09\u597D\u9577\u6176"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u4E71\u4E16\u306E\u689F\u96C4\u304C\u529B\u3001\u5FA1\u898B\u305B\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u5102\u306F\u3082\u3046\u7121\u7528\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u3053\u306E\u9577\u6176\u304C\u52F2\u529F\u3092\u5FD8\u308C\u305F\u304B\uFF01"
+    senpouMsg: "\u5F15\u5C0E\u3092\u6E21\u3057\u304F\u308C\u308B\u308F\uFF01\u7A81\u8CAB\uFF01"
+    nameEng: Nagayoshi Miyoshi
+    touyouMsgEng: I'm ringleader Miyoshi. I will support you.
+    tsuihouMsgEng: Um... Have you forgotten my power?
+    senpouMsgEng: My family wins absolutely!
+  - id: 29
+    name: "\u672C\u9858\u5BFA\u9855\u5982"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u5357\u7121\u963F\u5F25\u9640\u4ECF\u3001\u5FA1\u4ECF\u306E\u52A0\u8B77\u3092\u4FE1\u3058\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u5357\u7121\u963F\u5F25\u9640\u4ECF\u3001\u3053\u308C\u305E\u6CD5\u96E3\uFF01\u4ECF\u6575\u3088\u3001\u79C1\u306F\u8CA0\u3051\u306C\u305E\u3002"
+    senpouMsg: "\u9032\u3081\u3070\u6975\u697D\u3001\u5F15\u3051\u3070\u5730\u7344\uFF01\u5FA1\u4ECF\u306E\u3054\u52A0\u8B77\u3058\u3083\u3042\u3002\u9032\u3081\u9032\u3081\u3044\uFF01"
+    nameEng: Kennyo Honganji
+    touyouMsgEng: Nam Amida Butsu... You have to believe a budda's support.
+    tsuihouMsgEng: Nam Amida Butsu...You are the enemy of budda!
+    senpouMsgEng: Go is heaven, WIthdraw is hell! You have a support of Budda!
+  - id: 30
+    name: "\u671D\u5009\u7FA9\u666F"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u826F\u304D\u65E5\u3068\u3066\u5927\u98A8\u306B\u8239\u3092\u3060\u3059\u306F\u610F\u5473\u306F\u3042\u308A\u307E\u305B\u306C\u3002\u540D\u65CF\u306E\u529B\u3001\u304A\u8CB8\u3057\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u540D\u65CF\u306E\u5102\u3092\u8FFD\u653E\u3058\u3083\u3068\uFF1F\u3044\u3064\u304B\u5F8C\u6094\u3055\u305B\u3066\u304F\u308C\u308B\u308F\uFF01"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yoshikage Asakura
+    touyouMsgEng: I will support you by the power of Asakura family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 31
+    name: "\u6D45\u4E95\u9577\u653F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u9577\u653F\u898B\u53C2\uFF01\u7FA9\u306B\u9867\u307F\u3066\u6065\u3058\u306C\u6D45\u4E95\u306E\u6226\u3044\u3076\u308A\u3092\u3054\u89A7\u3042\u308C\uFF01"
+    tsuihouMsg: "\u3046\u306C\u3001\u3044\u3064\u306E\u65E5\u304B\u6226\u4E71\u3092\u6CBB\u3081\u3001\u5929\u4E0B\u306B\u53F7\u4EE4\u3057\u3066\u304F\u308C\u308B\u308F\u3002"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u9045\u308C\u3092\u53D6\u308B\u306A\u7686\u306E\u8005\u3001\u5102\u306B\u7D9A\u3051\u3044\uFF01"
+    nameEng: Nagamasa Azai
+    touyouMsgEng: Nagamasa has come. Please see Azai's brave samurai.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 32
+    name: "\u8DB3\u5229\u7FA9\u8F1D"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u5F81\u5937\u5927\u5C06\u8ECD\u3001\u8DB3\u5229\u7FA9\u8F1D\u3058\u3083\u3002\u6211\u304C\u5263\u306E\u529B\u304A\u8CB8\u3057\u3057\u307E\u3057\u3087\u3046\u3002"
+    tsuihouMsg: "\u5F81\u5937\u5927\u5C06\u8ECD\u305F\u308B\u3053\u306E\u7FA9\u8F1D\u3092\u8210\u3081\u308B\u3067\u306A\u3044\uFF01\u5BA4\u753A\u5E55\u5E9C\u306F\u5012\u3055\u305B\u306C\u305E\uFF01"
+    senpouMsg: "\u53DB\u9006\u8005\u3092\u53E9\u304D\u6F70\u305B\u3044\uFF01\u64AB\u3067\u65AC\u308A\u306B\u305B\u3044\uFF01"
+    nameEng: Yoshiteru Ashikaga
+    touyouMsgEng: I'm Syogun Yoshiteru Ashikaga. My sword will help you.
+    tsuihouMsgEng: I'm Syogun Yoshiteru.Who do you think you are talking to?
+    senpouMsgEng: Do crush the rebels! No mercy!
+  - id: 33
+    name: "\u677E\u6C38\u4E45\u79C0"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u4E09\u60AA\u3068\u8A55\u3055\u308C\u305F\u5102\u3092\u767B\u7528\u3059\u308B\u3068\u7533\u3059\u304B\u3002\u5668\u91CF\u304C\u5E83\u3044\u306E\u3046\u3002"
+    tsuihouMsg: "\u306F\u3063\u306F\u3063\u306F\u3001\u3046\u3064\u3051\u3081\u304C\u3002\u5E73\u8718\u86DB\u91DC\u306F\u6E21\u3055\u306C\u305E\u3002\u304A\u4E3B\u306B\u306F\u4F3C\u5408\u308F\u306C\u3088\u3002"
+    senpouMsg: "\u3075\u3063\u3075\u3063\u3075\u3063\u3001\u6109\u5FEB\u3058\u3083\u306E\u3046\u3002\u5F7C\u5974\u3081\u306E\u52D5\u304D\u306A\u3069\u624B\u306E\u5185\u3058\u3083\u3002"
+    nameEng: Hisahide Matsunaga
+    touyouMsgEng: Oh, do you want me called as evil?
+    tsuihouMsgEng: hahaha! You are fool. I won't give you my Hiragumo treasure.
+    senpouMsgEng: hahaha, it's funny. I'm keeping the enemy in my hand.
+  - id: 34
+    name: "\u5317\u6761\u6C0F\u5EB7"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u76F8\u6A21\u306E\u7345\u5B50\u63A8\u53C2\uFF01\u6211\u304C\u5317\u6761\u4E00\u9580\u304C\u52A0\u52E2\u3044\u305F\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u611A\u304B\u306A\u2026\u6211\u304C\u5317\u6761\u4E00\u9580\u306E\u529B\u306F\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u5931\u793C\u81F4\u3059\u3002"
+    senpouMsg: "\u7A81\u8CAB\u3058\u3083\u3042\uFF01\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Ujiyasu Hojyo
+    touyouMsgEng: Lion of Sagami here. Our Hojyo family will support you.
+    tsuihouMsgEng: Um... Don't you need the power of Hojyo family?
+    senpouMsgEng: 'Follow me! '
+  - id: 35
+    name: "\u4F8D\u5927\u5C06"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u4F55\u4E8B\u3082\u304A\u4EFB\u305B\u304F\u3060\u3055\u308C\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u5FA1\u5EA7\u308A\u307E\u3059\u308B\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Commander
+    touyouMsgEng: It's my humble preasure. Please leave it to me regarding everthing.
+    tsuihouMsgEng: Oh Lord... See you.
+    senpouMsgEng: Commence attack!
+  - id: 36
+    name: "\u934B\u5CF6\u76F4\u8302"
+    rank: S
+    heisyu: TP
+    touyouMsg: "\u9F8D\u9020\u5BFA\u306E\u4EC1\u738B\u9580\u304C\u52A9\u529B\u81F4\u3057\u307E\u3059\u305E\u3002\u5B58\u5206\u306B\u304A\u4F7F\u3044\u4E0B\u3055\u308C\u3002"
+    tsuihouMsg: "\u6C17\u306B\u5165\u3089\u306C\u3053\u3068\u304C\u3001\u70BA\u306B\u306A\u308B\u3053\u3068\u3082\u3042\u308A\u307E\u3059\u305E\u3002\u5931\u793C\u3044\u305F\u3059\u3002"
+    senpouMsg: "\u5F3E\u306E\u5D50\u3092 \u898B\u821E\u3063\u3066\u304F\u308C\u3088\u3046\uFF01\u6483\u3061\u65B9\u306F\u3058\u3081\u3044\uFF01"
+    nameEng: Naoshige Nabeshima
+    touyouMsgEng: 'I''m a gardian of Ryuzoji family. You can use my power. '
+    tsuihouMsgEng: You had to be tolerant of others...
+    senpouMsgEng: Ready! Aim! Fire ALL!
+  - id: 37
+    name: "\u660E\u667A\u5149\u79C0"
+    rank: S
+    heisyu: TP
+    touyouMsg: "\u77F3\u3053\u308D\u306E\u3088\u3046\u306B\u6C88\u6DEA\u3057\u3066\u3044\u308B\u8EAB\u3092\u5FA1\u62FE\u3044\u4E0B\u3055\u308B\u3068\u306F\u2026\u3002\u304A\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u8EAB\u3092\u3082\u60DC\u307E\u3058\u3001\u540D\u3092\u3082\u60DC\u307E\u3058\u3002\u5931\u793C\u3044\u305F\u3059\u3002"
+    senpouMsg: "\u4E00\u4EBA\u3082\u751F\u304B\u3057\u3066\u5E30\u3059\u306A\uFF01\u6483\u3066\u3044\uFF01\u6483\u3066\u3044\uFF01"
+    nameEng: Mitsuhide Akechi
+    touyouMsgEng: Oh, you will hire me like a stone on the street side. I will help
+      you.
+    tsuihouMsgEng: I made every effort for you. See you.
+    senpouMsgEng: Ready! Aim! Fire ALL!
+  - id: 38
+    name: "\u5CF6\u6D25\u8CB4\u4E45"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u307E\u3060\u307E\u3060\u96A0\u5C45\u306F\u51FA\u6765\u307E\u305B\u3093\u306A\u3002\u304A\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3059\u3002"
+    tsuihouMsg: "\u305D\u308D\u305D\u308D\u96A0\u5C45\u6642\u3067\u3059\u304B\u306A\u3002\u5929\u4E0B\u3092\u304A\u76D7\u308A\u306A\u3055\u308C\u3088\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Takahisa Shimazu
+    touyouMsgEng: I can not do retirement yet. I will help you.
+    tsuihouMsgEng: Well. It's a time to retire. I hope you conquer the whole country.
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 39
+    name: "\u5927\u53CB\u5B97\u9E9F"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u5207\u652F\u4E39\u306E\u738B\u56FD\u3092\u5275\u308B\u305F\u3081\u3001\u8987\u696D\u306B\u529B\u3092\u304A\u8CB8\u3057\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u3046\u3046\u3080\u3001\u738B\u56FD\u306F\u5922\u306E\u307E\u305F\u5922\u3067\u3059\u304B\u306A\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Sorin Otomo
+    touyouMsgEng: I must build a kingdom of christian in the future. I will support
+      you/
+    tsuihouMsgEng: Um...kingdom of christian was pie in the sky...
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 40
+    name: "\u4E43\u7F8E\u5B97\u52DD"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u6BDB\u5229\u6C34\u8ECD\u306E\u529B\u3001\u5FA1\u89A7\u3058\u308D\u3002\u7119\u70D9\u7389\u3092\u5B58\u5206\u306B\u304F\u3089\u308F\u305B\u3066\u3084\u308C\u3044\uFF01"
+    nameEng: Munekatsu Nomi
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: It's power of Mouri navy. Guys, throw the bombs!
+  - id: 41
+    name: "\u7247\u5009\u666F\u7DB1"
+    rank: A
+    heisyu: YM
+    touyouMsg: "\u9B3C\u306E\u5C0F\u5341\u90CE\u304C\u91C7\u306E\u529B\u3001\u3054\u89A7\u4E0B\u3055\u308C\u3002"
+    tsuihouMsg: "\u3046\u306C\u3001\u6211\u304C\u91C7\u304C\u304A\u6C17\u306B\u53EC\u3055\u308C\u307E\u305B\u306A\u3093\u3060\u304B\u3002"
+    senpouMsg: "\u3058\u308F\u308A\u3068\u53D6\u308A\u56F2\u3081\u3044\u3002\u5B8C\u819A\u306A\u304D\u307E\u3067\u53E9\u304F\u3079\u3057\uFF01"
+    nameEng: Kagetsuna Katakura
+    touyouMsgEng: Demon Kojyuro will show you the power of syogun.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Besiege! No mercy!
+  - id: 42
+    name: "\u7D30\u5DDD\u85E4\u5B5D"
+    rank: A
+    heisyu: YM
+    touyouMsg: "\u6B66\u3060\u3051\u3067\u306F\u5929\u4E0B\u306F\u671B\u3081\u307E\u305B\u306C\u3002\u53E4\u4ECA\u4F1D\u6388\u3092\u53D7\u3051\u305F\u6211\u304C\u6587\u3092\u304A\u4F7F\u3044\u4E0B\u3055\u308C\u3002"
+    tsuihouMsg: "\u6211\u304C\u529B\u91CF\u3082\u5206\u304B\u3089\u306C\u306E\u304B\u2026\u3002\u843D\u3061\u76EE\u3088\u306E\u3002"
+    senpouMsg: "\u72D9\u3044\u3092\u5B9A\u3081\u3088\u3002\u5C04\u308C\u3044\uFF01\u5C04\u308C\u3044\uFF01"
+    nameEng: Fujitaka Hosokawa
+    touyouMsgEng: You won't be able to govern the samurai world without education.
+      Please use my wisdom.
+    tsuihouMsgEng: You are samurai who is down on you luck.
+    senpouMsgEng: Aim! Loose!
+  - id: 43
+    name: "\u516D\u89D2\u7FA9\u8CE2"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u65E5\u7F6E\u6D41\u306E\u6280\u3001\u3054\u89A7\u306B\u5165\u308C\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u65E5\u7F6E\u6D41\u306E\u6280\u3092\u898B\u305B\u3066\u304F\u308C\u308B\u308F\uFF01\u7686\u306E\u8005\u3001\u5C04\u304B\u3051\u3044\uFF01"
+    nameEng: Yoshikata Rokkaku
+    touyouMsgEng: It's my humble preasure. I can show you my Hioki style.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: It's a hioki style! fire!
+  - id: 44
+    name: "\u7560\u5C71\u7FA9\u7DB1"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u80FD\u767B\u7560\u5C71\u6C0F\u304C\u52A0\u52E2\u3044\u305F\u3057\u307E\u3059\u308B\u3002\u4F55\u4E8B\u3082\u304A\u4EFB\u305B\u4E0B\u3055\u308C\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u66F2\u76F4\u702C\u6BBF\u3088\u308A\u6559\u3048\u3066\u9802\u3044\u305F\u533B\u8853\u3058\u3083\u3002\u4F53\u3092\u4F11\u3081\u3044\u3002"
+    nameEng: Yoshitsuna Hatakeyama
+    touyouMsgEng: Noto Hatakeyama family will support you.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: It's medical technic by Kuseno master!
+  - id: 45
+    name: "\u6751\u4E0A\u7FA9\u6E05"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u306F\u3063\u306F\u3001\u6211\u304C\u9A0E\u99AC\u90E8\u968A\u304C\u3054\u52A9\u529B\u3044\u305F\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u6BBF\u3001\u307E\u3060\u305D\u308C\u304C\u3057\u69CD\u50CD\u304D\u3067\u304D\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u62BC\u3057\u51FA\u305B\u3044\uFF01\u6575\u3092\u8E0F\u307F\u6F70\u305B\u3044\uFF01"
+    nameEng: Yoshikiyo Murakami
+    touyouMsgEng: Our cavalry unit will help you.
+    tsuihouMsgEng: My lord!  I can help you more!
+    senpouMsgEng: Commence attack!
+  - id: 46
+    name: "\u4F50\u4E45\u9593\u76DB\u653F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u306F\u306F\u3063\u3001\u6709\u308A\u96E3\u304D\u5E78\u305B\uFF01\u9B3C\u7384\u8543\u304C\u529B\u3054\u89A7\u4E0B\u3055\u308C\u3002"
+    tsuihouMsg: "\u6BBF\u3001\u307E\u3060\u305D\u308C\u304C\u3057\u69CD\u50CD\u304D\u3067\u304D\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u4FFA\u304C\u9B3C\u7384\u8543\u3060\uFF01\u547D\u304C\u8981\u3089\u306A\u3044\u3084\u3064\u306F\u639B\u304B\u3063\u3066\u6765\u3044\uFF01"
+    nameEng: Morimasa Sakuma
+    touyouMsgEng: Haha, I am very happy man! Demon Genba is here.
+    tsuihouMsgEng: My lord!  I can help you more!
+    senpouMsgEng: I'm Demon Genba! Leave from here if you value your life!
+  - id: 47
+    name: "\u76F8\u826F\u7FA9\u967D"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u76F8\u826F\u7FA9\u967D\u3001\u6BBF\u306B\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u7A81\u9032\u3058\u3083\u3042\uFF01\u8E0F\u307F\u6F70\u305B\u3044\uFF01"
+    nameEng: Yoshiharu Sagara
+    touyouMsgEng: Yoshihiro Sagara, I will swear my loyality to you!
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 48
+    name: "\u59C9\u5C0F\u8DEF\u983C\u7DB1"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u59C9\u5C0F\u8DEF\u983C\u7DB1\u3001\u6BBF\u306B\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u7A81\u9032\u3058\u3083\u3042\uFF01\u8E0F\u307F\u6F70\u305B\u3044\uFF01"
+    nameEng: Yoritsuna Anegakouji
+    touyouMsgEng: Yoritsuna Anegakoji swear my loyality to you.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 49
+    name: "\u5C71\u672C\u6674\u5E78"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u52D8\u52A9\u3001\u6BBF\u306B\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\uFF01"
+    tsuihouMsg: "\u307E\u305F\u8AF8\u56FD\u653E\u6D6A\u306E\u65C5\u306B\u3067\u307E\u3059\u304B\u306E\u3001\u3067\u306F\u5FA1\u514D\uFF01"
+    senpouMsg: "\u5544\u6728\u9CE5\u6226\u6CD5\u3058\u3083\uFF01\u5225\u50CD\u968A\u306F\u672A\u3060\u304B\uFF01"
+    nameEng: Haruyuki Yamamoto
+    touyouMsgEng: Kansuke take an oath of allegiance to you.
+    tsuihouMsgEng: So I will set out on a wandering journey!
+    senpouMsgEng: It's woodpecker tactics! Where is our detachment?
+  - id: 50
+    name: "\u771F\u7530\u4FE1\u7DB1"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u4FE1\u7DB1\u306B\u3054\u3056\u308B\u3002\u6B66\u9580\u306B\u8A89\u308C\u9AD8\u304D\u771F\u7530\u5BB6\u3088\u308A\u99B3\u305B\u53C2\u3058\u307E\u3057\u305F\u305E\u3002"
+    tsuihouMsg: "\u771F\u7530\u306E\u52A0\u52E2\u306F\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u307E\u3060\u69CD\u50CD\u304D\u3067\u304D\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u62BC\u305B\u3044\u3001\u62BC\u305B\u3044\uFF01\u8EAF\u3092\u4E57\u308A\u8D8A\u3048\u9032\u3081\u3044\uFF01"
+    nameEng: Nobutsuna Sanada
+    touyouMsgEng: I'm Nobutsuna came from Sanada family who are famous for samurai
+      way.
+    tsuihouMsgEng: You don't need power of Sanada family? I can support you more!
+    senpouMsgEng: Commence attack!
+  - id: 51
+    name: "\u52A0\u85E4\u6E05\u6B63"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u6E05\u6B63\u306B\u3054\u3056\u308B\u3002\u6BBF\u306E\u5929\u4E0B\u76D7\u308A\u306B\u52A0\u52E2\u81F4\u3057\u307E\u3059\u308B\u305E\u3002"
+    tsuihouMsg: "\u305D\u308C\u304C\u3057\u5C4D\u3092\u6226\u5834\u306B\u3055\u3089\u3059\u3068\u3082\u3001\u8925\u306E\u4E0A\u3067\u306F\u6B7B\u306B\u307E\u305B\u306C\u305E\u3002"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u9045\u308C\u3092\u53D6\u308B\u306A\u7686\u306E\u8005\u3001\u5102\u306B\u7D9A\u3051\u3044\uFF01"
+    nameEng: Kiyomasa Kato
+    touyouMsgEng: Kiyomasa here. I will support your glory plan to be samurai master.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 52
+    name: "\u8702\u9808\u8CC0\u6B63\u52DD"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u53D6\u308A\u7ACB\u3066\u3066\u304F\u3060\u3055\u308B\u306E\u304B\u3002\u5102\u306F\u5E78\u305B\u8005\u3058\u3083\u306E\u3046\u3002"
+    tsuihouMsg: "\u8A6E\u7121\u3044\u3053\u3068\u3058\u3083\u3002\u91CC\u306B\u3067\u3082\u623B\u308B\u304B\u306E\u3002"
+    senpouMsg: "\u7A81\u8CAB\uFF01\u8D70\u308C\u8D70\u308C\uFF01"
+    nameEng: Masakatsu Hachisuka
+    touyouMsgEng: Would you hire me? wow I'm happy man.
+    tsuihouMsgEng: No way, I'll be back to my hometown.
+    senpouMsgEng: 'Follow me! '
+  - id: 53
+    name: "\u9F8D\u9020\u5BFA\u9686\u4FE1"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u80A5\u524D\u304C\u718A\u3092\u3054\u6240\u671B\u304B\u3002\u5927\u5668\u3058\u3083\u306E\u3046\u3002"
+    tsuihouMsg: "\u305D\u308D\u305D\u308D\u5929\u4E0B\u76D7\u308A\u306B\u623B\u308D\u3046\u304B\u3068\u601D\u3063\u3066\u8FFD\u3063\u305F\u6298\u3001\u3061\u3087\u3046\u3069\u826F\u304B\u3063\u305F\u308F\u3044\u3002"
+    senpouMsg: "\u7A81\u8CAB\u3058\u3083\u3042\uFF01\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Takanobu Ryuzouji
+    touyouMsgEng: Oh you want to hire the bear of Hizen. Can you use me well?
+    tsuihouMsgEng: OK, I'm gonna conquer the whole country from now on.
+    senpouMsgEng: 'Follow me! '
+  - id: 54
+    name: "\u6CE2\u591A\u91CE\u79C0\u6CBB"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Hideharu Hatano
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Commence attack!
+  - id: 55
+    name: "\u5317\u7560\u5177\u6559"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u4E00\u306E\u592A\u5200\u306E\u79D8\u4F1D\u3092\u3082\u3063\u3066\u6C5D\u304C\u5263\u3068\u306A\u308D\u3046\u3002"
+    tsuihouMsg: "\u4E00\u306E\u592A\u5200\u306F\u4E0D\u8981\u3058\u3083\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u304A\u308A\u3083\u3042\uFF01\u64AB\u3067\u5207\u308A\u3058\u3083\u3042\uFF01"
+    nameEng: Tomonori Kitabatake
+    touyouMsgEng: 'I will be your sword by secret of first sword style. '
+    tsuihouMsgEng: You don't want my first sword style? You must regret.
+    senpouMsgEng: Come on! No mercy!
+  - id: 56
+    name: "\u5B97\u7FA9\u8ABF"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u674E\u6C0F\u671D\u9BAE\u3068\u306E\u4EA4\u6E09\u306F\u7FA9\u8ABF\u306B\u304A\u4EFB\u305B\u3092\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Yoshishige Sou
+    touyouMsgEng: Please rely on me to negotiate with Rishi Korean.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Commence attack!
+  - id: 57
+    name: "\u771F\u7530\u4FE1\u7E41"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u6B66\u58EB\u3068\u3057\u3066\u9762\u76EE\u3092\u7ACB\u3066\u3066\u9802\u3044\u305F\u6069\u3001\u6C7A\u3057\u3066\u5FD8\u308C\u306F\u3057\u307E\u305B\u306C\u305E\u3002"
+    tsuihouMsg: "\u5B9A\u3081\u306A\u304D\u6D6E\u4E16\u3086\u3048\u3001\u4E00\u65E5\u5148\u306E\u3053\u3068\u306A\u3069\u79C1\u306F\u5206\u304B\u308A\u307E\u305B\u306C\u3002"
+    senpouMsg: "\u5F80\u304F\u305E\u3001\u65E5\u306E\u672C\u4E00\u306E\u5175\u5171\u3088\u3002\u7A81\u6483\u3058\u3083\u3042\uFF01"
+    nameEng: Yukimura Sanada
+    touyouMsgEng: Thank you for giving me the place to die as samurai.
+    tsuihouMsgEng: 'No one knows future in such the world. '
+    senpouMsgEng: Charge, ALL!! Follow me No.1 soldiers in this island!
+  - id: 58
+    name: "\u658E\u85E4\u671D\u4FE1"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u8D8A\u5F8C\u306E\u937E\u9997\u304C\u304A\u4F9B\u3044\u305F\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u8D8A\u5F8C\u306E\u937E\u9997\u306F\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u8D8A\u5F8C\u306E\u937E\u9997\u304C\u624B\u306E\u8005\u3088\u3001\u62BC\u3057\u51FA\u305B\uFF01"
+    nameEng: Tomonobu Saito
+    touyouMsgEng: I'm syoki who is god reputed to have the power of driving away the
+      God of Plague.
+    tsuihouMsgEng: Wouldn't you need syoki? You must regret!
+    senpouMsgEng: My samurai of Syoki! Attack!
+  - id: 59
+    name: "\u5C71\u770C\u660C\u666F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u6E90\u56DB\u90CE\u306E\u8D74\u304F\u3068\u3053\u308D\u6575\u306A\u3057\u306B\u3054\u3056\u308B\uFF01"
+    tsuihouMsg: "\u3055\u308C\u3070\u6226\u5834\u306B\u3066\u5408\u9593\u898B\u3048\u307E\u3057\u3087\u3046\u305E\u3002\u5FA1\u514D\uFF01"
+    senpouMsg: "\u4E16\u306B\u805E\u3053\u3048\u305F\u5C71\u770C\u968A\u3088\uFF01\u6575\u3092\u8E42\u8E99\u305B\u3088\uFF01"
+    nameEng: Masakage Yamagata
+    touyouMsgEng: Haha, No enemy in front of me.
+    tsuihouMsgEng: I hope to see you again at battle field!
+    senpouMsgEng: Listen Yamagata children!  No mercy!
+  - id: 60
+    name: "\u8606\u540D\u76DB\u6C0F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u7A81\u6483\u3058\u3083\uFF01\u6575 \u4E00\u4EBA\u6B8B\u3089\u305A\u8E74\u6563\u3089\u305B\uFF01"
+    nameEng: Moriuji Ashina
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 61
+    name: "\u9AD8\u5742\u660C\u4FE1"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6B66\u7530\u56DB\u5929\u738B\u304C\u4E00\u4EBA\u3001\u9003\u3052\u5F3E\u6B63\u304C\u304A\u4ED5\u3048\u3044\u305F\u3059\uFF01"
+    tsuihouMsg: "\u9003\u3052\u5F3E\u6B63\u306F\u7121\u7528\u306B\u5FA1\u5EA7\u308A\u307E\u3059\u304B\u3002\u5FA1\u514D\uFF01"
+    senpouMsg: "\u56F2\u3081\u56F2\u3081\uFF01\u6575\u3092\u7D61\u3081\u3068\u308C\u3044\uFF01"
+    nameEng: Kousaka Masanobu
+    touyouMsgEng: I'm the big four of Takeda family. Dainjyo will support you.
+    tsuihouMsgEng: "Oh, am I good\u2010for\u2010nothing? See you."
+    senpouMsgEng: Lay siege to the enemy!
+  - id: 62
+    name: "\u4F0A\u9054\u6210\u5B9F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u515C\u306E\u6BDB\u866B\u304C\u5982\u304F\u6C7A\u3057\u3066\u5F8C\u308D\u306B\u9000\u304D\u307E\u305B\u306C\u305E\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Date Shigezane
+    touyouMsgEng: I won't withdraw like this hairy caterpillara. I'm glad to be a
+      member in your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 63
+    name: "\u9577\u5C3E\u653F\u666F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u4E0A\u6749\u4E00\u9580\u8846\u304C\u7B46\u982D\u3001\u304A\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u6E56\u306B\u6620\u308B\u6708\u304C\u7DBA\u9E97\u3058\u3083\u306E\u3046\u3002\u821F\u904A\u3073\u3067\u3082\u3057\u3088\u3046\u304B\u306E\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Masakage Nagao
+    touyouMsgEng: I'm a chief of Uesugi family. I can support you.
+    tsuihouMsgEng: Oh how beautiful moon in the lake...I'm gonna boating.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 64
+    name: "\u677F\u57A3\u4FE1\u65B9"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u8ACF\u8A2A\u8846\u304C\u52A0\u52E2\u3044\u305F\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\uFF01\u5FA1\u9928\u69D8\u306F\u67D0\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Nobukata Itagaki
+    touyouMsgEng: Hey, suwa party will assist you!
+    tsuihouMsgEng: What, my lord? Don't you need my power?
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 65
+    name: "\u99AC\u5834\u4FE1\u623F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u4E0D\u6B7B\u8EAB\u306E\u9B3C\u7F8E\u6FC3\u304C\u304A\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\uFF01\u5FA1\u9928\u69D8\u306F\u67D0\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Nobuharu Baba
+    touyouMsgEng: Immortal demon will help you.
+    tsuihouMsgEng: What, my lord? Don't you need my power?
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 66
+    name: "\u798F\u5CF6\u6B63\u5247"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u69CD\u50CD\u304D\u306F\u3053\u306E\u6B63\u5247\u306B\u304A\u4EFB\u305B\u3042\u308C\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\uFF01\u5FA1\u9928\u69D8\u306F\u67D0\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Masanori Fukushima
+    touyouMsgEng: Spearmen Masanori support you.
+    tsuihouMsgEng: What, my lord? Don't you need my power?
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 67
+    name: "\u5357\u90E8\u6674\u653F"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u7532\u6590\u6E90\u6C0F\u306E\u6D41\u308C\u3092\u6C72\u3080\u3053\u306E\u6674\u653F\u3092\u3054\u6240\u671B\u304B\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u8005\u5171\u3044\u304F\u305E\uFF01\u62BC\u3057\u51FA\u305B\uFF01"
+    nameEng: Harumasa Nanbu
+    touyouMsgEng: You want me Haruhisa who has blood of Genji.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Commence attack!
+  - id: 68
+    name: "\u76F8\u99AC\u7FA9\u80E4"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u76F8\u99AC\u306E\u529B\u304A\u898B\u305B\u3044\u305F\u3059\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u8005\u5171\u3044\u304F\u305E\uFF01\u62BC\u3057\u51FA\u305B\uFF01"
+    nameEng: Yoshitane Soma
+    touyouMsgEng: I will show you my power of Soma.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Commence attack!
+  - id: 69
+    name: "\u67FF\u5D0E\u666F\u5BB6"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u5929\u4E0B\u7121\u53CC\u306E\u525B\u52C7\u3092\u304A\u898B\u305B\u3044\u305F\u3059\uFF01"
+    tsuihouMsg: "\u3046\u306C\u3001\u6211\u304C\u529B\u304C\u304A\u6C17\u306B\u53EC\u3055\u308C\u307E\u305B\u306A\u3093\u3060\u304B\u3002"
+    senpouMsg: "\u8D70\u308C\u8D70\u308C\uFF01\u3053\u306E\u307E\u307E\u6575\u9663\u3081\u304C\u3051\u3066\u7A81\u3063\u8FBC\u3080\u305E\uFF01"
+    nameEng: Kageie Kakizaki
+    touyouMsgEng: I will show you my power. There won't be enemy in front of me.
+    tsuihouMsgEng: Um... Don't you need me?
+    senpouMsgEng: "Run run\uFF01Attack enemy line!"
+  - id: 70
+    name: "\u68EE\u9577\u53EF"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u9B3C\u6B66\u8535\u3001\u304A\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u3046\u306C\u3001\u4FFA\u3092\u653E\u308A\u51FA\u305D\u3046\u3066\u304B\uFF01\u6226\u5834\u3067\u5408\u9593\u898B\u3048\u308B\u306E\u3092\u697D\u3057\u307F\u306B\u3057\u3066\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u8599\u304E\u5012\u305B\uFF01"
+    nameEng: Nagayoshi Mori
+    touyouMsgEng: 'I demon Musashi will assist you. '
+    tsuihouMsgEng: 'You bastard!! Just you wait and see. '
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 71
+    name: "\u6BDB\u5C4B\u6B66\u4E45"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\uFF01\u9ED2\u7530\u4E8C\u5341\u56DB\u9A0E\u306E\u4E00\u9A0E\u3001\u6B66\u4E45\u304C\u304A\u4ED5\u3048\u81F4\u3059\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u79C1\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Takehisa Keya
+    touyouMsgEng: One of the Kuroda 24 samurai, Takehisa will support you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 72
+    name: "\u6700\u4E0A\u7FA9\u5B88"
+    rank: C
+    heisyu: KB
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Yoshimori Mogami
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Commence attack!
+  - id: 73
+    name: "\u771F\u7530\u660C\u5E78"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u8868\u88CF\u6BD4\u8208\u306E\u8005\u3068\u547C\u3070\u308C\u305F\u308F\u3057\u3092\u767B\u7528\u3059\u308B\u3068\u306A\uFF1F\u4F55\u3092\u8B00\u308B\u304B\u697D\u3057\u307F\u3058\u3083\u306E\u3046\u3002"
+    tsuihouMsg: "\u5FA1\u5C4B\u5F62\u69D8\u306E\u773C\u305F\u3089\u3093\u3068\u81EA\u8CA0\u3057\u3066\u304D\u305F\u306E\u3058\u3083\u304C\u306E\u3046\u3002"
+    senpouMsg: "\u523B\u3058\u3083\u3001\u72FC\u7159\u3092\u3042\u3052\u3044\uFF01\u307E\u3093\u307E\u3068\u7B56\u306B\u5D4C\u308A\u304A\u3063\u305F\u308F\u3002"
+    nameEng: Masayuki Sanada
+    touyouMsgEng: Oh, you wanna hire me called as cowardice? I'm looking forward to
+      plotting someting.
+    tsuihouMsgEng: Um... Don't you need me?
+    senpouMsgEng: It's time to light a signal fire. They were caught in our trap.
+  - id: 74
+    name: "\u658E\u85E4\u9053\u4E09"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u7F8E\u6FC3\u306E\u876E\u3092\u4F7F\u3046\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u876E\u306E\u6BD2\u306F\u3058\u308F\u308A\u3068\u52B9\u304D\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u876E\u304C\u6BD2\u306F\u52B9\u304D\u904E\u304E\u307E\u3057\u305F\u304B\u306A\u3002\u307E\u305F\u3069\u3053\u305E\u3067\u56FD\u76D7\u308A\u306B\u3067\u3082\u8208\u3058\u308B\u304B\u306E\u3046\u3002"
+    senpouMsg: "\u305D\u3053\u304C\u6426\u3081\u624B\u3058\u3083\u3042\uFF01\u4ECA\u305E\u4E00\u70B9\u96C6\u4E2D\u3001\u5207\u308A\u5D29\u305B\uFF01"
+    nameEng: Dosan Saito
+    touyouMsgEng: Um, You want to use poisoned snake of Mino. Can you build an antibody
+      to me?
+    tsuihouMsgEng: Is my poison too strong for you? So I'm going to make a new plan
+      to rob new country...
+    senpouMsgEng: Attack in the rear! Now focus on one point!
+  - id: 75
+    name: "\u6D25\u8EFD\u70BA\u4FE1"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\uFF01\u5929\u904B\u6642\u81F3\u308A\u3001\u672C\u65E5\u99B3\u305B\u53C2\u3058\u307E\u3057\u305F\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u304F\u304F\u3001\u826F\u3044\u5869\u6885\u3058\u3083\u3002\u614C\u3066\u308B\u69D8\u304C\u6D6E\u304B\u3076\u308F\uFF01"
+    nameEng: Tamenobu Tsugaru
+    touyouMsgEng: It's my humble preasure. It seems Fortune has not yet deserted me.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Haha, they are in panic!
+  - id: 76
+    name: "\u670D\u90E8\u6B63\u6210"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u3053\u306E\u9B3C\u534A\u8535\u3001\u4F0A\u8CC0\u8846\u306E\u6271\u3044\u306F\u304A\u4EFB\u305B\u4E0B\u3055\u308C\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u306F\u3063\u306F\u3001\u5FCD\u306E\u652A\u4E71\u304C\u52B9\u3044\u3066\u304A\u308B\u308F\uFF01"
+    nameEng: Masanari Hattori
+    touyouMsgEng: Demon Hanzo, I'm good at ninja style.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Haha, there is panic caused by ninja!
+  - id: 77
+    name: "\u5B87\u4F50\u7F8E\u5B9A\u6E80"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u8D8A\u5F8C\u6D41\u8ECD\u5B66\u306F\u5FC5\u305A\u3084\u5FA1\u5C4B\u5F62\u69D8\u306E\u304A\u5F79\u306B\u7ACB\u3061\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8106\u3044\u306E\u3046\uFF01\u624B\u306B\u3068\u308B\u3088\u3046\u306B\u52D5\u304D\u304C\u5206\u304B\u308B\u308F\u3002"
+    nameEng: Sadamitsu Usami
+    touyouMsgEng: my echigo army method must support you, lord.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: They are wimp! They are in our hand!
+  - id: 78
+    name: "\u5C71\u4E2D\u5E78\u76DB"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\u3002\u9650\u308A\u3042\u308B\u8EAB\u306E\u529B\u3092\u8A66\u3057\u305F\u304F\u5B58\u3058\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u9858\u308F\u304F\u3070\u6211\u306B\u4E03\u96E3\u516B\u82E6\u3092\u4E0E\u3048\u305F\u307E\u3048\u3002"
+    senpouMsg: "\u4E3B\u3089\u306F\u6B7B\u5175\u3058\u3083\uFF01\u7A81\u3051\u3044\uFF01\u7A81\u3051\u3044\uFF01"
+    nameEng: Yukimori Yamanaka
+    touyouMsgEng: I take an oath of allegiance to you. I want to try my destiny in
+      your family.
+    tsuihouMsgEng: May I be given seven troubles and eight agonies!
+    senpouMsgEng: You are dead soldiers! Go Go!
+  - id: 79
+    name: "\u5317\u6761\u6C0F\u653F"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u3053\u306E\u65B0\u4E5D\u90CE\u3001\u5317\u6761\u4E00\u9580\u3088\u308A\u99B3\u305B\u53C2\u3058\u307E\u3057\u305F\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u3044\u304F\u305E\u3001\u7686\u306E\u3082\u306E\uFF01\u529F\u540D\u3092\u52DD\u3061\u3068\u308C\u3044\uFF01"
+    nameEng: Ujimasa Houjyo
+    touyouMsgEng: Thank you lord. I came from Hojyo family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Let's go! Distinguish yourself!
+  - id: 80
+    name: "\u658E\u85E4\u5229\u4E09"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Toshimitsu Saito
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 81
+    name: "\u6BCD\u91CC\u53CB\u4FE1"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\uFF01\u9ED2\u7530\u4E8C\u5341\u56DB\u9A0E\u306E\u4E00\u9A0E\u3001\u53CB\u4FE1\u304C\u304A\u4ED5\u3048\u81F4\u3059\uFF01"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Tomonobu Mori
+    touyouMsgEng: It's my humble preasure. The one of Kuroda 24 samurai, Tomonobu
+      will help you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 82
+    name: "\u539F\u864E\u80E4"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Toratane Hara
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 83
+    name: "\u4E09\u6751\u5BB6\u89AA"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Iechika Mimura
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 84
+    name: "\u5EF6\u6CA2\u6E80\u5EF6"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Mitsunobu Nobesawa
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 85
+    name: "\u5409\u5F18\u7D71\u5E78"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Muneyuki Yoshihiro
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 86
+    name: "\u8D64\u5C3E\u6E05\u7DB1"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6D45\u4E95\u4E09\u5C06\u304C\u4E00\u89D2\u3001\u3053\u306E\u8D64\u5C3E\u6E05\u7DB1\u3001\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Kiyotsuna Akao
+    touyouMsgEng: One of the Azai big three, Akai will support you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 87
+    name: "\u5E73\u91CE\u9577\u6CF0"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Nagayasu Hirano
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 88
+    name: "\u4F0A\u6771\u7FA9\u7950"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Yoshisuke Ito
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 89
+    name: "\u771F\u67C4\u76F4\u9686"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u771F\u67C4\u65AC\u308A\u306E\u5207\u308C\u5473\u3092\u304A\u898B\u305B\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u3082\u3046\u5C11\u3057\u5927\u592A\u5200\u306E\u5207\u308C\u5473\u3092\u304A\u898B\u305B\u3057\u305F\u304B\u3063\u305F\u304C\u2026\u3002"
+    senpouMsg: "\u7A81\u8CAB\uFF01\u8D70\u308C\u8D70\u308C\uFF01"
+    nameEng: Naotaka Magara
+    touyouMsgEng: It's my humble preasure. I can show you sharpness of magara sword.
+    tsuihouMsgEng: I wanted to show you my big sword more...
+    senpouMsgEng: 'Follow me! '
+  - id: 90
+    name: "\u5C0F\u5CF6\u8C9E\u8208"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u3053\u306E\u9B3C\u5C0F\u5CF6\u304C\u525B\u52C7\u3001\u3057\u304B\u3068\u304A\u898B\u305B\u3044\u305F\u3059\uFF01"
+    tsuihouMsg: "\u3046\u306C\u3001\u6211\u304C\u529B\u304C\u304A\u6C17\u306B\u53EC\u3055\u308C\u307E\u305B\u306A\u3093\u3060\u304B\u3002"
+    senpouMsg: "\u7A81\u8CAB\uFF01\u8D70\u308C\u8D70\u308C\uFF01"
+    nameEng: Sadaoki Kojima
+    touyouMsgEng: I will show you my poweful brave of demon Kojima.
+    tsuihouMsgEng: Um... Don't you need me?
+    senpouMsgEng: 'Follow me! '
+  - id: 91
+    name: "\u6CB3\u91CE\u901A\u5BA3"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u702C\u6238\u5185\u304C\u8005\u3069\u3082\u3001\u7119\u70D9\u7389\u3092\u6295\u3052\u3053\u3081\u3044\uFF01"
+    nameEng: Michinobu Kono
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Setouchi guys, throw the bombs!
+  - id: 92
+    name: "\u76CA\u7530\u5143\u7965"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Motonaga Masuda
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 93
+    name: "\u5CF6\u6D25\u7FA9\u5F18"
+    rank: S
+    heisyu: TP
+    touyouMsg: "\u9B3C\u5CF6\u6D25\u304C\u9244\u7832\u306E\u5A01\u529B\u3001\u5FA1\u89A7\u3058\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u6B7B\u306C\u3068\u304D\u306F\u3001\u6575\u306B\u5411\u304B\u3063\u3066\u6B7B\u306B\u305F\u3044\u3082\u306E\u3067\u3054\u308F\u3059\u3002"
+    senpouMsg: "\u6575\u4E2D\u7A81\u7834\uFF01\u925B\u5F3E\u306E\u5D50\u3092\u99B3\u8D70\u3057\u3066\u3084\u308C\u3044\uFF01"
+    nameEng: Yoshihiro Shimazu
+    touyouMsgEng: My power of matchlock will destroy enemy.
+    tsuihouMsgEng: I want to die against good enemy.
+    senpouMsgEng: Breakthrough! Fire!
+  - id: 94
+    name: "\u76F4\u6C5F\u517C\u7D9A"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u5FA1\u5C4B\u5F62\u69D8\u306B\u5831\u3044\u308B\u3079\u304F\u3001\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u8987\u3092\u3068\u306A\u3048\u308B\u306E\u3067\u3042\u308C\u3070\u3001\u5929\u306E\u6642\u3001\u5730\u306E\u5229\u3001\u4EBA\u306E\u548C\u304C\u809D\u8981\u3067\u3059\u305E\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Kanetsugu Naoe
+    touyouMsgEng: I will devote my life to you lord.
+    tsuihouMsgEng: 'If you are going to be champions, Please keep you mind that Luck
+      and Advantage, Peace are improtant '
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 95
+    name: "\u6C0F\u5BB6\u5B88\u68DF"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u8599\u304E\u6255\u3048\u3044\uFF01"
+    nameEng: Morimune Ujiie
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 96
+    name: "\u6D66\u4E0A\u5B97\u666F"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u8599\u304E\u6255\u3048\u3044\uFF01"
+    nameEng: Munekage Urakami
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 97
+    name: "\u6885\u6D25\u61B2\u5FE0"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u8599\u304E\u6255\u3048\u3044\uFF01"
+    nameEng: Noritada Umezu
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 98
+    name: "\u6C34\u539F\u89AA\u61B2"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u8599\u304E\u6255\u3048\u3044\uFF01"
+    nameEng: Chikanori Suibara
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 99
+    name: "\u7247\u6850\u4E14\u5143"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u8599\u304E\u6255\u3048\u3044\uFF01"
+    nameEng: Katsumoto Katagiri
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 100
+    name: "\u4E39\u7FBD\u9577\u91CD"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Nagashige Niwa
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 101
+    name: "\u5927\u5D0E\u7FA9\u76F4"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yoshinao Osaki
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 102
+    name: "\u5927\u53CB\u7FA9\u7D71"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yoshimune Otomo
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 103
+    name: "\u5B89\u6771\u611B\u5B63"
+    rank: A
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u7119\u70D9\u7389\u3092\u5FA1\u898B\u821E\u3044\u3057\u3066\u3084\u308C\u3044\uFF01"
+    nameEng: Chikasue Ando
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: ' Throw all bombs!'
+  - id: 104
+    name: "\u5B87\u90FD\u5BAE\u5E83\u7DB1"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: HIrotsuna Utsunomiya
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 105
+    name: "\u6CB3\u4E0A\u5B89\u52DD"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u304B\u304F\u3082\u4E01\u5BE7\u306A\u304A\u8A98\u3044\u3002\u559C\u3093\u3067\u4ED5\u5B98\u3044\u305F\u3059\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Yasukatsu Kawakami
+    touyouMsgEng: Thank you for your polite invitation. I'll serve as your officer.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 106
+    name: "\u592A\u7530\u9053\u704C"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u6442\u6D25\u6E90\u6C0F\u306E\u6D41\u308C\u3092\u6C72\u3080\u3053\u306E\u9053\u704C\u3001\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u5F53\u65B9\u6EC5\u4EA1\u3001\u6211\u7121\u3057\u3067\u5F53\u5BB6\u306B\u672A\u6765\u306F\u306A\u3044\u3067\u3059\u305E\uFF01\u3086\u3081\u3086\u3081\u5FD8\u308C\u306A\u3055\u308B\u306A\u3002"
+    senpouMsg: "\u306A\u304D\u8EAB\u3068\u601D\u3044\u77E5\u3089\u305A\u3070\u3001\u547D\u306A\u3069\u60DC\u3057\u304F\u306F\u306A\u304B\u308D\u3046\uFF01\u9032\u3081\u9032\u3081\uFF01"
+    nameEng: Dokan Ota
+    touyouMsgEng: 'I have a blood of Genji of Settsu. Dokan take an oath of allegiance
+      to you. '
+    tsuihouMsgEng: You won't have a good future without me.Never doubt this oracle.
+    senpouMsgEng: Sacrifice your life! Charge, ALL!!
+  - id: 107
+    name: "\u5317\u6761\u65E9\u96F2"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u307B\u3046\u3001\u6BD2\u3092\u6562\u3048\u3066\u98F2\u3080\u899A\u609F\u304C\u304A\u6709\u308A\u304B\u3002\u5929\u4E0B\u4EBA\u306E\u76F8\u3067\u3059\u306E\u3046\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u3058\u3083\u3001\u4ECA\u5C11\u3057\u3053\u306E\u5BB6\u3092\u4E57\u3063\u53D6\u308C\u305F\u3082\u306E\u3092\u2026\u3002\u306F\u3063\u306F\u3001\u547D\u62FE\u3044\u3057\u307E\u3057\u305F\u306E\u3046\u3002"
+    senpouMsg: "\u6575\u306E\u7D50\u675F\u3082\u8106\u3044\u306E\u3046\u3001\u7C21\u5358\u306B\u5207\u308A\u5D29\u305B\u308B\u308F\u3002"
+    nameEng: Soun Houjyo
+    touyouMsgEng: Oh can you drink poison? You are very tolerant.
+    tsuihouMsgEng: Nearly there! I could take over this family if I had a time more.
+    senpouMsgEng: It's easy to cut the enemy's line!
+  - id: 108
+    name: "\u6238\u6B21\u9451\u9023"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u9053\u306B\u843D\u3061\u305F\u96EA\u304C\u6D88\u3048\u308B\u307E\u3067\u5834\u6240\u3092\u5909\u3048\u306C\u3088\u3046\u306B\u3001\u6B7B\u306C\u307E\u3067\u7BC0\u3092\u66F2\u3052\u305A\u5C3D\u304F\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u7570\u65B9\u306B\u3001\u5FC3\u5F15\u304F\u3053\u3068\u306F\u3054\u3056\u3044\u307E\u305B\u306C\u304C\u2026\u3002\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002"
+    senpouMsg: "\u3048\u3044\u3068\u3046\u3001\u3048\u3044\u3068\u3046\uFF01\u9032\u3081\u3001\u6211\u304C\u512A\u308C\u8005\u3069\u3082\u3088\uFF01"
+    nameEng: Akitsura Bekki
+    touyouMsgEng: I will fight to death for you, my lord.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Eito, Eito! Go Go My son!
+  - id: 109
+    name: "\u4E0B\u9593\u983C\u5EC9"
+    rank: S
+    heisyu: TP
+    touyouMsg: "\u5927\u5742\u4E4B\u5DE6\u53F3\u4E4B\u5927\u5C06\u3068\u547C\u3070\u308C\u308B\u79C1\u3092\u52D5\u304B\u305D\u3046\u3068\u7533\u3059\u304B\u2026\u3002\u3088\u308D\u3057\u3044\u3001\u6C5D\u304C\u5263\u3068\u306A\u308D\u3046\u3002"
+    tsuihouMsg: "\u79C1\u3092\u91CE\u306B\u653E\u3064\u3068\u306F\u8C6A\u6C17\u3058\u3083\u306E\u3046\u3002\u6226\u5834\u306B\u3066\u5408\u9593\u898B\u3048\u305F\u3068\u304D\u306F\u899A\u609F\u53EC\u3055\u308C\u3088\u3002"
+    senpouMsg: "\u4ECF\u6575\u3092\u6BB2\u6EC5\u305B\u3088\uFF01\u8005\u5171\u3001\u6483\u3066\u3044\uFF01"
+    nameEng: Rairen Shimotsuma
+    touyouMsgEng: '...I can be your sword.'
+    tsuihouMsgEng: Oh, you want to discharge me? I hope to see you again in battle.
+    senpouMsgEng: Attack the enemy of Budda! Fire fire!
+  - id: 110
+    name: "\u9AD8\u6A4B\u7D71\u864E"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\uFF01\u3053\u306E\u7D71\u864E\u3001\u6BBF\u306B\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u5DE6\u69D8\u3067\u3054\u3056\u3044\u307E\u3059\u304B\u2026\u3002\u3067\u3059\u304C\u4ECA\u307E\u3067\u9802\u3044\u305F\u3054\u6069\u306F\u5FD8\u308C\u307E\u305B\u306C\u305E\u3002"
+    senpouMsg: "\u6575\u306E\u306A\u3055\u3093\u3068\u3059\u308B\u3068\u3053\u308D\u3092\u3001\u5148\u3093\u3058\u3066\u6211\u306A\u305B\u3070\u3001\u52DD\u305F\u3056\u308B\u3054\u3068\u306A\u3057\uFF01"
+    nameEng: Munetora Takahashi
+    touyouMsgEng: It's my humble preasure. Muneora will support you.
+    tsuihouMsgEng: I am indebted to you. Please call me if you want.
+    senpouMsgEng: Lay siege to the enemy! It's our victory!
+  - id: 111
+    name: "\u9AD8\u6A4B\u93AE\u7A2E"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u6B66\u5BB6\u306B\u751F\u307E\u308C\u305F\u8005\u3068\u3057\u3066\u6069\u3092\u5FD8\u308C\u308B\u3082\u306E\u306F\u9CE5\u7363\u4EE5\u4E0B\uFF01\u6B7B\u3059\u3068\u3082\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u5DE6\u69D8\u3067\u3054\u3056\u3044\u307E\u3059\u304B\u2026\u3002\u3067\u3059\u304C\u4ECA\u307E\u3067\u9802\u3044\u305F\u3054\u6069\u306F\u5FD8\u308C\u307E\u305B\u306C\u305E\u3002"
+    senpouMsg: "\u3053\u3053\u3092\u6B7B\u5834\u6240\u3068\u5B9A\u3081\u305F\u305E\uFF01\u4E00\u8DB3\u3082\u5F15\u9000\u3089\u305A\u3001\u6226\u3048\u3044\uFF01"
+    nameEng: Shigetane Takahashi
+    touyouMsgEng: I will follow the busido style. I must take an oath of allegiance
+      to you even I will die.
+    tsuihouMsgEng: I am indebted to you. Please call me if you want.
+    senpouMsgEng: I set here is the place to die! Commence attack!
+  - id: 112
+    name: "\u5409\u5DDD\u5143\u6625"
+    rank: S
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u4E0D\u6557\u306E\u5409\u5DDD\u304C\u3054\u52A9\u529B\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u3053\u306E\u5409\u5DDD\u3092\u653E\u3089\u308C\u308B\u3068\u306F\u2026\u3002\u4F55\u3068\u3082\u52FF\u4F53\u7121\u3044\u3053\u3068\u3092\u3057\u307E\u3057\u305F\u306A\u3002"
+    senpouMsg: "\u8005\u3069\u3082\u4E00\u606F\u306B\u99C6\u3051\u3088\uFF01\u5409\u5DDD\u306E\u540D\u3092\u77E5\u3089\u3057\u3081\u3088\uFF01"
+    nameEng: Motoharu Kikkawa
+    touyouMsgEng: Undefeated Kikkawa here. I will assist you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Run! Perform your great feat!
+  - id: 113
+    name: "\u4E95\u4F0A\u76F4\u653F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6226\u56FD\u5C48\u6307\u306E\u4E95\u4F0A\u306E\u8D64\u5099\u3048\u304C\u3054\u52A9\u529B\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8D64\u5099\u3048\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u5F8C\u6094\u3044\u305F\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u4E95\u4F0A\u306E\u8D64\u5099\u3048\u306E\u5F37\u3055\u3001\u95BB\u9B54\u306B\u4F1D\u3048\u3088\uFF01\u9032\u3081\u9032\u3081\uFF01"
+    nameEng: Naomasa Ii
+    touyouMsgEng: Our Ii's red armor is the proof of the best samurai. I will support
+      you.
+    tsuihouMsgEng: 'You bastard!! Just you wait and see. '
+    senpouMsgEng: Red devil of Ii army! Please say hello to Enma god of hell.
+  - id: 114
+    name: "\u5927\u8C37\u5409\u7D99"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u3053\u306E\u5409\u7D99\u306B\u904E\u5206\u306A\u304A\u8A98\u3044\u2026\u3001\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u304A\u306E\u308C\uFF01\u4EBA\u9762\u7363\u5FC3\u306A\u308A\u3002\u4E09\u5E74\u306E\u9593\u306B\u795F\u308A\u3092\u306A\u3055\u3093\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01\u9996\u7D1A\u3092\u6319\u3052\u3066\u624B\u67C4\u3068\u305B\u3044\uFF01"
+    nameEng: Yoshitsugu Otani
+    touyouMsgEng: Thank you for your invitation. I take an oath of allegiance to you.
+    tsuihouMsgEng: You bear the semblance of a man, but have the heart of a beast!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 115
+    name: "\u5B87\u559C\u591A\u76F4\u5BB6"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u307B\u3046\u3001\u6BD2\u3092\u98DF\u3089\u3046\u899A\u609F\u304C\u304A\u6709\u308A\u304B\u3002\u3053\u306E\u76F4\u5BB6\u3001\u6BBF\u306E\u5927\u5668\u306B\u60DA\u308C\u307E\u3057\u305F\u305E\u3002"
+    tsuihouMsg: "\u304F\u3063\u2026\u3042\u3068\u5C11\u3057\u3060\u3063\u305F\u306E\u306B\u306E\u3046\u2026\u3002"
+    senpouMsg: "\u304F\u304F\u304F\u3001\u601D\u3046\u305F\u3068\u304A\u308A\u306B\u52D5\u304D\u304A\u308B\u308F\u3002\u6109\u5FEB\u3058\u3083\u306E\u3046\u3002"
+    nameEng: Naoie Ukita
+    touyouMsgEng: Oh can you take a poison? Naoie swear my loyality to you.
+    tsuihouMsgEng: Um...Close! So close to my glory!
+    senpouMsgEng: hahaha, they are wrapped around my little finger!
+  - id: 116
+    name: "\u8D64\u4E95\u76F4\u6B63"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u4E39\u6CE2\u306E\u8D64\u9B3C\u3053\u3068\u8D64\u4E95\u76F4\u6B63\u304C\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u8D64\u9B3C\u306E\u529B\u898B\u305B\u3066\u304F\u308C\u308B\u308F\uFF01"
+    nameEng: Naomasa Akai
+    touyouMsgEng: Naomasa, I'm a red demon of Tanba will support you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Follow me! I'm red demon!
+  - id: 117
+    name: "\u5C0F\u65E9\u5DDD\u9686\u666F"
+    rank: S
+    heisyu: YM
+    touyouMsg: "\u6BDB\u5229\u4E21\u5DDD\u304C\u4E00\u7AEF\u3001\u3053\u306E\u9686\u666F\u304C\u52A0\u52E2\u81F4\u3057\u307E\u3059\u308B\uFF01"
+    tsuihouMsg: "\u4E89\u3044\u306F\u6B32\u3088\u308A\u8D77\u3053\u308B\u3082\u306E\u3002\u6B32\u3092\u3084\u3081\u3066\u7FA9\u3092\u5B88\u308B\u306A\u3089\u3070\u3001\u4E0D\u548C\u306F\u8D77\u304D\u307E\u305B\u306C\u305E\u3002"
+    senpouMsg: "\u5371\u3046\u304D\u306F\u614E\u307F\u3001\u8DDD\u96E2\u3092\u53D6\u3063\u3066\u3054\u7119\u70D9\u7389\u3092\u5B58\u5206\u306B\u304F\u3089\u308F\u305B\u3066\u3084\u308C\u3044\uFF01"
+    nameEng: Takakage Kobayakawa
+    touyouMsgEng: The one of the wing of Mouri family, Takakage will support you.
+    tsuihouMsgEng: Struggle caused by greed.  You have to  respect justice by swallowing
+      your greed.
+    senpouMsgEng: Hey guys it's time to theow the bombs!
+  - id: 118
+    name: "\u6238\u6CA2\u76DB\u5B89"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Moriyasu Tozawa
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 119
+    name: "\u91CC\u898B\u7FA9\u582F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u4EC1\u8005\u5FC5\u305A\u52C7\u3042\u308A\u3001\u308F\u3057\u306F\u7C98\u308A\u5F37\u3044\u3067\u3059\u305E\u3002\u304A\u4F7F\u3044\u4E0B\u3055\u308C\uFF01"
+    tsuihouMsg: "\u3053\u306E\u91CC\u898B\u7FA9\u582F\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u3068\u306F\u2026\u3002\u8C6A\u6C17\u3067\u3059\u306E\u3046\u3002"
+    senpouMsg: "\u306F\u306F\u306F\u3001\u7119\u70D9\u7389\u306E\u571F\u7523\u3058\u3083\uFF01\u5B58\u5206\u306B\u3042\u3058\u304A\u3046\u3066\u3082\u3089\u3048\u3044\uFF01"
+    nameEng: Yoshitaka Satomi
+    touyouMsgEng: I'm so tenacuous samurai. Please order me to attack enemy.
+    tsuihouMsgEng: 'You bastard!! Just you wait and see. '
+    senpouMsgEng: It's our souvenir bombs! Enjoy!
+  - id: 120
+    name: "\u9ED2\u7530\u5B5D\u9AD8"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u6211\u304C\u77E5\u6075\u3092\u304A\u4F7F\u3044\u4E0B\u3055\u308C\u3070\u3001\u305D\u308C\u306B\u52DD\u308B\u559C\u3073\u306F\u5FA1\u5EA7\u3044\u307E\u305B\u306C\u3002"
+    tsuihouMsg: "\u4F55\u3068\u3001\u6211\u304C\u77E5\u6075\u306F\u4E0D\u8981\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u5F8C\u6094\u3044\u305F\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u52DD\u6557\u306F\u5408\u6226\u304C\u59CB\u307E\u308B\u524D\u306B\u6C7A\u307E\u3063\u3066\u3044\u308B\u3082\u306E\u3088\u2026\u3002\u5408\u56F3\u3092\u9001\u308C\u3002"
+    nameEng: Yoshitaka Kuroda
+    touyouMsgEng: I'll be your brain of your family. Please rely on my wisdom.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Preparation is all, and it's certain that we will win... Order now.
+  - id: 121
+    name: "\u5CF6\u6D25\u7FA9\u4E45"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u5CF6\u6D25\u5144\u5F1F\u304C\u9577\u5144\u3001\u3053\u306E\u7FA9\u4E45\u304C\u529B\u6DFB\u3048\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u6211\u304C\u529B\u306F\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\u2026\u3002\u4ED6\u306E\u5BB6\u81E3\u306B\u611B\u60F3\u3092\u5C3D\u304B\u3055\u308C\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Yoshihisa Simazu
+    touyouMsgEng: I'm head of Shimazu brother, Yoshihisa will support you.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 122
+    name: "\u9234\u6728\u91CD\u610F"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u96D1\u8CC0\u306E\u529B\u304A\u898B\u305B\u3044\u305F\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u96D1\u8CC0\u306E\u529B\u306F\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u6575\u306B\u56DE\u3059\u3068\u3069\u3046\u306A\u308A\u307E\u3059\u304B\u306A\u2026\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Shigeoki Suzuki
+    touyouMsgEng: I will show you my power of Saiga.
+    tsuihouMsgEng: Um... Don't you need the power of Saiga family?
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 123
+    name: "\u85E4\u5802\u9AD8\u864E"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u3053\u306E\u9AD8\u864E\u3001\u4E3B\u541B\u306F\u9078\u3073\u7533\u3059\u304C\u3001\u5FC5\u305A\u529F\u7E3E\u3092\u6319\u3052\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u4E0A\u306B\u7ACB\u3064\u4EBA\u9593\u306B\u306F\u4E94\u5FB3\u304C\u5FC5\u8981\u3067\u3059\u305E\u3002"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Takatora Todo
+    touyouMsgEng: Takatora must leave my credit of battle for you.
+    tsuihouMsgEng: Five virtues are required for lord.
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 124
+    name: "\u5341\u6CB3\u4E00\u5B58"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u4E09\u597D\u4E00\u9580\u304C\u4E00\u4EBA\u3001\u3053\u306E\u9B3C\u5341\u6CB3\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u3053\u306E\u9B3C\u5341\u6CB3\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u9B3C\u5341\u6CB3\u306E\u914D\u4E0B\u3069\u3082\uFF01\u6575\u306F\u5F31\u5175\u305E\u3001\u7A81\u3051\u3044\uFF01\u7A81\u3051\u3044\uFF01"
+    nameEng: Kazumasa Sogo
+    touyouMsgEng: One of the membr of Miyoshi family, I can support you.
+    tsuihouMsgEng: You bastard! You must need me Demon Sogo.
+    senpouMsgEng: 'Listen Demon Sogo''s samurai! Enemy is so week! '
+  - id: 125
+    name: "\u5409\u826F\u89AA\u8C9E"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u9577\u5B97\u6211\u90E8\u4E00\u9580\u304C\u4E00\u4EBA\u3001\u3053\u306E\u5409\u826F\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u4E3B\u3089\u306F\u6B7B\u5175\u3058\u3083\uFF01\u7A81\u3051\u3044\uFF01\u7A81\u3051\u3044\uFF01"
+    nameEng: Chikasada Kira
+    touyouMsgEng: The one of Cyosokabe family, Kira will support you.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: You are dead army! Go Go!
+  - id: 126
+    name: "\u65B0\u7D0D\u5FE0\u5143"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u5927\u6307\u6B66\u8535\u3001\u5FC5\u305A\u3084\u6BBF\u306E\u304A\u5F79\u306B\u7ACB\u3061\u7533\u3059\uFF01"
+    tsuihouMsg: "\u3055\u305E\u306A\u6625 \u3064\u308C\u306A\u304D\u8001\u3068 \u304A\u3082\u3046\u3089\u3093
+      \u3053\u3068\u3057\u3082\u82B1\u306E \u3042\u3068\u306B\u6B8B\u308C\u3070"
+    senpouMsg: "\u6B66\u8535\u306E\u624B\u306E\u8005\u5171\u3088\uFF01\u6211\u3068\u5171\u306B\u7A81\u6483\u3059\u3079\u3057\uFF01\u3086\u304F\u305E\uFF01"
+    nameEng: Tadamoto Niro
+    touyouMsgEng: This big sword must support you.
+    tsuihouMsgEng: 'You bastard!! Just you wait and see. '
+    senpouMsgEng: Musashi's soldiers! Follow me!
+  - id: 127
+    name: "\u6E05\u6C34\u5B97\u6CBB"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u884C\u304F\u305E\uFF01\u99C6\u3051\u3066\u6575\u3092\u8CAB\u3051\u3044\uFF01"
+    nameEng: Muneharu Shimizu
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: 'Follow me! '
+  - id: 128
+    name: "\u571F\u5C90\u70BA\u983C"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u884C\u304F\u305E\uFF01\u99C6\u3051\u3066\u6575\u3092\u8CAB\u3051\u3044\uFF01"
+    nameEng: Tameyori Toki
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: 'Follow me! '
+  - id: 129
+    name: "\u5929\u7AE5\u983C\u9577"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6700\u4E0A\u516B\u696F\u304C\u4E00\u4EBA\u3001\u3053\u306E\u983C\u9577\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Yorinaga Tendo
+    touyouMsgEng: Yorinaga help you. I'm the one of the Mogami 8 shields.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 130
+    name: "\u6B66\u7530\u4FE1\u7E41"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6B66\u7530\u4E00\u9580\u304C\u4E00\u4EBA\u3001\u3053\u306E\u4FE1\u7E41\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Nobushige Takeda
+    touyouMsgEng: The one of the family of Takeda, Nobushige will help you.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 131
+    name: "\u9ED2\u5DDD\u6674\u6C0F"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Haruuji Kurokawa
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 132
+    name: "\u9577\u5B97\u6211\u90E8\u4FE1\u89AA"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u9577\u5B97\u6211\u90E8\u4E00\u9580\u304C\u4E00\u4EBA\u3001\u3053\u306E\u4FE1\u89AA\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u884C\u304F\u305E\uFF01\u99C6\u3051\u3066\u6575\u3092\u8CAB\u3051\u3044\uFF01"
+    nameEng: Nobuchika Cyosokabe
+    touyouMsgEng: The one of Cyosokabe family, Nobuchika will support you.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: 'Follow me! '
+  - id: 133
+    name: "\u672C\u9858\u5BFA\u6559\u5982"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u5357\u7121\u963F\u5F25\u9640\u4ECF\u3001\u6BBF\u306E\u304A\u5F79\u306B\u7ACB\u3061\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u4ECF\u306E\u7F70\u304C\u5F53\u305F\u308A\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u5357\u7121\u963F\u5F25\u9640\u4ECF\u3002\u304A\u304A\u3001\u5175\u306B\u529B\u304C\u623B\u3063\u305F\u305E\u3002"
+    nameEng: Kyonyo Honganji
+    touyouMsgEng: Nam Amida Butsu... I'll help you, loard.
+    tsuihouMsgEng: Oh, Buddha will give you punishment!
+    senpouMsgEng: Nam Ami Dabutsu. Oh it's a support of Budda!
+  - id: 134
+    name: "\u7A32\u8449\u4E00\u9244"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u306F\u3066\u3001\u3053\u306E\u9811\u56FA\u4E00\u5FB9\u3092\u4F7F\u3044\u3053\u306A\u305B\u307E\u3059\u304B\u306A\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u305D\u308C\u304C\u3057\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u52FF\u4F53\u306E\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u6575\u3092\u53E9\u3051\u3044\uFF01\u5207\u308A\u5D29\u305B\u3044\uFF01"
+    nameEng: Ittetsu Inaba
+    touyouMsgEng: I wonder if you can control me.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: 'Follow me! '
+  - id: 135
+    name: "\u9060\u85E4\u76F4\u7D4C"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u7A81\u304D\u5D29\u305B\uFF01"
+    nameEng: Naotsune Endo
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 136
+    name: "\u6210\u677E\u4FE1\u52DD"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u9F8D\u9020\u5BFA\u56DB\u5929\u738B\u304C\u4E00\u4EBA\u3001\u3053\u306E\u4FE1\u52DD\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u9244\u7832\u306E\u5A01\u529B\u5FA1\u898B\u305B\u3057\u3088\u3046\u3002\u4E00\u756A\u968A\u524D\u3078\u3001\u5C04\u3066\u3048\u3047\uFF01"
+    nameEng: Nobukatsu Narimatsu
+    touyouMsgEng: Nobukatsu the one of the Ryuzoji four devas will support you.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: I'll show you the power of gun! Commence fire!!
+  - id: 137
+    name: "\u6C5F\u91CC\u53E3\u4FE1\u5E38"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u9F8D\u9020\u5BFA\u56DB\u5929\u738B\u304C\u4E00\u4EBA\u3001\u3053\u306E\u4FE1\u5E38\u304C\u3054\u52A0\u52E2\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u884C\u304F\u305E\uFF01\u99C6\u3051\u3066\u6575\u3092\u8CAB\u3051\u3044\uFF01"
+    nameEng: Nobutsune Eriguchi
+    touyouMsgEng: Nobutsune the one of the Ryuzoji four devas will support you.
+    tsuihouMsgEng: What? Don't you need my power? You must regret to fire me.
+    senpouMsgEng: 'Follow me! '
+  - id: 138
+    name: "\u4E38\u76EE\u9577\u6075"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u305D\u308C\u304C\u3057\u306E\u30BF\u30A4\u6368\u6D41\u306F\u304D\u3063\u3068\u304A\u5F79\u306B\u7ACB\u3061\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\uFF01\u305D\u308C\u304C\u3057\u306E\u30BF\u30A4\u6368\u6D41\u306F\u5F37\u3046\u3054\u3056\u3044\u307E\u3059\u305E\uFF01"
+    senpouMsg: "\u8005\u5171\u3001\u30BF\u30A4\u6368\u6D41\u306E\u5999\u6280\u307F\u305B\u3066\u3084\u308C\u3044\uFF01\u7A81\u3051\u3044\uFF01"
+    nameEng: Nagayoshi Marume
+    touyouMsgEng: My Taisya style must help you!
+    tsuihouMsgEng: My Taisya style is strong, isn't it?
+    senpouMsgEng: Guys! Let's show our Spear Style!
+  - id: 139
+    name: "\u5800\u79C0\u653F"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u540D\u4EBA\u5800\u306E\u529B\u3001\u5B58\u5206\u306B\u767A\u63EE\u81F4\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u3053\u306E\u540D\u4EBA\u5800\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u3068\u306F\u3001\u3054\u4E71\u5FC3\u53EC\u3055\u308C\u305F\u304B\uFF01"
+    senpouMsg: "\u3088\u304F\u72D9\u3048\uFF01\u4ECA\u3058\u3083\u8005\u5171\u3001\u653E\u3066\uFF01"
+    nameEng: Hidemasa Hori
+    touyouMsgEng: It's my humble preasure. I will show you my power of master hori.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Open fire! fire! fire!
+  - id: 140
+    name: "\u7C73\u826F\u7950\u6B21"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Suketsugu Mera
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 141
+    name: "\u4E39\u7FBD\u9577\u79C0"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u7C73\u4E94\u90CE\u5DE6\u306E\u529B\u3001\u5B58\u5206\u306B\u767A\u63EE\u81F4\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u3053\u306E\u7C73\u4E94\u90CE\u5DE6\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u3068\u306F\u3001\u3054\u4E71\u5FC3\u53EC\u3055\u308C\u305F\u304B\uFF01"
+    senpouMsg: "\u3088\u304F\u72D9\u3048\uFF01\u4ECA\u3058\u3083\u8005\u5171\u3001\u653E\u3066\uFF01"
+    nameEng: Nagahide Niwa
+    touyouMsgEng: It's my humble preasure. I will show you my power of rice goroza.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Open fire! fire! fire!
+  - id: 142
+    name: "\u76F8\u99AC\u76DB\u80E4"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Moritane Soma
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 143
+    name: "\u5225\u6240\u9577\u6CBB"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Nagaharu Bessyo
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 144
+    name: "\u5927\u9053\u5BFA\u653F\u7E41"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u5927\u9053\u5BFA\u304C\u529B\u307F\u305B\u3066\u307F\u3044\uFF01\u3086\u304F\u305E\uFF01"
+    nameEng: Masashige Daidoji
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Guys! Let's show our Spear Style!
+  - id: 145
+    name: "\u72AC\u7AE5\u983C\u5B89"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u8599\u304E\u5012\u305B\uFF01"
+    nameEng: Yoriyasu Indo
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Charge, ALL!! Follow me!!
+  - id: 146
+    name: "\u4E03\u91CC\u983C\u5468"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yorichika Shichiri
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 147
+    name: "\u7C9F\u5C4B\u52DD\u4E45"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Katsuhisa Awaya
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 148
+    name: "\u7C7E\u4E95\u6559\u696D"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u4E39\u6CE2\u306E\u9752\u9B3C\u3053\u3068\u7C7E\u4E95\u6559\u696D\u304C\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u6483\u3058\u3083\u3042\uFF01\u9752\u9B3C\u306E\u529B\u898B\u305B\u3066\u304F\u308C\u308B\u308F\uFF01"
+    nameEng: Norinari Momii
+    touyouMsgEng: Blue demon of Tanba will support you.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Follow me! I'm blue demon!
+  - id: 149
+    name: "\u571F\u6301\u89AA\u6210"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Chikashige Tsuchimochi
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 150
+    name: "\u5357\u90E8\u5229\u76F4"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Toshinao Nanbu
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 151
+    name: "\u5C0F\u91CE\u5BFA\u8F1D\u9053"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Kagemichi Onodera
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 152
+    name: "\u5E73\u5CA1\u623F\u5B9F"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Fusazane Hiraoka
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 153
+    name: "\u52A0\u85E4\u5609\u660E"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u6C88\u52C7\u306E\u58EB\u3053\u3068\u3053\u306E\u52A0\u85E4\u3001\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u305E\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u69CD\u50CD\u304D\u306E\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u6C88\u52C7\u306E\u58EB\u306E\u9762\u76EE\u8E8D\u5982\u3058\u3083\u3001\u7119\u70D9\u7389\u3092\u304F\u3089\u308F\u305B\u3044\uFF01"
+    nameEng: Yoshiaki Kato
+    touyouMsgEng: It's my humble preasure. Silent samura Kato swears my loyality to
+      your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Throw our bombs!
+  - id: 154
+    name: "\u6C34\u8C37\u6B63\u6751"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Masamura Mizunoya
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 155
+    name: "\u6B63\u6728\u6642\u8302"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u3075\u3075\u3001\u7119\u70D9\u7389\u3092\u5B58\u5206\u306B\u304F\u3089\u3048\u3044\uFF01"
+    nameEng: Tokishige Masaki
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Haha, Throw the bombs!
+  - id: 156
+    name: "\u82B3\u8CC0\u9AD8\u5B9A"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Takasada Haga
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 157
+    name: "\u5C0F\u5E61\u4FE1\u8C9E"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Nobusada Obata
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 158
+    name: "\u4F50\u3005\u6210\u653F"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u4E09\u968E\u83C5\u7B20\u306B\u6065\u3058\u306C\u6211\u304C\u6B66\u52C7\u3001\u8EAB\u547D\u8CED\u3057\u3066\u767A\u63EE\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u304A\u306E\u308C\u3001\u6C7A\u3057\u3066\u8A31\u3055\u306C\u305E\uFF01\u6226\u5834\u306B\u3066\u5FC5\u305A\u305D\u306E\u9996\u8CB0\u3044\u53D7\u3051\u308B\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Narimasa Sassa
+    touyouMsgEng: My bravery, I will demonstrate with my life!
+    tsuihouMsgEng: 'You bastard!! Just you wait and see. '
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 159
+    name: "\u6210\u7530\u6C0F\u9577"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Ujinaga Narita
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 160
+    name: "\u5EF6\u539F\u666F\u80FD"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Kageyoshi Nobuhara
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 161
+    name: "\u548C\u7530\u60DF\u653F"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Koremasa Wada
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 162
+    name: "\u660E\u667A\u79C0\u6E80"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Hidemitsu Akechi
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 163
+    name: "\u767E\u6B66\u8CE2\u517C"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Tomokane Hyakutake
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 164
+    name: "\u8352\u6728\u6751\u91CD"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u305D\u308C\u304C\u3057\u306B\u5207\u308A\u53D6\u308A\u3092\u7533\u3057\u4ED8\u3051\u308C\u3070\u8EAB\u547D\u3092\u8CED\u3057\u3066\u93AE\u3081\u7533\u3059\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u3053\u306E\u6751\u91CD\u306F\u8981\u3089\u306C\u3068\uFF01\u540D\u7269\u306F\u6E21\u3057\u307E\u305B\u306C\u305E\uFF01"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Murashige Araki
+    touyouMsgEng: I don't avoid to risk my life to complete my mission.
+    tsuihouMsgEng: Are you sure banish Murashige? I won't give you any tea-things.
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 165
+    name: "\u795E\u4FDD\u9577\u8077"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Nagatomo Jinbou
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 166
+    name: "\u7A32\u5BCC\u7950\u76F4"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u7A32\u5BCC\u6D41\u7832\u8853\u306E\u529B\u91CF\u3092\u304A\u898B\u305B\u3044\u305F\u3057\u307E\u3059\u305E\uFF01"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u7A32\u5BCC\u6D41\u306E\u7832\u8853\u306F\u4E0D\u8981\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u7A32\u5BCC\u6D41\u7832\u8853\u306E\u529B\u3092\u898B\u305B\u3066\u307F\u3088\uFF01"
+    nameEng: Sukenao Inatomi
+    touyouMsgEng: I will support you by Inatomi gun style.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret
+      by Inatomi Gun Style!
+    senpouMsgEng: I'll show you the power of Inatomi gun style!
+  - id: 167
+    name: "\u904A\u4F50\u4FE1\u6559"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Nobunori Yusa
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 168
+    name: "\u677E\u4E95\u5EB7\u4E4B"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yasuyuki Matsui
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 169
+    name: "\u9577\u7D9A\u9023"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Tsugutsura Cyo
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 170
+    name: "\u7B52\u4E95\u9806\u6176"
+    rank: B
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Jyunkei Tsutsui
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 171
+    name: "\u6B66\u7530\u7FA9\u7D71"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yoshizumi Takeda
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 172
+    name: "\u5800\u5C3E\u5409\u6674"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Yoshiharu Horio
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 173
+    name: "\u4E2D\u6751\u6625\u7D9A"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Harutsugu Nakamura
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 174
+    name: "\u6E21\u8FBA\u5B88\u7DB1"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u3053\u306E\u69CD\u534A\u8535\u3001\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u69CD\u534A\u8535\u3092\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u307E\u3059\u304B\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u6211\u3089\u304C\u69CD\u306E\u5999\u6280\u307F\u305B\u3066\u307F\u3044\uFF01\u305D\u308C\u7A81\u3051\u3044\uFF01"
+    nameEng: Moritsuna Watanabe
+    touyouMsgEng: It's my humble preasure. I'm good at handling spear.
+    tsuihouMsgEng: Um... Don't you need me Spear Hanzo?
+    senpouMsgEng: Guys! Let's show our Spear Style!
+  - id: 175
+    name: "\u732A\u82D7\u4EE3\u76DB\u80E4"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Moritane Inawashiro
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 176
+    name: "\u68EE\u4E0B\u901A\u4E0E"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Michiyo Morishita
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 177
+    name: "\u6728\u9020\u5177\u653F"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Tomomasa Kodzukuri
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 178
+    name: "\u5BCC\u7530\u9686\u5B9F"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Takazane Tomita
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 179
+    name: "\u6C34\u8C37\u80E4\u91CD"
+    rank: B
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Taneshige Mizugai
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 180
+    name: "\u9ED2\u7530\u8077\u9686"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Mototaka Kuroda
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 181
+    name: "\u5CA9\u6210\u53CB\u901A"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Tomomichi Iwanari
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 182
+    name: "\u5927\u77F3\u667A\u4E45"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Tomohisa Oishi
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 183
+    name: "\u5C71\u540D\u8C4A\u5B9A"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Toyosada Yamana
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 184
+    name: "\u4E09\u6728\u9855\u7DB1"
+    rank: C
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Akitsuna Miki
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 185
+    name: "\u4E00\u8272\u7FA9\u6E05"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Yoshikiyo Isshiki
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 186
+    name: "\u7BE0\u539F\u9577\u623F"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Nagafusa Shinohara
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 187
+    name: "\u5E84\u70BA\u8CC7"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Tamesuke Syo
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 188
+    name: "\u5E73\u5CA9\u89AA\u5409"
+    rank: C
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6483\u3066\u3044\u3001\u6575\u3092\u8FD1\u3065\u304B\u305B\u308B\u306A\uFF01"
+    nameEng: Chikayoshi Hiraiwa
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Fire! Don't close to us!
+  - id: 189
+    name: "\u9AD8\u5C71\u53CB\u7167"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Tomoteru Takayama
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 190
+    name: "\u9577\u91CE\u85E4\u5B9A"
+    rank: C
+    heisyu: KB
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Fujisada Nagano
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 191
+    name: "\u4E00\u8272\u7FA9\u5E78"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Isshiki Yoshiyuki
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 192
+    name: "\u6E9D\u5C3E\u8302\u671D"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Shigetomo Mizoo
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 193
+    name: "\u795E\u4FDD\u9577\u57CE"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Naganari Jinbou
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 194
+    name: "\u5C3C\u5B50\u52DD\u4E45"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Katsuhisa Amago
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 195
+    name: "\u7560\u5C71\u7FA9\u7D9A"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u66F2\u76F4\u702C\u6BBF\u3088\u308A\u6559\u3048\u3066\u9802\u3044\u305F\u533B\u8853\u3058\u3083\u3002\u4F53\u3092\u4F11\u3081\u3044\u3002"
+    nameEng: Yoshitsugu Hatakeyama
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: It's medical technic by Kuseno master!
+  - id: 196
+    name: "\u65B0\u4E95\u7530\u9686\u666F"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Takakage Niita
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 197
+    name: "\u8D64\u677E\u6674\u653F"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Harumasa Akamatsu
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 198
+    name: "\u7560\u5C71\u9AD8\u653F"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Takamasa Hatakeyama
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 199
+    name: "\u5869\u8C37\u7FA9\u5B5D"
+    rank: C
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u7A81\u3051\u3044\u3001\u7A81\u3051\u3044\uFF01"
+    nameEng: Yoshitaka Shionoya
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 200
+    name: "\u4EC1\u4F4D\u667A\u4FE1"
+    rank: C
+    heisyu: YM
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u653E\u3066\u653E\u3066\uFF01\u77E2\u3092\u5C04\u5C3D\u304F\u305B\u3044\uFF01"
+    nameEng: Yoshitoshi Sou
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: "Loose\uFF01Destroy them!"
+  - id: 201
+    name: "\u6728\u4E0B\u85E4\u5409\u90CE"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u733F\u3081\u304C\u3001\u63A8\u53C2\u3067\u3084\u3002\u6BBF\u306E\u8987\u9053\u306B\u52A0\u52E2\u3057\u307E\u3059\u304C\u3084\u3002"
+    tsuihouMsg: "\u7551\u4ED5\u4E8B\u306B\u3067\u3082\u623B\u308A\u307E\u3059\u304B\u3044\u306E\u3046\u3002\u3055\u3089\u3070\u3067\u3084\uFF01"
+    senpouMsg: "\u306F\u306F\u306F\u3001\u4E00\u679A\u5CA9\u306E\u8ECD\u306A\u3069\u304A\u3089\u306C\u3067\u3088\u3046\u3002\u4ECA\u3053\u305D\u6575\u4E2D\u306B\u8E8D\u308A\u8FBC\u3080\u3067\u304C\u3084\uFF01"
+    nameEng: Kinoshita Tokichiro
+    touyouMsgEng: Hey monkey here. I will support your military rule, my lord.
+    tsuihouMsgEng: I'm gonna back to the farm field work. See you!
+    senpouMsgEng: 'haha, Enemy''s party is not monolithic. It''s a time to attack! '
+  - id: 202
+    name: "\u677E\u5E73\u5143\u5EB7"
+    rank: A
+    heisyu: YR
+    touyouMsg: "\u4E09\u6CB3\u6B66\u58EB\u306E\u529B\u3001\u5FA1\u898B\u305B\u3057\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u582A\u5FCD\u306F\u7121\u4E8B\u9577\u4E45\u306E\u57FA\u3067\u3059\u305E\u3002\u5FC5\u8981\u3068\u3042\u308C\u3070\u307E\u305F\u304A\u547C\u3073\u304F\u3060\u3055\u308C\u3002"
+    senpouMsg: "\u53AD\u96E2\u7A62\u571F\u6B23\u6C42\u6D44\u571F\uFF01\u6B7B\u3092\u6050\u308C\u308B\u306A\u3001\u7A81\u304D\u9032\u3081\u3044\uFF01"
+    nameEng: Motoyasu Matsudaira
+    touyouMsgEng: I can show my power of Mikawa samurai.
+    tsuihouMsgEng: 'Forbearance is the root of all quietness and assurance forever.
+      Look upon the wrath of thy enemy. '
+    senpouMsgEng: "Abhorrence of living in this impure world\uFF01Don't be afraid
+      of death!"
+  - id: 203
+    name: "\u4E0A\u6749\u666F\u52DD"
+    rank: A
+    heisyu: KB
+    touyouMsg: "\u3053\u306E\u666F\u52DD\u306B\u6D41\u308C\u308B\u8ECD\u795E\u306E\u8840\u3001\u304D\u3063\u3068\u6BBF\u306E\u304A\u529B\u306B\u306A\u308A\u307E\u3057\u3087\u3046\u305E\u3002"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6B7B\u5730\u306B\u5165\u308A\u3066\u5F8C\u5DFB\u3092\u65AD\u305F\u3093\u3002\u8005\u5171\u7A81\u6483\u3058\u3083\u3042\uFF01"
+    nameEng: Kagekatsu Uesugi
+    touyouMsgEng: My bloodline of War God must support you, lord.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Now we are at the place to die! Follow me!
+  - id: 204
+    name: "\u5409\u898B\u6B63\u983C"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u5FE0\u52E4\u3092\u8A93\u3044\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u6B8B\u5FF5\u306B\u3054\u3056\u308A\u307E\u3059\u3002\u6211\u304C\u529B\u3001\u4F7F\u3048\u307E\u305B\u306A\u3093\u3060\u304B\u2026\u3002"
+    senpouMsg: "\u8005\u5171\u3001\u62BC\u3057\u51FA\u305B\u3044\uFF01"
+    nameEng: Masayori Yoshimi
+    touyouMsgEng: It's my humble preasure. I swear my loyality to your family.
+    tsuihouMsgEng: Will you banish me from this country?I'm gonna make you regret!
+    senpouMsgEng: Commence attack!
+  - id: 205
+    name: "\u6751\u4E0A\u6B66\u5409"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u6751\u4E0A\u6C34\u8ECD\u982D\u9818\u3001\u6B66\u5409\u53C2\u4E0A\u4ED5\u3063\u305F\u3002\u821F\u6226\u3067\u306F\u53F3\u306B\u51FA\u308B\u3082\u306E\u306F\u304A\u308A\u307E\u305B\u306C\u305E\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u6751\u4E0A\u6C34\u8ECD\u306E\u529B\u306F\u8981\u3089\u306C\u3068\u3002\u3069\u3053\u305E\u306E\u6D77\u3067\u307E\u305F\u4F1A\u3044\u307E\u3057\u3087\u3046\u305E\u3002"
+    senpouMsg: "\u7119\u70D9\u7389\u3092\u5B58\u5206\u306B\u99B3\u8D70\u3057\u3066\u3084\u308C\u3044\uFF01\u6751\u4E0A\u6C34\u8ECD\u306B\u52DD\u3066\u308B\u3068\u601D\u3046\u3066\u304B\uFF01"
+    nameEng: Takeyoshi Murakami
+    touyouMsgEng: I'm a head of Murakami navy. I devote my life.
+    tsuihouMsgEng: 'Oh, I hope to see you again at the see. '
+    senpouMsgEng: You can see our power! We are murakami navy!
+  - id: 206
+    name: "\u4E5D\u9B3C\u5609\u9686"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u4E5D\u9B3C\u6C34\u8ECD\u982D\u9818\u3001\u5609\u9686\u306B\u3054\u3056\u308B\u3002\u5B89\u5B85\u8239\u3092\u5FA1\u89A7\u306B\u5165\u308C\u305F\u304F\u5B58\u3058\u307E\u3059\u308B\u3002"
+    tsuihouMsg: "\u307B\u3046\u3001\u4E5D\u9B3C\u6C34\u8ECD\u306F\u304A\u6255\u3044\u7BB1\u3067\u3054\u3056\u3044\u307E\u3059\u304B\u3002\u307E\u305F\u6D77\u8CCA\u306B\u3067\u3082\u623B\u308A\u307E\u3059\u304B\u306E\u3046\u3002"
+    senpouMsg: "\u8005\u3069\u3082\u3001\u3044\u307E\u305E\u3002\u7119\u70D9\u7389\u3092\u6295\u3052\u3053\u3081\u3044\uFF01"
+    nameEng: Yoshitaka Kuki
+    touyouMsgEng: Head of Kuki navy, Yoshitaka. I will show you our big battle ship.
+    tsuihouMsgEng: Is Kuki navy fired? So we gonna become to pirates again.
+    senpouMsgEng: Throw our bombs!
+  - id: 207
+    name: "\u5C0F\u897F\u884C\u9577"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u3053\u306E\u30A2\u30A6\u30B0\u30B9\u30C6\u30A3\u30CC\u30B9\u3001\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u306A\u3093\u3068\u3001\u8981\u3089\u306C\u3068\u7533\u3055\u308C\u308B\u304B\uFF01\u4F34\u5929\u9023\u3068\u306E\u4EA4\u6613\u3092\u6253\u3061\u5207\u3089\u308C\u308B\u304A\u3064\u3082\u308A\u304B\uFF01"
+    senpouMsg: "\u9060\u616E\u306F\u3044\u3089\u306C\u305E\uFF01\u3084\u308C\u7119\u70D9\u7389\u3092\u6295\u3052\u3053\u3081\u3044\uFF01"
+    nameEng: Yukinaga Konishi
+    touyouMsgEng: It's my humble preasure. Augustinian swear my loyality to your family.
+    tsuihouMsgEng: Don't you need the trade with westerners?
+    senpouMsgEng: Hey, throw the bombs!
+  - id: 208
+    name: "\u6E05\u6C34\u5EB7\u82F1"
+    rank: B
+    heisyu: YR
+    touyouMsg: "\u4F0A\u8C46\u6C34\u8ECD\u982D\u9818\u3001\u6E05\u6C34\u5EB7\u82F1\u63A8\u53C2\uFF01\u821F\u6226\u306F\u304A\u4EFB\u305B\u3042\u308C\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u4F0A\u8C46\u6C34\u8ECD\u306E\u529B\u3092\u307F\u305B\u3066\u3084\u308C\u3044\uFF01\u7119\u70D9\u7389\u3092\u6295\u3052\u3053\u3081\u3044\uFF01"
+    nameEng: Yasuhide Shimizu
+    touyouMsgEng: Head of Izu navy, Yasuhide. I will support your sea battle.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: We are Izu Navy. Let's throw the bombs!
+  - id: 209
+    name: "\u671D\u5009\u5B97\u6EF4"
+    rank: S
+    heisyu: YR
+    touyouMsg: "\u6B66\u8005\u306F\u72AC\u3068\u3082\u3044\u3078\u3001\u755C\u751F\u3068\u3082\u3044\u3078\u3001\u52DD\u3064\u4E8B\u304C\u672C\u306B\u3066\u5019\u3002\u6211\u304C\u8ECD\u914D\u306B\u3066\u52DD\u3061\u6226\u3092\u304A\u7D04\u675F\u3057\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u307B\u3046\u3001\u3053\u306E\u5B97\u6EF4\u306F\u8981\u3089\u306C\u3068\u3002\u5EAD\u3067\u80B2\u3066\u3066\u304A\u3063\u305F\u9DF9\u304C\u6C17\u304C\u304B\u308A\u3058\u3083\u306E\u3046\u3002"
+    senpouMsg: "\u4E00\u70B9\u96C6\u4E2D\u3001\u3053\u3053\u305E\u547D\u306E\u8CED\u3051\u6642\u305E\u3002\u8005\u3069\u3082\u9032\u3081\u9032\u3081\uFF01"
+    nameEng: Souteki Asakura
+    touyouMsgEng: Samurai must win all battlse even though diguising as beast.
+    tsuihouMsgEng: Well. you don't need me soteki...I concern about hawk that I raised
+      in the garden.
+    senpouMsgEng: Now focus one point! It's a time to bet our life!
+  - id: 210
+    name: "\u6EDD\u5DDD\u4E00\u76CA"
+    rank: A
+    heisyu: TP
+    touyouMsg: "\u3053\u306E\u4E00\u76CA\u3001\u5FE0\u8AA0\u3092\u8A93\u3044\u307E\u3059\u3002\u9244\u7832\u306B\u6C34\u8ECD\u3001\u6226\u306E\u304A\u5F79\u306B\u7ACB\u3061\u307E\u3059\u305E\u3002"
+    tsuihouMsg: "\u5148\u3092\u99C6\u304F\u3082\u6EDD\u5DDD\u3001\u6BBF\u3082\u6EDD\u5DDD\u3068\u8A00\u308F\u308C\u305F\u67D0\u3092\u8981\u3089\u306C\u3068\u306F\u3002\u6B8B\u5FF5\u3058\u3083\u306E\u3046\u3002"
+    senpouMsg: "\u8005\u3069\u3082\u3001\u96E8\u9730\u306E\u3054\u3068\u304F\u8A0E\u3061\u7D9A\u3051\u3051\u3044\u3002\u3053\u3053\u3067\u6BB2\u6EC5\u305E\uFF01"
+    nameEng: Kazumasu Takigawa
+    touyouMsgEng: Kazumasu take an oath of allegiance to you. I'm good at Gun and
+      Ship battle.
+    tsuihouMsgEng: Was I helpful for you right? Why do you want to fire me?
+    senpouMsgEng: Our children! Fire like a rain! It's a war of extermination!
+  - id: 211
+    name: "\u677E\u6D66\u93AE\u4FE1"
+    rank: B
+    heisyu: TP
+    touyouMsg: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u3002\u821F\u6226\u306F\u304A\u4EFB\u305B\u3042\u308C\uFF01"
+    tsuihouMsg: "\u3053\u306E\u79C1\u3081\u3092\u653E\u308A\u51FA\u3059\u3067\u3059\u3068\uFF1F\u304D\u3063\u3068\u5F8C\u6094\u81F4\u3057\u307E\u3059\u305E\u3002"
+    senpouMsg: "\u6575\u3092\u8FD1\u3065\u3051\u308B\u306A\uFF01\u7119\u70D9\u7389\u3092\u304F\u308C\u3066\u3084\u308C\u3044\uFF01"
+    nameEng: Shigenobu Matsuura
+    touyouMsgEng: It's my humble preasure. I'm good at ship battle.
+    tsuihouMsgEng: You want to fire me? I won't be back to you even if you regret!
+    senpouMsgEng: Keep the enemy off! Throw bombs!

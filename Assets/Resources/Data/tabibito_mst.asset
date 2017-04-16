@@ -1,0 +1,878 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f578a973373214ba431c2fc7133508, type: 3}
+  m_Name: tabibito_mst
+  m_EditorClassIdentifier: 
+  param:
+  - Id: 1
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u5546\u4EBA"
+    Rank: B
+    Exp: "\u300C\u3044\u3084\u3042\u3001\u5132\u304B\u3063\u305F\u5132\u304B\u3063\u305F\u3002\u3061\u3087\u3063\u3068\u304A\u88FE\u5206\u3051\u3060\u3088\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 600
+    GrpEng: Traveller
+    NameEng: Trader
+    ExpEng: '"I''m swimming in cash! I give you a share!"'
+  - Id: 2
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u5A3C\u5993"
+    Rank: A
+    Exp: "\u300C\u304A\u307E\u3044\u3055\u3093\u306B\u306F\u60DA\u308C\u3066\u3057\u307E\u3063\u305F\u3088\u3002\u4ECA\u5EA6\u3053\u308C\u3067\u5EA7\u6577\u306B\u547C\u3093\u3067\u304A\u304F\u308C\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Traveller
+    NameEng: Geisha
+    ExpEng: '"You are so charmimg! Whenever please call me"'
+  - Id: 3
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u6B66\u58EB"
+    Rank: S
+    Exp: "\u300C\u95A2\u92AD\u3068\u306A\u3001\u76F8\u5206\u304B\u3063\u305F\u3002\u3053\u308C\u3067\u8DB3\u308A\u308B\u3060\u308D\u3046\u304B\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 2000
+    GrpEng: Traveller
+    NameEng: Samurai
+    ExpEng: '"Do you need a tax? OK, Is it enough for you?"'
+  - Id: 4
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u8239\u982D"
+    Rank: C
+    Exp: "\u300C\u95A2\u92AD\u304B\u3042\u3001\u6BCD\u3061\u3083\u3093\u306B\u307E\u305F\u6012\u3089\u308C\u3061\u307E\u3046\u306A\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 300
+    GrpEng: Traveller
+    NameEng: Boatman
+    ExpEng: '"Oh, do I need to pay a tax? My wife might be getting angry again"'
+  - Id: 5
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u5E84\u5C4B"
+    Rank: S
+    Exp: "\u300C\u5343\u77F3\u4E07\u77F3\u3082\u7C73\u4E94\u5408\u3002\u6295\u8CC7\u3055\u305B\u3066\u8CB0\u3044\u307E\u3059\u306E\u3067\u3001\u3044\u3064\u304B\u3092\u697D\u3057\u307F\u306B\u3057\u3066\u304A\u308A\u307E\u3059\u3088\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 5
+    GrpEng: Traveller
+    NameEng: Village Official
+    ExpEng: '"I will invest rice and money in your country so I am looking forward
+      to someday"'
+  - Id: 6
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u753A\u5973"
+    Rank: B
+    Exp: "\u300C\u304A\u307E\u3044\u3055\u3093\u3001\u3044\u3044\u7537\u3060\u306D\u3048\u3002\u3053\u308C\u6301\u3063\u3066\u3063\u3066\u304A\u304F\u308C\u3088\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 600
+    GrpEng: Traveller
+    NameEng: Towngirl
+    ExpEng: '"You are hot! I wanna give it to you"'
+  - Id: 7
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u5730\u4F8D"
+    Rank: A
+    Exp: "\u300C\u304A\u3046\u3001\u4FFA\u304B\u3089\u596A\u304A\u3046\u3063\u3066\u3044\u3046\u306E\u304B\u3002\u3088\u3057\u3001\u305D\u306E\u5EA6\u80F8\u306B\u514D\u3058\u3066\u6075\u3093\u3067\u3084\u308B\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Traveller
+    NameEng: Local Samurai
+    ExpEng: '"Ah? You have a lot of nerve"'
+  - Id: 8
+    Typ: common
+    GrpID: 1
+    Grp: "\u65C5\u4EBA"
+    Name: "\u8FB2\u6C11"
+    Rank: C
+    Exp: "\u300C\u3072\u3083\u3042\u3001\u3053\u308C\u3092\u3084\u308B\u304B\u3089\u547D\u306F\u52A9\u3051\u3066\u304F\u3093\u308D\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 300
+    GrpEng: Traveller
+    NameEng: Farmer
+    ExpEng: '"Oh my god, Have mercy on me!"'
+  - Id: 9
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8056"
+    Name: "\u4F0A\u6771\u4E00\u5200\u658E"
+    Rank: S
+    Exp: "\u300C\u2026\u4E00\u5200\u6D41\u6975\u610F\u3092\u304A\u4E3B\u306B\u4F1D\u6388\u3057\u3088\u3046\u3002\u751F\u304D\u308B\u305F\u3081\u306B\u4EBA\u3092\u65AC\u308B\u304C\u3088\u3044\u3002\u300D"
+    ItemMst: gokui
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Sword Master
+    NameEng: Ittosai Ito
+    ExpEng: '"I''ll transfer my secrets of Single Sword to you. Battle with samurai
+      to survive"'
+  - Id: 10
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8056"
+    Name: "\u585A\u539F\u535C\u4F1D"
+    Rank: S
+    Exp: "\u300C\u2026\u4E00\u306E\u592A\u5200\u3092\u304A\u4E3B\u306B\u4F1D\u6388\u3057\u3088\u3046\u3002\u4EBA\u306B\u8CA0\u3051\u306C\u3088\u3046\u5DE5\u592B\u306A\u3055\u308C\u3002\u300D"
+    ItemMst: gokui
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Sword Master
+    NameEng: Bokuden Tsukahara
+    ExpEng: '"I''ll transfer my secrets of First Sword to you. Put a lot of thought
+      into your style"'
+  - Id: 11
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8056"
+    Name: "\u5BCC\u7530\u52E2\u6E90"
+    Rank: S
+    Exp: "\u300C\u2026\u5C0F\u592A\u5200\u306E\u6975\u610F\u3092\u304A\u4E3B\u306B\u4F1D\u6388\u3057\u3088\u3046\u3002\u5FC3\u7D20\u76F4\u306B\u306A\u308C\u3070\u3001\u7948\u308B\u306B\u53CA\u3070\u306C\u305E\u3002\u300D"
+    ItemMst: gokui
+    ItemMstId: 3
+    ItemQty: 1
+    GrpEng: Sword Master
+    NameEng: Seigen Toda
+    ExpEng: '"I''ll transfer my secrets of Small Sword to you. Be open-minded and
+      uncontriving"'
+  - Id: 12
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8056"
+    Name: "\u4E0A\u6CC9\u4FE1\u7DB1"
+    Rank: S
+    Exp: "\u300C\u2026\u65B0\u9670\u6D41\u306E\u6975\u610F\u3092\u304A\u4E3B\u306B\u4F1D\u6388\u3057\u3088\u3046\u3002\u5929\u5730\u3068\u4E00\u306B\u306A\u308B\u306E\u3058\u3083\u3002\u300D"
+    ItemMst: gokui
+    ItemMstId: 4
+    ItemQty: 1
+    GrpEng: Sword Master
+    NameEng: Nobutsuna Kamiizumi
+    ExpEng: '"I''ll transfer my secrets of Shinkage Sword to you. Mix with everything
+      that exists anywhere"'
+  - Id: 13
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8056"
+    Name: "\u67F3\u751F\u77F3\u821F\u658E"
+    Rank: S
+    Exp: "\u300C\u2026\u67F3\u751F\u65B0\u9670\u6D41\u306E\u6975\u610F\u3092\u304A\u4E3B\u306B\u4F1D\u6388\u3057\u3088\u3046\u3002\u5728\u308B\u304C\u307E\u307E\u81EA\u7136\u306A\u59FF\u3053\u305D\u304C\u5927\u4E8B\u3088\u3002\u300D"
+    ItemMst: gokui
+    ItemMstId: 5
+    ItemQty: 1
+    GrpEng: Sword Master
+    NameEng: Sekisyusai Yagyu
+    ExpEng: '"I''ll transfer my secrets of Yagyu Shinkage Sword to you.  Keep you
+      as you are."'
+  - Id: 14
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u611B\u5DDE\u5143\u9999\u658E"
+    Rank: A
+    Exp: "\u300C\u4E00\u5BBF\u4E00\u98EF\u306E\u6069\u3001\u6226\u5834\u306B\u3066\u8FD4\u3059\u304B\u306E\u3046\u2026\u300D"
+    ItemMst: kengou
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Genkosai Aisu
+    ExpEng: '"I''d like to return my gratefulness for your hospitality"'
+  - Id: 15
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u5965\u5C71\u516C\u91CD"
+    Rank: B
+    Exp: "\u300C\u4F55\u3068\uFF01\u5102\u3092\u6B32\u3057\u3044\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u4E00\u5EA6\u6226\u5834\u3067\u8155\u8A66\u3057\u3092\u3057\u305F\u3044\u3068\u601D\u3046\u3066\u304A\u3063\u305F\u3068\u3053\u308D\u3088\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Kimishige Okuyama
+    ExpEng: '"Do you want to hire me? It''s a good chance to try my skill in battlefield."'
+  - Id: 16
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u5C0F\u91CE\u5584\u9B3C"
+    Rank: C
+    Exp: "\u300C\u6226\u5834\u3067\u8155\u8A66\u3057\u3001\u5929\u4E0B\u7121\u53CC\u306B\u8FD1\u3065\u3051\u308B\u304B\u306E\u3046\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 3
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Zenki Ono
+    ExpEng: '"I must be the greatest man alive."'
+  - Id: 17
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u9418\u6372\u81EA\u658E"
+    Rank: B
+    Exp: "\u300C\u4F55\u3068\uFF01\u5102\u3092\u6B32\u3057\u3044\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u4E00\u5EA6\u6226\u5834\u3067\u8155\u8A66\u3057\u3092\u3057\u305F\u3044\u3068\u601D\u3046\u3066\u304A\u3063\u305F\u3068\u3053\u308D\u3088\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 4
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Jisai Kanemaki
+    ExpEng: '"Do you want to hire me? It''s a good chance to try my skill in battlefield."'
+  - Id: 18
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u5DDD\u5D0E\u6642\u76DB"
+    Rank: C
+    Exp: "\u300C\u6226\u5834\u3067\u8155\u8A66\u3057\u3001\u5929\u4E0B\u7121\u53CC\u306B\u8FD1\u3065\u3051\u308B\u304B\u306E\u3046\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 5
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Tokimori Kawasaki
+    ExpEng: '"I must be the greatest man alive."'
+  - Id: 19
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u6797\u5D0E\u91CD\u4FE1"
+    Rank: C
+    Exp: "\u300C\u6226\u5834\u3067\u8155\u8A66\u3057\u3001\u5929\u4E0B\u7121\u53CC\u306B\u8FD1\u3065\u3051\u308B\u304B\u306E\u3046\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 6
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Shigenobu Hayashizaki
+    ExpEng: '"I must be the greatest man alive."'
+  - Id: 20
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u758B\u7530\u666F\u517C"
+    Rank: A
+    Exp: "\u300C\u4E00\u5BBF\u4E00\u98EF\u306E\u6069\u3001\u6226\u5834\u306B\u3066\u8FD4\u3059\u304B\u306E\u3046\u2026\u300D"
+    ItemMst: kengou
+    ItemMstId: 7
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Kagetomo Hikita
+    ExpEng: '"I''d like to return my gratefulness for your hospitality"'
+  - Id: 21
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u5B9D\u8535\u9662\u80E4\u6804"
+    Rank: A
+    Exp: "\u300C\u4E00\u5BBF\u4E00\u98EF\u306E\u6069\u3001\u6226\u5834\u306B\u3066\u8FD4\u3059\u304B\u306E\u3046\u2026\u300D"
+    ItemMst: kengou
+    ItemMstId: 8
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Inei Hozoin
+    ExpEng: '"I''d like to return my gratefulness for your hospitality"'
+  - Id: 22
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u5E2B\u5CA1\u4E00\u7FBD"
+    Rank: C
+    Exp: "\u300C\u6226\u5834\u3067\u8155\u8A66\u3057\u3001\u5929\u4E0B\u7121\u53CC\u306B\u8FD1\u3065\u3051\u308B\u304B\u306E\u3046\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 9
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Ippa Morooka
+    ExpEng: '"I must be the greatest man alive."'
+  - Id: 23
+    Typ: boubi
+    GrpID: 1
+    Grp: "\u5263\u8C6A"
+    Name: "\u795E\u5F8C\u5B97\u6CBB"
+    Rank: B
+    Exp: "\u300C\u4F55\u3068\uFF01\u5102\u3092\u6B32\u3057\u3044\u3068\u7533\u3055\u308C\u308B\u304B\u3002\u4E00\u5EA6\u6226\u5834\u3067\u8155\u8A66\u3057\u3092\u3057\u305F\u3044\u3068\u601D\u3046\u3066\u304A\u3063\u305F\u3068\u3053\u308D\u3088\u3002\u300D"
+    ItemMst: kengou
+    ItemMstId: 10
+    ItemQty: 1
+    GrpEng: Samurai
+    NameEng: Muneharu Jingo
+    ExpEng: '"Do you want to hire me? It''s a good chance to try my skill in battlefield."'
+  - Id: 24
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u30A4\u30A8\u30BA\u30B9\u4F1A\u5DE1\u5BDF\u5E2B"
+    Name: "\u30F4\u30A1\u30EA\u30CB\u30E3\u30FC\u30CE"
+    Rank: S
+    Exp: "\u300C\u65E5\u30CE\u672C\u30CE\u6587\u5316\u4E8C\u9069\u5FDC\u30B7\u3001\u5E03\u6559\u30F2\u6210\u5C31\u30B5\u30BB\u30DE\u30B9\u30EB\u3002\u4E4B\u30CF\u6211\u3005\u30CE\u53CB\u60C5\u30CE\u8A3C\u30C7\u30B9\u3002\u300D"
+    ItemMst: kabuto
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Jesuit visitor
+    NameEng: Valignano
+    ExpEng: '"I''ll adapt to Japanese culture and make missionary success. This is
+      a present for you."'
+  - Id: 25
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u30A4\u30A8\u30BA\u30B9\u4F1A\u5BA3\u6559\u5E2B"
+    Name: "\u30AA\u30EB\u30AC\u30F3\u30C6\u30A3\u30CE"
+    Rank: S
+    Exp: "\u300C\u65E5\u30CE\u672C\u30CE\u6C11\u30DB\u30C9\u5929\u8CE6\u30CE\u624D\u30F2\u30E2\u30C4\u8005\u30CF\u30AA\u30EA\u30DE\u30BB\u30CC\u3002\u4E4B\u30CF\u6211\u3005\u30CE\u53CB\u60C5\u30CE\u8A3C\u30C7\u30B9\u3002\u300D"
+    ItemMst: gusoku
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Jesuit visitor
+    NameEng: Organtino
+    ExpEng: '"Samurai people have a natural talent. This is a present for you."'
+  - Id: 26
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u30A4\u30A8\u30BA\u30B9\u4F1A\u5BA3\u6559\u5E2B"
+    Name: "\u30EB\u30A4\u30B9\u30D5\u30ED\u30A4\u30B9"
+    Rank: S
+    Exp: "\u300C\u6F38\u30AF\u65E5\u30CE\u672C\u30CE\u8A18\u9332\u30F2\u6B8B\u30B7\u30BF\u65E5\u672C\u53F2\u30AC\u5B8C\u6210\u30B7\u30DE\u30B7\u30BF\u3002\u4E4B\u30F2\u8A18\u5FF5\u4E8C\u53D7\u30B1\u53D6\u30C3\u30C6\u4E0B\u30B5\u30A4\u3002\u300D"
+    ItemMst: bugu
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Jesuit visitor
+    NameEng: ' Luis Frois'
+    ExpEng: '"Finally I finished Japanese history book "Nihon-shi". Thisis a gift
+      for you."'
+  - Id: 27
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5357\u86EE\u5546\u4EBA"
+    Name: "\u30D5\u30E9\u30F3\u30B7\u30B9\u30B3\u30BC\u30A4\u30E2\u30C8"
+    Rank: A
+    Exp: "\u300C\u9244\u7832\u30CF\u3001\u30B3\u30EC\u30AB\u30E9\u30CE\u6226\u30F2\u30AC\u30E9\u30EA\u30C8\u5909\u30A8\u30DE\u30B9\u3002\u662F\u975E\u8A66\u30B7\u30C6\u30DF\u30C6\u30AF\u30C0\u30B5\u30A4\u3002\u300D"
+    ItemMst: CyouheiTP
+    ItemMstId: 3
+    ItemQty: 3
+    GrpEng: Western Merchant
+    NameEng: Francisco Zeimot
+    ExpEng: '"Gun will change the style of war from now. Please try it!"'
+  - Id: 28
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5357\u86EE\u533B\u5E2B"
+    Name: "\u30A2\u30EB\u30E1\u30A4\u30C0"
+    Rank: A
+    Exp: "\u300C\u30C9\u30B3\u30C7\u30A2\u30ED\u30A6\u30C8\u3001\u82E6\u30B7\u30DF\u30F2\u62B1\u30A8\u30EB\u4EBA\u30AC\u5C45\u30EB\u6240\u30AC\u3001\u79C1\u30CE\u5C45\u5834\u6240\u30C7\u30B9\u3002\u300D"
+    ItemMst: nanban
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Western Doctor
+    NameEng: Almeida
+    ExpEng: '"The place where people have anguish...That''s what I belong"'
+  - Id: 29
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5BA3\u6559\u5E2B"
+    Name: "\u30B3\u30A8\u30EA\u30E7"
+    Rank: A
+    Exp: "\u300C\u6B66\u5668\u3001\u5F3E\u85AC\u30AC\u6B32\u30B7\u30A4\u30CE\u30CA\u30E9\u3001\u65E5\u672C\u4EBA\u5974\u96B7\u30C8\u4EA4\u63DB\u30B7\u30DE\u30B7\u30E7\u30A6\u3002\u300D"
+    ItemMst: nanban
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Missionary
+    NameEng: Coelho
+    ExpEng: '"If you want to get weapon and ammunition, let''s swap Japanese slave."'
+  - Id: 30
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5357\u86EE\u5546\u4EBA"
+    Name: "\u30A2\u30F3\u30C8\u30CB\u30AA\u30C0\u30E2\u30C3\u30BF"
+    Rank: A
+    Exp: "\u300C\u9244\u7832\u30F2\u3001\u30A4\u30C1\u65E9\u30AF\u96C6\u30E1\u30E9\u30EC\u30EB\u30E2\u30CE\u30AC\u5929\u4E0B\u30F2\u6CBB\u30E1\u30EB\u30B3\u30C8\u30CB\u30CA\u30EB\u30C7\u30B7\u30E7\u30A6\u30CA\u3002\u300D"
+    ItemMst: nanban
+    ItemMstId: 3
+    ItemQty: 1
+    GrpEng: Western Merchant
+    NameEng: Antonio da mota
+    ExpEng: '"I guess that party who can collect a lot of gun as soon as possible
+      will be able to conquer this island."'
+  - Id: 31
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5BA3\u6559\u5E2B"
+    Name: "\u30D5\u30A7\u30EB\u30CA\u30F3\u30C7\u30B9"
+    Rank: B
+    Exp: "\u300C\u30B5\u30A2\u3001\u795E\u30F2\u4FE1\u30B8\u30C6\u3001\u5171\u4E8C\u30D1\u30E9\u30A4\u30BD\u30D8\u53C2\u30EA\u30DE\u30B7\u30E7\u30A6\u3002\u300D"
+    ItemMst: CyouheiTP
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Missionary
+    NameEng: Fernandes
+    ExpEng: '"Believe in God and shall we go to heaven together"'
+  - Id: 32
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5BA3\u6559\u5E2B"
+    Name: "\u30AC\u30B9\u30D1\u30EB\u30D3\u30EC\u30E9"
+    Rank: B
+    Exp: "\u300C\u30B5\u30A2\u3001\u795E\u30F2\u4FE1\u30B8\u30C6\u3001\u5171\u4E8C\u30D1\u30E9\u30A4\u30BD\u30D8\u53C2\u30EA\u30DE\u30B7\u30E7\u30A6\u3002\u300D"
+    ItemMst: CyouheiTP
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Missionary
+    NameEng: Gaspar Vilela
+    ExpEng: '"Believe in God and shall we go to heaven together"'
+  - Id: 33
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5357\u86EE\u5546\u4EBA"
+    Name: "\u30A2\u30F3\u30C8\u30CB\u30AA\u30DA\u30A4\u30B7\u30E7\u30C8"
+    Rank: C
+    Exp: "\u300C\u9244\u7832\u30F2\u6B32\u30B7\u30A4\u30C8\u30CF\u76EE\u30AC\u80A5\u30A8\u30C6\u30A4\u30EB\u3002\u4E4B\u30CF\u4ECA\u5F8C\u30CE\u5546\u58F2\u30D8\u30CE\u6295\u8CC7\u30C7\u30B9\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 1000
+    GrpEng: Western Merchant
+    NameEng: Antonio Peixoto
+    ExpEng: '"Do you want to buy a gun? It''s my investment in your party"'
+  - Id: 34
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5BA3\u6559\u5E2B"
+    Name: "\u30B3\u30B9\u30E2\u30C7\u30C8\u30EC\u30B9"
+    Rank: C
+    Exp: "\u300C\u8CB4\u65B9\u4E8C\u795E\u30CE\u5FA1\u52A0\u8B77\u30CE\u30A2\u30E9\u30F3\u30B3\u30C8\u30F2\u3002\u300D"
+    ItemMst: CyouheiTP
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Missionary
+    NameEng: Cosme de Torres
+    ExpEng: '"God bless you."'
+  - Id: 35
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5BA3\u6559\u5E2B"
+    Name: "\u30AB\u30D6\u30E9\u30EB"
+    Rank: C
+    Exp: "\u300C\u8CB4\u65B9\u4E8C\u795E\u30CE\u5FA1\u52A0\u8B77\u30CE\u30A2\u30E9\u30F3\u30B3\u30C8\u30F2\u3002\u300D"
+    ItemMst: CyouheiTP
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Missionary
+    NameEng: Cabral
+    ExpEng: '"God bless you."'
+  - Id: 36
+    Typ: nanban
+    GrpID: 1
+    Grp: "\u5192\u967A\u5BB6"
+    Name: "\u30E1\u30F3\u30C7\u30B9\u30D4\u30F3\u30C8"
+    Rank: C
+    Exp: "\u300C\u4E16\u754C\u30CE\u7AEF\u4E8C\u30B3\u30F3\u30CA\u56FD\u30AC\u30A2\u30EB\u30CA\u30F3\u30C6\u3002\u6B21\u30CF\u4F55\u51E6\u30D8\u5192\u967A\u4E8C\u51FA\u30E8\u30A6\u30AB\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 3
+    GrpEng: Adventure
+    NameEng: Mendes Pinto
+    ExpEng: '"There is such a country at the edge of the world! Where to go next for
+      adventure!"'
+  - Id: 37
+    Typ: bunka
+    GrpID: 1
+    Grp: "\u50BE\u5947\u8005"
+    Name: "\u51FA\u96F2\u963F\u56FD"
+    Rank: A
+    Exp: "\u300C\u6B4C\u821E\u4F0E\u8E0A\u308A\u3092\u57CE\u4E0B\u3067\u3084\u3089\u305B\u3066\u304F\u308C\u305F\u5FA1\u793C\u3060\u3088\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 30000
+    GrpEng: Eccentric
+    NameEng: Okuni Izumo
+    ExpEng: '"It is a thanks to let Kabuki dance do in the castle."'
+  - Id: 38
+    Typ: bunka
+    GrpID: 2
+    Grp: "\u6570\u5BC4\u8005"
+    Name: "\u5317\u5411\u9053\u9673"
+    Rank: C
+    Exp: "\u300C\u3053\u308C\u3067\u826F\u3044\u8336\u9053\u5177\u3067\u3082\u8CB7\u3044\u306A\u3055\u308C\u3002\u7CBE\u9032\u306A\u3055\u308C\u3088\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 1000
+    GrpEng: Refined Person
+    NameEng: Dochin Kitamuki
+    ExpEng: '"Please get a good tea-things by this money. All you need is to concentrate
+      to reach your goal"'
+  - Id: 39
+    Typ: bunka
+    GrpID: 2
+    Grp: "\u6570\u5BC4\u8005"
+    Name: "\u53E4\u7530\u7E54\u90E8"
+    Rank: B
+    Exp: "\u300C\u3053\u306E\u8336\u9053\u5177\u306F\u3044\u3044\u7269\u3067\u3054\u3056\u308B\u3088\u3002\u30B2\u30D2\u30D2\u30D2\u30D2\u3002\u300D"
+    ItemMst: cyadougu
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Refined Person
+    NameEng: Oribe Furuta
+    ExpEng: '"This tea-thing is good quality. hehehe..."'
+  - Id: 40
+    Typ: bunka
+    GrpID: 2
+    Grp: "\u6570\u5BC4\u8005"
+    Name: "\u5C71\u4E0A\u5B97\u4E8C"
+    Rank: A
+    Exp: "\u300C\u4E0A\u3092\u7C97\u76F8\u306B\u3001\u4E0B\u3092\u5F8B\u5100\u306B\u3002\u8CB4\u65B9\u306E\u4F98\u306F\u307E\u3060\u307E\u3060\u4E0B\u3002\u3053\u308C\u3092\u8B72\u3063\u3066\u5DEE\u3057\u4E0A\u3052\u3088\u3046\u3002\u300D"
+    ItemMst: cyadougu
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Refined Person
+    NameEng: Soji Yamanoue
+    ExpEng: '"Rude to upper class and honestly to lower class....And your wabi-sabi
+      is lower class so I''ll give it for you."'
+  - Id: 41
+    Typ: bunka
+    GrpID: 2
+    Grp: "\u6570\u5BC4\u8005"
+    Name: "\u5343\u5229\u4F11"
+    Rank: S
+    Exp: "\u300C\u8336\u9053\u5177\u3092\u304A\u8B72\u308A\u3057\u307E\u3059\u3002\u898F\u77E9\u4F5C\u6CD5\u3092\u5B88\u308A\u5C3D\u304F\u3057\u3066\u7834\u308A\u3001\u96E2\u308C\u305F\u3068\u3057\u3066\u3082\u672C\u3092\u5FD8\u308C\u3066\u306F\u3044\u3051\u307E\u305B\u3093\u3088\u3002\u300D"
+    ItemMst: cyadougu
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Refined Person
+    NameEng: Rikyu Sen
+    ExpEng: '"This is my tea-things. You need to create and destroy at the same time
+      by forget and remember the essence of tea style anytime."'
+  - Id: 42
+    Typ: bunka
+    GrpID: 3
+    Grp: "\u516C\u5BB6"
+    Name: "\u4E45\u6211\u901A\u5805"
+    Rank: C
+    Exp: "\u300C\u3053\u308C\u3092\u5DEE\u3057\u4E0A\u3052\u307E\u3059\u3055\u304B\u3044\u3001\u5E1D\u306E\u5FA1\u6C17\u304C\u3084\u308F\u3089\u3050\u3088\u3046\u5869\u6885\u3088\u3046\u3057\u305F\u3063\u3066\u304A\u304F\u308C\u3084\u3059\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 1000
+    GrpEng: Court Noble
+    NameEng: Michikata Koga
+    ExpEng: '"I''ll give it for you so please care about royal court"'
+  - Id: 43
+    Typ: bunka
+    GrpID: 3
+    Grp: "\u516C\u5BB6"
+    Name: "\u5C71\u79D1\u8A00\u7D99"
+    Rank: B
+    Exp: "\u300C\u3088\u308D\u3057\u3001\u5E1D\u306F\u3093\u306B\u8B01\u898B\u3067\u304D\u308B\u3088\u3046\u53E3\u3092\u5229\u3044\u3066\u307F\u307E\u3059\u308F\u3002\u732E\u4E0A\u54C1\u306F\u3088\u308D\u3057\u304F\u983C\u307F\u307E\u3059\u3048\u3002\u300D"
+    ItemMst: cyoutei
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Court Noble
+    NameEng: Tokitsugu Yamashina
+    ExpEng: '"OK, I can ask royal court to mediate. So...please consider items that
+      are presented to Imperial people "'
+  - Id: 44
+    Typ: bunka
+    GrpID: 3
+    Grp: "\u516C\u5BB6"
+    Name: "\u4E09\u6761\u897F\u5B9F\u679D"
+    Rank: A
+    Exp: "\u300C\u3042\u3093\u3055\u3093\u968F\u5206\u7FBD\u632F\u308A\u304C\u3088\u308D\u3057\u3044\u306A\u3042\u3002\u5BAE\u4E2D\u306B\u6848\u5185\u3057\u307E\u3059\u3055\u304B\u3044\u3001\u732E\u4E0A\u54C1\u306F\u3088\u308D\u3057\u304F\u983C\u307F\u307E\u3059\u3048\u3002\u300D"
+    ItemMst: cyoutei
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Court Noble
+    NameEng: Saneki Sanjyonishi
+    ExpEng: '"You are so rich man.I''ll introduce you to royal court, so I''d like
+      to ask for the gift to you."'
+  - Id: 45
+    Typ: bunka
+    GrpID: 3
+    Grp: "\u95A2\u767D\u5DE6\u5927\u81E3"
+    Name: "\u8FD1\u885B\u524D\u4E45"
+    Rank: S
+    Exp: "\u300C\u304A\u305F\u304F\u306F\u3093\u306E\u3053\u3068\u306F\u5BAE\u4E2D\u3067\u3082\u5642\u306B\u306A\u3063\u3066\u307E\u3059\u3048\u3002\u7D39\u4ECB\u72B6\u6E21\u3059\u3055\u304B\u3044\u4EAC\u306B\u904A\u3073\u306B\u6765\u3083\u306F\u308A\u307E\u305B\u3002\u300D"
+    ItemMst: cyoutei
+    ItemMstId: 3
+    ItemQty: 1
+    GrpEng: Minister
+    NameEng: Sakihisa Konoe
+    ExpEng: '"You have a good rumor in royal court. This is a letter of my introduction
+      so please visit royal court in Yamashiro country."'
+  - Id: 46
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u9577\u8C37\u5DDD\u5B97\u4EC1"
+    Rank: C
+    Exp: "\u300C\u75BE\u304D\u5831\u3053\u305D\u304C\u809D\u8981\u3067\u3059\u305E\u3002\u3053\u308C\u3092\u5DEE\u3057\u4E0A\u3052\u308B\u3086\u3048\u4EA4\u6613\u306A\u3055\u3063\u3066\u306F\u5982\u4F55\u304B\u3002\u300D"
+    ItemMst: money
+    ItemMstId: 0
+    ItemQty: 1500
+    GrpEng: Merchant
+    NameEng: Sonin Hasegawa
+    ExpEng: '"Flash report is important. Would you like to trade with someone by this
+      item?"'
+  - Id: 47
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u52A0\u85E4\u6D44\u4E0E"
+    Rank: C
+    Exp: "\u300C\u7121\u7C8B\u306A\u7740\u7269\u3092\u7740\u3066\u306F\u308A\u307E\u3059\u306A\u3042\u3002\u3053\u308C\u3092\u5DEE\u3057\u4E0A\u3052\u308B\u3086\u3048\u4EA4\u6613\u306A\u3055\u3063\u3066\u306F\u5982\u4F55\u304B\u3002\u300D"
+    ItemMst: koueki
+    ItemMstId: 1
+    ItemQty: 1
+    GrpEng: Merchant
+    NameEng: Jyoyo Kato
+    ExpEng: '"You are wearing old-fashioned clothes. Would you like to buy new one
+      by this letter of introduction?"'
+  - Id: 48
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u5927\u8CC0\u5B97\u4E5D"
+    Rank: B
+    Exp: "\u300C\u3053\u308C\u3092\u5DEE\u3057\u4E0A\u3052\u307E\u3059\u3002\u535A\u591A\u4E09\u5091\u304C\u4F55\u3068\u304B\u624B\u306B\u5165\u308C\u305F\u5B9D\u7269\u3067\u3059\u305E\u3002\u300D"
+    ItemMst: heihousyo
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Merchant
+    NameEng: Souku Oga
+    ExpEng: '"I''ll present it for you. It''s a treasure which one of the Hakata Big
+      3 marchants made a lot of effort to get it"'
+  - Id: 49
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u5CF6\u4E95\u5B97\u5BA4"
+    Rank: B
+    Exp: "\u300C\u3053\u308C\u3092\u5DEE\u3057\u4E0A\u3052\u307E\u3059\u3002\u535A\u591A\u4E09\u5091\u304B\u3089\u306E\u7D39\u4ECB\u72B6\u3068\u4F1D\u3048\u308C\u3070\u3001\u4FBF\u5B9C\u3092\u56F3\u3063\u3066\u304F\u308C\u307E\u3059\u305E\u3002\u300D"
+    ItemMst: koueki
+    ItemMstId: 2
+    ItemQty: 1
+    GrpEng: Merchant
+    NameEng: Soushitsu Shimai
+    ExpEng: '"I will give it for you. They may give you good discount if you show
+      this letter of introduction of Hakata big 3 marchants."'
+  - Id: 50
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u8336\u5C4B\u56DB\u90CE\u6B21\u90CE"
+    Rank: A
+    Exp: "\u300C\u4EA4\u6613\u306E\u7D39\u4ECB\u72B6\u3092\u304A\u6E21\u3057\u7533\u3059\u3002\u2026\u3068\u3053\u308D\u3067\u4E4B\u306F\u73CD\u3057\u304D\u9BDB\u306E\u5929\u9EA9\u7F85\u3068\u7533\u3059\u3082\u306E\u3002\u304A\u53EC\u3057\u4E0A\u304C\u308A\u4E0B\u3055\u3044\u307E\u305B\u3002\u300D"
+    ItemMst: koueki
+    ItemMstId: 3
+    ItemQty: 1
+    GrpEng: Merchant
+    NameEng: Shirojiro Cyaya
+    ExpEng: '"This is the letter of introduction for trading...By the way, it is something
+      we call Tempura of snapper. Would you like to try it?"'
+  - Id: 51
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u4ECA\u4E95\u5B97\u4E45"
+    Rank: S
+    Exp: "\u300C\u6B66\u91CE\u7D39\u9D0E\u3088\u308A\u8B72\u308A\u53D7\u3051\u305F\u79D8\u5B9D\u306E\u4E00\u90E8\u3092\u304A\u8B72\u308A\u7533\u3059\u3002\u4ECA\u5F8C\u3068\u3082\u624B\u524D\u5171\u3068\u306E\u5546\u3044\u3092\u5B9C\u3057\u304F\u304A\u9858\u3044\u3044\u305F\u3057\u307E\u3059\u3002\u300D"
+    ItemMst: heihousyo
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Merchant
+    NameEng: Sokyu Imai
+    ExpEng: '"I''d like to give you a part of the treasure I received from Jyouou
+      Takeno. I hope to keep our good deals for future."'
+  - Id: 52
+    Typ: bunka
+    GrpID: 4
+    Grp: "\u8C6A\u5546"
+    Name: "\u6D25\u7530\u5B97\u53CA"
+    Rank: S
+    Exp: "\u300C\u3053\u308C\u3092\u5FA1\u653F\u9053\u306B\u304A\u5F79\u7ACB\u3066\u4E0B\u3055\u308A\u307E\u305B\u3002\u3055\u3066\u4E00\u5EA7\u5EFA\u7ACB\u3092\u7BC9\u304F\u3079\u304F\u4E00\u3064\u8336\u4F1A\u3067\u3082\u50AC\u3057\u307E\u305B\u3093\u304B\u306A\u3002\u300D"
+    ItemMst: heihousyo
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Merchant
+    NameEng: Sokyu Tsuda
+    ExpEng: '"Please use it for your politics. Well, Can I held a tea party for us
+      to build a good relationship?"'
+  - Id: 53
+    Typ: bunka
+    GrpID: 5
+    Grp: "\u533B\u5E2B"
+    Name: "\u65BD\u85AC\u9662\u5168\u5B97"
+    Rank: B
+    Exp: "\u300C\u6F22\u65B9\u533B\u5B66\u306E\u7C8B\u3092\u6975\u3081\u307E\u3057\u305F\u305E\u3002\u3055\u3066\u8A3A\u3066\u8CB0\u3044\u305F\u3044\u306E\u306F\u3069\u306A\u305F\u3067\u3059\u304B\u306A\uFF1F\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 5
+    GrpEng: Doctor
+    NameEng: Zenso Yakuin
+    ExpEng: '"I got the seacret of traditional Chinese medicine. Do you want to get
+      my treatment?"'
+  - Id: 54
+    Typ: bunka
+    GrpID: 5
+    Grp: "\u533B\u5E2B"
+    Name: "\u66F2\u76F4\u702C\u9053\u4E09"
+    Rank: A
+    Exp: "\u300C\u3055\u3042\u3055\u3042\u533B\u8056\u304C\u8A3A\u3066\u9032\u305C\u307E\u3059\u305E\u3002\u3069\u306A\u305F\u3067\u3059\u304B\u306A\uFF1F\u300D"
+    ItemMst: chishikisyo
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Doctor
+    NameEng: Dosan Manase
+    ExpEng: '"Come on, Medical master will examine you."'
+  - Id: 55
+    Typ: bunka
+    GrpID: 5
+    Grp: "\u533B\u8056"
+    Name: "\u6C38\u7530\u5FB3\u672C"
+    Rank: S
+    Exp: "\u300C\u7532\u6590\u306E\u5FB3\u672C\u304C\u53C2\u308A\u307E\u3057\u305F\u305E\u3002\u3055\u3066\u8A3A\u3066\u8CB0\u3044\u305F\u3044\u306E\u306F\u3069\u306A\u305F\u3067\u3059\u304B\u306A\uFF1F\u300D"
+    ItemMst: chishikisyo
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Doctor Master
+    NameEng: Tokuhon Nagai
+    ExpEng: '"Tokuhon of Kai here. Who wants medical examination?"'
+  - Id: 56
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u5FEB\u5DDD\u7D39\u559C"
+    Rank: A
+    Exp: "\u300C\u5FC3\u982D\u6EC5\u5374\u3059\u308C\u3070\u3001\u706B\u3082\u4EA6\u305F\u6DBC\u3057\u3002\u300D"
+    ItemMst: meiba
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Monk
+    NameEng: Jyoki Kaisen
+    ExpEng: '"Clear your mind of all mundane thoughts, and you will find even fire
+      cool."'
+  - Id: 57
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u53E4\u6E13\u5B97\u9673"
+    Rank: A
+    Exp: "\u300C\u6226\u56FD\u306E\u4E16\u3001\u6CD5\u306E\u8870\u9000\u304C\u304B\u304F\u3082\u60E8\u3044\u3068\u306F\u3002\u5FC3\u306B\u8FF7\u3044\u3042\u308C\u3070\u5927\u5FB3\u5BFA\u3092\u8A2A\u306D\u3089\u308C\u3088\u3002\u300D"
+    ItemMst: meiba
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Monk
+    NameEng: Sochin Kokei
+    ExpEng: '"It is too telible such a decline of law in this samurai period... Please
+      visit Daitoku temple if you get any trouble."'
+  - Id: 58
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u7B56\u5F66\u5468\u826F"
+    Rank: C
+    Exp: "\u300C\u666E\u8ACB\u306F\u5982\u4F55\u3067\u3059\u304B\u306A\u3002\u660E\u3067\u898B\u305F\u753A\u4E26\u307F\u3092\u3082\u3046\u4E00\u5EA6\u898B\u3066\u307F\u305F\u3044\u3082\u306E\u3067\u3059\u306E\u3046\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 5
+    GrpEng: Monk
+    NameEng: Syuryo Sakugen
+    ExpEng: '"How about situation of your development? I would like to see the cityscape
+      I saw in  Ming again."'
+  - Id: 59
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u77E5\u6069\u5BFA\u5C8C\u5DDE"
+    Rank: C
+    Exp: "\u300C\u666F\u864E\u6BBF\u306E\u4E0A\u6D1B\u304C\u61D0\u304B\u3057\u3044\u3067\u3059\u306A\u3002\u6BBF\u306F\u6D1B\u4E2D\u3092\u6291\u3048\u3001\u5929\u4E0B\u3092\u9759\u8B10\u306B\u3059\u308B\u6C17\u306F\u3042\u308A\u307E\u305B\u306C\u304B\u306A\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 5
+    GrpEng: Monk
+    NameEng: Gyusyu Chionji
+    ExpEng: '"I long for visitation of lord Kenshin Uesugi... Do you want to occupy
+      the Yamashiro country and Keep peace in this island?'
+  - Id: 60
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u671D\u5C71\u65E5\u4E57"
+    Rank: C
+    Exp: "\u300C\u57FA\u7763\u6559\u306A\u305E\u90AA\u6CD5\u3067\u3059\u305E\u3002\u5BA3\u6559\u5E2B\u3092\u8FFD\u653E\u3057\u3001\u6CD5\u83EF\u7D4C\u3092\u4FE1\u3058\u306A\u3055\u308C\u3002\u300D"
+    ItemMst: hyourou
+    ItemMstId: 0
+    ItemQty: 5
+    GrpEng: Monk
+    NameEng: Nichijyo Asayama
+    ExpEng: '"The Christian is an evil way. Exile the missionaries and believe in
+      the Hokke buddihism."'
+  - Id: 61
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u5929\u5BA4\u5149\u80B2"
+    Rank: B
+    Exp: "\u300C\u9053\u4E2D\u826F\u304D\u99AC\u306B\u51FA\u4F1A\u3044\u307E\u3057\u305F\u305E\u3002\u4F55\u304B\u304A\u56F0\u308A\u306E\u3053\u3068\u304C\u3042\u308A\u307E\u3057\u305F\u3089\u695E\u5DCC\u5BFA\u3092\u304A\u8A2A\u306D\u4E0B\u3055\u308C\u3002\u300D"
+    ItemMst: meiba
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Monk
+    NameEng: Koiku Tenshitsu
+    ExpEng: '"I met a good horse in my journey. If there is anything we can to do
+      for you, please visit Ryogon temple"'
+  - Id: 62
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u5357\u5149\u574A\u5929\u6D77"
+    Rank: S
+    Exp: "\u300C\u9053\u4E2D\u898B\u4E8B\u306A\u99AC\u306B\u51FA\u4F1A\u3044\u307E\u3057\u305F\u305E\u3002\u56DB\u795E\u76F8\u5FDC\u306B\u304B\u306A\u3063\u305F\u56FD\u3065\u304F\u308A\u3092\u306A\u3055\u308C\u3088\u3002\u300D"
+    ItemMst: meiba
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Monk
+    NameEng: Tenkai Nankobo
+    ExpEng: '"I met a good horse in my journey.  You have to create good country for
+      ideal topography for the four Taoist gods.'
+  - Id: 63
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u679C\u5FC3"
+    Rank: S
+    Exp: "\u300C\u307B\u307B\u3001\u6211\u304C\u5E7B\u8853\u3067\u898B\u4E8B\u306A\u99AC\u3092\u51FA\u3067\u3055\u305B\u307E\u3059\u305E\u3002\u300D"
+    ItemMst: meiba
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Monk
+    NameEng: Kashin
+    ExpEng: '"hehehe...I can generate a good horse by magic"'
+  - Id: 64
+    Typ: bukkyo
+    GrpID: 6
+    Grp: "\u9AD8\u50E7"
+    Name: "\u6728\u98DF\u5FDC\u5176"
+    Rank: B
+    Exp: "\u300C\u9053\u4E2D\u826F\u304D\u99AC\u306B\u51FA\u4F1A\u3044\u307E\u3057\u305F\u305E\u3002\u6728\u98DF\u6212\u3092\u3084\u3063\u3066\u609F\u308A\u3092\u3072\u3089\u3044\u3066\u307F\u307E\u305B\u306C\u304B\u306A\u3002\u300D"
+    ItemMst: meiba
+    ItemMstId: 0
+    ItemQty: 1
+    GrpEng: Monk
+    NameEng: Ogo Mokujiki
+    ExpEng: '"I met a good horse in my journey. Do you want to attain spiritual enlightenment
+      by Mokujiki style?"'

@@ -1,0 +1,453 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00ec4ab1d70c8240b8b9cc906bf4bb8, type: 3}
+  m_Name: message_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    message: "\u6B66\u5C06\u73E0\u3092\u4F7F\u7528\u3057\u3001\u5B63\u7BC0\u3092\u9032\u3081\u307E\u3057\u305F\u305E"
+    messageEng: Changed Season by used stone.
+  - id: 2
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u6B66\u5C06\u73E0\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u305E"
+    messageEng: My lord, you dont't have an enough stone.
+  - id: 3
+    message: "\u6B66\u5C06\u73E0\u3092\u4F7F\u7528\u3057\u3001\u91D1\u3092\u8CFC\u5165\u3057\u307E\u3057\u305F\u305E"
+    messageEng: Bought money by used stone.
+  - id: 4
+    message: "\u6B66\u5C06\u73E0\u3092\u4F7F\u7528\u3057\u3001\u5175\u7CE7\u3092\u5168\u56DE\u5FA9\u3057\u307E\u3057\u305F\u305E"
+    messageEng: Recovered all stamina by used stone.
+  - id: 5
+    message: "\u901A\u4FE1\u304C\u7E4B\u304C\u3063\u3066\u304A\u308A\u307E\u305B\u3093\u305E\u3002\u901A\u4FE1\u3092\u78BA\u8A8D\u3057\u3066\u4E0B\u3055\u308C\u3002"
+    messageEng: There is no network. Please check your setting.
+  - id: 6
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u305E\u3002"
+    messageEng: My lord, you dont't have an enough money.
+  - id: 7
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u305E"
+    messageEng: My lord, you dont't have an enough stamina.
+  - id: 8
+    message: "\u547D\u4EE4\u53EF\u80FD\u306A\u6B66\u5C06\u304C\u304A\u308A\u307E\u305B\u3093\u3002\u5B63\u7BC0\u304C\u5909\u308F\u3063\u305F\u5F8C\u306B\u5B9F\u884C\u3057\u3066\u4E0B\u3055\u308C\u3002"
+    messageEng: No available samurai. Please order again after changed season.
+  - id: 9
+    message: "\u306B\u3079\u3082\u7121\u304F\u4EA4\u6613\u3092\u65AD\u3089\u308C\u307E\u3057\u305F\u305E\u3002\u53CB\u597D\u95A2\u4FC2\u3092\u6539\u5584\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: He rejected our trade request. Please try to improve the relationship.
+  - id: 10
+    message: "\u65E2\u306B\u51FA\u5175\u4E2D\u306E\u3088\u3046\u3067\u3059\u305E\u3002\u6B8B\u5FF5\u3067\u3059\u304C\u51FA\u76F4\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: Now on battle. Please request again after battle ended.
+  - id: 11
+    message: "\u826F\u304D\u4EA4\u6613\u3067\u3054\u3056\u3063\u305F\u3002\u4ED6\u306B\u5165\u7528\u306A\u3082\u306E\u306F\u7121\u3044\u3067\u3059\u304B\u306A\u3002"
+    messageEng: Good trade. Do you want to buy another item?
+  - id: 12
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u7269\u8CC7\u3092\u8CFC\u5165\u3057\u307E\u3057\u305F\u305E\u3002"
+    messageEng: My lord, purchased trading good.
+  - id: 13
+    message: "\u6D3E\u9063\u53EF\u80FD\u306A\u5FCD\u306F\u304A\u308A\u307E\u305B\u3093\u305E\u3002"
+    messageEng: There is no available ninja.
+  - id: 14
+    message: "\u6B8B\u3063\u3066\u3044\u308B\u6575\u5927\u540D\u306F\u552F\u4E00\u3064\u3067\u3059\u305E\u3002"
+    messageEng: There is only 1 enemy.
+  - id: 15
+    message: "\u9032\u8ECD\u4E2D\u306E\u8ECD\u52E2\u304C\u304A\u308A\u307E\u305B\u306C\u305E\u3002"
+    messageEng: There is no attacking enemy.
+  - id: 16
+    message: "\u516C\u5BB6\u304B\u3089\u306E\u7D39\u4ECB\u72B6\u304C\u7121\u3044\u3068\u6BBF\u4E2D\u306B\u306F\u5165\u308C\u307E\u305B\u3093\u305E\u3002"
+    messageEng: You can't enter the court without the letter of introduction of court
+      noble.
+  - id: 17
+    message: "\u884C\u52D5\u56DE\u6570\u304C\u8DB3\u308A\u307E\u305B\u306C\u3002\u3053\u308C\u4EE5\u4E0A\u3001\u671D\u5EF7\u5DE5\u4F5C\u306F\u51FA\u6765\u307E\u305B\u306C\u305E\u3002"
+    messageEng: You can't conduct political action anymore.
+  - id: 18
+    message: "\u65E5\u3082\u843D\u3061\u3066\u304D\u305F\u3002\u305D\u308D\u305D\u308D\u3001\u826F\u3044\u6642\u9593\u3058\u3083\u306E\u3046\u2026\u3002"
+    messageEng: The sun is setting. It's about time.
+  - id: 19
+    message: "\u732E\u4E0A\u51FA\u6765\u308B\u307B\u3069\u306E\u91D1\u3092\u6301\u3063\u3066\u304A\u308A\u307E\u305B\u3093\u305E\u3002"
+    messageEng: My lord, you dont't have an enough money.
+  - id: 20
+    message: "\u307B\u3063\u307B\u3001\u305D\u306A\u305F\u3082\u91D1\u6B20\u304B\u3048\u3002"
+    messageEng: Ho ho, you are also out of money.
+  - id: 21
+    message: "\u305D\u306A\u305F\u306E\u5FE0\u52E4\u3001\u5B09\u3057\u304F\u601D\u3046\u305E\u3002\u5BAE\u4E2D\u306F\u56F0\u7AAE\u306E\u6975\u307F\u3067\u306A\u3002\u8CBB\u3048\u304C\u8DB3\u308A\u305A\u6715\u3082\u5373\u4F4D\u306E\u793C\u3082\u9045\u308C\u305F\u3082\u306E\u3088\u3002"
+    messageEng: I'm glad of your loyalty. we are at the extreme of distress. I was
+      late for enthronement due to my lack of expenses.
+  - id: 22
+    message: "\u307B\u3046\u3001\u4ED6\u5927\u540D\u3068\u4E0A\u624B\u304F\u3044\u3063\u3066\u3044\u306A\u3044\u306E\u304B\u3002\u8ABF\u505C\u306B\u5165\u3063\u3066\u3082\u826F\u3044\u305E\u3002"
+    messageEng: Have you not been doing well with other family? I can do mediation.
+  - id: 23
+    message: "\u81EA\u9818\u571F\u306B\u9032\u8ECD\u4E2D\u306E\u8ECD\u52E2\u306F\u3044\u307E\u305B\u3093\u305E\u3002"
+    messageEng: It seems there is no army attacking you now.
+  - id: 24
+    message: "\u4ECA\u3001\u305D\u306A\u305F\u306B\u4E0E\u3048\u3089\u308C\u308B\u5B98\u4F4D\u306F\u306A\u3044\u305E\u3002"
+    messageEng: Now I don't have court rank for you.
+  - id: 25
+    message: "\u3059\u307E\u306C\u306E\u3046\u3002\u4ECA\u305D\u306A\u305F\u306B\u53D9\u4EFB\u3067\u304D\u308B\u5B98\u4F4D\u306F\u306A\u3044\u3088\u3046\u3060\u3002"
+    messageEng: Excuse me but there is no court rank for you.
+  - id: 26
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u65E2\u306B\u5F81\u5937\u5927\u5C06\u8ECD\u306B\u4EFB\u547D\u3055\u308C\u3066\u304A\u308A\u307E\u3059\u305E\u3002"
+    messageEng: You've been already assigned as syogun.
+  - id: 27
+    message: "\u5F81\u5937\u5927\u5C06\u8ECD\u62DD\u547D\u306B\u5FC5\u8981\u306A\u56FD\u3092\u653B\u7565\u3057\u3066\u304A\u308A\u307E\u305B\u3093\u305E\u3002"
+    messageEng: You don't have an enough country for syogun.
+  - id: 28
+    message: "\u8CB4\u6BBF\u3092\u5F81\u5937\u5927\u5C06\u8ECD\u306B\u88DC\u4EFB\u3057\u305F\u3044\u306E\u3060\u304C\u3001\u5F15\u304D\u53D7\u3051\u3066\u306F\u304F\u308C\u306C\u304B\u3002"
+    messageEng: Could you accept my assignment of syogun?
+  - id: 29
+    message: "\u5F53\u5BB6\u306E\u62DD\u547D\u306B\u53CD\u5BFE\u3057\u3066\u3044\u308B\u5927\u540D\u5BB6\u304C\u3044\u308B\u3088\u3046\u3067\u3059\u305E\u3002"
+    messageEng: There is other family who rejected our syogun assignment.
+  - id: 30
+    message: "\u305D\u306A\u305F\u306E\u5FE0\u52E4\u3001\u5B09\u3057\u304F\u601D\u3046\u305E\u3002\u3068\u304D\u306B\u6B64\u5EA6\u306F\u4F55\u7528\u304B\u3002"
+    messageEng: I'm glad of your loyalty. By the way why do you come here?
+  - id: 31
+    message: "\u3044\u3064\u3082\u3054\u8D14\u5C53\u306B\u3057\u3066\u9802\u304D\u6709\u96E3\u3046\u3054\u3056\u3044\u307E\u3059\u3002\u306A\u306B\u304B\u3054\u5165\u7528\u3067\u3057\u3087\u3046\u304B\u3002"
+    messageEng: Thank you for always making a favor. May I help you?
+  - id: 32
+    message: "\u307B\u307B\u3001\u305D\u306A\u305F\u306E\u5FE0\u52E4\u3001\u5B09\u3057\u304F\u601D\u3046\u305E\u3002"
+    messageEng: Hoho, I'm glad of your loyalty.
+  - id: 33
+    message: "\u307B\u307B\u3001\u305D\u306A\u305F\u306E\u8A55\u5224\u304C\u9AD8\u307E\u3063\u305F\u3088\u3046\u3060\u306A\u3002"
+    messageEng: Hoho, We increased your reputation.
+  - id: 34
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u671D\u5EF7\u8CA2\u732E\u5EA6\u304C\u8DB3\u308A\u307E\u305B\u3093\u305E\u3002"
+    messageEng: My lord, your point is not enough.
+  - id: 35
+    message: "\u8ECD\u52E2\u306F\u64A4\u9000\u3057\u305F\u3088\u3046\u3060\u306A\u3002\u5929\u4E0B\u9759\u8B10\u306B\u529B\u3092\u8CB8\u3057\u3066\u305F\u3082\u308C\u3002"
+    messageEng: It seems army was withdrawn. Please help us to keep the peace.
+  - id: 36
+    message: "\u505C\u6226\u8981\u8ACB\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u305E\u3002\u671D\u5EF7\u306B\u5F93\u308F\u306C\u9006\u8CCA\u3092\u8A0E\u4F10\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: Royal court failed ceasefire. Let's destroy the enemy of royal court.
+  - id: 37
+    message: "\u3046\u3046\u3080\u3001\u671D\u5EF7\u306B\u5F93\u308F\u306C\u9006\u8CCA\u3081\u3002\u898B\u4E8B\u6253\u3061\u7834\u3063\u3066\u307F\u305B\u3088\u3002"
+    messageEng: Umm.. Please destroy our enemy who didn't follow the order of royal
+      court.
+  - id: 38
+    message: "\u305D\u306A\u305F\u306E\u5FE0\u52E4\u306B\u306F\u3044\u3064\u3082\u5B09\u3057\u304F\u601D\u3063\u3066\u304A\u308B\u3002\u3053\u308C\u304B\u3089\u3082\u6715\u306B\u529B\u3092\u8CB8\u3057\u3066\u304A\u304F\u308C\u3002"
+    messageEng: I'm glad of your loyalty. Please keep helping me for peace of this
+      island.
+  - id: 39
+    message: "\u6B8B\u5FF5\u306B\u5FA1\u5EA7\u308A\u307E\u3059\u308B\u3002\u4EFB\u5B98\u306A\u308A\u307E\u305B\u3093\u3067\u3057\u305F\u3002"
+    messageEng: It's too bad. You were not assigned for any new rank.
+  - id: 40
+    message: "\u305D\u306A\u305F\u306E\u5FE0\u52E4\u306B\u306F\u611F\u8B1D\u3057\u3066\u304A\u308B\u304C\u3001\u4ECA\u306F\u90FD\u5408\u60AA\u304F\u53D9\u4EFB\u3067\u304D\u306C\u306E\u3046\u3002"
+    messageEng: I'm sorry but there is no new rank for you.
+  - id: 41
+    message: "\u5546\u4EBA\u304B\u3089\u306E\u7D39\u4ECB\u72B6\u304C\u7121\u3044\u3068\u5546\u58F2\u306E\u7D39\u4ECB\u306F\u51FA\u6765\u307E\u305B\u3093\u306A\u3002"
+    messageEng: We can't make any deal without the letter of introduction.
+  - id: 42
+    message: "\u884C\u52D5\u56DE\u6570\u304C\u8DB3\u308A\u307E\u305B\u306C\u3002\u3053\u308C\u4EE5\u4E0A\u3001\u53D6\u5F15\u306F\u51FA\u6765\u307E\u305B\u306C\u305E\u3002"
+    messageEng: You can't conduct business action anymore.
+  - id: 43
+    message: "\u304A\u5F79\u306B\u7ACB\u3066\u307E\u3057\u305F\u3067\u3057\u3087\u3046\u304B\u3002\u3053\u308C\u304B\u3089\u3082\u3054\u8D14\u5C53\u306E\u7A0B\u304A\u9858\u3044\u81F4\u3057\u307E\u3059\u3002"
+    messageEng: We hope to receive your continued patronage in the future.
+  - id: 44
+    message: "\u8CB4\u91CD\u306A\u54C1\u3092\u53D6\u308A\u63C3\u3048\u3066\u5FA1\u5EA7\u3044\u307E\u3059\u3088\u3002\u304A\u6C17\u306B\u53EC\u3059\u7269\u306F\u3054\u3056\u3044\u307E\u3059\u3067\u3057\u3087\u3046\u304B\u3002"
+    messageEng: We have a lot of stock of precious items. Have you found any favorite
+      one?
+  - id: 45
+    message: "\u7269\u8CC7\u304C\u5FA1\u5165\u7528\u3067\u3057\u3087\u3046\u304B\u3002\u9244\u7832\u306B\u9A0E\u99AC\u3001\u5FCD\u306A\u3069\u53D6\u308A\u63C3\u3048\u3066\u304A\u308A\u307E\u3059\u3088\u3002"
+    messageEng: Do you need some weapon items? we prepared the Gun, Hourse, Ninja
+      and so on...
+  - id: 46
+    message: "\u306A\u3093\u3068\u3001\u77E2\u92AD\u3092\u3054\u6240\u671B\u3067\u3059\u304B...\u3002"
+    messageEng: Oh... Are you sure you want to levy such a big amount on us.
+  - id: 47
+    message: "\u5F0A\u5BB6\u3067\u56F2\u3046\u3066\u304A\u308A\u307E\u3059\u8005\u3067\u3054\u3056\u3044\u307E\u3059\u3002\u8155\u306F\u78BA\u304B\u3067\u3054\u3056\u3044\u307E\u3059\u305E\u3002"
+    messageEng: He is my house guest. He is good at skill of sword.
+  - id: 48
+    message: "\u305D\u308C\u306F\u83EF\u3084\u304B\u306A\u3082\u306E\u306B\u306A\u308B\u3067\u3057\u3087\u3046\u306A\u3002\u3054\u6240\u6709\u306E\u5927\u540D\u7269\u3092\u898B\u3068\u3046\u3054\u3056\u3044\u307E\u3059\u3002"
+    messageEng: It must be a good tea party. I'd like to see your precious teaware.
+  - id: 49
+    message: "\u305D\u308C\u306F\u305D\u308C\u306F\u3002\u697D\u3057\u307F\u3067\u3054\u3056\u3044\u307E\u3059\u3002\u6642\u306B\u2026\u3054\u6240\u6709\u306E\u540D\u7269\u306F\u4EE5\u524D\u8336\u4F1A\u306B\u3066\u62DD\u898B\u81F4\u3057\u307E\u3057\u305F\u306A\u3002"
+    messageEng: Oh good...but I've seen your same teaware in the last tea party.
+  - id: 50
+    message: "\u69D8\u3005\u306A\u6280\u8853\u304C\u65E5\u30CE\u672C\u306B\u62E1\u304C\u308B\u306F\u826F\u304D\u3053\u3068\u3068\u5B58\u3058\u307E\u3059\u308B\u3002\u662F\u975E\u304A\u8CB7\u3044\u6C42\u3081\u4E0B\u3055\u308C\u3002"
+    messageEng: We'd like to expand several technics to this island. Please take this
+      technic.
+  - id: 51
+    message: "\u8ADC\u5831\u306B\u3066\u6F5C\u4F0F\u4E2D\u306E\u5FCD\u304C\u5FC5\u8981\u3067\u3059\u305E\u3002"
+    messageEng: You need to order your Ninja to spy this country.
+  - id: 52
+    message: "\u7269\u8CC7\u304B\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u305E\u3002"
+    messageEng: My lord, you dont't have an enough weapon or money.
+  - id: 53
+    message: "\u767B\u7528\u53EF\u80FD\u306A\u6B66\u5C06\u306F\u304A\u308A\u307E\u305B\u306C\u3002\u30AC\u30C1\u30E3\u3092\u56DE\u3057\u3066\u304F\u3060\u3055\u308C\u3002"
+    messageEng: There is no samurai. Please draw gacya to find new samurai.
+  - id: 54
+    message: "\u672C\u65E5\u306E\u7121\u6599\u30AC\u30C1\u30E3\u306F\u4F7F\u3044\u5207\u308A\u307E\u3057\u305F\u305E\u3002"
+    messageEng: You've already drawn all free gacya today.
+  - id: 55
+    message: "\u9A0E\u99AC\u968A"
+    messageEng: Cavalry Unit
+  - id: 56
+    message: "\u69CD\u968A"
+    messageEng: Spear Unit
+  - id: 57
+    message: "\u9244\u7832\u968A"
+    messageEng: Gun Unit
+  - id: 58
+    message: "\u5F13\u968A"
+    messageEng: Bow Unit
+  - id: 59
+    message: "\u51FA\u9663\u53EF\u80FD\u6570\u3092\u8D85\u3048\u3066\u304A\u308A\u307E\u3059\u305E\u3002\u56FD\u529B\u3092\u4E0A\u3052\u3066\u304F\u3060\u3055\u308C\u3002"
+    messageEng: Over the limitation of formation. Please increase your country Lv.
+  - id: 60
+    message: "\u5B98\u4F4D\u3092\u6301\u3063\u3066\u304A\u308A\u307E\u305B\u3093\u305E\u3002\u5C71\u57CE\u56FD\u306B\u3042\u308B\u671D\u5EF7\u3092\u8A2A\u308C\u3066\u307F\u307E\u3057\u3087\u3046\u3002"
+    messageEng: You don't have royal court rank. Please visit royal court in Yamashiro
+      country.
+  - id: 61
+    message: "\u4EFB\u547D\u53EF\u80FD\u306A\u56FD\u306F\u3042\u308A\u307E\u305B\u3093\u305E\u3002\u307E\u305A\u306F\u57CE\u3092\u843D\u3068\u3057\u306A\u3055\u308C\u3002"
+    messageEng: You don't have country to give. Please conquer country first.
+  - id: 62
+    message: "\u7B56Lv\u306F\u6975\u81F4\u306B\u9054\u3057\u3066\u304A\u308A\u307E\u3059\u3002\u3053\u308C\u4EE5\u4E0A\u4FEE\u884C\u3059\u308B\u3053\u3068\u306F\u51FA\u6765\u307E\u305B\u306C\u3002"
+    messageEng: Skill Lv has reached the limit. You cannot increase Lv anymore.
+  - id: 63
+    message: "\u6975\u610F\u3092\u6301\u3063\u3066\u304A\u308A\u307E\u305B\u306C\u3002\u7A00\u306B\u65C5\u4E2D\u306E\u5263\u8C6A\u304B\u3089\u6388\u3051\u3089\u308C\u308B\u3068\u805E\u304D\u307E\u3059\u305E\u3002"
+    messageEng: You don't have secrets. You can obtain it by Samurai visitors infrequently.
+  - id: 64
+    message: "\u611F\u72B6\u306F\u3042\u308A\u307E\u305B\u306C\u305E\u3002"
+    messageEng: You don't have certificate.
+  - id: 65
+    message: "\u6B66\u8005\u4FEE\u884C\u3092\u884C\u3044\u3001\u7B56\u7565\u3092\u5F37\u5316\u3057\u307E\u3057\u305F\u3002"
+    messageEng: Increased Lv of active skill by training.
+  - id: 66
+    message: "\u7269\u8CC7\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough item.
+  - id: 67
+    message: "\u540C\u76DF\u7DE0\u7D50\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for alliance.
+  - id: 68
+    message: "\u540C\u76DF\u7DE0\u7D50\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for alliance.
+  - id: 69
+    message: "\u63F4\u8ECD\u51FA\u5175\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for reinforcement.
+  - id: 70
+    message: "\u63F4\u8ECD\u51FA\u5175\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for reinforcement.
+  - id: 71
+    message: "\u606B\u559D\u306B\u5FDC\u3058\u308B\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for receiving threat.
+  - id: 72
+    message: "\u4EA4\u6613\u54C1\u8CFC\u5165\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for trade.
+  - id: 73
+    message: "\u8105\u8FEB\u53D7\u8AFE\u306B\u306F\u3001\u6B66\u5C06\u73E0\u304C100\u500B\u5FC5\u8981\u3067\u3059\u3002"
+    messageEng: You need 100 stone to receive blackmail.
+  - id: 74
+    message: "\u5927\u8336\u4F1A\u53C2\u52A0\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for tea party.
+  - id: 75
+    message: "\u5927\u8336\u4F1A\u53C2\u52A0\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for tea party.
+  - id: 76
+    message: "\u4EF2\u88C1\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for mediation.
+  - id: 77
+    message: "\u8A0E\u4F10\u4EE4\u53D7\u8AFE\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for attack order.
+  - id: 78
+    message: "\u8A0E\u4F10\u4EE4\u53D7\u8AFE\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for attack order.
+  - id: 79
+    message: "\u9632\u885B\u4EE4\u53D7\u8AFE\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for defence order.
+  - id: 80
+    message: "\u9632\u885B\u4EE4\u53D7\u8AFE\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for defence order.
+  - id: 81
+    message: "\u5C06\u8ECD\u627F\u8A8D\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for shogun approval
+  - id: 82
+    message: "\u7121\u5FC3\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for asking for money
+  - id: 83
+    message: "\u7121\u5FC3\u306B\u5FC5\u8981\u306A\u91D1\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough money for asking for money.
+  - id: 84
+    message: "\u8ABF\u505C\u306B\u5FC5\u8981\u306A\u5175\u7CE7\u304C\u4E0D\u8DB3\u3057\u3066\u3044\u307E\u3059\u3002"
+    messageEng: My lord, you dont't have an enough stamina for mediation.
+  - id: 85
+    message: "\u50E7\u4FB6\u306B\u3088\u308B\u8FBB\u8AAC\u6CD5\u3092\u65AD\u308A\u307E\u3057\u305F\u3002"
+    messageEng: Declined the Monk's request for street preaching.
+  - id: 86
+    message: "\u56FD\u4EBA\u8846\u306B\u3088\u308B\u65BD\u3057\u306E\u76F4\u8A34\u3092\u62D2\u7D76\u3057\u307E\u3057\u305F\u3002"
+    messageEng: Declined the Local samurai's request to support.
+  - id: 87
+    message: "\u57CE\u4E3B\u3092\u89E3\u4EFB\u81F4\u3057\u307E\u3057\u305F\u3002"
+    messageEng: Removed the position of lord.
+  - id: 88
+    message: "\u57CE\u4E3B\u306B\u4EFB\u547D\u81F4\u3057\u307E\u3057\u305F\u3002"
+    messageEng: Assigned the position of lord.
+  - id: 89
+    message: "\u5F53\u56FD\u306F\u5929\u4E0B\u3078\u306E\u5E03\u77F3\u3068\u3059\u3079\u304F\u3001\u5102\u81EA\u3089\u6CBB\u3081\u308B\u305E\u3002"
+    messageEng: I will own this country by myself as key country.
+  - id: 90
+    message: "\u6709\u308A\u96E3\u304D\u5E78\u305B\u306B\u5FA1\u5EA7\u308A\u307E\u3059\u308B\u3002\u8EAB\u547D\u3092\u8CED\u3057\u3066\u6CBB\u4E16\u306B\u52AA\u3081\u307E\u3059\u308B\u3002"
+    messageEng: It's my humble pleasure. I'll make all efforts to develop the country.
+  - id: 91
+    message: "\u5FA1\u9928\u69D8\u3001\u6B66\u5C06\u3092\u7686\u8FFD\u653E\u3059\u308B\u3053\u3068\u306F\u51FA\u6765\u307E\u305B\u306C\u305E\u3002\u304A\u5BB6\u3092\u6EC5\u307C\u3059\u304A\u3064\u3082\u308A\u304B\u3002"
+    messageEng: My lord, you can't expel all samurai. Will you destroy your family?
+  - id: 92
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u5BB6\u5B9D\u3092\u624B\u306B\u5165\u308C\u307E\u3057\u305F\u305E\u3002"
+    messageEng: My lord, you obtained treasure.
+  - id: 93
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u7269\u8CC7\u3092\u624B\u306B\u5165\u308C\u307E\u3057\u305F\u305E\u3002"
+    messageEng: My lord, you obtained item.
+  - id: 94
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u6D6A\u4EBA\u4E2D\u306E\u5263\u8C6A\u3092\u767B\u7528\u3057\u307E\u3057\u305F\u305E\u3002"
+    messageEng: My lord, you hired samurai.
+  - id: 95
+    message: "\u306A\u3093\u3068\u753A\u8846\u5171\u304C\u77E2\u92AD\u3092\u65AD\u308F\u308A\u307E\u3057\u305F\u305E\u3002"
+    messageEng: 'I can''t believe but merchants declined to be levied. '
+  - id: 96
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u9244\u7832\u92F3\u9020\u6280\u8853\u3092\u5C0E\u5165\u3057\u307E\u3057\u305F\u305E\u3002\u5185\u653F\u306B\u3066\u935B\u51B6\u5C4B\u3092\u5EFA\u9020\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: My lord, we got Blacksmith Technology. Let's build blacksmith's house.
+  - id: 97
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u99AC\u80B2\u6210\u6280\u8853\u3092\u5C0E\u5165\u3057\u307E\u3057\u305F\u305E\u3002\u5185\u653F\u306B\u3066\u53A9\u5EFA\u9020\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: My lord, we got Breeding Technology. Let's build breeding house.
+  - id: 98
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u5FCD\u80B2\u6210\u6280\u8853\u3092\u5C0E\u5165\u3057\u307E\u3057\u305F\u305E\u3002\u5185\u653F\u306B\u3066\u65BD\u8A2D\u5EFA\u9020\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: My lord, we got Ninja Technology. Let's build ninja town.
+  - id: 99
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u9632\u885B\u3059\u3079\u304D\u8ECD\u52E2\u304C\u304A\u308A\u307E\u305B\u306C\u305E\u3002"
+    messageEng: My lord, there is no attacking army.
+  - id: 100
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u4EF2\u88C1\u53EF\u80FD\u306A\u5927\u540D\u304C\u304A\u308A\u307E\u305B\u3093\u305E\u3002"
+    messageEng: My lord, there is no party to mediate.
+  - id: 101
+    message: "\u60E3\u7121\u4E8B\u4EE4\u3092\u51FA\u3059\u306B\u306F\u3001\u4ED6\u5927\u540D\u3088\u308A2\u500D\u591A\u304F\u306E\u56FD\u3092\u6CBB\u3081\u3066\u3044\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u305E\u3002"
+    messageEng: You have to occupy the double number countries than other parties
+      for peace eddicts.
+  - id: 102
+    message: "\u6B66\u5C06\u73E0\u306E\u3054\u8CFC\u5165\u6709\u96E3\u3046\u3054\u3056\u3044\u307E\u3059\u308B\u3002"
+    messageEng: My, lord, Thank you for your stone purchasing!
+  - id: 103
+    message: "\u8FFD\u52A0\u9663\u5F62\u306E\u3054\u8CFC\u5165\u6709\u96E3\u3046\u3054\u3056\u3044\u307E\u3059\u308B\u3002"
+    messageEng: My, lord, Thank you for your available samurai purchasing!
+  - id: 104
+    message: "\u30A8\u30E9\u30FC : \u4E0D\u660E\u306A\u30A2\u30D7\u30EA\u306E\u3088\u3046\u3067\u3059\u306A\u3002"
+    messageEng: 'Error : Unknown Application...'
+  - id: 105
+    message: "\u30A8\u30E9\u30FC : \u8CFC\u5165\u53EF\u80FD\u306A\u8A2D\u5B9A\u304C\u3055\u308C\u3066\u3044\u306A\u3044\u3088\u3046\u3067\u3059\u305E\u3002"
+    messageEng: 'Error : You don''t have a setting for purchasing...'
+  - id: 106
+    message: "\u30A8\u30E9\u30FC : \u8CFC\u5165\u53EF\u80FD\u306A\u30A2\u30A4\u30C6\u30E0\u306F\u3054\u3056\u3044\u307E\u305B\u3093\u306A\u3002"
+    messageEng: 'Error : There is no available item now.'
+  - id: 107
+    message: "\u30A8\u30E9\u30FC : \u8CFC\u5165\u304C\u51FA\u6765\u307E\u305B\u3093\u3067\u3057\u305F\u305E\u3002"
+    messageEng: 'Error : You couldn''t buy item.'
+  - id: 108
+    message: "\u30A8\u30E9\u30FC : \u304A\u5F85\u3061\u4E0B\u3055\u308C\u3001\u73FE\u5728\u8CFC\u5165\u4E2D\u3067\u3059\u305E\u3002"
+    messageEng: 'Error : Please wait a moment. Now on purchasing.'
+  - id: 109
+    message: "\u30A8\u30E9\u30FC : \u8CFC\u5165\u304C\u62D2\u5426\u3055\u308C\u307E\u3057\u305F\u305E\u3002"
+    messageEng: 'Error : Your purchase request was rejected.'
+  - id: 110
+    message: "\u30A8\u30E9\u30FC : \u3053\u306E\u30A2\u30A4\u30C6\u30E0\u306F\u8CFC\u5165\u4E0D\u53EF\u3067\u3059\u305E\u3002"
+    messageEng: 'Error : This item is not available.'
+  - id: 111
+    message: "\u30A8\u30E9\u30FC : \u7F72\u540D\u304C\u8AA4\u3063\u3066\u3044\u308B\u3088\u3046\u3067\u3059\u306A\u3002"
+    messageEng: 'Error : Your signature is wrong...'
+  - id: 112
+    message: "\u30A8\u30E9\u30FC : \u8CFC\u5165\u3092\u30AD\u30E3\u30F3\u30BB\u30EB\u3055\u308C\u307E\u3057\u305F\u304B\u306A\u3002"
+    messageEng: 'Error : You canceled your purchase request.'
+  - id: 113
+    message: "\u30A8\u30E9\u30FC : \u4E0D\u660E\u306A\u30A8\u30E9\u30FC\u3067\u3059\u305E\u3002"
+    messageEng: 'Error : Unknown Error...'
+  - id: 114
+    message: "\u57CE\u4E3B\u89E3\u4EFB"
+    messageEng: Lord Remove
+  - id: 115
+    message: "\u57CE\u4E3B\u4EFB\u547D"
+    messageEng: Lord Assign
+  - id: 116
+    message: "\u3053\u306E\u65BD\u8A2D\u306F\u3053\u308C\u4EE5\u4E0A\u5F37\u5316\u51FA\u6765\u307E\u305B\u3093\u305E\u3002"
+    messageEng: You can't develop this building anymore. Lv is max.
+  - id: 117
+    message: "\u65C5\u4EBA\u56DE\u5FA9\u3092\u884C\u3046\u306B\u306F\u3001\u540D\u58F0\u304C\u5FC5\u8981\u3067\u3059\u3002\u5927\u8336\u4F1A\u3092\u958B\u50AC\u3059\u308C\u3070\u53D6\u5F97\u51FA\u6765\u307E\u3059\u3002"
+    messageEng: You need to reputation item to recover visitor number. You can get
+      it by tea party.
+  - id: 118
+    message: "\u5FA1\u9928\u69D8\u3001\u65BD\u8A2D\u3092\u7834\u58CA\u3057\u307E\u3057\u305F\u305E\u3002"
+    messageEng: My lord, you destroied facility.
+  - id: 119
+    message: "\u57CE\u4E3B\u306B\u4EFB\u547D\u53EF\u80FD\u306A\u6B66\u5C06\u304C\u304A\u308A\u307E\u305B\u306C\u305E\u3002\u914D\u4E0B\u6B66\u5C06\u3092\u767B\u7528\u3057\u3066\u4E0B\u3055\u308C\u3002"
+    messageEng: You don't have available samurai for lord assignment. Please hire
+      new samurai.
+  - id: 120
+    message: "\u5FA1\u5C4B\u5F62\u69D8\u3001\u540D\u58F0\u30A2\u30A4\u30C6\u30E0\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u305E\u3002"
+    messageEng: My lord, you don't have enough reputation item.
+  - id: 121
+    message: "\u540D\u58F0\u3092\u4F7F\u7528\u3057\u3001\u65C5\u4EBA\u3092\u52DF\u96C6\u3057\u307E\u3057\u305F\u3002\u5049\u4EBA\u3082\u591A\u304F\u8A2A\u308C\u308B\u3088\u3046\u306B\u306A\u308A\u307E\u3059\u305E\u3002"
+    messageEng: You invited visitor again by used reputation item. It seems that great
+      man is coming.
+  - id: 122
+    message: "\u8D08\u308A\u7269\u3092\u53D7\u3051\u53D6\u308A\u307E\u3057\u305F\u3002"
+    messageEng: You got gift from visitor.
+  - id: 123
+    message: "\u5175\u7CE7\u306F\u3053\u308C\u4EE5\u4E0A\u53D7\u3051\u53D6\u308C\u307E\u305B\u3093\u305E\u3002"
+    messageEng: You can't get stamina anymore.
+  - id: 124
+    message: "\u6709\u30EA\u96E3\u30A6\u30B4\u30BC\u30DE\u30B9\u3002\u30DE\u30BF\u30AA\u9858\u30A4\u30B7\u30DE\u30B9\u3002"
+    messageEng: Thank you. Please come to see again!
+  - id: 125
+    message: "\u91D1\u30AC\u8DB3\u30EA\u30CA\u30A4\u30E8\u30A6\u30C7\u30B9\u30E8\u3002\u30DE\u30BF\u30AA\u9858\u30A4\u30B7\u30DE\u30B9\u3002"
+    messageEng: You dont't have an enough money. Please come to see next time.
+  - id: 126
+    message: "\u6575\u306B\u9023\u7D61\u7DDA\u906E\u65AD\u3092\u59A8\u5BB3\u3055\u308C\u307E\u3057\u305F\u3002\u77E5\u7565\u306E\u9AD8\u3044\u6B66\u5C06\u306B\u4EFB\u305B\u3066\u306F\u5982\u4F55\u3067\u3057\u3087\u3046\u3002"
+    messageEng: Enemy interfered our cut line. Please order to Samurai with high DFC
+      value.
+  - id: 127
+    message: "\u906E\u65AD\u53EF\u80FD\u306A\u9023\u7D61\u7DDA\u306F\u3042\u308A\u307E\u305B\u3093\u305E\u3002"
+    messageEng: There is no line for cut.
+  - id: 128
+    message: "\u8ABF\u7565\u306F\u5931\u6557\u3057\u307E\u3057\u305F\u3002\u6575\u65B9\u306E\u58EB\u6C17\u306F\u9AD8\u3044\u3067\u3059\u305E\u3002"
+    messageEng: You failed win over. Enemy's morale is very high.
+  - id: 129
+    message: "\u4F1D\u9054\u6280\u8853\u304C\u4E0D\u8DB3\u3057\u3066\u304A\u308A\u307E\u3059\u3002"
+    messageEng: You don't have item of transferred technology.
+  - id: 130
+    message: "\u81EA\u8ECD\u306E\u63F4\u8ECD\u304C\u5230\u7740\u3057\u307E\u3057\u305F\u305E\uFF01"
+    messageEng: Player's reinforcement came!
+  - id: 131
+    message: "\u6575\u8ECD\u306E\u63F4\u8ECD\u304C\u5230\u7740\u3057\u307E\u3057\u305F\u305E\uFF01"
+    messageEng: Enemy's reinforcement came!
+  - id: 132
+    message: "\u8ABF\u7565\u306B\u3088\u308A\u6575\u5175\u304C\u5BDD\u8FD4\u308A\u307E\u3057\u305F\u305E\uFF01"
+    messageEng: Enemy unit betrayed by your win over.
+  - id: 133
+    message: "\u51FA\u9663\u4E2D\u306E\u6B66\u5C06\u304C\u304A\u308A\u307E\u305B\u3093\u305E\u3002\u9663\u5F62\u3088\u308A\u51FA\u9663\u6B66\u5C06\u3092\u9078\u629E\u3057\u3066\u4E0B\u3055\u308C\u3002"
+    messageEng: There is no available samurai. Please set samurai in battle formation.
+  - id: 134
+    message: "\u8AB0\u3082\u51FA\u9663\u3055\u305B\u306A\u3044\u304A\u3064\u3082\u308A\u304B\uFF1F"
+    messageEng: You need to set 1 samurai in format at least.
+  - id: 135
+    message: "\u307E\u3060\u5B98\u4F4D\u306F\u53D9\u4EFB\u3055\u308C\u3066\u304A\u308A\u307E\u305B\u3093\u305E\u3002\u5C71\u57CE\u56FD\u306B\u3066\u671D\u5EF7\u5DE5\u4F5C\u3092\u3057\u307E\u3057\u3087\u3046\u3002"
+    messageEng: You've never gotten any royal court rank yet. Please do political
+      activity in Yamashiro country.
+  - id: 136
+    message: "\u901A\u4FE1\u304C\u7E4B\u304C\u3063\u3066\u304A\u308A\u307E\u305B\u3093\u305E\u3002\u6B66\u5C06\u73E0\u3092\u8CB7\u3046\u306B\u306F\u901A\u4FE1\u3092\u78BA\u8A8D\u3057\u3066\u4E0B\u3055\u308C\u3002"
+    messageEng: There is no network. Please check your setting.
+  - id: 137
+    message: "\u65E2\u306B\u767B\u7528\u6E08\u307F\u306E\u305F\u3081\u3001\u767B\u7528\u3059\u308B\u5834\u5408\u306F\u6B66\u5C06\u306E\u6700\u5927Lv\u304C\u4E0A\u304C\u308A\u307E\u3059\u3002"
+    messageEng: You've already hired this samurai so Max Lv of the samurai will increase
+      instead.
+  - id: 138
+    message: "\u9663\u7ACB\u306B\u7D44\u307F\u8FBC\u307E\u308C\u3066\u3044\u308B\u6B66\u5C06\u306F\u8FFD\u653E\u51FA\u6765\u307E\u305B\u3093\u305E\u3002\u3044\u3056\u653B\u3081\u3089\u308C\u305F\u3089\u5982\u4F55\u3044\u305F\u3057\u307E\u3059\u3002"
+    messageEng: You can't remove a samurai who is in the formation.
+  - id: 139
+    message: "\u51FA\u9663\u53EF\u80FD\u6570\u3092\u8D85\u3048\u3066\u304A\u308A\u307E\u3059\u305E\u3002\u6B66\u5C06\u3092\u9663\u5F62\u304B\u3089\u623B\u3057\u3066\u4E0B\u3055\u308C\u3002"
+    messageEng: Over the limitation of formation. Please remove samurai from formation.
+  - id: 140
+    message: "\u5408\u6226\u5834\u306B\u53C2\u308B\u306B\u306F\u8CB4\u6BBF\u306E\u540D\u524D\u3092\u6559\u3048\u3066\u9802\u304F\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059\u305E\u3002"
+    messageEng: You need to enter your name if you want to go to PvP.
+  - id: 141
+    message: "\u51FA\u96F2\u963F\u56FD\u304C\u3084\u3063\u3066\u53C2\u308A\u307E\u3057\u305F\u3002\u304B\u3076\u304D\u8E0A\u308A\u3092\u89B3\u306B\u65C5\u4EBA\u304C\u96C6\u307E\u308A\u307E\u3059\u305E\u3002"
+    messageEng: 'Izumo no Okuni has come to your town to show kabuki dance. All travellers
+      will come to your town. '

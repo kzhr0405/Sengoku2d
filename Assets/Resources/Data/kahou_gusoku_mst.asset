@@ -1,0 +1,308 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f643be3c49264e64fa465673fde83c66, type: 3}
+  m_Name: kahou_gusoku_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: gusoku
+    kahouName: "\u91D1\u5C0F\u672D\u8272\u3005\u5A01"
+    kahouRank: S
+    kahouExp: "\u91D1\u7B94\u3092\u7F6E\u3044\u305F\u7D30\u304B\u3044\u672D\u3092\uFF14\u8272\u306E\u7CF8\u3067\u7DB4\u308A\u5408\u308F\u305B\u305F\u80F4\u4E38\u3002\u6B66\u7530\u4FE1\u7384\u306E\u897F\u4E0A\u3092\u77E5\u3063\u305F\u7E54\u7530\u4FE1\u9577\u304C\u3001\u4E0A\u6749\u8B19\u4FE1\u3068\u4E00\u6642\u7684\u306B\u540C\u76DF\u3092\u7D50\u3076\u305F\u3081\u306B\u8D08\u3063\u305F\u54C1\u306E\uFF11\u3064\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Gold Plate Armor
+    kahouExpEng: An armor with fine gold leafed plates with four color threads. Nobunaga
+      Oda, who knew the attack of Takeda Shingen, gifted it to Kenshin Uesugi for
+      temporary alliance.
+    kahouTargetEng: DFC
+  - id: 2
+    kahouType: gusoku
+    kahouName: "\u7247\u808C\u8131\u4E8C\u679A\u80F4"
+    kahouRank: A
+    kahouExp: "\u7247\u808C\u3092\u8131\u3044\u3060\u3088\u3046\u306B\u898B\u3048\u308B\u5177\u8DB3\u3002\u6226\u56FD\u6642\u4EE3\u306E\u6B66\u5C06\u304C\u3044\u304B\u306B\u8C6A\u653E\u78CA\u843D\u3067\u3042\u3063\u305F\u304B\u3092\u7269\u8A9E\u308B\u3002\u52A0\u85E4\u6E05\u6B63\u3089\u304C\u597D\u3093\u3067\u7528\u3044\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: One Skin Armor
+    kahouExpEng: An armor that looks like I took off one cloth. It tells how samurai
+      of Sengoku period has confidence. Kiyomasa Kato liked it.
+    kahouTargetEng: DFC
+  - id: 3
+    kahouType: gusoku
+    kahouName: "\u91D1\u7B94\u7F6E\u8272\u3005\u5A01"
+    kahouRank: B
+    kahouExp: "\u91D1\u7B94\u7F6E\u304C\u307B\u3069\u3053\u3055\u308C\u3066\u3044\u308B\u3002\u91D1\u8272\u304C\u7F8E\u3057\u304F\u6620\u3048\u3066\u3044\u308B\u5177\u8DB3\u3067\u3042\u308B\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Gold Leaf Armor
+    kahouExpEng: There is a gilt on surface. The gold color is shining beautifully.
+    kahouTargetEng: DFC
+  - id: 4
+    kahouType: gusoku
+    kahouName: "\u6876\u5074\u80F4"
+    kahouRank: C
+    kahouExp: "\u5F53\u4E16\u5177\u8DB3\u306E\u4E00\u7A2E\u3002\u6BD4\u8F03\u7684\u5236\u4F5C\u304C\u7C21\u5358\u3067\u3042\u308A\u5F37\u5EA6\u3082\u9AD8\u3044\u3053\u3068\u304B\u3089\u5BA4\u753A\u6642\u4EE3\u5F8C\u671F\u306B\u5927\u3044\u306B\u666E\u53CA\u3057\u305F\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Tub Armor
+    kahouExpEng: A kind of armor of new generation. Due to its relatively easy production
+      and high strength, it was very popular in the late Muromachi period.
+    kahouTargetEng: DFC
+  - id: 5
+    kahouType: gusoku
+    kahouName: "\u718A\u6BDB\u5177\u8DB3"
+    kahouRank: C
+    kahouExp: "\u5168\u9762\u306B\u9ED2\u718A\u6BDB\u3092\u307B\u3069\u3053\u3057\u305F\u5909\u308F\u308A\u5177\u8DB3\u3002\u7247\u6850\u4E14\u5143\u304C\u597D\u3093\u3067\u7528\u3044\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Bear Hair Armor
+    kahouExpEng: A strange armor that puts black bear hair on the whole surface. It
+      is said that Katsumoto Katagiri liked and used it.
+    kahouTargetEng: DFC
+  - id: 6
+    kahouType: gusoku
+    kahouName: "\u6A2B\u9CE5\u7CF8\u80A9\u9ED2\u5A01"
+    kahouRank: C
+    kahouExp: "\u5B89\u6771\u5B9F\u5B63\u304C\u6240\u7528\u3057\u305F\u5177\u8DB3\u3068\u4F1D\u3048\u3089\u308C\u308B\u3002\u6A2B\u9CE5\u7CF8\u3067\u5C0F\u672D\u3092\u7DB4\u3063\u305F\u3082\u306E\u3067\u3001\u304D\u3081\u3053\u307E\u3084\u304B\u306A\u523A\u7E4D\u304C\u8272\u9BAE\u3084\u304B\u306B\u969B\u7ACB\u3064\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Black Jay Armor
+    kahouExpEng: It is said that Sanesuke Ando used it. It is a thing stitched plate
+      with Okadori thread, and the fine embroidery stand out in color vividly.
+    kahouTargetEng: DFC
+  - id: 7
+    kahouType: gusoku
+    kahouName: "\u9ED2\u7CF8\u5A01\u4E8C\u679A\u80F4"
+    kahouRank: C
+    kahouExp: "\u5FB3\u5DDD\u56DB\u5929\u738B\u306E\uFF11\u4EBA\u30FB\u698A\u539F\u5EB7\u653F\u304C\u6240\u6709\u3057\u305F\u5177\u8DB3\u3002\u9ED2\u3067\u7D71\u4E00\u3055\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Black 2 Plate Armor
+    kahouExpEng: An armour owned by Yasumasa Sakakibara, one of the big Tokugawa 4
+      samurai. It is unified in black.
+    kahouTargetEng: DFC
+  - id: 8
+    kahouType: gusoku
+    kahouName: "\u6817\u8272\u9769\u4ECF\u4E38\u80F4"
+    kahouRank: C
+    kahouExp: "\u7ACB\u82B1\u5B97\u8302\u304C\u6240\u6709\u3057\u305F\u5177\u8DB3\u3068\u4F1D\u3048\u3089\u308C\u308B\u3002\u4F55\u3089\u98FE\u308A\u304C\u306A\u304F\u5B97\u8302\u306E\u8CEA\u5B9F\u525B\u5065\u306E\u6C17\u98A8\u3092\u7269\u8A9E\u308B\u4E00\u54C1\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Sorrel Armor
+    kahouExpEng: Muneshige Tachibara owned it.  It is a armor without any decoration
+      that tells Muneshige's quality of nature and virtue.
+    kahouTargetEng: DFC
+  - id: 9
+    kahouType: gusoku
+    kahouName: "\u9244\u5730\u4E8C\u679A\u80F4"
+    kahouRank: C
+    kahouExp: "\u771F\u7530\u5BB6\u4F1D\u6765\u306E\u5177\u8DB3\u3002\u5357\u86EE\u5177\u8DB3\u306E\u3088\u3046\u306B\u7832\u5F3E\u5BFE\u7B56\u306E\u305F\u3081\u3001\u80F4\u306E\u4E2D\u592E\u306B\u9244\u677F\u304C\u7559\u3081\u3089\u308C\u3066\u3044\u308B\u3002\u5C0F\u624B\u306E\u624B\u7532\u306B\u306F\u771F\u7530\u5BB6\u306E\u5BB6\u7D0B\u300C\u516D\u7D0B\u92AD\u300D\u304C\u6253\u305F\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Iron Armor
+    kahouExpEng: It is an armor of the Sanada family. Iron plates are fastened in
+      the center of the torso to countermeasure the shell fire like the western armor.
+      On the back of the glove, the family crest of the Sanada family "Rokumon sen"
+      is struck.
+    kahouTargetEng: DFC
+  - id: 10
+    kahouType: gusoku
+    kahouName: "\u5C0F\u685C\u97CB\u5A01\u93A7"
+    kahouRank: S
+    kahouExp: "\u7532\u6590\u6E90\u6C0F\u5AE1\u6D41\u306E\u8A3C\u3068\u3057\u3066\u6B66\u7530\u5BB6\u306B\u4F1D\u6765\u3059\u308B\u5927\u93A7\u3002\u6B66\u7530\u5BB6\u306F\u51FA\u9663\u306E\u524D\u306B\u3001\u3053\u306E\u93A7\u306B\u9858\u3092\u304B\u3051\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Cherry Blossoms Armor
+    kahouExpEng: The large armor that is transferred to the Takeda family as a proof
+      of the Kai genji. Takeda family wished to win to this armor before the start
+      of the war.
+    kahouTargetEng: DFC
+  - id: 11
+    kahouType: gusoku
+    kahouName: "\u5357\u86EE\u80F4\u5177\u8DB3"
+    kahouRank: S
+    kahouExp: "\u5357\u86EE\u6E21\u6765\u306E\u5177\u8DB3\u3002\u5FB3\u5DDD\u5BB6\u5EB7\u304C\u698A\u539F\u5EB7\u653F\u306B\u4E0B\u8CDC\u3057\u305F\u3082\u306E\u3002\u6226\u56FD\u6642\u4EE3\u306B\u6D41\u884C\u3057\u305F\u5F53\u4E16\u5177\u8DB3\u306F\u3001\u654F\u6377\u306B\u52D5\u3051\u308B\u3088\u3046\u3001\u5357\u86EE\u80F4\u5177\u8DB3\u3092\u53C2\u8003\u306B\u4F5C\u3089\u308C\u305F\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Western Armor
+    kahouExpEng: Western armor who Ieyasu Tokugawa gave to Yasumasa Sakakibara. new
+      generation armors had been producted by refering a western armor for improving
+      agility.
+    kahouTargetEng: DFC
+  - id: 12
+    kahouType: gusoku
+    kahouName: "\u85CD\u97CB\u5A01\u80A9\u8D64\u93A7"
+    kahouRank: A
+    kahouExp: "\u897F\u56FD\u306E\u5927\u5927\u540D\u30FB\u5927\u5185\u7FA9\u9686\u306E\u6240\u7528\u306E\u5927\u93A7\u3002\u6226\u56FD\u671F\u306E\u7532\u5191\u306F\u3001\u6A5F\u52D5\u6027\u3092\u91CD\u8996\u3057\u305F\u8EFD\u91CF\u306A\u8179\u5DFB\u3084\u80F4\u4E38\u304C\u591A\u3044\u4E2D\u3001\u3053\u306E\u3088\u3046\u306B\u53E4\u98A8\u3067\u5A01\u53B3\u3042\u308B\u5927\u93A7\u3092\u597D\u3080\u6B66\u5C06\u3082\u3044\u305F\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Red Armor
+    kahouExpEng: 'A big armor which was owned by Yoshitaka Oouchi who had a big party
+      in western are. There were also samurai who liked such an old-fashioned big
+      armor even though almost all of samurai prefer a light armor for agility. '
+    kahouTargetEng: DFC
+  - id: 13
+    kahouType: gusoku
+    kahouName: "\u6B6F\u6736\u5177\u8DB3"
+    kahouRank: A
+    kahouExp: "\u5FB3\u5DDD\u5BB6\u5EB7\u304C\u95A2\u30F6\u539F\u5408\u6226\u6642\u306B\u7740\u7528\u3057\u3001\u4EE5\u6765\u5FB3\u5DDD\u5BB6\u3067\u7E01\u8D77\u306E\u826F\u3044\u5177\u8DB3\u3068\u3044\u308F\u308C\u305F\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Fern Armor
+    kahouExpEng: It is lucky armor in Tokugawa family because Ieyasu Tokugawa won
+      the Sekigahara battle by worn this armor.
+    kahouTargetEng: DFC
+  - id: 14
+    kahouType: gusoku
+    kahouName: "\u9B5A\u9C57\u672D\u4E8C\u679A\u80F4"
+    kahouRank: B
+    kahouExp: "\u667A\u5C06\u30FB\u7AF9\u4E2D\u534A\u5175\u885B\u91CD\u6CBB\u304C\u6240\u6709\u3057\u305F\u5177\u8DB3\u3002\u9B5A\u306E\u9C57\u306B\u898B\u7ACB\u3066\u305F\u5C0F\u672D\u3092\u5168\u4F53\u306B\u8CBC\u308A\u4ED8\u3051\u3066\u9ED2\u6F06\u3067\u307E\u3068\u3081\u3066\u3042\u308B\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Fish Scale Armor
+    kahouExpEng: An armor owned by Hanbei Takenaka. It is set together with black
+      lacquer by affixing the small bills that are considered as fish scales to the
+      whole.
+    kahouTargetEng: DFC
+  - id: 15
+    kahouType: gusoku
+    kahouName: "\u91D1\u9640\u7F8E\u5177\u8DB3"
+    kahouRank: B
+    kahouExp: "\u5168\u4F53\u3092\u91D1\u7B94\u3067\u8986\u3063\u305F\u5177\u8DB3\u3002\u6876\u72ED\u9593\u5408\u6226\u3067\u4ECA\u5DDD\u8ECD\u306E\u5FB3\u5DDD\u5BB6\u5EB7\u304C\u5C3E\u5F35\u5927\u9AD8\u57CE\u3078\u5175\u7CE7\u3092\u8F38\u9001\u3057\u305F\u3068\u304D\u306B\u7740\u7528\u3057\u305F\u306E\u3067\u3001\u5225\u540D\u300C\u5927\u9AD8\u57CE\u5175\u7CE7\u5165\u5177\u8DB3\u300D\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Gold Demi Armor
+    kahouExpEng: An armor that covered the whole with gold foil. As Ieyasu Tokugawa
+      of the Imagawa Army transported the weapons to the Owari Otaka Castle in the
+      Okehazama Battle, he wore it.
+    kahouTargetEng: DFC
+  - id: 16
+    kahouType: gusoku
+    kahouName: "\u9ED2\u6F06\u5857\u4E94\u679A\u80F4"
+    kahouRank: S
+    kahouExp: "\u76F8\u6A21\u938C\u5009\u306E\u96EA\u4E0B\u3067\u6D3B\u8E8D\u3057\u305F\u660E\u73CD\u6D3E\u4F5C\u306E\u5177\u8DB3\u3002\u4F0A\u9054\u653F\u5B97\u307B\u304B\u4F0A\u9054\u5BB6\u306E\u5BB6\u81E3\u304C\u611B\u7528\u3057\u305F\u3053\u3068\u304B\u3089\u300C\u4ED9\u53F0\u80F4\u300D\u3068\u3082\u547C\u3070\u308C\u308B\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Black Lacquer Armor
+    kahouExpEng: It is also called "Sendai armor" because it is Masamune Date's favorite
+      one.
+    kahouTargetEng: DFC
+  - id: 17
+    kahouType: gusoku
+    kahouName: "\u91D1\u767D\u6A80\u9244\u8179\u5DFB"
+    kahouRank: A
+    kahouExp: "\u6C34\u8ECD\u306E\u5C06\u3001\u6751\u4E0A\u5409\u5145\u304C\u6240\u6709\u3057\u305F\u5177\u8DB3\u3002\u91D1\u5177\u3084\u91D1\u7B94\u7F6E\u3092\u968F\u6240\u306B\u307B\u3069\u3053\u3057\u3001\u767D\u30FB\u7D05\u30FB\u7D2B\u306E\u4E09\u8272\u7CF8\u3067\u7DB4\u3063\u305F\u7F8E\u3057\u3044\u9244\u8179\u5DFB\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Platinum Armor
+    kahouExpEng: Owned by Takeyoshi Murakami who was famous admiral. A beautiful armor
+      wrapped with metal threads and gold leaf place everywhere, with three colors
+      of white, red and purple.
+    kahouTargetEng: DFC
+  - id: 18
+    kahouType: gusoku
+    kahouName: "\u7D2B\u7CF8\u5A01\u6700\u4E0A\u80F4"
+    kahouRank: B
+    kahouExp: "\u6700\u4E0A\u7FA9\u5149\u304C\u6240\u6709\u3057\u305F\u5177\u8DB3\u3002\u91D1\u306E\u5C0F\u672D\u3092\u7D2B\u7CF8\u3067\u7DB4\u3063\u305F\u3001\u307F\u3084\u3073\u306A\u9038\u54C1\u3002\u6700\u4E0A\u80F4\u306E\u540D\u306F\u3001\u5BA4\u753A\u6642\u4EE3\u672B\u306B\u6700\u4E0A\u5730\u65B9\u3067\u4F5C\u3089\u308C\u305F\u3053\u3068\u306B\u3088\u308B\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Purple Armor
+    kahouExpEng: A great armor owned by Yoshiaki Mogami that sawed a golden plate
+      with a purple thread. The name of the Mogami armor is due to being made in the
+      in the Mogami area.
+    kahouTargetEng: DFC
+  - id: 19
+    kahouType: gusoku
+    kahouName: "\u718F\u97CB\u7D20\u61F8\u5A01"
+    kahouRank: B
+    kahouExp: "\u4E0A\u6749\u8B19\u4FE1\u304C\u6240\u6709\u3057\u305F\u5177\u8DB3\u3002\u515C\u53E4\u982D\u5F62\u3067\u3001\u8868\u9762\u306B\u91D1\u7B94\u304C\u307B\u3069\u3053\u3055\u308C\u3066\u3044\u308B\u3002\u4ED8\u5C5E\u3059\u308B\u58F7\u8896\u306F\u5225\u62F5\u3048\u3067\u3001\u7E54\u7530\u4FE1\u9577\u304B\u3089\u8D08\u3089\u308C\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u77E5\u7565"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Belly Band Armor
+    kahouExpEng: An armor owned by Kenshin Uesugi. It is old head style with gold
+      foil on the surface. The attached sleeves were given by Oda Nobunaga .
+    kahouTargetEng: DFC

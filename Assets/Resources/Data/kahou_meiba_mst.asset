@@ -1,0 +1,218 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82dafb717bde2c34d8d4f2747d63cfc8, type: 3}
+  m_Name: kahou_meiba_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: meiba
+    kahouName: "\u677E\u98A8"
+    kahouRank: S
+    kahouExp: "\u524D\u7530\u5229\u76CA\u306E\u611B\u99AC\u3002\u524D\u7530\u5229\u5BB6\u3092\u6C34\u98A8\u5442\u306B\u9A19\u3057\u3066\u5165\u6D74\u3055\u305B\u3001\u524D\u7530\u5BB6\u3092\u51FA\u5954\u3057\u305F\u969B\u306B\u596A\u3063\u305F\u3068\u8A00\u308F\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Matsukaze
+    kahouExpEng: Keiji Maeda's favorite. It is said that Keiji forced Toshiie Maeda
+      took a cold water bath and ran away with this horse from Maeda family.
+    kahouTargetEng: SPD
+  - id: 2
+    kahouType: meiba
+    kahouName: "\u30A2\u30E9\u30D6\u99AC"
+    kahouRank: A
+    kahouExp: "\u5C0F\u5F62\u3067\u5747\u6574\u306E\u3068\u308C\u305F\u512A\u7F8E\u306A\u99AC\u7A2E\u3067\u3001\u6027\u8CEA\u306F\u6E29\u539A\u3001\u7C97\u98DF\u306B\u8010\u3048\u3001\u901F\u529B\u3068\u6301\u4E45\u529B\u306B\u5BCC\u3080\u3002\u5357\u86EE\u8CBF\u6613\u3067\u306F\u8C61\u3084\u30A4\u30F3\u30B3\u306A\u3069\u306E\u73CD\u7363\u3068\u3068\u3082\u306B\u7570\u56FD\u306E\u99AC\u3082\u53D6\u5F15\u3055\u308C\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Arab horse
+    kahouExpEng: Small, well-balanced and elegant horse species.The character is warmth,
+      resists rough food, rich in speed and endurance. In Western trade, foreigners'
+      horses were traded with rare animals such as elephants and parakeettes.
+    kahouTargetEng: SPD
+  - id: 3
+    kahouType: meiba
+    kahouName: "\u5C0F\u9E7F\u6BDB"
+    kahouRank: B
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u306E\u611B\u99AC\u306E\uFF11\u3064\u3002\u4FE1\u9577\u306B\u732E\u3058\u3089\u308C\u305F\u6570\u3005\u306E\u99FF\u99AC\u306E\u4E2D\u3067\u3082\u7279\u306B\u6C17\u306B\u5165\u3063\u3066\u3044\u305F\u99AC\u3067\u3042\u3063\u305F\u3068\u3044\u3046\u3002\u5C0F\u67C4\u306A\u9E7F\u6BDB\u306E\u99AC\u3067\u3042\u308B\u3053\u3068\u304B\u3089\u3053\u3046\u547C\u3070\u308C\u305F\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Small Fawn
+    kahouExpEng: "Nobunaga Oda's favorite. It is said that among horseback riding
+      horse dedicated to Nobunaga it was a horse of particular liking. \u5C0F\u67C4\u306A\u9E7F\u6BDB\u306E\u99AC\u3067\u3042\u308B\u3053\u3068\u304B\u3089\u3053\u3046\u547C\u3070\u308C\u305F\u3002"
+    kahouTargetEng: SPD
+  - id: 4
+    kahouType: meiba
+    kahouName: "\u5927\u9E7F\u6BDB"
+    kahouRank: C
+    kahouExp: "\u660E\u667A\u79C0\u6E80\u306E\u611B\u99AC\u3002\u672C\u80FD\u5BFA\u306E\u5909\u5F8C\u3001\u5B89\u571F\u57CE\u3092\u4EFB\u3055\u308C\u3066\u3044\u305F\u79C0\u6E80\u306F\u3001\u660E\u667A\u5149\u79C0\u306E\u6557\u6226\u3092\u77E5\u308B\u3068\u3001\u3053\u306E\u99AC\u3068\u3068\u3082\u306B\u7435\u7436\u306E\u6E56\u6C34\u3092\u6E21\u3063\u3066\u5742\u672C\u57CE\u3078\u9003\u907F\u884C\u3057\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Large Fawn
+    kahouExpEng: After Honnoji's incident, Shigemitsu who had been in Azuchi castle,
+      knew about the defeat of Mitsuhide Akechi, he fled the lake of Biwa with this
+      horse to Sakamoto castle.
+    kahouTargetEng: SPD
+  - id: 5
+    kahouType: meiba
+    kahouName: "\u5C0F\u96F2\u96C0"
+    kahouRank: C
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u306E\u611B\u99AC\u3002\u4FE1\u9577\u306B\u732E\u3058\u3089\u308C\u305F\u6570\u3005\u306E\u99FF\u99AC\u306E\u4E2D\u3067\u3082\u3001\u7279\u306B\u597D\u3093\u3060\u99AC\u3067\u3042\u3063\u305F\u3068\u3044\u308F\u308C\u3066\u3044\u308B\u3002\u306E\u3061\u306B\u84B2\u751F\u6C0F\u90F7\u304C\u62DD\u9818\u3057\u3066\u611B\u99AC\u3068\u3057\u305F\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: 'Small Skylarka '
+    kahouExpEng: Nobunaga Oda's favorite. It is said that among horseback riding horse
+      dedicated to Nobunaga it was a horse of particular liking. Later Ujisato Gamo  received
+      it and beloved horse.
+    kahouTargetEng: SPD
+  - id: 6
+    kahouType: meiba
+    kahouName: "\u685C\u91CE"
+    kahouRank: C
+    kahouExp: "\u5FB3\u5DDD\u79C0\u5FE0\u306E\u611B\u99AC\u3002\u672C\u591A\u6B63\u7D14\u304B\u3089\u732E\u4E0A\u3055\u308C\u305F\u6817\u7CDF\u6BDB\u306E\u99AC\u3002\u5927\u5742\u590F\u306E\u9663\u3067\u306F\u3053\u306E\u99AC\u306B\u4E57\u3063\u3066\u51FA\u9663\u3057\u305F\u3053\u3068\u304C\u300E\u99FF\u5E9C\u8A18\u300F\u306A\u3069\u306E\u8A18\u9332\u306B\u6B8B\u3063\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Sakurano
+    kahouExpEng: A horse of Hidetada Tokugawa. It is chestnut hair horses gifted by
+      Masazumi Honda. "Sunpu book" recored that he went to battle with this hourse
+      in Osaka summer war.
+    kahouTargetEng: SPD
+  - id: 7
+    kahouType: meiba
+    kahouName: "\u592A\u5E73\u697D"
+    kahouRank: C
+    kahouExp: "\u8C4A\u81E3\u79C0\u983C\u306E\u611B\u99AC\u3002\u79C0\u983C\u306F\u6BCD\u30FB\u6DC0\u6BBF\u306E\u904E\u4FDD\u8B77\u306B\u3088\u3063\u3066\u5E38\u306B\u5927\u5742\u57CE\u306B\u9589\u3058\u3053\u3081\u3089\u308C\u3066\u3044\u305F\u305F\u3081\u3001\u99AC\u306B\u4E57\u3063\u3066\u6226\u5834\u3092\u99C6\u3051\u308B\u6A5F\u4F1A\u306B\u3082\u6075\u307E\u308C\u306A\u304B\u3063\u305F\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Taiheiraku
+    kahouExpEng: Hideyori Toyotomi's favorite. Because he was locked in Osaka Castle
+      due to overprotection of his mother, he was not blessed with the opportunity
+      to ride a horse and run the battlefield.
+    kahouTargetEng: SPD
+  - id: 8
+    kahouType: meiba
+    kahouName: "\u7C95\u6BDB"
+    kahouRank: C
+    kahouExp: "\u7C95\u6BDB\u306F\u9E7F\u6BDB\u3084\u6817\u6BDB\u306A\u3069\u306E\u6BDB\u8272\u306B\u767D\u6BDB\u304C\u6DF7\u751F\u3057\u305F\u6BDB\u8272\u3002\u3053\u306E\u767D\u6BDB\u306F\u3001\u9996\u3084\u80A2\u306A\u3069\u306B\u9650\u5B9A\u7684\u306B\u751F\u3048\u3001\u5E74\u3092\u7D4C\u3066\u3082\u305D\u306E\u5272\u5408\u306F\u5909\u308F\u3089\u306A\u3044\u3002\u7E54\u7530\u4FE1\u5B5D\u3082\u6240\u6709\u3057\u3066\u3044\u305F\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: "Kasuge\_"
+    kahouExpEng: The hair color is coat color with milky white. This white hair grows
+      restrictedly in the neck and limbs, and its proportion does not change even
+      after aged. Oda Nobutaka was also possessed.
+    kahouTargetEng: SPD
+  - id: 9
+    kahouType: meiba
+    kahouName: "\u661F\u5D0E"
+    kahouRank: C
+    kahouExp: "\u8C4A\u81E3\u79C0\u5409\u304C\u5BCC\u7530\u77E5\u4FE1\u306B\u8912\u7F8E\u3068\u3057\u3066\u4E0E\u3048\u305F\u99AC\u3002\u77E5\u4FE1\u306F\u3001\u5C0F\u7267\u9577\u4E45\u624B\u5408\u6226\u306E\u969B\u306B\u79C0\u5409\u306E\u4F7F\u8005\u3068\u3057\u3066\u7E54\u7530\u4FE1\u96C4\u306E\u3082\u3068\u3078\u8D74\u304D\u3001\u548C\u7766\u306E\u7DE0\u7D50\u306B\u5927\u304D\u304F\u8CA2\u732E\u3057\u305F\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Hoshizaki
+    kahouExpEng: A horse that Hideyoshi Toyotomi gave to Tomonobu Tomita as a reward.
+      He went to Nobukatsu Oda as a messenger of Hideyoshi during the Battle of Komaki
+      Nagakute, and made a great contribution to the conclusion of a fellowship.
+    kahouTargetEng: SPD
+  - id: 10
+    kahouType: meiba
+    kahouName: "\u653E\u751F\u6708\u6BDB"
+    kahouRank: S
+    kahouExp: "\u4E0A\u6749\u8B19\u4FE1\u306E\u611B\u99AC\u3002\u5DDD\u4E2D\u5CF6\u306E\u5408\u6226\u3067\u3001\u6B66\u7530\u4FE1\u7384\u3068\u306E\u4E00\u9A0E\u6253\u3061\u306E\u969B\u306B\u8B19\u4FE1\u304C\u4E57\u3063\u3066\u3044\u305F\u3068\u8A9E\u3089\u308C\u308B\u99AC\u3002\u6708\u6BDB\u3068\u306F\u6DE1\u3044\u9EC4\u8272\u306E\u6BDB\u8272\u3092\u3044\u3046\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Hosyo Tsukige
+    kahouExpEng: Kenshin Uesugi's favorite. In the battle of Kawanakajima, Kenshin
+      was riding it when fighting with Shingen Takeda . Lunar hair means pale yellow
+      coat.
+    kahouTargetEng: SPD
+  - id: 11
+    kahouType: meiba
+    kahouName: "\u4E09\u56FD\u9ED2"
+    kahouRank: A
+    kahouExp: "\u672C\u591A\u5FE0\u52DD\u306E\u611B\u99AC\u3002\u4E3B\u541B\u30FB\u5FB3\u5DDD\u79C0\u5FE0\u304B\u3089\u62DD\u9818\u3057\u305F\u3002\u6669\u5E74\u3053\u306E\u99AC\u306B\u4E57\u3063\u3066\u95A2\u30F6\u539F\u5408\u6226\u306B\u53C2\u52A0\u3057\u3001\u6771\u8ECD\u306E\u52DD\u5229\u306B\u5927\u304D\u304F\u8CA2\u732E\u3057\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Mikunikuro
+    kahouExpEng: Tadakatsu Honda's favorite. He receievd it from Hidetada Tokugawa.
+      In the later years he took this horse and participated in the Sekigahara battle
+      and he contributed greatly to the victory of his party.
+    kahouTargetEng: SPD
+  - id: 12
+    kahouType: meiba
+    kahouName: "\u5927\u82A6\u6BDB"
+    kahouRank: B
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u306E\u611B\u99AC\u3002\u305D\u306E\u99AC\u4F53\u306E\u5927\u304D\u3055\u306F\u969B\u7ACB\u3063\u3066\u3044\u3066\u5927\u304D\u306A\u9A0E\u99AC\u306E\u5927\u7FA4\u306E\u4E2D\u306B\u6DF7\u3056\u3063\u3066\u3082\u3001\u3059\u3050\u306B\u898B\u5206\u3051\u304C\u3064\u304F\u307B\u3069\u3067\u3042\u3063\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Big Gray
+    kahouExpEng: Nobunaga Oda's favorite. The size of the horse's body stands out.
+    kahouTargetEng: SPD
+  - id: 13
+    kahouType: meiba
+    kahouName: "\u661F\u6CB3\u539F\u6BDB"
+    kahouRank: B
+    kahouExp: "\u7E54\u7530\u4FE1\u9577\u306E\u611B\u99AC\u3002\u591A\u8CC0\u8C37\u4FEE\u7406\u4EAE\u304C\u732E\u3058\u305F\u9AA8\u592A\u3067\u52C7\u307E\u3057\u3044\u608D\u99AC\u3067\u3042\u3063\u305F\u3002\u540C\u6642\u671F\u306B\u660E\u667A\u5149\u79C0\u3082\u99AC\u3092\u732E\u3058\u305F\u304C\u3001\u4FE1\u9577\u306F\u53D7\u3051\u53D6\u3089\u306A\u304B\u3063\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u8FC5\u901F"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Hoshigawarage
+    kahouExpEng: Nobunaga Oda's favorite. It was a brave horse that Taga gifted to
+      Nobunaga Oda. Mitsuhide Akechi also presented horses at the same time, but Nobunaga
+      did not receive it.
+    kahouTargetEng: SPD

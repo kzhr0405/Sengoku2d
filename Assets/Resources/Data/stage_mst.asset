@@ -1,0 +1,6514 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89da8951a49fd2c42a18ff65ef3b3c18, type: 3}
+  m_Name: stage_mst
+  m_EditorClassIdentifier: 
+  param:
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 1
+    stageName: "\u72AC\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: 54
+    stageMap: 2
+    kuniNameEng: Owari
+    stageNameEng: Inuyama
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 2
+    stageName: "\u5927\u9AD8\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -10
+    stageMap: 3
+    kuniNameEng: Owari
+    stageNameEng: Otaka
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 3
+    stageName: "\u6C93\u639B\u57CE"
+    powerTyp: 2
+    LocationX: 18
+    LocationY: 12
+    stageMap: 1
+    kuniNameEng: Owari
+    stageNameEng: Kutsukake
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 4
+    stageName: "\u672B\u68EE\u57CE"
+    powerTyp: 2
+    LocationX: 12
+    LocationY: 28
+    stageMap: 1
+    kuniNameEng: Owari
+    stageNameEng: Suemori
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 5
+    stageName: "\u90A3\u53E4\u5C4B\u57CE"
+    powerTyp: 3
+    LocationX: 2
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: Owari
+    stageNameEng: Nagoya
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 6
+    stageName: "\u87F9\u6C5F\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: 18
+    stageMap: 2
+    kuniNameEng: Owari
+    stageNameEng: Kanie
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 7
+    stageName: "\u54C1\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: 22
+    LocationY: 38
+    stageMap: 2
+    kuniNameEng: Owari
+    stageNameEng: Shinano
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 8
+    stageName: "\u9CF4\u6D77\u57CE"
+    powerTyp: 3
+    LocationX: 8
+    LocationY: 8
+    stageMap: 3
+    kuniNameEng: Owari
+    stageNameEng: Narumi
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 9
+    stageName: "\u5CA9\u5009\u57CE"
+    powerTyp: 2
+    LocationX: -8
+    LocationY: 47
+    stageMap: 2
+    kuniNameEng: Owari
+    stageNameEng: Iwakura
+  - kuniId: 1
+    kuniName: "\u5C3E\u5F35"
+    id: 10
+    stageName: "\u6E05\u5DDE\u57CE"
+    powerTyp: 3
+    LocationX: -8
+    LocationY: 27
+    stageMap: 3
+    kuniNameEng: Owari
+    stageNameEng: Kiyosu
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 1
+    stageName: "\u58A8\u4FE3\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: -29
+    stageMap: 2
+    kuniNameEng: Mino
+    stageNameEng: Sunomata
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 2
+    stageName: "\u66FD\u6839\u57CE"
+    powerTyp: 2
+    LocationX: -35
+    LocationY: -14
+    stageMap: 1
+    kuniNameEng: Mino
+    stageNameEng: Sone
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 3
+    stageName: "\u52A0\u7D0D\u57CE"
+    powerTyp: 2
+    LocationX: -11
+    LocationY: -14
+    stageMap: 1
+    kuniNameEng: Mino
+    stageNameEng: Kanou
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 4
+    stageName: "\u6E05\u6C34\u57CE"
+    powerTyp: 2
+    LocationX: -37
+    LocationY: 10
+    stageMap: 2
+    kuniNameEng: Mino
+    stageNameEng: Shimizu
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 5
+    stageName: "\u5927\u57A3\u57CE"
+    powerTyp: 3
+    LocationX: -31
+    LocationY: -34
+    stageMap: 1
+    kuniNameEng: Mino
+    stageNameEng: Ogaki
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 6
+    stageName: "\u9DFA\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -15
+    LocationY: 3
+    stageMap: 1
+    kuniNameEng: Mino
+    stageNameEng: Sagiyama
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 7
+    stageName: "\u5317\u65B9\u57CE"
+    powerTyp: 2
+    LocationX: -25
+    LocationY: 3
+    stageMap: 1
+    kuniNameEng: Mino
+    stageNameEng: Kitagata
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 8
+    stageName: "\u5CA9\u6751\u57CE"
+    powerTyp: 1
+    LocationX: 36
+    LocationY: -28
+    stageMap: 2
+    kuniNameEng: Mino
+    stageNameEng: Iwamura
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 9
+    stageName: "\u516B\u5E61\u57CE"
+    powerTyp: 1
+    LocationX: -1
+    LocationY: 30
+    stageMap: 2
+    kuniNameEng: Mino
+    stageNameEng: Hachiman
+  - kuniId: 2
+    kuniName: "\u7F8E\u6FC3"
+    id: 10
+    stageName: "\u7A32\u8449\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: 3
+    stageMap: 2
+    kuniNameEng: Mino
+    stageNameEng: Inabayama
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 1
+    stageName: "\u8DB3\u52A9\u57CE"
+    powerTyp: 1
+    LocationX: 3
+    LocationY: 38
+    stageMap: 2
+    kuniNameEng: Mikawa
+    stageNameEng: Asuke
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 2
+    stageName: "\u897F\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: -20
+    stageMap: 3
+    kuniNameEng: Mikawa
+    stageNameEng: Nishio
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 3
+    stageName: "\u4F5C\u624B\u57CE"
+    powerTyp: 2
+    LocationX: 21
+    LocationY: 24
+    stageMap: 2
+    kuniNameEng: Mikawa
+    stageNameEng: Sakuide
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 4
+    stageName: "\u91CE\u7530\u57CE"
+    powerTyp: 2
+    LocationX: 9
+    LocationY: -10
+    stageMap: 3
+    kuniNameEng: Mikawa
+    stageNameEng: Noda
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 5
+    stageName: "\u9577\u7BE0\u57CE"
+    powerTyp: 3
+    LocationX: 18
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Mikawa
+    stageNameEng: Nagashino
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 6
+    stageName: "\u5409\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -28
+    stageMap: 3
+    kuniNameEng: Mikawa
+    stageNameEng: Yoshida
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 7
+    stageName: "\u7530\u539F\u57CE"
+    powerTyp: 1
+    LocationX: -2
+    LocationY: -42
+    stageMap: 3
+    kuniNameEng: Mikawa
+    stageNameEng: Tahara
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 8
+    stageName: "\u5208\u8C37\u57CE"
+    powerTyp: 2
+    LocationX: -25
+    LocationY: 24
+    stageMap: 1
+    kuniNameEng: Mikawa
+    stageNameEng: Kariya
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 9
+    stageName: "\u5B89\u7965\u57CE"
+    powerTyp: 3
+    LocationX: -22
+    LocationY: 4
+    stageMap: 1
+    kuniNameEng: Mikawa
+    stageNameEng: Anjyo
+  - kuniId: 3
+    kuniName: "\u4E09\u6CB3"
+    id: 10
+    stageName: "\u5CA1\u5D0E\u57CE"
+    powerTyp: 3
+    LocationX: -8
+    LocationY: 10
+    stageMap: 1
+    kuniNameEng: Mikawa
+    stageNameEng: Okazaki
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 1
+    stageName: "\u9577\u5CF6\u57CE"
+    powerTyp: 1
+    LocationX: 3
+    LocationY: 50
+    stageMap: 3
+    kuniNameEng: Ise
+    stageNameEng: Nagashima
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 2
+    stageName: "\u6851\u540D\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: 34
+    stageMap: 4
+    kuniNameEng: Ise
+    stageNameEng: Kuwana
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 3
+    stageName: "\u795E\u6238\u57CE"
+    powerTyp: 3
+    LocationX: -4
+    LocationY: 5
+    stageMap: 3
+    kuniNameEng: Ise
+    stageNameEng: Kanbe
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 4
+    stageName: "\u4E80\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -13
+    LocationY: 14
+    stageMap: 1
+    kuniNameEng: Ise
+    stageNameEng: Kameyama
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 5
+    stageName: "\u6D25\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: -15
+    stageMap: 3
+    kuniNameEng: Ise
+    stageNameEng: Tsu
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 6
+    stageName: "\u9577\u91CE\u57CE"
+    powerTyp: 2
+    LocationX: -13
+    LocationY: -6
+    stageMap: 1
+    kuniNameEng: Ise
+    stageNameEng: Nagano
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 7
+    stageName: "\u4E0A\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: -24
+    LocationY: 3
+    stageMap: 2
+    kuniNameEng: Ise
+    stageNameEng: Ueno
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 8
+    stageName: "\u677E\u962A\u57CE"
+    powerTyp: 2
+    LocationX: 1
+    LocationY: -30
+    stageMap: 3
+    kuniNameEng: Ise
+    stageNameEng: Matsuzaka
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 9
+    stageName: "\u5927\u6CB3\u5185\u57CE"
+    powerTyp: 1
+    LocationX: -7
+    LocationY: -44
+    stageMap: 2
+    kuniNameEng: Ise
+    stageNameEng: Okawachi
+  - kuniId: 4
+    kuniName: "\u4F0A\u52E2"
+    id: 10
+    stageName: "\u7530\u4E38\u57CE"
+    powerTyp: 2
+    LocationX: 11
+    LocationY: -42
+    stageMap: 3
+    kuniNameEng: Ise
+    stageNameEng: Tamaru
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 1
+    stageName: "\u91D1\u30F6\u5D0E\u57CE"
+    powerTyp: 2
+    LocationX: -28
+    LocationY: -36
+    stageMap: 3
+    kuniNameEng: Echizen
+    stageNameEng: Kanegasaki
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 2
+    stageName: "\u758B\u58C7\u57CE"
+    powerTyp: 1
+    LocationX: -24
+    LocationY: -54
+    stageMap: 2
+    kuniNameEng: Echizen
+    stageNameEng: Hikida
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 3
+    stageName: "  \u89B3\u97F3\u4E38\u57CE"
+    powerTyp: 3
+    LocationX: -18
+    LocationY: -38
+    stageMap: 1
+    kuniNameEng: Echizen
+    stageNameEng: Kannonmaru
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 4
+    stageName: "\u6763\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -18
+    stageMap: 3
+    kuniNameEng: Echizen
+    stageNameEng: Somayama
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 5
+    stageName: "\u69C7\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -10
+    LocationY: -2
+    stageMap: 2
+    kuniNameEng: Echizen
+    stageNameEng: Makiyama
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 6
+    stageName: "\u52DD\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 15
+    LocationY: 19
+    stageMap: 2
+    kuniNameEng: Echizen
+    stageNameEng: Katsuyama
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 7
+    stageName: "\u6E05\u6C34\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -19
+    LocationY: 15
+    stageMap: 3
+    kuniNameEng: Echizen
+    stageNameEng: Shimizuyama
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 8
+    stageName: "\u4E38\u5CA1\u57CE"
+    powerTyp: 2
+    LocationX: -12
+    LocationY: 32
+    stageMap: 3
+    kuniNameEng: Echizen
+    stageNameEng: Maruoka
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 9
+    stageName: "\u5927\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: 13
+    LocationY: -2
+    stageMap: 2
+    kuniNameEng: Echizen
+    stageNameEng: Oono
+  - kuniId: 5
+    kuniName: "\u8D8A\u524D"
+    id: 10
+    stageName: "\u4E00\u4E57\u8C37\u9928"
+    powerTyp: 3
+    LocationX: -1
+    LocationY: -8
+    stageMap: 1
+    kuniNameEng: Echizen
+    stageNameEng: Ichijyodani
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 1
+    stageName: "\u938C\u639B\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: -52
+    stageMap: 2
+    kuniNameEng: Oumi
+    stageNameEng: Kaigake
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 2
+    stageName: "\u5C0F\u5824\u57CE\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: -45
+    stageMap: 1
+    kuniNameEng: Oumi
+    stageNameEng: Kozutsumi
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 3
+    stageName: "\u58FA\u7B20\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -27
+    LocationY: -36
+    stageMap: 3
+    kuniNameEng: Oumi
+    stageNameEng: Tsubokasayama
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 4
+    stageName: "\u7530\u5C4B\u57CE"
+    powerTyp: 1
+    LocationX: -15
+    LocationY: 38
+    stageMap: 4
+    kuniNameEng: Oumi
+    stageNameEng: Taya
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 5
+    stageName: "\u89B3\u97F3\u5BFA\u57CE"
+    powerTyp: 3
+    LocationX: 6
+    LocationY: -30
+    stageMap: 3
+    kuniNameEng: Oumi
+    stageNameEng: Kannonji
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 6
+    stageName: "\u52DD\u697D\u5BFA\u57CE"
+    powerTyp: 2
+    LocationX: 14
+    LocationY: -20
+    stageMap: 3
+    kuniNameEng: Oumi
+    stageNameEng: Syorakuji
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 7
+    stageName: "\u4F50\u548C\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 17
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Oumi
+    stageNameEng: Sawayama
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 8
+    stageName: "\u938C\u5203\u57CE"
+    powerTyp: 2
+    LocationX: 26
+    LocationY: 10
+    stageMap: 1
+    kuniNameEng: Oumi
+    stageNameEng: Kamaha
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 9
+    stageName: "\u6A2A\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 26
+    LocationY: 30
+    stageMap: 2
+    kuniNameEng: Oumi
+    stageNameEng: Yokoyama
+  - kuniId: 6
+    kuniName: "\u8FD1\u6C5F"
+    id: 10
+    stageName: "\u5C0F\u8C37\u57CE"
+    powerTyp: 3
+    LocationX: 16
+    LocationY: 50
+    stageMap: 1
+    kuniNameEng: Oumi
+    stageNameEng: Odani
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 1
+    stageName: "\u4E0B\u5442\u68EE\u57CE"
+    powerTyp: 1
+    LocationX: 4
+    LocationY: -52
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Geromori
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 2
+    stageName: "\u685C\u6D1E\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: -32
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Sakurabora
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 3
+    stageName: "\u5411\u7267\u6238\u57CE"
+    powerTyp: 1
+    LocationX: -22
+    LocationY: -2
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Mukaimakido
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 4
+    stageName: "\u5E30\u96F2\u57CE"
+    powerTyp: 1
+    LocationX: -24
+    LocationY: 30
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Kaerigumo
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 5
+    stageName: "\u5929\u795E\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 4
+    LocationY: -2
+    stageMap: 1
+    kuniNameEng: Hida
+    stageNameEng: Tenjinzan
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 6
+    stageName: "\u934B\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 14
+    LocationY: 10
+    stageMap: 1
+    kuniNameEng: Hida
+    stageNameEng: Nabeyama
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 7
+    stageName: "\u5E83\u702C\u57CE"
+    powerTyp: 3
+    LocationX: 2
+    LocationY: 18
+    stageMap: 1
+    kuniNameEng: Hida
+    stageNameEng: Hirose
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 8
+    stageName: "\u5C0F\u5CF6\u57CE"
+    powerTyp: 2
+    LocationX: -2
+    LocationY: 38
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Ojima
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 9
+    stageName: "\u6D1E\u57CE"
+    powerTyp: 2
+    LocationX: 28
+    LocationY: 24
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Bora
+  - kuniId: 7
+    kuniName: "\u98DB\u9A28"
+    id: 10
+    stageName: "\u9AD8\u539F\u8ACF\u8A2A\u57CE"
+    powerTyp: 2
+    LocationX: 24
+    LocationY: 45
+    stageMap: 2
+    kuniNameEng: Hida
+    stageNameEng: Takaharasuwa
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 1
+    stageName: "\u798F\u5CF6\u57CE"
+    powerTyp: 1
+    LocationX: -14
+    LocationY: -43
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Fukushima
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 2
+    stageName: "\u798F\u4E0E\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: -28
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Fukuyo
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 3
+    stageName: "\u9AD8\u9060\u57CE"
+    powerTyp: 3
+    LocationX: 5
+    LocationY: -40
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Takato
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 4
+    stageName: "\u4E0A\u539F\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -20
+    stageMap: 1
+    kuniNameEng: Shinano
+    stageNameEng: Uehara
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 5
+    stageName: "\u6DF1\u5FD7\u57CE"
+    powerTyp: 3
+    LocationX: -4
+    LocationY: 4
+    stageMap: 1
+    kuniNameEng: Shinano
+    stageNameEng: Hayashi
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 6
+    stageName: "\u6DF1\u5FD7\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 14
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Fukashi
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 7
+    stageName: "\u5185\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 15
+    LocationY: -14
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Uchiyama
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 8
+    stageName: "\u5FD7\u8CC0\u57CE"
+    powerTyp: 2
+    LocationX: 20
+    LocationY: 4
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Shiga
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 9
+    stageName: "\u845B\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 24
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Katsurao
+  - kuniId: 8
+    kuniName: "\u4FE1\u6FC3"
+    id: 10
+    stageName: "\u6D77\u6D25\u57CE"
+    powerTyp: 3
+    LocationX: 8
+    LocationY: 40
+    stageMap: 2
+    kuniNameEng: Shinano
+    stageNameEng: Kaizu
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 1
+    stageName: "\u5B87\u6D25\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -31
+    LocationY: -27
+    stageMap: 3
+    kuniNameEng: Totoumi
+    stageNameEng: Utsuyama
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 2
+    stageName: "\u4F50\u4E45\u57CE"
+    powerTyp: 1
+    LocationX: -26
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Totoumi
+    stageNameEng: Saku
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 3
+    stageName: "\u4E09\u5CB3\u57CE"
+    powerTyp: 2
+    LocationX: -14
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: Totoumi
+    stageNameEng: Mitake
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 4
+    stageName: "\u4E8C\u4FE3\u57CE"
+    powerTyp: 3
+    LocationX: -2
+    LocationY: -4
+    stageMap: 1
+    kuniNameEng: Totoumi
+    stageNameEng: Futamata
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 5
+    stageName: "\u66F3\u99AC\u57CE"
+    powerTyp: 2
+    LocationX: -8
+    LocationY: -37
+    stageMap: 3
+    kuniNameEng: Totoumi
+    stageNameEng: Hikuma
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 6
+    stageName: "\u72AC\u5C45\u57CE"
+    powerTyp: 3
+    LocationX: -2
+    LocationY: 19
+    stageMap: 1
+    kuniNameEng: Totoumi
+    stageNameEng: Inui
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 7
+    stageName: "\u7BE0\u30F6\u5DBA\u57CE"
+    powerTyp: 2
+    LocationX: 6
+    LocationY: 36
+    stageMap: 2
+    kuniNameEng: Totoumi
+    stageNameEng: Shinogamine
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 8
+    stageName: "\u639B\u5DDD\u57CE"
+    powerTyp: 3
+    LocationX: 9
+    LocationY: -21
+    stageMap: 1
+    kuniNameEng: Totoumi
+    stageNameEng: Kakegawa
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 9
+    stageName: "\u9AD8\u6839\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: 53
+    stageMap: 2
+    kuniNameEng: Totoumi
+    stageNameEng: Takane
+  - kuniId: 9
+    kuniName: "\u9060\u6C5F"
+    id: 10
+    stageName: "\u9AD8\u5929\u795E\u57CE"
+    powerTyp: 2
+    LocationX: 17
+    LocationY: -41
+    stageMap: 3
+    kuniNameEng: Totoumi
+    stageNameEng: Takatenjin
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 1
+    stageName: "\u5C0F\u6D5C\u57CE"
+    powerTyp: 1
+    LocationX: 1
+    LocationY: 39
+    stageMap: 4
+    kuniNameEng: Shima
+    stageNameEng: Obama
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 2
+    stageName: "\u7530\u57CE\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 5
+    stageMap: 3
+    kuniNameEng: Shima
+    stageNameEng: Tashiro
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 3
+    stageName: "\u9D5C\u65B9\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -28
+    stageMap: 3
+    kuniNameEng: Shima
+    stageNameEng: Ugata
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 4
+    stageName: "\u91CC\u4E2D\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: -37
+    stageMap: 3
+    kuniNameEng: Shima
+    stageNameEng: Satonaka
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 5
+    stageName: "\u8D8A\u8CC0\u57CE"
+    powerTyp: 2
+    LocationX: -6
+    LocationY: -55
+    stageMap: 4
+    kuniNameEng: Shima
+    stageNameEng: Koshika
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 6
+    stageName: "\u6CE2\u5207\u57CE"
+    powerTyp: 1
+    LocationX: 13
+    LocationY: -55
+    stageMap: 4
+    kuniNameEng: Shima
+    stageNameEng: Namikiri
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 7
+    stageName: "\u7532\u8CC0\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: -37
+    stageMap: 4
+    kuniNameEng: Shima
+    stageNameEng: Kouga
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 8
+    stageName: "\u56FD\u5E9C\u57CE"
+    powerTyp: 3
+    LocationX: 11
+    LocationY: -19
+    stageMap: 3
+    kuniNameEng: Shima
+    stageNameEng: Kou
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 9
+    stageName: "\u6D66\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 5
+    stageMap: 3
+    kuniNameEng: Shima
+    stageNameEng: Ura
+  - kuniId: 10
+    kuniName: "\u5FD7\u6469"
+    id: 10
+    stageName: "\u9CE5\u7FBD\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: 22
+    stageMap: 4
+    kuniNameEng: Shima
+    stageNameEng: Toba
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 1
+    stageName: "\u5897\u5730\u6C0F\u57CE"
+    powerTyp: 1
+    LocationX: -17
+    LocationY: 28
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Masujishi
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 2
+    stageName: "\u4E38\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Maruyama
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 3
+    stageName: "\u767E\u5730\u4E39\u6CE2\u57CE"
+    powerTyp: 1
+    LocationX: 13
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Momochi Tanba
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 4
+    stageName: "\u7530\u77E2\u4F0A\u4E88\u5B88\u57CE"
+    powerTyp: 2
+    LocationX: -2
+    LocationY: 38
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Taya Iyonokami
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 5
+    stageName: "\u540D\u5F35\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Nabari
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 6
+    stageName: "\u58EC\u751F\u91CE\u57CE"
+    powerTyp: 2
+    LocationX: 15
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Mibuno
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 7
+    stageName: "\u5343\u8CC0\u5730\u6C0F\u57CE"
+    powerTyp: 1
+    LocationX: -10
+    LocationY: 3
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Chigachishi
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 8
+    stageName: "\u6749\u5C71\u516B\u4E09\u90CE\u57CE"
+    powerTyp: 1
+    LocationX: -15
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Sugiyama Hachisaburo
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 9
+    stageName: "\u67CF\u91CE\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 35
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Kashiwano
+  - kuniId: 11
+    kuniName: "\u4F0A\u8CC0"
+    id: 10
+    stageName: "\u4F0A\u8CC0\u4E0A\u91CE\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 14
+    stageMap: 2
+    kuniNameEng: Iga
+    stageNameEng: Iga Ueno
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 1
+    stageName: "\u79CB\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 3
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Akiyama
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 2
+    stageName: "\u9AD8\u7530\u57CE"
+    powerTyp: 1
+    LocationX: -14
+    LocationY: 10
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Takata
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 3
+    stageName: "\u8D8A\u667A\u57CE"
+    powerTyp: 1
+    LocationX: -13
+    LocationY: -8
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Ouchi
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 4
+    stageName: "\u5341\u5E02\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: 1
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Toichi
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 5
+    stageName: "\u4FE1\u8CB4\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -17
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Shigisan
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 6
+    stageName: "\u67F3\u751F\u57CE"
+    powerTyp: 2
+    LocationX: 15
+    LocationY: 30
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Yagyu
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 7
+    stageName: "\u9AD8\u53D6\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -25
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Takatori
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 8
+    stageName: "\u7B52\u4E95\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 25
+    stageMap: 1
+    kuniNameEng: Yamato
+    stageNameEng: Tsutsui
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 9
+    stageName: "\u90E1\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 40
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Koriyama
+  - kuniId: 12
+    kuniName: "\u5927\u548C"
+    id: 10
+    stageName: "\u591A\u805E\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 50
+    stageMap: 2
+    kuniNameEng: Yamato
+    stageNameEng: Tamonyama
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 1
+    stageName: "\u9577\u85EA\u57CE"
+    powerTyp: 1
+    LocationX: -3
+    LocationY: 40
+    stageMap: 2
+    kuniNameEng: Kii
+    stageNameEng: Nagayabu
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 2
+    stageName: "\u6839\u6765\u5BFA"
+    powerTyp: 2
+    LocationX: -14
+    LocationY: 35
+    stageMap: 1
+    kuniNameEng: Kii
+    stageNameEng: Negoroji
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 3
+    stageName: "\u592A\u7530\u57CE"
+    powerTyp: 2
+    LocationX: -26
+    LocationY: 35
+    stageMap: 1
+    kuniNameEng: Kii
+    stageNameEng: Ota
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 4
+    stageName: "\u66FD\u6839\u57CE"
+    powerTyp: 1
+    LocationX: 30
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Kii
+    stageNameEng: Sone
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 5
+    stageName: "\u96D1\u8CC0\u5BFA"
+    powerTyp: 3
+    LocationX: -35
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: Kii
+    stageNameEng: Zouga
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 6
+    stageName: "\u5CA9\u5BA4\u57CE"
+    powerTyp: 2
+    LocationX: -27
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Kii
+    stageNameEng: Iwamuro
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 7
+    stageName: "\u9AD8\u91CE\u5C71"
+    powerTyp: 3
+    LocationX: -12
+    LocationY: 12
+    stageMap: 2
+    kuniNameEng: Kii
+    stageNameEng: Kouyasan
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 8
+    stageName: "\u5CA9\u672C\u57CE"
+    powerTyp: 1
+    LocationX: 20
+    LocationY: -15
+    stageMap: 3
+    kuniNameEng: Kii
+    stageNameEng: Iwamoto
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 9
+    stageName: "\u624B\u53D6\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -25
+    stageMap: 3
+    kuniNameEng: Kii
+    stageNameEng: Tedori
+  - kuniId: 13
+    kuniName: "\u7D00\u4F0A"
+    id: 10
+    stageName: "\u4E80\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -30
+    LocationY: -15
+    stageMap: 3
+    kuniNameEng: Kii
+    stageNameEng: Kameyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 1
+    stageName: "\u8336\u81FC\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -38
+    stageMap: 2
+    kuniNameEng: Wakasa
+    stageNameEng: Cyausuyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 2
+    stageName: "\u571F\u4E95\u5C71\u7826"
+    powerTyp: 1
+    LocationX: 23
+    LocationY: -23
+    stageMap: 3
+    kuniNameEng: Wakasa
+    stageNameEng: Doiyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 3
+    stageName: "\u77F3\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -30
+    LocationY: -28
+    stageMap: 2
+    kuniNameEng: Wakasa
+    stageNameEng: Ishiyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 4
+    stageName: "\u5C0F\u6751\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -30
+    stageMap: 1
+    kuniNameEng: Wakasa
+    stageNameEng: Komura
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 5
+    stageName: "\u56FD\u5409\u57CE"
+    powerTyp: 3
+    LocationX: 34
+    LocationY: -35
+    stageMap: 3
+    kuniNameEng: Wakasa
+    stageNameEng: Kuniyoshi
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 6
+    stageName: "\u9054\u57CE"
+    powerTyp: 1
+    LocationX: -23
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Wakasa
+    stageNameEng: Tachi
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 7
+    stageName: "\u65B0\u4FDD\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Wakasa
+    stageNameEng: Sinpoyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 8
+    stageName: "\u7815\u5C0E\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -35
+    LocationY: -8
+    stageMap: 2
+    kuniNameEng: Wakasa
+    stageNameEng: Saichiyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 9
+    stageName: "\u5F8C\u702C\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -7
+    LocationY: -14
+    stageMap: 2
+    kuniNameEng: Wakasa
+    stageNameEng: Nochiseyama
+  - kuniId: 14
+    kuniName: "\u82E5\u72ED"
+    id: 10
+    stageName: "\u9AD8\u6D5C\u57CE"
+    powerTyp: 3
+    LocationX: -35
+    LocationY: 9
+    stageMap: 3
+    kuniNameEng: Wakasa
+    stageNameEng: Takahama
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 1
+    stageName: "\u9CE5\u8D8A\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: -30
+    stageMap: 1
+    kuniNameEng: Kaga
+    stageNameEng: Torigoe
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 2
+    stageName: "\u5927\u8056\u5BFA\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -45
+    stageMap: 1
+    kuniNameEng: Kaga
+    stageNameEng: Daisyoji
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 3
+    stageName: "\u5C0F\u677E\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -27
+    stageMap: 3
+    kuniNameEng: Kaga
+    stageNameEng: Komatsu
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 4
+    stageName: "\u677E\u4EFB\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -10
+    stageMap: 3
+    kuniNameEng: Kaga
+    stageNameEng: Matsuto
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 5
+    stageName: "\u821F\u5CA1\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -13
+    stageMap: 1
+    kuniNameEng: Kaga
+    stageNameEng: Funaoka
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 6
+    stageName: "\u4E8C\u66F2\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: -45
+    stageMap: 2
+    kuniNameEng: Kaga
+    stageNameEng: Futoge
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 7
+    stageName: "\u9DF9\u5DE3\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Kaga
+    stageNameEng: Takanosu
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 8
+    stageName: "\u677E\u6839\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 25
+    stageMap: 1
+    kuniNameEng: Kaga
+    stageNameEng: Matsune
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 9
+    stageName: "\u6D25\u5E61\u57CE"
+    powerTyp: 2
+    LocationX: 3
+    LocationY: 45
+    stageMap: 1
+    kuniNameEng: Kaga
+    stageNameEng: Tsubata
+  - kuniId: 15
+    kuniName: "\u52A0\u8CC0"
+    id: 10
+    stageName: "\u91D1\u6CA2\u5FA1\u5802"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: 8
+    stageMap: 3
+    kuniNameEng: Kaga
+    stageNameEng: Kanazawa Mido
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 1
+    stageName: "\u5D50\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -13
+    LocationY: -3
+    stageMap: 2
+    kuniNameEng: Yamashiro
+    stageNameEng: Arashiyama
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 2
+    stageName: "\u6BD4\u53E1\u5C71"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Yamashiro
+    stageNameEng: Hieizan
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 3
+    stageName: "\u4E2D\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -5
+    stageMap: 1
+    kuniNameEng: Yamashiro
+    stageNameEng: Nakao
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 4
+    stageName: "\u5C71\u5D0E\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: -45
+    stageMap: 2
+    kuniNameEng: Yamashiro
+    stageNameEng: Yamazaki
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 5
+    stageName: "\u52DD\u9F8D\u5BFA\u57CE"
+    powerTyp: 3
+    LocationX: -10
+    LocationY: -30
+    stageMap: 1
+    kuniNameEng: Yamashiro
+    stageNameEng: Syoryuji
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 6
+    stageName: "\u6DC0\u57CE"
+    powerTyp: 2
+    LocationX: 4
+    LocationY: -42
+    stageMap: 1
+    kuniNameEng: Yamashiro
+    stageNameEng: Yodo
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 7
+    stageName: "\u69C7\u5D8B\u57CE"
+    powerTyp: 2
+    LocationX: 18
+    LocationY: -44
+    stageMap: 1
+    kuniNameEng: Yamashiro
+    stageNameEng: Makishima
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 8
+    stageName: "\u8239\u5CA1\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -15
+    stageMap: 2
+    kuniNameEng: Yamashiro
+    stageNameEng: Funaokayama
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 9
+    stageName: "\u9E7F\u80CC\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: -58
+    stageMap: 2
+    kuniNameEng: Yamashiro
+    stageNameEng: Kaseyama
+  - kuniId: 16
+    kuniName: "\u5C71\u57CE"
+    id: 10
+    stageName: "\u6D1B\u4E2D"
+    powerTyp: 3
+    LocationX: 5
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Yamashiro
+    stageNameEng: Rakucyu
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 1
+    stageName: "\u5B87\u6D25\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: -5
+    stageMap: 1
+    kuniNameEng: Tanba
+    stageNameEng: Utsu
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 2
+    stageName: "\u4F59\u90E8\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: -37
+    stageMap: 1
+    kuniNameEng: Tanba
+    stageNameEng: Amarube
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 3
+    stageName: "\u516B\u6728\u57CE"
+    powerTyp: 3
+    LocationX: 17
+    LocationY: -20
+    stageMap: 1
+    kuniNameEng: Tanba
+    stageNameEng: Yagi
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 4
+    stageName: "\u5712\u90E8\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: Tanba
+    stageNameEng: Sonobe
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 5
+    stageName: "\u4E80\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 30
+    LocationY: -40
+    stageMap: 2
+    kuniNameEng: Tanba
+    stageNameEng: Kameyama
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 6
+    stageName: "\u516B\u4E0A\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -40
+    stageMap: 2
+    kuniNameEng: Tanba
+    stageNameEng: Yagami
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 7
+    stageName: "\u9ED2\u4E95\u57CE"
+    powerTyp: 2
+    LocationX: -25
+    LocationY: -20
+    stageMap: 1
+    kuniNameEng: Tanba
+    stageNameEng: Kuroi
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 8
+    stageName: "\u5C71\u57A3\u57CE"
+    powerTyp: 1
+    LocationX: -35
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Tanba
+    stageNameEng: Yamagaki
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 9
+    stageName: "\u7DBE\u90E8\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: 10
+    stageMap: 1
+    kuniNameEng: Tanba
+    stageNameEng: Ayabe
+  - kuniId: 17
+    kuniName: "\u4E39\u6CE2"
+    id: 10
+    stageName: "\u6A2A\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -20
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Tanba
+    stageNameEng: Yokoyama
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 1
+    stageName: "\u99AC\u5834\u57CE"
+    powerTyp: 1
+    LocationX: -17
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Baba
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 2
+    stageName: "\u9928\u958B\u57CE"
+    powerTyp: 1
+    LocationX: -10
+    LocationY: -18
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Tachibiraki
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 3
+    stageName: "\u5BCC\u6728\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -5
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Togi
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 4
+    stageName: "\u7532\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 2
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Kabutoyama
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 5
+    stageName: "\u672B\u68EE\u57CE"
+    powerTyp: 3
+    LocationX: -10
+    LocationY: -45
+    stageMap: 1
+    kuniNameEng: Noto
+    stageNameEng: Suemori
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 6
+    stageName: "\u98EF\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 50
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Iida
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 7
+    stageName: "\u677E\u6CE2\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 35
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Matsunami
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 8
+    stageName: "\u5929\u5802\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Tendo
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 9
+    stageName: "\u7A74\u6C34\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: 15
+    stageMap: 3
+    kuniNameEng: Noto
+    stageNameEng: Anamizu
+  - kuniId: 18
+    kuniName: "\u80FD\u767B"
+    id: 10
+    stageName: "\u4E03\u5C3E\u57CE"
+    powerTyp: 3
+    LocationX: 3
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Noto
+    stageNameEng: Nanao
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 1
+    stageName: "\u82B1\u6CA2\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -36
+    stageMap: 3
+    kuniNameEng: Suruga
+    stageNameEng: Hanazawa
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 2
+    stageName: "\u82B1\u5009\u57CE"
+    powerTyp: 2
+    LocationX: -25
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Suruga
+    stageNameEng: Hanakura
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 3
+    stageName: "\u6DF1\u6CA2\u57CE"
+    powerTyp: 3
+    LocationX: 30
+    LocationY: 45
+    stageMap: 2
+    kuniNameEng: Suruga
+    stageNameEng: Fukuzawa
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 4
+    stageName: "\u6238\u5009\u57CE"
+    powerTyp: 1
+    LocationX: 33
+    LocationY: 3
+    stageMap: 3
+    kuniNameEng: Suruga
+    stageNameEng: Tokura
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 5
+    stageName: "\u8208\u56FD\u5BFA\u57CE"
+    powerTyp: 3
+    LocationX: 22
+    LocationY: 8
+    stageMap: 3
+    kuniNameEng: Suruga
+    stageNameEng: Kokokuji
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 6
+    stageName: "\u84B2\u539F\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 5
+    stageMap: 3
+    kuniNameEng: Suruga
+    stageNameEng: Kanbara
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 7
+    stageName: "\u6A2A\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: -5
+    stageMap: 3
+    kuniNameEng: Suruga
+    stageNameEng: Yokoyama
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 8
+    stageName: "\u9577\u4E45\u4FDD\u57CE"
+    powerTyp: 1
+    LocationX: 30
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Suruga
+    stageNameEng: Nagakubo
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 9
+    stageName: "\u677E\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: -18
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Suruga
+    stageNameEng: Matsuno
+  - kuniId: 19
+    kuniName: "\u99FF\u6CB3"
+    id: 10
+    stageName: "\u4ECA\u5DDD\u9928"
+    powerTyp: 3
+    LocationX: -10
+    LocationY: -20
+    stageMap: 3
+    kuniNameEng: Suruga
+    stageNameEng: Imagawa Yakata
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 1
+    stageName: "\u65B0\u767A\u7530\u57CE"
+    powerTyp: 3
+    LocationX: 28
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: Echigo
+    stageNameEng: Shibata
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 2
+    stageName: "\u6751\u4E0A\u57CE"
+    powerTyp: 1
+    LocationX: 35
+    LocationY: 45
+    stageMap: 3
+    kuniNameEng: Echigo
+    stageNameEng: Murakami
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 3
+    stageName: "\u6839\u5730\u57CE"
+    powerTyp: 1
+    LocationX: -35
+    LocationY: -16
+    stageMap: 3
+    kuniNameEng: Echigo
+    stageNameEng: Nechi
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 4
+    stageName: "\u5742\u6238\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: -40
+    stageMap: 2
+    kuniNameEng: Echigo
+    stageNameEng: Sakato
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 5
+    stageName: "\u9ED2\u6EDD\u57CE"
+    powerTyp: 3
+    LocationX: 12
+    LocationY: 15
+    stageMap: 3
+    kuniNameEng: Echigo
+    stageNameEng: Kurotaki
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 6
+    stageName: "\u6803\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: 20
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Echigo
+    stageNameEng: Tochio
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 7
+    stageName: "\u5317\u6761\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Echigo
+    stageNameEng: Hojyo
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 8
+    stageName: "\u7435\u7436\u5CF6\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: -5
+    stageMap: 3
+    kuniNameEng: Echigo
+    stageNameEng: Biwajima
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 9
+    stageName: "\u7FBD\u8302\u57CE"
+    powerTyp: 1
+    LocationX: -3
+    LocationY: 32
+    stageMap: 4
+    kuniNameEng: Echigo
+    stageNameEng: Hamochi
+  - kuniId: 20
+    kuniName: "\u8D8A\u5F8C"
+    id: 10
+    stageName: "\u6625\u65E5\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -16
+    LocationY: -13
+    stageMap: 3
+    kuniNameEng: Echigo
+    stageNameEng: Kasugayama
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 1
+    stageName: "\u9B5A\u6D25\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: 40
+    stageMap: 3
+    kuniNameEng: Eccyu
+    stageNameEng: Uozu
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 2
+    stageName: "\u677E\u5009\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: 25
+    stageMap: 1
+    kuniNameEng: Eccyu
+    stageNameEng: Matsukura
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 3
+    stageName: "\u5929\u795E\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 25
+    LocationY: 50
+    stageMap: 2
+    kuniNameEng: Eccyu
+    stageNameEng: Tenjinzan
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 4
+    stageName: "\u6C60\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Eccyu
+    stageNameEng: Ikeda
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 5
+    stageName: "\u57CE\u751F\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -8
+    stageMap: 2
+    kuniNameEng: Eccyu
+    stageNameEng: Jyouno
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 6
+    stageName: "\u5B88\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Eccyu
+    stageNameEng: Moriyama
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 7
+    stageName: "\u5343\u4E45\u91CC\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: 40
+    stageMap: 3
+    kuniNameEng: Eccyu
+    stageNameEng: Chikuri
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 8
+    stageName: "\u84EE\u6CBC\u57CE"
+    powerTyp: 2
+    LocationX: -30
+    LocationY: 15
+    stageMap: 2
+    kuniNameEng: Eccyu
+    stageNameEng: Hasunuma
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 9
+    stageName: "\u4E95\u6CE2\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Eccyu
+    stageNameEng: Inami
+  - kuniId: 21
+    kuniName: "\u8D8A\u4E2D"
+    id: 10
+    stageName: "\u5BCC\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Eccyu
+    stageNameEng: Toyama
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 1
+    stageName: "\u9928\u6797\u57CE"
+    powerTyp: 1
+    LocationX: 35
+    LocationY: -50
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Tatebayashi
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 2
+    stageName: "\u91D1\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 30
+    LocationY: -35
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Kanayama
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 3
+    stageName: "\u53A9\u6A4B\u57CE"
+    powerTyp: 2
+    LocationX: 15
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Kouzuke
+    stageNameEng: Mayabashi
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 4
+    stageName: "\u6CBC\u7530\u57CE"
+    powerTyp: 3
+    LocationX: 10
+    LocationY: 15
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Numata
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 5
+    stageName: "\u5E73\u4E95\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: -50
+    stageMap: 1
+    kuniNameEng: Kouzuke
+    stageNameEng: Hirai
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 6
+    stageName: "\u767D\u4E95\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -8
+    stageMap: 1
+    kuniNameEng: Kouzuke
+    stageNameEng: Shiroi
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 7
+    stageName: "\u5D69\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -10
+    LocationY: 15
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Takeyama
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 8
+    stageName: "\u5CA9\u6AC3\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Iwabitsu
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 9
+    stageName: "\u677E\u4E95\u7530\u57CE"
+    powerTyp: 3
+    LocationX: -12
+    LocationY: -40
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Matsuida
+  - kuniId: 22
+    kuniName: "\u4E0A\u91CE"
+    id: 10
+    stageName: "\u7B95\u8F2A\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Kouzuke
+    stageNameEng: Minowa
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 1
+    stageName: "\u9262\u5F62\u57CE"
+    powerTyp: 3
+    LocationX: -7
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Musashi
+    stageNameEng: Hachigata
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 2
+    stageName: "\u6DF1\u8C37\u57CE"
+    powerTyp: 1
+    LocationX: -2
+    LocationY: 44
+    stageMap: 2
+    kuniNameEng: Musashi
+    stageNameEng: Fukaya
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 3
+    stageName: "\u5FCD\u57CE"
+    powerTyp: 2
+    LocationX: 12
+    LocationY: 40
+    stageMap: 1
+    kuniNameEng: Musashi
+    stageNameEng: Oshi
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 4
+    stageName: "\u5929\u795E\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: 38
+    stageMap: 2
+    kuniNameEng: Musashi
+    stageNameEng: Tenjinzan
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 5
+    stageName: "\u677E\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 6
+    LocationY: 8
+    stageMap: 2
+    kuniNameEng: Musashi
+    stageNameEng: Matsuyama
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 6
+    stageName: "\u5C0F\u673A\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: -47
+    stageMap: 3
+    kuniNameEng: Musashi
+    stageNameEng: Kozukue
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 7
+    stageName: "\u6EDD\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -27
+    stageMap: 2
+    kuniNameEng: Musashi
+    stageNameEng: Takiyama
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 8
+    stageName: "\u6C5F\u6238\u57CE"
+    powerTyp: 3
+    LocationX: 25
+    LocationY: -23
+    stageMap: 3
+    kuniNameEng: Musashi
+    stageNameEng: Edo
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 9
+    stageName: "\u5CA9\u69FB\u57CE"
+    powerTyp: 3
+    LocationX: 25
+    LocationY: 13
+    stageMap: 2
+    kuniNameEng: Musashi
+    stageNameEng: Iwatsuki
+  - kuniId: 23
+    kuniName: "\u6B66\u8535"
+    id: 10
+    stageName: "\u6CB3\u8D8A\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: Musashi
+    stageNameEng: Kawagoe
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 1
+    stageName: "\u5CA9\u6BBF\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 25
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Iwadonoyama
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 2
+    stageName: "\u52DD\u6CBC\u6C0F\u9928"
+    powerTyp: 1
+    LocationX: 8
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Katsunuma
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 3
+    stageName: "\u672C\u6816\u57CE"
+    powerTyp: 2
+    LocationX: 3
+    LocationY: -25
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Motosu
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 4
+    stageName: "\u8981\u5BB3\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -7
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Yougaiyama
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 5
+    stageName: "\u4E0B\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -35
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Shimoyama
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 6
+    stageName: "\u767D\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -27
+    LocationY: 16
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Hakusan
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 7
+    stageName: "\u82E5\u795E\u5B50\u57CE"
+    powerTyp: 1
+    LocationX: -27
+    LocationY: 35
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Wakamiko
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 8
+    stageName: "\u5C0F\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -8
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Koyama
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 9
+    stageName: "\u4E2D\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Nakano
+  - kuniId: 24
+    kuniName: "\u7532\u6590"
+    id: 10
+    stageName: "\u8E91\u8E85\u30F6\u5D0E\u9928"
+    powerTyp: 3
+    LocationX: -6
+    LocationY: 10
+    stageMap: 2
+    kuniNameEng: Kai
+    stageNameEng: Tsutsujigasaki
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 1
+    stageName: "\u6D25\u4E45\u4E95\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 40
+    stageMap: 2
+    kuniNameEng: Sagami
+    stageNameEng: Tsukui
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 2
+    stageName: "\u6CA2\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 3
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Sagami
+    stageNameEng: Sawayama
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 3
+    stageName: "\u4E09\u5D0E\u57CE"
+    powerTyp: 1
+    LocationX: 30
+    LocationY: -58
+    stageMap: 4
+    kuniNameEng: Sagami
+    stageNameEng: Misaki
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 4
+    stageName: "\u65B0\u4E95\u57CE"
+    powerTyp: 2
+    LocationX: 28
+    LocationY: -48
+    stageMap: 4
+    kuniNameEng: Sagami
+    stageNameEng: Arai
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 5
+    stageName: "\u7389\u7E04\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: -12
+    stageMap: 3
+    kuniNameEng: Sagami
+    stageNameEng: Tamanawa
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 6
+    stageName: "\u5CA1\u5D0E\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -5
+    stageMap: 3
+    kuniNameEng: Sagami
+    stageNameEng: Okazaki
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 7
+    stageName: "\u6DF1\u898B\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Sagami
+    stageNameEng: Fukumi
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 8
+    stageName: "\u6CB3\u6751\u57CE"
+    powerTyp: 1
+    LocationX: -25
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Sagami
+    stageNameEng: Kawamura
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 9
+    stageName: "\u8DB3\u67C4\u57CE"
+    powerTyp: 2
+    LocationX: -32
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Sagami
+    stageNameEng: Agara
+  - kuniId: 25
+    kuniName: "\u76F8\u6A21"
+    id: 10
+    stageName: "\u5C0F\u7530\u539F\u57CE"
+    powerTyp: 3
+    LocationX: -23
+    LocationY: -28
+    stageMap: 3
+    kuniNameEng: Sagami
+    stageNameEng: Odawara
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 1
+    stageName: "\u938C\u7530\u57CE"
+    powerTyp: 2
+    LocationX: -2
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Izu
+    stageNameEng: Kamada
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 2
+    stageName: "\u67CF\u4E45\u4FDD\u57CE"
+    powerTyp: 1
+    LocationX: -15
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Izu
+    stageNameEng: Kashiwakubo
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 3
+    stageName: "\u4E38\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -28
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Izu
+    stageNameEng: Maruyama
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 4
+    stageName: "\u5C0F\u677E\u57CE"
+    powerTyp: 1
+    LocationX: -28
+    LocationY: -8
+    stageMap: 3
+    kuniNameEng: Izu
+    stageNameEng: Komatsu
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 5
+    stageName: "\u5C71\u4E2D\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 55
+    stageMap: 2
+    kuniNameEng: Izu
+    stageNameEng: Yamanaka
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 6
+    stageName: "\u72E9\u91CE\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 3
+    stageMap: 2
+    kuniNameEng: Izu
+    stageNameEng: Kano
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 7
+    stageName: "\u9577\u6D5C\u57CE"
+    powerTyp: 1
+    LocationX: -25
+    LocationY: 33
+    stageMap: 4
+    kuniNameEng: Izu
+    stageNameEng: Nagahama
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 8
+    stageName: "\u6CB3\u6D25\u57CE"
+    powerTyp: 1
+    LocationX: -13
+    LocationY: -24
+    stageMap: 3
+    kuniNameEng: Izu
+    stageNameEng: Kouzu
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 9
+    stageName: "\u4E0B\u7530\u57CE"
+    powerTyp: 1
+    LocationX: -18
+    LocationY: -35
+    stageMap: 4
+    kuniNameEng: Izu
+    stageNameEng: Shinoda
+  - kuniId: 26
+    kuniName: "\u4F0A\u8C46"
+    id: 10
+    stageName: "\u97EE\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -12
+    LocationY: 35
+    stageMap: 2
+    kuniNameEng: Izu
+    stageNameEng: Nirayama
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 1
+    stageName: "\u690E\u6D25\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: 40
+    stageMap: 3
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Shiizu
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 2
+    stageName: "\u571F\u6C17\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 50
+    stageMap: 2
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Toke
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 3
+    stageName: "\u771F\u91CC\u8C37\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 20
+    stageMap: 1
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Maritani
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 4
+    stageName: "\u7A32\u6751\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Inamura
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 5
+    stageName: "\u9928\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -18
+    LocationY: -42
+    stageMap: 3
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Tateyama
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 6
+    stageName: "\u5CA1\u672C\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: -25
+    stageMap: 4
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Okamoto
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 7
+    stageName: "\u4F50\u8CAB\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: 5
+    stageMap: 3
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Sanuki
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 8
+    stageName: "\u5927\u591A\u559C\u57CE"
+    powerTyp: 1
+    LocationX: 8
+    LocationY: 2
+    stageMap: 1
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Otaki
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 9
+    stageName: "\u4E07\u559C\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: 15
+    stageMap: 3
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Mangi
+  - kuniId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    id: 10
+    stageName: "\u4E45\u7559\u91CC\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Awa Kazusa
+    stageNameEng: Kururi
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 1
+    stageName: "\u7D50\u57CE\u57CE"
+    powerTyp: 2
+    LocationX: -28
+    LocationY: 40
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Yuki
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 2
+    stageName: "\u53E4\u6CB3\u57CE"
+    powerTyp: 3
+    LocationX: -36
+    LocationY: 32
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Koga
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 3
+    stageName: "\u95A2\u5BBF\u57CE"
+    powerTyp: 2
+    LocationX: -28
+    LocationY: 18
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Sekiyado
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 4
+    stageName: "\u56FD\u5E9C\u53F0\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: -30
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Konodai
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 5
+    stageName: "\u81FC\u4E95\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Usui
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 6
+    stageName: "\u4F50\u5009\u57CE"
+    powerTyp: 3
+    LocationX: 5
+    LocationY: -35
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Sakura
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 7
+    stageName: "\u77E2\u4F5C\u57CE"
+    powerTyp: 2
+    LocationX: 16
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Yahagi
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 8
+    stageName: "\u5C0F\u5F13\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: -53
+    stageMap: 3
+    kuniNameEng: Shimousa
+    stageNameEng: Oyumi
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 9
+    stageName: "\u98EF\u6CBC\u57CE"
+    powerTyp: 1
+    LocationX: 40
+    LocationY: -15
+    stageMap: 4
+    kuniNameEng: Shimousa
+    stageNameEng: Iinuma
+  - kuniId: 28
+    kuniName: "\u4E0B\u7DCF"
+    id: 10
+    stageName: "\u5C0F\u898B\u5DDD\u57CE"
+    powerTyp: 1
+    LocationX: 28
+    LocationY: -5
+    stageMap: 1
+    kuniNameEng: Shimousa
+    stageNameEng: Omigawa
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 1
+    stageName: "\u5510\u6CA2\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -12
+    LocationY: -45
+    stageMap: 2
+    kuniNameEng: Shimotsuke
+    stageNameEng: Karasawayama
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 2
+    stageName: "\u5C0F\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: -50
+    stageMap: 2
+    kuniNameEng: Shimotsuke
+    stageNameEng: Oyama
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 3
+    stageName: "\u8DB3\u5229\u57CE"
+    powerTyp: 1
+    LocationX: -25
+    LocationY: -40
+    stageMap: 1
+    kuniNameEng: Shimotsuke
+    stageNameEng: Ashikaga
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 4
+    stageName: "\u7686\u5DDD\u57CE"
+    powerTyp: 1
+    LocationX: -10
+    LocationY: -28
+    stageMap: 1
+    kuniNameEng: Shimotsuke
+    stageNameEng: Minagawa
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 5
+    stageName: "\u58EC\u751F\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Shimotsuke
+    stageNameEng: Mibu
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 6
+    stageName: "\u98DB\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 16
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Shimotsuke
+    stageNameEng: Tobiyama
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 7
+    stageName: "\u5927\u7530\u539F\u57CE"
+    powerTyp: 2
+    LocationX: 15
+    LocationY: 35
+    stageMap: 1
+    kuniNameEng: Shimotsuke
+    stageNameEng: Otawara
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 8
+    stageName: "\u70CF\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 28
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Shimotsuke
+    stageNameEng: Karasuyama
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 9
+    stageName: "\u8302\u6728\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Shimotsuke
+    stageNameEng: Mogi
+  - kuniId: 29
+    kuniName: "\u4E0B\u91CE"
+    id: 10
+    stageName: "\u5B87\u90FD\u5BAE\u57CE"
+    powerTyp: 3
+    LocationX: 5
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Shimotsuke
+    stageNameEng: Utsunomiya
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 1
+    stageName: "\u4E0B\u59BB\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Hitachi
+    stageNameEng: Shimotsuma
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 2
+    stageName: "\u4E0B\u9928\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 13
+    stageMap: 1
+    kuniNameEng: Hitachi
+    stageNameEng: Shimodate
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 3
+    stageName: "\u7B20\u9593\u57CE"
+    powerTyp: 1
+    LocationX: -4
+    LocationY: 4
+    stageMap: 2
+    kuniNameEng: Hitachi
+    stageNameEng: Kasama
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 4
+    stageName: "\u5B88\u8C37\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Hitachi
+    stageNameEng: Moriya
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 5
+    stageName: "\u571F\u6D66\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: -23
+    stageMap: 3
+    kuniNameEng: Hitachi
+    stageNameEng: Tsuchiura
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 6
+    stageName: "\u5E9C\u4E2D\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: Hitachi
+    stageNameEng: Fucyu
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 7
+    stageName: "\u9E7F\u5CF6\u57CE"
+    powerTyp: 1
+    LocationX: 15
+    LocationY: -40
+    stageMap: 4
+    kuniNameEng: Hitachi
+    stageNameEng: Kashima
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 8
+    stageName: "\u592A\u7530\u57CE"
+    powerTyp: 2
+    LocationX: 12
+    LocationY: 38
+    stageMap: 3
+    kuniNameEng: Hitachi
+    stageNameEng: Ota
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 9
+    stageName: "\u5927\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: 33
+    stageMap: 2
+    kuniNameEng: Hitachi
+    stageNameEng: Oyama
+  - kuniId: 30
+    kuniName: "\u5E38\u9678"
+    id: 10
+    stageName: "\u6C34\u6238\u57CE"
+    powerTyp: 3
+    LocationX: 10
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Hitachi
+    stageNameEng: Mito
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 1
+    stageName: "\u4E2D\u6751\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: 50
+    stageMap: 3
+    kuniNameEng: Iwaki
+    stageNameEng: Nakamura
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 2
+    stageName: "\u7FBD\u9ED2\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -25
+    LocationY: -55
+    stageMap: 2
+    kuniNameEng: Iwaki
+    stageNameEng: Haguroyama
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 3
+    stageName: "\u5927\u9928\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: -35
+    stageMap: 1
+    kuniNameEng: Iwaki
+    stageNameEng: Odate
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 4
+    stageName: "\u77F3\u5DDD\u57CE"
+    powerTyp: 2
+    LocationX: -17
+    LocationY: -33
+    stageMap: 2
+    kuniNameEng: Iwaki
+    stageNameEng: Ishikawa
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 5
+    stageName: "\u5B88\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -13
+    LocationY: -12
+    stageMap: 1
+    kuniNameEng: Iwaki
+    stageNameEng: Moriyama
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 6
+    stageName: "\u6A29\u73FE\u5802\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Iwaki
+    stageNameEng: Gongendo
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 7
+    stageName: "\u9AD8\u5009\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: -15
+    stageMap: 2
+    kuniNameEng: Iwaki
+    stageNameEng: Takakurayama
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 8
+    stageName: "\u5C0F\u5CF0\u57CE"
+    powerTyp: 1
+    LocationX: -33
+    LocationY: -38
+    stageMap: 2
+    kuniNameEng: Iwaki
+    stageNameEng: Komine
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 9
+    stageName: "\u4E09\u6625\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 10
+    stageMap: 1
+    kuniNameEng: Iwaki
+    stageNameEng: Miharu
+  - kuniId: 31
+    kuniName: "\u78D0\u57CE"
+    id: 10
+    stageName: "\u5C0F\u9AD8\u57CE"
+    powerTyp: 3
+    LocationX: 2
+    LocationY: 25
+    stageMap: 3
+    kuniNameEng: Iwaki
+    stageNameEng: Odaka
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 1
+    stageName: "\u767D\u5CA9\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: South Dewa
+    stageNameEng: Shiraiwa
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 2
+    stageName: "\u7802\u8D8A\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: South Dewa
+    stageNameEng: Sagoshi
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 3
+    stageName: "\u9BAD\u5EF6\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 40
+    stageMap: 2
+    kuniNameEng: South Dewa
+    stageNameEng: Sakenobe
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 4
+    stageName: "\u6E05\u6C34\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 20
+    stageMap: 1
+    kuniNameEng: South Dewa
+    stageNameEng: Kiyomizu
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 5
+    stageName: "\u5927\u5B9D\u5BFA\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: South Dewa
+    stageNameEng: Daihouji
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 6
+    stageName: "\u5EF6\u6CA2\u57CE"
+    powerTyp: 2
+    LocationX: 23
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: South Dewa
+    stageNameEng: Nobesawa
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 7
+    stageName: "\u5C71\u5F62\u57CE"
+    powerTyp: 3
+    LocationX: 20
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: South Dewa
+    stageNameEng: Yamagata
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 8
+    stageName: "\u9B8E\u8C9D\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: South Dewa
+    stageNameEng: Ayukai
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 9
+    stageName: "\u5C0F\u56FD\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: -40
+    stageMap: 1
+    kuniNameEng: South Dewa
+    stageNameEng: Oguni
+  - kuniId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    id: 10
+    stageName: "\u7C73\u6CA2\u57CE"
+    powerTyp: 3
+    LocationX: 20
+    LocationY: -50
+    stageMap: 1
+    kuniNameEng: South Dewa
+    stageNameEng: Yonezawa
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 1
+    stageName: "\u4E2D\u4E38\u57CE"
+    powerTyp: 1
+    LocationX: -30
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Iwashiro
+    stageNameEng: Nakamaru
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 2
+    stageName: "\u4E45\u5DDD\u57CE"
+    powerTyp: 1
+    LocationX: -32
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Iwashiro
+    stageNameEng: Hisakawa
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 3
+    stageName: "\u67CF\u6728\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: 26
+    stageMap: 2
+    kuniNameEng: Iwashiro
+    stageNameEng: Kashiwagi
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 4
+    stageName: "\u9D2B\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Iwashiro
+    stageNameEng: Shigiyama
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 5
+    stageName: "\u9577\u6CBC\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: Iwashiro
+    stageNameEng: Naganuma
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 6
+    stageName: "\u798F\u5CF6\u57CE"
+    powerTyp: 3
+    LocationX: 25
+    LocationY: 40
+    stageMap: 1
+    kuniNameEng: Iwashiro
+    stageNameEng: Fukushima
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 7
+    stageName: "\u9808\u8CC0\u5DDD\u57CE"
+    powerTyp: 2
+    LocationX: 23
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: Iwashiro
+    stageNameEng: Sukagawa
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 8
+    stageName: "\u4E8C\u672C\u677E\u57CE"
+    powerTyp: 2
+    LocationX: 23
+    LocationY: 18
+    stageMap: 1
+    kuniNameEng: Iwashiro
+    stageNameEng: Nihonmatsu
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 9
+    stageName: "\u732A\u82D7\u4EE3\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: 12
+    stageMap: 2
+    kuniNameEng: Iwashiro
+    stageNameEng: Inawashiro
+  - kuniId: 33
+    kuniName: "\u5CA9\u4EE3"
+    id: 10
+    stageName: "\u9ED2\u5DDD\u57CE"
+    powerTyp: 3
+    LocationX: -12
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Iwashiro
+    stageNameEng: Kurokawa
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 1
+    stageName: "\u6D25\u8C37\u9928"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 50
+    stageMap: 3
+    kuniNameEng: South Mutsu
+    stageNameEng: Tsuya
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 2
+    stageName: "\u8C4A\u5F8C\u9928"
+    powerTyp: 1
+    LocationX: -32
+    LocationY: -15
+    stageMap: 2
+    kuniNameEng: South Mutsu
+    stageNameEng: Bungo
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 3
+    stageName: "\u6CA2\u8FBA\u9928"
+    powerTyp: 1
+    LocationX: -10
+    LocationY: 40
+    stageMap: 1
+    kuniNameEng: South Mutsu
+    stageNameEng: Sawabetate
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 4
+    stageName: "\u5BAE\u5D0E\u57CE"
+    powerTyp: 2
+    LocationX: -28
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: South Mutsu
+    stageNameEng: Miyazaki
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 5
+    stageName: "\u5BFA\u6C60\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 25
+    stageMap: 1
+    kuniNameEng: South Mutsu
+    stageNameEng: Teraike
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 6
+    stageName: "\u540D\u751F\u57CE "
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 15
+    stageMap: 1
+    kuniNameEng: South Mutsu
+    stageNameEng: Myo
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 7
+    stageName: "\u77F3\u5DFB\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: -5
+    stageMap: 4
+    kuniNameEng: South Mutsu
+    stageNameEng: Ishinomaki
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 8
+    stageName: "\u767D\u77F3\u57CE"
+    powerTyp: 3
+    LocationX: -30
+    LocationY: -50
+    stageMap: 2
+    kuniNameEng: South Mutsu
+    stageNameEng: Shiraishi
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 9
+    stageName: "\u5343\u4EE3\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: -30
+    stageMap: 1
+    kuniNameEng: South Mutsu
+    stageNameEng: Sendai
+  - kuniId: 34
+    kuniName: "\u5357\u9678\u5965"
+    id: 10
+    stageName: "\u5229\u5E9C\u57CE"
+    powerTyp: 3
+    LocationX: -15
+    LocationY: -15
+    stageMap: 3
+    kuniNameEng: South Mutsu
+    stageNameEng: Rihu
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 1
+    stageName: "\u6A9C\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -14
+    LocationY: 40
+    stageMap: 3
+    kuniNameEng: North Dewa
+    stageNameEng: Hiyama
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 2
+    stageName: "\u5341\u72D0\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 45
+    stageMap: 2
+    kuniNameEng: North Dewa
+    stageNameEng: Tokko
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 3
+    stageName: "\u6E4A\u57CE"
+    powerTyp: 2
+    LocationX: -13
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: North Dewa
+    stageNameEng: Minato
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 4
+    stageName: "\u89D2\u9928\u57CE"
+    powerTyp: 3
+    LocationX: 10
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: North Dewa
+    stageNameEng: Kakunodate
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 5
+    stageName: "\u7C73\u5185\u6CA2\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 22
+    stageMap: 1
+    kuniNameEng: North Dewa
+    stageNameEng: Yonaizawa
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 6
+    stageName: "\u8107\u672C\u57CE"
+    powerTyp: 1
+    LocationX: -25
+    LocationY: 10
+    stageMap: 4
+    kuniNameEng: North Dewa
+    stageNameEng: Wakimoto
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 7
+    stageName: "\u5CA9\u8C37\u9928"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -20
+    stageMap: 3
+    kuniNameEng: North Dewa
+    stageNameEng: Iwaya
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 8
+    stageName: "\u6CD5\u9818\u9928"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -53
+    stageMap: 2
+    kuniNameEng: North Dewa
+    stageNameEng: Horyo
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 9
+    stageName: "\u5C71\u6839\u9928"
+    powerTyp: 1
+    LocationX: -10
+    LocationY: -40
+    stageMap: 3
+    kuniNameEng: North Dewa
+    stageNameEng: Yamane
+  - kuniId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    id: 10
+    stageName: "\u6A2A\u624B\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: -35
+    stageMap: 1
+    kuniNameEng: North Dewa
+    stageNameEng: Yokoide
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 1
+    stageName: "\u4E45\u6148\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: 50
+    stageMap: 3
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Kuji
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 2
+    stageName: "\u4E5D\u6238\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: 53
+    stageMap: 1
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Kunohe
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 3
+    stageName: "\u91D1\u7530\u4E00\u57CE"
+    powerTyp: 2
+    LocationX: -30
+    LocationY: 35
+    stageMap: 2
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Kindaichi
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 4
+    stageName: "\u5927\u6797\u57CE"
+    powerTyp: 2
+    LocationX: -30
+    LocationY: -35
+    stageMap: 2
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Obayashi
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 5
+    stageName: "\u845B\u5DFB\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 30
+    stageMap: 1
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Kuzumaki
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 6
+    stageName: "\u6A2A\u7530\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -20
+    stageMap: 1
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Yokota
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 7
+    stageName: "\u7530\u9396\u57CE"
+    powerTyp: 1
+    LocationX: 0
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Takusari
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 8
+    stageName: "\u96EB\u77F3\u57CE"
+    powerTyp: 1
+    LocationX: -35
+    LocationY: 15
+    stageMap: 2
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Shizukuishi
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 9
+    stageName: "\u9AD8\u6C34\u5BFA\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Kosuiji
+  - kuniId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    id: 10
+    stageName: "\u82B1\u5DFB\u57CE"
+    powerTyp: 3
+    LocationX: -22
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: Mid Mutsu
+    stageNameEng: Hananomaki
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 1
+    stageName: "\u7530\u540D\u90E8\u57CE"
+    powerTyp: 1
+    LocationX: 20
+    LocationY: 30
+    stageMap: 4
+    kuniNameEng: North Mutsu
+    stageNameEng: Tanabu
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 2
+    stageName: "\u4E03\u6238\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: -25
+    stageMap: 2
+    kuniNameEng: North Mutsu
+    stageNameEng: Shichinohe
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 3
+    stageName: "\u91CE\u8FBA\u5730\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: -8
+    stageMap: 3
+    kuniNameEng: North Mutsu
+    stageNameEng: Noheji
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 4
+    stageName: "\u5927\u6D66\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -18
+    stageMap: 2
+    kuniNameEng: North Mutsu
+    stageNameEng: Oura
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 5
+    stageName: "\u77F3\u5DDD\u57CE"
+    powerTyp: 3
+    LocationX: -9
+    LocationY: -33
+    stageMap: 2
+    kuniNameEng: North Mutsu
+    stageNameEng: Ishikawa
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 6
+    stageName: "\u6D6A\u5CA1\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: North Mutsu
+    stageNameEng: Namioka
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 7
+    stageName: "\u5341\u4E09\u6E4A\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: North Mutsu
+    stageNameEng: Tosaminato
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 8
+    stageName: "\u7A2E\u91CC\u57CE"
+    powerTyp: 1
+    LocationX: -33
+    LocationY: -18
+    stageMap: 3
+    kuniNameEng: North Mutsu
+    stageNameEng: Tanesato
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 9
+    stageName: "\u6839\u57CE"
+    powerTyp: 1
+    LocationX: 35
+    LocationY: -45
+    stageMap: 3
+    kuniNameEng: North Mutsu
+    stageNameEng: Ne
+  - kuniId: 37
+    kuniName: "\u5317\u9678\u5965"
+    id: 10
+    stageName: "\u4E09\u6238\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: -55
+    stageMap: 2
+    kuniNameEng: North Mutsu
+    stageNameEng: Sannohe
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 1
+    stageName: "\u6D25\u7530\u57CE"
+    powerTyp: 1
+    LocationX: -27
+    LocationY: 13
+    stageMap: 1
+    kuniNameEng: Kawachi
+    stageNameEng: Tsuda
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 2
+    stageName: "\u4EA4\u91CE\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: 6
+    stageMap: 1
+    kuniNameEng: Kawachi
+    stageNameEng: Sakibe
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 3
+    stageName: "\u98EF\u76DB\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -2
+    LocationY: -6
+    stageMap: 2
+    kuniNameEng: Kawachi
+    stageNameEng: Iimoriyama
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 4
+    stageName: "\u82E5\u6C5F\u57CE"
+    powerTyp: 2
+    LocationX: 8
+    LocationY: -3
+    stageMap: 1
+    kuniNameEng: Kawachi
+    stageNameEng: Wakae
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 5
+    stageName: "\u9AD8\u5C4B\u57CE"
+    powerTyp: 2
+    LocationX: 30
+    LocationY: 8
+    stageMap: 2
+    kuniNameEng: Kawachi
+    stageNameEng: Takaya
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 6
+    stageName: "\u4E45\u5B9D\u5BFA\u57CE"
+    powerTyp: 1
+    LocationX: 15
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: Kawachi
+    stageNameEng: Kyuhouji
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 7
+    stageName: "\u70CF\u5E3D\u5B50\u5F62\u57CE"
+    powerTyp: 2
+    LocationX: 38
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Kawachi
+    stageNameEng: Eboshigata
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 8
+    stageName: "\u7530\u539F\u57CE"
+    powerTyp: 1
+    LocationX: -3
+    LocationY: 15
+    stageMap: 2
+    kuniNameEng: Kawachi
+    stageNameEng: Tawara
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 9
+    stageName: "\u5C0F\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 22
+    LocationY: -2
+    stageMap: 1
+    kuniNameEng: Kawachi
+    stageNameEng: Koyama
+  - kuniId: 38
+    kuniName: "\u6CB3\u5185"
+    id: 10
+    stageName: "\u8431\u632F\u57CE"
+    powerTyp: 1
+    LocationX: 15
+    LocationY: 13
+    stageMap: 1
+    kuniNameEng: Kawachi
+    stageNameEng: Kayahuri
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 1
+    stageName: "\u583A\u57CE"
+    powerTyp: 3
+    LocationX: 7
+    LocationY: -13
+    stageMap: 1
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Sakai
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 2
+    stageName: "\u5CB8\u548C\u7530\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: -28
+    stageMap: 3
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Kishiwada
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 3
+    stageName: "\u5343\u77F3\u6398\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -42
+    stageMap: 3
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Sengokubori
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 4
+    stageName: "\u77F3\u5C71\u5FA1\u574A"
+    powerTyp: 3
+    LocationX: 9
+    LocationY: 3
+    stageMap: 1
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Ishiyama Gobo
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 5
+    stageName: "\u8D8A\u6C34\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: 15
+    stageMap: 3
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Koshimizu
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 6
+    stageName: "\u9AD8\u69FB\u57CE"
+    powerTyp: 2
+    LocationX: 19
+    LocationY: 38
+    stageMap: 1
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Takatsuki
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 7
+    stageName: "\u8328\u6728\u57CE"
+    powerTyp: 1
+    LocationX: 13
+    LocationY: 20
+    stageMap: 1
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Ibaraki
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 8
+    stageName: "\u82A5\u5DDD\u57CE"
+    powerTyp: 2
+    LocationX: 7
+    LocationY: 49
+    stageMap: 1
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Akutagawa
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 9
+    stageName: "\u4F0A\u4E39\u57CE"
+    powerTyp: 3
+    LocationX: -3
+    LocationY: 32
+    stageMap: 1
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Itami
+  - kuniId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    id: 10
+    stageName: "\u6EDD\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -21
+    LocationY: 10
+    stageMap: 4
+    kuniNameEng: Settsu Izumi
+    stageNameEng: Takiyama
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 1
+    stageName: "\u4E45\u7F8E\u6D5C\u57CE"
+    powerTyp: 2
+    LocationX: -37
+    LocationY: 5
+    stageMap: 3
+    kuniNameEng: Tango
+    stageNameEng: Kumihama
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 2
+    stageName: "\u5F13\u6728\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Tango
+    stageNameEng: Yuminoki
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 3
+    stageName: "\u7530\u8FBA\u57CE"
+    powerTyp: 2
+    LocationX: 18
+    LocationY: -37
+    stageMap: 2
+    kuniNameEng: Tango
+    stageNameEng: Tanabe
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 4
+    stageName: "\u6E9D\u5C3B\u57CE"
+    powerTyp: 1
+    LocationX: 32
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Tango
+    stageNameEng: Mizojiri
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 5
+    stageName: "\u9B3C\u30F6\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -50
+    stageMap: 2
+    kuniNameEng: Tango
+    stageNameEng: Oniga
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 6
+    stageName: "\u4E0B\u5CA1\u57CE"
+    powerTyp: 2
+    LocationX: -25
+    LocationY: 25
+    stageMap: 1
+    kuniNameEng: Tango
+    stageNameEng: Shimooka
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 7
+    stageName: "\u7537\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 12
+    stageMap: 3
+    kuniNameEng: Tango
+    stageNameEng: Otokoyama
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 8
+    stageName: "\u4F0A\u6839\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: Tango
+    stageNameEng: Ine
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 9
+    stageName: "\u4F50\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: -24
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Tango
+    stageNameEng: Sano
+  - kuniId: 40
+    kuniName: "\u4E39\u5F8C"
+    id: 10
+    stageName: "\u5EFA\u90E8\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 2
+    LocationY: -17
+    stageMap: 2
+    kuniNameEng: Tango
+    stageNameEng: Tatebeyama
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 1
+    stageName: "\u6B64\u9685\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 38
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Konosumiyama
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 2
+    stageName: "\u9DB4\u57CE"
+    powerTyp: 1
+    LocationX: 20
+    LocationY: 27
+    stageMap: 1
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Tsuru
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 3
+    stageName: "\u8C4A\u5CA1\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: 10
+    stageMap: 1
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Toyooka
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 4
+    stageName: "\u7AF9\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 25
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Takeda
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 5
+    stageName: "\u516B\u6728\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: -15
+    stageMap: 1
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Yagi
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 6
+    stageName: "\u82A6\u5C4B\u57CE"
+    powerTyp: 1
+    LocationX: 3
+    LocationY: 30
+    stageMap: 3
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Ashiya
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 7
+    stageName: "\u9E7F\u91CE\u57CE"
+    powerTyp: 2
+    LocationX: -38
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Shikano
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 8
+    stageName: "\u82E5\u685C\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Wakasa
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 9
+    stageName: "\u6850\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -10
+    LocationY: 23
+    stageMap: 3
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Kiriyama
+  - kuniId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    id: 10
+    stageName: "\u9CE5\u53D6\u57CE"
+    powerTyp: 3
+    LocationX: -23
+    LocationY: 15
+    stageMap: 3
+    kuniNameEng: Inaba Tajima
+    stageNameEng: Tottori
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 1
+    stageName: "\u59EB\u8DEF\u57CE"
+    powerTyp: 3
+    LocationX: -5
+    LocationY: -28
+    stageMap: 1
+    kuniNameEng: Harima
+    stageNameEng: Himeji
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 2
+    stageName: "\u4E09\u6728\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: -17
+    stageMap: 1
+    kuniNameEng: Harima
+    stageNameEng: Miki
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 3
+    stageName: "\u6CB3\u5408\u57CE"
+    powerTyp: 2
+    LocationX: 13
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Harima
+    stageNameEng: Kawai
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 4
+    stageName: "\u9B5A\u4F4F\u57CE"
+    powerTyp: 2
+    LocationX: 23
+    LocationY: -47
+    stageMap: 4
+    kuniNameEng: Harima
+    stageNameEng: Uozumi
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 5
+    stageName: "\u4E0A\u6708\u57CE"
+    powerTyp: 2
+    LocationX: -33
+    LocationY: 3
+    stageMap: 2
+    kuniNameEng: Harima
+    stageNameEng: Kozuki
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 6
+    stageName: "\u7F6E\u5869\u57CE"
+    powerTyp: 2
+    LocationX: -7
+    LocationY: -7
+    stageMap: 2
+    kuniNameEng: Harima
+    stageNameEng: Okishio
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 7
+    stageName: "\u767D\u65D7\u57CE"
+    powerTyp: 2
+    LocationX: -28
+    LocationY: -20
+    stageMap: 1
+    kuniNameEng: Harima
+    stageNameEng: Shirohata
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 8
+    stageName: "\u9577\u6C34\u57CE"
+    powerTyp: 1
+    LocationX: -18
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Harima
+    stageNameEng: Cyozui
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 9
+    stageName: "\u91CE\u6751\u57CE"
+    powerTyp: 1
+    LocationX: 23
+    LocationY: 15
+    stageMap: 2
+    kuniNameEng: Harima
+    stageNameEng: Nomura
+  - kuniId: 42
+    kuniName: "\u64AD\u78E8"
+    id: 10
+    stageName: "\u6DE1\u6CB3\u57CE"
+    powerTyp: 2
+    LocationX: 38
+    LocationY: -13
+    stageMap: 1
+    kuniNameEng: Harima
+    stageNameEng: Ougo
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 1
+    stageName: "\u6708\u5C71\u5BCC\u7530\u57CE"
+    powerTyp: 3
+    LocationX: -6
+    LocationY: -13
+    stageMap: 2
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Gassan Toda
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 2
+    stageName: "\u767D\u9E7F\u57CE"
+    powerTyp: 1
+    LocationX: -18
+    LocationY: 16
+    stageMap: 4
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Shiraga
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 3
+    stageName: "\u7FBD\u8863\u77F3\u57CE "
+    powerTyp: 2
+    LocationX: 34
+    LocationY: -22
+    stageMap: 2
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Ueshi
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 4
+    stageName: "\u7C73\u5B50\u57CE"
+    powerTyp: 2
+    LocationX: 8
+    LocationY: -8
+    stageMap: 3
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Yonago
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 5
+    stageName: "\u795E\u897F\u57CE"
+    powerTyp: 2
+    LocationX: -38
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Jinzai
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 6
+    stageName: "\u9AD8\u702C\u57CE"
+    powerTyp: 2
+    LocationX: -23
+    LocationY: -4
+    stageMap: 3
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Takase
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 7
+    stageName: "\u6C5F\u7F8E\u4E0A\u57CE"
+    powerTyp: 1
+    LocationX: 13
+    LocationY: -35
+    stageMap: 2
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Ebijyo
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 8
+    stageName: "\u85E4\u30F6\u702C\u57CE"
+    powerTyp: 1
+    LocationX: -9
+    LocationY: -39
+    stageMap: 1
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Fujigase
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 9
+    stageName: "\u516B\u6A4B\u57CE"
+    powerTyp: 1
+    LocationX: 24
+    LocationY: -4
+    stageMap: 3
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Yabase
+  - kuniId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    id: 10
+    stageName: "\u702C\u6238\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -39
+    LocationY: -35
+    stageMap: 2
+    kuniNameEng: Izumo Hoki
+    stageNameEng: Setoyama
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 1
+    stageName: "\u4E09\u661F\u57CE"
+    powerTyp: 2
+    LocationX: 19
+    LocationY: -28
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Mitsuboshi
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 2
+    stageName: "\u7A32\u8377\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 4
+    LocationY: -31
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Inariyama
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 3
+    stageName: "\u9AD8\u7530\u57CE"
+    powerTyp: 2
+    LocationX: -27
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Takada
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 4
+    stageName: "\u77E2\u7B48\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Yahazu
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 5
+    stageName: "\u845B\u4E0B\u57CE"
+    powerTyp: 2
+    LocationX: 3
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Kuzuka
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 6
+    stageName: "\u5CA9\u5C4B\u57CE"
+    powerTyp: 3
+    LocationX: -10
+    LocationY: -3
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Iwaya
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 7
+    stageName: "\u7AF9\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 35
+    LocationY: 2
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Takeyama
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 8
+    stageName: "\u533B\u738B\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 17
+    LocationY: -2
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Ioyama
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 9
+    stageName: "\u4E00\u4E4B\u702C\u57CE"
+    powerTyp: 1
+    LocationX: -15
+    LocationY: -25
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Ichinose
+  - kuniId: 44
+    kuniName: "\u7F8E\u4F5C"
+    id: 10
+    stageName: "\u53CB\u91CE\u57CE"
+    powerTyp: 1
+    LocationX: 32
+    LocationY: -31
+    stageMap: 2
+    kuniNameEng: Mimasaka
+    stageNameEng: Tomono
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 1
+    stageName: "\u866B\u660E\u57CE"
+    powerTyp: 1
+    LocationX: 25
+    LocationY: -5
+    stageMap: 3
+    kuniNameEng: Bizen
+    stageNameEng: Mushiage
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 2
+    stageName: "\u4E09\u77F3\u57CE"
+    powerTyp: 2
+    LocationX: 31
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Bizen
+    stageNameEng: Mitsuishi
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 3
+    stageName: "\u8336\u81FC\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: 45
+    stageMap: 2
+    kuniNameEng: Bizen
+    stageNameEng: Cyausuyama
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 4
+    stageName: "\u91D1\u5DDD\u57CE"
+    powerTyp: 2
+    LocationX: -6
+    LocationY: 20
+    stageMap: 1
+    kuniNameEng: Bizen
+    stageNameEng: Kanagawa
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 5
+    stageName: "\u7825\u77F3\u57CE"
+    powerTyp: 2
+    LocationX: 11
+    LocationY: -18
+    stageMap: 4
+    kuniNameEng: Bizen
+    stageNameEng: Toishi
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 6
+    stageName: "\u5929\u795E\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 19
+    LocationY: 37
+    stageMap: 2
+    kuniNameEng: Bizen
+    stageNameEng: Tenjinzan
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 7
+    stageName: "\u864E\u5009\u57CE"
+    powerTyp: 2
+    LocationX: -22
+    LocationY: 32
+    stageMap: 2
+    kuniNameEng: Bizen
+    stageNameEng: Kokura
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 8
+    stageName: "\u6CBC\u57CE"
+    powerTyp: 2
+    LocationX: -2
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Bizen
+    stageNameEng: Numa
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 9
+    stageName: "\u5E38\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -25
+    LocationY: -38
+    stageMap: 4
+    kuniNameEng: Bizen
+    stageNameEng: Tsuneyama
+  - kuniId: 45
+    kuniName: "\u5099\u524D"
+    id: 10
+    stageName: "\u5CA1\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: -14
+    LocationY: -8
+    stageMap: 3
+    kuniNameEng: Bizen
+    stageNameEng: Okayama
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 1
+    stageName: "\u4E2D\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -18
+    LocationY: -18
+    stageMap: 2
+    kuniNameEng: Biccyu
+    stageNameEng: Nakayama
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 2
+    stageName: "\u4F50\u4E95\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 8
+    LocationY: 34
+    stageMap: 2
+    kuniNameEng: Biccyu
+    stageNameEng: Saita
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 3
+    stageName: "\u696A\u57CE"
+    powerTyp: 1
+    LocationX: -12
+    LocationY: 47
+    stageMap: 2
+    kuniNameEng: Biccyu
+    stageNameEng: Yuzuriha
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 4
+    stageName: "\u5E78\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 24
+    LocationY: -38
+    stageMap: 4
+    kuniNameEng: Biccyu
+    stageNameEng: Kozan
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 5
+    stageName: "\u9DB4\u9996\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Biccyu
+    stageNameEng: Kakusyu
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 6
+    stageName: "\u9B3C\u8EAB\u57CE"
+    powerTyp: 1
+    LocationX: 12
+    LocationY: -18
+    stageMap: 1
+    kuniNameEng: Biccyu
+    stageNameEng: Kinomi
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 7
+    stageName: "\u7B20\u5CA1\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -18
+    LocationY: -44
+    stageMap: 4
+    kuniNameEng: Biccyu
+    stageNameEng: Kasaokayama
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 8
+    stageName: "\u733F\u639B\u57CE"
+    powerTyp: 3
+    LocationX: 5
+    LocationY: -36
+    stageMap: 3
+    kuniNameEng: Biccyu
+    stageNameEng: Sarukake
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 9
+    stageName: "\u9AD8\u677E\u57CE"
+    powerTyp: 2
+    LocationX: 27
+    LocationY: -13
+    stageMap: 2
+    kuniNameEng: Biccyu
+    stageNameEng: Takamatsu
+  - kuniId: 46
+    kuniName: "\u5099\u4E2D"
+    id: 10
+    stageName: "\u677E\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 12
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Biccyu
+    stageNameEng: Matsuyama
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 1
+    stageName: "\u7532\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -4
+    LocationY: 30
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Kozan
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 2
+    stageName: "\u5357\u5929\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 7
+    LocationY: 10
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Nantenzan
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 3
+    stageName: "\u65D7\u8FD4\u57CE"
+    powerTyp: 2
+    LocationX: -11
+    LocationY: 8
+    stageMap: 1
+    kuniNameEng: Bingo
+    stageNameEng: Hatagaeshi
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 4
+    stageName: "\u795E\u8FBA\u57CE"
+    powerTyp: 3
+    LocationX: 24
+    LocationY: -23
+    stageMap: 1
+    kuniNameEng: Bingo
+    stageNameEng: Kannabe
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 5
+    stageName: "\u9DF2\u5C3E\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: -16
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Washioyama
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 6
+    stageName: "\u6BD4\u53E1\u5C3E\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -21
+    LocationY: 26
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Hiebiyama
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 7
+    stageName: "\u8500\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: 53
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Shitomiyama
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 8
+    stageName: "\u4E80\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 22
+    LocationY: 38
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Kameyama
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 9
+    stageName: "\u5FD7\u5DDD\u6EDD\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 17
+    LocationY: -3
+    stageMap: 2
+    kuniNameEng: Bingo
+    stageNameEng: Shikawa Takiyama
+  - kuniId: 47
+    kuniName: "\u5099\u5F8C"
+    id: 10
+    stageName: "\u4F59\u5D0E\u57CE"
+    powerTyp: 1
+    LocationX: 12
+    LocationY: -43
+    stageMap: 4
+    kuniNameEng: Bingo
+    stageNameEng: Yozaki
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 1
+    stageName: "\u4E09\u672C\u677E\u57CE"
+    powerTyp: 1
+    LocationX: -35
+    LocationY: -26
+    stageMap: 2
+    kuniNameEng: Iwami
+    stageNameEng: Sanbonmatsu
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 2
+    stageName: "\u4E03\u5C3E\u57CE"
+    powerTyp: 3
+    LocationX: -32
+    LocationY: -6
+    stageMap: 1
+    kuniNameEng: Iwami
+    stageNameEng: Nanao
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 3
+    stageName: "\u672C\u660E\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: 14
+    stageMap: 3
+    kuniNameEng: Iwami
+    stageNameEng: Motoake
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 4
+    stageName: "\u677E\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 9
+    LocationY: 17
+    stageMap: 2
+    kuniNameEng: Iwami
+    stageNameEng: Matsuyama
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 5
+    stageName: "\u5468\u5E03\u57CE"
+    powerTyp: 1
+    LocationX: -17
+    LocationY: 14
+    stageMap: 2
+    kuniNameEng: Iwami
+    stageNameEng: Sufu
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 6
+    stageName: "\u5C71\u5439\u57CE"
+    powerTyp: 3
+    LocationX: 31
+    LocationY: 30
+    stageMap: 2
+    kuniNameEng: Iwami
+    stageNameEng: Yabuki
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 7
+    stageName: "\u6E29\u6E6F\u57CE"
+    powerTyp: 2
+    LocationX: 29
+    LocationY: 14
+    stageMap: 1
+    kuniNameEng: Iwami
+    stageNameEng: Nukuyu
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 8
+    stageName: "\u85E4\u639B\u57CE"
+    powerTyp: 2
+    LocationX: 17
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Iwami
+    stageNameEng: Fujikake
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 9
+    stageName: "\u5C0F\u677E\u5C3E\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Iwami
+    stageNameEng: Komatsuo
+  - kuniId: 48
+    kuniName: "\u77F3\u898B"
+    id: 10
+    stageName: "\u77E2\u61F8\u57CE"
+    powerTyp: 1
+    LocationX: -7
+    LocationY: -3
+    stageMap: 1
+    kuniNameEng: Iwami
+    stageNameEng: Yagake
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 1
+    stageName: "\u4E94\u9F8D\u57CE"
+    powerTyp: 2
+    LocationX: 9
+    LocationY: 35
+    stageMap: 2
+    kuniNameEng: Aki
+    stageNameEng: Goryu
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 2
+    stageName: "\u5409\u7530\u90E1\u5C71\u57CE "
+    powerTyp: 3
+    LocationX: -1
+    LocationY: 22
+    stageMap: 2
+    kuniNameEng: Aki
+    stageNameEng: Yoshida Koriyama
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 3
+    stageName: "\u9AD8\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 32
+    LocationY: -14
+    stageMap: 1
+    kuniNameEng: Aki
+    stageNameEng: Takayama
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 4
+    stageName: "\u93E1\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 12
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: Aki
+    stageNameEng: Kagamiyama
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 5
+    stageName: "\u516B\u6728\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: 6
+    stageMap: 1
+    kuniNameEng: Aki
+    stageNameEng: Yagi
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 6
+    stageName: "\u5C0F\u5009\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -14
+    LocationY: 35
+    stageMap: 2
+    kuniNameEng: Aki
+    stageNameEng: Ogurayama
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 7
+    stageName: "\u685C\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: -22
+    LocationY: -30
+    stageMap: 4
+    kuniNameEng: Aki
+    stageNameEng: Sakurao
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 8
+    stageName: "\u4F50\u6771\u9280\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -9
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: Aki
+    stageNameEng: Sato Kanayama
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 9
+    stageName: "\u6728\u6751\u57CE"
+    powerTyp: 1
+    LocationX: 20
+    LocationY: -30
+    stageMap: 3
+    kuniNameEng: Aki
+    stageNameEng: Kimura
+  - kuniId: 49
+    kuniName: "\u5B89\u82B8"
+    id: 10
+    stageName: "\u5BAE\u5C3E\u57CE"
+    powerTyp: 1
+    LocationX: -19
+    LocationY: -45
+    stageMap: 4
+    kuniNameEng: Aki
+    stageNameEng: Miyao
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 1
+    stageName: "\u9AD8\u5DBA\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: -5
+    stageMap: 1
+    kuniNameEng: Suo Nagato
+    stageNameEng: Konomine
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 2
+    stageName: "\u52DD\u5C71\u57CE "
+    powerTyp: 2
+    LocationX: -36
+    LocationY: -16
+    stageMap: 4
+    kuniNameEng: Suo Nagato
+    stageNameEng: Katsuyama
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 3
+    stageName: "\u82E5\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: -13
+    stageMap: 3
+    kuniNameEng: Suo Nagato
+    stageNameEng: Wakayama
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 4
+    stageName: "\u978D\u639B\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 27
+    LocationY: -4
+    stageMap: 1
+    kuniNameEng: Suo Nagato
+    stageNameEng: Kurakakeyama
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 5
+    stageName: "\u9AD8\u68EE\u57CE"
+    powerTyp: 1
+    LocationX: 29
+    LocationY: 23
+    stageMap: 2
+    kuniNameEng: Suo Nagato
+    stageNameEng: Takamori
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 6
+    stageName: "\u53F3\u7530\u5CB3\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: -20
+    stageMap: 4
+    kuniNameEng: Suo Nagato
+    stageNameEng: Migitagadake
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 7
+    stageName: "\u8CC0\u5E74\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Suo Nagato
+    stageNameEng: Kane
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 8
+    stageName: "\u9752\u666F\u57CE"
+    powerTyp: 2
+    LocationX: -13
+    LocationY: 3
+    stageMap: 3
+    kuniNameEng: Suo Nagato
+    stageNameEng: Aokage
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 9
+    stageName: "\u6E21\u5DDD\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: 12
+    stageMap: 2
+    kuniNameEng: Suo Nagato
+    stageNameEng: Watarigawa
+  - kuniId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    id: 10
+    stageName: "\u4E38\u5DBD\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -33
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Suo Nagato
+    stageNameEng: Marutakeyama
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 1
+    stageName: "\u6D32\u672C\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: -15
+    stageMap: 4
+    kuniNameEng: Awaji
+    stageNameEng: Sumoto
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 2
+    stageName: "\u83C5\u9928"
+    powerTyp: 1
+    LocationX: 3
+    LocationY: 15
+    stageMap: 1
+    kuniNameEng: Awaji
+    stageNameEng: Suga
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 3
+    stageName: "\u767D\u5DE3\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: 0
+    stageMap: 2
+    kuniNameEng: Awaji
+    stageNameEng: Shirasu
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 4
+    stageName: "\u7531\u826F\u53E4\u57CE"
+    powerTyp: 2
+    LocationX: 15
+    LocationY: -30
+    stageMap: 4
+    kuniNameEng: Awaji
+    stageNameEng: Yurako
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 5
+    stageName: "\u52DD\u9593\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: -20
+    stageMap: 1
+    kuniNameEng: Awaji
+    stageNameEng: Katsuma
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 6
+    stageName: "\u67F3\u6FA4\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 30
+    stageMap: 4
+    kuniNameEng: Awaji
+    stageNameEng: Yanagisawa
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 7
+    stageName: "\u90E1\u5BB6\u57CE"
+    powerTyp: 1
+    LocationX: 8
+    LocationY: 43
+    stageMap: 4
+    kuniNameEng: Awaji
+    stageNameEng: Gunge
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 8
+    stageName: "\u6E4A\u57CE"
+    powerTyp: 1
+    LocationX: -17
+    LocationY: -10
+    stageMap: 4
+    kuniNameEng: Awaji
+    stageNameEng: Minato
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 9
+    stageName: "\u5FD7\u77E5\u57CE"
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -25
+    stageMap: 1
+    kuniNameEng: Awaji
+    stageNameEng: Shichi
+  - kuniId: 51
+    kuniName: "\u6DE1\u8DEF"
+    id: 10
+    stageName: "\u67FF\u30CE\u6728\u8C37\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -35
+    stageMap: 2
+    kuniNameEng: Awaji
+    stageNameEng: Kakinoki
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 1
+    stageName: "\u52DD\u745E\u57CE"
+    powerTyp: 3
+    LocationX: 14
+    LocationY: 32
+    stageMap: 1
+    kuniNameEng: Awa
+    stageNameEng: Syozui
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 2
+    stageName: "\u4E0A\u685C\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Awa
+    stageNameEng: Uezakura
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 3
+    stageName: "\u767D\u5730\u57CE"
+    powerTyp: 2
+    LocationX: -26
+    LocationY: 12
+    stageMap: 1
+    kuniNameEng: Awa
+    stageNameEng: Hakuchi
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 4
+    stageName: "\u725B\u5C90\u57CE"
+    powerTyp: 2
+    LocationX: 31
+    LocationY: 0
+    stageMap: 4
+    kuniNameEng: Awa
+    stageNameEng: Ushiki
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 5
+    stageName: "\u4E00\u5BAE\u57CE"
+    powerTyp: 3
+    LocationX: 14
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Awa
+    stageNameEng: Ichinomiya
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 6
+    stageName: "\u6D77\u90E8\u57CE"
+    powerTyp: 2
+    LocationX: 21
+    LocationY: -43
+    stageMap: 4
+    kuniNameEng: Awa
+    stageNameEng: Kaifu
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 7
+    stageName: "\u6728\u6D25\u57CE"
+    powerTyp: 1
+    LocationX: 26
+    LocationY: 44
+    stageMap: 4
+    kuniNameEng: Awa
+    stageNameEng: Kizu
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 8
+    stageName: "\u8107\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: -5
+    stageMap: 2
+    kuniNameEng: Awa
+    stageNameEng: Waki
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 9
+    stageName: "\u65E5\u548C\u4F50\u57CE"
+    powerTyp: 2
+    LocationX: 31
+    LocationY: -26
+    stageMap: 3
+    kuniNameEng: Awa
+    stageNameEng: Hiwasa
+  - kuniId: 52
+    kuniName: "\u963F\u6CE2"
+    id: 10
+    stageName: "\u5CA9\u5009\u57CE"
+    powerTyp: 1
+    LocationX: -14
+    LocationY: 25
+    stageMap: 2
+    kuniNameEng: Awa
+    stageNameEng: Iwakura
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 1
+    stageName: "\u5341\u6CB3\u57CE"
+    powerTyp: 3
+    LocationX: 12
+    LocationY: -26
+    stageMap: 1
+    kuniNameEng: Sanuki
+    stageNameEng: Sogo
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 2
+    stageName: "\u5F15\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 31
+    LocationY: -23
+    stageMap: 1
+    kuniNameEng: Sanuki
+    stageNameEng: Hikita
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 3
+    stageName: "\u7FBD\u5E8A\u57CE"
+    powerTyp: 2
+    LocationX: -5
+    LocationY: -31
+    stageMap: 1
+    kuniNameEng: Sanuki
+    stageNameEng: Hayuka
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 4
+    stageName: "\u85E4\u76EE\u57CE"
+    powerTyp: 2
+    LocationX: -30
+    LocationY: -40
+    stageMap: 1
+    kuniNameEng: Sanuki
+    stageNameEng: Fujime
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 5
+    stageName: "\u5929\u9727\u57CE"
+    powerTyp: 2
+    LocationX: -24
+    LocationY: -16
+    stageMap: 3
+    kuniNameEng: Sanuki
+    stageNameEng: Amagiri
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 6
+    stageName: "\u8056\u901A\u5BFA\u57CE"
+    powerTyp: 2
+    LocationX: -8
+    LocationY: -3
+    stageMap: 3
+    kuniNameEng: Sanuki
+    stageNameEng: Syotsuji
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 7
+    stageName: "\u52DD\u8CC0\u57CE"
+    powerTyp: 3
+    LocationX: 9
+    LocationY: -3
+    stageMap: 3
+    kuniNameEng: Sanuki
+    stageNameEng: Katsuga
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 8
+    stageName: "\u661F\u30F6\u57CE"
+    powerTyp: 1
+    LocationX: 28
+    LocationY: 39
+    stageMap: 4
+    kuniNameEng: Sanuki
+    stageNameEng: Hoshiga
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 9
+    stageName: "\u7B20\u5CF6\u57CE"
+    powerTyp: 1
+    LocationX: -20
+    LocationY: 10
+    stageMap: 4
+    kuniNameEng: Sanuki
+    stageNameEng: Kasajima
+  - kuniId: 53
+    kuniName: "\u8B83\u5C90"
+    id: 10
+    stageName: "\u96E8\u6EDD\u57CE"
+    powerTyp: 2
+    LocationX: 25
+    LocationY: -6
+    stageMap: 4
+    kuniNameEng: Sanuki
+    stageNameEng: Ametaki
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 1
+    stageName: "\u6E6F\u7BC9\u57CE"
+    powerTyp: 3
+    LocationX: 5
+    LocationY: 36
+    stageMap: 1
+    kuniNameEng: Iyo
+    stageNameEng: Yuzuki
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 2
+    stageName: "\u91D1\u5B50\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 23
+    LocationY: 33
+    stageMap: 2
+    kuniNameEng: Iyo
+    stageNameEng: Kanekoyama
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 3
+    stageName: "\u9ED2\u702C\u57CE"
+    powerTyp: 3
+    LocationX: -17
+    LocationY: -23
+    stageMap: 3
+    kuniNameEng: Iyo
+    stageNameEng: Kurose
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 4
+    stageName: "\u4E09\u6EDD\u57CE"
+    powerTyp: 2
+    LocationX: -4
+    LocationY: -20
+    stageMap: 2
+    kuniNameEng: Iyo
+    stageNameEng: Mitake
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 5
+    stageName: "\u5927\u6D32\u57CE"
+    powerTyp: 3
+    LocationX: -11
+    LocationY: -5
+    stageMap: 1
+    kuniNameEng: Iyo
+    stageNameEng: Ozu
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 6
+    stageName: "\u4E38\u4E32\u57CE"
+    powerTyp: 2
+    LocationX: -14
+    LocationY: -43
+    stageMap: 4
+    kuniNameEng: Iyo
+    stageNameEng: Marugushi
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 7
+    stageName: "\u66FE\u6839\u57CE"
+    powerTyp: 1
+    LocationX: -3
+    LocationY: 6
+    stageMap: 1
+    kuniNameEng: Iyo
+    stageNameEng: Sone
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 8
+    stageName: "\u98EF\u68EE\u57CE"
+    powerTyp: 1
+    LocationX: 9
+    LocationY: 16
+    stageMap: 3
+    kuniNameEng: Iyo
+    stageNameEng: Iimori
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 9
+    stageName: "\u5927\u9664\u57CE"
+    powerTyp: 1
+    LocationX: -22
+    LocationY: 0
+    stageMap: 4
+    kuniNameEng: Iyo
+    stageNameEng: Oyoke
+  - kuniId: 54
+    kuniName: "\u4F0A\u4E88"
+    id: 10
+    stageName: "\u4ECF\u6BBF\u57CE"
+    powerTyp: 2
+    LocationX: 35
+    LocationY: 44
+    stageMap: 4
+    kuniNameEng: Iyo
+    stageNameEng: Butsuden
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 1
+    stageName: "\u5CA1\u8C4A\u57CE"
+    powerTyp: 3
+    LocationX: 17
+    LocationY: 27
+    stageMap: 1
+    kuniNameEng: Tosa
+    stageNameEng: Oko
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 2
+    stageName: "\u4E2D\u6751\u5FA1\u6240"
+    powerTyp: 3
+    LocationX: -23
+    LocationY: -14
+    stageMap: 3
+    kuniNameEng: Tosa
+    stageNameEng: Nakamura Gosyo
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 3
+    stageName: "\u5B89\u82B8\u57CE"
+    powerTyp: 2
+    LocationX: 35
+    LocationY: 4
+    stageMap: 4
+    kuniNameEng: Tosa
+    stageNameEng: Aki
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 4
+    stageName: "\u9999\u5B97\u57CE"
+    powerTyp: 2
+    LocationX: 24
+    LocationY: 14
+    stageMap: 3
+    kuniNameEng: Tosa
+    stageNameEng: Kousou
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 5
+    stageName: "\u6D66\u6238\u57CE"
+    powerTyp: 1
+    LocationX: 9
+    LocationY: 13
+    stageMap: 4
+    kuniNameEng: Tosa
+    stageNameEng: Urato
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 6
+    stageName: "\u671D\u5009\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: 32
+    stageMap: 1
+    kuniNameEng: Tosa
+    stageNameEng: Asakura
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 7
+    stageName: "\u4E45\u793C\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Tosa
+    stageNameEng: Kure
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 8
+    stageName: "\u7AAA\u5DDD\u57CE"
+    powerTyp: 2
+    LocationX: -13
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Tosa
+    stageNameEng: Kubokawa
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 9
+    stageName: "\u672C\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: 17
+    LocationY: 45
+    stageMap: 2
+    kuniNameEng: Tosa
+    stageNameEng: Motoyama
+  - kuniId: 55
+    kuniName: "\u571F\u4F50"
+    id: 10
+    stageName: "\u5BBF\u6BDB\u57CE"
+    powerTyp: 2
+    LocationX: -36
+    LocationY: -30
+    stageMap: 3
+    kuniNameEng: Tosa
+    stageNameEng: Sukumo
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 1
+    stageName: "\u4E2D\u6D25\u57CE"
+    powerTyp: 2
+    LocationX: 14
+    LocationY: -4
+    stageMap: 4
+    kuniNameEng: Buzen
+    stageNameEng: Nakatsu
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 2
+    stageName: "\u57CE\u4E95\u8C37\u57CE"
+    powerTyp: 3
+    LocationX: 7
+    LocationY: -19
+    stageMap: 1
+    kuniNameEng: Buzen
+    stageNameEng: Kiidani
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 3
+    stageName: "\u5999\u898B\u5DBD\u57CE"
+    powerTyp: 1
+    LocationX: 32
+    LocationY: -24
+    stageMap: 2
+    kuniNameEng: Buzen
+    stageNameEng: Myokendake
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 4
+    stageName: "\u9580\u53F8\u57CE"
+    powerTyp: 3
+    LocationX: -24
+    LocationY: 50
+    stageMap: 4
+    kuniNameEng: Buzen
+    stageNameEng: Moji
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 5
+    stageName: "\u5C0F\u5009\u57CE"
+    powerTyp: 3
+    LocationX: -28
+    LocationY: 20
+    stageMap: 2
+    kuniNameEng: Buzen
+    stageNameEng: Kokura
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 6
+    stageName: "\u677E\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -15
+    LocationY: 24
+    stageMap: 3
+    kuniNameEng: Buzen
+    stageNameEng: Matsuyama
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 7
+    stageName: "\u5CA9\u77F3\u57CE "
+    powerTyp: 2
+    LocationX: -15
+    LocationY: -10
+    stageMap: 2
+    kuniNameEng: Buzen
+    stageNameEng: Ganjaku
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 8
+    stageName: "\u99AC\u30F6\u5CB3\u57CE"
+    powerTyp: 1
+    LocationX: -3
+    LocationY: 10
+    stageMap: 2
+    kuniNameEng: Buzen
+    stageNameEng: Umagatake
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 9
+    stageName: "\u9F8D\u738B\u57CE"
+    powerTyp: 1
+    LocationX: 35
+    LocationY: -44
+    stageMap: 2
+    kuniNameEng: Buzen
+    stageNameEng: Ryuou
+  - kuniId: 56
+    kuniName: "\u8C4A\u524D"
+    id: 10
+    stageName: "\u9577\u5CA9\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Buzen
+    stageNameEng: Nagaiwa
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 1
+    stageName: "\u5E9C\u5185\u9928"
+    powerTyp: 3
+    LocationX: 2
+    LocationY: -6
+    stageMap: 1
+    kuniNameEng: Bungo
+    stageNameEng: Funai
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 2
+    stageName: "\u9AD8\u5D0E\u57CE"
+    powerTyp: 2
+    LocationX: -6
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Bungo
+    stageNameEng: Takasaki
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 3
+    stageName: "\u81FC\u6775\u57CE"
+    powerTyp: 2
+    LocationX: 14
+    LocationY: -15
+    stageMap: 3
+    kuniNameEng: Bungo
+    stageNameEng: Usuki
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 4
+    stageName: "\u5B89\u5C90\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: 38
+    stageMap: 4
+    kuniNameEng: Bungo
+    stageNameEng: Aki
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 5
+    stageName: "\u4F50\u4F2F\u57CE"
+    powerTyp: 2
+    LocationX: 19
+    LocationY: -35
+    stageMap: 4
+    kuniNameEng: Bungo
+    stageNameEng: Saeki
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 6
+    stageName: "\u5CA1\u57CE"
+    powerTyp: 1
+    LocationX: -6
+    LocationY: -44
+    stageMap: 2
+    kuniNameEng: Bungo
+    stageNameEng: Oka
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 7
+    stageName: "\u89D2\u725F\u793C\u57CE"
+    powerTyp: 3
+    LocationX: -16
+    LocationY: -6
+    stageMap: 1
+    kuniNameEng: Bungo
+    stageNameEng: Tsunomure
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 8
+    stageName: "\u65E5\u9688\u57CE"
+    powerTyp: 1
+    LocationX: -31
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Bungo
+    stageNameEng: Hinokuma
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 9
+    stageName: "\u9AD8\u7530\u57CE"
+    powerTyp: 1
+    LocationX: -6
+    LocationY: 49
+    stageMap: 3
+    kuniNameEng: Bungo
+    stageNameEng: Takada
+  - kuniId: 57
+    kuniName: "\u8C4A\u5F8C"
+    id: 10
+    stageName: "\u677E\u725F\u793C\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: -24
+    stageMap: 1
+    kuniNameEng: Bungo
+    stageNameEng: Matsumure
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 1
+    stageName: "\u7ACB\u82B1\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 0
+    LocationY: 7
+    stageMap: 3
+    kuniNameEng: Chikuzen
+    stageNameEng: Tachibanayama
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 2
+    stageName: "\u76CA\u5BCC\u57CE"
+    powerTyp: 2
+    LocationX: 22
+    LocationY: -6
+    stageMap: 2
+    kuniNameEng: Chikuzen
+    stageNameEng: Masutomi
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 3
+    stageName: "\u535A\u591A\u57CE"
+    powerTyp: 3
+    LocationX: -2
+    LocationY: -13
+    stageMap: 1
+    kuniNameEng: Chikuzen
+    stageNameEng: Hakata
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 4
+    stageName: "\u5CA9\u5C4B\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Chikuzen
+    stageNameEng: Iwaya
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 5
+    stageName: "\u53E4\u51E6\u5C71\u57CE"
+    powerTyp: 3
+    LocationX: 22
+    LocationY: -30
+    stageMap: 2
+    kuniNameEng: Chikuzen
+    stageNameEng: Kosyosan
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 6
+    stageName: "\u9AD8\u7956\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: -17
+    LocationY: -23
+    stageMap: 3
+    kuniNameEng: Chikuzen
+    stageNameEng: Takasu
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 7
+    stageName: "\u5C71\u9E7F\u57CE"
+    powerTyp: 2
+    LocationX: 15
+    LocationY: 44
+    stageMap: 1
+    kuniNameEng: Chikuzen
+    stageNameEng: Yamaga
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 8
+    stageName: "\u767D\u5C71\u57CE "
+    powerTyp: 1
+    LocationX: 6
+    LocationY: 34
+    stageMap: 1
+    kuniNameEng: Chikuzen
+    stageNameEng: Hakusan
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 9
+    stageName: "\u5263\u5CB3\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: 20
+    stageMap: 1
+    kuniNameEng: Chikuzen
+    stageNameEng: Tsurugidake
+  - kuniId: 58
+    kuniName: "\u7B51\u524D"
+    id: 10
+    stageName: "\u9EBB\u5E95\u826F\u57CE"
+    powerTyp: 2
+    LocationX: 32
+    LocationY: -46
+    stageMap: 2
+    kuniNameEng: Chikuzen
+    stageNameEng: Matera
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 1
+    stageName: "\u67F3\u5DDD\u57CE"
+    powerTyp: 3
+    LocationX: -31
+    LocationY: -4
+    stageMap: 3
+    kuniNameEng: Chikugo
+    stageNameEng: Yanagawa
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 2
+    stageName: "\u84B2\u6C60\u57CE"
+    powerTyp: 2
+    LocationX: -27
+    LocationY: 12
+    stageMap: 1
+    kuniNameEng: Chikugo
+    stageNameEng: Kamachi
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 3
+    stageName: "\u5C71\u4E0B\u57CE"
+    powerTyp: 1
+    LocationX: -8
+    LocationY: 5
+    stageMap: 1
+    kuniNameEng: Chikugo
+    stageNameEng: Yamashita
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 4
+    stageName: "\u732B\u5C3E\u57CE"
+    powerTyp: 3
+    LocationX: 13
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Chikugo
+    stageNameEng: Nekoo
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 5
+    stageName: "\u4E45\u7559\u7C73\u57CE"
+    powerTyp: 3
+    LocationX: -16
+    LocationY: 28
+    stageMap: 1
+    kuniNameEng: Chikugo
+    stageNameEng: Kurume
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 6
+    stageName: "\u5C71\u9688\u57CE"
+    powerTyp: 1
+    LocationX: -3
+    LocationY: 56
+    stageMap: 2
+    kuniNameEng: Chikugo
+    stageNameEng: Yamaguma
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 7
+    stageName: "\u9DF9\u53D6\u57CE"
+    powerTyp: 2
+    LocationX: 17
+    LocationY: 32
+    stageMap: 2
+    kuniNameEng: Chikugo
+    stageNameEng: Takatori
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 8
+    stageName: "\u7530\u5C3B\u57CE"
+    powerTyp: 2
+    LocationX: -20
+    LocationY: -32
+    stageMap: 1
+    kuniNameEng: Chikugo
+    stageNameEng: Tajiri
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 9
+    stageName: "\u718A\u30CE\u5DDD\u57CE"
+    powerTyp: 1
+    LocationX: 5
+    LocationY: -18
+    stageMap: 1
+    kuniNameEng: Chikugo
+    stageNameEng: Kumanokawa
+  - kuniId: 59
+    kuniName: "\u7B51\u5F8C"
+    id: 10
+    stageName: "\u9AD8\u4E95\u5CB3\u57CE"
+    powerTyp: 1
+    LocationX: 30
+    LocationY: 16
+    stageMap: 2
+    kuniNameEng: Chikugo
+    stageNameEng: Takaidake
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 1
+    stageName: "\u6751\u4E2D\u57CE"
+    powerTyp: 3
+    LocationX: 35
+    LocationY: 16
+    stageMap: 1
+    kuniNameEng: Hizen
+    stageNameEng: Muranaka
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 2
+    stageName: "\u4F0A\u4E07\u91CC\u57CE "
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 26
+    stageMap: 1
+    kuniNameEng: Hizen
+    stageNameEng: Imari
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 3
+    stageName: "\u52E2\u798F\u5BFA\u57CE "
+    powerTyp: 2
+    LocationX: 36
+    LocationY: 32
+    stageMap: 1
+    kuniNameEng: Hizen
+    stageNameEng: Seihukuji
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 4
+    stageName: "\u6B66\u96C4\u57CE"
+    powerTyp: 2
+    LocationX: 22
+    LocationY: 18
+    stageMap: 1
+    kuniNameEng: Hizen
+    stageNameEng: Takeo
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 5
+    stageName: "\u7389\u4E4B\u6D66\u57CE"
+    powerTyp: 1
+    LocationX: -38
+    LocationY: -34
+    stageMap: 4
+    kuniNameEng: Hizen
+    stageNameEng: Tamanoura
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 6
+    stageName: "\u6DF1\u6C5F\u57CE"
+    powerTyp: 2
+    LocationX: 32
+    LocationY: -34
+    stageMap: 3
+    kuniNameEng: Hizen
+    stageNameEng: Fukae
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 7
+    stageName: "\u65E5\u91CE\u6C5F\u57CE"
+    powerTyp: 3
+    LocationX: 26
+    LocationY: -50
+    stageMap: 4
+    kuniNameEng: Hizen
+    stageNameEng: Hinoe
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 8
+    stageName: "\u4E09\u57CE\u57CE"
+    powerTyp: 1
+    LocationX: 12
+    LocationY: -14
+    stageMap: 3
+    kuniNameEng: Hizen
+    stageNameEng: Sanjyo
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 9
+    stageName: "\u52DD\u5C3E\u5DBD\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: 32
+    stageMap: 4
+    kuniNameEng: Hizen
+    stageNameEng: Katsuodake
+  - kuniId: 60
+    kuniName: "\u80A5\u524D"
+    id: 10
+    stageName: "\u5E38\u5E83\u57CE"
+    powerTyp: 2
+    LocationX: 22
+    LocationY: -2
+    stageMap: 3
+    kuniNameEng: Hizen
+    stageNameEng: Tsunehiro
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 1
+    stageName: "\u9688\u672C\u57CE"
+    powerTyp: 3
+    LocationX: 4
+    LocationY: 22
+    stageMap: 1
+    kuniNameEng: Higo
+    stageNameEng: Kumamoto
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 2
+    stageName: "\u5B87\u571F\u57CE"
+    powerTyp: 2
+    LocationX: 3
+    LocationY: 2
+    stageMap: 1
+    kuniNameEng: Higo
+    stageNameEng: Uto
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 3
+    stageName: "\u4EBA\u5409\u57CE"
+    powerTyp: 3
+    LocationX: 18
+    LocationY: -43
+    stageMap: 2
+    kuniNameEng: Higo
+    stageNameEng: Hitoyoshi
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 4
+    stageName: "\u6C34\u4FE3\u57CE"
+    powerTyp: 2
+    LocationX: -3
+    LocationY: -53
+    stageMap: 3
+    kuniNameEng: Higo
+    stageNameEng: Minamata
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 5
+    stageName: "\u6D25\u5948\u6728\u57CE"
+    powerTyp: 1
+    LocationX: -2
+    LocationY: -36
+    stageMap: 1
+    kuniNameEng: Higo
+    stageNameEng: Tsunagi
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 6
+    stageName: "\u4F50\u6577\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: -18
+    stageMap: 3
+    kuniNameEng: Higo
+    stageNameEng: Sashiki
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 7
+    stageName: "\u5185\u7267\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: 45
+    stageMap: 1
+    kuniNameEng: Higo
+    stageNameEng: Uchinomaki
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 8
+    stageName: "\u83CA\u6C60\u57CE"
+    powerTyp: 2
+    LocationX: 2
+    LocationY: 48
+    stageMap: 2
+    kuniNameEng: Higo
+    stageNameEng: Kikuchi
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 9
+    stageName: "\u68DA\u5E95\u57CE"
+    powerTyp: 1
+    LocationX: -19
+    LocationY: -33
+    stageMap: 4
+    kuniNameEng: Higo
+    stageNameEng: Tanasoko
+  - kuniId: 61
+    kuniName: "\u80A5\u5F8C"
+    id: 10
+    stageName: "\u5CA9\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: 18
+    LocationY: 5
+    stageMap: 2
+    kuniNameEng: Higo
+    stageNameEng: Iwao
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 1
+    stageName: "\u98EB\u80A5\u57CE"
+    powerTyp: 3
+    LocationX: 10
+    LocationY: -50
+    stageMap: 3
+    kuniNameEng: Hyuga
+    stageNameEng: Obi
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 2
+    stageName: "\u4F50\u571F\u539F\u57CE"
+    powerTyp: 3
+    LocationX: 9
+    LocationY: -13
+    stageMap: 3
+    kuniNameEng: Hyuga
+    stageNameEng: Sadowara
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 3
+    stageName: "\u9AD8\u934B\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 10
+    stageMap: 3
+    kuniNameEng: Hyuga
+    stageNameEng: Takanabe
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 4
+    stageName: "\u6E05\u6B66\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: -33
+    stageMap: 1
+    kuniNameEng: Hyuga
+    stageNameEng: Kiyotake
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 5
+    stageName: "\u5869\u898B\u57CE"
+    powerTyp: 1
+    LocationX: 14
+    LocationY: 34
+    stageMap: 1
+    kuniNameEng: Hyuga
+    stageNameEng: Shiomi
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 6
+    stageName: "\u677E\u5C3E\u57CE"
+    powerTyp: 2
+    LocationX: 16
+    LocationY: 54
+    stageMap: 3
+    kuniNameEng: Hyuga
+    stageNameEng: Matsuo
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 7
+    stageName: "\u4EF2\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: 46
+    stageMap: 2
+    kuniNameEng: Hyuga
+    stageNameEng: Nakayama
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 8
+    stageName: "\u52A0\u4E45\u85E4\u57CE"
+    powerTyp: 2
+    LocationX: -21
+    LocationY: -13
+    stageMap: 2
+    kuniNameEng: Hyuga
+    stageNameEng: Kakuto
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 9
+    stageName: "\u677E\u5C71\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: -42
+    stageMap: 2
+    kuniNameEng: Hyuga
+    stageNameEng: Matsuyama
+  - kuniId: 62
+    kuniName: "\u65E5\u5411"
+    id: 10
+    stageName: "\u91CE\u5C3B\u57CE"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: -22
+    stageMap: 2
+    kuniNameEng: Hyuga
+    stageNameEng: Nojiri
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 1
+    stageName: "\u5185\u57CE"
+    powerTyp: 3
+    LocationX: 15
+    LocationY: -5
+    stageMap: 1
+    kuniNameEng: Satsuma
+    stageNameEng: Uchi
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 2
+    stageName: "\u4F0A\u4F5C\u57CE"
+    powerTyp: 2
+    LocationX: 1
+    LocationY: -18
+    stageMap: 3
+    kuniNameEng: Satsuma
+    stageNameEng: Izaku
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 3
+    stageName: "\u5927\u53E3\u57CE"
+    powerTyp: 2
+    LocationX: 16
+    LocationY: 53
+    stageMap: 1
+    kuniNameEng: Satsuma
+    stageNameEng: Okuchi
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 4
+    stageName: "\u6E05\u8272\u57CE"
+    powerTyp: 3
+    LocationX: 10
+    LocationY: 20
+    stageMap: 1
+    kuniNameEng: Satsuma
+    stageNameEng: Kiyoshiki
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 5
+    stageName: "\u52A0\u4E16\u7530\u57CE"
+    powerTyp: 2
+    LocationX: -2
+    LocationY: -35
+    stageMap: 3
+    kuniNameEng: Satsuma
+    stageNameEng: Kayota
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 6
+    stageName: "\u77E5\u89A7\u57CE"
+    powerTyp: 2
+    LocationX: 12
+    LocationY: -41
+    stageMap: 1
+    kuniNameEng: Satsuma
+    stageNameEng: Chiran
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 7
+    stageName: "\u51FA\u6C34\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 50
+    stageMap: 1
+    kuniNameEng: Satsuma
+    stageNameEng: Izumi
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 8
+    stageName: "\u4E8C\u798F\u57CE"
+    powerTyp: 1
+    LocationX: -4
+    LocationY: 24
+    stageMap: 3
+    kuniNameEng: Satsuma
+    stageNameEng: Nihuku
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 9
+    stageName: "\u732B\u57CE"
+    powerTyp: 1
+    LocationX: 18
+    LocationY: -55
+    stageMap: 1
+    kuniNameEng: Satsuma
+    stageNameEng: Neko
+  - kuniId: 63
+    kuniName: "\u85A9\u6469"
+    id: 10
+    stageName: "\u4E00\u5B87\u6CBB\u57CE"
+    powerTyp: 2
+    LocationX: 3
+    LocationY: 0
+    stageMap: 3
+    kuniNameEng: Satsuma
+    stageNameEng: Ichiuji
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 1
+    stageName: "\u809D\u4ED8\u57CE"
+    powerTyp: 3
+    LocationX: 24
+    LocationY: -10
+    stageMap: 1
+    kuniNameEng: Osumi
+    stageNameEng: Kimotsuki
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 2
+    stageName: "\u52A0\u6CBB\u6728\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 41
+    stageMap: 1
+    kuniNameEng: Osumi
+    stageNameEng: Kajiki
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 3
+    stageName: "\u84B2\u751F\u57CE"
+    powerTyp: 2
+    LocationX: -14
+    LocationY: 41
+    stageMap: 1
+    kuniNameEng: Osumi
+    stageNameEng: Kamou
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 4
+    stageName: "\u9E7F\u5C4B\u57CE"
+    powerTyp: 2
+    LocationX: 10
+    LocationY: 0
+    stageMap: 1
+    kuniNameEng: Osumi
+    stageNameEng: Kanoya
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 5
+    stageName: "\u672B\u5409\u57CE"
+    powerTyp: 3
+    LocationX: 21
+    LocationY: 24
+    stageMap: 2
+    kuniNameEng: Osumi
+    stageNameEng: Sueyoshi
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 6
+    stageName: "\u5BCC\u7530\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: -28
+    stageMap: 3
+    kuniNameEng: Osumi
+    stageNameEng: Tomita
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 7
+    stageName: "\u9F8D\u864E\u57CE"
+    powerTyp: 2
+    LocationX: 20
+    LocationY: 41
+    stageMap: 2
+    kuniNameEng: Osumi
+    stageNameEng: Ryuko
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 8
+    stageName: "\u592A\u826F\u57CE"
+    powerTyp: 1
+    LocationX: -4
+    LocationY: 58
+    stageMap: 2
+    kuniNameEng: Osumi
+    stageNameEng: Tara
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 9
+    stageName: "\u897F\u539F\u57CE"
+    powerTyp: 1
+    LocationX: 10
+    LocationY: 17
+    stageMap: 1
+    kuniNameEng: Osumi
+    stageNameEng: NIshihara
+  - kuniId: 64
+    kuniName: "\u5927\u9685"
+    id: 10
+    stageName: "\u8FBA\u585A\u57CE"
+    powerTyp: 1
+    LocationX: 11
+    LocationY: -48
+    stageMap: 3
+    kuniNameEng: Osumi
+    stageNameEng: Hetsuka
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 1
+    stageName: "\u91D1\u77F3\u57CE"
+    powerTyp: 3
+    LocationX: -8
+    LocationY: -49
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Kaneishi
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 2
+    stageName: "\u91D1\u7530\u57CE"
+    powerTyp: 3
+    LocationX: -6
+    LocationY: -24
+    stageMap: 2
+    kuniNameEng: Tsushima
+    stageNameEng: Kaneda
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 3
+    stageName: "\u5927\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 5
+    LocationY: -10
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Oyama
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 4
+    stageName: "\u4E09\u6839\u516C\u65B9\u9928"
+    powerTyp: 1
+    LocationX: -5
+    LocationY: 14
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Minekubo
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 5
+    stageName: "\u4F0A\u5948\u5728\u5E81"
+    powerTyp: 1
+    LocationX: -4
+    LocationY: 31
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Inazaicyo
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 6
+    stageName: "\u4E2D\u6751\u5C4B\u5F62"
+    powerTyp: 1
+    LocationX: -2
+    LocationY: -41
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Nakamura Yakata
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 7
+    stageName: "\u8C4A\u9928"
+    powerTyp: 1
+    LocationX: 8
+    LocationY: 57
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Toyono Yakata
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 8
+    stageName: "\u7D50\u77F3\u5C71\u57CE"
+    powerTyp: 2
+    LocationX: 0
+    LocationY: 47
+    stageMap: 3
+    kuniNameEng: Tsushima
+    stageNameEng: Yushiyama
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 9
+    stageName: "\u4EC1\u4F4D\u9928"
+    powerTyp: 1
+    LocationX: -6
+    LocationY: 0
+    stageMap: 4
+    kuniNameEng: Tsushima
+    stageNameEng: Niino Yakata
+  - kuniId: 65
+    kuniName: "\u5BFE\u99AC"
+    id: 10
+    stageName: "\u4F50\u8CC0\u9928"
+    powerTyp: 1
+    LocationX: 6
+    LocationY: 18
+    stageMap: 3
+    kuniNameEng: Tsushima
+    stageNameEng: Sakano Yakata

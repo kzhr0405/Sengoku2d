@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0275e5264cb3dc41aaa312b30f17d72, type: 3}
+  m_Name: kahou_chishikisyo_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: chishikisyo
+    kahouName: "\u4E09\u570B\u5FD7\u6F14\u7FA9"
+    kahouRank: S
+    kahouExp: "\u4E2D\u56FD\u306E\u660E\u4EE3\u306B\u66F8\u304B\u308C\u305F\u3001\u5F8C\u6F22\u672B\u30FB\u4E09\u56FD\u6642\u4EE3\u3092\u821E\u53F0\u3068\u3059\u308B\u6642\u4EE3\u5C0F\u8AAC\u30FB\u901A\u4FD7\u6B74\u53F2\u5C0F\u8AAC\u3067\u3042\u308B\u3002\u56DB\u5927\u5947\u66F8\u306E\u4E00\u3064\u306B\u6570\u3048\u3089\u308C\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Sangokushi Engi
+    kahouExpEng: Written in the Ming Dynasty of China, it is an era novel, a popular
+      historical novel about Three Kingdoms era. It is counted as one of the Four
+      Great Classical Novels.
+    kahouTargetEng: Active Skill Effect
+  - id: 2
+    kahouType: chishikisyo
+    kahouName: "\u8C9E\u6C38\u5F0F\u76EE\u6284"
+    kahouRank: A
+    kahouExp: "\u5112\u5B66\u8005\u6E05\u539F\u5BA3\u8CE2\u306B\u3088\u308B\u5FA1\u6210\u6557\u5F0F\u76EE\u306E\u6CE8\u91C8\u66F8\u3002\u5FA1\u6210\u6557\u5F0F\u76EE\u306F\u938C\u5009\u6642\u4EE3\u306B\u6210\u7ACB\u3057\u305F\u6B66\u5BB6\u306E\u6CD5\u4EE4\u3067\u3001\u6226\u56FD\u6642\u4EE3\u306E\u6B66\u5BB6\u306E\u5B50\u5F1F\u306B\u306F\u5FC5\u8AAD\u306E\u66F8\u3067\u3042\u3063\u305F\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Jyoei Shikimoku-syo
+    kahouExpEng: Annotated edition of Goseibai Shikimoku written by Confucian scholar
+      Nobukata Kiyohara. Goseibai Shikimoku is the samurai law which established in
+      Kamakura era and it was must read book for samurai in Sengoku era.
+    kahouTargetEng: Active Skill Effect
+  - id: 3
+    kahouType: chishikisyo
+    kahouName: "\u5FDC\u4EC1\u8A18"
+    kahouRank: C
+    kahouExp: "\u5FDC\u4EC1\u306E\u4E71\u3092\u63CF\u3044\u305F\u6226\u8A18\u7269\u3002\u5C06\u8ECD\u30FB\u8DB3\u5229\u7FA9\u653F\u306E\u5931\u653F\u304B\u3089\u5C71\u540D\u6301\u8C4A\u304C\u6B7B\u53BB\u3059\u308B\u307E\u3067\u3092\u63CF\u3044\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Ounin-ki
+    kahouExpEng: It is a war history book which expressed Onin war. It depicts era
+      from the misconduct of Shogun Yoshimasa Ashikaga until the death of Mochitoyo
+      Yamana.
+    kahouTargetEng: Active Skill Effect
+  - id: 4
+    kahouType: chishikisyo
+    kahouName: "\u627F\u4E45\u8A18"
+    kahouRank: C
+    kahouExp: "\u627F\u4E45\u306E\u4E71\u3092\u63CF\u3044\u305F\u8ECD\u8A18\u7269\u3002\u56DB\u90E8\u4E4B\u5408\u6226\u66F8\u306E\uFF11\u3064\u3002\u5F8C\u9CE5\u7FBD\u5929\u7687\u306E\u5373\u4F4D\u304B\u3089\u627F\u4E45\u306E\u4E71\u3092\u8A18\u3057\u3001\u571F\u5FA1\u9580\u4E0A\u7687\u304C\u6D41\u7F6A\u306B\u306A\u308B\u307E\u3067\u3092\u63CF\u3044\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Jyokyu-ki
+    kahouExpEng: It is a war history book which expressed Jyokyu war. It is one of
+      the 4 war books. It depicts the era from the throne of Emperor Go Toba until
+      the exile of Retired Emperor Tsuchimikado.
+    kahouTargetEng: Active Skill Effect
+  - id: 5
+    kahouType: chishikisyo
+    kahouName: "\u6C38\u4EAB\u8A18"
+    kahouRank: C
+    kahouExp: "\u5BA4\u753A\u6642\u4EE3\u4E2D\u671F\u4EE5\u964D\u306E\u95A2\u6771\u306E\u6B74\u53F2\u3092\u63CF\u3044\u305F\u8ECD\u8A18\u7269\u3002\u6C38\u4EAB\u306E\u4E71\u304B\u3089\u3001\u7D50\u57CE\u5408\u6226\u3001\u5C71\u5185\u4E0A\u6749\u5BB6\u3068\u6247\u8C37\u4E0A\u6749\u5BB6\u306E\u5BFE\u7ACB\u3001\u5317\u6761\u65E9\u96F2\u306E\u767B\u5834\u307E\u3067\u3092\u63CF\u304F\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Eikyo-ki
+    kahouExpEng: War book depicting the history in Kanto since the middle of the Muromachi
+      period. From Eikyo war to Yuki war and battle between Yamanouchi Uesugi family
+      and Ougigayatsu Uesugi family, and the appearance of Soun Hojyo.
+    kahouTargetEng: Active Skill Effect
+  - id: 6
+    kahouType: chishikisyo
+    kahouName: "\u548C\u6F22\u6717\u8A60\u96C6"
+    kahouRank: C
+    kahouExp: "\u6226\u56FD\u6642\u4EE3\u306E\u4E0A\u7D1A\u6B66\u58EB\u306E\u5FC5\u8AAD\u66F8\u3002\u5143\u670D\u304C\u8FD1\u304F\u306A\u308B\u3068\u56DB\u66F8\u4E94\u7D4C\u3084\u5175\u6CD5\u66F8\u3068\u3068\u3082\u306B\u8AAD\u307E\u308C\u3001\u8A69\u4F5C\u3084\u548C\u6B4C\u306E\u6559\u990A\u306E\u6E90\u306B\u306A\u3063\u305F\u3068\u3044\u308F\u308C\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Wakan Roei-syu
+    kahouExpEng: A must read for a senior samuira in Warring States Period. It had
+      been read when a child of samurai hold coming-of-age ceremony with Shisyo Gokyo
+      and Tactics book.
+    kahouTargetEng: Active Skill Effect
+  - id: 7
+    kahouType: chishikisyo
+    kahouName: "\u5C3A\u7D20\u5F80\u6765"
+    kahouRank: C
+    kahouExp: "\u6A4B\u672C\u516C\u590F\u304C\u5199\u672C\u3057\u305F\u96D1\u5B66\u66F8\u3002\u653F\u6CBB\u7684\u306A\u4E8B\u67C4\u304B\u3089\u9298\u9152\u306E\u7A2E\u985E\u3001\u8AF8\u56FD\u306E\u571F\u7523\u54C1\u6BD4\u3079\u306B\u81F3\u308B\u307E\u3067\u3001\u305D\u306E\u5185\u5BB9\u306F\u975E\u5E38\u306B\u5E83\u3044\u7BC4\u56F2\u306B\u53CA\u3093\u3067\u3044\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Sekiso Ourai
+    kahouExpEng: Miscellaneous manuscript which Masashi Hashimoto copied. From political
+      matters to the type of sake and comparison of souvenirs of various countries,
+      its contents cover a very wide range.
+    kahouTargetEng: Active Skill Effect
+  - id: 8
+    kahouType: chishikisyo
+    kahouName: "\u7BC0\u7528\u96C6"
+    kahouRank: C
+    kahouExp: "\u6226\u56FD\u6642\u4EE3\u306B\u520A\u884C\u3055\u308C\u305F\u56FD\u8A9E\u4E8B\u5178\u3002\u66F8\u540D\u306F\u300C\u8CBB\u7528\u306E\u7BC0\u7D04\u300D\u306B\u7531\u6765\u3059\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Setsuyo-syu
+    kahouExpEng: A Japanese language dictionary published during the Warring States
+      Period. The title is derived from "cost saving".
+    kahouTargetEng: Active Skill Effect
+  - id: 9
+    kahouType: chishikisyo
+    kahouName: "\u7FA9\u7D4C\u8A18"
+    kahouRank: B
+    kahouExp: "\u6E90\u7FA9\u7D4C\u306E\u4E00\u4EE3\u8A18\u3002\u725B\u82E5\u4E38\u3068\u5F01\u6176\u3001\u6E90\u5E73\u5408\u6226\u3001\u5409\u91CE\u5C71\u3078\u306E\u9003\u4EA1\u3068\u9759\u5FA1\u524D\u3001\u5965\u5DDE\u5E73\u6CC9\u3067\u306E\u6700\u671F\u306A\u3069\u3092\u300C\u60B2\u904B\u306E\u5224\u5B98\u300D\u3068\u3057\u3066\u63CF\u304F\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Gikei-ki
+    kahouExpEng: It expresses the story of Yoshitsune Genji as tragedic samurai from
+      Ushiwakamaru vs Benkei, Genpei Battle, Escape to Yoshino Mountain and Shizuka
+      Gozen, Last Oshu Hiraizumi.
+    kahouTargetEng: Active Skill Effect
+  - id: 10
+    kahouType: chishikisyo
+    kahouName: "\u8C9E\u89B3\u653F\u8981"
+    kahouRank: S
+    kahouExp: "\u5510\u4EE3\u306B\u5449\u5162\u304C\u7DE8\u7E82\u3057\u305F\u3068\u3055\u308C\u308B\u592A\u5B97\u306E\u8A00\u884C\u9332\u3067\u3042\u308B\u3002\u984C\u540D\u306E\u300C\u8C9E\u89B3\u300D\u306F\u592A\u5B97\u306E\u5728\u4F4D\u306E\u5E74\u53F7\u3067\u3001\u300C\u653F\u8981\u300D\u306F\u300C\u653F\u6CBB\u306E\u8981\u8AE6\u300D\u3092\u3044\u3046\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Jyogan Seiyou
+    kahouExpEng: It is a record of Taejong who was supposed to be edited by Gokei
+      in the Tang Dynasty. The title "Jyogan" is the leading year of the Tajong, "political"
+      means "the essence of politics".
+    kahouTargetEng: Active Skill Effect
+  - id: 11
+    kahouType: chishikisyo
+    kahouName: "\u8AD6\u8A9E"
+    kahouRank: A
+    kahouExp: "\u5B54\u5B50\u3068\u5F7C\u306E\u9AD8\u5F1F\u306E\u8A00\u884C\u3092\u5B54\u5B50\u306E\u6B7B\u5F8C\u3001\u5F1F\u5B50\u9054\u304C\u8A18\u9332\u3057\u305F\u66F8\u7269\u3002\u5B5F\u5B50\u3001\u5927\u5B66\u3001\u4E2D\u5EB8\u3068\u4F75\u305B\u3066\u5112\u6559\u306B\u304A\u3051\u308B\u300C\u56DB\u66F8\u300D\u306E1\u3064\u306B\u6570\u3048\u3089\u308C\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Rongo
+    kahouExpEng: Book confession recorded by disciples after Confucius 'death by Confucius
+      and his younger brother' s words. It is counted as one of the "The Four books".
+    kahouTargetEng: Active Skill Effect
+  - id: 12
+    kahouType: chishikisyo
+    kahouName: "\u6885\u677E\u8AD6"
+    kahouRank: B
+    kahouExp: "\u5357\u5317\u671D\u6642\u4EE3\u306E\u8ECD\u8A18\u7269\u8A9E\u3002\u938C\u5009\u5E55\u5E9C\u306E\u6CBB\u7E3E\u304B\u3089\u5C0A\u6C0F\u304C\u653F\u6A29\u3092\u638C\u63E1\u3059\u308B\u307E\u3067\u306E\u904E\u7A0B\u3092\u3001\u8DB3\u5229\u6C0F\u306B\u3088\u308B\u5BA4\u753A\u5E55\u5E9C\u5275\u7ACB\u306E\u6B63\u5F53\u6027\u3092\u4E3B\u5F35\u3059\u308B\u8996\u70B9\u304B\u3089\u63CF\u3044\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Baisyo-ron
+    kahouExpEng: A military tale in the Northern and Morning era. The process from
+      the results of the Kamakura Shogunate to the handling of the administration
+      by Takauji is drawing from Mr. Ashikaga's point of view asserting the legitimacy
+      of the establishment of Muromachi Shogunate.
+    kahouTargetEng: Active Skill Effect
+  - id: 13
+    kahouType: chishikisyo
+    kahouName: "\u8499\u53E4\u79D8\u53F2"
+    kahouRank: B
+    kahouExp: "\u4E2D\u4E16\u30E2\u30F3\u30B4\u30EB\u306E\u6B74\u53F2\u66F8\u3002\u30C1\u30F3\u30AE\u30B9\u30FB\u30AB\u30F3\u306E\u4E00\u4EE3\u8A18\u3092\u4E2D\u6838\u306B\u3001\u305D\u306E\u65CF\u7956\u4F1D\u627F\u304B\u3089\u5F8C\u7D99\u8005\u30AA\u30B4\u30C7\u30A4\u306E\u6CBB\u4E16\u306E\u9014\u4E2D\u307E\u3067\u306E\u6B74\u53F2\u304C\u8A18\u3055\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 8
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Mouko Hishi
+    kahouExpEng: Medieval Mongolian history book. With the chronicles of Genghis Khan
+      as the core, the history from the tradition of the ancestors to the middle of
+      the reign of the successor Ogoday is written.
+    kahouTargetEng: Active Skill Effect
+  - id: 14
+    kahouType: chishikisyo
+    kahouName: "\u53E4\u4E8B\u8A18"
+    kahouRank: B
+    kahouExp: "\u53E4\u4E8B\u8A18\u306F\u3001\u65E5\u672C\u6700\u53E4\u306E\u6B74\u53F2\u66F8\u3067\u3042\u308B\u3002\u305D\u306E\u5E8F\u306B\u3088\u308C\u3070\u3001712\u5E74\u306B\u592A\u671D\u81E3\u5B89\u842C\u4FB6\u304C\u7DE8\u7E82\u3057\u3001\u5143\u660E\u5929\u7687\u306B\u732E\u4E0A\u3055\u308C\u305F\u3002"
+    kahouTarget: "\u7B56\u52B9\u679C"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Koji-ki
+    kahouExpEng: Koji-ki is the oldest history book in Japan. According to that preface,
+      in 712, Yasumaro editted it and presented to Emperor Genmei.
+    kahouTargetEng: Active Skill Effect

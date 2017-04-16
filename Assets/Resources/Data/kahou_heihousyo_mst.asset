@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b7ec9158ce6604aa4b69f140897a29, type: 3}
+  m_Name: kahou_heihousyo_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    kahouType: heihousyo
+    kahouName: "\u5B6B\u5B50"
+    kahouRank: S
+    kahouExp: "\u4E2D\u56FD\u6625\u79CB\u6642\u4EE3\u306E\u601D\u60F3\u5BB6\u5B6B\u6B66\u306E\u4F5C\u3068\u3055\u308C\u308B\u5175\u6CD5\u66F8\u3002\u5F8C\u306B\u6B66\u7D4C\u4E03\u66F8\u306E\u4E00\u3064\u306B\u6570\u3048\u3089\u308C\u3066\u3044\u308B\u3002\u53E4\u4ECA\u6771\u897F\u306E\u5175\u6CD5\u66F8\u306E\u3046\u3061\u6700\u3082\u8457\u540D\u306A\u3082\u306E\u306E\u4E00\u3064\u3067\u3042\u308B\u3002 "
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: The Art of War
+    kahouExpEng: A war tactics and law book written as a thinker of Sun Wu in Age
+      of the Warring States. It is counted as one of the 7 tactics books later. It
+      is one of the most prominent of the ancient war laws.
+    kahouTargetEng: Passive Skill Effect
+  - id: 2
+    kahouType: heihousyo
+    kahouName: "\u9EC4\u77F3\u516C\u4E09\u7565"
+    kahouRank: A
+    kahouExp: "\u53E4\u4EE3\u4E2D\u56FD\u306E\u5175\u6CD5\u66F8\u3002\u6B66\u7D4C\u4E03\u66F8\u306E\uFF11\u3064\u3002\u653F\u6CBB\u30FB\u7528\u5175\u30FB\u6226\u7565\u306E\u901A\u5247\u3092\uFF13\u5DFB\u306B\u307E\u3068\u3081\u305F\u3082\u306E\u3002\u516D\u97DC\u3068\u5408\u308F\u305B\u3066\u300E\u516D\u97DC\u4E09\u7565\u300F\u3068\u547C\u3070\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Sanryaku
+    kahouExpEng: An ancient Chinese war tactics and law book. One of the 7 tactics
+      books. It is a summary of the general rule of politics, soldier, strategy in
+      three volumes. Together with Six Secret Teachings, it is called "Rikuto Sanryaku".
+    kahouTargetEng: Passive Skill Effect
+  - id: 3
+    kahouType: heihousyo
+    kahouName: "\u53F8\u99AC\u6CD5"
+    kahouRank: B
+    kahouExp: "\u53E4\u4EE3\u4E2D\u56FD\u306E\u5175\u6CD5\u66F8\u3002\u6B66\u7D4C\u4E03\u66F8\u306E\uFF11\u3064\u3002\u6589\u306E\u5927\u53F8\u99AC\u30FB\u7530\u7A63\u82F4\u3089\u306E\u5175\u6CD5\u3092\u3082\u3068\u306B\u8A18\u3055\u308C\u305F\u3068\u3044\u308F\u308C\u308B\u3002\u5927\u53F8\u99AC\u3068\u306F\u8ECD\u4E8B\u3092\u53F8\u308B\u6700\u9AD8\u9577\u5B98\u3092\u6307\u3057\u3066\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Shibahou
+    kahouExpEng: An ancient Chinese war tactics and law book. One of the 7 tactics
+      books. It was written based on the tactics book of Rangju who are general of
+      Qi.
+    kahouTargetEng: Passive Skill Effect
+  - id: 4
+    kahouType: heihousyo
+    kahouName: "\u9B3C\u8C37\u5B50"
+    kahouRank: C
+    kahouExp: "\u4E2D\u56FD\u30FB\u6625\u79CB\u6226\u56FD\u6642\u4EE3\u306E\u601D\u60F3\u5BB6\u30FB\u9B3C\u8C37\u5B50\u304C\u8A18\u3057\u305F\u3068\u3055\u308C\u308B\u3002\u5F7C\u306F\u7E26\u6A2A\u5BB6\u306E\u8607\u79E6\u3084\u5F35\u5100\u306E\u5E2B\u3067\u3042\u308A\u3001\u6A29\u8B00\u8853\u6570\u306E\u4E2D\u3067\u3082\u8AAC\u5F97\u8853\u306B\u9577\u3058\u3066\u3044\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Guiguzi
+    kahouExpEng: A philosopher, Guiguzi wrote. He was a teacher of  Su Qin and Yi
+      Cheung and he wa good at persuasion style rather than other trickery ways.
+    kahouTargetEng: Passive Skill Effect
+  - id: 5
+    kahouType: heihousyo
+    kahouName: "\u674E\u885B\u516C\u554F\u5BFE"
+    kahouRank: C
+    kahouExp: "\u53E4\u4EE3\u4E2D\u56FD\u306E\u5175\u6CD5\u66F8\u3002\u6B66\u7D4C\u4E03\u66F8\u306E\uFF11\u3064\u3002\u5510\u306E\u592A\u5B97\u306E\u653F\u6CBB\u3084\u5175\u6CD5\u306B\u95A2\u3059\u308B\u554F\u3044\u304B\u3051\u306B\u5BB6\u81E3\u30FB\u674E\u9756\u304C\u305D\u306E\u8981\u8AE6\u3092\u8AAC\u304F\u3002\u592A\u5B97\u306F\u5510\u5EFA\u56FD\u306E\u7ACB\u5F79\u8005\u3067\u3001\u8CE2\u541B\u3068\u3057\u3066\u77E5\u3089\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Riei Koumontai Book
+    kahouExpEng: An ancient Chinese war tactics and law book. One of the 7 tactics
+      books.Risei explains its essence to the question of politics and military law
+      of Tang's Taejong.
+    kahouTargetEng: Passive Skill Effect
+  - id: 6
+    kahouType: heihousyo
+    kahouName: "\u6226\u56FD\u7B56"
+    kahouRank: C
+    kahouExp: "\u4E2D\u56FD\u5468\u6642\u4EE3\u304B\u3089\u79E6\u306E\u59CB\u7687\u5E1D\u6642\u4EE3\u307E\u3067\u306E\u904A\u8AAC\u5B50\u306E\u6545\u4E8B\u3092\u3001\u524D\u6F22\u672B\u306E\u5289\u5411\u304C\uFF11\uFF12\u30AB\u56FD\u5225\u306B\u7DE8\u7E82\u3057\u305F\u5175\u6CD5\u66F8\u3002\u300C\u4E00\u6319\u4E21\u5F97\u300D\u300C\u798D\u8EE2\u3058\u3066\u798F\u3068\u6210\u3059\u300D\u7B49\u306E\u6210\u8A9E\u3092\u4F1D\u3048\u308B\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Sengokusaku
+    kahouExpEng: Liu xiang editted and classified a lot of ancient storis under 12
+      counties labels as tactics book.
+    kahouTargetEng: Passive Skill Effect
+  - id: 7
+    kahouType: heihousyo
+    kahouName: "\u5915\u96F2\u6D41\u5263\u8853\u66F8"
+    kahouRank: C
+    kahouExp: "\u7121\u4F4F\u5FC3\u5263\u6D41\u306E\u958B\u7956\u30FB\u91DD\u30F6\u8C37\u5915\u96F2\u304C\u8457\u3057\u305F\u66F8\u3002\u5915\u96F2\u306F\u6226\u56FD\u6642\u4EE3\u672B\u671F\u306E\u5263\u8C6A\u3067\u3001\u5C0F\u7B20\u539F\u6E90\u4FE1\u658E\u306B\u5E2B\u4E8B\u3057\u305F\u3002\u751F\u6DAF\u306752\u56DE\u306E\u771F\u5263\u8A66\u5408\u3092\u884C\u3063\u305F\u3068\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Sekiunryu Sword Book
+    kahouExpEng: A book written by Sekiun Harigaya, the founder of the Mijyu Shinken
+      sword style. He was a swordsman at the end of Warring States Period, studied
+      under Genshinsai Ogasawara. He said he went 52 lifelong battles by real sword.
+    kahouTargetEng: Passive Skill Effect
+  - id: 8
+    kahouType: heihousyo
+    kahouName: "\u5E73\u5E38\u7121\u6575\u66F8"
+    kahouRank: C
+    kahouExp: "\u5C71\u5185\u84EE\u5FC3\u304C\u958B\u3044\u305F\u5E73\u5E38\u7121\u6575\u6D41\u306E\u6975\u610F\u3092\u8A18\u3057\u305F\u66F8\u3002\u5C71\u5185\u84EE\u5FC3\u306F\u300C\u53E4\u4ECA\u72EC\u6B69\u306E\u540D\u4EBA\u300D\u3068\u79F0\u305B\u3089\u308C\u305F\u5263\u8C6A\u3002\u5BFA\u7530\u4E94\u90CE\u53F3\u885B\u9580\u306A\u3069\u304C\u9580\u4E0B\u751F\u3060\u3063\u305F\u3068\u3044\u308F\u308C\u308B\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Muteki Book
+    kahouExpEng: It explains the secret of Heijyo Muteki Style. Myoishin Yamauchi
+      is a master swordman called "master of alone style".
+    kahouTargetEng: Passive Skill Effect
+  - id: 9
+    kahouType: heihousyo
+    kahouName: "\u672C\u671D\u6B66\u82B8\u5C0F\u4F1D"
+    kahouRank: C
+    kahouExp: "\u65E5\u590F\u7E41\u9AD8\u304C\u8457\u3057\u305F\u6B66\u9053\u66F8\u3002\u5175\u6CD5\u3001\u99AC\u8853\u3001\u7832\u8853\u3001\u69CD\u8853\u306A\u3069\u306B\u79C0\u3067\u305F\u5BA4\u753A\u6642\u4EE3\u4EE5\u964D\u306E\u6B66\u5C06\u306E\u5217\u4F1D\u3092\u8A18\u3057\u305F\u3002\u300E\u5E72\u57CE\u5C0F\u4F1D\u300F\u3068\u3082\u3044\u3046\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Honcyo Bugei Syoden
+    kahouExpEng: Martial arts book written by Shigetaka Hinatsu. He wrote the legend
+      of military commander after the Muromachi period which was excelled in soldiers,
+      equestrian, gunner, spear etc.
+    kahouTargetEng: Passive Skill Effect
+  - id: 10
+    kahouType: heihousyo
+    kahouName: "\u65B0\u9670\u767E\u9996"
+    kahouRank: S
+    kahouExp: "\u77F3\u821F\u658E\u5B97\u5DCC\u306E\u4F5C\u3001\u5175\u6CD5\u306B\u9577\u3058\u306A\u304C\u3089\u3082\u4E16\u6E21\u308A\u304C\u3046\u307E\u304F\u306A\u304B\u3063\u305F\u81EA\u5206\u3078\u306E\u6094\u6068\u306E\u5FF5\u304C\u6B4C\u308F\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Sinkage 100 Books
+    kahouExpEng: Work of Sekisyusai Yagyu. There are songs to express regret to be
+      not good at socializing even though he is familiar with military law.
+    kahouTargetEng: Passive Skill Effect
+  - id: 11
+    kahouType: heihousyo
+    kahouName: "\u4E94\u8F2A\u66F8"
+    kahouRank: A
+    kahouExp: "\u5BAE\u672C\u6B66\u8535\u306E\u8457\u3057\u305F\u5175\u6CD5\u66F8\u3002\u6B66\u8535\u306E\u4EE3\u8868\u7684\u306A\u8457\u4F5C\u3067\u3042\u308A\u3001\u5263\u8853\u306E\u5965\u7FA9\u3092\u307E\u3068\u3081\u305F\u3068\u3044\u308F\u308C\u308B\u3002 "
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Gorin Book
+    kahouExpEng: Tactics book written by Musashi Miyamoto. It is said to be a representative
+      work of Musashi and summarized the mystery of swordsmanship.
+    kahouTargetEng: Passive Skill Effect
+  - id: 12
+    kahouType: heihousyo
+    kahouName: "\u4E09\u5341\u516D\u8A08"
+    kahouRank: B
+    kahouExp: "\u4E2D\u4E16\u9803\u306E\u4E2D\u56FD\u306E\u5175\u6CD5\u66F8\u3002\u5175\u6CD5\u306B\u304A\u3051\u308B\u6226\u8853\u3092\u516D\u6BB5\u968E\u306E\u4E09\u5341\u516D\u901A\u308A\u306B\u5206\u3051\u305F\u3082\u306E\u3002\u4E09\u5341\u516D\u8A08\u9003\u3052\u308B\u306B\u5982\u304B\u305A\u3068\u3044\u3046\u6545\u4E8B\u306F\u5175\u6CD5\u4E09\u5341\u516D\u8A08\u3068\u306F\u95A2\u4FC2\u306A\u3044\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Thirty-Six Stratagems
+    kahouExpEng: An ancient Chinese war tactics and law book. It classifies tactics
+      under the 36 styles.
+    kahouTargetEng: Passive Skill Effect
+  - id: 13
+    kahouType: heihousyo
+    kahouName: "\u4E00\u5200\u6D41\u53E3\u4F1D\u66F8"
+    kahouRank: B
+    kahouExp: "\u9418\u6372\u81EA\u658E\u306B\u795E\u9670\u6D41\u3092\u5B66\u3093\u3060\u4F0A\u6771\u4E00\u5200\u658E\u304C\u5275\u59CB\u3057\u305F\u4E00\u5200\u6D41\u306E\u5965\u7FA9\u3092\u307E\u3068\u3081\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u6226\u6CD5\u52B9\u679C"
+    senjyutsuTarget: Attack
+    kahouEffect: 9
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Single Sword Book
+    kahouExpEng: It is a summary of the mystery of a single sword style by famous
+      samurai Ito Ittousai.
+    kahouTargetEng: Passive Skill Effect

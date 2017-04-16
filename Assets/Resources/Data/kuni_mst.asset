@@ -1,0 +1,664 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c8a8613f1f1b34287be9b5ae62ff82, type: 3}
+  m_Name: kuni_mst
+  m_EditorClassIdentifier: 
+  param:
+  - kunId: 1
+    kuniName: "\u5C3E\u5F35"
+    locationX: 18
+    locationY: -26
+    daimyoId: 1
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Owari
+  - kunId: 2
+    kuniName: "\u7F8E\u6FC3"
+    locationX: 20
+    locationY: 40
+    daimyoId: 2
+    naisei: null
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Mino
+  - kunId: 3
+    kuniName: "\u4E09\u6CB3"
+    locationX: 55
+    locationY: -80
+    daimyoId: 3
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Mikawa
+  - kunId: 4
+    kuniName: "\u4F0A\u52E2"
+    locationX: -36
+    locationY: -99
+    daimyoId: 4
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Ise
+  - kunId: 5
+    kuniName: "\u8D8A\u524D"
+    locationX: -35
+    locationY: 156
+    daimyoId: 5
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 1
+    kuniNameEng: Echizen
+  - kunId: 6
+    kuniName: "\u8FD1\u6C5F"
+    locationX: -38
+    locationY: 64
+    daimyoId: 6
+    naisei: tp:snb
+    isSeaFlg: 0
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Oumi
+  - kunId: 7
+    kuniName: "\u98DB\u9A28"
+    locationX: 70
+    locationY: 70
+    daimyoId: 7
+    naisei: kb
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: Hida
+  - kunId: 8
+    kuniName: "\u4FE1\u6FC3"
+    locationX: 86
+    locationY: 10
+    daimyoId: 8
+    naisei: kb:snb
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: Shinano
+  - kunId: 9
+    kuniName: "\u9060\u6C5F"
+    locationX: 103
+    locationY: -86
+    daimyoId: 3
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Totoumi
+  - kunId: 10
+    kuniName: "\u5FD7\u6469"
+    locationX: 9
+    locationY: -155
+    daimyoId: 4
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Shima
+  - kunId: 11
+    kuniName: "\u4F0A\u8CC0"
+    locationX: -60
+    locationY: -35
+    daimyoId: 9
+    naisei: snb
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Iga
+  - kunId: 12
+    kuniName: "\u5927\u548C"
+    locationX: -110
+    locationY: -100
+    daimyoId: 10
+    naisei: null
+    isSeaFlg: 0
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Yamato
+  - kunId: 13
+    kuniName: "\u7D00\u4F0A"
+    locationX: -143
+    locationY: -174
+    daimyoId: 12
+    naisei: tp
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Kii
+  - kunId: 14
+    kuniName: "\u82E5\u72ED"
+    locationX: -100
+    locationY: 165
+    daimyoId: 11
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 1
+    kuniNameEng: Wakasa
+  - kunId: 15
+    kuniName: "\u52A0\u8CC0"
+    locationX: 25
+    locationY: 180
+    daimyoId: 13
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 1
+    kuniNameEng: Kaga
+  - kunId: 16
+    kuniName: "\u5C71\u57CE"
+    locationX: -105
+    locationY: 15
+    daimyoId: 14
+    naisei: mkd
+    isSeaFlg: 0
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Yamashiro
+  - kunId: 17
+    kuniName: "\u4E39\u6CE2"
+    locationX: -140
+    locationY: 85
+    daimyoId: 15
+    naisei: null
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Tanba
+  - kunId: 18
+    kuniName: "\u80FD\u767B"
+    locationX: 115
+    locationY: 220
+    daimyoId: 16
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 1
+    kuniNameEng: Noto
+  - kunId: 19
+    kuniName: "\u99FF\u6CB3"
+    locationX: 150
+    locationY: -60
+    daimyoId: 3
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Suruga
+  - kunId: 20
+    kuniName: "\u8D8A\u5F8C"
+    locationX: 240
+    locationY: 150
+    daimyoId: 17
+    naisei: kzn:snb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 1
+    kuniNameEng: Echigo
+  - kunId: 21
+    kuniName: "\u8D8A\u4E2D"
+    locationX: 100
+    locationY: 120
+    daimyoId: 18
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 1
+    kuniNameEng: Eccyu
+  - kunId: 22
+    kuniName: "\u4E0A\u91CE"
+    locationX: 230
+    locationY: 80
+    daimyoId: 17
+    naisei: kb
+    isSeaFlg: 0
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Kouzuke
+  - kunId: 23
+    kuniName: "\u6B66\u8535"
+    locationX: 250
+    locationY: 15
+    daimyoId: 19
+    naisei: null
+    isSeaFlg: 0
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Musashi
+  - kunId: 24
+    kuniName: "\u7532\u6590"
+    locationX: 165
+    locationY: 10
+    daimyoId: 8
+    naisei: kb:kzn:snb
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Kai
+  - kunId: 25
+    kuniName: "\u76F8\u6A21"
+    locationX: 220
+    locationY: -50
+    daimyoId: 19
+    naisei: snb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Sagami
+  - kunId: 26
+    kuniName: "\u4F0A\u8C46"
+    locationX: 180
+    locationY: -150
+    daimyoId: 19
+    naisei: kzn
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Izu
+  - kunId: 27
+    kuniName: "\u5B89\u623F\u4E0A\u7DCF"
+    locationX: 310
+    locationY: -120
+    daimyoId: 20
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Awa Kazusa
+  - kunId: 28
+    kuniName: "\u4E0B\u7DCF"
+    locationX: 310
+    locationY: -30
+    daimyoId: 21
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Shimousa
+  - kunId: 29
+    kuniName: "\u4E0B\u91CE"
+    locationX: 310
+    locationY: 70
+    daimyoId: 22
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Shimotsuke
+  - kunId: 30
+    kuniName: "\u5E38\u9678"
+    locationX: 370
+    locationY: -40
+    daimyoId: 23
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Hitachi
+  - kunId: 31
+    kuniName: "\u78D0\u57CE"
+    locationX: 370
+    locationY: 30
+    daimyoId: 24
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Iwaki
+  - kunId: 32
+    kuniName: "\u5357\u51FA\u7FBD"
+    locationX: 370
+    locationY: 190
+    daimyoId: 25
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: South Dewa
+  - kunId: 33
+    kuniName: "\u5CA9\u4EE3"
+    locationX: 330
+    locationY: 130
+    daimyoId: 26
+    naisei: kb
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Iwashiro
+  - kunId: 34
+    kuniName: "\u5357\u9678\u5965"
+    locationX: 450
+    locationY: 100
+    daimyoId: 27
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: South Mutsu
+  - kunId: 35
+    kuniName: "\u5317\u51FA\u7FBD"
+    locationX: 385
+    locationY: 290
+    daimyoId: 28
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: North Dewa
+  - kunId: 36
+    kuniName: "\u4E2D\u9678\u5965"
+    locationX: 470
+    locationY: 230
+    daimyoId: 29
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: Mid Mutsu
+  - kunId: 37
+    kuniName: "\u5317\u9678\u5965"
+    locationX: 500
+    locationY: 350
+    daimyoId: 30
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 1
+    kuniNameEng: North Mutsu
+  - kunId: 38
+    kuniName: "\u6CB3\u5185"
+    locationX: -120
+    locationY: -43
+    daimyoId: 31
+    naisei: syn
+    isSeaFlg: 0
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Kawachi
+  - kunId: 39
+    kuniName: "\u6442\u6D25\u548C\u6CC9"
+    locationX: -170
+    locationY: -20
+    daimyoId: 31
+    naisei: tp:syn
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Settsu Izumi
+  - kunId: 40
+    kuniName: "\u4E39\u5F8C"
+    locationX: -170
+    locationY: 160
+    daimyoId: 32
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Tango
+  - kunId: 41
+    kuniName: "\u56E0\u5E61\u4F46\u99AC"
+    locationX: -260
+    locationY: 140
+    daimyoId: 33
+    naisei: kzn
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Inaba Tajima
+  - kunId: 42
+    kuniName: "\u64AD\u78E8"
+    locationX: -225
+    locationY: 30
+    daimyoId: 34
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Harima
+  - kunId: 43
+    kuniName: "\u51FA\u96F2\u4F2F\u8006"
+    locationX: -370
+    locationY: 40
+    daimyoId: 35
+    naisei: snb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Izumo Hoki
+  - kunId: 44
+    kuniName: "\u7F8E\u4F5C"
+    locationX: -300
+    locationY: 30
+    daimyoId: 35
+    naisei: null
+    isSeaFlg: 0
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Mimasaka
+  - kunId: 45
+    kuniName: "\u5099\u524D"
+    locationX: -280
+    locationY: -50
+    daimyoId: 36
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Bizen
+  - kunId: 46
+    kuniName: "\u5099\u4E2D"
+    locationX: -340
+    locationY: -30
+    daimyoId: 37
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Biccyu
+  - kunId: 47
+    kuniName: "\u5099\u5F8C"
+    locationX: -340
+    locationY: -90
+    daimyoId: 38
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Bingo
+  - kunId: 48
+    kuniName: "\u77F3\u898B"
+    locationX: -440
+    locationY: -30
+    daimyoId: 38
+    naisei: kzn
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Iwami
+  - kunId: 49
+    kuniName: "\u5B89\u82B8"
+    locationX: -390
+    locationY: -100
+    daimyoId: 38
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Aki
+  - kunId: 50
+    kuniName: "\u5468\u9632\u9577\u9580"
+    locationX: -470
+    locationY: -130
+    daimyoId: 38
+    naisei: nbn
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Suo Nagato
+  - kunId: 51
+    kuniName: "\u6DE1\u8DEF"
+    locationX: -200
+    locationY: -100
+    daimyoId: 31
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Awaji
+  - kunId: 52
+    kuniName: "\u963F\u6CE2"
+    locationX: -230
+    locationY: -180
+    daimyoId: 31
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Awa
+  - kunId: 53
+    kuniName: "\u8B83\u5C90"
+    locationX: -290
+    locationY: -150
+    daimyoId: 31
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Sanuki
+  - kunId: 54
+    kuniName: "\u4F0A\u4E88"
+    locationX: -360
+    locationY: -220
+    daimyoId: 39
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Iyo
+  - kunId: 55
+    kuniName: "\u571F\u4F50"
+    locationX: -300
+    locationY: -250
+    daimyoId: 40
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Tosa
+  - kunId: 56
+    kuniName: "\u8C4A\u524D"
+    locationX: -470
+    locationY: -200
+    daimyoId: 41
+    naisei: nbn
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Buzen
+  - kunId: 57
+    kuniName: "\u8C4A\u5F8C"
+    locationX: -440
+    locationY: -280
+    daimyoId: 41
+    naisei: nbn
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Bungo
+  - kunId: 58
+    kuniName: "\u7B51\u524D"
+    locationX: -530
+    locationY: -180
+    daimyoId: 41
+    naisei: syn
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Chikuzen
+  - kunId: 59
+    kuniName: "\u7B51\u5F8C"
+    locationX: -500
+    locationY: -270
+    daimyoId: 41
+    naisei: null
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Chikugo
+  - kunId: 60
+    kuniName: "\u80A5\u524D"
+    locationX: -560
+    locationY: -250
+    daimyoId: 42
+    naisei: kb:nbn
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Hizen
+  - kunId: 61
+    kuniName: "\u80A5\u5F8C"
+    locationX: -520
+    locationY: -330
+    daimyoId: 43
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Higo
+  - kunId: 62
+    kuniName: "\u65E5\u5411"
+    locationX: -450
+    locationY: -345
+    daimyoId: 44
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: mnt
+    isSnowFlg: 0
+    kuniNameEng: Hyuga
+  - kunId: 63
+    kuniName: "\u85A9\u6469"
+    locationX: -540
+    locationY: -400
+    daimyoId: 45
+    naisei: tp:kb:nbn
+    isSeaFlg: 1
+    kassenStage: nml
+    isSnowFlg: 0
+    kuniNameEng: Satsuma
+  - kunId: 64
+    kuniName: "\u5927\u9685"
+    locationX: -470
+    locationY: -410
+    daimyoId: 45
+    naisei: tp:nbn
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Osumi
+  - kunId: 65
+    kuniName: "\u5BFE\u99AC"
+    locationX: -600
+    locationY: -140
+    daimyoId: 46
+    naisei: kb
+    isSeaFlg: 1
+    kassenStage: sea
+    isSnowFlg: 0
+    kuniNameEng: Tsushima

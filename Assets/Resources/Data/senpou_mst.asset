@@ -1,0 +1,683 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdbb56473a42d34cbbd2fe9a3038ed4, type: 3}
+  m_Name: senpou_mst
+  m_EditorClassIdentifier: 
+  param:
+  - id: 1
+    typ: DownEnemy
+    name: "\u8ECA\u61F8\u4E4B\u5099"
+    effection: "\u8ECA\u8F2A\u306E\u5982\u304F\u9663\u3092\u56DE\u8EE2\u3057\u3001\u79D2\u5F53\u305F\u308AA\u306E\u7BC4\u56F2\u653B\u6483\u3092\u4E0E\u3048\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 10
+    ratio: 20
+    term: 5
+    lv1: 300
+    lv2: 400
+    lv3: 600
+    lv4: 800
+    lv5: 900
+    lv6: 1000
+    lv7: 1100
+    lv8: 1200
+    lv9: 1300
+    lv10: 1400
+    lv11: 1500
+    lv12: 1600
+    lv13: 1700
+    lv14: 1800
+    lv15: 1900
+    lv16: 2000
+    lv17: 2100
+    lv18: 2200
+    lv19: 2300
+    lv20: 2400
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Wheel Attack
+    effectionEng: 'Rolling attack like a wheel. ABC ranged attack per sec. Active
+      with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 2
+    typ: DownEnemy
+    name: "\u69CD\u887E"
+    effection: "\u69CD\u3092\u9699\u9593\u7121\u304F\u4E26\u3079\u3001\u672C\u4F53\u306BA\u306E\u5358\u4F53\u653B\u6483\u3092\u4E0E\u3048\u3001\u8FC5\u901F\u30921\u6E1B\u5C11\u3055\u305B\u308B\u3002\u6575\u304C\u9A0E\u99AC\u968A\u306E\u5834\u5408\u306F\u500D\u306E\u5175\u529B\u3092\u524A\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3002"
+    each: 5
+    ratio: 20
+    term: 3
+    lv1: 100
+    lv2: 200
+    lv3: 300
+    lv4: 400
+    lv5: 550
+    lv6: 700
+    lv7: 850
+    lv8: 1000
+    lv9: 1150
+    lv10: 1350
+    lv11: 1550
+    lv12: 1750
+    lv13: 1950
+    lv14: 2150
+    lv15: 2400
+    lv16: 2650
+    lv17: 2900
+    lv18: 3150
+    lv19: 3400
+    lv20: 3700
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Spear Line Low
+    effectionEng: Line spears give ABC attack and reduce 1 speed. Double attack in
+      the case of cavalry. Active with GHI% per DEF sec.
+  - id: 3
+    typ: DownEnemy
+    name: "\u69CD\u887E\u5F37"
+    effection: "\u69CD\u3092\u9699\u9593\u7121\u304F\u4E26\u3079\u3001\u672C\u4F53\u306BA\u306E\u5358\u4F53\u653B\u6483\u3092\u4E0E\u3048\u3001\u8FC5\u901F\u30921\u6E1B\u5C11\u3055\u305B\u308B\u3002\u6575\u304C\u9A0E\u99AC\u968A\u306E\u5834\u5408\u306F\u500D\u306E\u5175\u529B\u3092\u524A\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3002"
+    each: 5
+    ratio: 20
+    term: 3
+    lv1: 200
+    lv2: 400
+    lv3: 600
+    lv4: 800
+    lv5: 1100
+    lv6: 1400
+    lv7: 1700
+    lv8: 2000
+    lv9: 2300
+    lv10: 2700
+    lv11: 3100
+    lv12: 3500
+    lv13: 3900
+    lv14: 4300
+    lv15: 4800
+    lv16: 5300
+    lv17: 5800
+    lv18: 6300
+    lv19: 6800
+    lv20: 7400
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Spear Line Mid
+    effectionEng: Line spears give ABC attack and reduce 1 speed. Double attack in
+      the case of cavalry. Active with GHI% per DEF sec.
+  - id: 4
+    typ: DownEnemy
+    name: "\u69CD\u887E\u6975"
+    effection: "\u69CD\u3092\u9699\u9593\u7121\u304F\u4E26\u3079\u3001\u672C\u4F53\u306BA\u306E\u5358\u4F53\u653B\u6483\u3092\u4E0E\u3048\u3001\u8FC5\u901F\u30921\u6E1B\u5C11\u3055\u305B\u308B\u3002\u6575\u304C\u9A0E\u99AC\u968A\u306E\u5834\u5408\u306F\u500D\u306E\u5175\u529B\u3092\u524A\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3002"
+    each: 5
+    ratio: 20
+    term: 3
+    lv1: 300
+    lv2: 600
+    lv3: 900
+    lv4: 1200
+    lv5: 1650
+    lv6: 2100
+    lv7: 2550
+    lv8: 3000
+    lv9: 3450
+    lv10: 4050
+    lv11: 4650
+    lv12: 5250
+    lv13: 5850
+    lv14: 6450
+    lv15: 7200
+    lv16: 7950
+    lv17: 8700
+    lv18: 9450
+    lv19: 10200
+    lv20: 11100
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Spear Line High
+    effectionEng: Line spears give ABC attack and reduce 1 speed. Double attack in
+      the case of cavalry. Active with GHI% per DEF sec.
+  - id: 5
+    typ: DownEnemy
+    name: "\u7A81\u6483"
+    effection: "\u9A0E\u99AC\u3067\u7A81\u6483\u3057\u3001\u672C\u4F53\u306BA\u306E\u5358\u4F53\u653B\u6483\u3092\u4E0E\u3048\u3001\u5B88\u5099\u529B\u309210%\u6E1B\u5C11\u3055\u305B\u308B\u3002\u6575\u304C\u5F13\u3001\u9244\u7832\u968A\u306E\u5834\u5408\u306F\u500D\u306E\u5175\u529B\u3092\u524A\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 5
+    ratio: 20
+    term: 3
+    lv1: 100
+    lv2: 200
+    lv3: 300
+    lv4: 400
+    lv5: 550
+    lv6: 700
+    lv7: 850
+    lv8: 1000
+    lv9: 1150
+    lv10: 1350
+    lv11: 1550
+    lv12: 1750
+    lv13: 1950
+    lv14: 2150
+    lv15: 2400
+    lv16: 2650
+    lv17: 2900
+    lv18: 3150
+    lv19: 3400
+    lv20: 3700
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Assault Low
+    effectionEng: Assault give ABC attack and reduce 10% defence. Double attack in
+      the case of gun or bow. Active with GHI% per DEF sec.
+  - id: 6
+    typ: DownEnemy
+    name: "\u7A81\u6483\u5F37"
+    effection: "\u9A0E\u99AC\u3067\u7A81\u6483\u3057\u3001\u672C\u4F53\u306BA\u306E\u5358\u4F53\u653B\u6483\u3092\u4E0E\u3048\u3001\u5B88\u5099\u529B\u309210%\u6E1B\u5C11\u3055\u305B\u308B\u3002\u6575\u304C\u5F13\u3001\u9244\u7832\u968A\u306E\u5834\u5408\u306F\u500D\u306E\u5175\u529B\u3092\u524A\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 5
+    ratio: 20
+    term: 3
+    lv1: 200
+    lv2: 400
+    lv3: 600
+    lv4: 800
+    lv5: 1100
+    lv6: 1400
+    lv7: 1700
+    lv8: 2000
+    lv9: 2300
+    lv10: 2700
+    lv11: 3100
+    lv12: 3500
+    lv13: 3900
+    lv14: 4300
+    lv15: 4800
+    lv16: 5300
+    lv17: 5800
+    lv18: 6300
+    lv19: 6800
+    lv20: 7400
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Assault Mid
+    effectionEng: Assault give ABC attack and reduce 10% defence. Double attack in
+      the case of gun or bow. Active with GHI% per DEF sec.
+  - id: 7
+    typ: DownEnemy
+    name: "\u7A81\u6483\u6975"
+    effection: "\u9A0E\u99AC\u3067\u7A81\u6483\u3057\u3001\u672C\u4F53\u306BA\u306E\u5358\u4F53\u653B\u6483\u3092\u4E0E\u3048\u3001\u5B88\u5099\u529B\u309210%\u6E1B\u5C11\u3055\u305B\u308B\u3002\u6575\u304C\u5F13\u3001\u9244\u7832\u968A\u306E\u5834\u5408\u306F\u500D\u306E\u5175\u529B\u3092\u524A\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 5
+    ratio: 20
+    term: 3
+    lv1: 300
+    lv2: 600
+    lv3: 900
+    lv4: 1200
+    lv5: 1650
+    lv6: 2100
+    lv7: 2550
+    lv8: 3000
+    lv9: 3450
+    lv10: 4050
+    lv11: 4650
+    lv12: 5250
+    lv13: 5850
+    lv14: 6450
+    lv15: 7200
+    lv16: 7950
+    lv17: 8700
+    lv18: 9450
+    lv19: 10200
+    lv20: 11100
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Assault High
+    effectionEng: Assault give ABC attack and reduce 10% defence. Double attack in
+      the case of gun or bow. Active with GHI% per DEF sec.
+  - id: 8
+    typ: UpPlayer
+    name: "\u9023\u5C04"
+    effection: "\u65E9\u5408\u306B\u3088\u308B\u9023\u7D9A\u5C04\u6483\u3002A%\u5C04\u6483\u9593\u9694\u3092\u77ED\u304F\u3057\u3001\u5C04\u7A0B\u8DDD\u96E2\u3082A%\u4F38\u3070\u3059\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001\u52B9\u679C\u3092D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 10
+    ratio: 20
+    term: 8
+    lv1: 7
+    lv2: 8
+    lv3: 9
+    lv4: 10
+    lv5: 11
+    lv6: 12
+    lv7: 13
+    lv8: 14
+    lv9: 15
+    lv10: 16
+    lv11: 17
+    lv12: 18
+    lv13: 19
+    lv14: 20
+    lv15: 21
+    lv16: 22
+    lv17: 24
+    lv18: 26
+    lv19: 28
+    lv20: 30
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Rapid Fire Low
+    effectionEng: 'Rapid Fire reduce ABC% attack cool time and extend ABC% of fire
+      range. Active with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 9
+    typ: UpPlayer
+    name: "\u9023\u5C04\u5F37"
+    effection: "\u65E9\u5408\u7D44\u6483\u3061\u306B\u3088\u308B\u9023\u7D9A\u5C04\u6483\u3002A%\u5C04\u6483\u9593\u9694\u3092\u77ED\u304F\u3057\u3001\u5C04\u7A0B\u8DDD\u96E2\u3082A%\u4F38\u3070\u3059\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001\u52B9\u679C\u3092D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 10
+    ratio: 20
+    term: 8
+    lv1: 12
+    lv2: 13
+    lv3: 14
+    lv4: 15
+    lv5: 16
+    lv6: 17
+    lv7: 18
+    lv8: 20
+    lv9: 22
+    lv10: 24
+    lv11: 26
+    lv12: 28
+    lv13: 30
+    lv14: 32
+    lv15: 34
+    lv16: 37
+    lv17: 40
+    lv18: 43
+    lv19: 46
+    lv20: 50
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Rapid Fire Mid
+    effectionEng: 'Rapid Fire reduce ABC% attack cool time and extend ABC% of fire
+      range. Active with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 10
+    typ: UpPlayer
+    name: "\u9023\u5C04\u6975"
+    effection: "\u9023\u5F0F\u9283\u306B\u3088\u308B\u9023\u7D9A\u5C04\u6483\u3002A%\u5C04\u6483\u9593\u9694\u3092\u77ED\u304F\u3057\u3001\u5C04\u7A0B\u8DDD\u96E2\u3082A%\u4F38\u3070\u3059\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001\u52B9\u679C\u3092D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 10
+    ratio: 20
+    term: 8
+    lv1: 15
+    lv2: 17
+    lv3: 19
+    lv4: 21
+    lv5: 23
+    lv6: 25
+    lv7: 28
+    lv8: 31
+    lv9: 34
+    lv10: 37
+    lv11: 40
+    lv12: 44
+    lv13: 48
+    lv14: 52
+    lv15: 56
+    lv16: 60
+    lv17: 64
+    lv18: 69
+    lv19: 74
+    lv20: 80
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Rapid Fire High
+    effectionEng: 'Rapid Fire reduce ABC% attack cool time and extend ABC% of fire
+      range. Active with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 11
+    typ: UpPlayer
+    name: "\u6589\u5C04"
+    effection: "\u6589\u5C04\u306B\u3088\u308B\u9023\u7D9A\u5C04\u6483\u3002A%\u5C04\u6483\u9593\u9694\u3092\u77ED\u304F\u3057\u3001\u5C04\u7A0B\u8DDD\u96E2\u3082A%\u4F38\u3070\u3059\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001\u52B9\u679C\u3092D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 5
+    ratio: 30
+    term: 5
+    lv1: 1
+    lv2: 2
+    lv3: 3
+    lv4: 4
+    lv5: 5
+    lv6: 6
+    lv7: 7
+    lv8: 8
+    lv9: 9
+    lv10: 10
+    lv11: 11
+    lv12: 12
+    lv13: 13
+    lv14: 14
+    lv15: 15
+    lv16: 16
+    lv17: 17
+    lv18: 18
+    lv19: 19
+    lv20: 20
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Volley Low
+    effectionEng: 'Volley reduce ABC% attack cool time and extend ABC% of fire range.
+      Active with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 12
+    typ: UpPlayer
+    name: "\u6589\u5C04\u5F37"
+    effection: "\u6589\u5C04\u306B\u3088\u308B\u9023\u7D9A\u5C04\u6483\u3002A%\u5C04\u6483\u9593\u9694\u3092\u77ED\u304F\u3057\u3001\u5C04\u7A0B\u8DDD\u96E2\u3082A%\u4F38\u3070\u3059\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001\u52B9\u679C\u3092D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 5
+    ratio: 30
+    term: 5
+    lv1: 5
+    lv2: 6
+    lv3: 7
+    lv4: 8
+    lv5: 9
+    lv6: 10
+    lv7: 11
+    lv8: 12
+    lv9: 13
+    lv10: 14
+    lv11: 15
+    lv12: 16
+    lv13: 17
+    lv14: 18
+    lv15: 19
+    lv16: 20
+    lv17: 22
+    lv18: 24
+    lv19: 27
+    lv20: 30
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Volley Mid
+    effectionEng: 'Volley reduce ABC% attack cool time and extend ABC% of fire range.
+      Active with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 13
+    typ: UpPlayer
+    name: "\u6589\u5C04\u6975"
+    effection: "\u4E71\u5C04\u306B\u3088\u308B\u9023\u7D9A\u5C04\u6483\u3002A%\u5C04\u6483\u9593\u9694\u3092\u77ED\u304F\u3057\u3001\u5C04\u7A0B\u8DDD\u96E2\u3082A%\u4F38\u3070\u3059\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3057\u3001\u52B9\u679C\u3092D\u79D2\u9593\u6301\u7D9A\u3059\u308B\u3002"
+    each: 5
+    ratio: 30
+    term: 5
+    lv1: 9
+    lv2: 10
+    lv3: 11
+    lv4: 12
+    lv5: 13
+    lv6: 14
+    lv7: 15
+    lv8: 16
+    lv9: 17
+    lv10: 18
+    lv11: 19
+    lv12: 20
+    lv13: 22
+    lv14: 24
+    lv15: 26
+    lv16: 28
+    lv17: 30
+    lv18: 33
+    lv19: 36
+    lv20: 40
+    shipFlg: 0
+    onlySeaFlg: 0
+    nameEng: Volley High
+    effectionEng: 'Volley reduce ABC% attack cool time and extend ABC% of fire range.
+      Active with GHI% per DEF sec. and keep for JKL sec. '
+  - id: 14
+    typ: DownEnemy
+    name: "\u7C60\u7D61"
+    effection: "\u6575\u3092\u7BED\u7D61\u3057\u3001\u5BC4\u9A0EA\u4F53\u3092\u81EA\u8ECD\u306B\u5BDD\u8FD4\u3089\u305B\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 10
+    ratio: 15
+    term: 3
+    lv1: 1
+    lv2: 1
+    lv3: 1
+    lv4: 1
+    lv5: 2
+    lv6: 2
+    lv7: 2
+    lv8: 2
+    lv9: 2
+    lv10: 3
+    lv11: 3
+    lv12: 3
+    lv13: 3
+    lv14: 3
+    lv15: 4
+    lv16: 4
+    lv17: 4
+    lv18: 4
+    lv19: 4
+    lv20: 5
+    shipFlg: 1
+    onlySeaFlg: 0
+    nameEng: Cajole
+    effectionEng: Cajole enemy and let ABC enemy unit betray. Active with GHI% per
+      DEF sec.
+  - id: 15
+    typ: DownEnemy
+    name: "\u96E2\u9593"
+    effection: "\u6575\u3092\u96E2\u9593\u305B\u3057\u3081\u3001\u5BC4\u9A0EA\u4F53\u3092\u81EA\u8ECD\u306B\u5BDD\u8FD4\u3089\u305B\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 10
+    ratio: 30
+    term: 3
+    lv1: 1
+    lv2: 1
+    lv3: 1
+    lv4: 2
+    lv5: 2
+    lv6: 2
+    lv7: 3
+    lv8: 3
+    lv9: 3
+    lv10: 4
+    lv11: 4
+    lv12: 4
+    lv13: 5
+    lv14: 5
+    lv15: 5
+    lv16: 6
+    lv17: 6
+    lv18: 7
+    lv19: 7
+    lv20: 8
+    shipFlg: 1
+    onlySeaFlg: 0
+    nameEng: Mischief
+    effectionEng: Mischief enemy and let ABC enemy unit betray. Active with GHI% per
+      DEF sec.
+  - id: 16
+    typ: DownEnemy
+    name: "\u6295\u70AE\u788C"
+    effection: "\u6D77\u6226\u3067\u306E\u307F\u4F7F\u7528\u53EF\u3002\u706B\u85AC\u306E\u8A70\u307E\u3063\u305F\u7389\u3092\u6575\u821F\u3078\u6295\u3052\u8FBC\u307F\u3001\u6575\u5C0F\u8239\u3092A\u4F53\u7834\u58CA\u3059\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 10
+    ratio: 20
+    term: 3
+    lv1: 1
+    lv2: 1
+    lv3: 1
+    lv4: 1
+    lv5: 2
+    lv6: 2
+    lv7: 2
+    lv8: 2
+    lv9: 3
+    lv10: 3
+    lv11: 3
+    lv12: 3
+    lv13: 4
+    lv14: 4
+    lv15: 4
+    lv16: 4
+    lv17: 5
+    lv18: 5
+    lv19: 5
+    lv20: 6
+    shipFlg: 1
+    onlySeaFlg: 1
+    nameEng: Bomb
+    effectionEng: Only active in ship battle. Throw bombs to enemy ship and destroy
+      ABC unit. Active with GHI% per DEF sec.
+  - id: 17
+    typ: DownEnemy
+    name: "\u6295\u70AE\u788C\u6975"
+    effection: "\u6D77\u6226\u3067\u306E\u307F\u4F7F\u7528\u53EF\u3002\u719F\u7DF4\u306E\u8005\u304C\u706B\u85AC\u306E\u8A70\u307E\u3063\u305F\u7389\u3092\u6575\u821F\u3078\u6295\u3052\u8FBC\u307F\u3001\u6575\u5C0F\u8239\u3092A\u4F53\u7834\u58CA\u3059\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 10
+    ratio: 30
+    term: 3
+    lv1: 1
+    lv2: 1
+    lv3: 1
+    lv4: 2
+    lv5: 2
+    lv6: 2
+    lv7: 3
+    lv8: 3
+    lv9: 3
+    lv10: 4
+    lv11: 4
+    lv12: 4
+    lv13: 5
+    lv14: 5
+    lv15: 6
+    lv16: 6
+    lv17: 7
+    lv18: 8
+    lv19: 9
+    lv20: 10
+    shipFlg: 1
+    onlySeaFlg: 1
+    nameEng: Bomb High
+    effectionEng: Only active in ship battle. Throw big bombs to enemy ship and destroy
+      ABC unit. Active with GHI% per DEF sec.
+  - id: 18
+    typ: UpPlayer
+    name: "\u91D1\u7621\u533B"
+    effection: "\u8CA0\u50B7\u8005\u306E\u6CBB\u7642\u3092\u884C\u3044\u3001A%\u306E\u5175\u529B\u3092\u56DE\u5FA9\u3059\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 10
+    ratio: 20
+    term: 3
+    lv1: 5
+    lv2: 5
+    lv3: 6
+    lv4: 6
+    lv5: 7
+    lv6: 7
+    lv7: 8
+    lv8: 8
+    lv9: 9
+    lv10: 9
+    lv11: 10
+    lv12: 11
+    lv13: 12
+    lv14: 13
+    lv15: 14
+    lv16: 15
+    lv17: 16
+    lv18: 17
+    lv19: 18
+    lv20: 20
+    shipFlg: 1
+    onlySeaFlg: 0
+    nameEng: Medic
+    effectionEng: Medical treatment recover ABC% HP. Active with GHI% per DEF sec.
+  - id: 19
+    typ: UpPlayer
+    name: "\u91D1\u7621\u540D\u533B"
+    effection: "\u540D\u533B\u304C\u8CA0\u50B7\u8005\u306E\u6CBB\u7642\u3092\u884C\u3044\u3001A%\u306E\u5175\u529B\u3092\u56DE\u5FA9\u3059\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 10
+    ratio: 30
+    term: 3
+    lv1: 10
+    lv2: 11
+    lv3: 12
+    lv4: 13
+    lv5: 14
+    lv6: 15
+    lv7: 16
+    lv8: 17
+    lv9: 18
+    lv10: 19
+    lv11: 20
+    lv12: 21
+    lv13: 22
+    lv14: 24
+    lv15: 26
+    lv16: 28
+    lv17: 30
+    lv18: 33
+    lv19: 36
+    lv20: 40
+    shipFlg: 1
+    onlySeaFlg: 0
+    nameEng: Medic High
+    effectionEng: Good medical treatment recover ABC% HP. Active with GHI% per DEF
+      sec.
+  - id: 20
+    typ: UpPlayer
+    name: "\u75BE\u98A8"
+    effection: "\u75BE\u98A8\u306E\u5F37\u884C\u8ECD\u3092\u884C\u3044\u3001\u8FC5\u901F\u3092A%\u4E0A\u6607\u3055\u305B\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 5
+    ratio: 20
+    term: 5
+    lv1: 5
+    lv2: 5
+    lv3: 6
+    lv4: 6
+    lv5: 7
+    lv6: 7
+    lv7: 8
+    lv8: 8
+    lv9: 9
+    lv10: 9
+    lv11: 10
+    lv12: 10
+    lv13: 11
+    lv14: 12
+    lv15: 13
+    lv16: 15
+    lv17: 17
+    lv18: 19
+    lv19: 22
+    lv20: 25
+    shipFlg: 1
+    onlySeaFlg: 0
+    nameEng: Lightning
+    effectionEng: Lightning increase ABC% speed. Active with GHI% per DEF sec.
+  - id: 21
+    typ: UpPlayer
+    name: "\u795E\u901F"
+    effection: "\u795E\u901F\u306E\u5F37\u884C\u8ECD\u3092\u884C\u3044\u3001\u8FC5\u901F\u3092A%\u4E0A\u6607\u3055\u305B\u308B\u3002B\u79D2\u306B\u3064\u304D\u3001C%\u306E\u78BA\u7387\u3067\u767A\u52D5\u3059\u308B\u3002"
+    each: 5
+    ratio: 30
+    term: 5
+    lv1: 10
+    lv2: 11
+    lv3: 12
+    lv4: 13
+    lv5: 14
+    lv6: 15
+    lv7: 16
+    lv8: 17
+    lv9: 18
+    lv10: 19
+    lv11: 21
+    lv12: 23
+    lv13: 25
+    lv14: 28
+    lv15: 31
+    lv16: 34
+    lv17: 37
+    lv18: 40
+    lv19: 45
+    lv20: 50
+    shipFlg: 1
+    onlySeaFlg: 0
+    nameEng: Rapidity
+    effectionEng: Rapidity increase ABC% speed. Active with GHI% per DEF sec.

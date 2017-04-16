@@ -1,0 +1,3566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fc2f7c0dc3ec54299953af49696948, type: 3}
+  m_Name: kanni_mst
+  m_EditorClassIdentifier: 
+  param:
+  - No: 1
+    Kanni: "\u95A2\u767D"
+    Ikai: "\u6B63\u4E00\u4F4D"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 30
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 50
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 1st rank
+    EffectLabelEng: HP
+  - No: 2
+    Kanni: "\u592A\u653F\u5927\u81E3"
+    Ikai: "\u5F93\u4E00\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 30
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 50
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 1st rank
+    EffectLabelEng: DFC
+  - No: 3
+    Kanni: "\u5DE6\u5927\u81E3"
+    Ikai: "\u6B63\u4E8C\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 25
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 40
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 2nd rank
+    EffectLabelEng: DFC
+  - No: 4
+    Kanni: "\u53F3\u5927\u81E3"
+    Ikai: "\u6B63\u4E8C\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: hp
+    Effect: 25
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 40
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 2nd rank
+    EffectLabelEng: DFC
+  - No: 5
+    Kanni: "\u5185\u5927\u81E3"
+    Ikai: "\u5F93\u4E8C\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 25
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 40
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 2nd rank
+    EffectLabelEng: DFC
+  - No: 6
+    Kanni: "\u8535\u4EBA\u5225\u5F53"
+    Ikai: "\u5F93\u4E8C\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 25
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 40
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 2nd rank
+    EffectLabelEng: DFC
+  - No: 7
+    Kanni: "\u5927\u7D0D\u8A00"
+    Ikai: "\u6B63\u4E09\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 3rd rank
+    EffectLabelEng: DFC
+  - No: 8
+    Kanni: "\u6A29\u5927\u7D0D\u8A00"
+    Ikai: "\u6B63\u4E09\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: hp
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 3rd rank
+    EffectLabelEng: DFC
+  - No: 9
+    Kanni: "\u4E2D\u7D0D\u8A00"
+    Ikai: "\u5F93\u4E09\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 3rd rank
+    EffectLabelEng: DFC
+  - No: 10
+    Kanni: "\u6A29\u4E2D\u7D0D\u8A00"
+    Ikai: "\u5F93\u4E09\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 3rd rank
+    EffectLabelEng: DFC
+  - No: 11
+    Kanni: "\u5F3E\u6B63\u5C39"
+    Ikai: "\u5F93\u4E09\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 3rd rank
+    EffectLabelEng: DFC
+  - No: 12
+    Kanni: "\u5DE6\u8FD1\u885B\u5927\u5C06"
+    Ikai: "\u5F93\u4E09\u4F4D"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 3rd rank
+    EffectLabelEng: ATK
+  - No: 13
+    Kanni: "\u53F3\u8FD1\u885B\u5927\u5C06"
+    Ikai: "\u5F93\u4E09\u4F4D"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 3rd rank
+    EffectLabelEng: ATK
+  - No: 14
+    Kanni: "\u592A\u5BB0\u5E25"
+    Ikai: "\u5F93\u4E09\u4F4D"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 20
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 30
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 3rd rank
+    EffectLabelEng: DFC
+  - No: 15
+    Kanni: "\u4E2D\u52D9\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Upper
+    EffectLabelEng: DFC
+  - No: 16
+    Kanni: "\u53C2\u8B70"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 17
+    Kanni: "\u5F0F\u90E8\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 18
+    Kanni: "\u6CBB\u90E8\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 19
+    Kanni: "\u6C11\u90E8\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 20
+    Kanni: "\u5175\u90E8\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: HP
+  - No: 21
+    Kanni: "\u5211\u90E8\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: ATK
+  - No: 22
+    Kanni: "\u5927\u8535\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 23
+    Kanni: "\u5BAE\u5185\u537F"
+    Ikai: "\u6B63\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 18
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 20
+    SyoukaijyoRank: 3
+    IkaiEng: Senior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 24
+    Kanni: "\u5DE6\u5927\u5F01"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Upper
+    EffectLabelEng: DFC
+  - No: 25
+    Kanni: "\u53F3\u5927\u5F01"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Upper
+    EffectLabelEng: DFC
+  - No: 26
+    Kanni: "\u8535\u4EBA\u982D"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Upper
+    EffectLabelEng: DFC
+  - No: 27
+    Kanni: "\u5DE6\u4EAC\u5927\u592B"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 28
+    Kanni: "\u53F3\u4EAC\u5927\u592B"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 29
+    Kanni: "\u5F3E\u6B63\u5927\u5F3C"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 30
+    Kanni: "\u5DE6\u8FD1\u885B\u4E2D\u5C06"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: ATK
+  - No: 31
+    Kanni: "\u5DE6\u8FD1\u885B\u6A29\u4E2D\u5C06"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: ATK
+  - No: 32
+    Kanni: "\u53F3\u8FD1\u885B\u4E2D\u5C06"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: ATK
+  - No: 33
+    Kanni: "\u53F3\u8FD1\u885B\u6A29\u4E2D\u5C06"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: ATK
+  - No: 34
+    Kanni: "\u5DE6\u885B\u9580\u7763"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: HP
+  - No: 35
+    Kanni: "\u53F3\u885B\u9580\u7763"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: HP
+  - No: 36
+    Kanni: "\u5DE6\u5175\u885B\u7763"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: HP
+  - No: 37
+    Kanni: "\u53F3\u5175\u885B\u7763"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: HP
+  - No: 38
+    Kanni: "\u592A\u5BB0\u5927\u5F10"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 39
+    Kanni: "\u52D8\u89E3\u7531\u9577\u5B98"
+    Ikai: "\u5F93\u56DB\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 16
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 10
+    SyoukaijyoRank: 3
+    IkaiEng: Junior 4th rank Lower
+    EffectLabelEng: DFC
+  - No: 40
+    Kanni: "\u5DE6\u4E2D\u5F01"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 41
+    Kanni: "\u53F3\u4E2D\u5F01"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 42
+    Kanni: "\u4E2D\u52D9\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 43
+    Kanni: "\u5927\u81B3\u5927\u592B"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 44
+    Kanni: "\u4FEE\u7406\u5927\u592B"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 45
+    Kanni: "\u592A\u5BB0\u5C11\u5F10"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 46
+    Kanni: "\u5DE6\u5C11\u5F01"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 47
+    Kanni: "\u53F3\u5C11\u5F01"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 48
+    Kanni: "\u5F0F\u90E8\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 49
+    Kanni: "\u6CBB\u90E8\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 50
+    Kanni: "\u6C11\u90E8\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 51
+    Kanni: "\u5175\u90E8\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 52
+    Kanni: "\u5211\u90E8\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: ATK
+  - No: 53
+    Kanni: "\u5927\u8535\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 54
+    Kanni: "\u5BAE\u5185\u5927\u8F14"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 55
+    Kanni: "\u5F3E\u6B63\u5C11\u5F3C"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: ATK
+  - No: 56
+    Kanni: "\u5DE6\u8FD1\u885B\u5C11\u5C06"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 57
+    Kanni: "\u5DE6\u8FD1\u885B\u6A29\u5C11\u5C06"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 58
+    Kanni: "\u53F3\u8FD1\u885B\u5C11\u5C06"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 59
+    Kanni: "\u53F3\u8FD1\u885B\u6A29\u5C11\u5C06"
+    Ikai: "\u6B63\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 14
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 5
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 60
+    Kanni: "\u4E2D\u52D9\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 61
+    Kanni: "\u5E2F\u5200\u5148\u751F"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 62
+    Kanni: "\u5927\u820E\u4EBA\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 63
+    Kanni: "\u56F3\u66F8\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 64
+    Kanni: "\u5185\u5320\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 65
+    Kanni: "\u5927\u5B66\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 66
+    Kanni: "\u96C5\u697D\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 67
+    Kanni: "\u7384\u8543\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 68
+    Kanni: "\u4E3B\u8A08\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 69
+    Kanni: "\u4E3B\u7A0E\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 70
+    Kanni: "\u6728\u5DE5\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 71
+    Kanni: "\u5DE6\u99AC\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 72
+    Kanni: "\u53F3\u99AC\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 73
+    Kanni: "\u5175\u5EAB\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: DFC
+  - No: 74
+    Kanni: "\u5DE6\u885B\u9580\u4F50"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: ATK
+  - No: 75
+    Kanni: "\u53F3\u885B\u9580\u4F50"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: ATK
+  - No: 76
+    Kanni: "\u5DE6\u5175\u885B\u4F50"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: ATK
+  - No: 77
+    Kanni: "\u53F3\u5175\u885B\u4F50"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: ATK
+  - No: 78
+    Kanni: "\u5927\u548C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 12
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 79
+    Kanni: "\u6CB3\u5185\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 38
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 80
+    Kanni: "\u4F0A\u52E2\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 4
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 81
+    Kanni: "\u6B66\u8535\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 23
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 82
+    Kanni: "\u4E0B\u7DCF\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 28
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 83
+    Kanni: "\u8FD1\u6C5F\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 6
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 84
+    Kanni: "\u9678\u5965\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 31:33:34:36:37
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 85
+    Kanni: "\u8D8A\u524D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 5
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 86
+    Kanni: "\u64AD\u78E8\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 42
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 87
+    Kanni: "\u80A5\u5F8C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: 61
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 88
+    Kanni: "\u4E94\u4F4D\u8535\u4EBA"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: ATK
+  - No: 89
+    Kanni: "\u4E94\u4F4D\u8535\u4EBA"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 12
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Upper
+    EffectLabelEng: HP
+  - No: 90
+    Kanni: "\u4F8D\u5F93"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: ATK
+  - No: 91
+    Kanni: "\u5927\u76E3\u7269"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 92
+    Kanni: "\u5F0F\u90E8\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 93
+    Kanni: "\u6CBB\u90E8\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 94
+    Kanni: "\u6C11\u90E8\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 95
+    Kanni: "\u5175\u90E8\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 96
+    Kanni: "\u5211\u90E8\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: ATK
+  - No: 97
+    Kanni: "\u5927\u8535\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 98
+    Kanni: "\u5BAE\u5185\u5C11\u8F14"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 99
+    Kanni: "\u5DE6\u4EAC\u4EAE"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 100
+    Kanni: "\u53F3\u4EAC\u4EAE"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 101
+    Kanni: "\u5927\u81B3\u4EAE"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 102
+    Kanni: "\u4FEE\u7406\u4EAE"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 103
+    Kanni: "\u5185\u8535\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 104
+    Kanni: "\u7E2B\u6BBF\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 105
+    Kanni: "\u5927\u708A\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 106
+    Kanni: "\u4E3B\u6BBF\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 107
+    Kanni: "\u6383\u90E8\u982D"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 108
+    Kanni: "\u52D8\u89E3\u7531\u6B21\u5B98"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: DFC
+  - No: 109
+    Kanni: "\u5C71\u57CE\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 16
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 110
+    Kanni: "\u6442\u6D25\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 39
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 111
+    Kanni: "\u5C3E\u5F35\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 1
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 112
+    Kanni: "\u4E09\u6CB3\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 3
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 113
+    Kanni: "\u9060\u6C5F\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 9
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 114
+    Kanni: "\u99FF\u6CB3\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 19
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 115
+    Kanni: "\u7532\u6590\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 24
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 116
+    Kanni: "\u76F8\u6A21\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 25
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 117
+    Kanni: "\u7F8E\u6FC3\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 2
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 118
+    Kanni: "\u4FE1\u6FC3\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 8
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 119
+    Kanni: "\u4E0B\u91CE\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 29
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 120
+    Kanni: "\u51FA\u7FBD\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 32:35
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 121
+    Kanni: "\u52A0\u8CC0\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 15
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 122
+    Kanni: "\u8D8A\u4E2D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 21
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 123
+    Kanni: "\u8D8A\u5F8C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 20
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 124
+    Kanni: "\u4E39\u6CE2\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 17
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 125
+    Kanni: "\u4F46\u99AC\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 41
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 126
+    Kanni: "\u56E0\u5E61\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 41
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 127
+    Kanni: "\u4F2F\u8006\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 43
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 128
+    Kanni: "\u51FA\u96F2\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 43
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 129
+    Kanni: "\u7F8E\u4F5C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 44
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 130
+    Kanni: "\u5099\u524D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 45
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 131
+    Kanni: "\u5099\u4E2D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 46
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 132
+    Kanni: "\u5099\u5F8C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 47
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 133
+    Kanni: "\u5B89\u82B8\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 49
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 134
+    Kanni: "\u5468\u9632\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 50
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 135
+    Kanni: "\u7D00\u4F0A\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 13
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 136
+    Kanni: "\u963F\u6CE2\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 52
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 137
+    Kanni: "\u8B83\u5C90\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 53
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 138
+    Kanni: "\u4F0A\u4E88\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 54
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 139
+    Kanni: "\u7B51\u524D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 58
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 140
+    Kanni: "\u7B51\u5F8C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 59
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 141
+    Kanni: "\u80A5\u524D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 60
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 142
+    Kanni: "\u8C4A\u524D\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 56
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 143
+    Kanni: "\u8C4A\u5F8C\u5B88"
+    Ikai: "\u5F93\u4E94\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 10
+    EffectUnit: '%'
+    TargetKuni: 57
+    NeedKuniQty: 3
+    SyoukaijyoRank: 2
+    IkaiEng: Junior 5th rank Lower
+    EffectLabelEng: HP
+  - No: 144
+    Kanni: "\u5927\u5916\u8A18"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 145
+    Kanni: "\u5DE6\u5927\u53F2"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 146
+    Kanni: "\u53F3\u5927\u53F2"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 147
+    Kanni: "\u4E2D\u52D9\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 148
+    Kanni: "\u5927\u5185\u8A18"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 149
+    Kanni: "\u5185\u8535\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 150
+    Kanni: "\u6B63\u89AA\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 151
+    Kanni: "\u5185\u81B3\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 152
+    Kanni: "\u5949\u81B3"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 153
+    Kanni: "\u9020\u9152\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 154
+    Kanni: "\u6771\u5E02\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 155
+    Kanni: "\u897F\u5E02\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 156
+    Kanni: "\u5F3E\u6B63\u5927\u5FE0"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 157
+    Kanni: "\u5DE6\u8FD1\u5C06\u76E3"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 158
+    Kanni: "\u53F3\u8FD1\u5C06\u76E3"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 9
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 159
+    Kanni: "\u5F0F\u90E8\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 160
+    Kanni: "\u6CBB\u90E8\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 161
+    Kanni: "\u6C11\u90E8\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 162
+    Kanni: "\u5175\u90E8\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 163
+    Kanni: "\u5211\u90E8\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: ATK
+  - No: 164
+    Kanni: "\u5927\u8535\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 165
+    Kanni: "\u5BAE\u5185\u5927\u4E1E"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 166
+    Kanni: "\u5927\u820E\u4EBA\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 167
+    Kanni: "\u56F3\u66F8\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 168
+    Kanni: "\u5185\u5320\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 169
+    Kanni: "\u5927\u5B66\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 170
+    Kanni: "\u96C5\u697D\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 171
+    Kanni: "\u7384\u8543\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 172
+    Kanni: "\u4E3B\u8A08\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 173
+    Kanni: "\u4E3B\u7A0E\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 174
+    Kanni: "\u6728\u5DE5\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 175
+    Kanni: "\u5DE6\u99AC\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 176
+    Kanni: "\u53F3\u99AC\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 177
+    Kanni: "\u5175\u5EAB\u52A9"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 178
+    Kanni: "\u96BC\u4EBA\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 179
+    Kanni: "\u7E54\u90E8\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 180
+    Kanni: "\u91C6\u5973\u6B63"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 181
+    Kanni: "\u5F3E\u6B63\u5C11\u5FE0"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 182
+    Kanni: "\u4E0A\u7DCF\u4ECB"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 27
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 183
+    Kanni: "\u5E38\u9678\u4ECB"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 30
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 184
+    Kanni: "\u4E0A\u91CE\u4ECB"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 22
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 185
+    Kanni: "\u5B89\u623F\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 27
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 186
+    Kanni: "\u82E5\u72ED\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 14
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 187
+    Kanni: "\u80FD\u767B\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 18
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 188
+    Kanni: "\u4F50\u6E21\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 20
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 189
+    Kanni: "\u4E39\u5F8C\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 40
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 190
+    Kanni: "\u77F3\u898B\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 48
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 191
+    Kanni: "\u9577\u9580\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 50
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 192
+    Kanni: "\u571F\u4F50\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 55
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 193
+    Kanni: "\u65E5\u5411\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 62
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 194
+    Kanni: "\u5927\u9685\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 64
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 195
+    Kanni: "\u85A9\u6469\u5B88"
+    Ikai: "\u6B63\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 8
+    EffectUnit: '%'
+    TargetKuni: 63
+    NeedKuniQty: 2
+    SyoukaijyoRank: 2
+    IkaiEng: Senior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 196
+    Kanni: "\u4E2D\u52D9\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 197
+    Kanni: "\u5F0F\u90E8\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 198
+    Kanni: "\u6CBB\u90E8\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 199
+    Kanni: "\u6C11\u90E8\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 200
+    Kanni: "\u5175\u90E8\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: HP
+  - No: 201
+    Kanni: "\u5211\u90E8\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: ATK
+  - No: 202
+    Kanni: "\u5927\u8535\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 203
+    Kanni: "\u5BAE\u5185\u5C11\u4E1E"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 204
+    Kanni: "\u5185\u8535\u52A9"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 205
+    Kanni: "\u7E2B\u6BBF\u52A9"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 206
+    Kanni: "\u5927\u708A\u52A9"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 207
+    Kanni: "\u4E3B\u6BBF\u52A9"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 208
+    Kanni: "\u6383\u90E8\u52A9"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 209
+    Kanni: "\u4E3B\u6C34\u6B63"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 210
+    Kanni: "\u820E\u4EBA\u6B63"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 211
+    Kanni: "\u4E3B\u81B3\u6B63"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 212
+    Kanni: "\u4E3B\u8535\u6B63"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 213
+    Kanni: "\u5DE6\u885B\u9580\u5927\u5C09"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: HP
+  - No: 214
+    Kanni: "\u53F3\u885B\u9580\u5927\u5C09"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: HP
+  - No: 215
+    Kanni: "\u5DE6\u5175\u885B\u5927\u5C09"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: ATK
+  - No: 216
+    Kanni: "\u53F3\u5175\u885B\u5927\u5C09"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: ATK
+  - No: 217
+    Kanni: "\u79CB\u7530\u57CE\u4ECB"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 218
+    Kanni: "\u516D\u4F4D\u8535\u4EBA"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 219
+    Kanni: "\u516D\u4F4D\u8535\u4EBA"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 7
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Upper
+    EffectLabelEng: DFC
+  - No: 220
+    Kanni: "\u5DE6\u4EAC\u5927\u9032"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 221
+    Kanni: "\u53F3\u4EAC\u5927\u9032"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 222
+    Kanni: "\u5927\u81B3\u5927\u9032"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 223
+    Kanni: "\u4FEE\u7406\u5927\u9032"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 224
+    Kanni: "\u4E3B\u6BBF\u9996"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 225
+    Kanni: "\u4E3B\u5DE5\u9996"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 226
+    Kanni: "\u4E3B\u99AC\u9996"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 227
+    Kanni: "\u52D8\u89E3\u7531\u5224\u5B98"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: DFC
+  - No: 228
+    Kanni: "\u548C\u6CC9\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 39
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 229
+    Kanni: "\u4F0A\u8CC0\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 11
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 230
+    Kanni: "\u5FD7\u6469\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 10
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 231
+    Kanni: "\u4F0A\u8C46\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 26
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 232
+    Kanni: "\u98DB\u9A28\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 7
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 233
+    Kanni: "\u6DE1\u8DEF\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 51
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 234
+    Kanni: "\u58F1\u5C90\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 65
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 235
+    Kanni: "\u5BFE\u99AC\u5B88"
+    Ikai: "\u5F93\u516D\u4F4D\u4E0B"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 6
+    EffectUnit: '%'
+    TargetKuni: 65
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 6th rank Lower
+    EffectLabelEng: HP
+  - No: 236
+    Kanni: "\u5C11\u5916\u8A18"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 237
+    Kanni: "\u5DE6\u5C11\u53F2"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 238
+    Kanni: "\u53F3\u5C11\u53F2"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 239
+    Kanni: "\u5C11\u5185\u8A18"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 240
+    Kanni: "\u5DE6\u4EAC\u5C11\u9032"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 241
+    Kanni: "\u53F3\u4EAC\u5C11\u9032"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 242
+    Kanni: "\u5927\u81B3\u5C11\u9032"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 243
+    Kanni: "\u4FEE\u7406\u5C11\u9032"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 244
+    Kanni: "\u5DE6\u99AC\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 245
+    Kanni: "\u53F3\u99AC\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 246
+    Kanni: "\u5175\u5EAB\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 247
+    Kanni: "\u5DE6\u885B\u9580\u5C11\u5C09"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: HP
+  - No: 248
+    Kanni: "\u53F3\u885B\u9580\u5C11\u5C09"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u7D71\u7387"
+    EffectTarget: hp
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: HP
+  - No: 249
+    Kanni: "\u5DE6\u5175\u885B\u5C11\u5C09"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: ATK
+  - No: 250
+    Kanni: "\u53F3\u5175\u885B\u5C11\u5C09"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 5
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Upper
+    EffectLabelEng: ATK
+  - No: 251
+    Kanni: "\u5C11\u76E3\u7269"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 252
+    Kanni: "\u5927\u820E\u4EBA\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 253
+    Kanni: "\u56F3\u66F8\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 254
+    Kanni: "\u5185\u5320\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 255
+    Kanni: "\u5927\u5B66\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 256
+    Kanni: "\u96C5\u697D\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 257
+    Kanni: "\u7384\u8543\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 258
+    Kanni: "\u4E3B\u8A08\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 259
+    Kanni: "\u4E3B\u7A0E\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 260
+    Kanni: "\u6728\u5DE5\u5927\u5141"
+    Ikai: "\u6B63\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 4
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 261
+    Kanni: "\u5927\u820E\u4EBA\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 262
+    Kanni: "\u56F3\u66F8\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 263
+    Kanni: "\u5185\u5320\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 264
+    Kanni: "\u5927\u5B66\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 265
+    Kanni: "\u96C5\u697D\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 266
+    Kanni: "\u7384\u8543\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 267
+    Kanni: "\u4E3B\u8A08\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 268
+    Kanni: "\u4E3B\u7A0E\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 269
+    Kanni: "\u6728\u5DE5\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 270
+    Kanni: "\u5DE6\u99AC\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: ATK
+  - No: 271
+    Kanni: "\u53F3\u99AC\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u6B66\u52C7"
+    EffectTarget: atk
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: ATK
+  - No: 272
+    Kanni: "\u5175\u5EAB\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 273
+    Kanni: "\u5185\u8535\u5927\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 274
+    Kanni: "\u7E2B\u6BBF\u5927\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 275
+    Kanni: "\u5927\u708A\u5927\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 276
+    Kanni: "\u4E3B\u6BBF\u5927\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 277
+    Kanni: "\u6383\u90E8\u5927\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Upper
+    EffectLabelEng: DFC
+  - No: 278
+    Kanni: "\u5185\u8535\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 279
+    Kanni: "\u7E2B\u6BBF\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 280
+    Kanni: "\u5927\u708A\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 281
+    Kanni: "\u4E3B\u6BBF\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 282
+    Kanni: "\u6383\u90E8\u5C11\u5141"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 283
+    Kanni: "\u5185\u8535\u4F51"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 284
+    Kanni: "\u6B63\u89AA\u4F51"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 285
+    Kanni: "\u5185\u81B3\u4F51"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 286
+    Kanni: "\u5178\u81B3"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 287
+    Kanni: "\u9020\u9152\u4F51"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 288
+    Kanni: "\u6771\u5E02\u4F51"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 289
+    Kanni: "\u897F\u5E02\u4F51"
+    Ikai: "\u5F93\u4E03\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 3
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Junior 7th rank Lower
+    EffectLabelEng: DFC
+  - No: 290
+    Kanni: "\u96BC\u4EBA\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Upper
+    EffectLabelEng: DFC
+  - No: 291
+    Kanni: "\u7E54\u90E8\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Upper
+    EffectLabelEng: DFC
+  - No: 292
+    Kanni: "\u91C6\u5973\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0A"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Upper
+    EffectLabelEng: DFC
+  - No: 293
+    Kanni: "\u4E3B\u6C34\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Lower
+    EffectLabelEng: DFC
+  - No: 294
+    Kanni: "\u820E\u4EBA\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Lower
+    EffectLabelEng: DFC
+  - No: 295
+    Kanni: "\u4E3B\u81B3\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Lower
+    EffectLabelEng: DFC
+  - No: 296
+    Kanni: "\u4E3B\u8535\u4F51"
+    Ikai: "\u6B63\u516B\u4F4D\u4E0B"
+    EffectLabel: "\u77E5\u7565"
+    EffectTarget: dfc
+    Effect: 2
+    EffectUnit: '%'
+    TargetKuni: null
+    NeedKuniQty: 1
+    SyoukaijyoRank: 1
+    IkaiEng: Senior 8th rank Lower
+    EffectLabelEng: DFC

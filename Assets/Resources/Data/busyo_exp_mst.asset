@@ -1,0 +1,614 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dfbc9df799efef42a1e712fb07fec35, type: 3}
+  m_Name: busyo_exp_mst
+  m_EditorClassIdentifier: 
+  param:
+  - lv: 1
+    requiredExp: 0
+    totalExp: 0
+  - lv: 2
+    requiredExp: 450
+    totalExp: 450
+  - lv: 3
+    requiredExp: 499
+    totalExp: 949
+  - lv: 4
+    requiredExp: 553
+    totalExp: 1502
+  - lv: 5
+    requiredExp: 611
+    totalExp: 2113
+  - lv: 6
+    requiredExp: 675
+    totalExp: 2788
+  - lv: 7
+    requiredExp: 744
+    totalExp: 3532
+  - lv: 8
+    requiredExp: 820
+    totalExp: 4352
+  - lv: 9
+    requiredExp: 903
+    totalExp: 5255
+  - lv: 10
+    requiredExp: 994
+    totalExp: 6249
+  - lv: 11
+    requiredExp: 1093
+    totalExp: 7342
+  - lv: 12
+    requiredExp: 1202
+    totalExp: 8544
+  - lv: 13
+    requiredExp: 1321
+    totalExp: 9865
+  - lv: 14
+    requiredExp: 1451
+    totalExp: 11316
+  - lv: 15
+    requiredExp: 1594
+    totalExp: 12910
+  - lv: 16
+    requiredExp: 1751
+    totalExp: 14661
+  - lv: 17
+    requiredExp: 1923
+    totalExp: 16584
+  - lv: 18
+    requiredExp: 2112
+    totalExp: 18696
+  - lv: 19
+    requiredExp: 2319
+    totalExp: 21015
+  - lv: 20
+    requiredExp: 2547
+    totalExp: 23562
+  - lv: 21
+    requiredExp: 2796
+    totalExp: 26358
+  - lv: 22
+    requiredExp: 3071
+    totalExp: 29429
+  - lv: 23
+    requiredExp: 3372
+    totalExp: 32801
+  - lv: 24
+    requiredExp: 3702
+    totalExp: 36503
+  - lv: 25
+    requiredExp: 4065
+    totalExp: 40568
+  - lv: 26
+    requiredExp: 4464
+    totalExp: 45032
+  - lv: 27
+    requiredExp: 4903
+    totalExp: 49935
+  - lv: 28
+    requiredExp: 5384
+    totalExp: 55319
+  - lv: 29
+    requiredExp: 5914
+    totalExp: 61233
+  - lv: 30
+    requiredExp: 6496
+    totalExp: 67729
+  - lv: 31
+    requiredExp: 7135
+    totalExp: 74864
+  - lv: 32
+    requiredExp: 7838
+    totalExp: 82702
+  - lv: 33
+    requiredExp: 8611
+    totalExp: 91313
+  - lv: 34
+    requiredExp: 9461
+    totalExp: 100774
+  - lv: 35
+    requiredExp: 10395
+    totalExp: 111169
+  - lv: 36
+    requiredExp: 11421
+    totalExp: 122590
+  - lv: 37
+    requiredExp: 12551
+    totalExp: 135141
+  - lv: 38
+    requiredExp: 13792
+    totalExp: 148933
+  - lv: 39
+    requiredExp: 15157
+    totalExp: 164090
+  - lv: 40
+    requiredExp: 16658
+    totalExp: 180748
+  - lv: 41
+    requiredExp: 18309
+    totalExp: 199057
+  - lv: 42
+    requiredExp: 20125
+    totalExp: 219182
+  - lv: 43
+    requiredExp: 22121
+    totalExp: 241303
+  - lv: 44
+    requiredExp: 24317
+    totalExp: 265620
+  - lv: 45
+    requiredExp: 26731
+    totalExp: 292351
+  - lv: 46
+    requiredExp: 29387
+    totalExp: 321738
+  - lv: 47
+    requiredExp: 32307
+    totalExp: 354045
+  - lv: 48
+    requiredExp: 35519
+    totalExp: 389564
+  - lv: 49
+    requiredExp: 39052
+    totalExp: 428616
+  - lv: 50
+    requiredExp: 42938
+    totalExp: 471554
+  - lv: 51
+    requiredExp: 47212
+    totalExp: 518766
+  - lv: 52
+    requiredExp: 51912
+    totalExp: 570678
+  - lv: 53
+    requiredExp: 57083
+    totalExp: 627761
+  - lv: 54
+    requiredExp: 62769
+    totalExp: 690530
+  - lv: 55
+    requiredExp: 69024
+    totalExp: 759554
+  - lv: 56
+    requiredExp: 75904
+    totalExp: 835458
+  - lv: 57
+    requiredExp: 83472
+    totalExp: 918930
+  - lv: 58
+    requiredExp: 91795
+    totalExp: 1010725
+  - lv: 59
+    requiredExp: 100951
+    totalExp: 1111676
+  - lv: 60
+    requiredExp: 111021
+    totalExp: 1222697
+  - lv: 61
+    requiredExp: 122098
+    totalExp: 1344795
+  - lv: 62
+    requiredExp: 134282
+    totalExp: 1479077
+  - lv: 63
+    requiredExp: 147685
+    totalExp: 1626762
+  - lv: 64
+    requiredExp: 162427
+    totalExp: 1789189
+  - lv: 65
+    requiredExp: 178642
+    totalExp: 1967831
+  - lv: 66
+    requiredExp: 196479
+    totalExp: 2164310
+  - lv: 67
+    requiredExp: 216099
+    totalExp: 2380409
+  - lv: 68
+    requiredExp: 237680
+    totalExp: 2618089
+  - lv: 69
+    requiredExp: 261419
+    totalExp: 2879508
+  - lv: 70
+    requiredExp: 287531
+    totalExp: 3167039
+  - lv: 71
+    requiredExp: 316254
+    totalExp: 3483293
+  - lv: 72
+    requiredExp: 347849
+    totalExp: 3831142
+  - lv: 73
+    requiredExp: 382603
+    totalExp: 4213745
+  - lv: 74
+    requiredExp: 420832
+    totalExp: 4634577
+  - lv: 75
+    requiredExp: 462883
+    totalExp: 5097460
+  - lv: 76
+    requiredExp: 509139
+    totalExp: 5606599
+  - lv: 77
+    requiredExp: 560019
+    totalExp: 6166618
+  - lv: 78
+    requiredExp: 615988
+    totalExp: 6782606
+  - lv: 79
+    requiredExp: 677553
+    totalExp: 7460159
+  - lv: 80
+    requiredExp: 745273
+    totalExp: 8205432
+  - lv: 81
+    requiredExp: 819766
+    totalExp: 9025198
+  - lv: 82
+    requiredExp: 901707
+    totalExp: 9926905
+  - lv: 83
+    requiredExp: 991841
+    totalExp: 10918746
+  - lv: 84
+    requiredExp: 1090989
+    totalExp: 12009735
+  - lv: 85
+    requiredExp: 1200051
+    totalExp: 13209786
+  - lv: 86
+    requiredExp: 1320018
+    totalExp: 14529804
+  - lv: 87
+    requiredExp: 1451982
+    totalExp: 15981786
+  - lv: 88
+    requiredExp: 1597142
+    totalExp: 17578928
+  - lv: 89
+    requiredExp: 1756817
+    totalExp: 19335745
+  - lv: 90
+    requiredExp: 1932459
+    totalExp: 21268204
+  - lv: 91
+    requiredExp: 2125665
+    totalExp: 23393869
+  - lv: 92
+    requiredExp: 2338190
+    totalExp: 25732059
+  - lv: 93
+    requiredExp: 2571968
+    totalExp: 28304027
+  - lv: 94
+    requiredExp: 2829124
+    totalExp: 31133151
+  - lv: 95
+    requiredExp: 3111994
+    totalExp: 34245145
+  - lv: 96
+    requiredExp: 3423151
+    totalExp: 37668296
+  - lv: 97
+    requiredExp: 3765423
+    totalExp: 41433719
+  - lv: 98
+    requiredExp: 4141922
+    totalExp: 45575641
+  - lv: 99
+    requiredExp: 4556070
+    totalExp: 50131711
+  - lv: 100
+    requiredExp: 5011632
+    totalExp: 55143343
+  - lv: 101
+    requiredExp: 5500000
+    totalExp: 60643343
+  - lv: 102
+    requiredExp: 5500000
+    totalExp: 66143343
+  - lv: 103
+    requiredExp: 6000000
+    totalExp: 72143343
+  - lv: 104
+    requiredExp: 6000000
+    totalExp: 78143343
+  - lv: 105
+    requiredExp: 6500000
+    totalExp: 84643343
+  - lv: 106
+    requiredExp: 6500000
+    totalExp: 91143343
+  - lv: 107
+    requiredExp: 7000000
+    totalExp: 98143343
+  - lv: 108
+    requiredExp: 7000000
+    totalExp: 105143343
+  - lv: 109
+    requiredExp: 7500000
+    totalExp: 112643343
+  - lv: 110
+    requiredExp: 7500000
+    totalExp: 120143343
+  - lv: 111
+    requiredExp: 8000000
+    totalExp: 128143343
+  - lv: 112
+    requiredExp: 8000000
+    totalExp: 136143343
+  - lv: 113
+    requiredExp: 8500000
+    totalExp: 144643343
+  - lv: 114
+    requiredExp: 8500000
+    totalExp: 153143343
+  - lv: 115
+    requiredExp: 9000000
+    totalExp: 162143343
+  - lv: 116
+    requiredExp: 9000000
+    totalExp: 171143343
+  - lv: 117
+    requiredExp: 9500000
+    totalExp: 180643343
+  - lv: 118
+    requiredExp: 9500000
+    totalExp: 190143343
+  - lv: 119
+    requiredExp: 10000000
+    totalExp: 200143343
+  - lv: 120
+    requiredExp: 10000000
+    totalExp: 210143343
+  - lv: 121
+    requiredExp: 10500000
+    totalExp: 220643343
+  - lv: 122
+    requiredExp: 10500000
+    totalExp: 231143343
+  - lv: 123
+    requiredExp: 11000000
+    totalExp: 242143343
+  - lv: 124
+    requiredExp: 11000000
+    totalExp: 253143343
+  - lv: 125
+    requiredExp: 11500000
+    totalExp: 264643343
+  - lv: 126
+    requiredExp: 11500000
+    totalExp: 276143343
+  - lv: 127
+    requiredExp: 12000000
+    totalExp: 288143343
+  - lv: 128
+    requiredExp: 12000000
+    totalExp: 300143343
+  - lv: 129
+    requiredExp: 12500000
+    totalExp: 312643343
+  - lv: 130
+    requiredExp: 12500000
+    totalExp: 325143343
+  - lv: 131
+    requiredExp: 13000000
+    totalExp: 338143343
+  - lv: 132
+    requiredExp: 13000000
+    totalExp: 351143343
+  - lv: 133
+    requiredExp: 13500000
+    totalExp: 364643343
+  - lv: 134
+    requiredExp: 13500000
+    totalExp: 378143343
+  - lv: 135
+    requiredExp: 14000000
+    totalExp: 392143343
+  - lv: 136
+    requiredExp: 14000000
+    totalExp: 406143343
+  - lv: 137
+    requiredExp: 14500000
+    totalExp: 420643343
+  - lv: 138
+    requiredExp: 14500000
+    totalExp: 435143343
+  - lv: 139
+    requiredExp: 15000000
+    totalExp: 450143343
+  - lv: 140
+    requiredExp: 15000000
+    totalExp: 465143343
+  - lv: 141
+    requiredExp: 15500000
+    totalExp: 480643343
+  - lv: 142
+    requiredExp: 15500000
+    totalExp: 496143343
+  - lv: 143
+    requiredExp: 16000000
+    totalExp: 512143343
+  - lv: 144
+    requiredExp: 16000000
+    totalExp: 528143343
+  - lv: 145
+    requiredExp: 16500000
+    totalExp: 544643343
+  - lv: 146
+    requiredExp: 16500000
+    totalExp: 561143343
+  - lv: 147
+    requiredExp: 17000000
+    totalExp: 578143343
+  - lv: 148
+    requiredExp: 17000000
+    totalExp: 595143343
+  - lv: 149
+    requiredExp: 17500000
+    totalExp: 612643343
+  - lv: 150
+    requiredExp: 17500000
+    totalExp: 630143343
+  - lv: 151
+    requiredExp: 18000000
+    totalExp: 648143343
+  - lv: 152
+    requiredExp: 18000000
+    totalExp: 666143343
+  - lv: 153
+    requiredExp: 18500000
+    totalExp: 684643343
+  - lv: 154
+    requiredExp: 18500000
+    totalExp: 703143343
+  - lv: 155
+    requiredExp: 19000000
+    totalExp: 722143343
+  - lv: 156
+    requiredExp: 19000000
+    totalExp: 741143343
+  - lv: 157
+    requiredExp: 19500000
+    totalExp: 760643343
+  - lv: 158
+    requiredExp: 19500000
+    totalExp: 780143343
+  - lv: 159
+    requiredExp: 20000000
+    totalExp: 800143343
+  - lv: 160
+    requiredExp: 20000000
+    totalExp: 820143343
+  - lv: 161
+    requiredExp: 20500000
+    totalExp: 840643343
+  - lv: 162
+    requiredExp: 20500000
+    totalExp: 861143343
+  - lv: 163
+    requiredExp: 21000000
+    totalExp: 882143343
+  - lv: 164
+    requiredExp: 21000000
+    totalExp: 903143343
+  - lv: 165
+    requiredExp: 21500000
+    totalExp: 924643343
+  - lv: 166
+    requiredExp: 21500000
+    totalExp: 946143343
+  - lv: 167
+    requiredExp: 22000000
+    totalExp: 968143343
+  - lv: 168
+    requiredExp: 22000000
+    totalExp: 990143343
+  - lv: 169
+    requiredExp: 22500000
+    totalExp: 1012643343
+  - lv: 170
+    requiredExp: 22500000
+    totalExp: 1035143343
+  - lv: 171
+    requiredExp: 23000000
+    totalExp: 1058143343
+  - lv: 172
+    requiredExp: 23000000
+    totalExp: 1081143343
+  - lv: 173
+    requiredExp: 23500000
+    totalExp: 1104643343
+  - lv: 174
+    requiredExp: 23500000
+    totalExp: 1128143343
+  - lv: 175
+    requiredExp: 24000000
+    totalExp: 1152143343
+  - lv: 176
+    requiredExp: 24000000
+    totalExp: 1176143343
+  - lv: 177
+    requiredExp: 24500000
+    totalExp: 1200643343
+  - lv: 178
+    requiredExp: 24500000
+    totalExp: 1225143343
+  - lv: 179
+    requiredExp: 25000000
+    totalExp: 1250143343
+  - lv: 180
+    requiredExp: 25000000
+    totalExp: 1275143343
+  - lv: 181
+    requiredExp: 25500000
+    totalExp: 1300643343
+  - lv: 182
+    requiredExp: 25500000
+    totalExp: 1326143343
+  - lv: 183
+    requiredExp: 26000000
+    totalExp: 1352143343
+  - lv: 184
+    requiredExp: 26000000
+    totalExp: 1378143343
+  - lv: 185
+    requiredExp: 26500000
+    totalExp: 1404643343
+  - lv: 186
+    requiredExp: 26500000
+    totalExp: 1431143343
+  - lv: 187
+    requiredExp: 27000000
+    totalExp: 1458143343
+  - lv: 188
+    requiredExp: 27000000
+    totalExp: 1485143343
+  - lv: 189
+    requiredExp: 27500000
+    totalExp: 1512643343
+  - lv: 190
+    requiredExp: 27500000
+    totalExp: 1540143343
+  - lv: 191
+    requiredExp: 28000000
+    totalExp: 1568143343
+  - lv: 192
+    requiredExp: 28000000
+    totalExp: 1596143343
+  - lv: 193
+    requiredExp: 28500000
+    totalExp: 1624643343
+  - lv: 194
+    requiredExp: 28500000
+    totalExp: 1653143343
+  - lv: 195
+    requiredExp: 29000000
+    totalExp: 1682143343
+  - lv: 196
+    requiredExp: 29000000
+    totalExp: 1711143343
+  - lv: 197
+    requiredExp: 29500000
+    totalExp: 1740643343
+  - lv: 198
+    requiredExp: 29500000
+    totalExp: 1770143343
+  - lv: 199
+    requiredExp: 30000000
+    totalExp: 1800143343
+  - lv: 200
+    requiredExp: 30000000
+    totalExp: 1830143343
