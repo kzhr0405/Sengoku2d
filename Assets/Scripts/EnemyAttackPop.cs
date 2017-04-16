@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class EnemyAttackPop : MonoBehaviour {
 
     public int enemyDaimyoId = 0;
+    public bool myDaimyoBusyoFlg = false;
+    int addRatioForMyDaimyoBusyo = 10;
 
-	public void OnClick(){
+    public void OnClick(){
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[0].Play();
 
@@ -50,7 +52,52 @@ public class EnemyAttackPop : MonoBehaviour {
                 }
             }
         }
-        //View Enemy
+        
+        //Same Daimyo Check
+        bool sameDaimyoOnFlg = false;
+        foreach (GameObject playerObj in GameObject.FindGameObjectsWithTag("Player")) {
+            int belongDaimyoId = playerObj.GetComponent<SimpleHP>().belongDaimyoId;
+            foreach (GameObject playerObj2 in GameObject.FindGameObjectsWithTag("Player")) {
+                if (playerObj2.GetComponent<SimpleHP>().belongDaimyoId == belongDaimyoId) {
+                    playerObj.GetComponent<SimpleHP>().numSameDaimyo = playerObj.GetComponent<SimpleHP>().numSameDaimyo + 1;
+                    if (playerObj.GetComponent<SimpleHP>().numSameDaimyo == 2) {
+                        sameDaimyoOnFlg = true;
+                    }
+                }
+            }
+        }
+
+        //Power Up Effection
+        if(myDaimyoBusyoFlg) {
+            foreach (GameObject busyoObj in GameObject.FindGameObjectsWithTag("Player")) {
+                int atk = busyoObj.GetComponent<SimpleAttack>().baseAtk;                
+                int dfc = busyoObj.GetComponent<SimpleHP>().baseDfc;
+                int addAtk = Mathf.CeilToInt((float)atk * (float)addRatioForMyDaimyoBusyo) / 100;
+                int addDfc = Mathf.CeilToInt((float)dfc * (float)addRatioForMyDaimyoBusyo) / 100;
+                atk = atk + addAtk;
+                dfc = dfc + addDfc;
+                busyoObj.GetComponent<SimpleAttack>().atk = Mathf.FloorToInt(atk);
+                busyoObj.GetComponent<SimpleHP>().dfc = Mathf.FloorToInt(dfc);
+            }
+        }
+        if (sameDaimyoOnFlg) {
+            foreach (GameObject busyoObj in GameObject.FindGameObjectsWithTag("Player")) {
+                int totalAtk = busyoObj.GetComponent<SimpleAttack>().baseAtk;
+                int totalDfc = busyoObj.GetComponent<SimpleHP>().baseDfc;
+                int atk = busyoObj.GetComponent<SimpleAttack>().atk;
+                int dfc = busyoObj.GetComponent<SimpleHP>().dfc;
+                int numSameDaimyo = busyoObj.GetComponent<SimpleHP>().numSameDaimyo;
+
+                int addRatio = (numSameDaimyo - 1) * 5;
+                busyoObj.GetComponent<SimpleAttack>().atk = atk + Mathf.FloorToInt(((float)totalAtk * (float)addRatio) / 100);
+                busyoObj.GetComponent<SimpleHP>().dfc = dfc + Mathf.FloorToInt(((float)totalDfc * (float)addRatio) / 100);
+            }
+        }
+
+
+
+
+        /**View Enemy**/
         //makeSimpleEnemy(enemyBusyoId, battleArea, 0);
         int stageId = timer.GetComponent<ShiroAttack>().toStageId;
         char[] delimiterChars = { ':' };
@@ -146,10 +193,89 @@ public class EnemyAttackPop : MonoBehaviour {
         int dfc = 10 * sts.getDfc(busyoId, lv);
         float spd = sts.getSpd(busyoId, lv);
 
+        JyosyuHeiryoku jyosyuHei = new JyosyuHeiryoku();
+        int addJyosyuHei = jyosyuHei.GetJyosyuHeiryoku(busyoId.ToString());
+
+        KahouStatusGet kahouSts = new KahouStatusGet();
+        string[] KahouStatusArray = kahouSts.getKahouForStatus(busyoId.ToString(), hp, atk, dfc, (int)spd);
+        string kanniTmp = "kanni" + busyoId;
+        float addAtkByKanni = 0;
+        float addHpByKanni = 0;
+        float addDfcByKanni = 0;
+
+        if (PlayerPrefs.HasKey(kanniTmp)) {
+            int kanniId = PlayerPrefs.GetInt(kanniTmp);
+            Kanni kanni = new Kanni();
+
+            //Status
+            string kanniTarget = kanni.getEffectTarget(kanniId);
+            int effect = kanni.getEffect(kanniId);
+            if (kanniTarget == "atk") {
+                addAtkByKanni = ((float)atk * (float)effect) / 100;
+            }
+            else if (kanniTarget == "hp") {
+                addHpByKanni = ((float)hp * (float)effect) / 100;
+            }
+            else if (kanniTarget == "dfc") {
+                addDfcByKanni = ((float)dfc * (float)effect) / 100;
+            }
+        }
+
+        atk = atk + int.Parse(KahouStatusArray[0]) + Mathf.FloorToInt(addAtkByKanni);
+        hp = hp + int.Parse(KahouStatusArray[1]) + Mathf.FloorToInt(addHpByKanni) + addJyosyuHei;
+        dfc = dfc + int.Parse(KahouStatusArray[2]) + Mathf.FloorToInt(addDfcByKanni);
+
+
+        //Child Parametor
+        string heiId = "hei" + busyoId.ToString();
+        string chParam = PlayerPrefs.GetString(heiId, "0");
+        if (chParam == "0") {
+            StatusGet statusScript = new StatusGet();
+            string heisyu = statusScript.getHeisyu(busyoId);
+            chParam = heisyu + ":1:1:1";
+            PlayerPrefs.SetString(heiId, chParam);
+            PlayerPrefs.Flush();
+        }
+
+        char[] delimiterChars = { ':' };
+        if (chParam.Contains(":")) {
+            string[] ch_list = chParam.Split(delimiterChars);
+
+            int chQty = int.Parse(ch_list[1]);
+            int chlv = int.Parse(ch_list[2]);
+            int ch_status = int.Parse(ch_list[3]);
+            int totalChldHp = 0;
+            int totalChldAtk = 0;
+            int totalChldDfc = 0;
+
+            ch_status = ch_status * 10;
+            int atkDfc = (int)sts.getChAtkDfc(ch_status, hp);
+
+            totalChldHp = ch_status * chQty;
+            totalChldAtk = atkDfc * chQty;
+            totalChldDfc = atkDfc * chQty;
+
+            //Set value
+            hp = hp + totalChldHp;
+            atk = atk + totalChldAtk;
+            dfc = dfc + totalChldDfc;
+        }
+
+
         prefab.GetComponent<Homing>().speed = spd/20;
         prefab.GetComponent<SimpleAttack>().atk = atk;
         prefab.GetComponent<SimpleHP>().dfc = dfc;
+        prefab.GetComponent<SimpleAttack>().baseAtk = atk;
+        prefab.GetComponent<SimpleHP>().baseDfc = dfc;
         prefab.GetComponent<SimpleHP>().life = hp;
+
+        //check
+        int myDaimyoBusyo = PlayerPrefs.GetInt("myDaimyoBusyo");
+        if (busyoId == myDaimyoBusyo) {
+            myDaimyoBusyoFlg = true;
+        }
+        
+
     }
 
     public void makeSimpleEnemy(int busyoId, GameObject battleArea, int xAdjust, GameObject YesBtn) {
@@ -188,7 +314,8 @@ public class EnemyAttackPop : MonoBehaviour {
         YesBtn.GetComponent<StartSimpleKassen>().busyoObjList.Add(prefab);
 
         //Parametor
-        int lv = GameObject.Find("BattleButton").GetComponent<StartKassen>().activeBusyoLv;
+        StartKassen stksn = GameObject.Find("BattleButton").GetComponent<StartKassen>();
+        int lv = stksn.activeBusyoLv;
         string busyoString = busyoId.ToString();
         StatusGet sts = new StatusGet();
         int hp = 100 * sts.getHp(busyoId, lv);
@@ -196,12 +323,33 @@ public class EnemyAttackPop : MonoBehaviour {
         int dfc = 10 * sts.getDfc(busyoId, lv);
         float spd = sts.getSpd(busyoId, lv);
 
+
+        //Child Parametor
+        int chlv = stksn.activeButaiLv;
+        int chQty = stksn.activeButaiQty;
+        EnemyInstance enemyInstance = new EnemyInstance();
+        string ch_type = sts.getHeisyu(busyoId);
+        int ch_status = enemyInstance.getChildStatus(lv, ch_type, 0);
+        int totalChldHp = 0;
+        int totalChldAtk = 0;
+        int totalChldDfc = 0;
+        int atkDfc = (int)sts.getChAtkDfc(ch_status, hp);
+
+        totalChldHp = ch_status * chQty;
+        totalChldAtk = atkDfc * chQty;
+        totalChldDfc = atkDfc * chQty;
+
+        //Set value
+        hp = hp + totalChldHp;
+        atk = atk + totalChldAtk;
+        dfc = dfc + totalChldDfc;       
+
         prefab.GetComponent<Homing>().speed = spd/20;
         prefab.GetComponent<SimpleAttack>().atk = atk;
         prefab.GetComponent<SimpleHP>().dfc = dfc;
+        prefab.GetComponent<SimpleAttack>().baseAtk = atk;
+        prefab.GetComponent<SimpleHP>().baseDfc = dfc;
         prefab.GetComponent<SimpleHP>().life = hp;
-
-
 
     }
 

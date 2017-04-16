@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class SimpleAttack : MonoBehaviour {
-    
+
     //Attack Power
-    public float atk = 20;
+    public int baseAtk = 0;
+    public int atk = 20;
     private float timeleft;
     public bool lowerFlg = false;
 
@@ -45,7 +46,8 @@ public class SimpleAttack : MonoBehaviour {
             if(doNotDo!=1) {
                 List<float> powerUpList = new List<float>() {1.2f,1.5f,2.0f,2.5f,3.0f};
                 int rdmId = UnityEngine.Random.Range(0, powerUpList.Count);
-                atk = atk * powerUpList[rdmId];
+                float tmpAtk = (float)atk;
+                atk = Mathf.CeilToInt(tmpAtk * powerUpList[rdmId]);
 
                 //anim
                 string path = "Prefabs/SimpleBattle/atk_up";
@@ -57,7 +59,8 @@ public class SimpleAttack : MonoBehaviour {
                 if(tag=="Enemy") {
                     List<float> powerDownList = new List<float>() { 0.5f, 0.6f, 0.7f, 0.8f, 0.9f };
                     int rdmId = UnityEngine.Random.Range(0, powerDownList.Count);
-                    atk = atk * powerDownList[rdmId];
+                    float tmpAtk = (float)atk;
+                    atk = Mathf.CeilToInt(tmpAtk * powerDownList[rdmId]);
                 }
             }
         }

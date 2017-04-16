@@ -81,7 +81,7 @@ public class StartGame : MonoBehaviour {
 		audioSources [5].Play ();
         clickedFlg = true;
 
-        if (Application.internetReachability == NetworkReachability.NotReachable) {
+            if (Application.internetReachability == NetworkReachability.NotReachable) {
             Debug.Log("No Network");
             //接続されていないときの処理
             fade.FadeIn(2, () => {

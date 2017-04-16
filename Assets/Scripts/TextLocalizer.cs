@@ -10,6 +10,7 @@ public class TextLocalizer : MonoBehaviour {
 
     void Start() {
         Text text = GetComponent<Text>();
+        
         if (Application.systemLanguage != SystemLanguage.Japanese) {
             text.text = englishText;
             if (englishFontSize != 0) {

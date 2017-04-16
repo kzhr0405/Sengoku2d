@@ -75,11 +75,12 @@ public class ItemInfo : MonoBehaviour {
             itemIconView.transform.localPosition = new Vector3 (0, 120, 0);
             itemIconView.transform.FindChild ("Qty").GetComponent<Text> ().text = "";
 			itemIconView.GetComponent<Button> ().enabled = false;
+            RectTransform rt = itemIconView.GetComponent(typeof(RectTransform)) as RectTransform;
+            rt.sizeDelta = new Vector2(150, 150);
 
 
-
-			//Sell Button Set
-			sellBtn.GetComponent<DoSell> ().kahouName = itemInfoList [1];
+            //Sell Button Set
+            sellBtn.GetComponent<DoSell> ().kahouName = itemInfoList [1];
 			sellBtn.GetComponent<DoSell> ().kahouType = name;
 			sellBtn.GetComponent<DoSell> ().kahouSell = 0;
 
