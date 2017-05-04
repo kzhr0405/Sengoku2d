@@ -24,7 +24,7 @@ public class AddHyourouConfirm : MonoBehaviour {
 			string pathOfBoard = "Prefabs/Map/common/AddHyourouBoard";
 			GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
 			board.transform.SetParent (panel.transform);
-			if (Application.loadedLevelName != "shisya") {
+			if (Application.loadedLevelName != "shisya" && Application.loadedLevelName != "naisei") {
                 board.transform.localScale = new Vector2(1, 1);
             }else {
                 board.transform.localScale = new Vector2(1, 0.8f);

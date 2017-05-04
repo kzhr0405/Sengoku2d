@@ -1,0 +1,558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{101567FA-9F41-34E7-AB62-9215CE8590BB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityBuildTarget>Android:13</UnityBuildTarget>
+    <UnityVersion>5.5.0f3</UnityVersion>
+    <RootNamespace></RootNamespace>
+    <LangVersion>4</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Debug\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Debug\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;UNITY_PURCHASING;UNITY_ANALYTICS;UNITY_ADS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\UnityVS_bin\Release\</OutputPath>
+    <IntermediateOutputPath>Temp\UnityVS_obj\Release\</IntermediateOutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DefineConstants>TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_5_0;UNITY_5_5;UNITY_5;UNITY_PURCHASING;UNITY_ANALYTICS;UNITY_ADS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VIDEO;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;UNITY_TEAM_LICENSE;ENABLE_VSTU</DefineConstants>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="Boo.Lang" />
+    <Reference Include="UnityScript.Lang" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PlaymodeTestsRunner">
+      <HintPath>Library\UnityAssemblies\UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VR">
+      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WP8PopUps">
+      <HintPath>Assets\Plugins\WP8PopUps.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Editor">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Security">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Stores">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Stores.dll</HintPath>
+    </Reference>
+    <Reference Include="Apple">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Apple\Apple.dll</HintPath>
+    </Reference>
+    <Reference Include="Tizen">
+      <HintPath>Assets\Plugins\UnityPurchasing\Bin\Tizen\Tizen.dll</HintPath>
+    </Reference>
+    <Reference Include="winrt">
+      <HintPath>Assets\Plugins\UnityPurchasing\winrt\winrt.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>Assets\Scripts\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Sengoku2d.Plugins.csproj">
+      <Project>{A5CD69A7-E099-183C-63A6-773727F6A224}</Project>
+      <Name>Sengoku2d.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Fade\Scripts\Fade.cs" />
+    <Compile Include="Assets\Fade\Scripts\FadeImage.cs" />
+    <Compile Include="Assets\Fade\Scripts\FadeUI.cs" />
+    <Compile Include="Assets\Fade\Scripts\IFade.cs" />
+    <Compile Include="Assets\NCMB\NCMBManager.cs" />
+    <Compile Include="Assets\NCMB\NCMBSettings.cs" />
+    <Compile Include="Assets\NCMB\Script\CommonConstant.cs" />
+    <Compile Include="Assets\NCMB\Script\ExtensionsClass.cs" />
+    <Compile Include="Assets\NCMB\Script\MimeTypeMap.cs" />
+    <Compile Include="Assets\NCMB\Script\MiniJSON.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBACL.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBAddOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBAddUniqueOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBAnalytics.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBCallback.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBClassNameAttribute.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBConnection.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBDebug.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBDeleteOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBException.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBFieldOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBFile.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBGeoPoint.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBIncrementOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBInstallation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBObject.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBPush.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBQuery.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBRelation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBRelationOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBRemoveOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBRole.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBScript.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBSetOperation.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBUser.cs" />
+    <Compile Include="Assets\NCMB\Script\NCMBUtility.cs" />
+    <Compile Include="Assets\NCMB\Script\NamespaceDoc.cs" />
+    <Compile Include="Assets\NCMB\Script\Platform.cs" />
+    <Compile Include="Assets\Scripts\AddHyourou.cs" />
+    <Compile Include="Assets\Scripts\AddHyourouConfirm.cs" />
+    <Compile Include="Assets\Scripts\AddMoney.cs" />
+    <Compile Include="Assets\Scripts\AddMoneyConfirm.cs" />
+    <Compile Include="Assets\Scripts\AppUtil.cs" />
+    <Compile Include="Assets\Scripts\AreaButton.cs" />
+    <Compile Include="Assets\Scripts\AspectratioController.cs" />
+    <Compile Include="Assets\Scripts\AssetBundleManager.cs" />
+    <Compile Include="Assets\Scripts\AssetLoader.cs" />
+    <Compile Include="Assets\Scripts\AttackLong.cs" />
+    <Compile Include="Assets\Scripts\AttackNaiseiView.cs" />
+    <Compile Include="Assets\Scripts\AudioController.cs" />
+    <Compile Include="Assets\Scripts\AutoAttack.cs" />
+    <Compile Include="Assets\Scripts\BGMSESwitch.cs" />
+    <Compile Include="Assets\Scripts\BackMain.cs" />
+    <Compile Include="Assets\Scripts\BackStageButton.cs" />
+    <Compile Include="Assets\Scripts\BakuhuInfo.cs" />
+    <Compile Include="Assets\Scripts\BakuhuMenu.cs" />
+    <Compile Include="Assets\Scripts\BakuhuMenuReturn.cs" />
+    <Compile Include="Assets\Scripts\Blinker.cs" />
+    <Compile Include="Assets\Scripts\BouryakuMenu.cs" />
+    <Compile Include="Assets\Scripts\BouryakuView.cs" />
+    <Compile Include="Assets\Scripts\BuildNaisei.cs" />
+    <Compile Include="Assets\Scripts\BuildNaiseiWithItem.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\BusyoDetailInfo.cs" />
+    <Compile Include="Assets\Scripts\BusyoHPBar.cs" />
+    <Compile Include="Assets\Scripts\BusyoInfoGet.cs" />
+    <Compile Include="Assets\Scripts\BusyoSenkou.cs" />
+    <Compile Include="Assets\Scripts\BusyoStatusButton.cs" />
+    <Compile Include="Assets\Scripts\BusyoView.cs" />
+    <Compile Include="Assets\Scripts\BuySlider.cs" />
+    <Compile Include="Assets\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\CloseBoard.cs" />
+    <Compile Include="Assets\Scripts\CloseEventBoard.cs" />
+    <Compile Include="Assets\Scripts\CloseLayer.cs" />
+    <Compile Include="Assets\Scripts\CloseMenu.cs" />
+    <Compile Include="Assets\Scripts\CloseOneBoard.cs" />
+    <Compile Include="Assets\Scripts\ClosePopMenu.cs" />
+    <Compile Include="Assets\Scripts\CloseSimpleBattle.cs" />
+    <Compile Include="Assets\Scripts\CreditKiller.cs" />
+    <Compile Include="Assets\Scripts\CyakaiController.cs" />
+    <Compile Include="Assets\Scripts\CyouhouInfo.cs" />
+    <Compile Include="Assets\Scripts\CyouhouSelect.cs" />
+    <Compile Include="Assets\Scripts\CyouteiMenu.cs" />
+    <Compile Include="Assets\Scripts\CyouteiPop.cs" />
+    <Compile Include="Assets\Scripts\CyouteiPopMain.cs" />
+    <Compile Include="Assets\Scripts\CyusaiDaimyoSelect.cs" />
+    <Compile Include="Assets\Scripts\Daimyo.cs" />
+    <Compile Include="Assets\Scripts\DamagePop.cs" />
+    <Compile Include="Assets\Scripts\DataBusyo.cs" />
+    <Compile Include="Assets\Scripts\DataBusyoStatus.cs" />
+    <Compile Include="Assets\Scripts\DataJinkei.cs" />
+    <Compile Include="Assets\Scripts\DataKuni.cs" />
+    <Compile Include="Assets\Scripts\DataMaker.cs" />
+    <Compile Include="Assets\Scripts\DataMap.cs" />
+    <Compile Include="Assets\Scripts\DataPatch.cs" />
+    <Compile Include="Assets\Scripts\DataPvP.cs" />
+    <Compile Include="Assets\Scripts\DataRegister.cs" />
+    <Compile Include="Assets\Scripts\DataUserId.cs" />
+    <Compile Include="Assets\Scripts\DeadBusyo.cs" />
+    <Compile Include="Assets\Scripts\DeleteKahou.cs" />
+    <Compile Include="Assets\Scripts\DoBouei.cs" />
+    <Compile Include="Assets\Scripts\DoBouryaku.cs" />
+    <Compile Include="Assets\Scripts\DoBuy.cs" />
+    <Compile Include="Assets\Scripts\DoCyouhei.cs" />
+    <Compile Include="Assets\Scripts\DoCyouteiMenu.cs" />
+    <Compile Include="Assets\Scripts\DoCyusai.cs" />
+    <Compile Include="Assets\Scripts\DoDestroy.cs" />
+    <Compile Include="Assets\Scripts\DoDoumeiAttack.cs" />
+    <Compile Include="Assets\Scripts\DoDoumeiHaki.cs" />
+    <Compile Include="Assets\Scripts\DoGaikou.cs" />
+    <Compile Include="Assets\Scripts\DoGiveup.cs" />
+    <Compile Include="Assets\Scripts\DoHidensyo.cs" />
+    <Compile Include="Assets\Scripts\DoKainin.cs" />
+    <Compile Include="Assets\Scripts\DoKanjyo.cs" />
+    <Compile Include="Assets\Scripts\DoKessen.cs" />
+    <Compile Include="Assets\Scripts\DoKousaku.cs" />
+    <Compile Include="Assets\Scripts\DoKunren.cs" />
+    <Compile Include="Assets\Scripts\DoNextSeason.cs" />
+    <Compile Include="Assets\Scripts\DoNinmei.cs" />
+    <Compile Include="Assets\Scripts\DoRemoveKanni.cs" />
+    <Compile Include="Assets\Scripts\DoRestart.cs" />
+    <Compile Include="Assets\Scripts\DoSelectDaimyo.cs" />
+    <Compile Include="Assets\Scripts\DoSell.cs" />
+    <Compile Include="Assets\Scripts\DoShiroAttack.cs" />
+    <Compile Include="Assets\Scripts\DoShisya.cs" />
+    <Compile Include="Assets\Scripts\DoShisyaBack.cs" />
+    <Compile Include="Assets\Scripts\DoSoubujirei.cs" />
+    <Compile Include="Assets\Scripts\DoSyouninMenu.cs" />
+    <Compile Include="Assets\Scripts\DoSyugyo.cs" />
+    <Compile Include="Assets\Scripts\DoTobatsu.cs" />
+    <Compile Include="Assets\Scripts\DoTouyou.cs" />
+    <Compile Include="Assets\Scripts\DoTsuihou.cs" />
+    <Compile Include="Assets\Scripts\DoTsuihouConfirm.cs" />
+    <Compile Include="Assets\Scripts\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\DontDestroySoundOnLoad.cs" />
+    <Compile Include="Assets\Scripts\DouguSoukoScene.cs" />
+    <Compile Include="Assets\Scripts\Doumei.cs" />
+    <Compile Include="Assets\Scripts\DoumeiGaikouMenu.cs" />
+    <Compile Include="Assets\Scripts\DownEnemy.cs" />
+    <Compile Include="Assets\Scripts\DragHandler.cs" />
+    <Compile Include="Assets\Scripts\EnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\EnemyAttackPop.cs" />
+    <Compile Include="Assets\Scripts\EnemyEventHandler.cs" />
+    <Compile Include="Assets\Scripts\EnemyHP.cs" />
+    <Compile Include="Assets\Scripts\EnemyInstance.cs" />
+    <Compile Include="Assets\Scripts\EnemySenryokuCalc.cs" />
+    <Compile Include="Assets\Scripts\EquipKahou.cs" />
+    <Compile Include="Assets\Scripts\Escape.cs" />
+    <Compile Include="Assets\Scripts\Exp.cs" />
+    <Compile Include="Assets\Scripts\ExpSlider.cs" />
+    <Compile Include="Assets\Scripts\FadeOutBusyo.cs" />
+    <Compile Include="Assets\Scripts\FadeOutSlotMessage.cs" />
+    <Compile Include="Assets\Scripts\FadeOutTextImage.cs" />
+    <Compile Include="Assets\Scripts\Fadein.cs" />
+    <Compile Include="Assets\Scripts\Fadeout.cs" />
+    <Compile Include="Assets\Scripts\FadeoutArrowMove.cs" />
+    <Compile Include="Assets\Scripts\FadeoutImage.cs" />
+    <Compile Include="Assets\Scripts\FadeoutOff.cs" />
+    <Compile Include="Assets\Scripts\FadeoutSenpou.cs" />
+    <Compile Include="Assets\Scripts\FadeuGUI.cs" />
+    <Compile Include="Assets\Scripts\FpsMeasure.cs" />
+    <Compile Include="Assets\Scripts\Gacya.cs" />
+    <Compile Include="Assets\Scripts\GacyaSimulator.cs" />
+    <Compile Include="Assets\Scripts\Gaikou.cs" />
+    <Compile Include="Assets\Scripts\GaikouBusyoSelect.cs" />
+    <Compile Include="Assets\Scripts\GaikouKuniSelect.cs" />
+    <Compile Include="Assets\Scripts\GaikouMenu.cs" />
+    <Compile Include="Assets\Scripts\GaikouShinobiSelect.cs" />
+    <Compile Include="Assets\Scripts\GaikouView.cs" />
+    <Compile Include="Assets\Scripts\GameScene.cs" />
+    <Compile Include="Assets\Scripts\GameSpeed.cs" />
+    <Compile Include="Assets\Scripts\GeneralFuncController.cs" />
+    <Compile Include="Assets\Scripts\GetAllShigen.cs" />
+    <Compile Include="Assets\Scripts\GetNaiseiTimer.cs" />
+    <Compile Include="Assets\Scripts\GiveGokui.cs" />
+    <Compile Include="Assets\Scripts\GiveGokuiConfirm.cs" />
+    <Compile Include="Assets\Scripts\GiveKanni.cs" />
+    <Compile Include="Assets\Scripts\GiveSlider.cs" />
+    <Compile Include="Assets\Scripts\Giveup.cs" />
+    <Compile Include="Assets\Scripts\Gunzei.cs" />
+    <Compile Include="Assets\Scripts\GunzeiFadeOut.cs" />
+    <Compile Include="Assets\Scripts\HPBar.cs" />
+    <Compile Include="Assets\Scripts\HPCounter.cs" />
+    <Compile Include="Assets\Scripts\Heisyu.cs" />
+    <Compile Include="Assets\Scripts\HidensyoView.cs" />
+    <Compile Include="Assets\Scripts\Homing.cs" />
+    <Compile Include="Assets\Scripts\HomingLong.cs" />
+    <Compile Include="Assets\Scripts\HomingLongPrnt.cs" />
+    <Compile Include="Assets\Scripts\HomingPrnt.cs" />
+    <Compile Include="Assets\Scripts\HyourouTimer.cs" />
+    <Compile Include="Assets\Scripts\IconClick.cs" />
+    <Compile Include="Assets\Scripts\IconExp.cs" />
+    <Compile Include="Assets\Scripts\IconFadeChange.cs" />
+    <Compile Include="Assets\Scripts\IgnoreTouch.cs" />
+    <Compile Include="Assets\Scripts\ImageBlinker.cs" />
+    <Compile Include="Assets\Scripts\InitDataMaker.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\Scripts\ItemInfo.cs" />
+    <Compile Include="Assets\Scripts\Jinkei.cs" />
+    <Compile Include="Assets\Scripts\JinkeiConfirmButton.cs" />
+    <Compile Include="Assets\Scripts\JinkeiFormButton.cs" />
+    <Compile Include="Assets\Scripts\JinkeiPowerEffection.cs" />
+    <Compile Include="Assets\Scripts\JinkeiScene.cs" />
+    <Compile Include="Assets\Scripts\JyosyuHeiryoku.cs" />
+    <Compile Include="Assets\Scripts\Kahou.cs" />
+    <Compile Include="Assets\Scripts\KahouInfo.cs" />
+    <Compile Include="Assets\Scripts\KahouScene.cs" />
+    <Compile Include="Assets\Scripts\KahouSelect.cs" />
+    <Compile Include="Assets\Scripts\KahouSoukoScene.cs" />
+    <Compile Include="Assets\Scripts\KahouStatusGet.cs" />
+    <Compile Include="Assets\Scripts\KaisenAttack.cs" />
+    <Compile Include="Assets\Scripts\KaisenHP.cs" />
+    <Compile Include="Assets\Scripts\KaisenScene.cs" />
+    <Compile Include="Assets\Scripts\Kanni.cs" />
+    <Compile Include="Assets\Scripts\KanniInfo.cs" />
+    <Compile Include="Assets\Scripts\KassenEvent.cs" />
+    <Compile Include="Assets\Scripts\KillOtherBGM.cs" />
+    <Compile Include="Assets\Scripts\KouekiMenu.cs" />
+    <Compile Include="Assets\Scripts\KousakuBusyoSelect.cs" />
+    <Compile Include="Assets\Scripts\KousakuConfirm.cs" />
+    <Compile Include="Assets\Scripts\KumoMove.cs" />
+    <Compile Include="Assets\Scripts\KuniInfo.cs" />
+    <Compile Include="Assets\Scripts\Kunkou.cs" />
+    <Compile Include="Assets\Scripts\LeaveSpdUp.cs" />
+    <Compile Include="Assets\Scripts\LineLocation.cs" />
+    <Compile Include="Assets\Scripts\LvSlider.cs" />
+    <Compile Include="Assets\Scripts\Mail.cs" />
+    <Compile Include="Assets\Scripts\MainControl.cs" />
+    <Compile Include="Assets\Scripts\MainEventHandler.cs" />
+    <Compile Include="Assets\Scripts\MainStageController.cs" />
+    <Compile Include="Assets\Scripts\MapPointer.cs" />
+    <Compile Include="Assets\Scripts\MaskButton.cs" />
+    <Compile Include="Assets\Scripts\MenuReturn.cs" />
+    <Compile Include="Assets\Scripts\Message.cs" />
+    <Compile Include="Assets\Scripts\MessageBusyo.cs" />
+    <Compile Include="Assets\Scripts\MoneySlider.cs" />
+    <Compile Include="Assets\Scripts\MoveCamera.cs" />
+    <Compile Include="Assets\Scripts\Mover.cs" />
+    <Compile Include="Assets\Scripts\MyDaimyoWasAttacked.cs" />
+    <Compile Include="Assets\Scripts\NaiseiController.cs" />
+    <Compile Include="Assets\Scripts\NaiseiDestroy.cs" />
+    <Compile Include="Assets\Scripts\NaiseiInfo.cs" />
+    <Compile Include="Assets\Scripts\NameLabel.cs" />
+    <Compile Include="Assets\Scripts\NanbanProductSelect.cs" />
+    <Compile Include="Assets\Scripts\Nanbansen.cs" />
+    <Compile Include="Assets\Scripts\NewDaimyoDataMaker.cs" />
+    <Compile Include="Assets\Scripts\NextSeason.cs" />
+    <Compile Include="Assets\Scripts\Ninmei.cs" />
+    <Compile Include="Assets\Scripts\NowOnBusyo.cs" />
+    <Compile Include="Assets\Scripts\NowOnButton.cs" />
+    <Compile Include="Assets\Scripts\OpenPopMenu.cs" />
+    <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\PlayerHP.cs" />
+    <Compile Include="Assets\Scripts\PlayerInstance.cs" />
+    <Compile Include="Assets\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\PlayerPrefs.cs" />
+    <Compile Include="Assets\Scripts\PopDown.cs" />
+    <Compile Include="Assets\Scripts\PopInfo.cs" />
+    <Compile Include="Assets\Scripts\PopItem.cs" />
+    <Compile Include="Assets\Scripts\PopScrollSlider.cs" />
+    <Compile Include="Assets\Scripts\PopUp.cs" />
+    <Compile Include="Assets\Scripts\PopupController.cs" />
+    <Compile Include="Assets\Scripts\PrepBusyoScrollMenu.cs" />
+    <Compile Include="Assets\Scripts\PurchaseManager.cs" />
+    <Compile Include="Assets\Scripts\PvPController.cs" />
+    <Compile Include="Assets\Scripts\PvPDataStore.cs" />
+    <Compile Include="Assets\Scripts\PvPTabHandler.cs" />
+    <Compile Include="Assets\Scripts\QA.cs" />
+    <Compile Include="Assets\Scripts\QuestInfo.cs" />
+    <Compile Include="Assets\Scripts\QuestReceive.cs" />
+    <Compile Include="Assets\Scripts\ReplaceSpriteNameRank.cs" />
+    <Compile Include="Assets\Scripts\Restart.cs" />
+    <Compile Include="Assets\Scripts\RonkouKousyoMenu.cs" />
+    <Compile Include="Assets\Scripts\RonkouScene.cs" />
+    <Compile Include="Assets\Scripts\Saku.cs" />
+    <Compile Include="Assets\Scripts\SakuCollider.cs" />
+    <Compile Include="Assets\Scripts\SakuMaker.cs" />
+    <Compile Include="Assets\Scripts\Scaling.cs" />
+    <Compile Include="Assets\Scripts\ScrollAuto.cs" />
+    <Compile Include="Assets\Scripts\ScrollRectSnap.cs" />
+    <Compile Include="Assets\Scripts\SeiryokuInfo.cs" />
+    <Compile Include="Assets\Scripts\SelectDaimyo.cs" />
+    <Compile Include="Assets\Scripts\SelectPurchaseItem.cs" />
+    <Compile Include="Assets\Scripts\SellSlider.cs" />
+    <Compile Include="Assets\Scripts\SendParam.cs" />
+    <Compile Include="Assets\Scripts\SenkouButton.cs" />
+    <Compile Include="Assets\Scripts\SenpouAttack.cs" />
+    <Compile Include="Assets\Scripts\SenpouBetray.cs" />
+    <Compile Include="Assets\Scripts\SenpouController.cs" />
+    <Compile Include="Assets\Scripts\SenpouKeepAttack.cs" />
+    <Compile Include="Assets\Scripts\SenpouScene.cs" />
+    <Compile Include="Assets\Scripts\SenpouStatusUp.cs" />
+    <Compile Include="Assets\Scripts\Senryoku.cs" />
+    <Compile Include="Assets\Scripts\ShiroAttack.cs" />
+    <Compile Include="Assets\Scripts\ShiroSearch.cs" />
+    <Compile Include="Assets\Scripts\ShiroTorideLv.cs" />
+    <Compile Include="Assets\Scripts\Shisya.cs" />
+    <Compile Include="Assets\Scripts\ShisyaScene.cs" />
+    <Compile Include="Assets\Scripts\ShisyaSelect.cs" />
+    <Compile Include="Assets\Scripts\ShisyaSyoukaijyoSelect.cs" />
+    <Compile Include="Assets\Scripts\ShowDaimyoSelect.cs" />
+    <Compile Include="Assets\Scripts\ShowDaimyoSelectPop.cs" />
+    <Compile Include="Assets\Scripts\ShowStageDtl.cs" />
+    <Compile Include="Assets\Scripts\SimpleAttack.cs" />
+    <Compile Include="Assets\Scripts\SimpleHP.cs" />
+    <Compile Include="Assets\Scripts\Slot.cs" />
+    <Compile Include="Assets\Scripts\SortingLayer.cs" />
+    <Compile Include="Assets\Scripts\Soudaisyo.cs" />
+    <Compile Include="Assets\Scripts\SoukoScene.cs" />
+    <Compile Include="Assets\Scripts\Sound.cs" />
+    <Compile Include="Assets\Scripts\StaffRoll.cs" />
+    <Compile Include="Assets\Scripts\Stage.cs" />
+    <Compile Include="Assets\Scripts\StaminaBar.cs" />
+    <Compile Include="Assets\Scripts\StaminaController.cs" />
+    <Compile Include="Assets\Scripts\StartBusyo.cs" />
+    <Compile Include="Assets\Scripts\StartGame.cs" />
+    <Compile Include="Assets\Scripts\StartKassen.cs" />
+    <Compile Include="Assets\Scripts\StartKassenPvP.cs" />
+    <Compile Include="Assets\Scripts\StartNaisei.cs" />
+    <Compile Include="Assets\Scripts\StartPvP.cs" />
+    <Compile Include="Assets\Scripts\StartScene.cs" />
+    <Compile Include="Assets\Scripts\StartSimpleKassen.cs" />
+    <Compile Include="Assets\Scripts\StatusGet.cs" />
+    <Compile Include="Assets\Scripts\StringUtils.cs" />
+    <Compile Include="Assets\Scripts\SwitchTown.cs" />
+    <Compile Include="Assets\Scripts\SyoguScene.cs" />
+    <Compile Include="Assets\Scripts\SyoukaijyoSelect.cs" />
+    <Compile Include="Assets\Scripts\SyouninMenu.cs" />
+    <Compile Include="Assets\Scripts\SyouninPop.cs" />
+    <Compile Include="Assets\Scripts\SyouninProductSelect.cs" />
+    <Compile Include="Assets\Scripts\TabHandler.cs" />
+    <Compile Include="Assets\Scripts\TabStageGunzei.cs" />
+    <Compile Include="Assets\Scripts\TabibitoItem.cs" />
+    <Compile Include="Assets\Scripts\TabibitoItemConfirm.cs" />
+    <Compile Include="Assets\Scripts\TabibitoItemGetter.cs" />
+    <Compile Include="Assets\Scripts\TabibitoKiller.cs" />
+    <Compile Include="Assets\Scripts\TabibitoMove.cs" />
+    <Compile Include="Assets\Scripts\TabibitoNoticeBtn.cs" />
+    <Compile Include="Assets\Scripts\TabibitoSpdUp.cs" />
+    <Compile Include="Assets\Scripts\TabibitoSpdUpConfirm.cs" />
+    <Compile Include="Assets\Scripts\TechPop.cs" />
+    <Compile Include="Assets\Scripts\TestDataMaker.cs" />
+    <Compile Include="Assets\Scripts\TextBlinker.cs" />
+    <Compile Include="Assets\Scripts\TextController.cs" />
+    <Compile Include="Assets\Scripts\TextLocalizer.cs" />
+    <Compile Include="Assets\Scripts\TextLocalizerMesh.cs" />
+    <Compile Include="Assets\Scripts\TextMeshFadeout.cs" />
+    <Compile Include="Assets\Scripts\TextMeshFadeoutOff.cs" />
+    <Compile Include="Assets\Scripts\TextOnlyEng.cs" />
+    <Compile Include="Assets\Scripts\TextOnlyJap.cs" />
+    <Compile Include="Assets\Scripts\TextSizeChangerEng.cs" />
+    <Compile Include="Assets\Scripts\TextSizeChangerEngMesh.cs" />
+    <Compile Include="Assets\Scripts\TimeLimitObj.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\TouyouController.cs" />
+    <Compile Include="Assets\Scripts\TouyouView.cs" />
+    <Compile Include="Assets\Scripts\TutorialController.cs" />
+    <Compile Include="Assets\Scripts\URL.cs" />
+    <Compile Include="Assets\Scripts\UnitMover.cs" />
+    <Compile Include="Assets\Scripts\UnityAdsExample.cs" />
+    <Compile Include="Assets\Scripts\UpPlayer.cs" />
+    <Compile Include="Assets\Scripts\UpdateNaisei.cs" />
+    <Compile Include="Assets\Scripts\VersionChecker.cs" />
+    <Compile Include="Assets\Scripts\Zukan.cs" />
+    <Compile Include="Assets\Scripts\ZukanBusyo.cs" />
+    <Compile Include="Assets\Scripts\ZukanMenu.cs" />
+    <Compile Include="Assets\Scripts\ZukanScene.cs" />
+    <Compile Include="Assets\Scripts\clearOrGameOver.cs" />
+    <Compile Include="Assets\Scripts\preKaisen.cs" />
+    <Compile Include="Assets\Scripts\preKassen.cs" />
+    <Compile Include="Assets\Scripts\simpleHPCounter.cs" />
+    <Compile Include="Assets\Scripts\startKassen2.cs" />
+    <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_Sheet1.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_busyo_exp_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_busyo_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_ch_exp_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_cyouhei_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_daimyo_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_doumei_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_gaikou_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_icon_exp_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_item_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_bugu_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_chishikisyo_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_cyadougu_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_gusoku_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_heihousyo_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_kabuto_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kahou_meiba_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kanni_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kuni_lv_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kuni_mapping_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_kuni_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_lv_ch_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_lv_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_lvch_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_message_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_naisei_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_qa_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_quest_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_saku_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_senpouItem_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_senpou_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_serihu_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_shisya.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_shisya_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_stageLink_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_stage_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_tabibito_mst.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_turorial.cs" />
+    <Compile Include="Assets\Terasurware\Classes\Entity_tutorial_mst.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Fade\Materials\UI-Fade-Alpha.shader" />
+    <None Include="Assets\Fade\Materials\UI-Fade-Cutout.shader" />
+    <None Include="Assets\Fade\Materials\UI-Mask.shader" />
+    <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\Android\res\values-ja\string.xml" />
+    <None Include="Assets\Plugins\Android\res\values\version.xml" />
+    <None Include="Assets\Plugins\StansAssets\Modules\MobileNativePopUps\Documentation\ReadMe.txt" />
+    <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\Android\mobile-native-popups.jar.txt" />
+    <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\Android\mobile-native-popups.txt" />
+    <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\IOS\ISN_NativeCore.h.txt" />
+    <None Include="Assets\Plugins\StansAssets\Support\NativeLibraries\IOS\ISN_NativeCore.mm.txt" />
+    <None Include="Assets\Plugins\StansAssets\Support\Versions\MNP_VersionInfo.txt" />
+    <None Include="Assets\Terasurware\Editor\EntityTemplate.txt" />
+    <None Include="Assets\Terasurware\Editor\EntityTemplate2.txt" />
+    <None Include="Assets\Terasurware\Editor\ExportTemplate.txt" />
+    <None Include="Assets\Terasurware\Editor\ExportTemplate2.txt" />
+    <None Include="Assets\Terasurware\Editor\npoi\NPOI.XML" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+</Project>

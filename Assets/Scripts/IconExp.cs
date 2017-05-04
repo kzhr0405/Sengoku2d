@@ -13,7 +13,7 @@ public class IconExp : MonoBehaviour {
 
         GameObject canvas = null;
 
-        if (Application.loadedLevelName == "busyo" || Application.loadedLevelName == "mainStage" || Application.loadedLevelName == "touyou" || Application.loadedLevelName == "zukan" || Application.loadedLevelName == "tutorialTouyou") {
+        if (Application.loadedLevelName == "busyo" || Application.loadedLevelName == "mainStage" || Application.loadedLevelName == "touyou" || Application.loadedLevelName == "zukan" || Application.loadedLevelName == "tutorialTouyou" || Application.loadedLevelName == "hyojyo" || Application.loadedLevelName == "tutorialHyojyo") {
             canvas = GameObject.Find("Panel").gameObject;
         }
 

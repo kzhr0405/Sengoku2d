@@ -404,9 +404,9 @@ public class JinkeiScene : MonoBehaviour {
 			    prefab.transform.localScale = new Vector3 (1, 1, 1);
 			    prefab.transform.localPosition = new Vector3(0, 0, 0);
 			    prefab.name = "Slot";
-			
-			    //Busyo
-			    string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
+
+                //Busyo
+                string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
 			    GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
 			    busyo.name = myBusyo_list[j];
 

@@ -279,7 +279,7 @@ public class EnemyAttackPop : MonoBehaviour {
     }
 
     public void makeSimpleEnemy(int busyoId, GameObject battleArea, int xAdjust, GameObject YesBtn) {
-        string path = "Prefabs/Enemy/" + busyoId;
+        string path = "Prefabs/Player/" + busyoId;
         GameObject prefab = Instantiate(Resources.Load(path)) as GameObject;
         prefab.name = busyoId.ToString();
         prefab.transform.SetParent(battleArea.transform);
@@ -287,13 +287,17 @@ public class EnemyAttackPop : MonoBehaviour {
         prefab.GetComponent<SpriteRenderer>().sortingLayerName = "UI";
         prefab.GetComponent<SpriteRenderer>().sortingOrder = 350;
 
-        float xAdjust2 = (float)xAdjust / 2;
-        prefab.transform.localPosition = new Vector2(9 - xAdjust2, 1.8f);
-        
+        /**Player to Enemy**/ 
+        prefab.tag = "Enemy";
+        prefab.layer = LayerMask.NameToLayer("Enemy");
+        /**Player to Enemy End**/
+
+        float xAdjust2 = (float)xAdjust / 5;
+        prefab.transform.localPosition = new Vector2(9 - xAdjust2, 1.8f);        
         prefab.GetComponent<Rigidbody2D>().gravityScale = 1;
 
         //Set Scirpt
-        Destroy(prefab.GetComponent<EnemyHP>());
+        Destroy(prefab.GetComponent<PlayerHP>());
         Destroy(prefab.GetComponent<SenpouController>());
         Destroy(prefab.GetComponent<LineLocation>());
         if (prefab.GetComponent<HomingLong>()) {
@@ -303,11 +307,12 @@ public class EnemyAttackPop : MonoBehaviour {
         if (prefab.GetComponent<AttackLong>()) {
             Destroy(prefab.GetComponent<AttackLong>());
         }else {
-            Destroy(prefab.GetComponent<EnemyAttack>());
+            Destroy(prefab.GetComponent<PlayerAttack>());
         }
-        Destroy(prefab.GetComponent<EnemyHP>());
+        Destroy(prefab.GetComponent<PlayerHP>());
         prefab.AddComponent<SimpleAttack>();
         prefab.AddComponent<SimpleHP>();
+        prefab.AddComponent<Homing>();
         prefab.GetComponent<Homing>().speed = 50;
         prefab.GetComponent<Homing>().enabled = false;
 

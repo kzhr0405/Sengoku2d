@@ -119,4 +119,13 @@ public class BusyoInfoGet : MonoBehaviour {
         return shipId;
     }
 
+    public int getSenpouId(int busyoId) {
+        int senpou_id = busyoMst.param[busyoId - 1].senpou_id;
+        return senpou_id;
+    }
+
+    public int getSakuId(int busyoId) {
+        int saku_id = busyoMst.param[busyoId - 1].saku_id;
+        return saku_id;
+    }
 }

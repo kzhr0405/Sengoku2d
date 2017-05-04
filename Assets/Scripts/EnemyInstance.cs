@@ -78,10 +78,38 @@ public class EnemyInstance : MonoBehaviour {
 		/*Roujyo End*/
 
 
-		string path = "Prefabs/Enemy/" + busyoId;
+		string path = "Prefabs/Player/" + busyoId;
 		GameObject prefab = Instantiate(Resources.Load (path)) as GameObject;
 		prefab.name = busyoId.ToString ();
-        
+
+        /**Player to Enemy**/
+        Vector3 scale = prefab.transform.localScale;
+        float x = prefab.transform.localScale.x;
+        scale.x = scale.x  * - 1;
+        prefab.transform.localScale = scale;
+        Destroy(prefab.GetComponent<PlayerHP>());
+        prefab.AddComponent<EnemyHP>();
+        Destroy(prefab.GetComponent<Kunkou>());
+        Destroy(prefab.GetComponent<UnitMover>());
+        if(prefab.GetComponent<PlayerAttack>()) {
+            Destroy(prefab.GetComponent<PlayerAttack>());
+            prefab.AddComponent<EnemyAttack>();
+            prefab.AddComponent<Homing>();
+        }else {
+            prefab.AddComponent<HomingLong>();
+            if (ch_type == "YM") {
+                    prefab.GetComponent<AttackLong>().bullet = Resources.Load("Prefabs/Enemy/EnemyArrow") as GameObject;
+            }else {
+                    prefab.GetComponent<AttackLong>().bullet = Resources.Load("Prefabs/Enemy/EnemyBullet") as GameObject;
+            }            
+        }
+        prefab.tag = "Enemy";
+        prefab.layer = LayerMask.NameToLayer("Enemy");
+        /**Player to Enemy End**/
+
+
+
+
         //Senpou Script Parametor
         StatusGet senpouScript = new StatusGet();
         bool onlySeaFlg = senpouScript.getSenpouOnlySeaFlg((int)senpouArray[0]);

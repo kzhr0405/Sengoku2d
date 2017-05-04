@@ -17,7 +17,8 @@ public class Senryoku : MonoBehaviour {
 	public int totalHp = 0;
 	public int totalAtk = 0;
 	public int totalDfc = 0;
-	public int lv = 0;
+    public int totalSpd = 0;
+    public int lv = 0;
 	public int chlv = 0;
     public int chQty = 0;
 
@@ -86,8 +87,8 @@ public class Senryoku : MonoBehaviour {
 		    totalBusyoAtk = adjAtk + int.Parse(KahouStatusArray[0]) + Mathf.FloorToInt (addAtkByKanni);
 		    totalBusyoHp = adjHp + int.Parse(KahouStatusArray[1]) + Mathf.FloorToInt (addHpByKanni) + addJyosyuHei;
 		    totalBusyoDfc = adjDfc + int.Parse(KahouStatusArray[2]) + Mathf.FloorToInt (addDfcByKanni);
-
-            if(Application.loadedLevelName == "preKaisen") {
+            totalSpd = spd + int.Parse(KahouStatusArray[3]);
+            if (Application.loadedLevelName == "preKaisen") {
                 if (shipId == 1) {
                     totalBusyoHp = totalBusyoHp * 2;
                 }else if (shipId == 2) {

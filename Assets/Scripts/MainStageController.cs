@@ -1273,9 +1273,13 @@ public class MainStageController : MonoBehaviour {
 	void OnApplicationPause (bool pauseStatus) {
 		if (!pauseStatus) {
             if (!adRunFlg && !iapRunFlg) {
-			    //アプリを終了しないでホーム画面からアプリを起動して復帰した時
-			    Debug.Log("バックグランドから復帰したよ");
-			    SceneManager.LoadScene ("top");
+                //アプリを終了しないでホーム画面からアプリを起動して復帰した時                
+                //destroy data store
+                if(GameObject.Find("DataStore")) {
+                    Destroy(GameObject.Find("DataStore").gameObject);
+                }
+                //back to top
+                SceneManager.LoadScene ("top");
             }
         }
 	}

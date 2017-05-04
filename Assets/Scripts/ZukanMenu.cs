@@ -77,8 +77,16 @@ public class ZukanMenu : MonoBehaviour {
 			}
 		}
 
-		//Sort Master by daimyo
-		Entity_busyo_mst busyoMst = new Entity_busyo_mst();
+        //add temporary daimyo busyo
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        Daimyo daimyo = new Daimyo();
+        int myDaimyoBusyoId = daimyo.getDaimyoBusyoId(myDaimyo);
+        if(!zukanBusyoHstList.Contains(myDaimyoBusyoId.ToString())) {
+            zukanBusyoHstList.Add(myDaimyoBusyoId.ToString());
+        }
+
+        //Sort Master by daimyo
+        Entity_busyo_mst busyoMst = new Entity_busyo_mst();
 		busyoMst.param.AddRange (tempBusyoMst.param);
 		busyoMst.param.Sort((a, b) =>  a.daimyoId - b.daimyoId);
 
@@ -92,8 +100,6 @@ public class ZukanMenu : MonoBehaviour {
 		for (int i=0; i<busyoMst.param.Count; i++) {
 
 			int daimyoId = busyoMst.param[i].daimyoId;
-
-			//
 			if (daimyoId == 0) {
 				daimyoId = busyoMst.param[i].daimyoHst;
 			}

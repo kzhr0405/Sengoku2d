@@ -10,14 +10,7 @@ public class StartGame : MonoBehaviour {
     public Fade fade = null;
     public bool tutorialDoneFlg = false;
     public bool clickedFlg = false;
-    public bool sceneChangedFlg = false;
-
     public GameObject loading;
-
-    //Data Register
-    DataUserId DataUserId = new DataUserId();
-    DataJinkei DataJinkei = new DataJinkei();
-
 
     public void Start(){
 		Resources.UnloadUnusedAssets ();
@@ -49,27 +42,8 @@ public class StartGame : MonoBehaviour {
 
         //Data Loard Start        
         tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
-        DataUserId = GameObject.Find("DataStore").GetComponent<DataUserId>();
-        DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
 
-        //User Id
-        if (!PlayerPrefs.HasKey("userId")) {
-            string randomA = StringUtils.GeneratePassword(10);
-            System.DateTime now = System.DateTime.Now;
-            string randomB = now.ToString("yyyyMMddHHmmss");
-            string userId = randomA + randomB;
-            PlayerPrefs.SetString("userId", userId);
-            PlayerPrefs.Flush();
-            DataUserId.InsertUserId(userId);
-        }else {
-            string userId = PlayerPrefs.GetString("userId");
-            DataUserId.UpdateUserId(userId);
-            DataJinkei.UpdateJinkei(userId);
-        }
     }
-
-
-
 
 	public void OnClick(){
 
@@ -81,42 +55,31 @@ public class StartGame : MonoBehaviour {
 		audioSources [5].Play ();
         clickedFlg = true;
 
-            if (Application.internetReachability == NetworkReachability.NotReachable) {
+        if (Application.internetReachability == NetworkReachability.NotReachable) {
             Debug.Log("No Network");
-            //接続されていないときの処理
+            //接続されていないときの処理                     
             fade.FadeIn(2, () => {
-                SceneManager.LoadScene("mainStage");
-            });
+                if (!tutorialDoneFlg) {
+                    SceneManager.LoadScene("tutorialMain");
+                }else {
+                    SceneManager.LoadScene("mainStage");
+                }
+            });           
         }
     }
     
 
     void Update() {
-
-        if (!tutorialDoneFlg) {
-            if(clickedFlg && DataUserId.RegisteredFlg) {
-                if (!sceneChangedFlg) {
-                    sceneChangedFlg = true;
-                    fade.FadeIn(2, () => {
-                        SceneManager.LoadScene("tutorialMain");
-                    });
-                }
-            }
-        }else {            
-            if (clickedFlg) {
-                if (DataUserId.RegisteredFlg && DataJinkei.RegisteredFlg) {
-                    if (!sceneChangedFlg) {
-                        sceneChangedFlg = true;
-                        fade.FadeIn(2, () => {                        
-                            SceneManager.LoadScene("mainStage");                        
-                        });
-                    }
-                }             
-            }
+        if(clickedFlg) {
+            clickedFlg = false;
+            fade.FadeIn(2, () => {
+                if (!tutorialDoneFlg) {
+                    SceneManager.LoadScene("tutorialMain");
+                }else {
+                    SceneManager.LoadScene("mainStage");
+                }                
+            });
+            
         }
     }
-    
-
-
-
 }

@@ -26,12 +26,14 @@ public class AddHyourou : MonoBehaviour {
                 }
 
 				int newBusyoDama = busyoDama - 100;
-				GameObject.Find ("BusyoDamaValue").GetComponent<Text> ().text = newBusyoDama.ToString ();
+                if (Application.loadedLevelName != "naisei") {
+                    GameObject.Find ("BusyoDamaValue").GetComponent<Text> ().text = newBusyoDama.ToString ();
+                }
 
 				PlayerPrefs.SetInt ("busyoDama",newBusyoDama);
 				PlayerPrefs.SetInt ("hyourou",newHyourou);
 
-                if (Application.loadedLevelName != "shisya") {
+                if (Application.loadedLevelName != "shisya" && Application.loadedLevelName != "naisei") {
                     MainStageController mainScript = GameObject.Find ("GameController").GetComponent<MainStageController> ();
 				    mainScript.hyourouFull = true;
 				    mainScript.nowHyourou = 100;

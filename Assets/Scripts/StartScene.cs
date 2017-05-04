@@ -24,16 +24,16 @@ public class StartScene : MonoBehaviour {
             }
         } else if (name == "PvP") {
             
-            
+            /*
             Message msg = new Message();
             if (Application.systemLanguage != SystemLanguage.Japanese) {
                 msg.makeMessage("PvP is Under Preparation");
             }else {
                 msg.makeMessage("PvP準備中");
             }
+            */
             
             
-            /*
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
@@ -65,7 +65,7 @@ public class StartScene : MonoBehaviour {
                 }
 
             }
-            */
+            
             
         } else if (name == "Busyo") {
 			Application.LoadLevel ("busyo");

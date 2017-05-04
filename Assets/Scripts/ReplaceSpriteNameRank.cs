@@ -17,6 +17,7 @@ public class ReplaceSpriteNameRank : MonoBehaviour {
 		    GetComponent<Image> ().sprite = 
 			    Resources.Load (imagePath, typeof(Sprite)) as Sprite;
         }else {
+
             transform.FindChild("Text").GetComponent<Text>().fontSize = 70;
             Color white = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f); //white
             transform.FindChild("Text").GetComponent<Text>().color = white;
