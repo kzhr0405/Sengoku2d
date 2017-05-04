@@ -6,17 +6,15 @@ public class DontDestroySoundOnLoad : MonoBehaviour {
 	public bool DestoryFlg = false;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () {		
 		if (!DestoryFlg) {
 			DontDestroyOnLoad (this);
 		}
-
     }
 
-    //アプリケーションクラッシュ対策用
-    void OnApplicationQuit() {
-        //強制保存
-        PlayerPrefs.Flush();
-    }    
+	//アプリケーションクラッシュ対策用
+	void OnApplicationQuit() {
+		//強制保存
+		PlayerPrefs.Flush();
+    }
 }
