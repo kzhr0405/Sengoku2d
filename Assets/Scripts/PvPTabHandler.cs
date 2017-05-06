@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class PvPTabHandler : MonoBehaviour {
 
     public bool clicked = false;
+    public GameObject kassenViewObj;
+    public GameObject rankViewObj;
 
     public void Start() {
-        if(name == "Kassen") {
+
+        //Initial
+        if (name == "Kassen") {
             OnClick();
         }
     }
@@ -35,6 +39,17 @@ public class PvPTabHandler : MonoBehaviour {
             GetComponent<Image>().color = pushedTabColor;
             transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
             clicked = true;
+
+            if(name == "Kassen") {
+                kassenViewObj.SetActive(true);
+                rankViewObj.SetActive(false);
+            }else {
+                kassenViewObj.SetActive(false);
+                rankViewObj.SetActive(true);
+            }
+
+
+
         }
     }
 }

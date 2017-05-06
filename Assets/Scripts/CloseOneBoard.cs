@@ -8,9 +8,6 @@ public class CloseOneBoard : MonoBehaviour {
 	public void OnClick(){
 
         if(Application.loadedLevelName == "pvp") {
-            EditPvPName EditPvPName = GameObject.Find("EditName").GetComponent<EditPvPName>();
-            //EditPvPName.lightning.SetActive(true);
-            //EditPvPName.vs.SetActive(true);
             GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "Default";
         }
 
