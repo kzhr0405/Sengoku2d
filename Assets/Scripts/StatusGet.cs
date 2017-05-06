@@ -167,8 +167,12 @@ public class StatusGet : MonoBehaviour {
 		String param = "lv" + senpouLv;
 		FieldInfo f = t.GetField(param);
 		int senpouStatus =(int)f.GetValue(senpoulst);
-        
-        if (Application.loadedLevelName == "pvpKassen") {
+
+        bool pvpFlg = false;
+        if (GameObject.Find("GameScene").GetComponent<GameScene>()) {
+            pvpFlg = GameObject.Find("GameScene").GetComponent<GameScene>().pvpFlg;
+        }
+        if (pvpFlg) {
             //Kahou Adjustment
             char[] delimiterChars = { ',' };
             string[] busyoKahouList = kahouList.Split(delimiterChars);

@@ -12,9 +12,13 @@ public class BackMain : MonoBehaviour {
 	public GameObject CyouteiSelectScrollView;
 
     public bool spdUpFlg = false;
+    public string fromSceneName = "";
 
-	public void Awake(){
-		if (SceneManager.GetActiveScene ().name == "shisya") {
+    public void Awake(){
+
+        fromSceneName = PlayerPrefs.GetString("fromSceneName");
+
+        if (SceneManager.GetActiveScene ().name == "shisya") {
 			Required1 = GameObject.Find ("Required1").gameObject;
 			Required2 = GameObject.Find ("Required2").gameObject;
 			Circle = GameObject.Find ("Circle").gameObject;
@@ -125,10 +129,22 @@ public class BackMain : MonoBehaviour {
         }else if (Application.loadedLevelName == "tutorialTouyou") {
             audioSources[1].Play();
             Application.LoadLevel("tutorialMain");
+
+        }else if (Application.loadedLevelName == "pvp") {
+            audioSources[1].Play();
+            Destroy(GameObject.Find("PvPDataStore"));
+            Application.LoadLevel("mainStage");
         }else {
-			audioSources[1].Play();
-			Application.LoadLevel("mainStage");
-		}
+            if(fromSceneName == "" || fromSceneName == null) {
+                audioSources[1].Play();
+			    Application.LoadLevel("mainStage");
+            }else {
+                PlayerPrefs.DeleteKey("fromSceneName");
+                PlayerPrefs.Flush();
+                audioSources[1].Play();
+                Application.LoadLevel(fromSceneName);
+            }
+        }
 		PlayerPrefs.Flush ();
 	}
 

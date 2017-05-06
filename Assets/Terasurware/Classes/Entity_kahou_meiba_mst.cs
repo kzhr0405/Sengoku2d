@@ -18,7 +18,7 @@ public class Entity_kahou_meiba_mst : ScriptableObject
 		public string kahouTarget;
 		public int kahouEffect;
 		public string unit;
-		public int kahouBuy;
+		public double kahouBuy;
 		public int kahouSell;
 		public int kahouRatio;
 		public string kahouNameEng;

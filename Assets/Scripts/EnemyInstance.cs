@@ -14,7 +14,9 @@ public class EnemyInstance : MonoBehaviour {
         bool shiroFlg = false;
         bool torideFlg = false;
         GameObject buildingObj = null;
-        if (Application.loadedLevelName != "pvpKassen") {
+        bool pvpFlg = GameObject.Find("GameScene").GetComponent<GameScene>().pvpFlg;
+
+        if (!pvpFlg) {
             
 		    string eSRMap ="eSRMap" + mapId.ToString();
 		    shiroFlg = PlayerPrefs.GetBool (eSRMap);
@@ -246,7 +248,7 @@ public class EnemyInstance : MonoBehaviour {
         /*Kahou Adjustment*/
         string[] KahouStatusArray;
         float spdWithKahou = (float)spd;
-        if (Application.loadedLevelName == "pvpKassen") {
+        if (pvpFlg) {
             KahouStatusGet KahouStatusGet = new KahouStatusGet();
             KahouStatusArray = KahouStatusGet.getPvPKahouForStatus(kahouList, hp, atk, dfc, spd);
             hp = hp + int.Parse(KahouStatusArray[1]);

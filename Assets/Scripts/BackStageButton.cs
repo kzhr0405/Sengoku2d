@@ -18,15 +18,26 @@ public class BackStageButton : MonoBehaviour {
                 PlayerPrefs.SetInt("tutorialId", 13);
                 Application.LoadLevel("tutorialMain");
             }
-        } else { 
+            
+        } else {
 
-            Application.LoadLevel("mainStage");
-
-		    bool isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
-		    bool isKessenFlg = PlayerPrefs.GetBool ("isKessenFlg");
-		    if (!isAttackedFlg && !isKessenFlg) {
-			    PlayerPrefs.SetBool ("fromKassenFlg", true);
+            bool pvpFlg = false;
+            if (GameObject.Find("GameScene").GetComponent<GameScene>()) {
+                pvpFlg = GameObject.Find("GameScene").GetComponent<GameScene>().pvpFlg;
             }
+            if (pvpFlg) {
+                Destroy(GameObject.Find("PvPDataStore"));
+                Application.LoadLevel("pvp");
+            }else { 
+                Application.LoadLevel("mainStage");
+
+		        bool isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
+		        bool isKessenFlg = PlayerPrefs.GetBool ("isKessenFlg");
+		        if (!isAttackedFlg && !isKessenFlg) {
+			        PlayerPrefs.SetBool ("fromKassenFlg", true);
+                }
+            }
+
         }
         PlayerPrefs.Flush();
     }

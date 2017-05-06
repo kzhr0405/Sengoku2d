@@ -6,6 +6,7 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class PvPDataStore : MonoBehaviour {
 
+    //total
     public int myJinkeiHeiryoku = 0;
     public int pvpCount = -1;
     public int hpRank = -1;
@@ -16,6 +17,14 @@ public class PvPDataStore : MonoBehaviour {
     public int dfcWinNo = -1;
     public int winRank = -1;
 
+    //weekly
+    public int pvpCountWeekly = -1;
+    public int atkNoWeekly = -1;
+    public int atkWinNoWeekly = -1;
+    public int dfcNoWeekly = -1;
+    public int dfcWinNoWeekly = -1;
+    public int winRankWeekly = -1;
+
     //pvp random match
     public List<string> pvpUserIdList = new List<string>();
     public List<string> pvpUserNameList = new List<string>();
@@ -23,6 +32,7 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> pvpKuniLvList = new List<int>();
     public List<int> pvpHpList = new List<int>();
     public List<int> pvpWinList = new List<int>();
+    public List<int> pvpWinRankList = new List<int>();
     public bool matchedFlg = false;
     public int matchCount = 0;
     public bool zeroFlg = false;
@@ -56,6 +66,8 @@ public class PvPDataStore : MonoBehaviour {
     public bool PvPAtkNoFlg = false;
     public string enemyUserId = "";
 
+
+    /* Total Start */
     public void GetPvPCount() {
         //PvPCount
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
@@ -65,8 +77,7 @@ public class PvPDataStore : MonoBehaviour {
                 Debug.Log(count);
             }else {
                 //件数取得成功
-                pvpCount = count;
-                
+                pvpCount = count;                
             }
         });
     }
@@ -74,7 +85,7 @@ public class PvPDataStore : MonoBehaviour {
     public void GetHpRank() {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         myJinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-        query.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", myJinkeiHeiryoku);
+        query.WhereGreaterThan("jinkeiHeiryoku", myJinkeiHeiryoku);
         query.CountAsync((int count, NCMBException e) => {
             if (e != null) {
                 //件数取得失敗
@@ -102,21 +113,95 @@ public class PvPDataStore : MonoBehaviour {
         });
     }
 
+    
     public void GetWinRank(int totalWinNo) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
-        myJinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-        query.WhereGreaterThanOrEqualTo("totalWinNo", totalWinNo);
+        query.WhereGreaterThan("totalWinNo", totalWinNo);
         query.CountAsync((int count, NCMBException e) => {
             if (e != null) {
                 //件数取得失敗
             }else {
                 //件数取得成功
                 winRank = count + 1;// 自分よりスコアが上の人がn人いたら自分はn+1位
+                
+            }
+        });
+    }
+    /* Total End */
+
+    /* Weekly Start */
+    public void GetPvPCountWeekly() {
+        //PvPCount
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpWeekly");
+        query.CountAsync((int count, NCMBException e) => {
+            if (e != null) {
+                //件数取得失敗
+                Debug.Log(count);
+            }else {
+                //件数取得成功
+                pvpCountWeekly = count;
+            }
+        });
+    }
+    
+    public void GetMyPvPWeekly() {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpWeekly");
+        userId = PlayerPrefs.GetString("userId");
+        query.WhereEqualTo("userId", userId);
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (objList.Count == 0) { //never registered
+                InsertPvPWeekly(userId);
+            }else { //registered
+                if (e == null) {
+                    foreach (NCMBObject obj in objList) {
+                        atkNoWeekly = System.Convert.ToInt32(obj["atkNo"]);
+                        atkWinNoWeekly = System.Convert.ToInt32(obj["atkWinNo"]);
+                        dfcNoWeekly = System.Convert.ToInt32(obj["dfcNo"]);
+                        dfcWinNoWeekly = System.Convert.ToInt32(obj["dfcWinNo"]);
+                    }
+                }
             }
         });
     }
 
+    public void InsertPvPWeekly(string userId) {
+        NCMBObject pvpWeekly = new NCMBObject("pvpWeekly");
+        pvpWeekly["userId"] = userId;
+        pvpWeekly["atkNo"] = 0;
+        pvpWeekly["dfcNo"] = 0;
+        pvpWeekly["atkWinNo"] = 0;
+        pvpWeekly["dfcWinNo"] = 0;
+        pvpWeekly["totalWinNo"] = 0;
 
+        pvpWeekly.SaveAsync();
+    }
+
+    public void GetWinRankWeekly(int totalWinNo, bool enemyFlg) {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpWeekly");
+        query.WhereGreaterThan("totalWinNo", totalWinNo);
+        query.CountAsync((int count, NCMBException e) => {
+            if (e != null) {
+                //件数取得失敗
+            }else {
+                //件数取得成功
+                if (!enemyFlg) {
+                    winRankWeekly = count + 1;// 自分よりスコアが上の人がn人いたら自分はn+1位
+                }else {
+                    pvpWinRankList.Add(count + 1);
+                }
+            }
+        });
+    }
+
+    /* Weekly End */
+
+
+
+
+
+
+
+    /* Matching Start */
     public void GetRandomEnemy(string myUserId, int HpBase) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereNotEqualTo("userId", myUserId);
@@ -152,7 +237,7 @@ public class PvPDataStore : MonoBehaviour {
                     pvpHpList.Add(hp);
                     pvpWinList.Add(win);
 
-                    if(i+1 == objList.Count) {
+                    if (i+1 == objList.Count) {
                         matchedFlg = true;
                     }
                 }
@@ -163,6 +248,7 @@ public class PvPDataStore : MonoBehaviour {
     public void GetEnemyJinkei(string userId, int PvPId) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpJinkei");
 
+        query.WhereEqualTo("userId", userId);
         //userId = PlayerPrefs.GetString("userId"); //test
         query.Limit = 1;
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -175,7 +261,7 @@ public class PvPDataStore : MonoBehaviour {
                         string mapId = "map" + id.ToString();
                         int busyoId = System.Convert.ToInt32(ncbObject[mapId]);
                         
-                        if(PvPId== 1) {
+                        if (PvPId== 1) {
                             PvP1BusyoList.Add(busyoId);
                         }else if(PvPId== 2) {
                             PvP2BusyoList.Add(busyoId);
@@ -269,9 +355,11 @@ public class PvPDataStore : MonoBehaviour {
             }
         });
     }
+    /* Matching End */
 
+
+    //PvP 攻撃回数トランザクション登録
     public void UpdatePvPAtkNo(string userId){
-
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
 
@@ -281,30 +369,63 @@ public class PvPDataStore : MonoBehaviour {
                     int atkNo = System.Convert.ToInt32(objList[0]["atkNo"]);
                     atkNo = atkNo + 1;
                     objList[0]["atkNo"] = atkNo;
-                    objList[0].SaveAsync();
-                    PvPAtkNoFlg = true;
+
+                    objList[0].SaveAsync();                    
                 }
             }
-        });        
-    }
+        });
 
-    public void UpdatePvPDfcNo(string userId) {
-
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
-        query.WhereEqualTo("userId", userId);
-
-        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+        NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpWeekly");
+        queryWeekly.WhereEqualTo("userId", userId);
+        queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 if (objList.Count != 0) {
-                    int dfcNo = System.Convert.ToInt32(objList[0]["dfcNo"]);
-                    dfcNo = dfcNo + 1;
-                    objList[0]["dfcNo"] = dfcNo;
+                    int atkNo = System.Convert.ToInt32(objList[0]["atkNo"]);
+                    atkNo = atkNo + 1;
+                    objList[0]["atkNo"] = atkNo;
+
                     objList[0].SaveAsync();
+                    PvPAtkNoFlg = true;
                 }
             }
         });
     }
 
+
+    //PvP 守備回数トランザクション登録
+    public void UpdatePvPDfcNo(string userId) {
+
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
+        query.WhereEqualTo("userId", userId);
+
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {            
+            if (e == null) {               
+                if (objList.Count != 0) {
+                    int dfcNo = System.Convert.ToInt32(objList[0]["dfcNo"]);
+                    dfcNo = dfcNo + 1;
+                    objList[0]["dfcNo"] = dfcNo;
+
+                    objList[0].SaveAsync();                
+                }
+            }
+        });
+
+        NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpWeekly");
+        queryWeekly.WhereEqualTo("userId", userId);
+
+        queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {              
+                if (objList.Count != 0) {
+                    int dfcNo = System.Convert.ToInt32(objList[0]["dfcNo"]);
+                    dfcNo = dfcNo + 1;
+                    objList[0]["dfcNo"] = dfcNo;
+                    objList[0].SaveAsync();                    
+                }
+            }
+        });
+    }
+
+    //PvP Atkして勝利した回数の更新 > Total & Weekly
     public void UpdatePvPAtkWinNo(string userId) {
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
@@ -316,12 +437,38 @@ public class PvPDataStore : MonoBehaviour {
                     int atkWinNo = System.Convert.ToInt32(objList[0]["atkWinNo"]);
                     atkWinNo = atkWinNo + 1;
                     objList[0]["atkWinNo"] = atkWinNo;
+
+                    int totalWinNo = System.Convert.ToInt32(objList[0]["totalWinNo"]);
+                    totalWinNo = totalWinNo + 1;
+                    objList[0]["totalWinNo"] = totalWinNo;
+                    
                     objList[0].SaveAsync();
                 }
             }
         });
+
+        NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpWeekly");
+        queryWeekly.WhereEqualTo("userId", userId);
+
+        queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {
+                if (objList.Count != 0) {
+                    int atkWinNo = System.Convert.ToInt32(objList[0]["atkWinNo"]);
+                    atkWinNo = atkWinNo + 1;
+                    objList[0]["atkWinNo"] = atkWinNo;
+
+                    int totalWinNo = System.Convert.ToInt32(objList[0]["totalWinNo"]);
+                    totalWinNo = totalWinNo + 1;
+                    objList[0]["totalWinNo"] = totalWinNo;
+
+                    objList[0].SaveAsync();
+                }
+            }
+        });
+
     }
 
+    //PvP Dfcして勝利した回数の更新 > Total & Weekly
     public void UpdatePvPDfcWinNo(string userId) {
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
@@ -333,6 +480,30 @@ public class PvPDataStore : MonoBehaviour {
                     int dfcWinNo = System.Convert.ToInt32(objList[0]["dfcWinNo"]);
                     dfcWinNo = dfcWinNo + 1;
                     objList[0]["dfcWinNo"] = dfcWinNo;
+
+                    int totalWinNo = System.Convert.ToInt32(objList[0]["totalWinNo"]);
+                    totalWinNo = totalWinNo + 1;
+                    objList[0]["totalWinNo"] = totalWinNo;
+
+                    objList[0].SaveAsync();
+                }
+            }
+        });
+
+        NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpWeekly");
+        queryWeekly.WhereEqualTo("userId", userId);
+
+        queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {
+                if (objList.Count != 0) {
+                    int dfcWinNo = System.Convert.ToInt32(objList[0]["dfcWinNo"]);
+                    dfcWinNo = dfcWinNo + 1;
+                    objList[0]["dfcWinNo"] = dfcWinNo;
+
+                    int totalWinNo = System.Convert.ToInt32(objList[0]["totalWinNo"]);
+                    totalWinNo = totalWinNo + 1;
+                    objList[0]["totalWinNo"] = totalWinNo;
+
                     objList[0].SaveAsync();
                 }
             }

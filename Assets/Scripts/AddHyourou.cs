@@ -33,7 +33,7 @@ public class AddHyourou : MonoBehaviour {
 				PlayerPrefs.SetInt ("busyoDama",newBusyoDama);
 				PlayerPrefs.SetInt ("hyourou",newHyourou);
 
-                if (Application.loadedLevelName != "shisya" && Application.loadedLevelName != "naisei") {
+                if (Application.loadedLevelName != "shisya" && Application.loadedLevelName != "naisei" && Application.loadedLevelName != "pvp") {
                     MainStageController mainScript = GameObject.Find ("GameController").GetComponent<MainStageController> ();
 				    mainScript.hyourouFull = true;
 				    mainScript.nowHyourou = 100;

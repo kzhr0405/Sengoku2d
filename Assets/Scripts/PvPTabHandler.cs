@@ -16,7 +16,10 @@ public class PvPTabHandler : MonoBehaviour {
 
 	public void OnClick() {
 
-        if(!clicked) {
+        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        audioSources[0].Play();
+
+        if (!clicked) {
             //Teb Changer
             Color pushedTabColor = new Color(118f / 255f, 103f / 255f, 16f / 255f, 255f / 255f);
             Color pushedTextColor = new Color(219f / 255f, 219f / 255f, 212f / 255f, 255f / 255f);

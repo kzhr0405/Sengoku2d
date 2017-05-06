@@ -57,6 +57,28 @@ public class DataPvP : MonoBehaviour {
         });
     }
 
+    public void UpdatePvPName(string userId, string userName) {
+
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
+        query.WhereEqualTo("userId", userId);
+
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {
+                if (objList.Count == 0) {
+                    //Won't be into this loop
+                    InsertPvP(userId, userName);
+                }
+                else { //Update           
+                    objList[0]["userName"] = userName;
+                    objList[0].SaveAsync();
+                }
+            }
+        });
+    }
+
+
+
+
     public int getHPRank(int myJinkeiHeiryoku) {
         int myRank = 0;
 

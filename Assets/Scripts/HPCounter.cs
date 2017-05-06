@@ -162,7 +162,12 @@ public class HPCounter : MonoBehaviour {
 				        //Time Stop
 				        GameObject.Find ("timer").GetComponent<Timer>().enabled = false;
 
-                        if (Application.loadedLevelName != "pvpKassen") {
+
+                        bool pvpFlg = false;
+                        if (GameObject.Find("GameScene").GetComponent<GameScene>()) {
+                            pvpFlg = GameObject.Find("GameScene").GetComponent<GameScene>().pvpFlg;
+                        }
+                        if (!pvpFlg) {
                             //lose Stage Name
                             string stageNamePath = "Prefabs/PostKassen/loseStageName";
 				            GameObject stageNameObj = Instantiate(Resources.Load (stageNamePath)) as GameObject;
@@ -329,7 +334,7 @@ public class HPCounter : MonoBehaviour {
                         }else {
                             //PvP Data Register
                             //Player Lose & Enemy Win
-                            PvPDataStore DataStore = GameObject.Find("DataStore").GetComponent<PvPDataStore>();
+                            PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
                             DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);
                             DataStore.UpdatePvPDfcWinNo(DataStore.enemyUserId);
                         }
@@ -339,7 +344,11 @@ public class HPCounter : MonoBehaviour {
 				        audioSources [3].Play ();
 				        audioSources [7].Play ();
 
-                        if (Application.loadedLevelName != "pvpKassen") {
+                        bool pvpFlg = false;
+                        if (GameObject.Find("GameScene").GetComponent<GameScene>()) {
+                            pvpFlg = GameObject.Find("GameScene").GetComponent<GameScene>().pvpFlg;
+                        }                        
+                        if (!pvpFlg) {
                             int TrackWinNo = PlayerPrefs.GetInt("TrackWinNo",0);
 				            TrackWinNo = TrackWinNo + 1;
 				            PlayerPrefs.SetInt("TrackWinNo",TrackWinNo);
@@ -393,8 +402,7 @@ public class HPCounter : MonoBehaviour {
                             GameObject.Find("winlose").GetComponent<TextMesh>().text = "勝利";
                         }
 
-
-                        if (Application.loadedLevelName != "pvpKassen") {
+                        if (!pvpFlg) {
                             //Item List
                             string itemListPath = "Prefabs/PostKassen/itemList";
 				            GameObject itemListObj = Instantiate(Resources.Load (itemListPath)) as GameObject;
@@ -886,7 +894,7 @@ public class HPCounter : MonoBehaviour {
                         } else {
                             //PvP Data Register
                             //Player Win & Enemy lose
-                            PvPDataStore DataStore = GameObject.Find("DataStore").GetComponent<PvPDataStore>();
+                            PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
                             DataStore.UpdatePvPAtkWinNo(DataStore.userId);
                             DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);                            
                         }

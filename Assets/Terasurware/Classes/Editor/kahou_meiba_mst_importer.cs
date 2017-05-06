@@ -60,7 +60,7 @@ public class kahou_meiba_mst_importer : AssetPostprocessor
 					cell = row.GetCell(5); p.kahouTarget = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(6); p.kahouEffect = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(7); p.unit = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(8); p.kahouBuy = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p.kahouBuy = (cell == null ? 0.0 : cell.NumericCellValue);
 					cell = row.GetCell(9); p.kahouSell = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(10); p.kahouRatio = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(11); p.kahouNameEng = (cell == null ? "" : cell.StringCellValue);

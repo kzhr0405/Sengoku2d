@@ -8,7 +8,8 @@ public class QA : MonoBehaviour {
 	public string qaTitle = "";
 	public string qaExp = "";
 
-	public void OnClick () {
+    
+    public void OnClick () {
 
 		//SE
 		AudioSource sound = GameObject.Find ("SEController").GetComponent<AudioSource> ();
@@ -31,7 +32,10 @@ public class QA : MonoBehaviour {
 		//Each Scene
 		if (Application.loadedLevelName == "naisei" || Application.loadedLevelName == "touyou" || Application.loadedLevelName == "shisya" || Application.loadedLevelName == "busyo" || Application.loadedLevelName == "hyojyo") {
 			qaBoard.transform.SetParent (GameObject.Find ("Panel").transform);
-		} else {
+		} else if(Application.loadedLevelName == "pvp") {
+            qaBoard.transform.SetParent(GameObject.Find("Panel").transform);
+            GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "UI";
+        } else {
             qaBoard.transform.SetParent(GameObject.Find("Map").transform);
         }
 

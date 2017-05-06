@@ -44,6 +44,7 @@ public class GameScene : MonoBehaviour {
     public Vector2 scrollVect;
 
     //pvp
+    public bool pvpFlg;
     public PvPDataStore DataStore;
     public int pvpStageId = 1;
 
@@ -71,7 +72,11 @@ public class GameScene : MonoBehaviour {
         //Scroll vect
         scrollVect = GameObject.Find("ScrollView").GetComponent<RectTransform>().anchoredPosition;         
 
-        if (Application.loadedLevelName != "pvpKassen") {
+        pvpFlg = PlayerPrefs.GetBool("pvpFlg");
+        PlayerPrefs.DeleteKey("pvpFlg");
+        PlayerPrefs.Flush();
+
+        if (!pvpFlg) {
             activeKuniId  = PlayerPrefs.GetInt("activeKuniId");
 		    activeStageId = PlayerPrefs.GetInt("activeStageId");
 		    Stage stage = new Stage ();
@@ -170,7 +175,12 @@ public class GameScene : MonoBehaviour {
             /*PvP*/
             GameObject.Find("GiveupBtn").SetActive(false);
             GameObject.Find("AutoBtn").SetActive(false);
-            DataStore = GameObject.Find("DataStore").GetComponent<PvPDataStore>();
+            DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
+
+            //timer
+            GameObject.Find("timer").GetComponent<Timer>().enabled = false;
+            GameObject.Find("timer").transform.FindChild("timerText").GetComponent<Text>().text = "∞";
+
 
             string mapPath = "";
             string mapFrontPath = "";
@@ -630,7 +640,7 @@ public class GameScene : MonoBehaviour {
 
 
         /*エネミー配置*/
-        if (Application.loadedLevelName != "pvpKassen") {
+        if (!pvpFlg) {
 
             int linkNo = PlayerPrefs.GetInt("activeLink",0);
 		    enemySoudaisyo = PlayerPrefs.GetInt("enemySoudaisyo");

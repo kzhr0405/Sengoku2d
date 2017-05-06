@@ -13,16 +13,29 @@ public class StartKassenPvP : MonoBehaviour {
     public bool isJinkeiMapFetched;
     public bool isBusyoStatusFetched;
 
+    public int nowHyourou = 0;
+
     private void Awake() {
         //Enemy Jinkei Load
-        PvPDataStore = GameObject.Find("DataStore").GetComponent<PvPDataStore>();
+        PvPDataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
     }
 
 
     public void OnClick() {
-        PlayerPrefs.SetInt("pvpStageId", pvpStageId);
-        PlayerPrefs.Flush();        
-        clickedFlg = true;
+        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        Message msg = new Message();
+
+        nowHyourou = PlayerPrefs.GetInt("hyourou");
+
+        if (nowHyourou >= 5) {
+            audioSources[5].Play();
+            PlayerPrefs.SetInt("pvpStageId", pvpStageId);
+            PlayerPrefs.Flush();        
+            clickedFlg = true;
+        }else {
+            audioSources[4].Play();
+            msg.makeMessage(msg.getMessage(7));
+        }
 
     }
 
@@ -36,16 +49,16 @@ public class StartKassenPvP : MonoBehaviour {
 
         //get busyo data
         if (pvpStageId == 1) {            
-            if(PvPDataStore.PvP1BusyoList != null && !isBusyoStatusFetched) {
+            if(PvPDataStore.PvP1BusyoList != null && PvPDataStore.PvP1BusyoList.Count != 0 && !isBusyoStatusFetched) {
                 isBusyoStatusFetched = true;
             }
 
         }else if (pvpStageId == 2 && userId != "") {
-            if (PvPDataStore.PvP2BusyoList != null && !isBusyoStatusFetched) {
+            if (PvPDataStore.PvP2BusyoList != null && PvPDataStore.PvP2BusyoList.Count != 0 && !isBusyoStatusFetched) {
                 isBusyoStatusFetched = true;
             }
         }else if (pvpStageId == 3 && userId != "") {
-            if (PvPDataStore.PvP3BusyoList != null && !isBusyoStatusFetched) {
+            if (PvPDataStore.PvP3BusyoList != null && PvPDataStore.PvP3BusyoList.Count != 0 && !isBusyoStatusFetched) {
                 isBusyoStatusFetched = true;
             }
         }
@@ -53,13 +66,20 @@ public class StartKassenPvP : MonoBehaviour {
         //register temp lose tran
         if(userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && !PvPDataStore.PvPAtkNoFlg) {
             PvPDataStore.UpdatePvPAtkNo(GameObject.Find("GameScene").GetComponent<PvPController>().myUserId);
-            GameObject.Find("DataStore").GetComponent<PvPDataStore>().enemyUserId = userId;
+            GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserId = userId;
         }
 
         //scene change
         if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && !sceneChangeFlg) {
+
+            //hyourou
+            int newHyourou = nowHyourou - 5;
+            PlayerPrefs.SetInt("hyourou", newHyourou);
+            PlayerPrefs.SetBool("pvpFlg", true);
+            PlayerPrefs.Flush();
+
             sceneChangeFlg = true;
-            Application.LoadLevel("pvpKassen");
+            Application.LoadLevel("kassen");
         }
 
     }

@@ -4,7 +4,11 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class AddHyourouConfirm : MonoBehaviour {
 
-	public void OnClick(){
+    //PvP
+    //public GameObject lightning;
+    //public GameObject vs;
+
+    public void OnClick(){
 
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		int busyoDama = PlayerPrefs.GetInt ("busyoDama");
@@ -24,15 +28,21 @@ public class AddHyourouConfirm : MonoBehaviour {
 			string pathOfBoard = "Prefabs/Map/common/AddHyourouBoard";
 			GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
 			board.transform.SetParent (panel.transform);
-			if (Application.loadedLevelName != "shisya" && Application.loadedLevelName != "naisei") {
-                board.transform.localScale = new Vector2(1, 1);
-            }else {
+			if (Application.loadedLevelName != "shisya" && Application.loadedLevelName != "naisei" && Application.loadedLevelName != "pvp") {
+                board.transform.localScale = new Vector2(1, 1);            
+            }else { 
                 board.transform.localScale = new Vector2(1, 0.8f);
             }
             board.transform.localPosition = new Vector2 (0, 0);
 
-			//qa
-			string qaPath = "Prefabs/Common/Question";
+            //PvP
+            if (Application.loadedLevelName == "pvp") {
+                GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "UI";
+            }
+
+
+                //qa
+                string qaPath = "Prefabs/Common/Question";
 			GameObject qa = Instantiate (Resources.Load (qaPath)) as GameObject;
 			qa.transform.SetParent(board.transform);
 			qa.transform.localScale = new Vector2 (1, 1);

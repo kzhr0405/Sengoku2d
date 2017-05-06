@@ -63,8 +63,7 @@ public class KumoMove : MonoBehaviour {
                                 Application.LoadLevel("mainStage");
                             }
 
-
-						}
+                        }
 					}
 				}
 			} else {
