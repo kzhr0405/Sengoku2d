@@ -11,6 +11,8 @@ public class PvPDataStore : MonoBehaviour {
     public int pvpCount = -1;
     public int hpRank = -1;
     public string userId = "";
+    public string myUserName = "";
+    public int totalWinNo = -1;
     public int atkNo = -1;
     public int atkWinNo = -1;
     public int dfcNo = -1;
@@ -65,6 +67,29 @@ public class PvPDataStore : MonoBehaviour {
     //pvp tran
     public bool PvPAtkNoFlg = false;
     public string enemyUserId = "";
+    public string enemyUserName = "";
+
+    //Top3
+    public List<string> Top3WinNameList = new List<string>();
+    public List<int> Top3WinRankList = new List<int>();
+    public List<int> Top3WinBusyoList = new List<int>();
+    public List<int> Top3WinQtyList = new List<int>();
+
+    public List<string> Top3HPNameList = new List<string>();
+    public List<int> Top3HPRankList = new List<int>();
+    public List<int> Top3HPBusyoList = new List<int>();
+    public List<int> Top3HPQtyList = new List<int>();
+
+    //Neibors, upper 2 & lower 2
+    public List<string> NeighborsWinNameList = new List<string>();
+    public List<int> NeighborsWinRankList = new List<int>();
+    public List<int> NeighborsWinBusyoList = new List<int>();
+    public List<int> NeighborsWinQtyList = new List<int>();
+
+    public List<string> NeighborsHPNameList = new List<string>();
+    public List<int> NeighborsHPRankList = new List<int>();
+    public List<int> NeighborsHPBusyoList = new List<int>();
+    public List<int> NeighborsHPQtyList = new List<int>();
 
 
     /* Total Start */
@@ -108,6 +133,7 @@ public class PvPDataStore : MonoBehaviour {
                     atkWinNo = System.Convert.ToInt32(obj["atkWinNo"]);
                     dfcNo = System.Convert.ToInt32(obj["dfcNo"]);
                     dfcWinNo = System.Convert.ToInt32(obj["dfcWinNo"]);
+                    totalWinNo = System.Convert.ToInt32(obj["totalWinNo"]);
                 }
             }
         });
@@ -203,10 +229,11 @@ public class PvPDataStore : MonoBehaviour {
 
     /* Matching Start */
     public void GetRandomEnemy(string myUserId, int HpBase) {
+
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereNotEqualTo("userId", myUserId);
-        query.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", HpBase);
-        query.OrderByAscending("jinkeiHeiryoku");
+        query.WhereLessThanOrEqualTo("jinkeiHeiryoku", HpBase);
+        query.OrderByDescending("jinkeiHeiryoku");
         query.Limit = 3;
         
         query.CountAsync((int count, NCMBException e) => {
@@ -217,7 +244,7 @@ public class PvPDataStore : MonoBehaviour {
                 }
             }
         });
-        
+
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e != null) {
                 Debug.Log("Ther is no user : exception");
@@ -362,14 +389,12 @@ public class PvPDataStore : MonoBehaviour {
     public void UpdatePvPAtkNo(string userId){
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
-
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 if (objList.Count != 0) {
                     int atkNo = System.Convert.ToInt32(objList[0]["atkNo"]);
                     atkNo = atkNo + 1;
                     objList[0]["atkNo"] = atkNo;
-
                     objList[0].SaveAsync();                    
                 }
             }
@@ -383,7 +408,6 @@ public class PvPDataStore : MonoBehaviour {
                     int atkNo = System.Convert.ToInt32(objList[0]["atkNo"]);
                     atkNo = atkNo + 1;
                     objList[0]["atkNo"] = atkNo;
-
                     objList[0].SaveAsync();
                     PvPAtkNoFlg = true;
                 }
@@ -509,4 +533,96 @@ public class PvPDataStore : MonoBehaviour {
             }
         });
     }
+
+    //Rank Win
+    public void GetTop10Win() {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
+        query.OrderByDescending("totalWinNo");
+        query.Limit = 10;
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e != null) {
+            }else {
+                foreach (NCMBObject obj in objList) {
+                    Top3WinNameList.Add(System.Convert.ToString(obj["userName"]));
+                    Top3WinRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
+                    Top3WinBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    Top3WinQtyList.Add(System.Convert.ToInt32(obj["totalWinNo"]));
+                }
+            }
+        });
+    }
+
+    //Rank HP
+    public void GetTop10HP() {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
+        query.OrderByDescending("jinkeiHeiryoku");
+        query.Limit = 10;
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e != null) {
+            }
+            else {
+                foreach (NCMBObject obj in objList) {
+                    Top3HPNameList.Add(System.Convert.ToString(obj["userName"]));
+                    Top3HPRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
+                    Top3HPBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    Top3HPQtyList.Add(System.Convert.ToInt32(obj["jinkeiHeiryoku"]));
+                }
+            }
+        });
+    }
+
+    //Playerの前後2位のユーザデータ取得
+    public void GetNeighborsWin(int currentRank) {
+        
+        int numSkip = currentRank - 3;
+        if (numSkip < 0) numSkip = 0;
+        
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
+        query.OrderByDescending("totalWinNo");
+        query.Skip = numSkip;
+        query.Limit = 5;
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e != null) {
+                //検索失敗時の処理
+            }else {
+                // 取得したレコードを保存
+                foreach (NCMBObject obj in objList) {
+                    Debug.Log(System.Convert.ToString(obj["userName"]));
+                    NeighborsWinNameList.Add(System.Convert.ToString(obj["userName"]));
+                    NeighborsWinRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
+                    NeighborsWinBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    NeighborsWinQtyList.Add(System.Convert.ToInt32(obj["totalWinNo"]));
+                }                
+            }
+        });
+    }
+
+    //Playerの前後2位のユーザデータ取得
+    public void GetNeighborsHP(int currentRank) {
+
+        int numSkip = currentRank - 3;
+        if (numSkip < 0) numSkip = 0;
+
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
+        query.OrderByDescending("jinkeiHeiryoku");
+        query.Skip = numSkip;
+        query.Limit = 5;
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e != null) {
+                //検索失敗時の処理
+            }else {
+                // 取得したレコードを保存
+                foreach (NCMBObject obj in objList) {
+                    NeighborsHPNameList.Add(System.Convert.ToString(obj["userName"]));
+                    NeighborsHPRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
+                    NeighborsHPBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    NeighborsHPQtyList.Add(System.Convert.ToInt32(obj["jinkeiHeiryoku"]));
+                }
+            }
+        });
+    }
+
+
+
+
 }

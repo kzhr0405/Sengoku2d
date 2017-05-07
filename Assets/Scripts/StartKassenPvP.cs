@@ -7,11 +7,13 @@ public class StartKassenPvP : MonoBehaviour {
 
     public int pvpStageId;
     public string userId;
+    public string enemyUserName;
     public bool clickedFlg = false;
     public bool sceneChangeFlg = false;
     public PvPDataStore PvPDataStore;
     public bool isJinkeiMapFetched;
     public bool isBusyoStatusFetched;
+    public bool updatePvPAtkFlg;
 
     public int nowHyourou = 0;
 
@@ -64,13 +66,17 @@ public class StartKassenPvP : MonoBehaviour {
         }
 
         //register temp lose tran
-        if(userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && !PvPDataStore.PvPAtkNoFlg) {
-            PvPDataStore.UpdatePvPAtkNo(GameObject.Find("GameScene").GetComponent<PvPController>().myUserId);
+        if(userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && !PvPDataStore.PvPAtkNoFlg && !updatePvPAtkFlg) {
+            updatePvPAtkFlg = true;
+            PvPController PvPController = GameObject.Find("GameScene").GetComponent<PvPController>();
+            PvPDataStore.UpdatePvPAtkNo(PvPController.myUserId);
             GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserId = userId;
+            GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserName = enemyUserName;
+            GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().myUserName = PvPController.myUserName;
         }
 
         //scene change
-        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && !sceneChangeFlg) {
+        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && updatePvPAtkFlg && !sceneChangeFlg) {
 
             //hyourou
             int newHyourou = nowHyourou - 5;

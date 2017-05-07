@@ -8,8 +8,10 @@ using System.Collections.Generic;
 public class PvPController : MonoBehaviour {
 
     public string myUserId;
+    public string myUserName;
     public int kuniLv;
     public int HpBase;
+    public int soudaisyoBusyoId;
 
     public int myJinkeiHeiryoku;
     private GameObject LeftView;
@@ -28,7 +30,6 @@ public class PvPController : MonoBehaviour {
     public int dfcNo = 0;
     public int dfcWinNo = 0;
     public int totalWinNo = 0;
-    public int winRank = 0;
 
     //Weekly
     public bool isMyPvPWeeklyFetched;
@@ -49,6 +50,9 @@ public class PvPController : MonoBehaviour {
     public bool PvP1doneFlg = false;
     public bool PvP2doneFlg = false;
     public bool PvP3doneFlg = false;
+
+    //Ranking
+    public bool isNeighborsFerched;
 
     void Start () {
         ShowKassen();        
@@ -72,8 +76,8 @@ public class PvPController : MonoBehaviour {
         /*LeftView*/
         LeftView = GameObject.Find("LeftView").gameObject;
         //Name
-        string PvPName = PlayerPrefs.GetString("PvPName");
-        LeftView.transform.FindChild("myName").GetComponent<Text>().text = PvPName;
+        myUserName = PlayerPrefs.GetString("PvPName");
+        LeftView.transform.FindChild("myName").GetComponent<Text>().text = myUserName;
 
         //KuniLv
         kuniLv = PlayerPrefs.GetInt("kuniLv");
@@ -87,13 +91,14 @@ public class PvPController : MonoBehaviour {
         
         int jinkei = PlayerPrefs.GetInt("jinkei");
         string soudaisyo = "soudaisyo" + jinkei.ToString();
-        int soudaisyoBusyoId = PlayerPrefs.GetInt(soudaisyo);
+        soudaisyoBusyoId = PlayerPrefs.GetInt(soudaisyo);
         string imagePath2 = "Prefabs/Player/Sprite/unit" + soudaisyoBusyoId.ToString();
         LeftView.transform.FindChild("Soudaisyo").GetComponent<Image>().sprite =
             Resources.Load(imagePath2, typeof(Sprite)) as Sprite;
 
         //HP
         myJinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+        //myJinkeiHeiryoku = 1000000;
         LeftView.transform.FindChild("HP").transform.FindChild("hpValue").GetComponent<Text>().text = myJinkeiHeiryoku.ToString();
 
 
@@ -115,7 +120,9 @@ public class PvPController : MonoBehaviour {
         HpBase = Mathf.CeilToInt((float)myJinkeiHeiryoku * per);
         PvPDataStore.GetRandomEnemy(myUserId, HpBase);
 
-
+        //PvP Top3 Ranking
+        PvPDataStore.GetTop10Win();
+        PvPDataStore.GetTop10HP();        
     }
 
 
@@ -144,10 +151,20 @@ public class PvPController : MonoBehaviour {
             atkWinNo = PvPDataStore.atkWinNo;
             dfcNo = PvPDataStore.dfcNo;
             dfcWinNo = PvPDataStore.dfcWinNo;
-            totalWinNo = atkWinNo + dfcWinNo;
+            totalWinNo = PvPDataStore.totalWinNo;
             PvPDataStore.GetWinRank(totalWinNo);
             isAtkDfcFetched = true;
         }
+
+        /* 自分の直近上位下位2位分の情報を取得する場合
+        if(PvPDataStore.winRank > 0 && PvPDataStore.hpRank > 0 && !isNeighborsFerched) {
+            isNeighborsFerched = true;
+            PvPDataStore.GetNeighborsWin(PvPDataStore.winRank);
+            PvPDataStore.GetNeighborsHP(PvPDataStore.hpRank);
+        }
+        */
+
+
         /*** Total PvP End ***/
 
         /*** Weekly PvP Start ***/
@@ -223,7 +240,7 @@ public class PvPController : MonoBehaviour {
                 deleteBusyoScript(prefab);
                 PvP1.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().pvpStageId = 1;
                 PvP1.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().userId = PvPDataStore.pvpUserIdList[0];
-                
+                PvP1.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().enemyUserName = PvPDataStore.pvpUserNameList[0];
             }
             //PvP2
             if (PvPDataStore.pvpUserNameList.Count > 1) {
@@ -245,7 +262,8 @@ public class PvPController : MonoBehaviour {
                     deleteBusyoScript(prefab);
                     PvP2.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().pvpStageId = 2;
                     PvP2.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().userId = PvPDataStore.pvpUserIdList[1];
-                    
+                    PvP2.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().enemyUserName = PvPDataStore.pvpUserNameList[1];
+
                 }
 
                 //PvP3
@@ -268,6 +286,7 @@ public class PvPController : MonoBehaviour {
                         deleteBusyoScript(prefab);
                         PvP3.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().pvpStageId = 3;
                         PvP3.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().userId = PvPDataStore.pvpUserIdList[2];
+                        PvP3.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().enemyUserName = PvPDataStore.pvpUserNameList[2];
                     }
                 }else {
                     Destroy(GameObject.Find("3").gameObject);
@@ -300,9 +319,6 @@ public class PvPController : MonoBehaviour {
             PvP2.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP2Rank.ToString();
             PvP3.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP3Rank.ToString();
         }
-
-
-
 
     }
 
@@ -338,5 +354,84 @@ public class PvPController : MonoBehaviour {
         }
     }
 
+    public void ShowRank(GameObject rankViewObj) {
+        GameObject WinContent = rankViewObj.transform.FindChild("LeftView").transform.FindChild("ScrollView").transform.FindChild("Viewport").transform.FindChild("Content").gameObject;
+        GameObject HPContent = rankViewObj.transform.FindChild("RightView").transform.FindChild("ScrollView").transform.FindChild("Viewport").transform.FindChild("Content").gameObject;
+
+        GameObject SlotWin = null;
+        GameObject SlotHP = null;
+        for (int i = 0; i < 10; i++) {
+
+            int slotName = i + 1;
+            SlotWin = WinContent.transform.FindChild(slotName.ToString()).gameObject;
+            SlotHP = HPContent.transform.FindChild(slotName.ToString()).gameObject;
+            
+            //1st-3rd
+            SlotWin.transform.FindChild("Name").GetComponent<Text>().text = PvPDataStore.Top3WinNameList[i];
+            SlotHP.transform.FindChild("Name").GetComponent<Text>().text = PvPDataStore.Top3HPNameList[i];
+
+            SlotWin.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = PvPDataStore.Top3WinRankList[i].ToString();
+            SlotHP.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = PvPDataStore.Top3HPRankList[i].ToString();
+
+            SlotWin.transform.FindChild("Win").transform.FindChild("winValue").GetComponent<Text>().text = PvPDataStore.Top3WinQtyList[i].ToString();
+            SlotHP.transform.FindChild("HP").transform.FindChild("winValue").GetComponent<Text>().text = PvPDataStore.Top3HPQtyList[i].ToString();
+
+            string imagePath1 = "Prefabs/Player/Sprite/unit" + PvPDataStore.Top3WinBusyoList[i].ToString();
+            SlotWin.transform.FindChild("Image").GetComponent<Image>().sprite =
+                Resources.Load(imagePath1, typeof(Sprite)) as Sprite;
+
+            string imagePath2 = "Prefabs/Player/Sprite/unit" + PvPDataStore.Top3HPBusyoList[i].ToString();
+            SlotHP.transform.FindChild("Image").GetComponent<Image>().sprite =
+                Resources.Load(imagePath2, typeof(Sprite)) as Sprite;
+
+
+            string imagePath3 = "Prefabs/Sashimono/" + PvPDataStore.Top3WinBusyoList[i].ToString();
+            GameObject tmpObj = Resources.Load(imagePath3) as GameObject;
+            SlotWin.transform.FindChild("Sashimono").GetComponent<Image>().sprite =
+                tmpObj.GetComponent<SpriteRenderer>().sprite;
+
+            string imagePath4 = "Prefabs/Sashimono/" + PvPDataStore.Top3HPBusyoList[i].ToString();
+            GameObject tmpObj2 = Resources.Load(imagePath4) as GameObject;
+            SlotHP.transform.FindChild("Sashimono").GetComponent<Image>().sprite =
+                tmpObj2.GetComponent<SpriteRenderer>().sprite;
+
+
+        }
+
+        //Player
+        SlotWin = rankViewObj.transform.FindChild("LeftView").transform.FindChild("Player").gameObject;
+        SlotHP = rankViewObj.transform.FindChild("RightView").transform.FindChild("Player").gameObject;
+        SlotWin.transform.FindChild("Name").GetComponent<Text>().text = myUserName;
+        SlotHP.transform.FindChild("Name").GetComponent<Text>().text = myUserName;
+
+        SlotWin.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = kuniLv.ToString();
+        SlotHP.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = kuniLv.ToString();
+
+        SlotWin.transform.FindChild("Win").transform.FindChild("winValue").GetComponent<Text>().text = totalWinNo.ToString();
+        SlotHP.transform.FindChild("HP").transform.FindChild("winValue").GetComponent<Text>().text = myJinkeiHeiryoku.ToString();
+
+        SlotWin.transform.FindChild("Rank").GetComponent<Text>().text = PvPDataStore.winRank.ToString();
+        SlotHP.transform.FindChild("Rank").GetComponent<Text>().text = hpRank.ToString();
+        
+        string imagePlayerPath1 = "Prefabs/Player/Sprite/unit" + soudaisyoBusyoId.ToString();
+        SlotWin.transform.FindChild("Image").GetComponent<Image>().sprite =
+            Resources.Load(imagePlayerPath1, typeof(Sprite)) as Sprite;
+
+        string imagePlayerPath2 = "Prefabs/Player/Sprite/unit" + soudaisyoBusyoId.ToString();
+        SlotHP.transform.FindChild("Image").GetComponent<Image>().sprite =
+            Resources.Load(imagePlayerPath2, typeof(Sprite)) as Sprite;
+
+        string imagePlayerPath3 = "Prefabs/Sashimono/" + soudaisyoBusyoId.ToString();
+        GameObject tmpObj3 = Resources.Load(imagePlayerPath3) as GameObject;
+        SlotWin.transform.FindChild("Sashimono").GetComponent<Image>().sprite =
+            tmpObj3.GetComponent<SpriteRenderer>().sprite;
+
+        string imagePlayerPath4 = "Prefabs/Sashimono/" + soudaisyoBusyoId.ToString();
+        GameObject tmpObj4 = Resources.Load(imagePlayerPath4) as GameObject;
+        SlotHP.transform.FindChild("Sashimono").GetComponent<Image>().sprite =
+            tmpObj4.GetComponent<SpriteRenderer>().sprite;
+
+
+    }
 
 }

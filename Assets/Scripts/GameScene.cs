@@ -77,6 +77,8 @@ public class GameScene : MonoBehaviour {
         PlayerPrefs.Flush();
 
         if (!pvpFlg) {
+            Destroy(GameObject.Find("PvPName").gameObject);
+
             activeKuniId  = PlayerPrefs.GetInt("activeKuniId");
 		    activeStageId = PlayerPrefs.GetInt("activeStageId");
 		    Stage stage = new Stage ();
@@ -181,6 +183,10 @@ public class GameScene : MonoBehaviour {
             GameObject.Find("timer").GetComponent<Timer>().enabled = false;
             GameObject.Find("timer").transform.FindChild("timerText").GetComponent<Text>().text = "∞";
 
+            //Name
+            GameObject PvPName = GameObject.Find("PvPName").gameObject;
+            PvPName.transform.FindChild("Player").GetComponent<Text>().text = DataStore.myUserName;
+            PvPName.transform.FindChild("Enemy").GetComponent<Text>().text = DataStore.enemyUserName;
 
             string mapPath = "";
             string mapFrontPath = "";
@@ -748,6 +754,41 @@ public class GameScene : MonoBehaviour {
 		    }
         }else {
             //PvP
+            List<int> PvPBusyoList = new List<int>();
+            List<int> PvPLvList = new List<int>();
+            List<string> PvPHeiList = new List<string>();
+            List<int> PvPSenpouLvList = new List<int>();
+            List<int> PvPSakuLvList = new List<int>();
+            List<string> PvPKahouList = new List<string>();
+            int soudaisyo = 0;
+            if (pvpStageId==1) {
+                PvPBusyoList = DataStore.PvP1BusyoList;
+                PvPLvList = DataStore.PvP1LvList;
+                PvPHeiList = DataStore.PvP1HeiList;
+                PvPSenpouLvList = DataStore.PvP1SenpouLvList;
+                PvPSakuLvList = DataStore.PvP1SakuLvList;
+                PvPKahouList = DataStore.PvP1KahouList;
+                soudaisyo = DataStore.soudaisyo1;
+            }else if(pvpStageId==2) {
+                PvPBusyoList = DataStore.PvP2BusyoList;
+                PvPLvList = DataStore.PvP2LvList;
+                PvPHeiList = DataStore.PvP2HeiList;
+                PvPSenpouLvList = DataStore.PvP2SenpouLvList;
+                PvPSakuLvList = DataStore.PvP2SakuLvList;
+                PvPKahouList = DataStore.PvP2KahouList;
+                soudaisyo = DataStore.soudaisyo2;
+            }else if(pvpStageId==3) {
+                PvPBusyoList = DataStore.PvP3BusyoList;
+                PvPLvList = DataStore.PvP3LvList;
+                PvPHeiList = DataStore.PvP3HeiList;
+                PvPSenpouLvList = DataStore.PvP3SenpouLvList;
+                PvPSakuLvList = DataStore.PvP3SakuLvList;
+                PvPKahouList = DataStore.PvP3KahouList;
+                soudaisyo = DataStore.soudaisyo3;
+            }
+
+
+
 
             List<int> plus4List = new List<int>() { 1, 6, 11, 16, 21 };
             List<int> plus2List = new List<int>() { 2, 7, 12, 17, 22 };
@@ -755,23 +796,23 @@ public class GameScene : MonoBehaviour {
             List<int> minus4List = new List<int>() { 5, 10, 15, 20, 25 };
 
              
-            int soudaisyo = DataStore.soudaisyo1;
+            
             int counter = 0;
-            for (int i = 0; i < DataStore.PvP1BusyoList.Count; i++) {
+            for (int i = 0; i < PvPBusyoList.Count; i++) {
 
-                int busyoId = DataStore.PvP1BusyoList[i];
+                int busyoId = PvPBusyoList[i];
                 if (busyoId != 0) {                       
-                    int busyoLv = DataStore.PvP1LvList[counter];
-                    string heiString = DataStore.PvP1HeiList[counter];
+                    int busyoLv = PvPLvList[counter];
+                    string heiString = PvPHeiList[counter];
                     char[] delimiterChars = { ':' };
                     string[] heilist = heiString.Split(delimiterChars);
                     int butaiQty = int.Parse(heilist[1]);
                     int butaiLv = int.Parse(heilist[2]);
                     float butaiStatus = float.Parse(heilist[3]);
 
-                    int senpouLv = DataStore.PvP1SenpouLvList[counter];
-                    int sakuLv = DataStore.PvP1SakuLvList[counter];
-                    string kahouList = DataStore.PvP1KahouList[counter];
+                    int senpouLv = PvPSenpouLvList[counter];
+                    int sakuLv = PvPSakuLvList[counter];
+                    string kahouList = PvPKahouList[counter];
 
                     //map Id modification
                     int mapId = i + 1;

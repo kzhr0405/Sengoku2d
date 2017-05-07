@@ -46,6 +46,8 @@ public class StartPvP : MonoBehaviour {
                 PlayerPrefs.SetString("PvPName", userName);
                 PlayerPrefs.Flush();
 
+                GameObject.Find("GameScene").GetComponent<PvPController>().myUserName = userName;
+
                 GameObject.Find("myName").GetComponent<Text>().text = userName;
                 touchBackObj.GetComponent<CloseOneBoard>().OnClick();
             }
