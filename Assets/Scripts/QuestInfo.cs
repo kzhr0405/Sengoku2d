@@ -77,6 +77,7 @@ public class QuestInfo : MonoBehaviour {
 				//Special
 				string tmp = "questSpecialFlg" + i.ToString ();
 				bool activeFlg = PlayerPrefs.GetBool (tmp, false);
+                
 				if (activeFlg) {
 					//active
 

@@ -77,8 +77,9 @@ public class GameScene : MonoBehaviour {
         PlayerPrefs.Flush();
 
         if (!pvpFlg) {
-            Destroy(GameObject.Find("PvPName").gameObject);
-
+            if(GameObject.Find("PvPName")) {
+                Destroy(GameObject.Find("PvPName").gameObject);
+            }
             activeKuniId  = PlayerPrefs.GetInt("activeKuniId");
 		    activeStageId = PlayerPrefs.GetInt("activeStageId");
 		    Stage stage = new Stage ();

@@ -42,6 +42,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
 
             int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
             PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+            PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
 
             //Kassen
             PlayerPrefs.SetBool("isAttackedFlg",true);
@@ -112,6 +113,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
                         int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
                         int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
                         int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
 
                         if (nowJinkeiBusyoQty  < jinkeiBusyoQty){
                             PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
@@ -160,6 +162,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
                         int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
                         int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
                         int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
 
                         if (nowJinkeiBusyoQty < jinkeiBusyoQty) {
                             PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
@@ -209,6 +212,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
                         int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
                         int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
                         int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
 
                         if (nowJinkeiBusyoQty  < jinkeiBusyoQty){
                             PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
@@ -252,41 +256,35 @@ public class JinkeiConfirmButton : MonoBehaviour {
                         aveLv = totalLv / jinkeiBusyoQty;
                         aveChLv = totalChLv / jinkeiBusyoQty;
                         aveChQty = totalChQty / jinkeiBusyoQty;
-                        PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
-                        PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
-                        PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
-                        PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
-                        /*
+                        int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
                         int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
                         int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
                         int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
                         int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
-                        float randomPercentage = Random.Range(0.6f, 1.0f);
-                        float randomPercentage2 = Random.Range(0.6f, 1.0f);
-                        float randomPercentage3 = Random.Range(0.6f, 1.0f);
-                        float randomPercentage4 = Random.Range(0.6f, 1.0f);
+                        int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
 
-                        if (nowJinkeiBusyoQty * randomPercentage <= jinkeiBusyoQty){
+                        if (nowJinkeiBusyoQty < jinkeiBusyoQty) {
                             PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
                         }
-                        if (nowJinkeiAveLv * randomPercentage2 <= aveLv){
+                        if (nowJinkeiAveLv < aveLv) {
                             PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
                         }
-                        if (nowJinkeiAveChLv * randomPercentage3 <= aveChLv){
-                            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);                           
+                        if (nowJinkeiAveChLv < aveChLv) {
+                            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
                         }
-                        if (nowJinkeiAveChQty * randomPercentage4 <= aveChQty){
+                        if (nowJinkeiAveChQty < aveChQty) {
                             PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
                         }
-                        */
-                    
-                        int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
-                        PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                        if (nowHeiryoku < heiryoku) {
+                            PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                        }
 
                         //Soudaisyo
                         PlayerPrefs.SetInt("soudaisyo4", soudaisyo);
                         PlayerPrefs.SetInt("jinkei", selectedJinkei);
                     }
+
                     PlayerPrefs.SetBool("questSpecialFlg6", true);
                     PlayerPrefs.Flush();
                     Application.LoadLevel("mainStage");

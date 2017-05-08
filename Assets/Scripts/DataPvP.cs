@@ -7,7 +7,10 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 public class DataPvP : MonoBehaviour {
 
     public void InsertPvP(string userId, string PvPName) {
-        int jinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+        int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
+        if (pvpHeiryoku == 0) {
+            pvpHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+        }
         int kuniLv = PlayerPrefs.GetInt("kuniLv");
         int jinkei = PlayerPrefs.GetInt("jinkei");
         string soudaisyoTmp = "soudaisyo" + jinkei.ToString();
@@ -17,7 +20,7 @@ public class DataPvP : MonoBehaviour {
         pvpClass["userId"] = userId;
         pvpClass["userName"] = PvPName;
         pvpClass["kuniLv"] = kuniLv;
-        pvpClass["jinkeiHeiryoku"] = jinkeiHeiryoku;
+        pvpClass["jinkeiHeiryoku"] = pvpHeiryoku;
         pvpClass["atkNo"] = 0;
         pvpClass["atkWinNo"] = 0;
         pvpClass["dfcNo"] = 0;
@@ -32,7 +35,10 @@ public class DataPvP : MonoBehaviour {
 
         string userId = PlayerPrefs.GetString("userId");
         string userName = PlayerPrefs.GetString("PvPName");
-        int jinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+        int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
+        if(pvpHeiryoku == 0) {
+            pvpHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+        }
         int kuniLv = PlayerPrefs.GetInt("kuniLv");
         int jinkei = PlayerPrefs.GetInt("jinkei");
         string soudaisyoTmp = "soudaisyo" + jinkei.ToString();
@@ -49,7 +55,7 @@ public class DataPvP : MonoBehaviour {
                 }else { //Update           
                     objList[0]["userName"] = userName;
                     objList[0]["kuniLv"] = kuniLv;
-                    objList[0]["jinkeiHeiryoku"] = jinkeiHeiryoku;
+                    objList[0]["jinkeiHeiryoku"] = pvpHeiryoku;
                     objList[0]["soudaisyo"] = soudaisyo;
                     objList[0].SaveAsync();
                 }

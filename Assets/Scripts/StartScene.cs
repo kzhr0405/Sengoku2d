@@ -58,9 +58,10 @@ public class StartScene : MonoBehaviour {
                     board.transform.FindChild("NoButton").GetComponent<AddHyourou>().touchBackObj = back;
                     
                 }else {
-                    DataPvP pvpScript = new DataPvP();
-                    pvpScript.UpdatePvP();
-
+                    if(GameObject.Find("DataStore")) {
+                        DataPvP pvpScript = GameObject.Find("DataStore").GetComponent<DataPvP>();
+                        pvpScript.UpdatePvP();
+                    }
                     Application.LoadLevel("pvp");
                 }
 

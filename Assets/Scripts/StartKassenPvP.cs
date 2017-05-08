@@ -14,7 +14,7 @@ public class StartKassenPvP : MonoBehaviour {
     public bool isJinkeiMapFetched;
     public bool isBusyoStatusFetched;
     public bool updatePvPAtkFlg;
-
+    public PvPController PvPController;
     public int nowHyourou = 0;
 
     private void Awake() {
@@ -68,7 +68,7 @@ public class StartKassenPvP : MonoBehaviour {
         //register temp lose tran
         if(userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && !PvPDataStore.PvPAtkNoFlg && !updatePvPAtkFlg) {
             updatePvPAtkFlg = true;
-            PvPController PvPController = GameObject.Find("GameScene").GetComponent<PvPController>();
+            PvPController = GameObject.Find("GameScene").GetComponent<PvPController>();
             PvPDataStore.UpdatePvPAtkNo(PvPController.myUserId);
             GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserId = userId;
             GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserName = enemyUserName;
@@ -82,6 +82,52 @@ public class StartKassenPvP : MonoBehaviour {
             int newHyourou = nowHyourou - 5;
             PlayerPrefs.SetInt("hyourou", newHyourou);
             PlayerPrefs.SetBool("pvpFlg", true);
+
+            //money and exp calculation
+            int minExp = getPvPMinExp(PvPController.per);
+            int maxExp = getPvPMaxExp(PvPController.per);
+            int exp = UnityEngine.Random.Range(minExp, maxExp + 1);
+
+            int minMoney = minExp * 2;
+            int maxMoney = maxExp * 3;
+            int money = UnityEngine.Random.Range(minMoney, maxMoney + 1);
+
+            string itemGrp = getPvPRandomItemGrp();
+            string itemTyp = "";
+            int itemId = 0;
+            int itemQty = 1;
+
+            AttackNaiseiView AttackNaiseiView = new AttackNaiseiView();
+            if (itemGrp == "item") {
+                itemTyp = AttackNaiseiView.getRandomItemTyp(itemGrp);
+                if (itemTyp == "tech") {
+                    itemId = AttackNaiseiView.getItemRank(66, 33);
+                }else if (itemTyp == "Tama") {
+                    itemId = AttackNaiseiView.getItemRank(20, 5);
+                    if (itemId == 3) {
+                        itemQty = 100;
+                    }else if (itemId == 2) {
+                        itemQty = 50;
+                    }else if (itemId == 1) {
+                        itemQty = 10;
+                    }
+                }else {
+                    itemId = AttackNaiseiView.getItemRank(20, 5);
+                }
+
+            }else if (itemGrp == "kahou") {
+                itemTyp = AttackNaiseiView.getRandomItemTyp(itemGrp);
+                Kahou kahou = new Kahou();
+                string kahouRank = AttackNaiseiView.getKahouRank();
+                itemId = kahou.getRamdomKahouId(itemTyp, kahouRank);
+            }
+            PlayerPrefs.SetInt("activeStageMoney", money);
+            PlayerPrefs.SetInt("activeStageExp", exp);
+            PlayerPrefs.SetString("activeItemGrp", itemGrp);
+            PlayerPrefs.SetString("activeItemType", itemTyp);
+            PlayerPrefs.SetInt("activeItemId", itemId);
+            PlayerPrefs.SetInt("activeItemQty", itemQty);
+            
             PlayerPrefs.Flush();
 
             sceneChangeFlg = true;
@@ -90,5 +136,51 @@ public class StartKassenPvP : MonoBehaviour {
 
     }
 
+    public int getPvPMinExp(float per) {
+        int minExp = 0;
+        List<int> baseList = new List<int>() { 200, 300, 400, 500};
+        int rdmId = UnityEngine.Random.Range(0, baseList.Count);
+        int baseExp = baseList[rdmId];
 
+        //senryoku ratio
+        int calcExp = Mathf.CeilToInt((float)baseExp * per);
+
+        //-50%
+        minExp = calcExp / 2;
+
+        return minExp;
+    }
+
+    public int getPvPMaxExp(float per) {
+        int maxExp = 0;
+        List<int> baseList = new List<int>() { 200, 300, 400, 500};
+        int rdmId = UnityEngine.Random.Range(0, baseList.Count);
+        int baseExp = baseList[rdmId];
+
+        //senryoku ratio
+        int calcExp = Mathf.CeilToInt((float)baseExp * per);
+
+        //+50%
+        maxExp = calcExp + Mathf.CeilToInt((float)calcExp / 2);
+
+        return maxExp;
+    }
+
+    public string getPvPRandomItemGrp() {
+        string itemGrp = "no"; //no or item or kahou
+
+        float percent = UnityEngine.Random.value;
+        percent = percent * 100;
+
+        if (percent <= 10) {
+            //kahou
+            itemGrp = "kahou";
+        }
+        else if (10 < percent && percent <= 75) {
+            //item
+            itemGrp = "item";
+        }
+
+        return itemGrp;
+    }
 }

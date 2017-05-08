@@ -369,6 +369,32 @@ public class HPCounter : MonoBehaviour {
 					            PlayerPrefs.DeleteKey ("twiceHeiFlg");
 					            PlayerPrefs.Flush();
 				            }
+                        }else {
+                            //quest for pvp
+                            int PvPWinTotal = PlayerPrefs.GetInt("PvPWinTotal",0);
+                            PvPWinTotal = PvPWinTotal + 1;
+                            PlayerPrefs.SetInt("PvPWinTotal", PvPWinTotal);
+                            if(PvPWinTotal==1) {
+                                PlayerPrefs.SetBool("questSpecialFlg152", true);
+                            }else if(PvPWinTotal == 5) {
+                                PlayerPrefs.SetBool("questSpecialFlg153", true);
+                            }else if(PvPWinTotal == 20) {
+                                PlayerPrefs.SetBool("questSpecialFlg154", true);
+                            }
+                            else if (PvPWinTotal == 50) {
+                                PlayerPrefs.SetBool("questSpecialFlg155", true);
+                            }
+                            else if (PvPWinTotal == 100) {
+                                PlayerPrefs.SetBool("questSpecialFlg156", true);
+                            }
+                            else if (PvPWinTotal == 500) {
+                                PlayerPrefs.SetBool("questSpecialFlg157", true);
+                            }
+                            else if (PvPWinTotal == 1000) {
+                                PlayerPrefs.SetBool("questSpecialFlg158", true);
+                            }                            
+                            PlayerPrefs.Flush();
+                            
                         }
 
 				        string backPath = "Prefabs/PostKassen/back";
@@ -402,501 +428,522 @@ public class HPCounter : MonoBehaviour {
                             GameObject.Find("winlose").GetComponent<TextMesh>().text = "勝利";
                         }
 
-                        if (!pvpFlg) {
-                            //Item List
-                            string itemListPath = "Prefabs/PostKassen/itemList";
-				            GameObject itemListObj = Instantiate(Resources.Load (itemListPath)) as GameObject;
-				            itemListObj.transform.SetParent (canvas.transform);
-				            itemListObj.transform.localScale = new Vector2(1,1);
-				            itemListObj.transform.localPosition = new Vector2 (0,-136);
 
-				            if (!isAttackedFlg) {
-					            if (!isKessenFlg) {
+                        //Item List
+                        string itemListPath = "Prefabs/PostKassen/itemList";
+                        GameObject itemListObj = Instantiate(Resources.Load(itemListPath)) as GameObject;
+                        itemListObj.transform.SetParent(canvas.transform);
+                        itemListObj.transform.localScale = new Vector2(1, 1);
+                        itemListObj.transform.localPosition = new Vector2(0, -136);
+
+                        if(pvpFlg) {
+                            isAttackedFlg = false;
+                        }
+                        if (!isAttackedFlg) {
+					        if (!isKessenFlg) {                              
+                                if(pvpFlg) {
+                                    PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
+                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                        itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = DataStore.enemyUserName;
+                                    }else {
+                                        itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = DataStore.enemyUserName;
+                                    }
+                                }else { 
                                     if (Application.systemLanguage != SystemLanguage.Japanese) {
                                         itemListObj.transform.FindChild ("stageName").transform.FindChild ("stageNameValue").GetComponent<Text> ().text = stageName + " Cleared";
                                     }else {
                                         itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = stageName + "攻略";
                                     }
-					            } else {
-						            itemListObj.transform.FindChild ("stageName").transform.FindChild ("stageNameValue").GetComponent<Text> ().text = stageName;
-					            }
-					            /*Item or Kahou*/
-					            string activeItemGrp = PlayerPrefs.GetString ("activeItemGrp");
-
-					            if (activeItemGrp != "no" && activeItemGrp != "" ) {
+                                }
+					        } else {
+						        itemListObj.transform.FindChild ("stageName").transform.FindChild ("stageNameValue").GetComponent<Text> ().text = stageName;
+					        }
+					        /*Item or Kahou*/
+					        string activeItemGrp = PlayerPrefs.GetString ("activeItemGrp");                           
+					        if (activeItemGrp != "no" && activeItemGrp != "" ) {
 								
-						            string activeItemType = PlayerPrefs.GetString ("activeItemType");
-						            int activeItemId = PlayerPrefs.GetInt ("activeItemId");
-						            int activeItemQty = PlayerPrefs.GetInt ("activeItemQty");
+						        string activeItemType = PlayerPrefs.GetString ("activeItemType");
+						        int activeItemId = PlayerPrefs.GetInt ("activeItemId");
+						        int activeItemQty = PlayerPrefs.GetInt ("activeItemQty");
 
-						            //Get Item
-						            string cyouheiPath = "Prefabs/Item/Cyouhei/" + activeItemType;
-						            string kanjyoPath = "Prefabs/Item/Kanjyo/Kanjyo";
-						            string hidensyoPath = "Prefabs/Item/Hidensyo/Hidensyo";
-						            string shinobiPath = "Prefabs/Item/Shinobi/Shinobi";
-						            char[] delimiterChars = { ',' };
+                                //Get Item
+                                string cyouheiPath = "Prefabs/Item/Cyouhei/" + activeItemType;
+						        string kanjyoPath = "Prefabs/Item/Kanjyo/Kanjyo";
+						        string hidensyoPath = "Prefabs/Item/Hidensyo/Hidensyo";
+						        string shinobiPath = "Prefabs/Item/Shinobi/Shinobi";
+						        char[] delimiterChars = { ',' };
 
-						            if (activeItemGrp == "item") {
+						        if (activeItemGrp == "item") {
 
-							            //Cyouhei
-							            if (activeItemType.Contains ("Cyouhei") == true) {
-								            string newCyouheiString = "";
+							        //Cyouhei
+							        if (activeItemType.Contains ("Cyouhei") == true) {
+								        string newCyouheiString = "";
 
-								            makeItemIcon (cyouheiPath, activeItemId.ToString (), itemListObj);
-								            if (activeItemType.Contains ("YR") == true) {
-									            string cyouheiString = PlayerPrefs.GetString ("cyouheiYR");
-									            string[] cyouheiList = cyouheiString.Split (delimiterChars);
-									            if (activeItemId == 1) {
-										            int tempQty = int.Parse (cyouheiList [0]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
+								        makeItemIcon (cyouheiPath, activeItemId.ToString (), itemListObj);
+								        if (activeItemType.Contains ("YR") == true) {
+									        string cyouheiString = PlayerPrefs.GetString ("cyouheiYR");
+									        string[] cyouheiList = cyouheiString.Split (delimiterChars);
+									        if (activeItemId == 1) {
+										        int tempQty = int.Parse (cyouheiList [0]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
 
-									            } else if (activeItemId == 2) {
-										            int tempQty = int.Parse (cyouheiList [1]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
+									        } else if (activeItemId == 2) {
+										        int tempQty = int.Parse (cyouheiList [1]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
 
-									            } else if (activeItemId == 3) {
-										            int tempQty = int.Parse (cyouheiList [2]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
-									            }
+									        } else if (activeItemId == 3) {
+										        int tempQty = int.Parse (cyouheiList [2]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
+									        }
 
-									            PlayerPrefs.SetString ("cyouheiYR", newCyouheiString);
+									        PlayerPrefs.SetString ("cyouheiYR", newCyouheiString);
 
-								            } else if (activeItemType.Contains ("KB") == true) {
-									            string cyouheiString = PlayerPrefs.GetString ("cyouheiKB");
-									            string[] cyouheiList = cyouheiString.Split (delimiterChars);
-									            if (activeItemId == 1) {
-										            int tempQty = int.Parse (cyouheiList [0]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
+								        } else if (activeItemType.Contains ("KB") == true) {
+									        string cyouheiString = PlayerPrefs.GetString ("cyouheiKB");
+									        string[] cyouheiList = cyouheiString.Split (delimiterChars);
+									        if (activeItemId == 1) {
+										        int tempQty = int.Parse (cyouheiList [0]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
 											
-									            } else if (activeItemId == 2) {
-										            int tempQty = int.Parse (cyouheiList [1]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
+									        } else if (activeItemId == 2) {
+										        int tempQty = int.Parse (cyouheiList [1]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
 											
-									            } else if (activeItemId == 3) {
-										            int tempQty = int.Parse (cyouheiList [2]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
-									            }
+									        } else if (activeItemId == 3) {
+										        int tempQty = int.Parse (cyouheiList [2]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
+									        }
 										
-									            PlayerPrefs.SetString ("cyouheiKB", newCyouheiString);
+									        PlayerPrefs.SetString ("cyouheiKB", newCyouheiString);
 
-								            } else if (activeItemType.Contains ("TP") == true) {
-									            string cyouheiString = PlayerPrefs.GetString ("cyouheiTP");
-									            string[] cyouheiList = cyouheiString.Split (delimiterChars);
-									            if (activeItemId == 1) {
-										            int tempQty = int.Parse (cyouheiList [0]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
+								        } else if (activeItemType.Contains ("TP") == true) {
+									        string cyouheiString = PlayerPrefs.GetString ("cyouheiTP");
+									        string[] cyouheiList = cyouheiString.Split (delimiterChars);
+									        if (activeItemId == 1) {
+										        int tempQty = int.Parse (cyouheiList [0]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
 											
-									            } else if (activeItemId == 2) {
-										            int tempQty = int.Parse (cyouheiList [1]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
+									        } else if (activeItemId == 2) {
+										        int tempQty = int.Parse (cyouheiList [1]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
 											
-									            } else if (activeItemId == 3) {
-										            int tempQty = int.Parse (cyouheiList [2]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
-									            }
+									        } else if (activeItemId == 3) {
+										        int tempQty = int.Parse (cyouheiList [2]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
+									        }
 										
-									            PlayerPrefs.SetString ("cyouheiTP", newCyouheiString);
+									        PlayerPrefs.SetString ("cyouheiTP", newCyouheiString);
 
-								            } else if (activeItemType.Contains ("YM") == true) {
-									            string cyouheiString = PlayerPrefs.GetString ("cyouheiYM");
-									            string[] cyouheiList = cyouheiString.Split (delimiterChars);
-									            if (activeItemId == 1) {
-										            int tempQty = int.Parse (cyouheiList [0]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
+								        } else if (activeItemType.Contains ("YM") == true) {
+									        string cyouheiString = PlayerPrefs.GetString ("cyouheiYM");
+									        string[] cyouheiList = cyouheiString.Split (delimiterChars);
+									        if (activeItemId == 1) {
+										        int tempQty = int.Parse (cyouheiList [0]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = tempQty.ToString () + "," + cyouheiList [1] + "," + cyouheiList [2];
 											
-									            } else if (activeItemId == 2) {
-										            int tempQty = int.Parse (cyouheiList [1]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
+									        } else if (activeItemId == 2) {
+										        int tempQty = int.Parse (cyouheiList [1]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + tempQty.ToString () + "," + cyouheiList [2];
 											
-									            } else if (activeItemId == 3) {
-										            int tempQty = int.Parse (cyouheiList [2]);
-										            tempQty = tempQty + activeItemQty;
-										            newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
-									            }
+									        } else if (activeItemId == 3) {
+										        int tempQty = int.Parse (cyouheiList [2]);
+										        tempQty = tempQty + activeItemQty;
+										        newCyouheiString = cyouheiList [0] + "," + cyouheiList [1] + "," + tempQty.ToString ();
+									        }
 										
-									            PlayerPrefs.SetString ("cyouheiYM", newCyouheiString);
-								            }
+									        PlayerPrefs.SetString ("cyouheiYM", newCyouheiString);
+								        }
 
 
-								            //Kanjyo
-							            } else if (activeItemType == "Kanjyo") {
-								            makeItemIcon (kanjyoPath, activeItemId.ToString (), itemListObj);
+								        //Kanjyo
+							        } else if (activeItemType == "Kanjyo") {
+								        makeItemIcon (kanjyoPath, activeItemId.ToString (), itemListObj);
 
-								            string newKanjyoString = "";
-								            string kanjyoString = PlayerPrefs.GetString ("kanjyo");
-								            string[] kanjyoList = kanjyoString.Split (delimiterChars);
+								        string newKanjyoString = "";
+								        string kanjyoString = PlayerPrefs.GetString ("kanjyo");
+								        string[] kanjyoList = kanjyoString.Split (delimiterChars);
 
-								            if (activeItemId == 1) {
-									            int tempQty = int.Parse (kanjyoList [0]);
-									            tempQty = tempQty + activeItemQty;
-									            newKanjyoString = tempQty.ToString () + "," + kanjyoList [1] + "," + kanjyoList [2];
+								        if (activeItemId == 1) {
+									        int tempQty = int.Parse (kanjyoList [0]);
+									        tempQty = tempQty + activeItemQty;
+									        newKanjyoString = tempQty.ToString () + "," + kanjyoList [1] + "," + kanjyoList [2];
 										
-								            } else if (activeItemId == 2) {
-									            int tempQty = int.Parse (kanjyoList [1]);
-									            tempQty = tempQty + activeItemQty;
-									            newKanjyoString = kanjyoList [0] + "," + tempQty.ToString () + "," + kanjyoList [2];
+								        } else if (activeItemId == 2) {
+									        int tempQty = int.Parse (kanjyoList [1]);
+									        tempQty = tempQty + activeItemQty;
+									        newKanjyoString = kanjyoList [0] + "," + tempQty.ToString () + "," + kanjyoList [2];
 										
-								            } else if (activeItemId == 3) {
-									            int tempQty = int.Parse (kanjyoList [2]);
-									            tempQty = tempQty + activeItemQty;
-									            newKanjyoString = kanjyoList [0] + "," + kanjyoList [1] + "," + tempQty.ToString ();
-								            }
-								            PlayerPrefs.SetString ("kanjyo", newKanjyoString);
+								        } else if (activeItemId == 3) {
+									        int tempQty = int.Parse (kanjyoList [2]);
+									        tempQty = tempQty + activeItemQty;
+									        newKanjyoString = kanjyoList [0] + "," + kanjyoList [1] + "," + tempQty.ToString ();
+								        }
+								        PlayerPrefs.SetString ("kanjyo", newKanjyoString);
 								
-								            //Hidensyo
-							            } else if (activeItemType == "Hidensyo") {
-								            makeItemIcon (hidensyoPath, activeItemId.ToString (), itemListObj);
+								        //Hidensyo
+							        } else if (activeItemType == "Hidensyo") {
+								        makeItemIcon (hidensyoPath, activeItemId.ToString (), itemListObj);
 
-								            if (activeItemId == 1) {
-									            int hidensyoQty = PlayerPrefs.GetInt ("hidensyoGe");
-									            hidensyoQty = hidensyoQty + activeItemQty;
-									            PlayerPrefs.SetInt ("hidensyoGe", hidensyoQty);
+								        if (activeItemId == 1) {
+									        int hidensyoQty = PlayerPrefs.GetInt ("hidensyoGe");
+									        hidensyoQty = hidensyoQty + activeItemQty;
+									        PlayerPrefs.SetInt ("hidensyoGe", hidensyoQty);
 
-								            } else if (activeItemId == 2) {
-									            int hidensyoQty = PlayerPrefs.GetInt ("hidensyoCyu");
-									            hidensyoQty = hidensyoQty + activeItemQty;
-									            PlayerPrefs.SetInt ("hidensyoCyu", hidensyoQty);
+								        } else if (activeItemId == 2) {
+									        int hidensyoQty = PlayerPrefs.GetInt ("hidensyoCyu");
+									        hidensyoQty = hidensyoQty + activeItemQty;
+									        PlayerPrefs.SetInt ("hidensyoCyu", hidensyoQty);
 
-								            } else if (activeItemId == 3) {
-									            int hidensyoQty = PlayerPrefs.GetInt ("hidensyoJyo");
-									            hidensyoQty = hidensyoQty + activeItemQty;
-									            PlayerPrefs.SetInt ("hidensyoJyo", hidensyoQty);
-								            }
+								        } else if (activeItemId == 3) {
+									        int hidensyoQty = PlayerPrefs.GetInt ("hidensyoJyo");
+									        hidensyoQty = hidensyoQty + activeItemQty;
+									        PlayerPrefs.SetInt ("hidensyoJyo", hidensyoQty);
+								        }
 
-								            //Shinobi
-							            } else if (activeItemType == "Shinobi") {
-								            makeItemIcon (shinobiPath, activeItemId.ToString (), itemListObj);
-								            RectTransform rect = itemListObj.transform.FindChild ("itemIcon").transform.FindChild ("Shinobi").GetComponent<RectTransform> ();
-								            rect.sizeDelta = new Vector2 (100, 100);
+								        //Shinobi
+							        } else if (activeItemType == "Shinobi") {
+								        makeItemIcon (shinobiPath, activeItemId.ToString (), itemListObj);
+								        RectTransform rect = itemListObj.transform.FindChild ("itemIcon").transform.FindChild ("Shinobi").GetComponent<RectTransform> ();
+								        rect.sizeDelta = new Vector2 (100, 100);
 
 
-								            if (activeItemId == 1) {
-									            int newQty = 0;
-									            int shinobiQty = PlayerPrefs.GetInt ("shinobiGe");
-									            newQty = shinobiQty + activeItemQty;
-									            PlayerPrefs.SetInt ("shinobiGe", newQty);
+								        if (activeItemId == 1) {
+									        int newQty = 0;
+									        int shinobiQty = PlayerPrefs.GetInt ("shinobiGe");
+									        newQty = shinobiQty + activeItemQty;
+									        PlayerPrefs.SetInt ("shinobiGe", newQty);
 
-								            } else if (activeItemId == 2) {
-									            int newQty = 0;
-									            int shinobiQty = PlayerPrefs.GetInt ("shinobiCyu");
-									            newQty = shinobiQty + activeItemQty;
-									            PlayerPrefs.SetInt ("shinobiCyu", newQty);
+								        } else if (activeItemId == 2) {
+									        int newQty = 0;
+									        int shinobiQty = PlayerPrefs.GetInt ("shinobiCyu");
+									        newQty = shinobiQty + activeItemQty;
+									        PlayerPrefs.SetInt ("shinobiCyu", newQty);
 
-								            } else if (activeItemId == 3) {
-									            int newQty = 0;
-									            int shinobiQty = PlayerPrefs.GetInt ("shinobiJyo");
-									            newQty = shinobiQty + activeItemQty;
-									            PlayerPrefs.SetInt ("shinobiJyo", newQty);
+								        } else if (activeItemId == 3) {
+									        int newQty = 0;
+									        int shinobiQty = PlayerPrefs.GetInt ("shinobiJyo");
+									        newQty = shinobiQty + activeItemQty;
+									        PlayerPrefs.SetInt ("shinobiJyo", newQty);
 
-								            }								
+								        }								
 								
-								            //tech
-							            } else if (activeItemType == "tech") {
-								            string path = "Prefabs/Item/Tech/Tech";
-								            GameObject tech = Instantiate (Resources.Load (path)) as GameObject;
-								            tech.transform.SetParent (itemListObj.transform);
-								            tech.transform.localScale = new Vector2 (0.4f, 0.4f);
-								            RectTransform techTransform = tech.GetComponent<RectTransform> ();
-								            techTransform.sizeDelta = new Vector2 (100, 100);
-								            techTransform.anchoredPosition3D = new Vector3 (650, 110, 0);
-								            tech.GetComponent<Button> ().enabled = false;
+								        //tech
+							        } else if (activeItemType == "tech") {
+								        string path = "Prefabs/Item/Tech/Tech";
+								        GameObject tech = Instantiate (Resources.Load (path)) as GameObject;
+								        tech.transform.SetParent (itemListObj.transform);
+								        tech.transform.localScale = new Vector2 (0.4f, 0.4f);
+								        RectTransform techTransform = tech.GetComponent<RectTransform> ();
+								        techTransform.sizeDelta = new Vector2 (100, 100);
+								        techTransform.anchoredPosition3D = new Vector3 (650, 110, 0);
+								        tech.GetComponent<Button> ().enabled = false;
 
-								            string spritePath = "";
-								            if (activeItemId == 1) {
-									            //TP
-									            int qty = PlayerPrefs.GetInt ("transferTP", 0);
-									            int newQty = qty + activeItemQty;
-									            PlayerPrefs.SetInt ("transferTP", newQty);
-									            spritePath = "Prefabs/Item/Tech/Sprite/tp";
+								        string spritePath = "";
+								        if (activeItemId == 1) {
+									        //TP
+									        int qty = PlayerPrefs.GetInt ("transferTP", 0);
+									        int newQty = qty + activeItemQty;
+									        PlayerPrefs.SetInt ("transferTP", newQty);
+									        spritePath = "Prefabs/Item/Tech/Sprite/tp";
 
-								            } else if (activeItemId == 2) {
-									            int qty = PlayerPrefs.GetInt ("transferKB", 0);
-									            int newQty = qty + activeItemQty;
-									            PlayerPrefs.SetInt ("transferKB", newQty);
-									            spritePath = "Prefabs/Item/Tech/Sprite/kb";
+								        } else if (activeItemId == 2) {
+									        int qty = PlayerPrefs.GetInt ("transferKB", 0);
+									        int newQty = qty + activeItemQty;
+									        PlayerPrefs.SetInt ("transferKB", newQty);
+									        spritePath = "Prefabs/Item/Tech/Sprite/kb";
 
-								            } else if (activeItemId == 3) {
-									            int qty = PlayerPrefs.GetInt ("transferSNB", 0);
-									            int newQty = qty + activeItemQty;
-									            PlayerPrefs.SetInt ("transferSNB", newQty);
-									            spritePath = "Prefabs/Item/Tech/Sprite/snb";
-								            }
+								        } else if (activeItemId == 3) {
+									        int qty = PlayerPrefs.GetInt ("transferSNB", 0);
+									        int newQty = qty + activeItemQty;
+									        PlayerPrefs.SetInt ("transferSNB", newQty);
+									        spritePath = "Prefabs/Item/Tech/Sprite/snb";
+								        }
 										
-								            tech.GetComponent<Image> ().sprite = 
-									            Resources.Load (spritePath, typeof(Sprite)) as Sprite;
+								        tech.GetComponent<Image> ().sprite = 
+									        Resources.Load (spritePath, typeof(Sprite)) as Sprite;
 									
 								
-								            //cyoutei or koueki
-							            } else if (activeItemType == "cyoutei" || activeItemType == "koueki") {
+								        //cyoutei or koueki
+							        } else if (activeItemType == "cyoutei" || activeItemType == "koueki") {
 
-								            if (activeItemType == "cyoutei") {
-									            string syoukaijyoPath = "Prefabs/Item/cyoutei";
-									            GameObject icon = Instantiate (Resources.Load (syoukaijyoPath)) as GameObject;
-									            icon.transform.SetParent (itemListObj.transform);
-									            icon.transform.localPosition = new Vector3 (250, 35, 0);
-									            icon.transform.localScale = new Vector2 (0.4f, 0.4f);
-									            icon.GetComponent<Button> ().enabled = false;
+								        if (activeItemType == "cyoutei") {
+									        string syoukaijyoPath = "Prefabs/Item/cyoutei";
+									        GameObject icon = Instantiate (Resources.Load (syoukaijyoPath)) as GameObject;
+									        icon.transform.SetParent (itemListObj.transform);
+									        icon.transform.localPosition = new Vector3 (250, 35, 0);
+									        icon.transform.localScale = new Vector2 (0.4f, 0.4f);
+									        icon.GetComponent<Button> ().enabled = false;
 
-									            if (activeItemId == 1) {
-										            GameObject nameObj = icon.transform.FindChild ("Name").gameObject;
+									        if (activeItemId == 1) {
+										        GameObject nameObj = icon.transform.FindChild ("Name").gameObject;
 										        
-										            nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                                        nameObj.GetComponent<Text>().text = "Yamashina";
-                                                        icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Low";
-                                                    }else {
-                                                        nameObj.GetComponent<Text>().text = "山科言継";
-                                                        icon.transform.FindChild("Rank").GetComponent<Text>().text = "下";
-                                                    }
-									            } else if (activeItemId == 2) {
-										            GameObject nameObj = icon.transform.FindChild ("Name").gameObject;
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
+                                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                                    nameObj.GetComponent<Text>().text = "Yamashina";
+                                                    icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Low";
+                                                }else {
+                                                    nameObj.GetComponent<Text>().text = "山科言継";
+                                                    icon.transform.FindChild("Rank").GetComponent<Text>().text = "下";
+                                                }
+									        } else if (activeItemId == 2) {
+										        GameObject nameObj = icon.transform.FindChild ("Name").gameObject;
 										        
-										            nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                                        nameObj.GetComponent<Text>().text = "Sanjyo";
-                                                        icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Mid";
-                                                    }else {
-                                                        nameObj.GetComponent<Text>().text = "三条西実枝";
-                                                        icon.transform.FindChild("Rank").GetComponent<Text>().text = "中";
-                                                    }
-									            } else if (activeItemId == 3) {
-										            GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										        
-										            nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                                        nameObj.GetComponent<Text>().text = "Konoe";
-                                                        icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "High";
-                                                    }else {
-                                                        nameObj.GetComponent<Text>().text = "近衛前久";
-                                                        icon.transform.FindChild("Rank").GetComponent<Text>().text = "上";
-                                                    }
-									            }
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
+                                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                                    nameObj.GetComponent<Text>().text = "Sanjyo";
+                                                    icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Mid";
+                                                }else {
+                                                    nameObj.GetComponent<Text>().text = "三条西実枝";
+                                                    icon.transform.FindChild("Rank").GetComponent<Text>().text = "中";
+                                                }
+									        } else if (activeItemId == 3) {
+										        GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										        
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
+                                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                                    nameObj.GetComponent<Text>().text = "Konoe";
+                                                    icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "High";
+                                                }else {
+                                                    nameObj.GetComponent<Text>().text = "近衛前久";
+                                                    icon.transform.FindChild("Rank").GetComponent<Text>().text = "上";
+                                                }
+									        }
 
-								            } else if (activeItemType == "koueki") {
-									            string syoukaijyoPath = "Prefabs/Item/koueki";
-									            GameObject icon = Instantiate (Resources.Load (syoukaijyoPath)) as GameObject;
-									            icon.transform.SetParent (itemListObj.transform);
-									            icon.transform.localPosition = new Vector3 (250, 35, 0);
-									            icon.transform.localScale = new Vector2 (0.4f, 0.4f);
-									            icon.GetComponent<Button> ().enabled = false;
+								        } else if (activeItemType == "koueki") {
+									        string syoukaijyoPath = "Prefabs/Item/koueki";
+									        GameObject icon = Instantiate (Resources.Load (syoukaijyoPath)) as GameObject;
+									        icon.transform.SetParent (itemListObj.transform);
+									        icon.transform.localPosition = new Vector3 (250, 35, 0);
+									        icon.transform.localScale = new Vector2 (0.4f, 0.4f);
+									        icon.GetComponent<Button> ().enabled = false;
 
-									            if (activeItemId == 1) {
-										            GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										       
-										            nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                                        nameObj.GetComponent<Text>().text = "Kato";
-                                                        icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Low";
-                                                    }else {
-                                                        nameObj.GetComponent<Text>().text = "加藤浄与";
-                                                        icon.transform.FindChild("Rank").GetComponent<Text>().text = "下";
-                                                    }
-									            } else if (activeItemId == 2) {
-										            GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										        
-										            nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                                        nameObj.GetComponent<Text>().text = "Shimai";
-                                                        icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Mid";
-                                                    }else {
-                                                        nameObj.GetComponent<Text>().text = "島井宗室";
-                                                        icon.transform.FindChild("Rank").GetComponent<Text>().text = "中";
-                                                    }
-									            } else if (activeItemId == 3) {
-										            GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										        
-										            nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                                        nameObj.GetComponent<Text>().text = "Cyaya";
-                                                        icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "High";
-                                                    }else {
-                                                        nameObj.GetComponent<Text>().text = "茶屋四郎次郎";
-                                                        icon.transform.FindChild("Rank").GetComponent<Text>().text = "上";
-                                                    }
-									            }
-								            }
+									        if (activeItemId == 1) {
+										        GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										       
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
+                                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                                    nameObj.GetComponent<Text>().text = "Kato";
+                                                    icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Low";
+                                                }else {
+                                                    nameObj.GetComponent<Text>().text = "加藤浄与";
+                                                    icon.transform.FindChild("Rank").GetComponent<Text>().text = "下";
+                                                }
+									        } else if (activeItemId == 2) {
+										        GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										        
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
+                                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                                    nameObj.GetComponent<Text>().text = "Shimai";
+                                                    icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "Mid";
+                                                }else {
+                                                    nameObj.GetComponent<Text>().text = "島井宗室";
+                                                    icon.transform.FindChild("Rank").GetComponent<Text>().text = "中";
+                                                }
+									        } else if (activeItemId == 3) {
+										        GameObject nameObj = icon.transform.FindChild ("Name").gameObject;										        
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
+                                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                                    nameObj.GetComponent<Text>().text = "Cyaya";
+                                                    icon.transform.FindChild ("Rank").GetComponent<Text> ().text = "High";
+                                                }else {
+                                                    nameObj.GetComponent<Text>().text = "茶屋四郎次郎";
+                                                    icon.transform.FindChild("Rank").GetComponent<Text>().text = "上";
+                                                }
+									        }
+								        }
 
-								            TabibitoItemGetter syoukaijyo = new TabibitoItemGetter ();
-								            syoukaijyo.registerKouekiOrCyoutei (activeItemType, activeItemId);
+								        TabibitoItemGetter syoukaijyo = new TabibitoItemGetter ();
+								        syoukaijyo.registerKouekiOrCyoutei (activeItemType, activeItemId);
 								
-							            } else if (activeItemType == "Tama") {
+							        } else if (activeItemType == "Tama") {
 
-								            string path = "Prefabs/Item/Tama";
-								            GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
-								            icon.transform.SetParent (itemListObj.transform);
-								            icon.transform.localPosition = new Vector3 (250, 35, 0);
-								            icon.transform.localScale = new Vector2 (0.4f, 0.4f);
-								            icon.GetComponent<Button> ().enabled = false;
+								        string path = "Prefabs/Item/Tama";
+								        GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
+								        icon.transform.SetParent (itemListObj.transform);
+								        icon.transform.localPosition = new Vector3 (250, 35, 0);
+								        icon.transform.localScale = new Vector2 (0.4f, 0.4f);
+								        icon.GetComponent<Button> ().enabled = false;
 								
-								            int nowQty = PlayerPrefs.GetInt ("busyoDama");
-								            int newQty = nowQty + activeItemQty;
-								            PlayerPrefs.SetInt ("busyoDama", newQty);
+								        int nowQty = PlayerPrefs.GetInt ("busyoDama");
+								        int newQty = nowQty + activeItemQty;
+								        PlayerPrefs.SetInt ("busyoDama", newQty);
 
-							            }
+							        }
 
 
-						            } else if (activeItemGrp == "kahou") {
-							            //Kahou
-							            string kahouIconPath = "Prefabs/Item/Kahou/" + activeItemType + activeItemId;
-							            GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
-							            kahouIcon.transform.SetParent (itemListObj.transform);
-							            kahouIcon.name = "itemIcon";
-							            kahouIcon.transform.localPosition = new Vector3 (250, 35, 0);
-							            kahouIcon.transform.localScale = new Vector2 (0.4f, 0.4f);
-							            RectTransform kahouTransform = kahouIcon.GetComponent<RectTransform> ();
-							            kahouTransform.sizeDelta = new Vector2 (100, 100);
+						        } else if (activeItemGrp == "kahou") {
+							        //Kahou
+							        string kahouIconPath = "Prefabs/Item/Kahou/" + activeItemType + activeItemId;
+							        GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
+							        kahouIcon.transform.SetParent (itemListObj.transform);
+							        kahouIcon.name = "itemIcon";
+							        kahouIcon.transform.localPosition = new Vector3 (250, 35, 0);
+							        kahouIcon.transform.localScale = new Vector2 (0.4f, 0.4f);
+							        RectTransform kahouTransform = kahouIcon.GetComponent<RectTransform> ();
+							        kahouTransform.sizeDelta = new Vector2 (100, 100);
 
-							            GameObject rank = kahouIcon.transform.FindChild ("Rank").gameObject;
-							            rank.transform.localScale = new Vector2 (0.3f, 0.3f);
-							            rank.transform.localPosition = new Vector2 (20, -20);
+							        GameObject rank = kahouIcon.transform.FindChild ("Rank").gameObject;
+							        rank.transform.localScale = new Vector2 (0.3f, 0.3f);
+							        rank.transform.localPosition = new Vector2 (20, -20);
 
-							            //Register
-							            addKahou (activeItemType, activeItemId);
-						            }
+							        //Register
+							        addKahou (activeItemType, activeItemId);
+						        }
 
-						            //Qty
-						            string itemQtyPath = "Prefabs/PostKassen/itemQty";
-						            GameObject itemQtyObj = Instantiate (Resources.Load (itemQtyPath)) as GameObject;
-						            itemQtyObj.transform.SetParent (itemListObj.transform);
-						            itemQtyObj.transform.localScale = new Vector2 (0.09f, 0.09f);
-						            itemQtyObj.transform.localPosition = new Vector2 (290, 35);
-						            itemQtyObj.GetComponent<Text> ().text = "x " + activeItemQty.ToString ();
+						        //Qty
+						        string itemQtyPath = "Prefabs/PostKassen/itemQty";
+						        GameObject itemQtyObj = Instantiate (Resources.Load (itemQtyPath)) as GameObject;
+						        itemQtyObj.transform.SetParent (itemListObj.transform);
+						        itemQtyObj.transform.localScale = new Vector2 (0.09f, 0.09f);
+						        itemQtyObj.transform.localPosition = new Vector2 (290, 35);
+						        itemQtyObj.GetComponent<Text> ().text = "x " + activeItemQty.ToString ();
 
 							
-						            PlayerPrefs.Flush ();
-					            }
+						        PlayerPrefs.Flush ();
+					        }
 
-				            } else {
+				        } else {
+                            if(!pvpFlg) {
                                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                                     itemListObj.transform.FindChild ("stageName").transform.FindChild("stageNameValue").GetComponent<Text> ().text = stageName + " Sucecss";
                                 }else {
                                     itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = stageName + "成功";
                                 }
-				            }
-					
-				            //Money
-				            int activeStageMoney = PlayerPrefs.GetInt("activeStageMoney",0);
-				            GameObject.Find ("moneyAmt").GetComponent<Text>().text = activeStageMoney.ToString();
-				            int currentMoney = PlayerPrefs.GetInt("money");
-				            currentMoney = currentMoney + activeStageMoney;
-                            if(currentMoney < 0) {
-                                currentMoney = int.MaxValue;
-                            }                            
-				            PlayerPrefs.SetInt("money",currentMoney);
-
-				            int TrackEarnMoney = PlayerPrefs.GetInt ("TrackEarnMoney",0);
-				            TrackEarnMoney = TrackEarnMoney + activeStageMoney;
-				            PlayerPrefs.SetInt ("TrackEarnMoney",TrackEarnMoney);
-
-
-				            //kuniExp
-				            int activeStageExp = PlayerPrefs.GetInt("activeStageExp",0);
-				            GameObject.Find ("expAmt").GetComponent<Text>().text = activeStageExp.ToString();
-				            int currentKuniExp = PlayerPrefs.GetInt ("kuniExp");
-				            currentKuniExp = currentKuniExp + activeStageExp;
-				            int kuniLv = PlayerPrefs.GetInt ("kuniLv");
-				            Exp kuniExp = new Exp();
-				            int newKuniLv = kuniExp.getKuniLv(kuniLv,currentKuniExp);
-
-				            if(newKuniLv>kuniLv){
-					            //lv up
-					            int jinkeiLimit = kuniExp.getJinkeiLimit(newKuniLv);
-					            int stockLimit = kuniExp.getStockLimit(newKuniLv);
-					            PlayerPrefs.SetInt("jinkeiLimit",jinkeiLimit);
-					            PlayerPrefs.SetInt("stockLimit",stockLimit);
-
-					            //Popup
-					            Message msg = new Message ();
-                                string text = "";
+                            }else {
+                                PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
                                 if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                    text = "Our Country increased Lv " + newKuniLv + ". \n Stamina recovered all.";
+                                    itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = DataStore.enemyUserName;
                                 }else {
-                                    text = "当家の威信が" + newKuniLv + "に上がりましたぞ。\n兵糧が全回復します。";
+                                    itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = DataStore.enemyUserName;
                                 }
+                            }
+                        }
+					
+				        //Money
+				        int activeStageMoney = PlayerPrefs.GetInt("activeStageMoney",0);
+				        GameObject.Find ("moneyAmt").GetComponent<Text>().text = activeStageMoney.ToString();
+				        int currentMoney = PlayerPrefs.GetInt("money");
+				        currentMoney = currentMoney + activeStageMoney;
+                        if(currentMoney < 0) {
+                            currentMoney = int.MaxValue;
+                        }                            
+				        PlayerPrefs.SetInt("money",currentMoney);
 
-                                //BusyoQty Up Check
-                                int oldJinkeiLimit = kuniExp.getJinkeiLimit(kuniLv);
-                                int newJinkeiLimit = kuniExp.getJinkeiLimit(newKuniLv);
+				        int TrackEarnMoney = PlayerPrefs.GetInt ("TrackEarnMoney",0);
+				        TrackEarnMoney = TrackEarnMoney + activeStageMoney;
+				        PlayerPrefs.SetInt ("TrackEarnMoney",TrackEarnMoney);
 
-                                if(newJinkeiLimit > oldJinkeiLimit) {
-                                    string addText = "";
-                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                        addText = "\n And also increased the number of battle available samurai";
-                                    }else {
-                                        addText = "\nまた出陣可能な武将数も一人増えました。";
-                                    }
-                                    text = text + addText;
+
+				        //kuniExp
+				        int activeStageExp = PlayerPrefs.GetInt("activeStageExp",0);
+				        GameObject.Find ("expAmt").GetComponent<Text>().text = activeStageExp.ToString();
+				        int currentKuniExp = PlayerPrefs.GetInt ("kuniExp");
+				        currentKuniExp = currentKuniExp + activeStageExp;
+				        int kuniLv = PlayerPrefs.GetInt ("kuniLv");
+				        Exp kuniExp = new Exp();
+				        int newKuniLv = kuniExp.getKuniLv(kuniLv,currentKuniExp);
+
+				        if(newKuniLv>kuniLv){
+					        //lv up
+					        int jinkeiLimit = kuniExp.getJinkeiLimit(newKuniLv);
+					        int stockLimit = kuniExp.getStockLimit(newKuniLv);
+					        PlayerPrefs.SetInt("jinkeiLimit",jinkeiLimit);
+					        PlayerPrefs.SetInt("stockLimit",stockLimit);
+
+					        //Popup
+					        Message msg = new Message ();
+                            string text = "";
+                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                text = "Our Country increased Lv " + newKuniLv + ". \n Stamina recovered all.";
+                            }else {
+                                text = "当家の威信が" + newKuniLv + "に上がりましたぞ。\n兵糧が全回復します。";
+                            }
+
+                            //BusyoQty Up Check
+                            int oldJinkeiLimit = kuniExp.getJinkeiLimit(kuniLv);
+                            int newJinkeiLimit = kuniExp.getJinkeiLimit(newKuniLv);
+
+                            if(newJinkeiLimit > oldJinkeiLimit) {
+                                string addText = "";
+                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    addText = "\n And also increased the number of battle available samurai";
+                                }else {
+                                    addText = "\nまた出陣可能な武将数も一人増えました。";
                                 }
-                                GameObject msgObj = msg.makeKassenMessage (text);
-                                msgObj.GetComponent<FadeuGUI>().fadetime = 5.0f;
-                                msgObj.transform.FindChild("MessageText").transform.localScale = new Vector3(0.15f,0.15f,0);
+                                text = text + addText;
+                            }
+                            GameObject msgObj = msg.makeKassenMessage (text);
+                            msgObj.GetComponent<FadeuGUI>().fadetime = 5.0f;
+                            msgObj.transform.FindChild("MessageText").transform.localScale = new Vector3(0.15f,0.15f,0);
 
-                                PlayerPrefs.SetInt("hyourou",100);
+                            PlayerPrefs.SetInt("hyourou",100);
 
-				            }else{
-					            Debug.Log ("No level up");
-				            }
+				        }else{
+					        Debug.Log ("No level up");
+				        }
 
-				            /*Cleared Flag*/
-				            if (!isAttackedFlg) {
-					            if (!isKessenFlg) {
-						            int activeKuniId = PlayerPrefs.GetInt ("activeKuniId");
-						            int activeStageId = PlayerPrefs.GetInt ("activeStageId");
-						            string temp = "kuni" + activeKuniId.ToString ();
+				        /*Cleared Flag*/
+				        if (!isAttackedFlg) {
+					        if (!isKessenFlg) {
+						        int activeKuniId = PlayerPrefs.GetInt ("activeKuniId");
+						        int activeStageId = PlayerPrefs.GetInt ("activeStageId");
+						        string temp = "kuni" + activeKuniId.ToString ();
 
-						            List<string> clearedStageList = new List<string> ();
-						            string clearedStageString = PlayerPrefs.GetString (temp);
+						        List<string> clearedStageList = new List<string> ();
+						        string clearedStageString = PlayerPrefs.GetString (temp);
 
-						            int stageId = PlayerPrefs.GetInt ("activeStageId");
-						            if (clearedStageString != null && clearedStageString != "") {
-							            //after 1st time
-							            char[] delimiterChars = { ',' };
-							            clearedStageList = new List<string> (clearedStageString.Split (delimiterChars));
-							            if (!clearedStageList.Contains (activeStageId.ToString ())) {
-								            PlayerPrefs.SetString ("kassenWinLoseFlee", stageId.ToString () + ",2");
+						        int stageId = PlayerPrefs.GetInt ("activeStageId");
+						        if (clearedStageString != null && clearedStageString != "") {
+							        //after 1st time
+							        char[] delimiterChars = { ',' };
+							        clearedStageList = new List<string> (clearedStageString.Split (delimiterChars));
+							        if (!clearedStageList.Contains (activeStageId.ToString ())) {
+								        PlayerPrefs.SetString ("kassenWinLoseFlee", stageId.ToString () + ",2");
 
-								            clearedStageString = clearedStageString + "," + activeStageId.ToString ();
+								        clearedStageString = clearedStageString + "," + activeStageId.ToString ();
 
-								            //1st Kuni Clear Check
-								            string[] commaCounter = clearedStageString.Split (delimiterChars);
-								            int counter = commaCounter.Length;
+								        //1st Kuni Clear Check
+								        string[] commaCounter = clearedStageString.Split (delimiterChars);
+								        int counter = commaCounter.Length;
 
-								            if (counter == 10) {
-									            kuniClear (activeKuniId);
+								        if (counter == 10) {
+									        kuniClear (activeKuniId);
 
-								            }
-							            }
-						            } else {
-							            //1st time
-							            clearedStageString = activeStageId.ToString ();
-							            PlayerPrefs.SetString ("kassenWinLoseFlee", stageId.ToString () + ",2");
+								        }
+							        }
+						        } else {
+							        //1st time
+							        clearedStageString = activeStageId.ToString ();
+							        PlayerPrefs.SetString ("kassenWinLoseFlee", stageId.ToString () + ",2");
 
-						            }
-						            PlayerPrefs.SetString (temp, clearedStageString);
+						        }
+						        PlayerPrefs.SetString (temp, clearedStageString);
 
 
-					            } else {
-						            kessenResult (true);
-					            }
-				            }
+					        } else {
+						        kessenResult (true);
+					        }
+				        }
 
-				            PlayerPrefs.SetInt ("kuniLv", newKuniLv);
-				            PlayerPrefs.SetInt ("kuniExp", currentKuniExp);
-				            PlayerPrefs.Flush ();
+				        PlayerPrefs.SetInt ("kuniLv", newKuniLv);
+				        PlayerPrefs.SetInt ("kuniExp", currentKuniExp);
+				        PlayerPrefs.Flush ();
 
-                        } else {
+                        if (pvpFlg) {
                             //PvP Data Register
                             //Player Win & Enemy lose
                             PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
                             DataStore.UpdatePvPAtkWinNo(DataStore.userId);
-                            DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);                            
+                            DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);
+                            
                         }
 
 				        //Button List
@@ -1355,6 +1402,6 @@ public class HPCounter : MonoBehaviour {
         PlayerPrefs.Flush();
     }
 
-
+    
 
 }

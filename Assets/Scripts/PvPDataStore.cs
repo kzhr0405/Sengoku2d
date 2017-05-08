@@ -177,6 +177,10 @@ public class PvPDataStore : MonoBehaviour {
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (objList.Count == 0) { //never registered
                 InsertPvPWeekly(userId);
+                atkNoWeekly = 0;
+                atkWinNoWeekly = 0;
+                dfcNoWeekly = 0;
+                dfcWinNoWeekly = 0;
             }else { //registered
                 if (e == null) {
                     foreach (NCMBObject obj in objList) {
@@ -241,6 +245,7 @@ public class PvPDataStore : MonoBehaviour {
                 matchCount = count;
                 if(matchCount == 0) {
                     zeroFlg = true;
+                    matchedFlg = true;
                 }
             }
         });
@@ -260,8 +265,7 @@ public class PvPDataStore : MonoBehaviour {
                     jinkeiQuery.CountAsync((int count, NCMBException exception) => {
                         if (exception == null) {
                             // pvpjinkeiが存在するもののみ追加
-                            if (count > 0)
-                            {
+                            if (count > 0){
                                 string userName = System.Convert.ToString(objList[index]["userName"]);
                                 int soudaisyo = System.Convert.ToInt32(objList[index]["soudaisyo"]);
                                 int kuniLv = System.Convert.ToInt32(objList[index]["kuniLv"]);
@@ -274,9 +278,8 @@ public class PvPDataStore : MonoBehaviour {
                                 pvpKuniLvList.Add(kuniLv);
                                 pvpHpList.Add(hp);
                                 pvpWinList.Add(win);
-                            }
-                            else
-                            {
+                                
+                            }else{
                                 matchCount--;
                                 if (matchCount == 0) zeroFlg = true;
                             }
@@ -287,7 +290,7 @@ public class PvPDataStore : MonoBehaviour {
                         {
                             matchedFlg = true;
                         }
-                    });
+                    });                    
                 }
             }
         });
