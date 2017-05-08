@@ -249,24 +249,45 @@ public class PvPDataStore : MonoBehaviour {
             if (e != null) {
                 Debug.Log("Ther is no user : exception");
             }else {
+                int jinkeiJudgeCount = 0;
                 for (int i = 0; i < objList.Count; i++) {
-                    string userId = System.Convert.ToString(objList[i]["userId"]);
-                    string userName = System.Convert.ToString(objList[i]["userName"]);
-                    int soudaisyo = System.Convert.ToInt32(objList[i]["soudaisyo"]);
-                    int kuniLv = System.Convert.ToInt32(objList[i]["kuniLv"]);
-                    int hp = System.Convert.ToInt32(objList[i]["jinkeiHeiryoku"]);
-                    int win = System.Convert.ToInt32(objList[i]["totalWinNo"]);
+                    int index = i;
+                    string userId = System.Convert.ToString(objList[index]["userId"]);
 
-                    pvpUserIdList.Add(userId);
-                    pvpUserNameList.Add(userName);
-                    pvpSoudaisyoList.Add(soudaisyo);
-                    pvpKuniLvList.Add(kuniLv);
-                    pvpHpList.Add(hp);
-                    pvpWinList.Add(win);
+                    // userIdに対応するpvpjinkeiが存在するか
+                    NCMBQuery<NCMBObject> jinkeiQuery = new NCMBQuery<NCMBObject>("pvpJinkei");
+                    jinkeiQuery.WhereEqualTo("userId", userId);
+                    jinkeiQuery.CountAsync((int count, NCMBException exception) => {
+                        if (exception == null) {
+                            // pvpjinkeiが存在するもののみ追加
+                            if (count > 0)
+                            {
+                                string userName = System.Convert.ToString(objList[index]["userName"]);
+                                int soudaisyo = System.Convert.ToInt32(objList[index]["soudaisyo"]);
+                                int kuniLv = System.Convert.ToInt32(objList[index]["kuniLv"]);
+                                int hp = System.Convert.ToInt32(objList[index]["jinkeiHeiryoku"]);
+                                int win = System.Convert.ToInt32(objList[index]["totalWinNo"]);
 
-                    if (i+1 == objList.Count) {
-                        matchedFlg = true;
-                    }
+                                pvpUserIdList.Add(userId);
+                                pvpUserNameList.Add(userName);
+                                pvpSoudaisyoList.Add(soudaisyo);
+                                pvpKuniLvList.Add(kuniLv);
+                                pvpHpList.Add(hp);
+                                pvpWinList.Add(win);
+                            }
+                            else
+                            {
+                                matchCount--;
+                                if (matchCount == 0) zeroFlg = true;
+                            }
+                        }
+
+                        jinkeiJudgeCount++;
+                        if (jinkeiJudgeCount == objList.Count)
+                        {
+                            matchedFlg = true;
+                        }
+                    });
                 }
             }
         });
