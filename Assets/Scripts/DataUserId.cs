@@ -8,7 +8,9 @@ public class DataUserId : MonoBehaviour {
 
     public bool RegisteredFlg = false;
 
-	public void InsertUserId (string userId) {
+    
+
+    public void InsertUserId (string userId) {
         NCMBObject userIdClass = new NCMBObject("userId");
         string platform = SystemInfo.operatingSystem;
         string appVer = Application.version;

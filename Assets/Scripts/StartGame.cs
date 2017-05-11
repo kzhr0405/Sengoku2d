@@ -16,8 +16,8 @@ public class StartGame : MonoBehaviour {
 		Resources.UnloadUnusedAssets ();
 
         //Data Patch
-        DataPatch DataPatch = new DataPatch();
-        DataPatch.DataPatch1(); //20170315
+        //DataPatch DataPatch = new DataPatch();
+        //DataPatch.DataPatch1(); //20170315
 
 
         fade = GameObject.Find("FadeCanvas").GetComponent<Fade>();

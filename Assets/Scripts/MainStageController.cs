@@ -71,20 +71,20 @@ public class MainStageController : MonoBehaviour {
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
 
-		//Data Initialization
-		//DataMaker data = new DataMaker ();
-		//data.Start ();
+        //Data Initialization
+        //DataMaker data = new DataMaker ();
+        //data.Start ();
 
-		/*Initial Data*/
-		bool initDataFlg = PlayerPrefs.GetBool ("initDataFlg");
-		if (initDataFlg == false) {
-			//my daimyo
-			InitDataMaker initData = new InitDataMaker ();
-			initData.makeInitData ();
-		}
+        /*Initial Data*/
+        //bool initDataFlg = PlayerPrefs.GetBool ("initDataFlg");
+        //if (initDataFlg == false) {
+        //my daimyo
+        //InitDataMaker initData = new InitDataMaker ();
+        //initData.makeInitData ();
+        //}
 
-		//Timer
-		timerObj = GameObject.Find("TimerValue").gameObject;
+        //Timer
+        timerObj = GameObject.Find("TimerValue").gameObject;
 
 		//SE
 		audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
