@@ -49,6 +49,9 @@ public class MainStageController : MonoBehaviour {
     //Tutorial
     public bool tutorialDoneFlg = false;
 
+    //public reward
+    public GameObject reward;
+
     public void Start () {
 
         Resources.UnloadUnusedAssets();

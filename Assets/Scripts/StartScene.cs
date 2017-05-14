@@ -40,6 +40,7 @@ public class StartScene : MonoBehaviour {
                 msg.makeMessage(msg.getMessage(136));
             }else {
                 string PvPName = PlayerPrefs.GetString("PvPName");
+                
                 if (PvPName == "" || PvPName == null) {
                     //first time
                     GameObject panel = GameObject.Find("Panel").gameObject;

@@ -176,8 +176,8 @@ public class GameScene : MonoBehaviour {
 
         } else {
             /*PvP*/
-            GameObject.Find("GiveupBtn").SetActive(false);
-            GameObject.Find("AutoBtn").SetActive(false);
+            //GameObject.Find("GiveupBtn").SetActive(false);
+            //GameObject.Find("AutoBtn").SetActive(false);
             DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
 
             //timer

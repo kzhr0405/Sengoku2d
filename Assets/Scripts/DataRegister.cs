@@ -10,21 +10,22 @@ public class DataRegister : MonoBehaviour {
     public bool initDataDoneFlg = false;
 
     private void Awake() {
+
+        //Init Data Maker
         userId = PlayerPrefs.GetString("userId","");
+       
         initDataDoneFlg = PlayerPrefs.GetBool("initDataFlg",false);
         InitDataMaker initData = new InitDataMaker();
         if (!initDataDoneFlg && userId == "") {
             initData.makeInitData();
-        }       
-    }
+        }
 
-    void Start () {
-
-        //Initial Data Update
+        //User Data Update
         DataUserId DataUserId = GetComponent<DataUserId>();
         DataJinkei DataJinkei = GetComponent<DataJinkei>();
-        
-        if (PlayerPrefs.HasKey("userId")) {
+
+        if (userId == "") {
+            //New UserId
             string randomA = StringUtils.GeneratePassword(10);
             System.DateTime now = System.DateTime.Now;
             string randomB = now.ToString("yyyyMMddHHmmss");
@@ -35,11 +36,14 @@ public class DataRegister : MonoBehaviour {
                 DataUserId.InsertUserId(userId);
             }
         }else {
+            //Update UserId
             if (Application.internetReachability != NetworkReachability.NotReachable) {
                 DataUserId.UpdateUserId(userId);
                 DataJinkei.UpdateJinkei(userId);
             }
         }
 
-    }
+
+
+    }    
 }

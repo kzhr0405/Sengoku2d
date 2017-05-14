@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22478374}
-  - 222: {fileID: 22223854}
-  - 114: {fileID: 11476440}
+  - component: {fileID: 22478374}
+  - component: {fileID: 22223854}
+  - component: {fileID: 11476440}
   m_Layer: 5
   m_Name: Rank
   m_TagString: Untagged
@@ -22,13 +22,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22402750}
-  - 222: {fileID: 22204088}
-  - 114: {fileID: 11439068}
-  - 114: {fileID: 11423554}
-  - 114: {fileID: 11448946}
+  - component: {fileID: 22402750}
+  - component: {fileID: 22204088}
+  - component: {fileID: 11439068}
+  - component: {fileID: 11423554}
+  - component: {fileID: 11448946}
   m_Layer: 5
   m_Name: cyadougu66
   m_TagString: Kahou
@@ -107,7 +107,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9b77473b3307b674abb5606eb64b85d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aede8b36973a28640a579bedc1414e4c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -194,6 +194,7 @@ RectTransform:
   - {fileID: 22478374}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -20}
@@ -211,6 +212,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 22402750}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 40, y: -40}

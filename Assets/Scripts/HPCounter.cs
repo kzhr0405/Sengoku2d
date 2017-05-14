@@ -940,14 +940,27 @@ public class HPCounter : MonoBehaviour {
                         if (pvpFlg) {
                             //PvP Data Register
                             //Player Win & Enemy lose
+
+                            //Win&Lose No Update
                             PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
                             DataStore.UpdatePvPAtkWinNo(DataStore.userId);
                             DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);
-                            
+
+                            //Point Update
+                            DataStore.UpdatePvPPt(DataStore.userId, true);
+                            DataStore.UpdatePvPPt(DataStore.enemyUserId, false);
+
+                            //Popup
+                            string pvpPopPath = "Prefabs/PvP/GetPt";
+                            GameObject popPvPObj = Instantiate(Resources.Load(pvpPopPath)) as GameObject;
+                            popPvPObj.transform.SetParent(canvas.transform);
+                            popPvPObj.transform.localScale = new Vector2(0.8f, 0.8f);
+                            popPvPObj.transform.localPosition = new Vector2(0, 0);
+                            popPvPObj.GetComponent<Text>().text = "武功 +" + DataStore.getPt ;
                         }
 
-				        //Button List
-				        string nextbtnPath = "Prefabs/PostKassen/bttnList";
+                        //Button List
+                        string nextbtnPath = "Prefabs/PostKassen/bttnList";
 				        GameObject bttnListObj = Instantiate(Resources.Load (nextbtnPath)) as GameObject;
 				        bttnListObj.transform.SetParent (canvas.transform);
 				        bttnListObj.transform.localScale = new Vector2(1,1);

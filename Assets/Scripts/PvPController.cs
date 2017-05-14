@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
 
 public class PvPController : MonoBehaviour {
@@ -39,11 +40,12 @@ public class PvPController : MonoBehaviour {
     public int atkWinNoWeekly = 0;
     public int dfcNoWeekly = 0;
     public int dfcWinNoWeekly = 0;
-    public int totalWinNoWeekly = 0;
-    public int winRankWeekly = 0;
+    public int totalPtWeekly = 0;
+    public int ptRankWeekly = 0;
 
     //PvP Match
     public bool showedFlg = false;
+    public bool ptRankFlg = false;
     public GameObject PvP1 = null;
     public GameObject PvP2 = null;
     public GameObject PvP3 = null;
@@ -54,6 +56,7 @@ public class PvPController : MonoBehaviour {
 
     //Ranking
     public bool isNeighborsFerched;
+
 
     void Start () {
         ShowKassen();        
@@ -128,7 +131,8 @@ public class PvPController : MonoBehaviour {
 
         //PvP Top3 Ranking
         PvPDataStore.GetTop10Win();
-        PvPDataStore.GetTop10HP();        
+        PvPDataStore.GetTop10HP();
+
     }
 
 
@@ -185,21 +189,24 @@ public class PvPController : MonoBehaviour {
             atkWinNoWeekly = PvPDataStore.atkWinNoWeekly;
             dfcNoWeekly = PvPDataStore.dfcNoWeekly;
             dfcWinNoWeekly = PvPDataStore.dfcWinNoWeekly;
-            totalWinNoWeekly = atkWinNoWeekly + dfcWinNoWeekly;
-            PvPDataStore.GetWinRankWeekly(totalWinNoWeekly, false);            
+            totalPtWeekly = PvPDataStore.totalPtWeekly;
+            PvPDataStore.GetPtRankWeekly(totalPtWeekly, false);
             isAtkDfcWeeklyFetched = true;
         }
         /*** Weekly PvP End ***/
 
         /* Weekly Visualize Start */
-        if (PvPDataStore.winRankWeekly != -1 && isMyPvPWeeklyFetched && isAtkDfcWeeklyFetched && !isShowed) {
-            winRankWeekly = PvPDataStore.winRankWeekly;           
-            LeftView.transform.FindChild("Win").transform.FindChild("winValue").GetComponent<Text>().text = totalWinNoWeekly.ToString();
-            if(pvpCountWeekly< winRankWeekly) {
-                winRankWeekly = pvpCountWeekly;
+        if (PvPDataStore.ptRankWeekly != -1 && isMyPvPWeeklyFetched && isAtkDfcWeeklyFetched && !isShowed) {
+
+            // Rank by Pt
+            ptRankWeekly = PvPDataStore.ptRankWeekly;
+            LeftView.transform.FindChild("Win").transform.FindChild("winValue").GetComponent<Text>().text = totalPtWeekly.ToString();
+            if (pvpCountWeekly < ptRankWeekly) {
+                ptRankWeekly = pvpCountWeekly;
             }
-            LeftView.transform.FindChild("Rank").transform.FindChild("rankValue").GetComponent<Text>().text = winRankWeekly.ToString();
+            LeftView.transform.FindChild("Rank").transform.FindChild("rankValue").GetComponent<Text>().text = ptRankWeekly.ToString();
             LeftView.transform.FindChild("Rank").transform.FindChild("rankTotalValue").GetComponent<Text>().text = "/" + pvpCountWeekly;
+            
 
             //Active
             LeftView.transform.FindChild("Active").transform.FindChild("BtlValue").GetComponent<Text>().text = atkNoWeekly.ToString();
@@ -227,15 +234,16 @@ public class PvPController : MonoBehaviour {
         if (PvPDataStore.matchedFlg && !showedFlg) {
             
             //PvP1          
-                if(PvPDataStore.pvpUserNameList.Count > 0) { 
+            if(PvPDataStore.pvpUserNameList.Count > 0) { 
                 if (!PvP1doneFlg) {
                     PvP1doneFlg = true;
                     PvP1 = GameObject.Find("1").gameObject;
                     PvP1.transform.FindChild("NameValue").GetComponent<Text>().text = PvPDataStore.pvpUserNameList[0];
                     PvP1.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = PvPDataStore.pvpKuniLvList[0].ToString();
                     PvP1.transform.FindChild("HP").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpHpList[0].ToString();
-                    PvP1.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpWinList[0].ToString();
-                    PvPDataStore.GetWinRankWeekly(PvPDataStore.pvpWinList[0], true);
+                    int getPt = getCalcPt(myJinkeiHeiryoku, PvPDataStore.pvpHpList[0]);
+                    PvP1.transform.FindChild("GetPt").GetComponent<Text>().text = "+" + getPt.ToString();
+                    PvP1.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().getPt = getPt;
 
                     string objPath = "Prefabs/Player/" + PvPDataStore.pvpSoudaisyoList[0].ToString();
                     GameObject prefab = Instantiate(Resources.Load(objPath)) as GameObject;
@@ -257,8 +265,9 @@ public class PvPController : MonoBehaviour {
                         PvP2.transform.FindChild("NameValue").GetComponent<Text>().text = PvPDataStore.pvpUserNameList[1];
                         PvP2.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = PvPDataStore.pvpKuniLvList[1].ToString();
                         PvP2.transform.FindChild("HP").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpHpList[1].ToString();
-                        PvP2.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpWinList[1].ToString();
-                        PvPDataStore.GetWinRankWeekly(PvPDataStore.pvpWinList[1], true);
+                        int getPt = getCalcPt(myJinkeiHeiryoku, PvPDataStore.pvpHpList[1]);
+                        PvP2.transform.FindChild("GetPt").GetComponent<Text>().text = "+" + getPt.ToString();
+                        PvP2.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().getPt = getPt;
                         string objPath = "Prefabs/Player/" + PvPDataStore.pvpSoudaisyoList[1].ToString();
                         GameObject prefab = Instantiate(Resources.Load(objPath)) as GameObject;
                         prefab.transform.SetParent(PvP2.transform);
@@ -281,8 +290,9 @@ public class PvPController : MonoBehaviour {
                             PvP3.transform.FindChild("NameValue").GetComponent<Text>().text = PvPDataStore.pvpUserNameList[2];
                             PvP3.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = PvPDataStore.pvpKuniLvList[2].ToString();
                             PvP3.transform.FindChild("HP").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpHpList[2].ToString();
-                            PvP3.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpWinList[2].ToString();
-                            PvPDataStore.GetWinRankWeekly(PvPDataStore.pvpWinList[2], true);
+                            int getPt = getCalcPt(myJinkeiHeiryoku, PvPDataStore.pvpHpList[2]);
+                            PvP3.transform.FindChild("GetPt").GetComponent<Text>().text = "+" + getPt.ToString();
+                            PvP3.transform.FindChild("StartBtn").GetComponent<StartKassenPvP>().getPt = getPt;
                             string objPath = "Prefabs/Player/" + PvPDataStore.pvpSoudaisyoList[2].ToString();
                             GameObject prefab = Instantiate(Resources.Load(objPath)) as GameObject;
                             prefab.transform.SetParent(PvP3.transform);
@@ -312,37 +322,59 @@ public class PvPController : MonoBehaviour {
                 txt.transform.SetParent(GameObject.Find("KassenView").transform);
                 txt.transform.localScale = new Vector2(0.5f, 0.5f);
                 txt.transform.localPosition = new Vector2(350, 0);
+                kumoRunFlg();
 
             }
             GameObject.Find("RightView").GetComponent<ScrollRect>().enabled = false;
             showedFlg = true;
         }
 
+        //PvP Enemy Rank
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && PvPDataStore.pvpPtList.Count == PvPDataStore.pvpUserNameList.Count && showedFlg  && !ptRankFlg) {
+            ptRankFlg = true;
+            if (PvPDataStore.pvpUserNameList.Count > 0) {
+                PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[0], true);
+                PvP1.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpPtList[0].ToString();
+
+                if (PvPDataStore.pvpUserNameList.Count > 1) {
+                    PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[1], true);
+                    PvP2.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpPtList[1].ToString();
+
+                    if (PvPDataStore.pvpUserNameList.Count > 2) {
+                        PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[2], true);
+                        PvP3.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpPtList[2].ToString();
+
+                    }
+                }
+            }
+        }
+        
         //PvP Enemy Ranking
-        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && showedFlg && PvPDataStore.pvpWinRankList.Count != 0 && !isEnemyPvPRankFetched) {
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && showedFlg && PvPDataStore.pvpPtRankList.Count == PvPDataStore.pvpPtList.Count && ptRankFlg && !isEnemyPvPRankFetched) {
             isEnemyPvPRankFetched = true;
-            if(PvPDataStore.pvpWinRankList.Count == 1) {
-                int PvP1Rank = PvPDataStore.pvpWinRankList[0];
+            kumoRunFlg();
+            if (PvPDataStore.pvpPtRankList.Count == 1) {
+                int PvP1Rank = PvPDataStore.pvpPtRankList[0];
                 if (pvpCount < PvP1Rank) PvP1Rank = pvpCount;
                 PvP1.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP1Rank.ToString();
-            }else if(PvPDataStore.pvpWinRankList.Count == 2) {
-                int PvP1Rank = PvPDataStore.pvpWinRankList[0];
+            }else if(PvPDataStore.pvpPtRankList.Count == 2) {
+                int PvP1Rank = PvPDataStore.pvpPtRankList[0];
                 if (pvpCount < PvP1Rank)PvP1Rank = pvpCount;               
                 PvP1.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP1Rank.ToString();
 
-                int PvP2Rank = PvPDataStore.pvpWinRankList[1];
+                int PvP2Rank = PvPDataStore.pvpPtRankList[1];
                 if (pvpCount < PvP2Rank)PvP2Rank = pvpCount;
                 PvP2.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP2Rank.ToString();
-            }else if(PvPDataStore.pvpWinRankList.Count == 3) {
-                int PvP1Rank = PvPDataStore.pvpWinRankList[0];
+            }else if(PvPDataStore.pvpPtRankList.Count == 3) {
+                int PvP1Rank = PvPDataStore.pvpPtRankList[0];
                 if (pvpCount < PvP1Rank) PvP1Rank = pvpCount;
                 PvP1.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP1Rank.ToString();
 
-                int PvP2Rank = PvPDataStore.pvpWinRankList[1];
+                int PvP2Rank = PvPDataStore.pvpPtRankList[1];
                 if (pvpCount < PvP2Rank) PvP2Rank = pvpCount;
                 PvP2.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP2Rank.ToString();
 
-                int PvP3Rank = PvPDataStore.pvpWinRankList[2];
+                int PvP3Rank = PvPDataStore.pvpPtRankList[2];
                 if (pvpCount < PvP3Rank) PvP3Rank = pvpCount;
                 PvP3.transform.FindChild("Rank").transform.FindChild("Value").GetComponent<Text>().text = PvP3Rank.ToString();
             }            
@@ -381,6 +413,14 @@ public class PvPController : MonoBehaviour {
             Destroy(busyoObj.GetComponent<Heisyu>());
         }
     }
+
+    public void kumoRunFlg() {
+        GameObject.Find("KumoLeft").GetComponent<KumoMove>().runFlg = true;
+        GameObject.Find("KumoRight").GetComponent<KumoMove>().runFlg = true;
+        
+        GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "Default";
+    }
+
 
     public void ShowRank(GameObject rankViewObj) {
         GameObject WinContent = rankViewObj.transform.FindChild("LeftView").transform.FindChild("ScrollView").transform.FindChild("Viewport").transform.FindChild("Content").gameObject;
@@ -460,6 +500,12 @@ public class PvPController : MonoBehaviour {
             tmpObj4.GetComponent<SpriteRenderer>().sprite;
 
 
+    }
+
+    public int getCalcPt(int playerHP, int enemyHP) {
+        int getPt = 100; //base 100
+        getPt = Mathf.CeilToInt((float)getPt * ((float)enemyHP / (float)playerHP)); 
+        return getPt;
     }
 
 }

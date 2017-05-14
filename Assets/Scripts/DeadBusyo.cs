@@ -8,5 +8,6 @@ public class DeadBusyo : MonoBehaviour {
 
 	public void AddDeadBusyo (GameObject obs){
 		deadBusyo.Add(new BusyoSenkou(int.Parse(obs.name.Replace("(Clone)","")), obs.GetComponent<Kunkou>().kunkou));
+        
 	}
 }

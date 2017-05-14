@@ -22,11 +22,12 @@ public class PvPTimer : MonoBehaviour {
     public string start = "";
     public string now = "";
     public string end = "";
+
     Text timerTxt;
     public bool engFlg = false;
 
     // 初期化
-    void Start() {
+    void Awake() {
         // リクエスト実行
         SyncDate();
 

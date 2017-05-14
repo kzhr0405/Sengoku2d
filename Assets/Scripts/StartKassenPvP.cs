@@ -16,6 +16,7 @@ public class StartKassenPvP : MonoBehaviour {
     public bool updatePvPAtkFlg;
     public PvPController PvPController;
     public int nowHyourou = 0;
+    public int getPt = 0;
 
     private void Awake() {
         //Enemy Jinkei Load
@@ -70,9 +71,10 @@ public class StartKassenPvP : MonoBehaviour {
             updatePvPAtkFlg = true;
             PvPController = GameObject.Find("GameScene").GetComponent<PvPController>();
             PvPDataStore.UpdatePvPAtkNo(PvPController.myUserId);
-            GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserId = userId;
-            GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().enemyUserName = enemyUserName;
-            GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>().myUserName = PvPController.myUserName;
+            PvPDataStore.enemyUserId = userId;
+            PvPDataStore.enemyUserName = enemyUserName;
+            PvPDataStore.myUserName = PvPController.myUserName;
+            PvPDataStore.getPt = getPt;
         }
 
         //scene change
