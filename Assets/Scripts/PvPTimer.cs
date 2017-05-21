@@ -22,10 +22,13 @@ public class PvPTimer : MonoBehaviour {
     public string start = "";
     public string now = "";
     public string end = "";
+    public string startNCMB = ""; //yyyymmdd
+    public string endNCMB = ""; //yyyymmdd
+    public string todayNCMB = ""; //yyyymmdd
 
     Text timerTxt;
     public bool engFlg = false;
-
+    
     // 初期化
     void Awake() {
         // リクエスト実行
@@ -57,6 +60,11 @@ public class PvPTimer : MonoBehaviour {
                 now = Date.ToString();
                 end = sunday.ToString();
                 start = monday.ToString();
+
+                startNCMB = monday.ToString("yyyyMMdd");
+                endNCMB = sunday.ToString("yyyyMMdd");
+                todayNCMB = Date.ToString("yyyyMMdd");
+
                 yield break;
             }
         }

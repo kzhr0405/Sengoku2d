@@ -19,7 +19,7 @@ public class ShowReward : MonoBehaviour {
         string pathOfBoard = "Prefabs/PvP/Reward";
         GameObject board = Instantiate(Resources.Load(pathOfBoard)) as GameObject;
         board.transform.SetParent(panel.transform);
-        board.transform.localScale = new Vector2(0.7f, 0.7f);
+        board.transform.localScale = new Vector2(1, 0.8f);
         board.transform.localPosition = new Vector2(0, 0);
 
         back.GetComponent<CloseOneBoard>().deleteObj = board;

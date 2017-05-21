@@ -8,8 +8,9 @@ public class PvPTabHandler : MonoBehaviour {
     public bool clicked = false;
     public GameObject kassenViewObj;
     public GameObject rankViewObj;
+    public GameObject rankWeeklyViewObj;
     public bool isReadyFlg;
-
+    public bool isReadyWeeklyFlg;
 
     public void Start() {
 
@@ -32,7 +33,12 @@ public class PvPTabHandler : MonoBehaviour {
             if(PvPDataStore.Top3HPQtyList.Count > 0 && PvPDataStore.winRank > 0) {
                 isReadyFlg = true;
             }
-        }else {
+        }else if(name == "RankWeekly"){
+            PvPDataStore PvPDataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
+            if (PvPDataStore.Top10PtWeeklyBusyoList.Count > 0 && PvPDataStore.ptRankWeekly > 0) {
+                isReadyFlg = true;
+            }
+        }else { 
             isReadyFlg = true;
         }
 
@@ -57,11 +63,19 @@ public class PvPTabHandler : MonoBehaviour {
                 if(name == "Kassen") {
                     kassenViewObj.SetActive(true);
                     rankViewObj.SetActive(false);
-                }else {
+                    rankWeeklyViewObj.SetActive(false);
+                }else if(name == "Rank"){
                     kassenViewObj.SetActive(false);
+                    rankWeeklyViewObj.SetActive(false);
                     rankViewObj.SetActive(true);
 
                     GameObject.Find("GameScene").GetComponent<PvPController>().ShowRank(rankViewObj);
+                }else if(name == "RankWeekly") {
+                    kassenViewObj.SetActive(false);
+                    rankViewObj.SetActive(false);
+                    rankWeeklyViewObj.SetActive(true);
+
+                    GameObject.Find("GameScene").GetComponent<PvPController>().ShowRankWeekly(rankWeeklyViewObj);
                 }
             }
         }else {
