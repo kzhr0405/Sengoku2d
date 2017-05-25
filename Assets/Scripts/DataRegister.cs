@@ -43,7 +43,9 @@ public class DataRegister : MonoBehaviour {
             }
         }
 
-
+        //Reward
+        DataReward DataReward = GetComponent<DataReward>();
+        DataReward.GetRewardMaster(userId);
 
     }    
 }

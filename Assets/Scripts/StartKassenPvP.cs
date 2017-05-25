@@ -75,6 +75,7 @@ public class StartKassenPvP : MonoBehaviour {
             PvPDataStore.enemyUserName = enemyUserName;
             PvPDataStore.myUserName = PvPController.myUserName;
             PvPDataStore.getPt = getPt;
+            PvPDataStore.todayNCMB = int.Parse(PvPDataStore.PvPTimer.todayNCMB);
         }
 
         //scene change

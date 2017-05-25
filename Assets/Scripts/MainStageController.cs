@@ -96,6 +96,15 @@ public class MainStageController : MonoBehaviour {
 		//bgmSources [1].Stop ();
 		//bgmSources [0].Play();
 
+        //Reward
+        if(GameObject.Find("DataStore")) {
+            DataReward DataReward = GameObject.Find("DataStore").GetComponent<DataReward>();
+            if (DataReward.itemGrpList.Count > 0) {
+                reward.SetActive(true);
+            }
+        } 
+
+
 		/*--------------------*/
 		/*Game Over*/
 		/*--------------------*/

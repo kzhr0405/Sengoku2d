@@ -169,6 +169,14 @@ public class StartScene : MonoBehaviour {
 
 			}
 
-		}
-	}
+		}else if (name == "Reward") {
+            if (Application.internetReachability == NetworkReachability.NotReachable) {
+                //接続されていないときの処理
+                Message msg = new Message();
+                msg.makeMessage(msg.getMessage(136));
+            }else {
+                Application.LoadLevel("reward");
+            }
+        }
+    }
 }

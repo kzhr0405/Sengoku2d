@@ -7,8 +7,7 @@ public class DataReward : MonoBehaviour {
 
     public List<string> itemTitleList;
     public List<string> itemGrpList;
-    public List<string> itemTypList;
-    public List<int> itemIdList;
+    public List<string> itemRankList;
     public List<int> itemQtyList;
 
     public void GetRewardMaster(string userId) {
@@ -19,9 +18,8 @@ public class DataReward : MonoBehaviour {
                 foreach (NCMBObject obj in objList) {
                     itemTitleList.Add(System.Convert.ToString(obj["title"]));
                     itemGrpList.Add(System.Convert.ToString(obj["grp"]));
-                    itemTypList.Add(System.Convert.ToString(obj["typ"]));
-                    itemIdList.Add(System.Convert.ToInt32(obj["id"]));
-                    itemQtyList.Add(System.Convert.ToInt32(obj["qty"]));                    
+                    itemRankList.Add(System.Convert.ToString(obj["rank"]));
+                    itemQtyList.Add(System.Convert.ToInt32(obj["qty"]));                 
                 }
             }
         });

@@ -95,6 +95,7 @@ public class PvPDataStore : MonoBehaviour {
 
     //Time
     public PvPTimer PvPTimer;
+    public int todayNCMB;
 
     public void Start() {
         //Get Current Time Script
@@ -193,7 +194,6 @@ public class PvPDataStore : MonoBehaviour {
 
         //date
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
-        
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (objList.Count == 0) { //never registered
                 InsertPvPWeekly(userId, startDateNCMB, endDateNCMB);
@@ -211,6 +211,7 @@ public class PvPDataStore : MonoBehaviour {
                         dfcNoWeekly = System.Convert.ToInt32(obj["dfcNo"]);
                         dfcWinNoWeekly = System.Convert.ToInt32(obj["dfcWinNo"]);
                         totalPtWeekly = System.Convert.ToInt32(obj["totalPt"]);
+                        Debug.Log("OK:" + totalPtWeekly);
                     }
                 }
             }
@@ -749,6 +750,7 @@ public class PvPDataStore : MonoBehaviour {
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
         query.WhereEqualTo("userId", userId);
+        query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
 
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
