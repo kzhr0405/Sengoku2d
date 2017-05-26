@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -8111,7 +8111,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 170896, guid: 3d1868fa9bab8bc4a8449615f396dd49, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d1868fa9bab8bc4a8449615f396dd49, type: 2}
@@ -29019,8 +29019,6 @@ MonoBehaviour:
   PvP2doneFlg: 0
   PvP3doneFlg: 0
   per: 0
-  isNeighborsFerched: 0
-  isPtRankDetailFetched: 0
   PvPTimerScript: {fileID: 0}
   startDateNCMB: 
   endDateNCMB: 
@@ -34498,9 +34496,10 @@ MonoBehaviour:
   Top10PtWeeklyBusyoList: 
   Top10PtWeeklyQtyList: 
   Top10PtWeeklyHeiList: 
-  Top10PtWeeklWinList: 
+  Top10PtWeeklyWinList: 
   Top10PtWeeklyBattleList: 
   PvPTimer: {fileID: 0}
+  todayNCMB: 0
 --- !u!114 &1317621416
 MonoBehaviour:
   m_ObjectHideFlags: 0
