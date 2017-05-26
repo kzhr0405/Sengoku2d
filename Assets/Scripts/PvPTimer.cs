@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class PvPTimer : MonoBehaviour {
 
-    private DateTime ntpDate;   // NTP同期時刻
+    private DateTime ntpDate = DateTime.MinValue;   // NTP同期時刻
     private float rcvAppDate;   // NTP通信時のアプリ時刻
 
     private IPEndPoint ipAny;
@@ -28,14 +28,10 @@ public class PvPTimer : MonoBehaviour {
 
     Text timerTxt;
     public bool engFlg = false;
+    private bool resetFlag = true;
     
-    // 初期化
     void Awake() {
-        // リクエスト実行
-        SyncDate();
-
-        // 時刻表示(デバッグ用)
-        StartCoroutine(ShowSyncDate());
+        Init();
 
         timerTxt = GameObject.Find("Timer").GetComponent<Text>();
         if (Application.systemLanguage != SystemLanguage.Japanese) {
@@ -43,12 +39,22 @@ public class PvPTimer : MonoBehaviour {
         }
     }
 
+    // 初期化
+    void Init()
+    {
+        // リクエスト実行
+        SyncDate();
+
+        // 時刻表示(デバッグ用)
+        StartCoroutine(ShowSyncDate());
+    }
+
     // 同期時刻の表示
     private IEnumerator ShowSyncDate() {
         while (true) {
             yield return new WaitForSeconds(1);
 
-            if (Date == null) {
+            if (Date == DateTime.MinValue) {
                 Debug.Log("Time is not received.");
             }else {
                 DateTime sunday = GetNearestDayOfWeek(Date, DayOfWeek.Sunday);
@@ -65,6 +71,7 @@ public class PvPTimer : MonoBehaviour {
                 endNCMB = sunday.ToString("yyyyMMdd");
                 todayNCMB = Date.ToString("yyyyMMdd");
 
+                resetFlag = false;
                 yield break;
             }
         }
@@ -97,7 +104,7 @@ public class PvPTimer : MonoBehaviour {
     private void Request() {
         // ソケットを開く
         ipAny = new IPEndPoint(IPAddress.Any, 123);
-        sock = new UdpClient(ipAny);
+        sock = new UdpClient();
 
         // リクエスト送信
         byte[] sndData = new byte[48];
@@ -134,7 +141,10 @@ public class PvPTimer : MonoBehaviour {
     // NTP同期時刻
     public DateTime Date {
         get {
-            return ntpDate.AddSeconds(Time.realtimeSinceStartup - rcvAppDate);
+            if (ntpDate == DateTime.MinValue)
+                return DateTime.MinValue;
+            else
+                return ntpDate.AddSeconds(Time.realtimeSinceStartup - rcvAppDate);
         }
     }
 
@@ -177,8 +187,11 @@ public class PvPTimer : MonoBehaviour {
 
         }else {
             //reset
-
-
+            if (!resetFlag)
+            {
+                resetFlag = true;
+                Init();
+            }
         }
 
     }
