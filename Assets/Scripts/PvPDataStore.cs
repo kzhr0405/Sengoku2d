@@ -89,7 +89,7 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> Top10PtWeeklyBusyoList = new List<int>();
     public List<int> Top10PtWeeklyQtyList = new List<int>();
     public List<int> Top10PtWeeklyHeiList = new List<int>();
-    public List<int> Top10PtWeeklWinList = new List<int>();
+    public List<int> Top10PtWeeklyWinList = new List<int>();
     public List<int> Top10PtWeeklyBattleList = new List<int>();
 
 
@@ -196,7 +196,17 @@ public class PvPDataStore : MonoBehaviour {
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (objList.Count == 0) { //never registered
-                InsertPvPWeekly(userId, startDateNCMB, endDateNCMB);
+                string myUserName = PlayerPrefs.GetString("PvPName");
+                int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
+                if (pvpHeiryoku == 0) {
+                    pvpHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                }
+                int kuniLv = PlayerPrefs.GetInt("kuniLv");
+                int jinkei = PlayerPrefs.GetInt("jinkei");
+                string soudaisyoTmp = "soudaisyo" + jinkei.ToString();
+                int soudaisyo = PlayerPrefs.GetInt(soudaisyoTmp);
+
+                InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, myUserName, kuniLv, soudaisyo, pvpHeiryoku);
                 atkNoWeekly = 0;
                 atkWinNoWeekly = 0;
                 dfcNoWeekly = 0;
@@ -211,14 +221,16 @@ public class PvPDataStore : MonoBehaviour {
                         dfcNoWeekly = System.Convert.ToInt32(obj["dfcNo"]);
                         dfcWinNoWeekly = System.Convert.ToInt32(obj["dfcWinNo"]);
                         totalPtWeekly = System.Convert.ToInt32(obj["totalPt"]);
-                        Debug.Log("OK:" + totalPtWeekly);
+                        
+                        
+                                                
                     }
                 }
             }
         });
     }
 
-    public void InsertPvPWeekly(string userId, int startDateNCMB, int endDateNCMB) {
+    public void InsertPvPWeekly(string userId, int startDateNCMB, int endDateNCMB, string userName, int kuniLv, int soudaisyo, int jinkeiHeiryoku) {
         NCMBObject pvpWeekly = new NCMBObject("pvpTmp");
         pvpWeekly["userId"] = userId;
         pvpWeekly["atkNo"] = 0;
@@ -229,6 +241,10 @@ public class PvPDataStore : MonoBehaviour {
         pvpWeekly["totalPt"] = 1000;
         pvpWeekly["startDate"] = startDateNCMB;
         pvpWeekly["endDate"] = endDateNCMB;
+        pvpWeekly["userName"] = userName;
+        pvpWeekly["kuniLv"] = kuniLv;
+        pvpWeekly["soudaisyo"] = soudaisyo;
+        pvpWeekly["jinkeiHeiryoku"] = jinkeiHeiryoku;
         pvpWeekly.SaveAsync();
     }
 
@@ -251,12 +267,14 @@ public class PvPDataStore : MonoBehaviour {
     }
     */
 
-    public void GetPtRankWeekly(int totalWinNo, bool enemyFlg, int todayNCMB) {
+    public void GetPtRankWeekly(int totalPt, bool enemyFlg, int todayNCMB) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
-        query.WhereGreaterThan("totalPt", totalWinNo);
+        query.WhereGreaterThan("totalPt", totalPt);
 
         //date
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        Debug.Log(todayNCMB);
+        Debug.Log(totalPt);
 
         query.CountAsync((int count, NCMBException e) => {
             if (e != null) {
@@ -333,7 +351,7 @@ public class PvPDataStore : MonoBehaviour {
                                 queryPvPTmp.FindAsync((List<NCMBObject> objPvPList, NCMBException ePvP) => {
                                     if (ePvP == null) {
                                         if (objPvPList.Count == 0) { //never registered
-                                            InsertPvPWeekly(userId, startDateNCMB, endDateNCMB);
+                                            InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, userName, kuniLv, soudaisyo, hp);
                                             pvpPtList.Add(1000);
                                         }else { //Get Data
                                             foreach (NCMBObject objPvP in objPvPList) {
@@ -673,27 +691,16 @@ public class PvPDataStore : MonoBehaviour {
                 foreach (NCMBObject obj in objList) {
 
                     //PvP Detail
-                    NCMBQuery<NCMBObject> queryPvP = new NCMBQuery<NCMBObject>("pvp");
                     string userId = System.Convert.ToString(obj["userId"]);
-                    queryPvP.WhereEqualTo("userId", userId);
-                                    
-                    queryPvP.FindAsync((List<NCMBObject> objListPvP, NCMBException ePvP) => {
-                        if (ePvP == null) {
-                            foreach (NCMBObject objPvP in objListPvP) {
-                                Top10PtWeeklyNameList.Add(System.Convert.ToString(objPvP["userName"]));
-                                Top10PtWeeklyRankList.Add(System.Convert.ToInt32(objPvP["kuniLv"]));
-                                Top10PtWeeklyBusyoList.Add(System.Convert.ToInt32(objPvP["soudaisyo"]));
-                                Top10PtWeeklyHeiList.Add(System.Convert.ToInt32(objPvP["jinkeiHeiryoku"]));
-                                Top10PtWeeklWinList.Add(System.Convert.ToInt32(obj["totalWinNo"]));
-
-                                int atkNo = System.Convert.ToInt32(obj["atkNo"]);
-                                int dfcNo = System.Convert.ToInt32(obj["dfcNo"]);
-                                Top10PtWeeklyBattleList.Add(atkNo + dfcNo);
-
-                                Top10PtWeeklyQtyList.Add(System.Convert.ToInt32(obj["totalPt"]));
-                            }
-                        }
-                    });
+                    Top10PtWeeklyWinList.Add(System.Convert.ToInt32(obj["totalWinNo"]));
+                    int atkNo = System.Convert.ToInt32(obj["atkNo"]);
+                    int dfcNo = System.Convert.ToInt32(obj["dfcNo"]);
+                    Top10PtWeeklyBattleList.Add(atkNo + dfcNo);
+                    Top10PtWeeklyQtyList.Add(System.Convert.ToInt32(obj["totalPt"]));
+                    Top10PtWeeklyNameList.Add(System.Convert.ToString(obj["userName"]));
+                    Top10PtWeeklyRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
+                    Top10PtWeeklyBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    Top10PtWeeklyHeiList.Add(System.Convert.ToInt32(obj["jinkeiHeiryoku"]));                    
                 }
             }
         });

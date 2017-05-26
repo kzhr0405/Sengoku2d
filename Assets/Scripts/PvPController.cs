@@ -558,7 +558,7 @@ public class PvPController : MonoBehaviour {
                 Slot.transform.FindChild("KuniLv").transform.FindChild("KuniLvValue").GetComponent<Text>().text = PvPDataStore.Top10PtWeeklyRankList[i].ToString();
                 Slot.transform.FindChild("Pt").transform.FindChild("ptValue").GetComponent<Text>().text = PvPDataStore.Top10PtWeeklyQtyList[i].ToString();
                 Slot.transform.FindChild("HP").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.Top10PtWeeklyHeiList[i].ToString();
-                Slot.transform.FindChild("VS").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.Top10PtWeeklWinList[i].ToString();
+                Slot.transform.FindChild("VS").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.Top10PtWeeklyWinList[i].ToString();
                 Slot.transform.FindChild("VS").transform.FindChild("totalValue").GetComponent<Text>().text = "/"+PvPDataStore.Top10PtWeeklyBattleList[i].ToString();
 
                 string imagePath1 = "Prefabs/Player/Sprite/unit" + PvPDataStore.Top10PtWeeklyBusyoList[i].ToString();
