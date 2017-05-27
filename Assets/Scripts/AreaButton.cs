@@ -299,9 +299,17 @@ public class AreaButton : MonoBehaviour {
 
         } else {
             if (int.Parse(lv) == 20) {
+
+                //shiro item check
+
+
                 Message msg = new Message();
                 msg.makeMessage(msg.getMessage(116));
                 audioSources[4].Play();
+
+
+
+
             }else {
                 
                 BusyoStatusButton pop = new BusyoStatusButton();

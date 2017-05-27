@@ -383,7 +383,12 @@ public class DoSell : MonoBehaviour {
 				int qty = PlayerPrefs.GetInt ("meisei");
 				int newQty = qty - sellQty;
 				PlayerPrefs.SetInt ("meisei", newQty);
-			}
+
+            } else if(kahouType.Contains("shiro")) {
+                sellQty = int.Parse(GameObject.Find("SellQtyValue").GetComponent<Text>().text);
+                Shiro shiro = new Shiro();
+                shiro.deleteShiro(itemId, sellQty);
+            }
 
 
 			//Add money

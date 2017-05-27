@@ -35,7 +35,9 @@ public class QA : MonoBehaviour {
 		} else if(Application.loadedLevelName == "pvp") {
             qaBoard.transform.SetParent(GameObject.Find("Panel").transform);
             GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "UI";
-        } else {
+        } else if(Application.loadedLevelName == "reward") {
+            qaBoard.transform.SetParent(GameObject.Find("Canvas").transform);
+        }else {
             qaBoard.transform.SetParent(GameObject.Find("Map").transform);
         }
 

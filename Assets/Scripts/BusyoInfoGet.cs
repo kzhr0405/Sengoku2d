@@ -128,4 +128,22 @@ public class BusyoInfoGet : MonoBehaviour {
         int saku_id = busyoMst.param[busyoId - 1].saku_id;
         return saku_id;
     }
+
+    public int getRandomBusyoId(string rank) {
+        int busyoId = 0;
+        List<int> randomBusyoList = new List<int>();
+
+        for (int i= 0; i < busyoMst.param.Count; i++) {
+            if(rank == busyoMst.param[i].rank) {
+                randomBusyoList.Add(busyoMst.param[i].id);
+            }
+        }
+        int rdmId = UnityEngine.Random.Range(0, randomBusyoList.Count);
+        busyoId = randomBusyoList[rdmId];
+
+        return busyoId;
+    }
+
+
+
 }

@@ -42,11 +42,11 @@ public class ItemInfo : MonoBehaviour {
 
 			string douguExp = itemInfoList [2];
 			if (name == "cyoutei" || name == "koueki") {
-				douguExp = douguExp.Replace ("A", syoukaiName);
-				sellBtn.GetComponent<DoSell> ().itemId = itemId;
+				douguExp = douguExp.Replace ("A", syoukaiName);			
 			}
+            sellBtn.GetComponent<DoSell>().itemId = itemId;
 
-			GameObject.Find ("DouguExpValue").GetComponent<Text> ().text = douguExp;
+            GameObject.Find ("DouguExpValue").GetComponent<Text> ().text = douguExp;
 
 			//Slider value
 			GameObject SellSlider = GameObject.Find ("SellSlider");

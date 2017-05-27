@@ -701,9 +701,12 @@ public class DouguSoukoScene : MonoBehaviour {
 			meisei.GetComponent<ItemInfo>().posessQty = meiseiQty;
 		}
 
+        //Shiro
+        showShiro();
 
 
-	}
+
+    }
 
 	public void showThreeItem(string itemCd){
 		string nowQty = PlayerPrefs.GetString (itemCd);
@@ -847,4 +850,40 @@ public class DouguSoukoScene : MonoBehaviour {
 			item.GetComponent<Button>().enabled = true;
 		}
 	}
+
+    public void showShiro() {
+        string nowQty = PlayerPrefs.GetString("shiro");
+        List<string> nowQtyList = new List<string>();
+        char[] delimiterChars = { ',' };
+        if(nowQty != "") {
+            nowQtyList = new List<string>(nowQty.Split(delimiterChars));
+
+            string path = "Prefabs/Item/Shiro/shiro";
+            Shiro shiro = new Shiro();
+            for (int i=0; i< nowQtyList.Count; i++) {
+                string imagePath = "Prefabs/Naisei/Shiro/Sprite/";
+                int qty = int.Parse(nowQtyList[i]);
+                if(qty != 0) {
+                    int shiroId = i + 1;
+                    GameObject item = Instantiate(Resources.Load(path)) as GameObject;
+                    item.transform.SetParent(GameObject.Find("Content").transform);
+                    item.transform.localScale = new Vector2(1, 1);
+                    item.transform.localPosition = new Vector3(0, 0, 0);
+                    item.transform.FindChild("Qty").GetComponent<Text>().text = qty.ToString();
+
+                    string name = shiro.getName(shiroId);
+                    item.transform.FindChild("name").GetComponent<Text>().text = name;
+                    imagePath = imagePath + shiroId;
+                    item.transform.FindChild("image").GetComponent<Image>().sprite =
+                     Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+
+                    //value
+                    item.name = "shiro" + shiroId;
+                    item.GetComponent<ItemInfo>().posessQty = qty;
+                    item.GetComponent<ItemInfo>().itemId = shiroId;
+
+                }
+            }
+        }
+    }
 }

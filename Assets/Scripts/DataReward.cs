@@ -5,6 +5,7 @@ using NCMB;
 
 public class DataReward : MonoBehaviour {
 
+    public List<string> objectIdList;
     public List<string> itemTitleList;
     public List<string> itemGrpList;
     public List<string> itemRankList;
@@ -16,6 +17,7 @@ public class DataReward : MonoBehaviour {
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 foreach (NCMBObject obj in objList) {
+                    objectIdList.Add(obj.ObjectId);
                     itemTitleList.Add(System.Convert.ToString(obj["title"]));
                     itemGrpList.Add(System.Convert.ToString(obj["grp"]));
                     itemRankList.Add(System.Convert.ToString(obj["rank"]));

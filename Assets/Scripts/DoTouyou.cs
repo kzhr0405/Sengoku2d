@@ -296,8 +296,6 @@ public class DoTouyou : MonoBehaviour {
 		viewBusyo.viewBusyo(hitBusyo, false);
 	
 	}
-
-
-
+    
 
 }
