@@ -80,7 +80,7 @@ public class Shiro : MonoBehaviour {
             newShiroQty = shiroQtyList[0] + "," + shiroQtyList[1] + "," + newUnitQty + "," + shiroQtyList[3];
         }
         else if (shiroId == 4) {
-            int newUnitQty = int.Parse(shiroQtyList[2]);
+            int newUnitQty = int.Parse(shiroQtyList[3]);
             newUnitQty = newUnitQty - reduceQty;
             newShiroQty = shiroQtyList[0] + "," + shiroQtyList[1] + "," + shiroQtyList[2] + "," + newUnitQty;
         }

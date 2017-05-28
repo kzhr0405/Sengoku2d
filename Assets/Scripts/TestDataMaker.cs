@@ -23,22 +23,22 @@ public class TestDataMaker : MonoBehaviour {
         PlayerPrefs.SetInt ("hidensyoGe",999);
         PlayerPrefs.SetInt ("hidensyoCyu",999);
         PlayerPrefs.SetInt ("hidensyoJyo",999);
-        PlayerPrefs.SetInt ("19",99);
-        PlayerPrefs.SetInt("4", 199);
-        PlayerPrefs.SetInt ("exp19", 55143342);
-        PlayerPrefs.SetInt("exp4", 1830143342);
-        PlayerPrefs.SetInt("addlv4", 100);
-        PlayerPrefs.SetInt("addlv19", 100);
-        PlayerPrefs.SetString("gacyaHst", "4,19,108");
+        //PlayerPrefs.SetInt ("19",99);
+        //PlayerPrefs.SetInt("4", 199);
+        //PlayerPrefs.SetInt ("exp19", 55143342);
+        //PlayerPrefs.SetInt("exp4", 1830143342);
+        //PlayerPrefs.SetInt("addlv4", 100);
+        //PlayerPrefs.SetInt("addlv19", 100);
+        //PlayerPrefs.SetString("gacyaHst", "4,19,108");
         //PlayerPrefs.SetInt ("72",99);
         //PlayerPrefs.SetInt ("exp72",55143300);
 
         //PlayerPrefs.DeleteKey ("usedBusyo");
         //PlayerPrefs.SetInt ("shinobiGe",99);
         //PlayerPrefs.SetInt ("shinobiCyu",99);
-        PlayerPrefs.SetInt ("shinobiJyo",100);
-        PlayerPrefs.SetString("kengouItem","10,10,10,10,10,10,10,10,10,10");
-        PlayerPrefs.SetString("nanbanItem","100,100,100");
+        //PlayerPrefs.SetInt ("shinobiJyo",100);
+        //PlayerPrefs.SetString("kengouItem","10,10,10,10,10,10,10,10,10,10");
+        //PlayerPrefs.SetString("nanbanItem","100,100,100");
         //PlayerPrefs.DeleteKey ("bakuhuTobatsuDaimyoId");
         //PlayerPrefs.DeleteKey ("soubujireiFlg");
         //		PlayerPrefs.SetInt ("saku19",19);
@@ -58,6 +58,7 @@ public class TestDataMaker : MonoBehaviour {
 		PlayerPrefs.SetString ("cyouhou",cyouhou);
 		*/
         PlayerPrefs.SetString("kanjyo", "100,100,100");
+        PlayerPrefs.SetString("shiro", "100,100,100,100");
         //PlayerPrefs.SetString ("doumei2","3");
         //PlayerPrefs.SetString ("doumei3","2");
         //PlayerPrefs.SetInt ("2gaikou3",100);
@@ -67,8 +68,8 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.SetString ("yearSeason","1560,1");
         //PlayerPrefs.SetString ("lastSeasonChanSetime","11/21/2015 2:50:00 AM");
         //PlayerPrefs.DeleteKey ("naiseiTabibitoCounter1");
-        PlayerPrefs.SetInt ("kuniLv",99);
-        PlayerPrefs.SetInt("kuniExp", 50131711);
+        //PlayerPrefs.SetInt ("kuniLv",99);
+        //PlayerPrefs.SetInt("kuniExp", 50131711);
         //PlayerPrefs.SetBool ("gameClearFlg",true);
 
         //PlayerPrefs.SetString ("clearedKuni","1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65");

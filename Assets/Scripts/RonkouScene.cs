@@ -2,6 +2,7 @@
 using System.Collections;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class RonkouScene : MonoBehaviour {
 
@@ -18,7 +19,7 @@ public class RonkouScene : MonoBehaviour {
 		TabHandler tab = new TabHandler ();
 		tab.tabButtonColor ("Ronkou");
 
-		ArrayList myBusyo_list = new ArrayList ();
+		List<string> myBusyo_list = new List<string>();
 
 		GameObject mainController = GameObject.Find ("GameScene");
 		mainController.GetComponent<NowOnButton> ().onButton = "Ronkou";
@@ -69,30 +70,46 @@ public class RonkouScene : MonoBehaviour {
         }
     }
 
-	public string createScrollView(ArrayList myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
+	public string createScrollView(List<string> myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
 		//Scroll View
 		string myBusyoString = PlayerPrefs.GetString ("myBusyo");
 		char[] delimiterChars = {','};
 		myBusyo_list.AddRange (myBusyoString.Split (delimiterChars));
-		
-		//Instantiate scroll view
-		string scrollPath = "Prefabs/Busyo/Slot";	
-		
-		for (int j=0; j<myBusyo_list.Count; j++) {
+
+        //Sort by Jinkei
+        List<string> jinkeiTrueBusyoList = new List<string>();
+        List<string> jinkeiFalseBusyoList = new List<string>();
+        for (int i=0; i< myBusyo_list.Count; i++) {
+            int busyoId = int.Parse(myBusyo_list[i]);
+            bool jinkeiFlg = jinkeiBusyoCheck(busyoId);
+            if(jinkeiFlg) {
+                jinkeiTrueBusyoList.Add(busyoId.ToString());
+            }else {
+                jinkeiFalseBusyoList.Add(busyoId.ToString());
+            }
+        }
+        List<string> myBusyoList = new List<string>();
+        myBusyoList.AddRange(jinkeiTrueBusyoList);
+        myBusyoList.AddRange(jinkeiFalseBusyoList);
+
+        //Instantiate scroll view
+        string scrollPath = "Prefabs/Busyo/Slot";
+        BusyoInfoGet busyoScript = new BusyoInfoGet();
+        GameObject content = GameObject.Find("Content");
+        for (int j=0; j< myBusyoList.Count; j++) {
 			//Slot
 			GameObject prefab = Instantiate (Resources.Load (scrollPath)) as GameObject;
-			prefab.transform.SetParent(GameObject.Find ("Content").transform);
+			prefab.transform.SetParent(content.transform);
 			prefab.transform.localScale = new Vector3 (1, 1, 1);
 			prefab.transform.localPosition = new Vector3(330,-75,0);
             
 			//Busyo
 			string busyoPath ="Prefabs/Player/Unit/BusyoUnit";
 			GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
-			busyo.name = myBusyo_list [j].ToString();
+			busyo.name = myBusyoList[j].ToString();
 			busyo.transform.SetParent(prefab.transform);
 			busyo.transform.localScale = new Vector3 (4, 4, 4);
 			busyo.transform.localPosition = new Vector3(100,-75,0);
-			busyo.name = myBusyo_list [j].ToString ();
 			prefab.name = "Slot" + busyo.name;
 			
 			busyo.GetComponent<DragHandler> ().enabled = false;
@@ -104,18 +121,45 @@ public class RonkouScene : MonoBehaviour {
                 }
             }
 
+            //kamon
+            string KamonPath = "Prefabs/Jinkei/Kamon";
+            GameObject kamon = Instantiate(Resources.Load(KamonPath)) as GameObject;
+            kamon.transform.SetParent(busyo.transform);
+            kamon.transform.localScale = new Vector2(0.1f, 0.1f);
+            kamon.transform.localPosition = new Vector2(-15, -12);
+            int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name));
+            if (daimyoId == 0) {
+                daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name));
+            }
+            string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
+            kamon.GetComponent<Image>().sprite =
+                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+
+            //Heisyu
+            string heisyu = busyoScript.getHeisyu(int.Parse(busyo.name));
+            string heisyuPath = "Prefabs/Jinkei/" + heisyu;
+            GameObject heisyuObj = Instantiate(Resources.Load(heisyuPath)) as GameObject;
+            heisyuObj.transform.SetParent(busyo.transform, false);
+            heisyuObj.transform.localPosition = new Vector2(10, -10);
+            heisyuObj.transform.SetAsFirstSibling();
+
+            //Jinkei Exist
+            if(jinkeiTrueBusyoList.Contains(busyo.name)) {
+                prefab.GetComponent<BusyoView>().jinkeiFlg = true;
+            }
+
+
         }
 
-        minBusyoId = myBusyo_list[0].ToString();
-		mainController.GetComponent<NowOnBusyo>().OnBusyo = myBusyo_list[0].ToString();
-        BusyoInfoGet busyoScript = new BusyoInfoGet();
+        minBusyoId = myBusyoList[0].ToString();
+		mainController.GetComponent<NowOnBusyo>().OnBusyo = myBusyoList[0].ToString();
         string busyoName = busyoScript.getName(int.Parse(minBusyoId));
         mainController.GetComponent<NowOnBusyo>().OnBusyoName = busyoName;
 
         //Busyo Qty Limit
         int stockLimit = PlayerPrefs.GetInt ("stockLimit");
 		GameObject.Find ("LimitBusyoQtyValue").GetComponent<Text>().text = stockLimit.ToString ();
-		GameObject.Find ("NowBusyoQtyValue").GetComponent<Text>().text = myBusyo_list.Count.ToString ();
+		GameObject.Find ("NowBusyoQtyValue").GetComponent<Text>().text = myBusyoList.Count.ToString ();
 
 		return minBusyoId;
 	}
@@ -412,5 +456,75 @@ public class RonkouScene : MonoBehaviour {
 		//Parametor Setting
 		GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyo = busyoId;
 
-	}
+        //Jinkei Flg
+        GameObject BusyoView = GameObject.Find("BusyoView");
+        if (!BusyoView.transform.FindChild("jinkei")) {
+            if (jinkeiBusyoCheck(int.Parse(busyoId))) {
+                string iconPath = "Prefabs/Busyo/Jinkei";
+                GameObject jinkei = Instantiate(Resources.Load(iconPath)) as GameObject;
+                jinkei.transform.SetParent(GameObject.Find("BusyoView").transform);
+                jinkei.transform.localScale = new Vector2(0.3f, 0.3f);
+                jinkei.transform.localPosition = new Vector2(220, 200);
+                jinkei.name = "jinkei";
+            }
+        }
+    }
+
+    public bool jinkeiBusyoCheck(int tsuihouBusyoId) {
+        bool jinkeiBusyoFlg = false;
+
+        int jinkei = PlayerPrefs.GetInt("jinkei");
+        List<int> slotList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
+
+        for (int i = 0; i < slotList.Count; i++) {
+            string slotId = slotList[i].ToString();
+            string mapId = jinkei.ToString() + "map" + slotId;
+            if (jinkei == 1) {
+                if (slotId == "1" || slotId == "2" || slotId == "7" || slotId == "8" ||
+                    slotId == "11" || slotId == "12" || slotId == "13" || slotId == "14" ||
+                   slotId == "17" || slotId == "18" || slotId == "21" || slotId == "22") {
+                    int busyoId = PlayerPrefs.GetInt(mapId);
+                    if (busyoId == tsuihouBusyoId) {
+                        jinkeiBusyoFlg = true;
+                        break;
+                    }
+                }
+            }
+            else if (jinkei == 2) {
+                if (slotId == "3" || slotId == "4" || slotId == "5" || slotId == "7" ||
+                  slotId == "8" || slotId == "11" || slotId == "12" || slotId == "17" ||
+                   slotId == "18" || slotId == "23" || slotId == "24" || slotId == "25") {
+                    int busyoId = PlayerPrefs.GetInt(mapId);
+                    if (busyoId == tsuihouBusyoId) {
+                        jinkeiBusyoFlg = true;
+                        break;
+                    }
+                }
+            }
+            else if (jinkei == 3) {
+                if (slotId == "3" || slotId == "7" || slotId == "8" || slotId == "9" ||
+                   slotId == "11" || slotId == "12" || slotId == "14" || slotId == "15" ||
+                  slotId == "16" || slotId == "20" || slotId == "21" || slotId == "25") {
+                    int busyoId = PlayerPrefs.GetInt(mapId);
+                    if (busyoId == tsuihouBusyoId) {
+                        jinkeiBusyoFlg = true;
+                        break;
+                    }
+                }
+            }
+            else if (jinkei == 4) {
+                if (slotId == "1" || slotId == "2" || slotId == "7" || slotId == "8" ||
+                   slotId == "12" || slotId == "13" || slotId == "14" || slotId == "18" ||
+                   slotId == "19" || slotId == "20" || slotId == "24" || slotId == "25") {
+                    int busyoId = PlayerPrefs.GetInt(mapId);
+                    if (busyoId == tsuihouBusyoId) {
+                        jinkeiBusyoFlg = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return jinkeiBusyoFlg;
+    }
 }

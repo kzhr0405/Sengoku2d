@@ -956,7 +956,11 @@ public class HPCounter : MonoBehaviour {
                             popPvPObj.transform.SetParent(canvas.transform);
                             popPvPObj.transform.localScale = new Vector2(0.8f, 0.8f);
                             popPvPObj.transform.localPosition = new Vector2(0, 0);
-                            popPvPObj.GetComponent<Text>().text = "武功 +" + DataStore.getPt ;
+                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                popPvPObj.GetComponent<Text>().text = "Pt +" + DataStore.getPt ;
+                            }else {
+                                popPvPObj.GetComponent<Text>().text = "武功 +" + DataStore.getPt;
+                            }
                         }
 
                         //Button List

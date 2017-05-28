@@ -18,7 +18,7 @@ public class preKassen : MonoBehaviour {
     public int jinkeiLimit = 0;
     public int busyoCurrentQty = 0;
     public int weatherId = 0;
-
+    public int activeKuniId;
 
     void Start () {
 
@@ -49,7 +49,7 @@ public class preKassen : MonoBehaviour {
 			string daimyoName = daimyo.getName (daimyoId);
 
 			if (isAttackedFlg) {
-				int activeKuniId = PlayerPrefs.GetInt ("activeKuniId");
+				activeKuniId = PlayerPrefs.GetInt ("activeKuniId");
 				KuniInfo kuni = new KuniInfo ();
 				string kuniName = kuni.getKuniName (activeKuniId);
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
@@ -1410,7 +1410,7 @@ public class preKassen : MonoBehaviour {
 		return roujyoFlg;
 	}
 
-	public void makeRoujyoObj(bool shiroFlg, GameObject slot, GameObject busyo, int powerType){
+	public void makeRoujyoObj(bool shiroFlg, GameObject slot, GameObject busyo, int powerType) {
 
 		string Type = "";
 		if (powerType == 1) {
@@ -1427,11 +1427,12 @@ public class preKassen : MonoBehaviour {
 			string shiroPath = "Prefabs/PreKassen/shiroIcon";
 			GameObject shiroObj = Instantiate(Resources.Load (shiroPath)) as GameObject;
 			shiroObj.transform.SetParent(slot.transform);
-			shiroObj.transform.localScale = new Vector2(4,4);	
+			shiroObj.transform.localScale = new Vector2(4,3);	
 			shiroObj.transform.localPosition = new Vector3(0,0,0);
-			string imagePath = "Prefabs/Map/Stage/shiroIcon_" + Type;
-			shiroObj.GetComponent<Image> ().sprite = 
-				Resources.Load (imagePath, typeof(Sprite)) as Sprite;
+            string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_" + Type;
+            shiroObj.GetComponent<Image> ().sprite = 
+			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
+
 			shiroObj.name = "shiro";
 			busyo.SetActive (false);
 
@@ -1471,11 +1472,22 @@ public class preKassen : MonoBehaviour {
 			    string shiroPath = "Prefabs/PreKassen/shiroIcon";
 			    GameObject shiroObj = Instantiate(Resources.Load (shiroPath)) as GameObject;
 			    shiroObj.transform.SetParent(slot.transform);
-			    shiroObj.transform.localScale = new Vector2(4,4);	
+			    shiroObj.transform.localScale = new Vector2(4,3);	
 			    shiroObj.transform.localPosition = new Vector3(0,0,0);
-			    string imagePath = "Prefabs/Map/Stage/shiroIcon_" + Type;
-			    shiroObj.GetComponent<Image> ().sprite = 
+
+                string shiroTmp = "shiro" + activeKuniId;
+                if (PlayerPrefs.HasKey(shiroTmp)) {
+                    int shiroId = PlayerPrefs.GetInt(shiroTmp);
+                    if (shiroId != 0) {
+                        string imagePath = "Prefabs/Naisei/Shiro/Sprite/" + shiroId;
+                        shiroObj.GetComponent<Image>().sprite =
+                                        Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+                    }
+                }else {
+                    string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_" + Type;
+                    shiroObj.GetComponent<Image> ().sprite = 
 				    Resources.Load (imagePath, typeof(Sprite)) as Sprite;
+                }
 			    shiroObj.name = "shiro";
 
 			    startBtn.GetComponent<startKassen2> ().myShiroLv = shiroLv;

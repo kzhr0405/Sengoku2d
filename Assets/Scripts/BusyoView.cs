@@ -9,19 +9,29 @@ public class BusyoView : MonoBehaviour {
 	public Color OKClorTxt = new Color (255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
 	public Color NGClorBtn = new Color (133 / 255f, 133 / 255f, 80 / 255f, 255f / 255f);
 	public Color NGClorTxt = new Color (90 / 255f, 90 / 255f, 40 / 255f, 255f / 255f);
+    public bool jinkeiFlg;
 
 	public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [2].Play ();
 
 		/*Busyo View*/
-		//Delete revious
+		//Delete Previous
 		foreach ( Transform n in GameObject.Find ("BusyoView").transform ){
 			GameObject.Destroy(n.gameObject);
 		}
+        //Jinkei Flg
+        if (jinkeiFlg) {
+            string iconPath = "Prefabs/Busyo/Jinkei";
+            GameObject jinkei = Instantiate(Resources.Load(iconPath)) as GameObject;
+            jinkei.transform.SetParent(GameObject.Find("BusyoView").transform);
+            jinkei.transform.localScale = new Vector2(0.3f, 0.3f);
+            jinkei.transform.localPosition = new Vector2(220, 200);
+            jinkei.name = "jinkei";
+        }
 
-		//Make New Busyo
-		string busyoId;
+        //Make New Busyo
+        string busyoId;
 		busyoId = this.name.Remove (0, 4);
 		string path = "Prefabs/Player/Unit/BusyoUnit";
 		GameObject Busyo = Instantiate (Resources.Load (path)) as GameObject;
@@ -315,5 +325,8 @@ public class BusyoView : MonoBehaviour {
 			SyoguScene syogu = new SyoguScene();
 			syogu.createSyoguView(busyoId);
 		}
-	}	
+        
+        
+
+    }	
 }

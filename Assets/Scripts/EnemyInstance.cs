@@ -31,8 +31,8 @@ public class EnemyInstance : MonoBehaviour {
 		    if (shiroFlg) {
 			    string objPath = "Prefabs/Kassen/eShiro";
 			    buildingObj = Instantiate(Resources.Load (objPath)) as GameObject;
-			    buildingObj.transform.localScale = new Vector2 (8,8);
-			    setEnemyObjectOnMap (mapId, buildingObj);
+			    buildingObj.transform.localScale = new Vector2(2, 1.5f);
+                setEnemyObjectOnMap (mapId, buildingObj);
 			    buildingObj.name = "shiro";
 
 			    string stageName = PlayerPrefs.GetString ("activeStageName");
@@ -48,8 +48,8 @@ public class EnemyInstance : MonoBehaviour {
 			    } else if (powerType == 3) {
 				    Type = "l";
 			    }
-			    string imagePath = "Prefabs/Map/Stage/shiroIcon_" + Type;
-			    buildingObj.GetComponent<SpriteRenderer> ().sprite = 
+                string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_" + Type;
+                buildingObj.GetComponent<SpriteRenderer> ().sprite = 
 				    Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
 		    } else {

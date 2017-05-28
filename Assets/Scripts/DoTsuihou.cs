@@ -243,7 +243,7 @@ public class DoTsuihou : MonoBehaviour {
 				}
 
 				//Create
-				ArrayList myBusyoList = new ArrayList();
+				List<string> myBusyoList = new List<string>();
 				GameObject mainController = GameObject.Find ("GameScene");
 				string minBusyoId = "";
 				minBusyoId = ronkou.createScrollView(myBusyoList,minBusyoId,mainController,false);

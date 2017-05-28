@@ -26,7 +26,8 @@ public class DoTsuihouConfirm : MonoBehaviour {
 			msgNoBtn.makeMessage(text);
 
 		} else {
-            bool jinkeiBusyoFlg = jinkeiBusyoCheck(int.Parse(busyoId));
+            RonkouScene ronko = new RonkouScene();
+            bool jinkeiBusyoFlg = ronko.jinkeiBusyoCheck(int.Parse(busyoId));
             if (jinkeiBusyoFlg) {
                 //Error
                 audioSources[4].Play();
@@ -75,61 +76,5 @@ public class DoTsuihouConfirm : MonoBehaviour {
 		}
 	}
 
-    public bool jinkeiBusyoCheck(int tsuihouBusyoId) {
-        bool jinkeiBusyoFlg = false;
-
-        int jinkei = PlayerPrefs.GetInt("jinkei");
-        List<int> slotList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
-
-        for (int i = 0; i < slotList.Count; i++) {
-            string slotId = slotList[i].ToString();
-            string mapId = jinkei.ToString() + "map" + slotId;
-            if (jinkei == 1) {
-                if (slotId == "1" || slotId == "2" || slotId == "7" || slotId == "8" ||
-                    slotId == "11" || slotId == "12" || slotId == "13" || slotId == "14" ||
-                   slotId == "17" || slotId == "18" || slotId == "21" || slotId == "22") {
-                    int busyoId = PlayerPrefs.GetInt(mapId);
-                    if (busyoId == tsuihouBusyoId) {
-                        jinkeiBusyoFlg = true;
-                        break;
-                    }
-                }
-            }
-            else if (jinkei == 2) {
-                if (slotId == "3" || slotId == "4" || slotId == "5" || slotId == "7" ||
-                  slotId == "8" || slotId == "11" || slotId == "12" || slotId == "17" ||
-                   slotId == "18" || slotId == "23" || slotId == "24" || slotId == "25") {
-                    int busyoId = PlayerPrefs.GetInt(mapId);
-                    if (busyoId == tsuihouBusyoId) {
-                        jinkeiBusyoFlg = true;
-                        break;
-                    }
-                }
-            }
-            else if (jinkei == 3) {
-                if (slotId == "3" || slotId == "7" || slotId == "8" || slotId == "9" ||
-                   slotId == "11" || slotId == "12" || slotId == "14" || slotId == "15" ||
-                  slotId == "16" || slotId == "20" || slotId == "21" || slotId == "25") {
-                    int busyoId = PlayerPrefs.GetInt(mapId);
-                    if (busyoId == tsuihouBusyoId) {
-                        jinkeiBusyoFlg = true;
-                        break;
-                    }
-                }
-            }
-            else if (jinkei == 4) {
-                if (slotId == "1" || slotId == "2" || slotId == "7" || slotId == "8" ||
-                   slotId == "12" || slotId == "13" || slotId == "14" || slotId == "18" ||
-                   slotId == "19" || slotId == "20" || slotId == "24" || slotId == "25") {
-                    int busyoId = PlayerPrefs.GetInt(mapId);
-                    if (busyoId == tsuihouBusyoId) {
-                        jinkeiBusyoFlg = true;
-                        break;
-                    }
-                }
-            }
-        }
-
-        return jinkeiBusyoFlg;
-    }
+    
 }

@@ -813,7 +813,18 @@ public class NaiseiController : MonoBehaviour {
 		GameObject shiro = Instantiate (Resources.Load (path)) as GameObject;
 		shiro.transform.parent = GameObject.Find ("NaiseiView").transform;
 		shiro.transform.localScale = new Vector3 (1, 1, 1);
-		
+
+        //special shiro
+        string shiroTmp = "shiro" + activeKuniId;
+        if(PlayerPrefs.HasKey(shiroTmp)) {
+            int shiroId = PlayerPrefs.GetInt(shiroTmp);
+            if(shiroId != 0) {
+                string imagePath = "Prefabs/Naisei/Shiro/Sprite/" + shiroId;
+                shiro.GetComponent<Image>().sprite =
+                                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+            }
+        }
+        
 		RectTransform shiro_transform = shiro.GetComponent<RectTransform>();
 		shiro_transform.anchoredPosition3D = new Vector3 (shiro.transform.position.x, shiro.transform.position.y, 0);
 		shiro.name = shiroType;

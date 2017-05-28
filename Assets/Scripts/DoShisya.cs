@@ -1699,9 +1699,17 @@ public class DoShisya : MonoBehaviour {
 		if (id == 5) {
 			shisyaName = script.srcDaimyoName;
 		} else if (id == 19) {
-			shisyaName = "南蛮人";
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                shisyaName = "Westerner";
+            }else {
+                shisyaName = "南蛮人";
+            }
 		} else if (id == 18) {
-			shisyaName = "行商人";
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                shisyaName = "Merchant";
+            }else {
+                shisyaName = "行商人";
+            }
 		}
 		string temp = "shisya" + id.ToString ();
 		PlayerPrefs.DeleteKey (temp);

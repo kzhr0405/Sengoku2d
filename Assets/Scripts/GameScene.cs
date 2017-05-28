@@ -1336,7 +1336,7 @@ public class GameScene : MonoBehaviour {
 		int shiroLv = PlayerPrefs.GetInt("pSRLv");
 		string objPath = "Prefabs/Kassen/pShiro";
 		GameObject shiroObj = Instantiate(Resources.Load (objPath)) as GameObject;
-		shiroObj.transform.localScale = new Vector2 (8,8);
+		shiroObj.transform.localScale = new Vector2 (2,1.5f);
 		setPlayerObjectOnMap (12, shiroObj);
 		shiroObj.name = "shiro";
 
@@ -1344,21 +1344,34 @@ public class GameScene : MonoBehaviour {
 		shiroObj.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("NameLabel").GetComponent<TextMesh> ().text = stageName;
 
 		//Sprite
-		int powerType = PlayerPrefs.GetInt("activePowerType");
-		string Type = "";
-		if (shiroLv < 8) {
-			Type = "s";
-		} else if (shiroLv < 15) {
-			Type = "m";
-		} else if (15<=shiroLv) {
-			Type = "l";
-		}
-		string imagePath = "Prefabs/Map/Stage/shiroIcon_" + Type;
-		shiroObj.GetComponent<SpriteRenderer> ().sprite = 
-			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
+        string shiroTmp = "shiro" + activeKuniId;
+        if (PlayerPrefs.HasKey(shiroTmp)) {
+            int shiroId = PlayerPrefs.GetInt(shiroTmp);
+            if (shiroId != 0) {
+                string imagePath = "Prefabs/Naisei/Shiro/Sprite/" + shiroId;
+                shiroObj.GetComponent<SpriteRenderer>().sprite =
+                                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+            }
+        }else {
+            string Type = "";
+            if (shiroLv < 8) {
+                Type = "s";
+            }
+            else if (shiroLv < 15) {
+                Type = "m";
+            }
+            else if (15 <= shiroLv) {
+                Type = "l";
+            }
+            string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_" + Type;
+            shiroObj.GetComponent<SpriteRenderer>().sprite =
+                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+        }
 
-		//HP
-		NaiseiInfo naisei = new NaiseiInfo();
+
+
+        //HP
+        NaiseiInfo naisei = new NaiseiInfo();
 		int tmpShiroEffect = naisei.getNaiseiEffect("shiro", shiroLv);
 		int shiroEffect = 2000 + tmpShiroEffect * 25;
 		shiroObj.GetComponent<PlayerHP> ().initLife = shiroEffect;

@@ -300,20 +300,14 @@ public class AreaButton : MonoBehaviour {
         } else {
             if (int.Parse(lv) == 20) {
 
-                //shiro item check
-
-
                 Message msg = new Message();
                 msg.makeMessage(msg.getMessage(116));
                 audioSources[4].Play();
 
-
-
-
             }else {
                 
                 BusyoStatusButton pop = new BusyoStatusButton();
-                pop.commonPopup(21);
+                GameObject board = pop.commonPopup(21);
                 audioSources[0].Play();
 
                 //Update
@@ -325,7 +319,7 @@ public class AreaButton : MonoBehaviour {
 
 			    string naiseiUpdatePath = "Prefabs/Naisei/NaiseiUpdate";
 			    GameObject NaiseiUpdate = Instantiate (Resources.Load (naiseiUpdatePath)) as GameObject;
-			    NaiseiUpdate.transform.parent = GameObject.Find ("board(Clone)").transform;
+                NaiseiUpdate.transform.SetParent(board.transform);
 			    NaiseiUpdate.transform.localScale = new Vector2 (1, 1);
 			    RectTransform naiseiUpdateTransform = NaiseiUpdate.GetComponent<RectTransform> ();
 			    naiseiUpdateTransform.anchoredPosition = new Vector3 (0, -40, 0);
@@ -355,8 +349,21 @@ public class AreaButton : MonoBehaviour {
 			    bldgTransform.anchoredPosition = new Vector3 (-250, 0, 0);
 			    bldgObj.GetComponent<Button>().enabled = false;
 
-			    //Detail Info
-			    GameObject baseObj = NaiseiUpdate.transform.FindChild("Base").gameObject;
+                //Special Shiro
+                if(type == "shiro") {
+                    string shiroTmp = "shiro" + GameObject.Find("NaiseiController").GetComponent<NaiseiController>().activeKuniId;
+                    if (PlayerPrefs.HasKey(shiroTmp)) {
+                        int shiroId = PlayerPrefs.GetInt(shiroTmp);
+                        if (shiroId != 0) {
+                            string imagePath = "Prefabs/Naisei/Shiro/Sprite/" + shiroId;
+                            bldgObj.GetComponent<Image>().sprite =
+                                            Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+                        }
+                    }
+                }
+
+                //Detail Info
+                GameObject baseObj = NaiseiUpdate.transform.FindChild("Base").gameObject;
 			    baseObj.transform.FindChild("FromLv").GetComponent<Text>().text = "Lv" + lv;
 			    baseObj.transform.FindChild("ToLv").GetComponent<Text>().text = nextLv.ToString();
 
@@ -425,6 +432,52 @@ public class AreaButton : MonoBehaviour {
 				    baseObj.transform.FindChild("NowNaiseiEffectValue2").GetComponent<Text>().text = "+" + effect.ToString();
 				    baseObj.transform.FindChild("NextNaiseiEffectValue2").GetComponent<Text>().text = "+" + effectNextLv.ToString();
 
+                    //Special Castle Check
+                    string nowQty = PlayerPrefs.GetString("shiro");
+                    Debug.Log(nowQty);
+                    List<string> nowQtyList = new List<string>();
+                    char[] delimiterChars = { ',' };
+                    if (nowQty != "") {
+                        //scroll view
+                        string scrollPath = "Prefabs/Naisei/Shiro/ShiroScrollView";
+                        GameObject scroll = Instantiate(Resources.Load(scrollPath)) as GameObject;
+                        scroll.transform.SetParent(board.transform);
+                        
+                        GameObject content = scroll.transform.FindChild("Content").gameObject;
+                        scroll.transform.localScale = new Vector2(0.8f, 0.8f);
+                        scroll.transform.localPosition = new Vector2(-240, -240);
+
+                        nowQtyList = new List<string>(nowQty.Split(delimiterChars));
+                        string path = "Prefabs/Item/Shiro/shiro";
+                        Shiro shiro = new Shiro();
+                        for (int i = 0; i < nowQtyList.Count; i++) {
+                            string imagePath = "Prefabs/Naisei/Shiro/Sprite/";
+                            int qty = int.Parse(nowQtyList[i]);
+                            if (qty != 0) {
+                                int shiroId = i + 1;
+                                GameObject item = Instantiate(Resources.Load(path)) as GameObject;
+                                item.transform.SetParent(content.transform);
+                                item.transform.localScale = new Vector2(1, 1);
+                                item.transform.localPosition = new Vector3(0, 0, 0);
+                                item.transform.FindChild("Qty").GetComponent<Text>().text = qty.ToString();
+
+                                string name = shiro.getName(shiroId);
+                                item.transform.FindChild("name").GetComponent<Text>().text = name;
+                                imagePath = imagePath + shiroId;
+                                item.transform.FindChild("image").GetComponent<Image>().sprite =
+                                 Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+
+                                //value
+                                item.name = "shiro" + shiroId;
+                                item.GetComponent<ItemInfo>().posessQty = qty;
+                                item.GetComponent<ItemInfo>().itemId = shiroId;
+                                item.GetComponent<ItemInfo>().itemName = name;
+
+                            }
+                        }
+                        //scroll.GetComponent<ScrollRect>().enabled = false;
+                    }
+                    
 			    }else{
 
 				    //Destroy Button

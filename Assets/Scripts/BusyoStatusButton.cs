@@ -369,7 +369,7 @@ public class BusyoStatusButton : MonoBehaviour {
 
 	}
 
-	public void commonPopup(int qaId){
+	public GameObject commonPopup(int qaId){
 		//Common Process
 		//Back Cover
 		string backPath = "Prefabs/Busyo/back";
@@ -405,7 +405,10 @@ public class BusyoStatusButton : MonoBehaviour {
 		RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 		popTextTransform.anchoredPosition3D = new Vector3 (0, 260, 0);
 		popText.name = "popText";
-	}
+
+        return popup;
+
+    }
 
 
 	public void cyouheiView(string ch_type){

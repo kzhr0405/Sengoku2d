@@ -188,6 +188,18 @@ public class PvPDataStore : MonoBehaviour {
     }
     
     public void GetMyPvPWeekly(int startDateNCMB, int endDateNCMB, int todayNCMB) {
+
+        //Common Info.
+        string myUserName = PlayerPrefs.GetString("PvPName");
+        int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
+        if (pvpHeiryoku == 0) {
+            pvpHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+        }
+        int kuniLv = PlayerPrefs.GetInt("kuniLv");
+        int jinkei = PlayerPrefs.GetInt("jinkei");
+        string soudaisyoTmp = "soudaisyo" + jinkei.ToString();
+        int soudaisyo = PlayerPrefs.GetInt(soudaisyoTmp);
+        
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
         userId = PlayerPrefs.GetString("userId");
         query.WhereEqualTo("userId", userId);
@@ -196,15 +208,7 @@ public class PvPDataStore : MonoBehaviour {
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (objList.Count == 0) { //never registered
-                string myUserName = PlayerPrefs.GetString("PvPName");
-                int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
-                if (pvpHeiryoku == 0) {
-                    pvpHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-                }
-                int kuniLv = PlayerPrefs.GetInt("kuniLv");
-                int jinkei = PlayerPrefs.GetInt("jinkei");
-                string soudaisyoTmp = "soudaisyo" + jinkei.ToString();
-                int soudaisyo = PlayerPrefs.GetInt(soudaisyoTmp);
+                
 
                 InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, myUserName, kuniLv, soudaisyo, pvpHeiryoku);
                 atkNoWeekly = 0;
@@ -215,14 +219,16 @@ public class PvPDataStore : MonoBehaviour {
             }
             else { //registered
                 if (e == null) {
+                    //Update info.
+                    UpdatePvPWeekly(userId, myUserName, todayNCMB, kuniLv, soudaisyo, pvpHeiryoku);
+
+                    //Get info.
                     foreach (NCMBObject obj in objList) {
                         atkNoWeekly = System.Convert.ToInt32(obj["atkNo"]);
                         atkWinNoWeekly = System.Convert.ToInt32(obj["atkWinNo"]);
                         dfcNoWeekly = System.Convert.ToInt32(obj["dfcNo"]);
                         dfcWinNoWeekly = System.Convert.ToInt32(obj["dfcWinNo"]);
                         totalPtWeekly = System.Convert.ToInt32(obj["totalPt"]);
-                        
-                        
                                                 
                     }
                 }
@@ -247,6 +253,27 @@ public class PvPDataStore : MonoBehaviour {
         pvpWeekly["jinkeiHeiryoku"] = jinkeiHeiryoku;
         pvpWeekly.SaveAsync();
     }
+
+    public void UpdatePvPWeekly(string userId, string userName, int todayNCMB, int kuniLv, int soudaisyo, int jinkeiHeiryoku) {
+
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
+        query.WhereEqualTo("userId", userId);
+        query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {
+                if (objList.Count != 0) {
+                    objList[0]["userName"] = userName;
+                    objList[0]["kuniLv"] = kuniLv;
+                    objList[0]["soudaisyo"] = soudaisyo;
+                    objList[0]["jinkeiHeiryoku"] = jinkeiHeiryoku;
+
+                    objList[0].SaveAsync();
+                }
+            }
+        });
+    }
+
 
     /*
     public void GetWinRankWeekly(int totalWinNo, bool enemyFlg) {

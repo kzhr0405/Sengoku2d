@@ -18,90 +18,99 @@ public class RewardReceive : MonoBehaviour {
     public List<string> kahoNameList;
 
     public void OnClick() {
+
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-        audioSources[3].Play();
 
+        if (Application.internetReachability == NetworkReachability.NotReachable) {
+            //接続されていないときの処理
+            Message msg = new Message();
+            msg.makeMessage(msg.getMessage(136));
+            audioSources[4].Play();
 
-        //NCMB delete
-        NCMBObject query = new NCMBObject("reward");
-        query.ObjectId = objectId;
-        query.DeleteAsync();
+        } else {
+            
+            audioSources[3].Play();
 
-        //List delete
-        DataReward DataRewardObj = GameObject.Find("DataStore").GetComponent<DataReward>();
-        int line = 0;
-        for(int i=0; i< DataRewardObj.objectIdList.Count; i++) {
-            if(objectId == DataRewardObj.objectIdList[i]) {
-                line = i;
+            //NCMB delete
+            NCMBObject query = new NCMBObject("reward");
+            query.ObjectId = objectId;
+            query.DeleteAsync();
+
+            //List delete
+            DataReward DataRewardObj = GameObject.Find("DataStore").GetComponent<DataReward>();
+            int line = 0;
+            for(int i=0; i< DataRewardObj.objectIdList.Count; i++) {
+                if(objectId == DataRewardObj.objectIdList[i]) {
+                    line = i;
+                }
             }
-        }
-        DataRewardObj.objectIdList.RemoveAt(line);
-        DataRewardObj.itemTitleList.RemoveAt(line);
-        DataRewardObj.itemGrpList.RemoveAt(line);
-        DataRewardObj.itemRankList.RemoveAt(line);
-        DataRewardObj.itemQtyList.RemoveAt(line);
+            DataRewardObj.objectIdList.RemoveAt(line);
+            DataRewardObj.itemTitleList.RemoveAt(line);
+            DataRewardObj.itemGrpList.RemoveAt(line);
+            DataRewardObj.itemRankList.RemoveAt(line);
+            DataRewardObj.itemQtyList.RemoveAt(line);
 
-        //visual delete
-        Destroy(slot);
+            //visual delete
+            Destroy(slot);
 
-        //item register
-        if (grp == "money") {
-            Message msgScript = new Message();
-            string msg = "";
-            int money = PlayerPrefs.GetInt("money");
-            int newMoney = money + qty;
-            if (newMoney < 0) {
-                newMoney = int.MaxValue;
+            //item register
+            if (grp == "money") {
+                Message msgScript = new Message();
+                string msg = "";
+                int money = PlayerPrefs.GetInt("money");
+                int newMoney = money + qty;
+                if (newMoney < 0) {
+                    newMoney = int.MaxValue;
+                }
+                PlayerPrefs.SetInt("money", newMoney);
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    msg = "You got " + qty + " money.";
+                }else {
+                    msg = "金を" + qty + "受領しました。";
+                }
+                msgScript.makeMessage(msg);
             }
-            PlayerPrefs.SetInt("money", newMoney);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                msg = "You got " + qty + " money.";
-            }else {
-                msg = "金を" + qty + "受領しました。";
+            else if (grp == "stone") {
+                Message msgScript = new Message();
+                string msg = "";
+                int busyoDama = PlayerPrefs.GetInt("busyoDama");
+                int newBusyoDama = busyoDama + qty;
+                PlayerPrefs.SetInt("busyoDama", newBusyoDama);
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    msg = "You got " + qty + " stone.";
+                }else {
+                    msg = "武将珠を" + qty + "個受領しました。";
+                }
+                msgScript.makeMessage(msg);
             }
-            msgScript.makeMessage(msg);
-        }
-        else if (grp == "stone") {
-            Message msgScript = new Message();
-            string msg = "";
-            int busyoDama = PlayerPrefs.GetInt("busyoDama");
-            int newBusyoDama = busyoDama + qty;
-            PlayerPrefs.SetInt("busyoDama", newBusyoDama);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                msg = "You got " + qty + " stone.";
-            }else {
-                msg = "武将珠を" + qty + "個受領しました。";
+            else if(grp == "busyo") {
+                audioSources[7].Play();
+                receiveBusyo(busyoId);
             }
-            msgScript.makeMessage(msg);
-        }
-        else if(grp == "busyo") {
-            audioSources[7].Play();
-            receiveBusyo(busyoId);
-        }
-        else if (grp == "kaho") {
-            receiveKaho();
+            else if (grp == "kaho") {
+                receiveKaho();
 
-        }
-        else if (grp == "syokaijyo") {
-            receiveShokaijyo(rank, qty);
-        }
-        else if(grp == "shiro") {
-            Shiro shiro = new Shiro();
-            int shiroId = shiro.getRandomId();
-            string shiroName = shiro.getName(shiroId);
-            Message msgScript = new Message();
-            string msg = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                msg = "You got " + shiroName + ". You can enhance your castle in town development.";
-            }else {
-                msg = "天下の要害、" + shiroName + "を築城できますぞ。内政で城を増強しましょう。";
             }
-            msgScript.makeMessage(msg);
-            shiro.registerShiro(shiroId);
+            else if (grp == "syokaijyo") {
+                receiveShokaijyo(rank, qty);
+            }
+            else if(grp == "shiro") {
+                Shiro shiro = new Shiro();
+                int shiroId = shiro.getRandomId();
+                string shiroName = shiro.getName(shiroId);
+                Message msgScript = new Message();
+                string msg = "";
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    msg = "You got " + shiroName + ". You can enhance your castle in town development.";
+                }else {
+                    msg = "天下の要害、" + shiroName + "を築城できますぞ。内政で城を増強しましょう。";
+                }
+                msgScript.makeMessage(msg);
+                shiro.registerShiro(shiroId);
+            }
+
+            PlayerPrefs.Flush();
         }
-
-        PlayerPrefs.Flush();
-
     }
 
     public void receiveKaho() {

@@ -16,7 +16,7 @@ public class TouyouView : MonoBehaviour {
 
 		//Pop View
 		BusyoStatusButton pop = new BusyoStatusButton ();
-		pop.commonPopup (27);
+		GameObject board = pop.commonPopup (27);
         if (Application.systemLanguage != SystemLanguage.Japanese) {
             GameObject.Find ("popText").GetComponent<Text> ().text = "Samurai Recruitment";
         }else {
@@ -25,7 +25,7 @@ public class TouyouView : MonoBehaviour {
 		//Kamon
 		string kamonPath = "Prefabs/Touyou/kamon";
 		GameObject kamon = Instantiate (Resources.Load (kamonPath)) as GameObject;			
-		kamon.transform.SetParent (GameObject.Find ("board(Clone)").transform);
+		kamon.transform.SetParent (board.transform);
 		kamon.transform.localScale = new Vector2 (1, 1);
 		kamon.transform.localPosition = new Vector2 (-310, 0);
 		BusyoInfoGet busyoScript = new BusyoInfoGet ();
@@ -41,7 +41,7 @@ public class TouyouView : MonoBehaviour {
 		string path = "Prefabs/Player/Unit/BusyoUnit";
 		GameObject Busyo = Instantiate (Resources.Load (path)) as GameObject;
 		Busyo.name = busyoId.ToString ();
-		Busyo.transform.SetParent (GameObject.Find ("board(Clone)").transform);
+		Busyo.transform.SetParent (board.transform);
 		Busyo.transform.localScale = new Vector2 (3.5f, 3.5f);
 		Busyo.GetComponent<DragHandler>().enabled = false;
 		RectTransform busyo_transform = Busyo.GetComponent<RectTransform>();
@@ -92,7 +92,7 @@ public class TouyouView : MonoBehaviour {
 		/*Status*/
 		string statusPath = "Prefabs/Touyou/busyoStatus";
 		GameObject status = Instantiate (Resources.Load (statusPath)) as GameObject;			
-		status.transform.SetParent (GameObject.Find ("board(Clone)").transform);
+		status.transform.SetParent (board.transform);
 		status.transform.localScale = new Vector2 (1, 1);
 		RectTransform status_transform = status.GetComponent<RectTransform>();
 		status_transform.anchoredPosition = new Vector3(245,-40,0);
@@ -214,5 +214,30 @@ public class TouyouView : MonoBehaviour {
 
             }
         }
+
+        //Zukan Check
+        string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
+        if (zukanBusyoHst != null && zukanBusyoHst != "") {
+            List<string> myZukanList = new List<string>();
+            if (zukanBusyoHst.Contains(",")) {
+                myZukanList = new List<string>(zukanBusyoHst.Split(delimiterChars));
+            }else {
+                myZukanList.Add(zukanBusyoHst);
+            }
+
+            if (myZukanList.Contains(busyoId.ToString())) {
+                string zukanPath = "Prefabs/Touyou/Zukan";
+                GameObject zukan = Instantiate(Resources.Load(zukanPath)) as GameObject;
+                zukan.transform.SetParent(board.transform);
+                zukan.transform.localScale = new Vector2(1, 1);
+                zukan.transform.localPosition = new Vector2(-41, 167);
+
+
+
+            }
+
+        }
+
+
     }
 }

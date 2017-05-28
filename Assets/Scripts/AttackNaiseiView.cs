@@ -191,12 +191,12 @@ public class AttackNaiseiView : MonoBehaviour {
 			stage.GetComponent<ShowStageDtl> ().powerType = powerType;
 
 			if(powerType==2){
-				string imagePath = "Prefabs/Map/Stage/shiroIcon_m";
+				string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_m";
 				stage.transform.FindChild("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 			}else if(powerType==3){
-				string imagePath = "Prefabs/Map/Stage/shiroIcon_l";
-				stage.transform.FindChild("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
+				string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_l";
+                stage.transform.FindChild("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 			}
 
