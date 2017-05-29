@@ -70,7 +70,7 @@ public class StartKassenPvP : MonoBehaviour {
         if(userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && !PvPDataStore.PvPAtkNoFlg && !updatePvPAtkFlg) {
             updatePvPAtkFlg = true;
             PvPController = GameObject.Find("GameScene").GetComponent<PvPController>();
-            PvPDataStore.UpdatePvPAtkNo(PvPController.myUserId);
+            PvPDataStore.UpdatePvPAtkNo(PvPController.myUserId, int.Parse(PvPController.todayNCMB));
             PvPDataStore.enemyUserId = userId;
             PvPDataStore.enemyUserName = enemyUserName;
             PvPDataStore.myUserName = PvPController.myUserName;

@@ -548,7 +548,14 @@ public class PvPController : MonoBehaviour {
         GameObject content = rankWeeklyViewObj.transform.FindChild("ScrollView").transform.FindChild("Viewport").transform.FindChild("Content").gameObject;
         
         GameObject Slot = null;
+        
+        int prevPt = 0;
+        int prevTotalWinNo = 0;
+        int rank = 0;
+
         for (int i = 0; i < 10; i++) {
+            rank = rank + 1;
+
             int slotName = i + 1;
             if(slotName <= PvPDataStore.Top10PtWeeklyNameList.Count) {
                 Slot = content.transform.FindChild(slotName.ToString()).gameObject;
@@ -561,16 +568,33 @@ public class PvPController : MonoBehaviour {
                 Slot.transform.FindChild("VS").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.Top10PtWeeklyWinList[i].ToString();
                 Slot.transform.FindChild("VS").transform.FindChild("totalValue").GetComponent<Text>().text = "/"+PvPDataStore.Top10PtWeeklyBattleList[i].ToString();
 
+                if (PvPDataStore.Top10PtWeeklyQtyList[i] == prevPt) {
+                    if(PvPDataStore.Top10PtWeeklyWinList[i] == prevTotalWinNo) {
+                        rank = rank - 1;
+                        Slot.transform.FindChild("Rank").GetComponent<Text>().text = rank.ToString();
+                    }else {
+                        Slot.transform.FindChild("Rank").GetComponent<Text>().text = rank.ToString();
+                    }
+                }else {
+                    Slot.transform.FindChild("Rank").GetComponent<Text>().text = rank.ToString();
+                }
+                
+
+
                 string imagePath1 = "Prefabs/Player/Sprite/unit" + PvPDataStore.Top10PtWeeklyBusyoList[i].ToString();
                 Slot.transform.FindChild("Image").GetComponent<Image>().sprite =
                     Resources.Load(imagePath1, typeof(Sprite)) as Sprite;
-
-            
+                
                 string imagePath3 = "Prefabs/Sashimono/" + PvPDataStore.Top10PtWeeklyBusyoList[i].ToString();
                 GameObject tmpObj = Resources.Load(imagePath3) as GameObject;
                 Slot.transform.FindChild("Sashimono").GetComponent<Image>().sprite =
                     tmpObj.GetComponent<SpriteRenderer>().sprite;
-            }else {
+                
+                prevPt = PvPDataStore.Top10PtWeeklyQtyList[i];
+                prevTotalWinNo = PvPDataStore.Top10PtWeeklyWinList[i];
+
+            }
+            else {
                 if(content.transform.FindChild(slotName.ToString())) {
                     Destroy(content.transform.FindChild(slotName.ToString()).gameObject);
                 }

@@ -71,13 +71,15 @@ public class PvPDataStore : MonoBehaviour {
     public string enemyUserName = "";
     public int getPt = 0;
 
-    //Top3
+    //Top3 > Top10
     public List<string> Top3WinNameList = new List<string>();
+    public List<string> Top3WinUserIdList = new List<string>();
     public List<int> Top3WinRankList = new List<int>();
     public List<int> Top3WinBusyoList = new List<int>();
     public List<int> Top3WinQtyList = new List<int>();
 
     public List<string> Top3HPNameList = new List<string>();
+    public List<string> Top3HPUserIdList = new List<string>();
     public List<int> Top3HPRankList = new List<int>();
     public List<int> Top3HPBusyoList = new List<int>();
     public List<int> Top3HPQtyList = new List<int>();
@@ -85,6 +87,7 @@ public class PvPDataStore : MonoBehaviour {
 
     //Top 10 Weekly
     public List<string> Top10PtWeeklyNameList = new List<string>();
+    public List<string> Top10PtWeeklyUserIdList = new List<string>();
     public List<int> Top10PtWeeklyRankList = new List<int>();
     public List<int> Top10PtWeeklyBusyoList = new List<int>();
     public List<int> Top10PtWeeklyQtyList = new List<int>();
@@ -297,11 +300,9 @@ public class PvPDataStore : MonoBehaviour {
     public void GetPtRankWeekly(int totalPt, bool enemyFlg, int todayNCMB) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
         query.WhereGreaterThan("totalPt", totalPt);
-
+        
         //date
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
-        Debug.Log(todayNCMB);
-        Debug.Log(totalPt);
 
         query.CountAsync((int count, NCMBException e) => {
             if (e != null) {
@@ -331,7 +332,8 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereNotEqualTo("userId", myUserId);
         query.WhereLessThanOrEqualTo("jinkeiHeiryoku", HpBase);
-        query.OrderByDescending("jinkeiHeiryoku");
+        query.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", Mathf.CeilToInt((float)HpBase/1.5f));
+        //query.OrderByDescending("jinkeiHeiryoku");
         query.Limit = 3;
         
         query.CountAsync((int count, NCMBException e) => {
@@ -518,7 +520,7 @@ public class PvPDataStore : MonoBehaviour {
 
 
     //PvP 攻撃回数トランザクション登録
-    public void UpdatePvPAtkNo(string userId){
+    public void UpdatePvPAtkNo(string userId, int todayNCMB) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -534,6 +536,7 @@ public class PvPDataStore : MonoBehaviour {
 
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereEqualTo("userId", userId);
+        queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 if (objList.Count != 0) {
@@ -549,7 +552,7 @@ public class PvPDataStore : MonoBehaviour {
 
 
     //PvP 守備回数トランザクション登録
-    public void UpdatePvPDfcNo(string userId) {
+    public void UpdatePvPDfcNo(string userId, int todayNCMB) {
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
@@ -567,6 +570,7 @@ public class PvPDataStore : MonoBehaviour {
         });
 
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
+        queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
         queryWeekly.WhereEqualTo("userId", userId);
 
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -582,7 +586,7 @@ public class PvPDataStore : MonoBehaviour {
     }
 
     //PvP Atkして勝利した回数の更新 > Total & Weekly
-    public void UpdatePvPAtkWinNo(string userId) {
+    public void UpdatePvPAtkWinNo(string userId, int todayNCMB) {
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
@@ -605,6 +609,7 @@ public class PvPDataStore : MonoBehaviour {
 
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereEqualTo("userId", userId);
+        queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
 
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
@@ -625,7 +630,7 @@ public class PvPDataStore : MonoBehaviour {
     }
 
     //PvP Dfcして勝利した回数の更新 > Total & Weekly
-    public void UpdatePvPDfcWinNo(string userId) {
+    public void UpdatePvPDfcWinNo(string userId, int todayNCMB) {
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
@@ -648,6 +653,7 @@ public class PvPDataStore : MonoBehaviour {
 
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereEqualTo("userId", userId);
+        queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
 
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
@@ -676,6 +682,7 @@ public class PvPDataStore : MonoBehaviour {
             }else {
                 foreach (NCMBObject obj in objList) {
                     Top3WinNameList.Add(System.Convert.ToString(obj["userName"]));
+                    Top3WinUserIdList.Add(System.Convert.ToString(obj["userId"]));
                     Top3WinRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
                     Top3WinBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
                     Top3WinQtyList.Add(System.Convert.ToInt32(obj["totalWinNo"]));
@@ -694,6 +701,7 @@ public class PvPDataStore : MonoBehaviour {
             }
             else {
                 foreach (NCMBObject obj in objList) {
+                    Top3HPUserIdList.Add(System.Convert.ToString(obj["userId"]));
                     Top3HPNameList.Add(System.Convert.ToString(obj["userName"]));
                     Top3HPRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
                     Top3HPBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
@@ -706,11 +714,11 @@ public class PvPDataStore : MonoBehaviour {
 
     /* Weekly Pt Start*/
     public void GetTop10Pt(int todayNCMB) {
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
-        
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");        
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
 
         query.OrderByDescending("totalPt");
+        query.AddDescendingOrder("totalWinNo");
         query.Limit = 10;
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e != null) {
@@ -724,6 +732,7 @@ public class PvPDataStore : MonoBehaviour {
                     int dfcNo = System.Convert.ToInt32(obj["dfcNo"]);
                     Top10PtWeeklyBattleList.Add(atkNo + dfcNo);
                     Top10PtWeeklyQtyList.Add(System.Convert.ToInt32(obj["totalPt"]));
+                    Top10PtWeeklyUserIdList.Add(userId);
                     Top10PtWeeklyNameList.Add(System.Convert.ToString(obj["userName"]));
                     Top10PtWeeklyRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
                     Top10PtWeeklyBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));

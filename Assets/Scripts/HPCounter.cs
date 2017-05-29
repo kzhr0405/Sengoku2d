@@ -335,8 +335,8 @@ public class HPCounter : MonoBehaviour {
                             //PvP Data Register
                             //Player Lose & Enemy Win
                             PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
-                            DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);
-                            DataStore.UpdatePvPDfcWinNo(DataStore.enemyUserId);
+                            DataStore.UpdatePvPDfcNo(DataStore.enemyUserId, DataStore.todayNCMB);
+                            DataStore.UpdatePvPDfcWinNo(DataStore.enemyUserId, DataStore.todayNCMB);
                         }
 
                     } else if (targetTag == "Enemy") {
@@ -943,8 +943,8 @@ public class HPCounter : MonoBehaviour {
 
                             //Win&Lose No Update
                             PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
-                            DataStore.UpdatePvPAtkWinNo(DataStore.userId);
-                            DataStore.UpdatePvPDfcNo(DataStore.enemyUserId);
+                            DataStore.UpdatePvPAtkWinNo(DataStore.userId, DataStore.todayNCMB);
+                            DataStore.UpdatePvPDfcNo(DataStore.enemyUserId, DataStore.todayNCMB);
 
                             //Point Update
                             DataStore.UpdatePvPPt(DataStore.userId, true);

@@ -50,7 +50,31 @@ public class StartPvP : MonoBehaviour {
 
                 GameObject.Find("myName").GetComponent<Text>().text = userName;
                 touchBackObj.GetComponent<CloseOneBoard>().OnClick();
+
+                //Change Rank
+                PvPDataStore PvPDataStoreScript = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
+                for (int i=0; i< PvPDataStoreScript.Top10PtWeeklyUserIdList.Count; i++) {
+                    if(userId == PvPDataStoreScript.Top10PtWeeklyUserIdList[i]) {
+                        PvPDataStoreScript.Top10PtWeeklyNameList[i] = userName;
+                    }
+                }
+                for (int j = 0; j < PvPDataStoreScript.Top3WinUserIdList.Count; j++) {
+                    if (userId == PvPDataStoreScript.Top3WinUserIdList[j]) {
+                        PvPDataStoreScript.Top3WinNameList[j] = userName;
+                    }
+                }
+                for (int k = 0; k < PvPDataStoreScript.Top3HPUserIdList.Count; k++) {
+                    if (userId == PvPDataStoreScript.Top3HPUserIdList[k]) {
+                        PvPDataStoreScript.Top3HPNameList[k] = userName;
+                    }
+                }
+
+
             }
+            
+
+
+
         }
     }
 }
