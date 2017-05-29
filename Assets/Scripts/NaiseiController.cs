@@ -20,8 +20,9 @@ public class NaiseiController : MonoBehaviour {
 	public int jyosyuId = 0;
 	public string shigen = "";
 
-	//Tabibito
-	public GameObject tabibitoObj;
+    //Tabibito
+    public bool stopFlg;
+    public GameObject tabibitoObj;
 	public float nanbansenRatio = 30;
 	public int total = 0;
 	public int counter = 0;
@@ -452,150 +453,151 @@ public class NaiseiController : MonoBehaviour {
 		/*Tabibito Controller Start*/
 		/***************************/
 
-		if(remain>0){
-			//Count by 5sec
-			tabibitoSec -= Time.deltaTime;
-			if (tabibitoSec <= 0.0) {
+        if(!stopFlg) {
+		    if(remain>0){
+			    //Count by 5sec
+			    tabibitoSec -= Time.deltaTime;
+			    if (tabibitoSec <= 0.0) {
 
-				int rdm = UnityEngine.Random.Range(0,2); //1:happen, 0:not happen
-				if(rdm==1){
+				    int rdm = UnityEngine.Random.Range(0,2); //1:happen, 0:not happen
+				    if(rdm==1){
 
-					int tabibitoNo = PlayerPrefs.GetInt ("HstTabibito");
-					tabibitoNo = tabibitoNo + 1;
-					PlayerPrefs.SetInt ("HstTabibito",tabibitoNo);
+					    int tabibitoNo = PlayerPrefs.GetInt ("HstTabibito");
+					    tabibitoNo = tabibitoNo + 1;
+					    PlayerPrefs.SetInt ("HstTabibito",tabibitoNo);
 
-					//Track
-					int TrackTabibitoNo = PlayerPrefs.GetInt("TrackTabibitoNo",0);
-					TrackTabibitoNo = TrackTabibitoNo + 1;
-					PlayerPrefs.SetInt("TrackTabibitoNo",TrackTabibitoNo);
+					    //Track
+					    int TrackTabibitoNo = PlayerPrefs.GetInt("TrackTabibitoNo",0);
+					    TrackTabibitoNo = TrackTabibitoNo + 1;
+					    PlayerPrefs.SetInt("TrackTabibitoNo",TrackTabibitoNo);
 
-					//Check Special ratio
-					float percent = UnityEngine.Random.value;
-					percent = percent * 100;
+					    //Check Special ratio
+					    float percent = UnityEngine.Random.value;
+					    percent = percent * 100;
 
-					string targetTyp = "";
-					if(percent <= specialRatio){
-						//Special Tabibito
-						int TrackIjinNo = PlayerPrefs.GetInt("TrackIjinNo",0);
-						TrackIjinNo = TrackIjinNo + 1;
-						PlayerPrefs.SetInt("TrackIjinNo",TrackIjinNo);
+					    string targetTyp = "";
+					    if(percent <= specialRatio){
+						    //Special Tabibito
+						    int TrackIjinNo = PlayerPrefs.GetInt("TrackIjinNo",0);
+						    TrackIjinNo = TrackIjinNo + 1;
+						    PlayerPrefs.SetInt("TrackIjinNo",TrackIjinNo);
 
-						//Shuffle
-						List<int> tabibitoRandomList = new List<int> ();
+						    //Shuffle
+						    List<int> tabibitoRandomList = new List<int> ();
 
-						if(boubi!=0){
-							for(int i=0; i<boubi; i++){
-								tabibitoRandomList.Add(0);
-								//tabibitoRandomList.Add(2); //test
-							}
-						}
-						if(bunka!=0){
-							for(int i=0; i<bunka; i++){
-								tabibitoRandomList.Add(1);
-								//tabibitoRandomList.Add(2); //test
-							}
-						}
-						if(bukkyo!=0){
-							for(int i=0; i<bukkyo; i++){
-								tabibitoRandomList.Add(2);
-							}
-						}
-						if(kirisuto!=0){
-							for(int i=0; i<kirisuto; i++){
-								tabibitoRandomList.Add(3);
-								//tabibitoRandomList.Add(2); //test
+						    if(boubi!=0){
+							    for(int i=0; i<boubi; i++){
+								    tabibitoRandomList.Add(0);
+								    //tabibitoRandomList.Add(2); //test
+							    }
+						    }
+						    if(bunka!=0){
+							    for(int i=0; i<bunka; i++){
+								    tabibitoRandomList.Add(1);
+								    //tabibitoRandomList.Add(2); //test
+							    }
+						    }
+						    if(bukkyo!=0){
+							    for(int i=0; i<bukkyo; i++){
+								    tabibitoRandomList.Add(2);
+							    }
+						    }
+						    if(kirisuto!=0){
+							    for(int i=0; i<kirisuto; i++){
+								    tabibitoRandomList.Add(3);
+								    //tabibitoRandomList.Add(2); //test
 
-							}
-						}
-						int tempId = UnityEngine.Random.Range(0,tabibitoRandomList.Count);
-						int tbbtId = tabibitoRandomList[tempId];
-
-
-						if(tbbtId == 0){
-							//Create Boubi Tabibito
-							targetTyp = "boubi";
-							makeTabibitoInstance(targetTyp);
-
-						}else if(tbbtId == 1){
-							//Create Bunka Tabibito
-							targetTyp = "bunka";
-							makeTabibitoInstance(targetTyp);
+							    }
+						    }
+						    int tempId = UnityEngine.Random.Range(0,tabibitoRandomList.Count);
+						    int tbbtId = tabibitoRandomList[tempId];
 
 
-						}else if(tbbtId == 2){
-							//Create Bukkyo Tabibito
-							targetTyp = "bukkyo";
-							makeTabibitoInstance(targetTyp);
+						    if(tbbtId == 0){
+							    //Create Boubi Tabibito
+							    targetTyp = "boubi";
+							    makeTabibitoInstance(targetTyp);
+
+						    }else if(tbbtId == 1){
+							    //Create Bunka Tabibito
+							    targetTyp = "bunka";
+							    makeTabibitoInstance(targetTyp);
 
 
-						}else if(tbbtId == 3){
-							//Create Nanban Tabibito
-							//Nanban Sen or Nanban Jin
-							if(!isNanbansenFlg){
-								float shipPercent = UnityEngine.Random.value;
-								shipPercent = shipPercent * 100;
+						    }else if(tbbtId == 2){
+							    //Create Bukkyo Tabibito
+							    targetTyp = "bukkyo";
+							    makeTabibitoInstance(targetTyp);
 
-								if(shipPercent <= nanbansenRatio){
-									//Nanbansen
-									makeNanbansen();
-									isNanbansenFlg = true;
 
-									int nanbansenNo = PlayerPrefs.GetInt ("HstNanbansen");
-									nanbansenNo = nanbansenNo + 1;
-									PlayerPrefs.SetInt ("HstNanbansen",nanbansenNo);
+						    }else if(tbbtId == 3){
+							    //Create Nanban Tabibito
+							    //Nanban Sen or Nanban Jin
+							    if(!isNanbansenFlg){
+								    float shipPercent = UnityEngine.Random.value;
+								    shipPercent = shipPercent * 100;
 
-									tabibitoNo = tabibitoNo - 1;
-									PlayerPrefs.SetInt ("HstTabibito",tabibitoNo);
+								    if(shipPercent <= nanbansenRatio){
+									    //Nanbansen
+									    makeNanbansen();
+									    isNanbansenFlg = true;
 
-								}else{
-									//Nanbanjin
-									targetTyp = "nanban";
-									makeTabibitoInstance(targetTyp);
-								}
-							}else{
-								//Nanbanjin
-								targetTyp = "nanban";
-								makeTabibitoInstance(targetTyp);
+									    int nanbansenNo = PlayerPrefs.GetInt ("HstNanbansen");
+									    nanbansenNo = nanbansenNo + 1;
+									    PlayerPrefs.SetInt ("HstNanbansen",nanbansenNo);
 
-							}
+									    tabibitoNo = tabibitoNo - 1;
+									    PlayerPrefs.SetInt ("HstTabibito",tabibitoNo);
 
-						}
+								    }else{
+									    //Nanbanjin
+									    targetTyp = "nanban";
+									    makeTabibitoInstance(targetTyp);
+								    }
+							    }else{
+								    //Nanbanjin
+								    targetTyp = "nanban";
+								    makeTabibitoInstance(targetTyp);
 
-					}else{
+							    }
 
-						//Common
-						targetTyp = "common";
-						makeTabibitoInstance(targetTyp);
+						    }
 
-					}
+					    }else{
 
-                    if (Application.loadedLevelName != "tutorialNaisei") {
-                        //Reduce Counter
-                        string nowTime = System.DateTime.Today.ToString ();
-					    PlayerPrefs.SetString (loginTemp,nowTime);
+						    //Common
+						    targetTyp = "common";
+						    makeTabibitoInstance(targetTyp);
 
-					    string counterTemp = "naiseiTabibitoCounter" + activeKuniId.ToString ();
-					    int tempCounter = PlayerPrefs.GetInt (counterTemp);
-					    tempCounter = tempCounter + 1;
-					    PlayerPrefs.SetInt (counterTemp,tempCounter);
-					    PlayerPrefs.Flush();
+					    }
+
+                        if (Application.loadedLevelName != "tutorialNaisei") {
+                            //Reduce Counter
+                            string nowTime = System.DateTime.Today.ToString ();
+					        PlayerPrefs.SetString (loginTemp,nowTime);
+
+					        string counterTemp = "naiseiTabibitoCounter" + activeKuniId.ToString ();
+					        int tempCounter = PlayerPrefs.GetInt (counterTemp);
+					        tempCounter = tempCounter + 1;
+					        PlayerPrefs.SetInt (counterTemp,tempCounter);
+					        PlayerPrefs.Flush();
 					
-					    //Change Label
-					    remain = remain -1;
-					    tabibitoObj.transform.FindChild ("TabibitoCountDownValue").GetComponent<Text> ().text = remain.ToString ();
+					        //Change Label
+					        remain = remain -1;
+					        tabibitoObj.transform.FindChild ("TabibitoCountDownValue").GetComponent<Text> ().text = remain.ToString ();
 									
-					    //Reset Timer
+					        //Reset Timer
+					        tabibitoSec = tabibitoSecMst;
+                        }
+
+				    }else{
+					    //Skip Tabibito
 					    tabibitoSec = tabibitoSecMst;
-                    }
+				    }
+			    }
 
-				}else{
-					//Skip Tabibito
-					tabibitoSec = tabibitoSecMst;
-				}
-			}
-
-		}
-
+		    }
+        }
 
 		//Reset Check
 

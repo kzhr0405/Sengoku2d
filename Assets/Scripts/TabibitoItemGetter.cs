@@ -24,7 +24,8 @@ public class TabibitoItemGetter : MonoBehaviour {
         Message msg = new Message();
 
 		if (!isNanbansenFlg) {
-			audioSources [3].Play ();
+
+            audioSources[3].Play ();
             Text = msg.getMessage(122);
 
             if (itemCd == "money") {
@@ -152,7 +153,8 @@ public class TabibitoItemGetter : MonoBehaviour {
 		} else {
 			//Nanbansen
 			if(moneyCheckFlg){
-				audioSources [3].Play ();
+
+                audioSources[3].Play ();
 				//Money Handling
 				int money = PlayerPrefs.GetInt ("money");
 				money = money - paiedMoney;

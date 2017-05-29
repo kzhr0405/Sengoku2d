@@ -23,7 +23,12 @@ public class Nanbansen : MonoBehaviour {
 	public string itemKahouExp = "";
 	
 	public void OnClick(){
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+
+        TabibitoNoticeBtn TabibitoNoticeBtn = new TabibitoNoticeBtn();
+        TabibitoNoticeBtn.onOffTabibitoMove(true);
+        GameObject.Find("NaiseiController").GetComponent<NaiseiController>().stopFlg = true;
+
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
 
 		string pathOfBack = "Prefabs/Busyo/Back";
@@ -37,6 +42,7 @@ public class Nanbansen : MonoBehaviour {
 		board.transform.parent = GameObject.Find ("Panel").transform;
 		board.transform.localScale = new Vector2 (1,1);
 		board.transform.localPosition = new Vector3 (0,0,0);
+        board.transform.FindChild("close").GetComponent<CloseBoard>().tabibitoNoticeBtnFlg = true;
 
         //Adjustment
         if (Application.systemLanguage != SystemLanguage.Japanese) {

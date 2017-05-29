@@ -14,7 +14,11 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 	public int itemQty = 0;
 
 	public void OnClick(){
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+
+        onOffTabibitoMove(true);
+
+
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
 
 		string pathOfBack = "Prefabs/Busyo/Back";
@@ -35,9 +39,12 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 		board.transform.FindChild ("Serihu").transform.FindChild ("SerihuValue").GetComponent<Text> ().text = targetExp;
 	
 		board.transform.FindChild ("Image").GetComponent<Image> ().sprite = gameObject.transform.parent.gameObject.GetComponent<Image> ().sprite;
+        board.transform.FindChild("close").GetComponent<CloseBoard>().tabibitoNoticeBtnFlg = true;
+        GameObject.Find("NaiseiController").GetComponent<NaiseiController>().stopFlg = true;
 
-		//Find Item Icon
-		string addPath = itemCd;
+
+        //Find Item Icon
+        string addPath = itemCd;
 		if (itemCd == "nanban") {
 				itemCd = itemCd + itemId;
 				addPath = itemCd;
@@ -180,4 +187,22 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 		script.popButton = gameObject;
 		
 	}
+
+    public void onOffTabibitoMove(bool offFlg) {
+        GameObject TabibitoView = GameObject.Find("TabibitoView").gameObject;
+
+
+        foreach(Transform obj in TabibitoView.transform) {
+            if(obj.GetComponent<TabibitoMove>()) {
+                if (offFlg) {
+                    obj.GetComponent<Rigidbody2D>().simulated = false;
+                }else {
+                    obj.GetComponent<Rigidbody2D>().simulated = true;
+                }
+            }
+        }
+
+    }
+
+
 }
