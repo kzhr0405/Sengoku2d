@@ -434,10 +434,9 @@ public class AreaButton : MonoBehaviour {
 
                     //Special Castle Check
                     string nowQty = PlayerPrefs.GetString("shiro");
-                    Debug.Log(nowQty);
                     List<string> nowQtyList = new List<string>();
                     char[] delimiterChars = { ',' };
-                    if (nowQty != "") {
+                    if (nowQty != "" && nowQty != null) {
                         //scroll view
                         string scrollPath = "Prefabs/Naisei/Shiro/ShiroScrollView";
                         GameObject scroll = Instantiate(Resources.Load(scrollPath)) as GameObject;

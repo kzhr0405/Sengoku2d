@@ -118,40 +118,42 @@ public class ItemInfo : MonoBehaviour {
 			buyBtn.GetComponent<DoBuy>().item = name;
 
         }else if (Application.loadedLevelName == "naisei") {
-            audioSources[0].Play();
 
-            string backPath = "Prefabs/Common/TouchBack";
-            GameObject back = Instantiate(Resources.Load(backPath)) as GameObject;
-            back.transform.SetParent(GameObject.Find("Panel").transform);
-            back.transform.localScale = new Vector2(1, 1);
-            RectTransform backTransform = back.GetComponent<RectTransform>();
-            backTransform.anchoredPosition3D = new Vector3(0, 0, 0);
-            back.name = "TouchBack";
+            if(name.Contains("shiro")   ) { 
+                audioSources[0].Play();
 
-            //Message Box
-            string msgPath = "Prefabs/Naisei/Shiro/ShiroConfirm";
-            GameObject msg = Instantiate(Resources.Load(msgPath)) as GameObject;
-            msg.transform.SetParent(back.transform);
-            msg.transform.localScale = new Vector2(1, 1);
-            RectTransform msgTransform = msg.GetComponent<RectTransform>();
-            msgTransform.anchoredPosition3D = new Vector3(0, 0, 0);
-            msgTransform.name = "ShiroConfirm";
+                string backPath = "Prefabs/Common/TouchBack";
+                GameObject back = Instantiate(Resources.Load(backPath)) as GameObject;
+                back.transform.SetParent(GameObject.Find("Panel").transform);
+                back.transform.localScale = new Vector2(1, 1);
+                RectTransform backTransform = back.GetComponent<RectTransform>();
+                backTransform.anchoredPosition3D = new Vector3(0, 0, 0);
+                back.name = "TouchBack";
 
-            //Message Text Mod
-            GameObject msgObj = msg.transform.FindChild("text").gameObject;
-            string msgText = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                msgText = "My lord, do you want to build " + itemName + " here?";
-            }else {
-                msgText = "御館様、" + itemName + "をこの地に築城なさいますか？";
+                //Message Box
+                string msgPath = "Prefabs/Naisei/Shiro/ShiroConfirm";
+                GameObject msg = Instantiate(Resources.Load(msgPath)) as GameObject;
+                msg.transform.SetParent(back.transform);
+                msg.transform.localScale = new Vector2(1, 1);
+                RectTransform msgTransform = msg.GetComponent<RectTransform>();
+                msgTransform.anchoredPosition3D = new Vector3(0, 0, 0);
+                msgTransform.name = "ShiroConfirm";
+
+                //Message Text Mod
+                GameObject msgObj = msg.transform.FindChild("text").gameObject;
+                string msgText = "";
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    msgText = "My lord, do you want to build " + itemName + " here?";
+                }else {
+                    msgText = "御館様、" + itemName + "をこの地に築城なさいますか？";
+                }
+                msgObj.GetComponent<Text>().text = msgText;
+
+                //Set value
+                msg.transform.FindChild("YesButton").GetComponent<BuildShiro>().item = gameObject;
+                msg.transform.FindChild("YesButton").GetComponent<BuildShiro>().touchBack = back;
+                msg.transform.FindChild("NoButton").GetComponent<BuildShiro>().touchBack = back;
             }
-            msgObj.GetComponent<Text>().text = msgText;
-
-            //Set value
-            msg.transform.FindChild("YesButton").GetComponent<BuildShiro>().item = gameObject;
-            msg.transform.FindChild("YesButton").GetComponent<BuildShiro>().touchBack = back;
-            msg.transform.FindChild("NoButton").GetComponent<BuildShiro>().touchBack = back;
-
         }
     }
 

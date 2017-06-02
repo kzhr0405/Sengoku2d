@@ -222,7 +222,7 @@ public class TutorialController : MonoBehaviour {
         GameObject copied = Object.Instantiate(original) as GameObject;
         copied.transform.SetParent(GameObject.Find("tButton").transform);
         copied.transform.localScale = new Vector2(1,1);
-        copied.transform.localPosition = new Vector2(230, -340);
+        copied.transform.localPosition = new Vector2(198, -340);
 
         GameObject returnObj = null;
         foreach (Transform chd in copied.transform) {

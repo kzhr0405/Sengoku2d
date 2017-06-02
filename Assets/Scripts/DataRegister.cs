@@ -9,22 +9,23 @@ public class DataRegister : MonoBehaviour {
     public string userId;
     public bool initDataDoneFlg = false;
 
-    private void Awake() {
+    private void Start() {
 
         //Init Data Maker
-        userId = PlayerPrefs.GetString("userId","");
-       
+        userId = PlayerPrefs.GetString("userId","");       
         initDataDoneFlg = PlayerPrefs.GetBool("initDataFlg",false);
-        InitDataMaker initData = new InitDataMaker();
-        if (!initDataDoneFlg && userId == "") {
-            initData.makeInitData();
+        if (!initDataDoneFlg) {
+            if(userId == "" || userId == null) {
+                InitDataMaker initData = new InitDataMaker();
+                initData.makeInitData();
+            }
         }
 
         //User Data Update
         DataUserId DataUserId = GetComponent<DataUserId>();
         DataJinkei DataJinkei = GetComponent<DataJinkei>();
 
-        if (userId == "") {
+        if (userId == "" ) {
             //New UserId
             string randomA = StringUtils.GeneratePassword(10);
             System.DateTime now = System.DateTime.Now;
@@ -40,12 +41,12 @@ public class DataRegister : MonoBehaviour {
             if (Application.internetReachability != NetworkReachability.NotReachable) {
                 DataUserId.UpdateUserId(userId);
                 DataJinkei.UpdateJinkei(userId);
+
+                //Reward
+                DataReward DataReward = GetComponent<DataReward>();
+                DataReward.GetRewardMaster(userId);
             }
         }
-
-        //Reward
-        DataReward DataReward = GetComponent<DataReward>();
-        DataReward.GetRewardMaster(userId);
 
     }    
 }
