@@ -545,7 +545,17 @@ public class ZukanMenu : MonoBehaviour {
 			}
 		}
 
-		string tenkahubuPath = "Prefabs/Item/Tenkahubu/tenkahubu";
+        string gameClearDaimyoHard = PlayerPrefs.GetString("gameClearDaimyoHard");
+        List<string> gameClearDaimyoHardList = new List<string>();
+        if (gameClearDaimyoHard != null && gameClearDaimyoHard != "") {
+            if (gameClearDaimyoHard.Contains(",")) {
+                gameClearDaimyoHardList = new List<string>(gameClearDaimyoHard.Split(delimiterChars));
+            }else {
+                gameClearDaimyoHardList.Add(gameClearDaimyoHard);
+            }
+        }
+
+        string tenkahubuPath = "Prefabs/Item/Tenkahubu/tenkahubu";
 		string nameWhitePath = "Prefabs/Zukan/NameWhite";
 		string nameBlackPath = "Prefabs/Zukan/NameBlack";
 		for (int i=0; i<daimyoMst.param.Count; i++) {
@@ -584,7 +594,9 @@ public class ZukanMenu : MonoBehaviour {
                     nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoName;
                 }
 				nameObj.transform.localPosition = new Vector2(0,60);
-			}else{
+                Destroy(tenkahubuIcon.transform.FindChild("Hard").gameObject);
+
+            }else{
 				GameObject nameObj = Instantiate (Resources.Load (nameBlackPath)) as GameObject;
 				nameObj.transform.SetParent(tenkahubuIcon.transform);
 				nameObj.transform.localScale = new Vector2 (0.25f, 0.25f);
@@ -594,8 +606,12 @@ public class ZukanMenu : MonoBehaviour {
                     nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoName;
                 }
 				nameObj.transform.localPosition = new Vector2(0,60);
+               
+                if (!gameClearDaimyoHard.Contains((daimyoId.ToString()))) {
+                    Destroy(tenkahubuIcon.transform.FindChild("Hard").gameObject);
+                }
 
-			}
+            }
 
 
 		}

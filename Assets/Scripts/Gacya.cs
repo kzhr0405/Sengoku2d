@@ -155,26 +155,28 @@ public class Gacya : MonoBehaviour {
 
 
 		}else if(name == "BusyoDamaGacyaButton"){
-			//Input BusyoId by Weight of each busyo
-			for(int i=0; i<busyoMst.param.Count; i++){
+            //Input BusyoId by Weight of each busyo
+            //SRank = 0;
+            //ARank = 0;
+            //BRank = 0;
+
+            for (int i=0; i<busyoMst.param.Count; i++){
 				int weight = busyoMst.param [i].GacyaTama;
 				int busyoId = busyoMst.param[i].id;
 				
 				for(int j=0; j<weight; j++){
 					busyoListByWeight.Add (busyoId);
 
-
-                    //test
                     /*
+                    //test
                     string rank = busyoMst.param[i].rank;
-                    if(rank=="S") {
+                    if (rank=="S") {
                         SRank = SRank + 1;
                     }else if (rank == "A") {
                         ARank = ARank + 1;
                     }else if (rank == "B") {
                         BRank = BRank + 1;
-                    }
-                    */
+                    }*/
                 }
 			}
 			

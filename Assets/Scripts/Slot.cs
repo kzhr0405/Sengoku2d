@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class Slot : MonoBehaviour,IDropHandler {
 
@@ -54,7 +55,8 @@ public class Slot : MonoBehaviour,IDropHandler {
 		//From JinkeiView to ScrollView
 		string path = "Prefabs/Jinkei/Slot";	
 		bool limitFlg = true;
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        bool diffClanFlg = false;
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (DragHandler.itemBeginDragged != null) {
 			if (DragHandler.itemBeginDragged.transform.parent != null) {
@@ -93,46 +95,62 @@ public class Slot : MonoBehaviour,IDropHandler {
 
 							if (!item) {
 
-                                if (Application.loadedLevelName == "preKassen") {
-                                    GameObject.Find("GameScene").GetComponent<preKassen>().busyoCurrentQty = GameObject.Find("GameScene").GetComponent<preKassen>().busyoCurrentQty + 1;
-                                }else if(Application.loadedLevelName == "preKaisen") {
-                                    GameObject.Find("GameScene").GetComponent<preKaisen>().busyoCurrentQty = GameObject.Find("GameScene").GetComponent<preKaisen>().busyoCurrentQty + 1;
-                                }else {
-                                    GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text = busyoLimitFlg.ToString();
+                                //hard
+                                bool hardFlg = PlayerPrefs.GetBool("hardFlg");                                
+                                if (hardFlg) {
+                                    int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+                                    if(myDaimyo != DragHandler.itemBeginDragged.GetComponent<Senryoku>().belongDaimyoId) {
+                                        diffClanFlg = true;
+                                    }
                                 }
+                                if(diffClanFlg) {
+                                    audioSources[4].Play();
+
+                                    Message msg = new Message();
+                                    msg.makeMessage(msg.getMessage(144));
+
+                                } else { 
+
+                                    if (Application.loadedLevelName == "preKassen") {
+                                        GameObject.Find("GameScene").GetComponent<preKassen>().busyoCurrentQty = GameObject.Find("GameScene").GetComponent<preKassen>().busyoCurrentQty + 1;
+                                    }else if(Application.loadedLevelName == "preKaisen") {
+                                        GameObject.Find("GameScene").GetComponent<preKaisen>().busyoCurrentQty = GameObject.Find("GameScene").GetComponent<preKaisen>().busyoCurrentQty + 1;
+                                    }else {
+                                        GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text = busyoLimitFlg.ToString();
+                                    }
                                 
-								audioSources [2].Play ();
+								    audioSources [2].Play ();
 
-                                //Tutorial
-                                if (Application.loadedLevelName == "tutorialHyojyo") {
+                                    //Tutorial
+                                    if (Application.loadedLevelName == "tutorialHyojyo") {
                                     
-                                    GameObject RightView = GameObject.Find("RightView").gameObject;
-                                    GameObject copied = Object.Instantiate(RightView) as GameObject;
-                                    copied.transform.SetParent(GameObject.Find("Panel").transform);
-                                    copied.transform.localScale = new Vector2(1,1);
-                                    copied.transform.localPosition = new Vector2(530, -10);
+                                        GameObject RightView = GameObject.Find("RightView").gameObject;
+                                        GameObject copied = Object.Instantiate(RightView) as GameObject;
+                                        copied.transform.SetParent(GameObject.Find("Panel").transform);
+                                        copied.transform.localScale = new Vector2(1,1);
+                                        copied.transform.localPosition = new Vector2(530, -10);
 
-                                    foreach(Transform chld in copied.transform.FindChild("JinkeiButton").transform) {
-                                        chld.gameObject.SetActive(false);
-                                    }
-                                    GameObject status = copied.transform.FindChild("Status").gameObject;
-                                    status.GetComponent<Image>().enabled = false;
-                                    foreach (Transform chld in status.transform) {
-                                        chld.gameObject.SetActive(false);
-                                    }
-                                    GameObject confirm = copied.transform.FindChild("KakuteiButton").gameObject;
-                                    Vector2 vect = new Vector2(0, 50);
-                                    TutorialController tutorialScript = new TutorialController();
-                                    GameObject btn = tutorialScript.SetPointer(confirm, vect);
-                                    btn.transform.localScale = new Vector2(150, 150);
+                                        foreach(Transform chld in copied.transform.FindChild("JinkeiButton").transform) {
+                                            chld.gameObject.SetActive(false);
+                                        }
+                                        GameObject status = copied.transform.FindChild("Status").gameObject;
+                                        status.GetComponent<Image>().enabled = false;
+                                        foreach (Transform chld in status.transform) {
+                                            chld.gameObject.SetActive(false);
+                                        }
+                                        GameObject confirm = copied.transform.FindChild("KakuteiButton").gameObject;
+                                        Vector2 vect = new Vector2(0, 50);
+                                        TutorialController tutorialScript = new TutorialController();
+                                        GameObject btn = tutorialScript.SetPointer(confirm, vect);
+                                        btn.transform.localScale = new Vector2(150, 150);
 
-                                    TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
-                                    txtScript.SetText(11);
-                                    txtScript.SetNextLine();
-                                    txtScript.tutorialId = 11;
-                                    txtScript.actOnFlg = false;
+                                        TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+                                        txtScript.SetText(11);
+                                        txtScript.SetNextLine();
+                                        txtScript.tutorialId = 11;
+                                        txtScript.actOnFlg = false;
+                                    }
                                 }
-
 							}else{
 								audioSources [1].Play ();
 								Debug.Log ("NOOOOOO");
@@ -150,11 +168,12 @@ public class Slot : MonoBehaviour,IDropHandler {
 			}
 			if (!item) {
 				if(limitFlg != false){
-					DragHandler.itemBeginDragged.transform.SetParent (transform);
-					ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
-					audioSources [2].Play ();
-
-				}
+                    if(!diffClanFlg) {
+					    DragHandler.itemBeginDragged.transform.SetParent (transform);
+					    ExecuteEvents.ExecuteHierarchy<IHasChanged> (gameObject, null, (x,y) => x.HasChanged ());
+                        audioSources [2].Play ();
+                    }
+                }
 			} else {
 				Debug.Log ("busyo exist");
 			}

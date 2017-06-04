@@ -12,8 +12,14 @@ public class DoSelectDaimyo : MonoBehaviour {
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
-		if (name == "YesButton") {
-			audioSources [5].Play ();
+		if (name == "YesButton" || name == "YesButtonHard") {
+            if(name == "YesButtonHard") {
+                PlayerPrefs.SetBool("hardFlg",true);                
+            }else {
+                PlayerPrefs.SetBool("hardFlg", false);
+            }
+            PlayerPrefs.Flush();
+            audioSources [5].Play ();
 
             //init data
             AudioSource[] bgmSources = GameObject.Find("BGMController").GetComponents<AudioSource>();

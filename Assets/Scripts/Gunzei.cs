@@ -26,6 +26,7 @@ public class Gunzei : MonoBehaviour {
 	public string dstEngunHei = "";
 	public string dstEngunSts = ""; //BusyoId-BusyoLv-ButaiQty-ButaiLv: ....
 	public AudioSource[] audioSources;
+    public bool stopFlg = false;
 
     void Start () {
 		myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
@@ -51,15 +52,17 @@ public class Gunzei : MonoBehaviour {
 
 	void Update () {
 
-		timer -= Time.deltaTime;
+        if(!stopFlg) {
+		    timer -= Time.deltaTime;
 
-		if (timer < 0.0f) {
-			if(!atkFlg){
-				attack();
-				atkFlg = true;
-			}
-		} 
-	}
+		    if (timer < 0.0f) {
+			    if(!atkFlg){
+				    attack();
+				    atkFlg = true;
+			    }
+		    }
+        }
+    }
 
 	public void attack(){
 		audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();

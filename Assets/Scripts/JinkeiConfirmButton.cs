@@ -60,7 +60,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
             Application.LoadLevel("tutorialKassen");
 
         } else { 
-
+        
 
             //Check for Existing
             string busyoQty = GameObject.Find ("jinkeiQtyValue").GetComponent<Text> ().text;
@@ -81,215 +81,237 @@ public class JinkeiConfirmButton : MonoBehaviour {
                     Message msg = new Message();
                     msg.makeMessage(msg.getMessage(139));
 
-                }else { 
-                    audioSources[5].Play();
+                }else {
+                    bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+                    bool diffClanFlg = false;
+                    int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
 
-                    //Register PlayerPref by Jinkei
-                    int selectedJinkei = GetComponent<Jinkei>().selectedJinkei;
-
-                    if (selectedJinkei == 1) {
-                        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
-                            if (obs.transform.childCount > 0) {
-                                //Get Name 
-                                int childId = int.Parse(obs.transform.GetChild(0).name);
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                //Set Key
-                                PlayerPrefs.SetInt(mapId, childId);
-                            }
-                            else {
-                                //Delete Key
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                PlayerPrefs.DeleteKey(mapId);
+                    if(hardFlg) {
+                        //check same clan
+                        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {       
+                            foreach(Transform busyo in obs.transform) {
+                                if(busyo.GetComponent<Senryoku>().belongDaimyoId != myDaimyo) {
+                                    diffClanFlg = true;
+                                }
                             }
                         }
-
-                        int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
-                        aveLv = totalLv / jinkeiBusyoQty;
-                        aveChLv = totalChLv / jinkeiBusyoQty;
-                        aveChQty = totalChQty / jinkeiBusyoQty;
-                        int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
-                        int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
-                        int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
-                        int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
-                        int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
-                        int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
-
-                        if (nowJinkeiBusyoQty  < jinkeiBusyoQty){
-                            PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
-                        }
-                        if (nowJinkeiAveLv  < aveLv){
-                            PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
-                        }
-                        if (nowJinkeiAveChLv  < aveChLv){
-                            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);                           
-                        }
-                        if (nowJinkeiAveChQty  < aveChQty){
-                            PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
-                        }
-                        if (nowHeiryoku < heiryoku) {
-                            PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
-                        }
-                    
-                        //Soudaisyo
-                        PlayerPrefs.SetInt("soudaisyo1", soudaisyo);
-
-                        PlayerPrefs.SetInt("jinkei", selectedJinkei);
-
                     }
-                    else if (selectedJinkei == 2) {
-                        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
-                            if (obs.transform.childCount > 0) {
-                                //Get Name 
-                                int childId = int.Parse(obs.transform.GetChild(0).name);
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                //Set Key
-                                PlayerPrefs.SetInt(mapId, childId);
-                            }
-                            else {
-                                //Delete Key
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                PlayerPrefs.DeleteKey(mapId);
-                            }
-                        }
-                        int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
-                        aveLv = totalLv / jinkeiBusyoQty;
-                        aveChLv = totalChLv / jinkeiBusyoQty;
-                        aveChQty = totalChQty / jinkeiBusyoQty;
-                        int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
-                        int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
-                        int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
-                        int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
-                        int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
-                        int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
-
-                        if (nowJinkeiBusyoQty < jinkeiBusyoQty) {
-                            PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
-                        }
-                        if (nowJinkeiAveLv < aveLv) {
-                            PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
-                        }
-                        if (nowJinkeiAveChLv < aveChLv) {
-                            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
-                        }
-                        if (nowJinkeiAveChQty < aveChQty) {
-                            PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
-                        }
-                        if (nowHeiryoku < heiryoku) {
-                            PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
-                        }
-
-                        //Soudaisyo
-                        PlayerPrefs.SetInt("soudaisyo2", soudaisyo);
-
-                        PlayerPrefs.SetInt("jinkei", selectedJinkei);
-
-                    }
-                    else if (selectedJinkei == 3) {
-                        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
-                            if (obs.transform.childCount > 0) {
-                                //Get Name 
-                                int childId = int.Parse(obs.transform.GetChild(0).name);
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                //Set Key
-                                PlayerPrefs.SetInt(mapId, childId);
-                            }
-                            else {
-                                //Delete Key
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                PlayerPrefs.DeleteKey(mapId);
-                            }
-                        }
-
-                        int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
-                        aveLv = totalLv / jinkeiBusyoQty;
-                        aveChLv = totalChLv / jinkeiBusyoQty;
-                        aveChQty = totalChQty / jinkeiBusyoQty;
-                        int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
-                        int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
-                        int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
-                        int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
-                        int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
-                        int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
-
-                        if (nowJinkeiBusyoQty  < jinkeiBusyoQty){
-                            PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
-                        }
-                        if (nowJinkeiAveLv  < aveLv){
-                            PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
-                        }
-                        if (nowJinkeiAveChLv  < aveChLv){
-                            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);                           
-                        }
-                        if (nowJinkeiAveChQty  < aveChQty){
-                            PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
-                        }
-                        if (nowHeiryoku < heiryoku) {
-                            PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
-                        }
-
-                        //Soudaisyo
-                        PlayerPrefs.SetInt("soudaisyo3", soudaisyo);
-
-                        PlayerPrefs.SetInt("jinkei", selectedJinkei);
-
-                    }
-                    else if (selectedJinkei == 4) {
-                        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
-                            if (obs.transform.childCount > 0) {
-                                //Get Name 
-                                int childId = int.Parse(obs.transform.GetChild(0).name);
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                //Set Key
-                                PlayerPrefs.SetInt(mapId, childId);
-                            }
-                            else {
-                                //Delete Key
-                                string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
-                                PlayerPrefs.DeleteKey(mapId);
-                            }
-                        }
-
-                        int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
-                        aveLv = totalLv / jinkeiBusyoQty;
-                        aveChLv = totalChLv / jinkeiBusyoQty;
-                        aveChQty = totalChQty / jinkeiBusyoQty;
-                        int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
-                        int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
-                        int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
-                        int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
-                        int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
-                        int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
-                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
-
-                        if (nowJinkeiBusyoQty < jinkeiBusyoQty) {
-                            PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
-                        }
-                        if (nowJinkeiAveLv < aveLv) {
-                            PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
-                        }
-                        if (nowJinkeiAveChLv < aveChLv) {
-                            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
-                        }
-                        if (nowJinkeiAveChQty < aveChQty) {
-                            PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
-                        }
-                        if (nowHeiryoku < heiryoku) {
-                            PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
-                        }
-
-                        //Soudaisyo
-                        PlayerPrefs.SetInt("soudaisyo4", soudaisyo);
-                        PlayerPrefs.SetInt("jinkei", selectedJinkei);
-                    }
-
-                    PlayerPrefs.SetBool("questSpecialFlg6", true);
-                    PlayerPrefs.Flush();
-                    Application.LoadLevel("mainStage");
-                }
                 
+                    if(diffClanFlg) {
+                        audioSources[4].Play();
+
+                        Message msg = new Message();
+                        msg.makeMessage(msg.getMessage(144));
+
+                    }else {
+                        audioSources[5].Play();
+
+                        //Register PlayerPref by Jinkei
+                        int selectedJinkei = GetComponent<Jinkei>().selectedJinkei;
+
+                        if (selectedJinkei == 1) {
+                            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
+                                if (obs.transform.childCount > 0) {
+                                    //Get Name 
+                                    int childId = int.Parse(obs.transform.GetChild(0).name);
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    //Set Key
+                                    PlayerPrefs.SetInt(mapId, childId);
+                                }
+                                else {
+                                    //Delete Key
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    PlayerPrefs.DeleteKey(mapId);
+                                }
+                            }
+
+                            int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
+                            aveLv = totalLv / jinkeiBusyoQty;
+                            aveChLv = totalChLv / jinkeiBusyoQty;
+                            aveChQty = totalChQty / jinkeiBusyoQty;
+                            int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
+                            int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
+                            int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
+                            int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
+                            int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
+                            int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                            PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
+
+                            if (nowJinkeiBusyoQty  < jinkeiBusyoQty){
+                                PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
+                            }
+                            if (nowJinkeiAveLv  < aveLv){
+                                PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
+                            }
+                            if (nowJinkeiAveChLv  < aveChLv){
+                                PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);                           
+                            }
+                            if (nowJinkeiAveChQty  < aveChQty){
+                                PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
+                            }
+                            if (nowHeiryoku < heiryoku) {
+                                PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                            }
+                    
+                            //Soudaisyo
+                            PlayerPrefs.SetInt("soudaisyo1", soudaisyo);
+
+                            PlayerPrefs.SetInt("jinkei", selectedJinkei);
+
+                        }
+                        else if (selectedJinkei == 2) {
+                            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
+                                if (obs.transform.childCount > 0) {
+                                    //Get Name 
+                                    int childId = int.Parse(obs.transform.GetChild(0).name);
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    //Set Key
+                                    PlayerPrefs.SetInt(mapId, childId);
+                                }
+                                else {
+                                    //Delete Key
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    PlayerPrefs.DeleteKey(mapId);
+                                }
+                            }
+                            int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
+                            aveLv = totalLv / jinkeiBusyoQty;
+                            aveChLv = totalChLv / jinkeiBusyoQty;
+                            aveChQty = totalChQty / jinkeiBusyoQty;
+                            int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
+                            int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
+                            int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
+                            int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
+                            int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
+                            int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                            PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
+
+                            if (nowJinkeiBusyoQty < jinkeiBusyoQty) {
+                                PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
+                            }
+                            if (nowJinkeiAveLv < aveLv) {
+                                PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
+                            }
+                            if (nowJinkeiAveChLv < aveChLv) {
+                                PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
+                            }
+                            if (nowJinkeiAveChQty < aveChQty) {
+                                PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
+                            }
+                            if (nowHeiryoku < heiryoku) {
+                                PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                            }
+
+                            //Soudaisyo
+                            PlayerPrefs.SetInt("soudaisyo2", soudaisyo);
+
+                            PlayerPrefs.SetInt("jinkei", selectedJinkei);
+
+                        }
+                        else if (selectedJinkei == 3) {
+                            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
+                                if (obs.transform.childCount > 0) {
+                                    //Get Name 
+                                    int childId = int.Parse(obs.transform.GetChild(0).name);
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    //Set Key
+                                    PlayerPrefs.SetInt(mapId, childId);
+                                }
+                                else {
+                                    //Delete Key
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    PlayerPrefs.DeleteKey(mapId);
+                                }
+                            }
+
+                            int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
+                            aveLv = totalLv / jinkeiBusyoQty;
+                            aveChLv = totalChLv / jinkeiBusyoQty;
+                            aveChQty = totalChQty / jinkeiBusyoQty;
+                            int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
+                            int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
+                            int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
+                            int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
+                            int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
+                            int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                            PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
+
+                            if (nowJinkeiBusyoQty  < jinkeiBusyoQty){
+                                PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
+                            }
+                            if (nowJinkeiAveLv  < aveLv){
+                                PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
+                            }
+                            if (nowJinkeiAveChLv  < aveChLv){
+                                PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);                           
+                            }
+                            if (nowJinkeiAveChQty  < aveChQty){
+                                PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
+                            }
+                            if (nowHeiryoku < heiryoku) {
+                                PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                            }
+
+                            //Soudaisyo
+                            PlayerPrefs.SetInt("soudaisyo3", soudaisyo);
+
+                            PlayerPrefs.SetInt("jinkei", selectedJinkei);
+
+                        }
+                        else if (selectedJinkei == 4) {
+                            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
+                                if (obs.transform.childCount > 0) {
+                                    //Get Name 
+                                    int childId = int.Parse(obs.transform.GetChild(0).name);
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    //Set Key
+                                    PlayerPrefs.SetInt(mapId, childId);
+                                }
+                                else {
+                                    //Delete Key
+                                    string mapId = selectedJinkei.ToString() + "map" + obs.name.Substring(4);
+                                    PlayerPrefs.DeleteKey(mapId);
+                                }
+                            }
+
+                            int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
+                            aveLv = totalLv / jinkeiBusyoQty;
+                            aveChLv = totalChLv / jinkeiBusyoQty;
+                            aveChQty = totalChQty / jinkeiBusyoQty;
+                            int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
+                            int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");
+                            int nowJinkeiAveChLv = PlayerPrefs.GetInt("jinkeiAveChLv");
+                            int nowJinkeiBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
+                            int nowJinkeiAveChQty = PlayerPrefs.GetInt("jinkeiAveChQty");
+                            int nowHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                            PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
+
+                            if (nowJinkeiBusyoQty < jinkeiBusyoQty) {
+                                PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
+                            }
+                            if (nowJinkeiAveLv < aveLv) {
+                                PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
+                            }
+                            if (nowJinkeiAveChLv < aveChLv) {
+                                PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
+                            }
+                            if (nowJinkeiAveChQty < aveChQty) {
+                                PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
+                            }
+                            if (nowHeiryoku < heiryoku) {
+                                PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                            }
+
+                            //Soudaisyo
+                            PlayerPrefs.SetInt("soudaisyo4", soudaisyo);
+                            PlayerPrefs.SetInt("jinkei", selectedJinkei);
+                        }
+
+                        PlayerPrefs.SetBool("questSpecialFlg6", true);
+                        PlayerPrefs.Flush();
+                        Application.LoadLevel("mainStage");
+                    }
+                }
             }
         }
     }

@@ -34,10 +34,18 @@ public class MainEventHandler : MonoBehaviour {
     public List<int> downDaimyo2List = new List<int>();
 
     public void mainHandler(){
-		
-		/*Basic Info*/
-		//make kuni list
-		string seiryoku = PlayerPrefs.GetString ("seiryoku");
+
+        /*Hard Mode*/
+        bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+        if(hardFlg) {
+            kassenRatio = 80;
+            gaikouRatio = 100;
+        }
+
+
+        /*Basic Info*/
+        //make kuni list
+        string seiryoku = PlayerPrefs.GetString ("seiryoku");
 		List<string> seiryokuList = new List<string> ();
 		char[] delimiterChars = {','};
 		seiryokuList = new List<string> (seiryoku.Split (delimiterChars));

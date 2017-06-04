@@ -18,8 +18,9 @@ public class CyouteiPop : MonoBehaviour {
         Message msg = new Message();
 
         if (name != "PassButton") {
-			//Syoukaijyo Confirm Pop
-			audioSources [0].Play ();
+
+            //Syoukaijyo Confirm Pop
+            audioSources [0].Play ();
 
 			//Back
 			string pathOfBack = "Prefabs/Cyoutei/TouchBackLayer";
@@ -95,8 +96,8 @@ public class CyouteiPop : MonoBehaviour {
 
 			int hyourou = PlayerPrefs.GetInt ("hyourou");
 			if (hyourou >= 5) {
-
-				int newHyourou = hyourou - 5;
+                
+                int newHyourou = hyourou - 5;
 				PlayerPrefs.SetInt("hyourou",newHyourou);
 				GameObject.Find("HyourouCurrentValue").GetComponent<Text>().text = newHyourou.ToString();
 
@@ -111,6 +112,7 @@ public class CyouteiPop : MonoBehaviour {
 				if(percent > ratio){
 
                     //Stop Timer
+                    stopGunzei();
                     GameObject.Find("GameController").GetComponent<MainStageController>().eventStopFlg = true;
 
                     audioSources [3].Play ();
@@ -327,6 +329,18 @@ public class CyouteiPop : MonoBehaviour {
 			btn.transform.FindChild("Text").GetComponent<Text>().color = enableTextColor;
 		}
 	}
+
+    public void stopGunzei() {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Gunzei")) {
+            obj.GetComponent<Gunzei>().stopFlg = true;
+        }
+    }
+
+    public void startGunzei() {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Gunzei")) {
+            obj.GetComponent<Gunzei>().stopFlg = false;
+        }
+    }
 
 
 }

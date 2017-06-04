@@ -211,8 +211,8 @@ public class PvPController : MonoBehaviour {
             isAtkDfcWeeklyFetched = true;
         }
         //Enemy
-        if (timerFlg && !randomEnemyFlg) {
-            PvPDataStore.GetRandomEnemy(myUserId, HpBase, int.Parse(startDateNCMB), int.Parse(endDateNCMB), int.Parse(todayNCMB));
+        if (timerFlg && !randomEnemyFlg && PvPDataStore.totalPtWeekly != -99999) {
+            PvPDataStore.GetRandomEnemy(myUserId, HpBase, int.Parse(startDateNCMB), int.Parse(endDateNCMB), int.Parse(todayNCMB), PvPDataStore.totalPtWeekly);
             randomEnemyFlg = true;
         }
 

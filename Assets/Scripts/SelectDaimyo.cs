@@ -49,5 +49,10 @@ public class SelectDaimyo : MonoBehaviour {
 		GameObject.Find ("YesButton").GetComponent<DoSelectDaimyo> ().daimyoBusyoId = daimyoBusyoId;
 		GameObject.Find ("YesButton").GetComponent<DoSelectDaimyo> ().busyoHaveFlg = busyoHaveFlg;
 		GameObject.Find ("YesButton").GetComponent<DoSelectDaimyo> ().heisyu = heisyu;
-	}
+
+        GameObject.Find("YesButtonHard").GetComponent<DoSelectDaimyo>().daimyoId = daimyoId;
+        GameObject.Find("YesButtonHard").GetComponent<DoSelectDaimyo>().daimyoBusyoId = daimyoBusyoId;
+        GameObject.Find("YesButtonHard").GetComponent<DoSelectDaimyo>().busyoHaveFlg = busyoHaveFlg;
+        GameObject.Find("YesButtonHard").GetComponent<DoSelectDaimyo>().heisyu = heisyu;
+    }
 }

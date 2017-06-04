@@ -26,6 +26,7 @@ public class MainStageController : MonoBehaviour {
     public int addJinkeiNo = 0;
     public int minusBusyoQty = 0;
     public float minustPercent = 50;
+    public bool hardFlg;
 
     //Event 
     public float rdmEventTimer;
@@ -148,6 +149,30 @@ public class MainStageController : MonoBehaviour {
 						GameObject.Find ("Bakuhu").gameObject.SetActive (false);
 					}
 				}
+
+                //My Daimyo Kamon on Status
+                string myDaimyoStatusPath = "Prefabs/Kamon/MyDaimyoKamon/" + myDaimyo.ToString();
+                GameObject.Find("Kamon").GetComponent<Image>().sprite =
+                    Resources.Load(myDaimyoStatusPath, typeof(Sprite)) as Sprite;
+
+                //Mode
+                hardFlg = PlayerPrefs.GetBool("hardFlg");
+                string modeString = "";
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (hardFlg) {
+                        modeString = "Hard";
+                    }else {
+                        modeString = "Normal";
+                    }
+                }else {
+                    if (hardFlg) {
+                        modeString = "煉獄";
+                    }else {
+                        modeString = "普通";
+                    }
+                }
+                GameObject.Find("Mode").transform.FindChild("Text").GetComponent<Text>().text = modeString;
+                
 
                 //Adjust Enemy Busyo Qty by Purchased Jinkei
                 if (PlayerPrefs.GetBool("addJinkei1")) {

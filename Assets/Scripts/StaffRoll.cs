@@ -20,7 +20,8 @@ public class StaffRoll : MonoBehaviour {
 
 		//Item1
 		string gameClearDaimyo = PlayerPrefs.GetString ("gameClearDaimyo");
-		List<string> gameClearDaimyoList = new List<string> ();
+        bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+        List<string> gameClearDaimyoList = new List<string> ();
 		char[] delimiterChars = {','};
 		if (gameClearDaimyo != null && gameClearDaimyo != "") {
 			if (gameClearDaimyo.Contains (",")) {
@@ -36,9 +37,34 @@ public class StaffRoll : MonoBehaviour {
 			} else {
 				gameClearDaimyo = myDaimyo.ToString ();
 			}
-			PlayerPrefs.SetString ("gameClearDaimyo", gameClearDaimyo);
-		}
-		PlayerPrefs.SetBool ("gameClearItemGetFlg",true);
+			PlayerPrefs.SetString ("gameClearDaimyo", gameClearDaimyo);           
+        }
+
+        //Hard mode
+        if (hardFlg) {
+            string gameClearDaimyoHard = PlayerPrefs.GetString("gameClearDaimyoHard");
+            List<string> gameClearDaimyoHardList = new List<string>();
+            if (gameClearDaimyoHard != null && gameClearDaimyoHard != "") {
+                if (gameClearDaimyoHard.Contains(",")) {
+                    gameClearDaimyoHardList = new List<string>(gameClearDaimyoHard.Split(delimiterChars));
+                }
+                else {
+                    gameClearDaimyoHardList.Add(gameClearDaimyoHard);
+                }
+            }
+            if (!gameClearDaimyoHardList.Contains(myDaimyo.ToString())) {
+                if (gameClearDaimyoHard != null && gameClearDaimyoHard != "") {
+                    gameClearDaimyoHard = gameClearDaimyoHard + "," + myDaimyo.ToString();
+                }
+                else {
+                    gameClearDaimyoHard = myDaimyo.ToString();
+                }
+                PlayerPrefs.SetString("gameClearDaimyoHard", gameClearDaimyoHard);
+            }
+        }
+        
+
+        PlayerPrefs.SetBool ("gameClearItemGetFlg",true);
 
 
 		//Item2

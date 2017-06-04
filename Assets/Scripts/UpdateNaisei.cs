@@ -98,10 +98,10 @@ public class UpdateNaisei : MonoBehaviour {
                 }else {
                     OKtext = naiseiName + "を開発しましたぞ。\nますます国が栄えますな。";
                 }
-				msg.makeMessage (OKtext);
-				
-				//Close Tab
-				GameObject.Find ("close").GetComponent<CloseBoard> ().onClick ();
+				GameObject msgObj = msg.makeMessage (OKtext);
+
+                //Close Tab
+                GameObject.Find ("close").GetComponent<CloseBoard> ().onClick ();
 				
 				//Initialization
 				NaiseiController naisei = new NaiseiController ();

@@ -46,6 +46,8 @@ public class CloseLayer : MonoBehaviour {
         if (syouninCyouteiFlg) {
             if (GameObject.Find("GameController")) {
                 GameObject.Find("GameController").GetComponent<MainStageController>().eventStopFlg = false;
+                CyouteiPop cyouteiPop = new CyouteiPop();
+                cyouteiPop.startGunzei();
             }
         }
 	}

@@ -13,6 +13,12 @@ public class JinkeiScene : MonoBehaviour {
 
 	void Start () {
 
+        //Kamon
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        string myDaimyoStatusPath = "Prefabs/Kamon/" + myDaimyo.ToString();
+        GameObject.Find("KamonView").GetComponent<Image>().sprite =
+            Resources.Load(myDaimyoStatusPath, typeof(Sprite)) as Sprite;
+
         //jinkei limit update
         Exp kuniExp = new Exp();
         int kuniLv = PlayerPrefs.GetInt("kuniLv");

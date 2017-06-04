@@ -13,7 +13,7 @@ public class DoSoubujirei : MonoBehaviour {
 	public AudioSource[] audioSources;
     public GameObject SoubujiOK;
     public GameObject SoubujiNG;
-
+    public bool testMode = false;
 
 	public void OnClick(){
         Daimyo daimyo = new Daimyo();
@@ -125,6 +125,11 @@ public class DoSoubujirei : MonoBehaviour {
                 if (ratio<0) {
                     ratio = 0;
                 }
+                if(testMode) {
+                    ratio = 100;
+                }
+
+
 				//Debug.Log (daimyoName+":"+kuniQty +"/"+myKuniQty+"="+ratio);
 				float percent = UnityEngine.Random.value;
 				percent = percent * 100;

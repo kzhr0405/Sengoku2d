@@ -127,6 +127,8 @@ public class SyouninPop : MonoBehaviour {
 				
 				if (percent > ratio) {
                     //Stop Timer
+                    CyouteiPop cyouteiPop = new CyouteiPop();
+                    cyouteiPop.stopGunzei();
                     GameObject.Find("GameController").GetComponent<MainStageController>().eventStopFlg = true;
                     
                     audioSources [3].Play ();

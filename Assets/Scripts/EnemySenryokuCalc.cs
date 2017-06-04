@@ -8,7 +8,8 @@ public class EnemySenryokuCalc : MonoBehaviour {
 
 	public int EnemyBusyoQtyCalc (int myKuniQty ,int enemyKuniQty, int minusBusyoQty) {
 
-		int busyoQty = 0;
+        bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+        int busyoQty = 0;
 
 		//Get Player Syutujin Busyo Qty
 		int jinkeiBusyoQty = PlayerPrefs.GetInt ("jinkeiBusyoQty");
@@ -28,8 +29,12 @@ public class EnemySenryokuCalc : MonoBehaviour {
         busyoQty = Mathf.CeilToInt(busyoQty * rdmPwr);
 
         //Adjust
-        busyoQty = busyoQty - minusBusyoQty;
-        
+        if(!hardFlg) {
+            busyoQty = busyoQty - minusBusyoQty;
+        }else {
+            busyoQty = busyoQty + 1;
+        }
+
         if (busyoQty > 12) {
 			busyoQty = 12;
 		}else if(busyoQty < 1){
@@ -42,14 +47,19 @@ public class EnemySenryokuCalc : MonoBehaviour {
 
 	public int EnemyBusyoLvCalc (int senryokuRatio) {
 
-		int busyoLv = PlayerPrefs.GetInt ("jinkeiAveLv");
+        bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+        int busyoLv = PlayerPrefs.GetInt ("jinkeiAveLv");
         float temp1 = busyoLv * senryokuRatio;
 		float temp2 = temp1 / 100;
 		busyoLv = (int)temp2;
         
-
         //Adjust
-        List<float> randomPercent = new List<float> { 0.8f, 0.9f, 1.0f, 1.2f, 1.3f, 1.5f, 1.8f};
+        List<float> randomPercent;
+        if (!hardFlg) {
+            randomPercent = new List<float> { 0.8f, 0.9f, 1.0f, 1.2f, 1.3f, 1.5f, 1.8f};
+        }else {
+            randomPercent = new List<float> { 1.0f, 1.1f, 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+        }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];
         busyoLv = Mathf.CeilToInt(busyoLv * rdmPwr);
@@ -65,6 +75,7 @@ public class EnemySenryokuCalc : MonoBehaviour {
 
 	public int EnemyButaiQtyCalc (int enemyKuniQty, int myKuniQty) {
 
+        bool hardFlg = PlayerPrefs.GetBool("hardFlg");
         int myButaiQty = PlayerPrefs.GetInt("jinkeiAveChQty");
        
         int butaiQty = 0;
@@ -85,7 +96,12 @@ public class EnemySenryokuCalc : MonoBehaviour {
         }
 
         //Adjust 
-        List<float> randomPercent = new List<float> {  0.8f, 1.0f, 1.2f, 1.3f, 1.5f};
+        List<float> randomPercent;
+        if (!hardFlg) {
+            randomPercent = new List<float> { 0.8f, 1.0f, 1.2f, 1.3f, 1.5f };
+        }else {
+            randomPercent = new List<float> { 1.0f, 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+        }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];
         butaiQty = Mathf.CeilToInt(butaiQty * rdmPwr);
@@ -103,13 +119,19 @@ public class EnemySenryokuCalc : MonoBehaviour {
 
 	public int EnemyButaiLvCalc (int senryokuRatio) {
 
-		int butaiLv  = PlayerPrefs.GetInt ("jinkeiAveChLv");
+        bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+        int butaiLv  = PlayerPrefs.GetInt ("jinkeiAveChLv");
         float temp1 = butaiLv * senryokuRatio;
 		float temp2 = temp1 / 100;
 		butaiLv = (int)temp2;
         
         //Adjust
-        List<float> randomPercent = new List<float> { 0.8f, 1.0f, 1.2f, 1.3f, 1.5f, 1.8f };
+        List<float> randomPercent;
+        if (!hardFlg) {
+            randomPercent = new List<float> { 0.8f, 1.0f, 1.2f, 1.3f, 1.5f, 1.8f };
+        }else {
+            randomPercent = new List<float> { 1.0f, 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+        }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];
         butaiLv = Mathf.CeilToInt(butaiLv * rdmPwr);

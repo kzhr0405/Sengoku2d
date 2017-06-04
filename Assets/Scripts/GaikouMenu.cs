@@ -382,8 +382,14 @@ public class GaikouMenu : MonoBehaviour {
 
 			//Get Chiryaku
 			StatusGet sts = new StatusGet();
-			int lv = PlayerPrefs.GetInt (myBusyoId);
-			float chiryakuSts = (float)sts.getDfc(int.Parse(myBusyoId),lv);
+            int lv = 0;
+            bool hardFlg = PlayerPrefs.GetBool("hardFlg");
+            if(hardFlg) {
+                lv = 1;
+            }else {
+                lv = PlayerPrefs.GetInt(myBusyoId);
+            }
+            float chiryakuSts = (float)sts.getDfc(int.Parse(myBusyoId),lv);
 			chiryakuSts = chiryakuSts *10;
 
 			GameObject chiryaku = Instantiate (Resources.Load (chiryakuPath)) as GameObject;
