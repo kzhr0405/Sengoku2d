@@ -251,7 +251,7 @@ public class PvPDataStore : MonoBehaviour {
         pvpWeekly["kuniLv"] = kuniLv;
         pvpWeekly["soudaisyo"] = soudaisyo;
         pvpWeekly["jinkeiHeiryoku"] = jinkeiHeiryoku;
-        pvpWeekly["rewardFlg"] = false;
+        pvpWeekly["rewardFlag"] = false;
         pvpWeekly.SaveAsync();
     }
 
