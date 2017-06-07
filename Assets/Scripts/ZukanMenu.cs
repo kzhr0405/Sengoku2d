@@ -607,9 +607,11 @@ public class ZukanMenu : MonoBehaviour {
                 }
 				nameObj.transform.localPosition = new Vector2(0,60);
                
-                if (!gameClearDaimyoHard.Contains((daimyoId.ToString()))) {
+               
+                if (!gameClearDaimyoHardList.Contains((daimyoId.ToString()))) {
                     Destroy(tenkahubuIcon.transform.FindChild("Hard").gameObject);
                 }
+                
 
             }
 

@@ -337,6 +337,19 @@ public class HPCounter : MonoBehaviour {
                             PvPDataStore DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
                             DataStore.UpdatePvPDfcNo(DataStore.enemyUserId, DataStore.todayNCMB);
                             DataStore.UpdatePvPDfcWinNo(DataStore.enemyUserId, DataStore.todayNCMB);
+
+                            //Popup,
+                            string pvpPopPath = "Prefabs/PvP/GetPt";
+                            GameObject popPvPObj = Instantiate(Resources.Load(pvpPopPath)) as GameObject;
+                            popPvPObj.transform.SetParent(canvas.transform);
+                            popPvPObj.transform.localScale = new Vector2(0.8f, 0.8f);
+                            popPvPObj.transform.localPosition = new Vector2(0, 0);
+                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                popPvPObj.GetComponent<Text>().text = "Pt -" + DataStore.getPt;
+                            }else {
+                                popPvPObj.GetComponent<Text>().text = "武功 -" + DataStore.getPt;
+                            }
+                            
                         }
 
                     } else if (targetTag == "Enemy") {
@@ -947,10 +960,10 @@ public class HPCounter : MonoBehaviour {
                             DataStore.UpdatePvPDfcNo(DataStore.enemyUserId, DataStore.todayNCMB);
 
                             //Point Update
-                            DataStore.UpdatePvPPt(DataStore.userId, true);
-                            DataStore.UpdatePvPPt(DataStore.enemyUserId, false);
+                            DataStore.UpdatePvPPt(DataStore.userId, true, DataStore.getPt * 2);
+                            DataStore.UpdatePvPPt(DataStore.enemyUserId, false, DataStore.getPt * 2);
 
-                            //Popup
+                            //Popup,
                             string pvpPopPath = "Prefabs/PvP/GetPt";
                             GameObject popPvPObj = Instantiate(Resources.Load(pvpPopPath)) as GameObject;
                             popPvPObj.transform.SetParent(canvas.transform);

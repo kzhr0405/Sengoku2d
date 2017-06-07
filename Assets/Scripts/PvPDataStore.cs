@@ -69,6 +69,8 @@ public class PvPDataStore : MonoBehaviour {
     public string enemyUserId = "";
     public string enemyUserName = "";
     public int getPt = 0;
+    public bool doneMinusUpdatePtFlg = false;
+    public bool donePlusUpdatePtFlg = false;
 
     //Top3 > Top10
     public List<string> Top3WinNameList = new List<string>();
@@ -333,9 +335,11 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> queryPvPTmp = new NCMBQuery<NCMBObject>("pvpTmp");
         queryPvPTmp.WhereNotEqualTo("userId", myUserId);
         queryPvPTmp.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
-        queryPvPTmp.WhereLessThanOrEqualTo("totalPt", Mathf.CeilToInt(myTotalPt * 2));
-        queryPvPTmp.WhereGreaterThanOrEqualTo("totalPt", Mathf.CeilToInt(myTotalPt/1.5f));
-        
+        queryPvPTmp.WhereLessThanOrEqualTo("totalPt", myTotalPt * 2);
+        queryPvPTmp.WhereGreaterThanOrEqualTo("totalPt", myTotalPt/2);
+        queryPvPTmp.WhereLessThanOrEqualTo("jinkeiHeiryoku", HpBase * 2);
+        queryPvPTmp.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", HpBase / 2);
+
         queryPvPTmp.CountAsync((int count, NCMBException eCount) => {
             if (eCount == null) {
                 matchCount = count;
@@ -399,7 +403,7 @@ public class PvPDataStore : MonoBehaviour {
                                                 }
 
                                                 jinkeiJudgeCount++;
-                                                if (jinkeiJudgeCount == 3) {
+                                                if (jinkeiJudgeCount == objList.Count) {
                                                     matchedFlg = true;
                                                 }
                                             });
@@ -413,7 +417,6 @@ public class PvPDataStore : MonoBehaviour {
 
                 /*From PvP Tmp(Weekly)*/
                 }else {
-                    Debug.Log("rdmSkip:" + rdmSkip);
                     queryPvPTmp.Skip = rdmSkip;
                     queryPvPTmp.Limit = 3;
                     queryPvPTmp.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -451,7 +454,7 @@ public class PvPDataStore : MonoBehaviour {
                                     }
 
                                     jinkeiJudgeCount++;
-                                    if (jinkeiJudgeCount == 3) {
+                                    if (jinkeiJudgeCount == objList.Count) {
                                         matchedFlg = true;
                                     }
                                 });
@@ -942,7 +945,7 @@ public class PvPDataStore : MonoBehaviour {
 
 
     //Point Up
-    public void UpdatePvPPt(string userId, bool plusFlg) { //true + : false - 
+    public void UpdatePvPPt(string userId, bool plusFlg, int getPt) { //true + : false - 
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
         query.WhereEqualTo("userId", userId);
@@ -954,14 +957,18 @@ public class PvPDataStore : MonoBehaviour {
                     int totalPt = System.Convert.ToInt32(objList[0]["totalPt"]);
                     if(plusFlg) {
                         totalPt = totalPt + getPt;
+                        objList[0]["totalPt"] = totalPt;
+                        objList[0].SaveAsync();
+                        donePlusUpdatePtFlg = true;
                     }else {
                         totalPt = totalPt - getPt;
                         if(totalPt < 0) {
                             totalPt = 0;
                         }
-                    }
-                    objList[0]["totalPt"] = totalPt;
-                    objList[0].SaveAsync();
+                        objList[0]["totalPt"] = totalPt;
+                        objList[0].SaveAsync();
+                        doneMinusUpdatePtFlg = true;
+                    }         
                 }
             }
         });        

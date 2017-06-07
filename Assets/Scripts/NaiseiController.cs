@@ -824,6 +824,8 @@ public class NaiseiController : MonoBehaviour {
                 string imagePath = "Prefabs/Naisei/Shiro/Sprite/" + shiroId;
                 shiro.GetComponent<Image>().sprite =
                                 Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+
+                tabibitoSecMst = 1.5f;
             }
         }
         

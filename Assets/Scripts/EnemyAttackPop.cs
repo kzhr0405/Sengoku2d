@@ -41,8 +41,9 @@ public class EnemyAttackPop : MonoBehaviour {
         int jinkei = PlayerPrefs.GetInt("jinkei");
         string soudaisyoLabel = "soudaisyo" + jinkei;
         int soudaisyoId = PlayerPrefs.GetInt(soudaisyoLabel);
-        makeSimplePlayer(soudaisyoId, true, battleArea, 0, YesBtn);
-
+        if(soudaisyoId != 0) {
+            makeSimplePlayer(soudaisyoId, true, battleArea, 0, YesBtn);
+        }
         for (int i=1; i<26; i++) {
             string mapId =  jinkei.ToString() + "map" + i.ToString();
             int busyoId = PlayerPrefs.GetInt(mapId);

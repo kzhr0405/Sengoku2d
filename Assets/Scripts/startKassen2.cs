@@ -345,6 +345,7 @@ public class startKassen2 : MonoBehaviour {
                     PlayerPrefs.SetInt("jinkeiBusyoQty", busyoQty);
                     PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
                     PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                    PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
 
                     /*
                     int nowJinkeiAveLv = PlayerPrefs.GetInt("jinkeiAveLv");

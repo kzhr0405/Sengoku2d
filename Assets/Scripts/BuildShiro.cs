@@ -35,9 +35,13 @@ public class BuildShiro : MonoBehaviour {
                 }
             }
 
-            string shiroTmp = "shiro" + GameObject.Find("NaiseiController").GetComponent<NaiseiController>().activeKuniId;
+            NaiseiController NaiseiControllerScript = GameObject.Find("NaiseiController").GetComponent<NaiseiController>();
+            string shiroTmp = "shiro" + NaiseiControllerScript.activeKuniId;
             PlayerPrefs.SetInt(shiroTmp, shiroId);
             PlayerPrefs.Flush();
+
+            //Buf
+            NaiseiControllerScript.tabibitoSecMst = 1.5f;
 
             //Reduce Item
             Shiro shiro = new Shiro();

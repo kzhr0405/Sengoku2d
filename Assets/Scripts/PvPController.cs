@@ -48,6 +48,9 @@ public class PvPController : MonoBehaviour {
     public bool randomEnemyFlg = false;
     public bool showedFlg = false;
     public bool ptRankFlg = false;
+    public bool ptRank1Flg = false;
+    public bool ptRank2Flg = false;
+    public bool ptRank3Flg = false;
     public GameObject PvP1 = null;
     public GameObject PvP2 = null;
     public GameObject PvP3 = null;
@@ -359,7 +362,38 @@ public class PvPController : MonoBehaviour {
         }
 
         //PvP Enemy Rank
-        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && PvPDataStore.pvpPtList.Count == PvPDataStore.pvpUserNameList.Count && showedFlg  && !ptRankFlg) {
+
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && PvPDataStore.pvpPtList.Count == PvPDataStore.pvpUserNameList.Count && showedFlg  && !ptRank1Flg) {
+            ptRank1Flg = true;
+            if (PvPDataStore.pvpUserNameList.Count > 0) {
+                PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[0], true, int.Parse(todayNCMB));
+                PvP1.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpPtList[0].ToString();                
+            }
+        }
+
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && PvPDataStore.pvpPtList.Count == PvPDataStore.pvpUserNameList.Count && showedFlg && ptRank1Flg && !ptRank2Flg && PvPDataStore.pvpPtRankList.Count > 0) {
+            ptRank2Flg = true;
+            
+            if (PvPDataStore.pvpUserNameList.Count > 1) {
+                PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[1], true, int.Parse(todayNCMB));
+                PvP2.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpPtList[1].ToString();
+
+            }            
+        }
+
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && PvPDataStore.pvpPtList.Count == PvPDataStore.pvpUserNameList.Count && showedFlg && ptRank1Flg && ptRank2Flg && !ptRank3Flg && PvPDataStore.pvpPtRankList.Count > 1) {
+            ptRank3Flg = true;
+
+            if (PvPDataStore.pvpUserNameList.Count > 2) {
+                PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[2], true, int.Parse(todayNCMB));
+                PvP3.transform.FindChild("Win").transform.FindChild("Value").GetComponent<Text>().text = PvPDataStore.pvpPtList[2].ToString();
+
+            }
+        }
+
+
+        /*
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && PvPDataStore.pvpPtList.Count == PvPDataStore.pvpUserNameList.Count && showedFlg && !ptRankFlg) {
             ptRankFlg = true;
             if (PvPDataStore.pvpUserNameList.Count > 0) {
                 PvPDataStore.GetPtRankWeekly(PvPDataStore.pvpPtList[0], true, int.Parse(todayNCMB));
@@ -377,9 +411,12 @@ public class PvPController : MonoBehaviour {
                 }
             }
         }
-        
-        //PvP Enemy Ranking
-        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && showedFlg && PvPDataStore.pvpPtRankList.Count == PvPDataStore.pvpPtList.Count && ptRankFlg && !isEnemyPvPRankFetched) {
+        */
+
+
+
+        //PvP Enemy Ranking        
+        if (PvPDataStore.winRank != -1 && isHPFetched && isMyPvPFetched && isAtkDfcFetched && PvPDataStore.matchedFlg && showedFlg && PvPDataStore.pvpPtRankList.Count == PvPDataStore.pvpPtList.Count && !isEnemyPvPRankFetched) {
             isEnemyPvPRankFetched = true;
             kumoRunFlg();
             if (PvPDataStore.pvpPtRankList.Count == 1) {
