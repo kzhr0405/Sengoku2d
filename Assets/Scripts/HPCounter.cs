@@ -56,6 +56,15 @@ public class HPCounter : MonoBehaviour {
 				flag = true;
                 Time.timeScale = 1;
 
+                //Stop Opposite Timer
+                if(name == "playerHp") {
+                    GameObject.Find("enemyHp").GetComponent<HPCounter>().flag = true;
+                }else {
+                    GameObject.Find("playerHp").GetComponent<HPCounter>().flag = true;
+                }
+
+
+
                 if(GameObject.Find("ScrollView")) {
                     GameObject.Find ("ScrollView").SetActive (false);
                 }

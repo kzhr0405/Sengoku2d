@@ -15,6 +15,7 @@ public class StartKassenPvP : MonoBehaviour {
     public bool isBusyoStatusFetched;
     public bool updatePvPAtkFlg;
     public bool updateLosePtFlg;
+    public bool updateWinPtFlg;
     public PvPController PvPController;
     public int nowHyourou = 0;
     public int getPt = 0;
@@ -80,16 +81,20 @@ public class StartKassenPvP : MonoBehaviour {
         }
 
         //register temp lose tran
-        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && updatePvPAtkFlg && !PvPDataStore.donePlusUpdatePtFlg && !PvPDataStore.doneMinusUpdatePtFlg && !updateLosePtFlg) {
+        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && updatePvPAtkFlg && !PvPDataStore.donePlusUpdatePtFlg  && !updateLosePtFlg) {
             updateLosePtFlg = true;
             PvPDataStore.UpdatePvPPt(userId, true, getPt);
+        }
+
+        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && updatePvPAtkFlg && PvPDataStore.donePlusUpdatePtFlg && updateLosePtFlg && !PvPDataStore.doneMinusUpdatePtFlg && !updateWinPtFlg) {
+            updateWinPtFlg = true;
             PvPDataStore.UpdatePvPPt(PvPController.myUserId, false, getPt);
         }
 
 
 
         //scene change
-        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && updatePvPAtkFlg && PvPDataStore.donePlusUpdatePtFlg && PvPDataStore.doneMinusUpdatePtFlg && updateLosePtFlg && !sceneChangeFlg) {
+        if (userId != "" && isJinkeiMapFetched && isBusyoStatusFetched && clickedFlg && PvPDataStore.PvPAtkNoFlg && updatePvPAtkFlg && PvPDataStore.donePlusUpdatePtFlg && PvPDataStore.doneMinusUpdatePtFlg && updateLosePtFlg && updateWinPtFlg && !sceneChangeFlg) {
 
             //hyourou
             int newHyourou = nowHyourou - 5;

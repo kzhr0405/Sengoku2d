@@ -24,7 +24,7 @@ public class BusyoStatusButton : MonoBehaviour {
 	public string busyoId;
 	public int pa_hp;
 
-	public void OnClick(){
+    public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
 
@@ -254,14 +254,20 @@ public class BusyoStatusButton : MonoBehaviour {
 				for(int k=ch_lv; k<MaxLv; k++ ){
 					int requiredMoney = kunrenMst.param[k].requiredMoney;
 					totalMoney = totalMoney + requiredMoney;
-					
+
 					if(myMoney < totalMoney){
 						//Limitation of Lv up
 						//Setup Slider Limitation
 						lvSlider.maxValue = k;
 						limitLv=k;
 						break;
-					}
+					}else {
+                        if(k==99) {
+                            lvSlider.maxValue = 100;
+                            limitLv = 100;
+                            break;
+                        }
+                    }
 				}
 			}
 
@@ -271,8 +277,6 @@ public class BusyoStatusButton : MonoBehaviour {
 				int totalRequiredMoney = kunrenMst.param[j].totalMoney - paiedTotalMoney;
 				requredMoneyByLv.Add(totalRequiredMoney);
 			}
-
-
 
 			//Can Lvup
 			if(limitLv!=ch_lv){
@@ -294,7 +298,7 @@ public class BusyoStatusButton : MonoBehaviour {
 				object stslst = lvMst.param[startline];
 				Type t = stslst.GetType();
 
-				//for(int i=ch_lv+1; i<limitLv+1;i++){
+                //for(int i=ch_lv+1; i<limitLv+1;i++)
 				for(int i=1; i<limitLv+1;i++){
 					String param = "lv" + i;
 					FieldInfo f = t.GetField(param);

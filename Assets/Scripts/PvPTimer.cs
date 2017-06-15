@@ -56,7 +56,9 @@ public class PvPTimer : MonoBehaviour {
 
             if (Date == DateTime.MinValue) {
                 Debug.Log("Time is not received.");
-            }else {
+                Application.LoadLevel("pvp");
+            }
+            else {
                 DateTime sunday = GetNearestDayOfWeek(Date, DayOfWeek.Sunday);
                 DateTime monday = GetNearestMonday(Date);
                 sunday = DateTime.Parse(sunday.ToShortDateString().Trim() + " 23:59:59");
