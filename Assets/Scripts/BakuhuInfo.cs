@@ -39,8 +39,9 @@ public class BakuhuInfo : MonoBehaviour {
 		}
 
 
-		//Soubujirei Check
-		bool soubujireiFlg = PlayerPrefs.GetBool("soubujireiFlg");
+        //Soubujirei Check
+        bool soubujireiFlg = PlayerPrefs.GetBool("soubujireiFlg");
+        //bool soubujireiFlg = false;//test
 		if (!soubujireiFlg) {
 			updateAtkOrderBtnStatus (contentObj);
 		} else {

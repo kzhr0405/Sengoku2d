@@ -136,7 +136,7 @@ public class TabibitoItemGetter : MonoBehaviour {
 				kahou.registerCyadougu (itemId);
 			} else if (itemCd == "chishikisyo") {
 				kahou.registerChishikisyo (itemId);
-			} else if(itemCd == "heihousyo"){
+			} else if(itemCd == "heihousyo"){                
 				kahou.registerHeihousyo (itemId);
 
 			}else if(itemCd == "cyoutei"||itemCd == "koueki"){
@@ -185,10 +185,12 @@ public class TabibitoItemGetter : MonoBehaviour {
 				} else if (itemCd == "cyadougu") {
 					kahou.registerCyadougu (itemId);
 				} else if (itemCd == "chishikisyo") {
-					kahou.registerChishikisyo (itemId);
-				}
+					kahou.registerChishikisyo (itemId);				
+                }else if (itemCd == "heihousyo") {
+                    kahou.registerHeihousyo(itemId);
+                }
 
-                Text = msg.getMessage(124);
+            Text = msg.getMessage(124);
 			}else{
 				audioSources [4].Play ();
                 Text = msg.getMessage(125);

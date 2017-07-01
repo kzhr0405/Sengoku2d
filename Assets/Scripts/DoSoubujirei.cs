@@ -176,8 +176,14 @@ public class DoSoubujirei : MonoBehaviour {
 								PlayerPrefs.SetString ("cyouhou", newCyouhou);
 							}
 
-							//Icon Change
-							IconMapValueUpdate (kuniId, myDaimyo, kuniIconView, kuniMap, myKuniQty);
+                            //5. naisei
+                            string naiseiTmp = "naisei" + kuniId;
+                            if(!PlayerPrefs.HasKey(naiseiTmp)) {
+                                PlayerPrefs.SetString(naiseiTmp, "1,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0");
+                            }
+
+                            //Icon Change
+                            IconMapValueUpdate (kuniId, myDaimyo, kuniIconView, kuniMap, myKuniQty);
 						}
 					}
 					//Gunzei Check

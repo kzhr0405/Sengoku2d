@@ -45,7 +45,7 @@ public class NaiseiController : MonoBehaviour {
 		BGMSESwitch bgm = new BGMSESwitch ();
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
-
+        
         Message msg = new Message();
 
         //Get Temp Kuni Id & Stage Id
@@ -172,10 +172,11 @@ public class NaiseiController : MonoBehaviour {
  		panelByShiro(activeKuniId);
 		panelByKuniLv();
 
+
 		if (PlayerPrefs.HasKey (temp)) {
 			/*initial setting*/
 			string naiseiString = PlayerPrefs.GetString (temp);
-			List<string> naiseiList = new List<string>();
+            List<string> naiseiList = new List<string>();
 			char[] delimiterChars = {','};
 			naiseiList = new List<string>(naiseiString.Split (delimiterChars));
 
@@ -1255,7 +1256,7 @@ public class NaiseiController : MonoBehaviour {
 		itemKahouCd = kahouRandom[rdm];
 		int itemKahouId = kahou.getRamdomKahouId(itemKahouCd, kahouRank);
 
-		List<string> kahouInfo = new List<string> (); 
+        List<string> kahouInfo = new List<string> (); 
 		KahouStatusGet kahouSts = new KahouStatusGet (); 
 		kahouInfo = kahouSts.getKahouInfo(itemKahouCd, itemKahouId);
 
