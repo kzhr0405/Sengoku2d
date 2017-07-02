@@ -20,8 +20,13 @@ public class SenpouStatusUp : MonoBehaviour {
 		    float tmp = 100 - senpouStatus;
 		    finalCoolTime = (initCoolTime * tmp) / 100;
 		    finalDisTarget = initDisTarget + (initDisTarget * senpouStatus) / 100;
-            
-		    targetObj.GetComponent<AttackLong> ().coolTime = finalCoolTime;
+
+            //adjsut
+            if(finalCoolTime<0.5f) {
+                finalCoolTime = 0.5f;
+            }
+
+            targetObj.GetComponent<AttackLong> ().coolTime = finalCoolTime;
 		    if (targetObj.GetComponent<UnitMover> ()) {
 			    targetObj.GetComponent<UnitMover> ().DisTarget = finalDisTarget;
 		    } else {

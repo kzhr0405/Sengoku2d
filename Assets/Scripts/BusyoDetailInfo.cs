@@ -127,7 +127,7 @@ public class BusyoDetailInfo : MonoBehaviour {
 
             //Senpou
             StatusGet sts = new StatusGet();
-            ArrayList senpouArray = sts.getSenpou(busyoId, false);
+            ArrayList senpouArray = sts.getOriginalSenpou(busyoId, false);
             int senpouId = (int)senpouArray[0];
             string senpouTyp = senpouArray[1].ToString();
             string senpouName = senpouArray[2].ToString();

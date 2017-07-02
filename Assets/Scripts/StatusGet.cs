@@ -285,4 +285,46 @@ public class StatusGet : MonoBehaviour {
 		return atkDfc;
 	}
 
+    public ArrayList getOriginalSenpou(int busyoInt, bool engunFlg) {
+        ArrayList senpouArray = new ArrayList();
+
+        Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
+        Entity_senpou_mst senpouMst = Resources.Load("Data/senpou_mst") as Entity_senpou_mst;
+
+        //Get Senpou Id
+        int senpouId = busyoMst.param[busyoInt - 1].senpou_id;
+
+        //Get Senpou Lv
+        String senpouLvTmp = "senpou" + busyoInt;
+        int senpouLv = PlayerPrefs.GetInt(senpouLvTmp, 1);
+
+        //Get Senpou Status
+        object senpoulst = senpouMst.param[senpouId - 1];
+        Type t = senpoulst.GetType();
+        String param = "lv" + senpouLv;
+        FieldInfo f = t.GetField(param);
+        int senpouStatus = (int)f.GetValue(senpoulst);
+
+        //Contain in Array
+        senpouArray.Add(senpouId);
+        senpouArray.Add(senpouMst.param[senpouId - 1].typ);
+        if (Application.systemLanguage != SystemLanguage.Japanese) {
+            senpouArray.Add(senpouMst.param[senpouId - 1].nameEng);
+            senpouArray.Add(senpouMst.param[senpouId - 1].effectionEng);
+        }
+        else {
+            senpouArray.Add(senpouMst.param[senpouId - 1].name);
+            senpouArray.Add(senpouMst.param[senpouId - 1].effection);
+        }
+        senpouArray.Add(senpouMst.param[senpouId - 1].each);
+        senpouArray.Add(senpouMst.param[senpouId - 1].ratio);
+        senpouArray.Add(senpouMst.param[senpouId - 1].term);
+        senpouArray.Add(senpouStatus);
+        senpouArray.Add(senpouLv);
+
+        return senpouArray;
+    }
+
+
+
 }

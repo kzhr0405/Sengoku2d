@@ -55,7 +55,7 @@ public class SenpouScene : MonoBehaviour {
 
 	public void createSenpouStatusView(string busyoId){
 		StatusGet sts = new StatusGet();
-		ArrayList senpouArray = sts.getSenpou(int.Parse(busyoId),false);
+		ArrayList senpouArray = sts.getOriginalSenpou(int.Parse(busyoId),false);
 
 		int senpouId = (int)senpouArray[0];
 		string senpouTyp = senpouArray[1].ToString();

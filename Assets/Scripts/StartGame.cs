@@ -15,11 +15,6 @@ public class StartGame : MonoBehaviour {
     public void Start(){
 		Resources.UnloadUnusedAssets ();
 
-        //Data Patch
-        //DataPatch DataPatch = new DataPatch();
-        //DataPatch.DataPatch1(); //20170315
-
-
         fade = GameObject.Find("FadeCanvas").GetComponent<Fade>();
 
         /*Sound Controller Start*/
@@ -35,7 +30,7 @@ public class StartGame : MonoBehaviour {
 			seObj.name = "SEController";
 
 		}
-		BGMSESwitch bgm = new BGMSESwitch ();
+		BGMSESwitch bgm = GetComponent<BGMSESwitch> ();
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
         /*Sound Controller End*/
@@ -67,19 +62,22 @@ public class StartGame : MonoBehaviour {
             });           
         }
     }
-    
 
     void Update() {
-        if(clickedFlg) {
+        if (clickedFlg) {
             clickedFlg = false;
             fade.FadeIn(2, () => {
                 if (!tutorialDoneFlg) {
                     SceneManager.LoadScene("tutorialMain");
-                }else {
+                }
+                else {
                     SceneManager.LoadScene("mainStage");
-                }                
+                }
             });
-            
+
         }
     }
+
+
+
 }

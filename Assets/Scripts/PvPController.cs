@@ -67,7 +67,11 @@ public class PvPController : MonoBehaviour {
     public bool timerFlg = false;
 
     void Start () {
-        ShowKassen();        
+        ShowKassen();
+
+        BGMSESwitch bgm = new BGMSESwitch();
+        bgm.StopSEVolume();
+        bgm.StopBGMVolume();
     }
 	
 	public void ShowKassen() {

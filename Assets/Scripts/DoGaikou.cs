@@ -51,8 +51,7 @@ public class DoGaikou : MonoBehaviour {
 
 
 				if (name == "DoMitsugiBtn") {
-					audioSources [3].Play ();
-
+					
 					string tempGaikou = "gaikou" + daimyoId;
 					int nowYukoudo = 0;
 					if (PlayerPrefs.HasKey (tempGaikou)) {
@@ -69,8 +68,9 @@ public class DoGaikou : MonoBehaviour {
 					}
 
 					if (percent <= tmpYukoudo*2) {
-						//Success
-						reduceMoneyHyourou ();
+                        //Success
+                        audioSources[3].Play();
+                        reduceMoneyHyourou ();
 						addUsedBusyo (busyoId);
 
 						//Doumei
@@ -118,8 +118,9 @@ public class DoGaikou : MonoBehaviour {
 						upYukouOnIcon (daimyoId, newYukoudo);
 
 					} else {
-						//Fail
-						paiedMoney = 0;
+                        //Fail
+                        audioSources[4].Play();
+                        paiedMoney = 0;
 						reduceMoneyHyourou ();
 
                         //Message
