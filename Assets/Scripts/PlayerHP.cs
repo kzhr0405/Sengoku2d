@@ -77,6 +77,7 @@ public class PlayerHP : MonoBehaviour {
             damage = 1;
         }
         
+
         //Damage
         GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
 		damageObj.transform.SetParent(canvas.transform);

@@ -604,6 +604,7 @@ public class preKassen : MonoBehaviour {
 		string TaisyoType = info.getHeisyu(taisyoBusyoId);
 
 		int chldHp = activeButaiQty * enemyIns.getChildStatus (activeButaiLv, TaisyoType, linkNo);
+
 		totalHei = hp + chldHp;
 
 		string path = "Prefabs/Player/Unit/BusyoUnit";

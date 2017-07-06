@@ -36,10 +36,16 @@ public class Bullet : MonoBehaviour {
 			Damage = (int)attack;
 
 			//Damage Adjustment
+            
 			if(myHeisyu=="TP" && hitHeisyu == "KB"){
 				Damage = Damage * 2;
 			}else if(myHeisyu == "TP" && hitHeisyu == "YR"){
                 Damage = Damage / 2;
+            }else if(hitHeisyu == "saku") {
+                int senpouId = col.gameObject.GetComponent<Heisyu>().senpouId;
+                if (senpouId == 22 || senpouId == 23 || senpouId == 24) { 
+                    Damage = Damage / 4;
+                }
             }
 
 
@@ -66,9 +72,16 @@ public class Bullet : MonoBehaviour {
 			//Damage Adjustment
 			if(myHeisyu=="TP" && hitHeisyu == "KB"){
 				Damage = Damage * 2;
-			}
+			}else if (myHeisyu == "TP" && hitHeisyu == "YR") {
+                Damage = Damage / 2;
+            }else if (hitHeisyu == "saku") {
+                int senpouId = col.gameObject.GetComponent<Heisyu>().senpouId;
+                if (senpouId == 22 || senpouId == 23 || senpouId == 24) {
+                    Damage = Damage / 4;
+                }
+            }
 
-			col.gameObject.SendMessage ("Damage", Damage);
+            col.gameObject.SendMessage ("Damage", Damage);
 
 			if (parent != null) {
 				col.gameObject.GetComponent<PlayerHP> ().attackObj = parent.gameObject;

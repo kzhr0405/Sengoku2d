@@ -58,7 +58,29 @@ public class SenpouController : MonoBehaviour {
                         if (8 <= senpouId && senpouId <= 13) {
                             needStatusRecoveryFlg = true;
                         }
-					}
+					}else if(senpouTyp == "Create") {
+                        CreateSenpou cs = new CreateSenpou();
+                        bool existFlg = false;
+                        foreach(Transform obj in gameObject.transform) {
+                            if(obj.GetComponent<Heisyu>()) {
+                                if (obj.GetComponent<Heisyu>().heisyu == "saku") existFlg = true;
+                            }
+                        }
+                        if(!existFlg) {
+                            makeSenpouMessage(int.Parse(name));
+                            float hp = 0;
+                            bool playerFlg = false;
+                            if (GetComponent<PlayerHP>()) {
+                                hp = GetComponent<PlayerHP>().initLife;
+                                playerFlg = true;
+                            }else if(GetComponent<EnemyHP>()) {
+                                hp = GetComponent<EnemyHP>().initLife;
+                            }
+                            float calculatedHp = (hp * senpouStatus / 100);
+
+                            effectObj = cs.doSenpou(gameObject, senpouId, calculatedHp, playerFlg);
+                        }
+                    }
 					
 					runflg = true;
 				}
@@ -82,8 +104,10 @@ public class SenpouController : MonoBehaviour {
 					}	
 				}
 
-				//Destroy
-				Destroy(effectObj);
+                //Destroy
+                if (senpouTyp != "Create") {
+                    Destroy(effectObj);
+                }
 
 				//Flag Change
 				runflg = false;
