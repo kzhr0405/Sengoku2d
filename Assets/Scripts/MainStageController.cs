@@ -1306,7 +1306,7 @@ public class MainStageController : MonoBehaviour {
 
 	}
 
-    
+    /*
 	void OnApplicationPause (bool pauseStatus) {
 		if (!pauseStatus) {
             if (!adRunFlg && !iapRunFlg) {
@@ -1320,7 +1320,7 @@ public class MainStageController : MonoBehaviour {
             }
         }
 	}
-    
+    */
 
 	public bool CheckByProbability (int ratio) {
 		bool checkFlg = false;

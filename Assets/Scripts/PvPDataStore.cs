@@ -210,6 +210,7 @@ public class PvPDataStore : MonoBehaviour {
 
         //date
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        query.OrderByDescending("endDate");
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (objList.Count == 0) { //never registered
                 InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, myUserName, kuniLv, soudaisyo, pvpHeiryoku);
@@ -262,6 +263,7 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
         query.WhereEqualTo("userId", userId);
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        query.OrderByDescending("endDate");
 
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
@@ -693,6 +695,7 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereEqualTo("userId", userId);
         queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        queryWeekly.OrderByDescending("endDate");
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 if (objList.Count != 0) {
@@ -727,6 +730,7 @@ public class PvPDataStore : MonoBehaviour {
 
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        queryWeekly.OrderByDescending("endDate");
         queryWeekly.WhereEqualTo("userId", userId);
 
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -766,6 +770,7 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereEqualTo("userId", userId);
         queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        queryWeekly.OrderByDescending("endDate");
 
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
@@ -810,6 +815,7 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> queryWeekly = new NCMBQuery<NCMBObject>("pvpTmp");
         queryWeekly.WhereEqualTo("userId", userId);
         queryWeekly.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        queryWeekly.OrderByDescending("endDate");
 
         queryWeekly.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
@@ -950,6 +956,7 @@ public class PvPDataStore : MonoBehaviour {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
         query.WhereEqualTo("userId", userId);
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        query.OrderByDescending("endDate");
 
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {

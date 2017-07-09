@@ -198,7 +198,46 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 					}
 				}
 
-				PlayerPrefs.Flush ();
+                //kahou check
+                string tempBusyo = "kahou" + preDaimyoBusyoId;
+                string busyoKahou = PlayerPrefs.GetString(tempBusyo);
+                string[] busyoKahouList = busyoKahou.Split(delimiterChars);
+                for (int k = 0; k < busyoKahouList.Length; k++) {
+                    int kahouId = int.Parse(busyoKahouList[k]);
+                    if(kahouId != 0) {
+                        //back kahou data
+                        string tmp = "";
+                        if(k==0) {
+                            tmp = "Bugu";
+                        }else if(k==1) {
+                            tmp = "Kabuto";
+                        }else if (k == 2) {
+                            tmp = "Gusoku";
+                        }else if (k == 3) {
+                            tmp = "Meiba";
+                        }else if (k == 4) {
+                            tmp = "Cyadougu";
+                        }else if (k == 5) {
+                            tmp = "Cyadougu";
+                        }else if (k == 6) {
+                            tmp = "Heihousyo";
+                        }else if (k == 7) {
+                            tmp = "Chishikisyo";
+                        }
+
+                        string temp = "available" + tmp;
+                        string availableKahou = PlayerPrefs.GetString(temp);
+                        if (availableKahou == null || availableKahou == "") {
+                            availableKahou = kahouId.ToString();
+                        }else {
+                            availableKahou = availableKahou + "," + kahouId.ToString();
+                        }
+                        PlayerPrefs.SetString(temp, availableKahou);
+                        PlayerPrefs.SetString(tempBusyo,"0,0,0,0,0,0,0,0");
+                    }
+                }                
+
+                PlayerPrefs.Flush ();
 
 			}
 
