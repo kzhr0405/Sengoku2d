@@ -211,27 +211,32 @@ public class PvPDataStore : MonoBehaviour {
         //date
         query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
-            if (objList.Count == 0) { //never registered
-                InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, myUserName, kuniLv, soudaisyo, pvpHeiryoku);
-                atkNoWeekly = 0;
-                atkWinNoWeekly = 0;
-                dfcNoWeekly = 0;
-                dfcWinNoWeekly = 0;
-                totalPtWeekly = 1000;
-            }
-            else { //registered
-                if (e == null) {
+            if (e == null)
+            {
+
+                if (objList.Count == 0)
+                { //never registered
+                    InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, myUserName, kuniLv, soudaisyo, pvpHeiryoku);
+                    atkNoWeekly = 0;
+                    atkWinNoWeekly = 0;
+                    dfcNoWeekly = 0;
+                    dfcWinNoWeekly = 0;
+                    totalPtWeekly = 1000;
+                }
+                else
+                { //registered
                     //Update info.
                     UpdatePvPWeekly(userId, myUserName, todayNCMB, kuniLv, soudaisyo, pvpHeiryoku);
 
                     //Get info.
-                    foreach (NCMBObject obj in objList) {
+                    foreach (NCMBObject obj in objList)
+                    {
                         atkNoWeekly = System.Convert.ToInt32(obj["atkNo"]);
                         atkWinNoWeekly = System.Convert.ToInt32(obj["atkWinNo"]);
                         dfcNoWeekly = System.Convert.ToInt32(obj["dfcNo"]);
                         dfcWinNoWeekly = System.Convert.ToInt32(obj["dfcWinNo"]);
                         totalPtWeekly = System.Convert.ToInt32(obj["totalPt"]);
-                                                
+
                     }
                 }
             }
