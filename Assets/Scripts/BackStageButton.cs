@@ -15,7 +15,7 @@ public class BackStageButton : MonoBehaviour {
             if(tutorialRestartFlg) {
                 Application.LoadLevel("tutorialKassen");
             }else { 
-                PlayerPrefs.SetInt("tutorialId", 13);
+                PlayerPrefs.SetInt("tutorialId", 15);
                 Application.LoadLevel("tutorialMain");
             }
             

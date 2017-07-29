@@ -108,7 +108,26 @@ public class RewardReceive : MonoBehaviour {
                 msgScript.makeMessage(msg);
                 shiro.registerShiro(shiroId);
             }
+            else if (grp == "jinkei") {
+                if (rank == "1") {
+                    PlayerPrefs.SetBool("addJinkei1", true);
+                }else if (rank == "2") {
+                    PlayerPrefs.SetBool("addJinkei2", true);
+                }else if (rank == "3") {
+                    PlayerPrefs.SetBool("addJinkei3", true);
+                }else if (rank == "4") {
+                    PlayerPrefs.SetBool("addJinkei4", true);
+                }
+                Message msgScript = new Message();
+                string msg = "";
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    msg = "You got an additional formation.";
+                }else {
+                    msg = "追加陣形を受領しました。";
+                }
+                msgScript.makeMessage(msg);
 
+            }
             PlayerPrefs.Flush();
         }
     }

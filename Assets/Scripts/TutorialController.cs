@@ -76,19 +76,28 @@ public class TutorialController : MonoBehaviour {
             animObj.transform.localScale = new Vector2(300, 300);
 
         }else if (tutorialId == 9) {
+           
+            //Busyo at Main
+            GameObject btn = SetMainButton("Busyo");
+            Vector2 vect = new Vector2(0, 50);
+            GameObject animObj = SetPointer(btn, vect);
+            animObj.transform.localScale = new Vector2(200, 200);
+        }
+        else if (tutorialId == 11) {
             GameObject btn = SetMainButton("Jinkei");
             Vector2 vect = new Vector2(0, 50);
             GameObject animObj = SetPointer(btn, vect);
             animObj.transform.localScale = new Vector2(200, 200);
-        }else if (tutorialId == 10) {
-            //10. Active Slot
+        }
+        else if (tutorialId == 12) {
+            //jinkei
             GameObject tBack = GameObject.Find("tBack").gameObject;
             GameObject sourceObj = GameObject.Find("ScrollView").transform.FindChild("Content").transform.FindChild("Slot").gameObject;
             sourceObj.transform.SetParent(tBack.transform);
 
             GameObject jinkeiView = GameObject.Find("JinkeiView").gameObject;
             GameObject copied = Object.Instantiate(jinkeiView) as GameObject;
-            copied.transform.SetParent(GameObject.Find("Panel").transform,false);
+            copied.transform.SetParent(GameObject.Find("Panel").transform, false);
             copied.name = "copiedJinkeiView";
             foreach (Transform chld in copied.transform) {
                 if (chld.name == "Slot12") {
@@ -103,11 +112,14 @@ public class TutorialController : MonoBehaviour {
             string arrowPath = "Prefabs/PostKassen/Arrow";
             GameObject arrowObj = Instantiate(Resources.Load(arrowPath)) as GameObject;
             arrowObj.transform.SetParent(sourceObj.transform);
-            arrowObj.transform.localPosition = new Vector2(120,0);
+            arrowObj.transform.localPosition = new Vector2(120, 0);
             arrowObj.transform.localScale = new Vector2(100, 100);
             arrowObj.transform.Rotate(new Vector3(0f, 0f, -30f));
             arrowObj.GetComponent<FadeoutArrowMove>().enabled = false;
-        }else if (tutorialId == 12) {
+            arrowObj.AddComponent<Blinker>().timer = 5;
+
+        }
+        else if (tutorialId == 14) {
             //Start Kassen
             string pathBack = "Prefabs/PreKassen/backGround";
             GameObject back = Instantiate(Resources.Load(pathBack)) as GameObject;
@@ -120,36 +132,38 @@ public class TutorialController : MonoBehaviour {
             StartEveryObject();
 
             Destroy(GameObject.Find("tBack").gameObject);
-
             GameObject.Find("timer").GetComponent<Timer>().paused = false;
 
         }
-        else if (tutorialId == 13) {
+        else if (tutorialId == 15) {
             //Finalize
-            AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-            audioSources[3].Play();
+            bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+            if(!tutorialDoneFlg) {
+                AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+                audioSources[3].Play();
 
-            PlayerPrefs.SetBool("tutorialDoneFlg",true);
+                PlayerPrefs.SetBool("tutorialDoneFlg",true);
+                int busyoDama = PlayerPrefs.GetInt("busyoDama");
+                busyoDama = busyoDama + 100;
+                PlayerPrefs.SetInt("busyoDama", busyoDama);
+                GameObject busyoDamaObj = GameObject.Find("BusyoDamaValue").gameObject;
+                busyoDamaObj.GetComponent<Text>().text = busyoDama.ToString();
+                Vector2 vect = new Vector2(500, 500);
+                GameObject anim = SetFadeoutPointer(busyoDamaObj, vect);
+                anim.transform.localScale = new Vector2(1000,1000);
+                
+            }
 
-            int busyoDama = PlayerPrefs.GetInt("busyoDama");
-            busyoDama = busyoDama + 100;
-            PlayerPrefs.SetInt("busyoDama", busyoDama);
-            GameObject busyoDamaObj = GameObject.Find("BusyoDamaValue").gameObject;
-            busyoDamaObj.GetComponent<Text>().text = busyoDama.ToString();
-            Vector2 vect = new Vector2(500, 500);
-            GameObject anim = SetFadeoutPointer(busyoDamaObj, vect);
-            anim.transform.localScale = new Vector2(1000,1000);
-
-            PlayerPrefs.SetInt("tutorialId", 14);
-
+            PlayerPrefs.SetInt("tutorialId", tutorialId);
             TextController textScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
-            textScript.tutorialId = 14;
+            tutorialId = tutorialId + 1;
+            textScript.tutorialId = tutorialId;
             textScript.actOnFlg = false;
-            textScript.SetText(14);
-            
+            textScript.SetText(tutorialId);
             PlayerPrefs.Flush();
             
-        }else if (tutorialId == 14) {
+
+        }else if (tutorialId == 16) {
             GameObject.Find("KumoLeft").GetComponent<KumoMove>().runFlg = true;
             GameObject.Find("KumoRight").GetComponent<KumoMove>().runFlg = true;
             GameObject.Find("KumoLeft").GetComponent<KumoMove>().tutorialDoneFlg = true;

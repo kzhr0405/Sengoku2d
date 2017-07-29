@@ -128,8 +128,9 @@ public class HPCounter : MonoBehaviour {
                         GameObject particleObj = Instantiate(Resources.Load(particlePath)) as GameObject;
                         particleObj.transform.SetParent(canvas.transform);
                         particleObj.transform.localPosition = new Vector2(0, 60);
+
                     }
-                    
+
                 } else {
 
                     if (targetTag == "Player") {

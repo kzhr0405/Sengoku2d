@@ -40,8 +40,7 @@ public class PlayerAttack : MonoBehaviour {
 				//Attack Adjustment
 				string enemyHeisyu = col.gameObject.GetComponent<Heisyu>().heisyu;
 				string playerHeisyu = this.gameObject.GetComponent<Heisyu>().heisyu;
-				if((playerHeisyu=="KB" && enemyHeisyu=="YR")||(playerHeisyu=="KB" && enemyHeisyu=="YM")
-				   ||(playerHeisyu=="YR" && enemyHeisyu=="TP")){
+				if((playerHeisyu=="KB" && enemyHeisyu=="YR")||(playerHeisyu=="YR" && enemyHeisyu=="TP")){
 					Damage = Damage * 2;
 				}
 

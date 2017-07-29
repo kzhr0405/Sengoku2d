@@ -7,12 +7,10 @@ public class MoveCamera : MonoBehaviour {
     public bool leftFlg = false;
     public GameObject cameraObj = null;
     public AutoAttack autoScript = null;
-    bool now = false;
+    public bool now = false;
     public float speed = 40.0f;
     public int maxRightX = 50;
     public int maxLeftX = -40;
-
-
 
     void Start () {
 		if(name=="Left") {
@@ -48,9 +46,11 @@ public class MoveCamera : MonoBehaviour {
 
     public void OnRD() {
         now = true;
+        cameraObj.GetComponent<CameraMove>().nowCameraMove = true;
     }
 
     public void OnRU() {
         now = false;
+        cameraObj.GetComponent<CameraMove>().nowCameraMove = false;
     }
 }

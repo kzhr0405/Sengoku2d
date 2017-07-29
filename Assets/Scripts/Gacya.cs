@@ -90,8 +90,7 @@ public class Gacya : MonoBehaviour {
                 busyoDamaGacyaBtn.transform.SetParent(GameObject.Find("UnderView").transform);
                 busyoDamaGacyaBtn.transform.localPosition = new Vector2(320,-300);
                 Destroy(busyoDamaGacyaBtn.transform.FindChild("point_up").gameObject);
-            }
-            else { 
+            }else { 
                 int busyoDama = PlayerPrefs.GetInt("busyoDama");
 			    if (busyoDama >= 100) {
 				    audioSources [8].Play ();
@@ -277,7 +276,10 @@ public class Gacya : MonoBehaviour {
 
 		//Touyou history
 		string touyouHst = PlayerPrefs.GetString("touyouHst");
-		BusyoInfoGet busyo = new BusyoInfoGet ();
+        if(Application.loadedLevelName == "tutorialTouyou") {
+            touyouHst = null;
+        }
+        BusyoInfoGet busyo = new BusyoInfoGet ();
 
 		if (touyouHst == null || touyouHst == "") {
 			//OK can touyou

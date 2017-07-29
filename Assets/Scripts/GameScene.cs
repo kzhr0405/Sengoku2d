@@ -51,7 +51,7 @@ public class GameScene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		//Sound
+        //Sound
         BGMSESwitch bgm = new BGMSESwitch();
         bgm.StopSEVolume();
         bgm.StopKassenBGMVolume();
@@ -76,16 +76,32 @@ public class GameScene : MonoBehaviour {
         PlayerPrefs.DeleteKey("pvpFlg");
         PlayerPrefs.Flush();
 
+        //Auto button
+        bool Auto2Flg = PlayerPrefs.GetBool("Auto2Flg");
+        if(Auto2Flg) {
+            GameObject.Find("AutoBtn").transform.FindChild("Num").GetComponent<Text>().text = "2";
+            GameObject.Find("AutoBtn").GetComponent<AutoAttack>().speed = 2;
+        }
+
         if (!pvpFlg) {
             if(GameObject.Find("PvPName")) {
                 Destroy(GameObject.Find("PvPName").gameObject);
             }
-            activeKuniId  = PlayerPrefs.GetInt("activeKuniId");
-		    activeStageId = PlayerPrefs.GetInt("activeStageId");
+            
 		    Stage stage = new Stage ();
 
-		    //Giveup button
-		    bool isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
+            //Giveup button
+            bool isAttackedFlg = false;
+            if (Application.loadedLevelName != "tutorialKassen") {
+                isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
+                activeKuniId = PlayerPrefs.GetInt("activeKuniId");
+                activeStageId = PlayerPrefs.GetInt("activeStageId");
+            }else {
+                isAttackedFlg = true;
+                activeKuniId = 1;
+                activeStageId = 10;
+            }
+
             if (isAttackedFlg) {
 			    GameObject.Find ("GiveupBtn").SetActive (false);
 
@@ -245,224 +261,230 @@ public class GameScene : MonoBehaviour {
 
 		/*プレイヤー配置*/
 		//ユーザ陣形データのロード
-		int jinkei =PlayerPrefs.GetInt("jinkei",0);
-		List<int> myBusyoList = new List<int> (); 
+		int jinkei =PlayerPrefs.GetInt("jinkei",1);
+		List<int> myBusyoList = new List<int> ();
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialKassen") {
+            //1.魚麟
+            if (jinkei == 1) {
+			    soudaisyo = PlayerPrefs.GetInt("soudaisyo1");
+			    if(PlayerPrefs.HasKey("1map1")){
+				    int mapId = 1;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio,0));
+			    }
+			    if(PlayerPrefs.HasKey("1map2")){
+				    int mapId = 2;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map7")){
+				    int mapId = 7;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map8")){
+				    int mapId = 8;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map11")){
+				    int mapId = 11;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map12")){
+				    int mapId = 12;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map13")){
+				    int mapId = 13;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map14")){
+				    int mapId = 14;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map17")){
+				    int mapId = 17;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map18")){
+				    int mapId = 18;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map21")){
+				    int mapId = 21;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("1map22")){
+				    int mapId = 22;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
 
-		//1.魚麟
-		if (jinkei == 1) {
-			soudaisyo = PlayerPrefs.GetInt("soudaisyo1");
-			if(PlayerPrefs.HasKey("1map1")){
-				int mapId = 1;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map2")){
-				int mapId = 2;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map7")){
-				int mapId = 7;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map8")){
-				int mapId = 8;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map11")){
-				int mapId = 11;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map12")){
-				int mapId = 12;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map13")){
-				int mapId = 13;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map14")){
-				int mapId = 14;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map17")){
-				int mapId = 17;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map18")){
-				int mapId = 18;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map21")){
-				int mapId = 21;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("1map22")){
-				int mapId = 22;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
 
 
+		    //2.鶴翼
+		    }else if(jinkei == 2){
+			    soudaisyo = PlayerPrefs.GetInt("soudaisyo2");
 
-		//2.鶴翼
-		}else if(jinkei == 2){
-			soudaisyo = PlayerPrefs.GetInt("soudaisyo2");
+			    if(PlayerPrefs.HasKey("2map3")){
+				    int mapId = 3;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map4")){
+				    int mapId = 4;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map5")){
+				    int mapId = 5;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map7")){
+				    int mapId = 7;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map8")){
+				    int mapId = 8;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map11")){
+				    int mapId = 11;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map12")){
+				    int mapId = 12;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map17")){
+				    int mapId = 17;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map18")){
+				    int mapId = 18;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map23")){
+				    int mapId = 23;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map24")){
+				    int mapId = 24;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("2map25")){
+				    int mapId = 25;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
 
-			if(PlayerPrefs.HasKey("2map3")){
-				int mapId = 3;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map4")){
-				int mapId = 4;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map5")){
-				int mapId = 5;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map7")){
-				int mapId = 7;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map8")){
-				int mapId = 8;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map11")){
-				int mapId = 11;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map12")){
-				int mapId = 12;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map17")){
-				int mapId = 17;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map18")){
-				int mapId = 18;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map23")){
-				int mapId = 23;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map24")){
-				int mapId = 24;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("2map25")){
-				int mapId = 25;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
+		    }
+		    //3.偃月
+		    else if(jinkei == 3){
+			    soudaisyo = PlayerPrefs.GetInt("soudaisyo3");
 
-		}
-		//3.偃月
-		else if(jinkei == 3){
-			soudaisyo = PlayerPrefs.GetInt("soudaisyo3");
+			    if(PlayerPrefs.HasKey("3map3")){
+				    int mapId = 3;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map7")){
+				    int mapId = 7;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map8")){
+				    int mapId = 8;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map9")){
+				    int mapId = 9;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map11")){
+				    int mapId = 11;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map12")){
+				    int mapId = 12;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map14")){
+				    int mapId = 14;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map15")){
+				    int mapId = 15;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map16")){
+				    int mapId = 16;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map20")){
+				    int mapId = 20;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map21")){
+				    int mapId = 21;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("3map25")){
+				    int mapId = 25;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+		    }
 
-			if(PlayerPrefs.HasKey("3map3")){
-				int mapId = 3;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map7")){
-				int mapId = 7;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map8")){
-				int mapId = 8;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map9")){
-				int mapId = 9;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map11")){
-				int mapId = 11;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map12")){
-				int mapId = 12;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map14")){
-				int mapId = 14;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map15")){
-				int mapId = 15;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map16")){
-				int mapId = 16;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map20")){
-				int mapId = 20;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map21")){
-				int mapId = 21;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("3map25")){
-				int mapId = 25;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-		}
+		    //4.雁行
+		    else if(jinkei == 4){
+			    soudaisyo = PlayerPrefs.GetInt("soudaisyo4");
 
-		//4.雁行
-		else if(jinkei == 4){
-			soudaisyo = PlayerPrefs.GetInt("soudaisyo4");
-
-			if(PlayerPrefs.HasKey("4map1")){
-				int mapId = 1;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map2")){
-				int mapId = 2;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map7")){
-				int mapId = 7;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map8")){
-				int mapId = 8;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map12")){
-				int mapId = 12;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map13")){
-				int mapId = 13;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map14")){
-				int mapId = 14;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map18")){
-				int mapId = 18;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map19")){
-				int mapId = 19;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map20")){
-				int mapId = 20;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map24")){
-				int mapId = 24;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-			if(PlayerPrefs.HasKey("4map25")){
-				int mapId = 25;
-				myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio));
-			}
-		}
+			    if(PlayerPrefs.HasKey("4map1")){
+				    int mapId = 1;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map2")){
+				    int mapId = 2;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map7")){
+				    int mapId = 7;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map8")){
+				    int mapId = 8;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map12")){
+				    int mapId = 12;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map13")){
+				    int mapId = 13;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map14")){
+				    int mapId = 14;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map18")){
+				    int mapId = 18;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map19")){
+				    int mapId = 19;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map20")){
+				    int mapId = 20;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map24")){
+				    int mapId = 24;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+			    if(PlayerPrefs.HasKey("4map25")){
+				    int mapId = 25;
+				    myBusyoList.Add(getStsAndMakeInstance(jinkei,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 0));
+			    }
+		    }
+        }else {
+            //retry tutorial
+            myBusyoList.Add(getStsAndMakeInstance(jinkei, 12, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, 19));
+            myBusyoList.Add(getStsAndMakeInstance(jinkei, 13, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, PlayerPrefs.GetInt("tutorialBusyo")));
+        }
 
 		//Saku
 		BusyoInfoGet info = new BusyoInfoGet();
@@ -475,7 +497,8 @@ public class GameScene : MonoBehaviour {
 			GameObject.Destroy(n.gameObject);
 		}
 
-		foreach(int busyoId in myBusyoList){
+        
+        foreach (int busyoId in myBusyoList){
 			GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
 
 			List<string> sakuList = new List<string>();
@@ -528,122 +551,120 @@ public class GameScene : MonoBehaviour {
                 float adjSpd = (float)sts.getSpd(busyoId, sakuBusyoLv)/10;
                 slot.GetComponent<Saku>().sakuBusyoSpeed = adjSpd;
             }
-
-
-
 		}
 
-		//Kengou
-		string kengouString = PlayerPrefs.GetString("kengouItem");
-		List<string> kengouList = new List<string> ();
-		char[] delimiterChars3 = {','};
-		kengouList = new List<string> (kengouString.Split (delimiterChars3));
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialKassen") {
+            //Kengou
+            string kengouString = PlayerPrefs.GetString("kengouItem");
+		    List<string> kengouList = new List<string> ();
+		    char[] delimiterChars3 = {','};
+		    kengouList = new List<string> (kengouString.Split (delimiterChars3));
 
-		for (int i=0; i<kengouList.Count; i++) {
-			int qty = int.Parse(kengouList[i]);
-			if(qty != 0){
-				GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
-				string kengouPath = "Prefabs/Saku/saku7";
-				GameObject sakuIcon = Instantiate (Resources.Load (kengouPath)) as GameObject;
-				sakuIcon.transform.SetParent (slot.transform);
-				sakuIcon.transform.localScale = new Vector2 (0.45f, 0.45f);
-				sakuIcon.GetComponent<Button>().enabled = false;
+		    for (int i=0; i<kengouList.Count; i++) {
+			    int qty = int.Parse(kengouList[i]);
+			    if(qty != 0){
+				    GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
+				    string kengouPath = "Prefabs/Saku/saku7";
+				    GameObject sakuIcon = Instantiate (Resources.Load (kengouPath)) as GameObject;
+				    sakuIcon.transform.SetParent (slot.transform);
+				    sakuIcon.transform.localScale = new Vector2 (0.45f, 0.45f);
+				    sakuIcon.GetComponent<Button>().enabled = false;
 
-				slot.transform.SetParent (content.transform);
-				slot.transform.localScale = new Vector2 (1, 1);
+				    slot.transform.SetParent (content.transform);
+				    slot.transform.localScale = new Vector2 (1, 1);
 
-				ItemInfo item = new ItemInfo();
-				int temp = i + 1;
-				string itemCd = "kengou" + temp.ToString();
-				string kengouName = item.getItemName(itemCd);
-				sakuIcon.transform.FindChild("sakuIconText").GetComponent<Text>().text = kengouName;
-				sakuIcon.transform.FindChild("sakuIconText").transform.localScale = new Vector2 (0.35f,0.35f);
+				    ItemInfo item = new ItemInfo();
+				    int temp = i + 1;
+				    string itemCd = "kengou" + temp.ToString();
+				    string kengouName = item.getItemName(itemCd);
+				    sakuIcon.transform.FindChild("sakuIconText").GetComponent<Text>().text = kengouName;
+				    sakuIcon.transform.FindChild("sakuIconText").transform.localScale = new Vector2 (0.35f,0.35f);
 
-				slot.GetComponent<Saku>().sakuId = 7;
+				    slot.GetComponent<Saku>().sakuId = 7;
 
-				int effect = item.getItemEffect(itemCd);
-				slot.GetComponent<Saku>().sakuEffect = effect;
-				slot.GetComponent<Saku>().kengouCd = itemCd;
-				slot.GetComponent<Saku>().kengouQty = qty;
-				slot.GetComponent<Saku>().kengouName = kengouName;
-			}
-		}
+				    int effect = item.getItemEffect(itemCd);
+				    slot.GetComponent<Saku>().sakuEffect = effect;
+				    slot.GetComponent<Saku>().kengouCd = itemCd;
+				    slot.GetComponent<Saku>().kengouQty = qty;
+				    slot.GetComponent<Saku>().kengouName = kengouName;
+			    }
+		    }
 
 
-		//Nanban
-		string nanbanString = PlayerPrefs.GetString("nanbanItem");
-		List<string> nanbanList = new List<string> ();
-		nanbanList = new List<string> (nanbanString.Split (delimiterChars3));
+		    //Nanban
+		    string nanbanString = PlayerPrefs.GetString("nanbanItem");
+		    List<string> nanbanList = new List<string> ();
+		    nanbanList = new List<string> (nanbanString.Split (delimiterChars3));
 
-		for (int i=0; i<nanbanList.Count; i++) {
-			int qty = int.Parse(nanbanList[i]);
-			if(qty != 0){
-				GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
+		    for (int i=0; i<nanbanList.Count; i++) {
+			    int qty = int.Parse(nanbanList[i]);
+			    if(qty != 0){
+				    GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
 
-				string nanbanPath = "";
-				if(i==0){
-					nanbanPath = "Prefabs/Saku/saku8";
-				}else if(i==1){
-					nanbanPath = "Prefabs/Saku/saku9";
-				}else if(i==2){
-					nanbanPath = "Prefabs/Saku/saku10";
-				}
+				    string nanbanPath = "";
+				    if(i==0){
+					    nanbanPath = "Prefabs/Saku/saku8";
+				    }else if(i==1){
+					    nanbanPath = "Prefabs/Saku/saku9";
+				    }else if(i==2){
+					    nanbanPath = "Prefabs/Saku/saku10";
+				    }
 
-				GameObject sakuIcon = Instantiate (Resources.Load (nanbanPath)) as GameObject;
-				sakuIcon.transform.SetParent (slot.transform);
-				sakuIcon.transform.localScale = new Vector2 (0.45f, 0.45f);
-				sakuIcon.GetComponent<Button>().enabled = false;
+				    GameObject sakuIcon = Instantiate (Resources.Load (nanbanPath)) as GameObject;
+				    sakuIcon.transform.SetParent (slot.transform);
+				    sakuIcon.transform.localScale = new Vector2 (0.45f, 0.45f);
+				    sakuIcon.GetComponent<Button>().enabled = false;
 				
-				slot.transform.SetParent (content.transform);
-				slot.transform.localScale = new Vector2 (1, 1);
+				    slot.transform.SetParent (content.transform);
+				    slot.transform.localScale = new Vector2 (1, 1);
 
-				if(i==0){
-					slot.GetComponent<Saku>().sakuId = 8;
-				}else if(i==1){
-					slot.GetComponent<Saku>().sakuId = 9;
-				}else if(i==2){
-					slot.GetComponent<Saku>().sakuId = 10;
-				}
+				    if(i==0){
+					    slot.GetComponent<Saku>().sakuId = 8;
+				    }else if(i==1){
+					    slot.GetComponent<Saku>().sakuId = 9;
+				    }else if(i==2){
+					    slot.GetComponent<Saku>().sakuId = 10;
+				    }
 
-				int temp = i + 1;
-				ItemInfo item = new ItemInfo();
-				string itemCd = "nanban" + temp.ToString();
-				int effect = item.getItemEffect(itemCd);
-				slot.GetComponent<Saku>().sakuEffect = effect;
+				    int temp = i + 1;
+				    ItemInfo item = new ItemInfo();
+				    string itemCd = "nanban" + temp.ToString();
+				    int effect = item.getItemEffect(itemCd);
+				    slot.GetComponent<Saku>().sakuEffect = effect;
 
 
-				if(i == 2){
-					//teppou youhei
-					slot.GetComponent<Saku>().sakuHeisyu = "TP";
-					//Hei Status
-					string heiId = "hei" + soudaisyo.ToString();
-					string chParam = PlayerPrefs.GetString(heiId,"0");
-                    if (chParam == "0") {
-                        StatusGet statusScript = new StatusGet();
-                        string heisyu = statusScript.getHeisyu(soudaisyo);
-                        chParam = heisyu + ":1:1:1";
-                        PlayerPrefs.SetString(heiId, chParam);
-                        PlayerPrefs.Flush();
-                    }
-                    if (chParam.Contains(":")) {
-                        char[] delimiterChars = { ':' };
-                        string[] ch_list = chParam.Split(delimiterChars);
-                        slot.GetComponent<Saku>().sakuHeiSts = float.Parse(ch_list[3]);
-                    }
-                    else {
-                        slot.GetComponent<Saku>().sakuHeiSts = 1;
-                    }
-                    slot.GetComponent<Saku>().sakuBusyoId =  soudaisyo;
+				    if(i == 2){
+					    //teppou youhei
+					    slot.GetComponent<Saku>().sakuHeisyu = "TP";
+					    //Hei Status
+					    string heiId = "hei" + soudaisyo.ToString();
+					    string chParam = PlayerPrefs.GetString(heiId,"0");
+                        if (chParam == "0") {
+                            StatusGet statusScript = new StatusGet();
+                            string heisyu = statusScript.getHeisyu(soudaisyo);
+                            chParam = heisyu + ":1:1:1";
+                            PlayerPrefs.SetString(heiId, chParam);
+                            PlayerPrefs.Flush();
+                        }
+                        if (chParam.Contains(":")) {
+                            char[] delimiterChars = { ':' };
+                            string[] ch_list = chParam.Split(delimiterChars);
+                            slot.GetComponent<Saku>().sakuHeiSts = float.Parse(ch_list[3]);
+                        }
+                        else {
+                            slot.GetComponent<Saku>().sakuHeiSts = 1;
+                        }
+                        slot.GetComponent<Saku>().sakuBusyoId =  soudaisyo;
 					
-					//Busyo Speed
-					int sakuBusyoLv = PlayerPrefs.GetInt(soudaisyo.ToString());
-                    float adjSpd = (float)sts.getSpd(soudaisyo, sakuBusyoLv) / 10;
-                    slot.GetComponent<Saku>().sakuBusyoSpeed = adjSpd;
-				}
+					    //Busyo Speed
+					    int sakuBusyoLv = PlayerPrefs.GetInt(soudaisyo.ToString());
+                        float adjSpd = (float)sts.getSpd(soudaisyo, sakuBusyoLv) / 10;
+                        slot.GetComponent<Saku>().sakuBusyoSpeed = adjSpd;
+				    }
 
-			}
-		}
-
+			    }
+		    }
+        }
 
 
         /*エネミー配置*/
@@ -936,15 +957,20 @@ public class GameScene : MonoBehaviour {
 
 
 
-	public int getStsAndMakeInstance(int jinkei, int mapId, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio){
+	public int getStsAndMakeInstance(int jinkei, int mapId, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio, int tutorialBusyoId){
 
 		String map = jinkei.ToString() + "map" + mapId;
-		//Get Status
-		int busyoId = PlayerPrefs.GetInt(map);
-		
-		string busyoString = busyoId.ToString();
-		int lv =PlayerPrefs.GetInt(busyoString);
-
+        //Get Status
+        int busyoId = 0;
+        int lv = 1;
+        if (tutorialBusyoId == 0) {
+		    busyoId = PlayerPrefs.GetInt(map);
+            string busyoString = busyoId.ToString();
+            lv = PlayerPrefs.GetInt(busyoString);
+        }else {
+            busyoId = tutorialBusyoId;
+        }
+        
 		StatusGet sts = new StatusGet ();
 		int hp = sts.getHp (busyoId, lv);
 		int atk = sts.getAtk (busyoId, lv);
@@ -1332,8 +1358,14 @@ public class GameScene : MonoBehaviour {
 
 	public void makeShiroTorideObject(){
 
-		//Shiro
-		int shiroLv = PlayerPrefs.GetInt("pSRLv");
+        //Shiro
+        //Tutorial
+        int shiroLv = 1;
+        if (Application.loadedLevelName != "tutorialKassen") {
+            shiroLv = PlayerPrefs.GetInt("pSRLv");
+        }else {
+            shiroLv = 20;
+        }
 		string objPath = "Prefabs/Kassen/pShiro";
 		GameObject shiroObj = Instantiate(Resources.Load (objPath)) as GameObject;
 		shiroObj.transform.localScale = new Vector2 (2,1.5f);

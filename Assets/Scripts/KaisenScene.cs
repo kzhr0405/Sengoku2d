@@ -52,6 +52,13 @@ public class KaisenScene : MonoBehaviour {
 
         }
 
+        //Auto button
+        bool Auto2Flg = PlayerPrefs.GetBool("Auto2Flg");
+        if (Auto2Flg) {
+            GameObject.Find("AutoBtn").transform.FindChild("Num").GetComponent<Text>().text = "2";
+            GameObject.Find("AutoBtn").GetComponent<AutoAttack>().speed = 2;
+        }
+
         //Dinamic Map
         activeKuniId = PlayerPrefs.GetInt("activeKuniId");
         activeStageId = PlayerPrefs.GetInt("activeStageId");

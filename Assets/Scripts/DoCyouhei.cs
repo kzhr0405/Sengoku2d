@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
-
+using UnityEngine.UI;
 
 public class DoCyouhei : MonoBehaviour {
 
@@ -90,12 +90,43 @@ public class DoCyouhei : MonoBehaviour {
             }
 			msg.makeMessage(OKtext);
 
-			//Reload
-			//Close Board
-			GameObject.Find ("close").GetComponent<CloseBoard>().onClick();
-			RonkouScene ronkou = new RonkouScene();
-			ronkou.createBusyoStatusView(busyoId);
+            //Reload
+            //Close Board
+            if (Application.loadedLevelName != "tutorialBusyo") {
+                GameObject.Find ("close").GetComponent<CloseBoard>().onClick();
+			    RonkouScene ronkou = new RonkouScene();
+			    ronkou.createBusyoStatusView(busyoId);
+            }else {
+                Destroy(GameObject.Find("Back(Clone)").gameObject);
+                Destroy(GameObject.Find("board(Clone)").gameObject);
+                GameObject ChildQtyValue = GameObject.Find("ChildQtyValue").gameObject;
+                ChildQtyValue.GetComponent<Text>().text = "2";
+                //Set Parametor
+                PlayerPrefs.SetInt("tutorialId", 11);
+                PlayerPrefs.Flush();
+                TutorialController tutorialScript = new TutorialController();
+                Vector2 vect = new Vector2(50, 200);
+                GameObject anim = tutorialScript.SetFadeoutPointer(ChildQtyValue, vect);
+                anim.transform.localScale = new Vector2(500, 500);
 
-		}
+                Color enabledColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+                GameObject btn = GameObject.Find("ButtonKunren").gameObject;
+                btn.GetComponent<Button>().enabled = true;
+                btn.GetComponent<Image>().color = enabledColor;
+                btn.transform.FindChild("Text").GetComponent<Text>().color = enabledColor;
+
+                GameObject ButaiStatus = GameObject.Find("ButaiStatus").gameObject;
+                GameObject BusyoStatus = GameObject.Find("BusyoStatus").gameObject;
+                ButaiStatus.transform.SetParent(BusyoStatus.transform);
+                
+                GameObject Button = GameObject.Find("Panel").transform.FindChild("Button").gameObject;
+                GameObject tBack = GameObject.Find("tBack").gameObject;
+                Button.transform.SetParent(tBack.transform);
+                Vector2 vect2 = new Vector2(0, 50);
+                GameObject animPoint = tutorialScript.SetPointer(Button, vect2);
+                animPoint.transform.localScale = new Vector2(200, 200);
+            }
+
+        }
 	}	
 }

@@ -16,7 +16,7 @@ public class MainStageController : MonoBehaviour {
 	public int nowHyourou;
 	public bool doneCyosyuFlg = false;
 	public double cyosyuMstTime = 10800;
-    public int mstHour = 6;
+    public int mstHour = 3;
     public int myDaimyo;
 	public int myKuniQty = 0;
 	public GameObject currentHyourou;
@@ -27,6 +27,10 @@ public class MainStageController : MonoBehaviour {
     public int minusBusyoQty = 0;
     public float minustPercent = 50;
     public bool hardFlg;
+
+    //Season
+    public bool seasonChangedFlg = false;
+    public int nowSeason;
 
     //Event 
     public float rdmEventTimer;
@@ -55,6 +59,10 @@ public class MainStageController : MonoBehaviour {
 
     public void Start () {
 
+        //test
+        //cyosyuMstTime = 3;
+        
+
         Resources.UnloadUnusedAssets();
         tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         
@@ -75,36 +83,22 @@ public class MainStageController : MonoBehaviour {
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
 
-        //Data Initialization
-        //DataMaker data = new DataMaker ();
-        //data.Start ();
-
-        /*Initial Data*/
-        //bool initDataFlg = PlayerPrefs.GetBool ("initDataFlg");
-        //if (initDataFlg == false) {
-        //my daimyo
-        //InitDataMaker initData = new InitDataMaker ();
-        //initData.makeInitData ();
-        //}
-
         //Timer
         timerObj = GameObject.Find("TimerValue").gameObject;
 
 		//SE
 		audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [5].Play ();
-		//AudioSource[] bgmSources = GameObject.Find ("BGMController").GetComponents<AudioSource> ();
-		//bgmSources [1].Stop ();
-		//bgmSources [0].Play();
 
         //Reward
-        if(GameObject.Find("DataStore")) {
-            DataReward DataReward = GameObject.Find("DataStore").GetComponent<DataReward>();
-            if (DataReward.itemGrpList.Count > 0) {
-                reward.SetActive(true);
+        if (Application.loadedLevelName != "tutorialMain") {
+            if (GameObject.Find("DataStore")) {
+                DataReward DataReward = GameObject.Find("DataStore").GetComponent<DataReward>();
+                if (DataReward.itemGrpList.Count > 0) {
+                    reward.SetActive(true);
+                }
             }
-        } 
-
+        }
 
 		/*--------------------*/
 		/*Game Over*/
@@ -134,16 +128,28 @@ public class MainStageController : MonoBehaviour {
 				int kuniLv = PlayerPrefs.GetInt ("kuniLv");
 				int money = PlayerPrefs.GetInt ("money");
 				int busyoDama = PlayerPrefs.GetInt ("busyoDama");
-				bool soubujireiFlg = PlayerPrefs.GetBool ("soubujireiFlg");
+                bool soubujireiFlg = false;
+                if (Application.loadedLevelName != "tutorialMain") {
+                    soubujireiFlg = PlayerPrefs.GetBool ("soubujireiFlg");
+                }
 				GameObject.Find ("KuniLvValue").GetComponent<Text> ().text = kuniLv.ToString ();
 				GameObject.Find ("MoneyValue").GetComponent<Text> ().text = money.ToString ();
 				GameObject.Find ("BusyoDamaValue").GetComponent<Text> ().text = busyoDama.ToString ();
 
-				myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
+                if (Application.loadedLevelName != "tutorialMain") {
+                    myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
+                }else {
+                    myDaimyo = 1;
+                }
 				string myDaimyoName = daimyo.getName (myDaimyo);
 				GameObject.Find ("DaimyoValue").GetComponent<Text> ().text = myDaimyoName;
 
-				int syogunDaimyoId = PlayerPrefs.GetInt ("syogunDaimyoId");
+                int syogunDaimyoId = 0;
+                if (Application.loadedLevelName != "tutorialMain") {
+                    syogunDaimyoId = PlayerPrefs.GetInt ("syogunDaimyoId");
+                }else {
+                    syogunDaimyoId = 14; //ashikaga
+                }
 				if (syogunDaimyoId != myDaimyo) {
 					if (GameObject.Find ("Bakuhu")) {
 						GameObject.Find ("Bakuhu").gameObject.SetActive (false);
@@ -156,7 +162,9 @@ public class MainStageController : MonoBehaviour {
                     Resources.Load(myDaimyoStatusPath, typeof(Sprite)) as Sprite;
 
                 //Mode
-                hardFlg = PlayerPrefs.GetBool("hardFlg");
+                if (Application.loadedLevelName != "tutorialMain") {
+                    hardFlg = PlayerPrefs.GetBool("hardFlg");
+                }
                 string modeString = "";
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                     if (hardFlg) {
@@ -204,10 +212,15 @@ public class MainStageController : MonoBehaviour {
                         }
                     }
                 }
-                
-                //Kuni List
-                string openKuni = PlayerPrefs.GetString ("openKuni");
 
+                //Kuni List
+                string openKuni = "";
+                if (Application.loadedLevelName != "tutorialMain") {
+                    openKuni = PlayerPrefs.GetString ("openKuni");
+                }else {
+                    openKuni = "1,2,3,4";
+                }
+                
 				List<string> openKuniList = new List<string> ();
 				char[] delimiterChars = {','};
 				if (openKuni != null && openKuni != "") {
@@ -220,9 +233,15 @@ public class MainStageController : MonoBehaviour {
 
 				GameObject kuniIconView = GameObject.Find ("KuniIconView");
 
-				string clearedKuni = PlayerPrefs.GetString ("clearedKuni");
+                string clearedKuni = "";
+                if (Application.loadedLevelName != "tutorialMain") {
+                    clearedKuni = PlayerPrefs.GetString("clearedKuni");
+                }else {
+                    clearedKuni = "1";
+                }
 
-				List<string> clearedKuniList = new List<string> ();
+
+                List<string> clearedKuniList = new List<string> ();
 				if (clearedKuni != null && clearedKuni != "") {
 					if (clearedKuni.Contains (",")) {
 						clearedKuniList = new List<string> (clearedKuni.Split (delimiterChars));
@@ -234,9 +253,15 @@ public class MainStageController : MonoBehaviour {
 				/*View Every Kuni by Master*/
 				GameObject KuniMap = GameObject.Find ("KuniMap");
 
-				//Seiryoku Default Setting
-				string seiryoku = PlayerPrefs.GetString ("seiryoku");
-				List<string> seiryokuList = new List<string> ();
+                //Seiryoku Default Setting
+                string seiryoku = "";
+                if (Application.loadedLevelName != "tutorialMain") {
+                    seiryoku = PlayerPrefs.GetString ("seiryoku");
+                }else {
+                    seiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
+                }
+                
+                List<string> seiryokuList = new List<string> ();
 				seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
 
 				//Count my Kuni QTY
@@ -249,7 +274,10 @@ public class MainStageController : MonoBehaviour {
 
 				//My Doumei
 				Color doumeiColor = new Color (100f / 255f, 130f / 255f, 255f / 255f, 255f / 255f); //Blue
-				string myDoumei = PlayerPrefs.GetString ("doumei");
+                string myDoumei = "";
+                if (Application.loadedLevelName != "tutorialMain") {
+                    myDoumei = PlayerPrefs.GetString ("doumei");
+                }
 				List<string> myDoumeiList = new List<string> ();
 				if (myDoumei != null && myDoumei != "") {
 					if (myDoumei.Contains (",")) {
@@ -400,11 +428,7 @@ public class MainStageController : MonoBehaviour {
 							int cyouhouSnbRankId = PlayerPrefs.GetInt (cyouhouTmp);
 							kuni.GetComponent<SendParam> ().cyouhouSnbRankId = cyouhouSnbRankId;
 						}
-
 					}
-
-
-
 				}
 
 				//Color Change for kuni icon "Open but never cleared"
@@ -464,11 +488,13 @@ public class MainStageController : MonoBehaviour {
 
                     }else {
                         //random kick event
-                        if(tutorialDoneFlg) {
-                            int rdmId = UnityEngine.Random.Range(1, 11);
-                            if(rdmId >= 5) {
-                                MainEventHandler gameEvent = new MainEventHandler();
-                                gameEvent.mainHandler();
+                        if(tutorialDoneFlg && Application.loadedLevelName != "tutorialMain") {
+                            if (!eventStopFlg) {
+                                int rdmId = UnityEngine.Random.Range(1, 11);
+                                if(rdmId >= 5) {
+                                    MainEventHandler gameEvent = new MainEventHandler();
+                                    gameEvent.mainHandler();
+                                }
                             }
                         }
                     }
@@ -592,144 +618,120 @@ public class MainStageController : MonoBehaviour {
 				}
                 
 
-                changerableByTime ();
-
-
-
-
-
+                changerableByTime ();                
 			}
 		}
 	}	
 
 	void Update(){
 
-		if (!gameClearFlg) {
-			if (!gameOverFlg) {
-				//Hyourou Check
-				if (hyourouFull == true) {
-					nowHyourou = int.Parse (currentHyourou.GetComponent<Text> ().text);
-					if (nowHyourou < hyourouMax) {
-						hyourouFull = false;
-					}
+        if(tutorialDoneFlg && Application.loadedLevelName != "tutorialMain") {
+		    if (!gameClearFlg) {
+			    if (!gameOverFlg) {
+				    //Hyourou Check
+				    if (hyourouFull == true) {
+					    nowHyourou = int.Parse (currentHyourou.GetComponent<Text> ().text);
+					    if (nowHyourou < hyourouMax) {
+						    hyourouFull = false;
+					    }
 
-					//Hyourou Count Down
-				} else if (hyourouFull == false) {
+					    //Hyourou Count Down
+				    } else if (hyourouFull == false) {
 
-					timer -= Time.deltaTime;
+					    timer -= Time.deltaTime;
 				
-					if (timer > 0.0f) {
-						//On Play
-						timerObj.GetComponent<Text> ().text = ((int)timer).ToString ();
+					    if (timer > 0.0f) {
+						    //On Play
+						    timerObj.GetComponent<Text> ().text = ((int)timer).ToString ();
 					
-					} else {
+					    } else {
 
-						//Add Hyourou
-						int hyourou = int.Parse (GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text);
-						hyourou = hyourou + 1;
+						    //Add Hyourou
+						    int hyourou = int.Parse (GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text);
+						    hyourou = hyourou + 1;
 
-						if (hyourou >= hyourouMax) {
-							hyourouFull = true;
-						}
+						    if (hyourou >= hyourouMax) {
+							    hyourouFull = true;
+						    }
 
-						GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = hyourou.ToString ();
-						PlayerPrefs.SetInt ("hyourou", hyourou);
-						System.DateTime now = System.DateTime.Now;
-						PlayerPrefs.SetString ("lasttime", now.ToString ());
-						PlayerPrefs.Flush ();
+						    GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = hyourou.ToString ();
+						    PlayerPrefs.SetInt ("hyourou", hyourou);
+						    System.DateTime now = System.DateTime.Now;
+						    PlayerPrefs.SetString ("lasttime", now.ToString ());
+						    PlayerPrefs.Flush ();
 					
-						//Reset
-						timerObj.GetComponent<Text> ().text = "180";
-						timer = 180;
+						    //Reset
+						    timerObj.GetComponent<Text> ().text = "180";
+						    timer = 180;
 
-					}	
-				}
+					    }	
+				    }
 
-				//Year & Season
-				yearTimer -= Time.deltaTime;
-				if (yearTimer <= 0.0f) {
-					//Season Change
-					string yearSeason = PlayerPrefs.GetString ("yearSeason");
-					char[] delimiterChars = { ',' };
-					string[] yearSeasonList = yearSeason.Split (delimiterChars);
-					int nowYear = int.Parse (yearSeasonList [0]);
-					int nowSeason = int.Parse (yearSeasonList [1]);
+				    //Year & Season
+                    if(!seasonChangedFlg) {
+				        yearTimer -= Time.deltaTime;
+				        if (yearTimer <= 0.0f) {
 
-					if (nowSeason == 4) {
-						nowYear = nowYear + 1;
-						nowSeason = 1;
-					} else {
-						nowSeason = nowSeason + 1;
-					}
+                            //check
+                            bool boardCheckFlg = false;
+                            GameObject[] boards = GameObject.FindGameObjectsWithTag("Board");
+                            GameObject[] onBoards = GameObject.FindGameObjectsWithTag("OnBoard");
+                            if (boards.Length > 0 || onBoards.Length > 0) boardCheckFlg = true;
 
-					string newYearSeason = nowYear.ToString () + "," + nowSeason.ToString ();
-					PlayerPrefs.DeleteKey ("bakuhuTobatsuDaimyoId");
-					PlayerPrefs.SetString ("yearSeason", newYearSeason);	
-					
-					string lastSeasonChangeTime = System.DateTime.Now.ToString ();
-					PlayerPrefs.SetString ("lastSeasonChangeTime", lastSeasonChangeTime);
-					PlayerPrefs.SetBool ("doneCyosyuFlg", false);
-					doneCyosyuFlg = false;
-					PlayerPrefs.DeleteKey ("usedBusyo");
-                    DoNextSeason DoNextSeason = new DoNextSeason();
-                    DoNextSeason.deleteLinkCut();
-                    DoNextSeason.deleteWinOver();
-                    PlayerPrefs.Flush ();
-
-					//Change Label
-					GameObject.Find ("YearValue").GetComponent<Text> ().text = nowYear.ToString ();			
-					SetSeason (nowSeason);
-
-					yearTimer = cyosyuMstTime;
-				}
-			
-				if (!doneCyosyuFlg) {
-					GameObject.Find ("SeiryokuInfo").transform.FindChild ("Ex").GetComponent<Image> ().enabled = true;
-				} else {
-					GameObject.Find ("SeiryokuInfo").transform.FindChild ("Ex").GetComponent<Image> ().enabled = false;
-				}
+                            if (!boardCheckFlg) {
+                                //Season Change
+                                eventStopFlg = true;
+                                seasonChangedFlg = true;
+                                doneCyosyuFlg = false;
+                                PlayerPrefs.SetBool("doneCyosyuFlg", false);
+                                PlayerPrefs.Flush();
+                                SeasonChange();                        
+                                yearTimer = cyosyuMstTime;
+                            }
+                        }
+			    
+                    }
 
 
-				//Date Change Check
-				lastLoginDateString = PlayerPrefs.GetString ("loginDate");
-				if (lastLoginDateString == null || lastLoginDateString == "") {
-					lastLoginDateString = System.DateTime.Today.ToString ();
-					PlayerPrefs.SetString ("loginDate", lastLoginDateString);
-					PlayerPrefs.SetBool ("questDailyFlg14", true);
-					PlayerPrefs.Flush ();
-				}
-				System.DateTime loginDate = System.DateTime.Parse (lastLoginDateString);
-				System.TimeSpan loginSpan = System.DateTime.Today - loginDate;
-				double loginSpanDay = loginSpan.TotalDays;
+				    //Date Change Check
+				    lastLoginDateString = PlayerPrefs.GetString ("loginDate");
+				    if (lastLoginDateString == null || lastLoginDateString == "") {
+					    lastLoginDateString = System.DateTime.Today.ToString ();
+					    PlayerPrefs.SetString ("loginDate", lastLoginDateString);
+					    PlayerPrefs.SetBool ("questDailyFlg14", true);
+					    PlayerPrefs.Flush ();
+				    }
+				    System.DateTime loginDate = System.DateTime.Parse (lastLoginDateString);
+				    System.TimeSpan loginSpan = System.DateTime.Today - loginDate;
+				    double loginSpanDay = loginSpan.TotalDays;
 
-				if (loginSpanDay >= 1) {
-					//Change Date
-					//Quest Flg Change
-					List<int> dailyQuestList = new List<int> ();
+				    if (loginSpanDay >= 1) {
+					    //Change Date
+					    //Quest Flg Change
+					    List<int> dailyQuestList = new List<int> ();
 
-					//Quest Data Orderby
-					Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
-					for (int i = 0; i < questMst.param.Count; i++) {
-						bool dailyFlg = questMst.param [i].daily;
+					    //Quest Data Orderby
+					    Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
+					    for (int i = 0; i < questMst.param.Count; i++) {
+						    bool dailyFlg = questMst.param [i].daily;
 
-						if (dailyFlg) {
-							string tmp = "questDailyFlg" + i.ToString ();
-							string tmp2 = "questDailyReceivedFlg" + i.ToString ();
+						    if (dailyFlg) {
+							    string tmp = "questDailyFlg" + i.ToString ();
+							    string tmp2 = "questDailyReceivedFlg" + i.ToString ();
 
-							PlayerPrefs.DeleteKey (tmp);
-							PlayerPrefs.DeleteKey (tmp2);
-						}
-					}
+							    PlayerPrefs.DeleteKey (tmp);
+							    PlayerPrefs.DeleteKey (tmp2);
+						    }
+					    }
 
-					lastLoginDateString = System.DateTime.Today.ToString ();
-					PlayerPrefs.SetString ("loginDate", lastLoginDateString);
+					    lastLoginDateString = System.DateTime.Today.ToString ();
+					    PlayerPrefs.SetString ("loginDate", lastLoginDateString);
 
-					PlayerPrefs.SetBool ("questDailyFlg14", true);
-					PlayerPrefs.Flush ();
-				}
+					    PlayerPrefs.SetBool ("questDailyFlg14", true);
+					    PlayerPrefs.Flush ();
+				    }
 
-                //Event Handler
-                if (tutorialDoneFlg) {
+                    //Event Handler                
                     if(!eventStopFlg) {
                         rdmEventTimer -= Time.deltaTime;
 				        if (rdmEventTimer <= 0) {
@@ -742,16 +744,17 @@ public class MainStageController : MonoBehaviour {
 				        PlayerPrefs.SetFloat ("rdmEventTimer", rdmEventTimer);
 				        PlayerPrefs.Flush ();
                     }
-                }
-			}
-		} else {
-			remainClearTime-= Time.deltaTime;
-			if (remainClearTime <= 0) {
-				audioSources [5].Play ();
+                
+			    }
+		    } else {
+			    remainClearTime-= Time.deltaTime;
+			    if (remainClearTime <= 0) {
+				    audioSources [5].Play ();
 
-				SceneManager.LoadScene ("clearOrGameOver");
-			}
-		}
+				    SceneManager.LoadScene ("clearOrGameOver");
+			    }
+		    }
+        }
 	}
 
 	public void SetSeason(int seasonId){
@@ -1020,281 +1023,265 @@ public class MainStageController : MonoBehaviour {
 
 		string[] yearSeasonList = yearSeason.Split (delimiterChars);
 		int nowYear = int.Parse (yearSeasonList [0]);
-		int nowSeason = int.Parse (yearSeasonList [1]);
-		if (scSpanHour >= mstHour) {
-			int seasonPastCount = (int)scSpanHour / mstHour;
+		nowSeason = int.Parse (yearSeasonList [1]);
+        //        if (scSpanHour >= mstHour) {
 
+        //check
+        bool boardCheckFlg = false;
+        GameObject[] boards = GameObject.FindGameObjectsWithTag("Board");
+        GameObject[] onBoards = GameObject.FindGameObjectsWithTag("OnBoard");
+        if (boards.Length > 0 || onBoards.Length > 0) boardCheckFlg = true;
 
-			int amari = (int)scSpanSec - (seasonPastCount * (int)cyosyuMstTime);
-			for (int i = 1; i <= seasonPastCount; i++) {
-				if (nowSeason == 4) {
-					nowYear = nowYear + 1;
-					nowSeason = 1;
-				} else {
-					nowSeason = nowSeason + 1;
-				}
-			}
-
-			yearTimer = cyosyuMstTime - amari;
-
-			string newYearSeason = nowYear.ToString () + "," + nowSeason.ToString ();
-			PlayerPrefs.DeleteKey ("bakuhuTobatsuDaimyoId");
-			PlayerPrefs.SetString ("yearSeason", newYearSeason);	
-
-			lastSeasonChangeTime = System.DateTime.Now.ToString ();
-			PlayerPrefs.SetString ("lastSeasonChangeTime", lastSeasonChangeTime);
-			PlayerPrefs.SetBool ("doneCyosyuFlg", false);
-			PlayerPrefs.SetString ("yearSeason", newYearSeason);
-			PlayerPrefs.DeleteKey ("usedBusyo");
-            DoNextSeason DoNextSeason = new DoNextSeason();
-            DoNextSeason.deleteLinkCut();
-            DoNextSeason.deleteWinOver();
-            PlayerPrefs.Flush ();
-
-		} else {
-			yearTimer = cyosyuMstTime - scSpanSec;
+        if (scSpanHour >= mstHour) {
+        //if (scSpanHour >= 0) {//test
+            if (!boardCheckFlg) {
+                eventStopFlg = true;
+                seasonChangedFlg = true;
+                doneCyosyuFlg = false;
+                PlayerPrefs.SetBool("doneCyosyuFlg", false);
+                PlayerPrefs.Flush();
+                SeasonChange();
+                yearTimer = cyosyuMstTime;
+            }
+        }else {
+            seasonChangedFlg = false;
+            yearTimer = cyosyuMstTime - scSpanSec;
 		}
 
 		GameObject.Find ("YearValue").GetComponent<Text> ().text = nowYear.ToString ();
 		SetSeason (nowSeason);
 
 
-		doneCyosyuFlg = PlayerPrefs.GetBool ("doneCyosyuFlg");
-		if (!doneCyosyuFlg) {
-			GameObject.Find ("SeiryokuInfo").transform.FindChild ("Ex").GetComponent<Image> ().enabled = true;
-		} else {
-			GameObject.Find ("SeiryokuInfo").transform.FindChild ("Ex").GetComponent<Image> ().enabled = false;
-		}
 
-		/*Year & Season End*/
+        /*Year & Season End*/
 
 
-		/*--------------------*/
-		/*Gunzei*/
-		/*--------------------*/
-		string keyHistory = PlayerPrefs.GetString ("keyHistory");
-		List<string> keyHistoryList = new List<string> ();
-		if (keyHistory != null && keyHistory != "") {
-			if (keyHistory.Contains (",")) {
-				keyHistoryList = new List<string> (keyHistory.Split (delimiterChars));
-			} else {
-				keyHistoryList.Add (keyHistory);
-			}
-		}
+        /*--------------------*/
+        /*Gunzei*/
+        /*--------------------*/
+        if (tutorialDoneFlg && Application.loadedLevelName != "tutorialMain") {
+            string keyHistory = PlayerPrefs.GetString ("keyHistory");
+		    List<string> keyHistoryList = new List<string> ();
+		    if (keyHistory != null && keyHistory != "") {
+			    if (keyHistory.Contains (",")) {
+				    keyHistoryList = new List<string> (keyHistory.Split (delimiterChars));
+			    } else {
+				    keyHistoryList.Add (keyHistory);
+			    }
+		    }
 
-		for (int n = 0; n < keyHistoryList.Count; n++) {
-			string keyTemp = keyHistoryList [n];
-			bool ExistFlg = false;
-			foreach (GameObject obs in  GameObject.FindGameObjectsWithTag("Gunzei")){
-				if(obs.name == keyTemp){
-					ExistFlg = true;
-				}
-			}
-			if (!ExistFlg) {
+		    for (int n = 0; n < keyHistoryList.Count; n++) {
+			    string keyTemp = keyHistoryList [n];
+			    bool ExistFlg = false;
+			    foreach (GameObject obs in  GameObject.FindGameObjectsWithTag("Gunzei")){
+				    if(obs.name == keyTemp){
+					    ExistFlg = true;
+				    }
+			    }
+			    if (!ExistFlg) {
 
-				if (PlayerPrefs.HasKey (keyTemp)) {
-					string keyValue = PlayerPrefs.GetString (keyTemp);
-					if (keyValue != null) {
-						List<string> keyValueList = new List<string> ();
-						keyValueList = new List<string> (keyValue.Split (delimiterChars));
+				    if (PlayerPrefs.HasKey (keyTemp)) {
+					    string keyValue = PlayerPrefs.GetString (keyTemp);
+					    if (keyValue != null) {
+						    List<string> keyValueList = new List<string> ();
+						    keyValueList = new List<string> (keyValue.Split (delimiterChars));
                             
-                        string gunzeiTime = keyValueList [0];
-						System.DateTime gunzeiDatetime = System.DateTime.Parse (gunzeiTime);
-						System.TimeSpan gunzeiSpan = System.DateTime.Now - gunzeiDatetime;
-						double gunzeiSpantime = gunzeiSpan.TotalSeconds;
+                            string gunzeiTime = keyValueList [0];
+						    System.DateTime gunzeiDatetime = System.DateTime.Parse (gunzeiTime);
+						    System.TimeSpan gunzeiSpan = System.DateTime.Now - gunzeiDatetime;
+						    double gunzeiSpantime = gunzeiSpan.TotalSeconds;
 
-						List<string> srcDstKuniList = new List<string> ();
-						char[] keyDelimiterChars = { '-' };
-						srcDstKuniList = new List<string> (keyTemp.Split (keyDelimiterChars));
-						int srcDaimyoId = int.Parse (keyValueList [1]);
-						int dstDaimyoId = int.Parse (keyValueList [2]);
-						int srcKuni = int.Parse (srcDstKuniList [0]);
-						int dstKuni = int.Parse (srcDstKuniList [1]);
-						bool dstEngunFlg = bool.Parse (keyValueList [9]);
-						string dstEngunDaimyoId = keyValueList [10];
-						string dstEngunHei = keyValueList [11];
-						string dstEngunSts = keyValueList [12];
+						    List<string> srcDstKuniList = new List<string> ();
+						    char[] keyDelimiterChars = { '-' };
+						    srcDstKuniList = new List<string> (keyTemp.Split (keyDelimiterChars));
+						    int srcDaimyoId = int.Parse (keyValueList [1]);
+						    int dstDaimyoId = int.Parse (keyValueList [2]);
+						    int srcKuni = int.Parse (srcDstKuniList [0]);
+						    int dstKuni = int.Parse (srcDstKuniList [1]);
+						    bool dstEngunFlg = bool.Parse (keyValueList [9]);
+						    string dstEngunDaimyoId = keyValueList [10];
+						    string dstEngunHei = keyValueList [11];
+						    string dstEngunSts = keyValueList [12];
 
-                        if (gunzeiSpantime >= 300) {
-                        //if (gunzeiSpantime >= 0) { //test
-							//Has past
-							//Simulation
-							Gunzei gunzei = new Gunzei ();
-							myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
-							if (dstDaimyoId != myDaimyo) {
+                            if (gunzeiSpantime >= 300) {
+                            //if (gunzeiSpantime >= 0) { //test
+							    //Has past
+							    //Simulation
+							    Gunzei gunzei = new Gunzei ();
+							    myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
+							    if (dstDaimyoId != myDaimyo) {
 								
-								int enemyHei = gunzei.heiryokuCalc (int.Parse (srcDstKuniList [1]));
+								    int enemyHei = gunzei.heiryokuCalc (int.Parse (srcDstKuniList [1]));
 
-								int engunTotalHei = 0;
-								if (dstEngunFlg) {
-									char[] delimiterChars2 = { ':' };
-									List<string> engunHeiList = new List<string> ();
-                                    if(dstEngunHei.Contains(":")) {
-									    engunHeiList = new List<string> (dstEngunHei.Split (delimiterChars2));
+								    int engunTotalHei = 0;
+								    if (dstEngunFlg) {
+									    char[] delimiterChars2 = { ':' };
+									    List<string> engunHeiList = new List<string> ();
+                                        if(dstEngunHei.Contains(":")) {
+									        engunHeiList = new List<string> (dstEngunHei.Split (delimiterChars2));
                                         
-                                        for (int k = 0; k < engunHeiList.Count; k++) {
-										    engunTotalHei = engunTotalHei + int.Parse (engunHeiList [k]);
-									    }
+                                            for (int k = 0; k < engunHeiList.Count; k++) {
+										        engunTotalHei = engunTotalHei + int.Parse (engunHeiList [k]);
+									        }
+                                        }
                                     }
-                                }
 
-								enemyHei = enemyHei + engunTotalHei;
+								    enemyHei = enemyHei + engunTotalHei;
 
-								int ratio = 0;
-								int myHei = int.Parse (keyValueList [5]);
-								if ((myHei + enemyHei) > 0) {
-									ratio = 100 * myHei / (myHei + enemyHei);
-									if (ratio < 1) {
-										ratio = 1;
-									}
-								}
+								    int ratio = 0;
+								    int myHei = int.Parse (keyValueList [5]);
+								    if ((myHei + enemyHei) > 0) {
+									    ratio = 100 * myHei / (myHei + enemyHei);
+									    if (ratio < 1) {
+										    ratio = 1;
+									    }
+								    }
 
-								bool winFlg = CheckByProbability (ratio);
+								    bool winFlg = CheckByProbability (ratio);
 
-								if (winFlg) {
-									bool noGunzeiFlg = true;
-									gunzei.win (keyTemp, int.Parse (keyValueList [1]), int.Parse (keyValueList [2]), noGunzeiFlg, dstKuni);
+								    if (winFlg) {
+									    bool noGunzeiFlg = true;
+									    gunzei.win (keyTemp, int.Parse (keyValueList [1]), int.Parse (keyValueList [2]), noGunzeiFlg, dstKuni);
 
-								} else {
-									deleteKeyHistory (keyTemp);
-								}
-							} else {
-								MyDaimyoWasAttacked atked = new MyDaimyoWasAttacked ();
-								atked.wasAttacked (keyTemp, srcKuni, dstKuni, srcDaimyoId, dstDaimyoId, dstEngunFlg, dstEngunDaimyoId, dstEngunSts);
+								    } else {
+									    deleteKeyHistory (keyTemp);
+								    }
+							    } else {
+								    MyDaimyoWasAttacked atked = new MyDaimyoWasAttacked ();
+								    atked.wasAttacked (keyTemp, srcKuni, dstKuni, srcDaimyoId, dstDaimyoId, dstEngunFlg, dstEngunDaimyoId, dstEngunSts);
 
-							}
-						} else {
+							    }
+						    } else {
 
-							//View Previous
-							string path = "Prefabs/Map/Gunzei";
-							GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
-							Gunzei.transform.SetParent (GameObject.Find ("Panel").transform);
+							    //View Previous
+							    string path = "Prefabs/Map/Gunzei";
+							    GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
+							    Gunzei.transform.SetParent (GameObject.Find ("Panel").transform);
 
-							Gunzei.GetComponent<Gunzei> ().key = keyTemp;
-							Gunzei.GetComponent<Gunzei> ().srcKuni = int.Parse (srcDstKuniList [0]);
-							Gunzei.GetComponent<Gunzei> ().dstKuni = int.Parse (srcDstKuniList [1]);
-							Gunzei.GetComponent<Gunzei> ().spantime = gunzeiSpantime;
-							Gunzei.GetComponent<Gunzei> ().srcDaimyoId = srcDaimyoId;
-							Gunzei.GetComponent<Gunzei> ().dstDaimyoId = dstDaimyoId;
-							Gunzei.GetComponent<Gunzei> ().srcDaimyoName = keyValueList [3];
-							Gunzei.GetComponent<Gunzei> ().dstDaimyoName = keyValueList [4];
-							Gunzei.GetComponent<Gunzei> ().myHei = int.Parse (keyValueList [5]);
-							Gunzei.GetComponent<Gunzei> ().dstEngunFlg = bool.Parse (keyValueList [9]);
-							Gunzei.GetComponent<Gunzei> ().dstEngunDaimyoId = keyValueList [10];
-							Gunzei.GetComponent<Gunzei> ().dstEngunHei = keyValueList [11];
-							Gunzei.GetComponent<Gunzei> ().dstEngunSts = keyValueList [12];
-							Gunzei.name = keyTemp;
+							    Gunzei.GetComponent<Gunzei> ().key = keyTemp;
+							    Gunzei.GetComponent<Gunzei> ().srcKuni = int.Parse (srcDstKuniList [0]);
+							    Gunzei.GetComponent<Gunzei> ().dstKuni = int.Parse (srcDstKuniList [1]);
+							    Gunzei.GetComponent<Gunzei> ().spantime = gunzeiSpantime;
+							    Gunzei.GetComponent<Gunzei> ().srcDaimyoId = srcDaimyoId;
+							    Gunzei.GetComponent<Gunzei> ().dstDaimyoId = dstDaimyoId;
+							    Gunzei.GetComponent<Gunzei> ().srcDaimyoName = keyValueList [3];
+							    Gunzei.GetComponent<Gunzei> ().dstDaimyoName = keyValueList [4];
+							    Gunzei.GetComponent<Gunzei> ().myHei = int.Parse (keyValueList [5]);
+							    Gunzei.GetComponent<Gunzei> ().dstEngunFlg = bool.Parse (keyValueList [9]);
+							    Gunzei.GetComponent<Gunzei> ().dstEngunDaimyoId = keyValueList [10];
+							    Gunzei.GetComponent<Gunzei> ().dstEngunHei = keyValueList [11];
+							    Gunzei.GetComponent<Gunzei> ().dstEngunSts = keyValueList [12];
+							    Gunzei.name = keyTemp;
 
-							RectTransform GunzeiTransform = Gunzei.GetComponent<RectTransform> ();
-							GunzeiTransform.anchoredPosition = new Vector3 (int.Parse (keyValueList [6]), int.Parse (keyValueList [7]), 0);
+							    RectTransform GunzeiTransform = Gunzei.GetComponent<RectTransform> ();
+							    GunzeiTransform.anchoredPosition = new Vector3 (int.Parse (keyValueList [6]), int.Parse (keyValueList [7]), 0);
 
-							if (keyValueList [8] == "right") {
-								Gunzei.transform.localScale = new Vector2 (1, 1);
-							} else {
-								Gunzei.transform.localScale = new Vector2 (-1, 1);
-                                Gunzei.transform.FindChild("MsgBack").localScale = new Vector2(-1, 1);
-                                Gunzei.GetComponent<Gunzei> ().leftFlg = true;
-							}
-						}
-					} else {
-						PlayerPrefs.DeleteKey (keyTemp);
-						PlayerPrefs.Flush ();
+							    if (keyValueList [8] == "right") {
+								    Gunzei.transform.localScale = new Vector2 (1, 1);
+							    } else {
+								    Gunzei.transform.localScale = new Vector2 (-1, 1);
+                                    Gunzei.transform.FindChild("MsgBack").localScale = new Vector2(-1, 1);
+                                    Gunzei.GetComponent<Gunzei> ().leftFlg = true;
+							    }
+						    }
+					    } else {
+						    PlayerPrefs.DeleteKey (keyTemp);
+						    PlayerPrefs.Flush ();
 
-					}
-				} else {
+					    }
+				    } else {
 
-					//Delete History
-					deleteKeyHistory(keyTemp	);
+					    //Delete History
+					    deleteKeyHistory(keyTemp	);
 
-				}
-			}
-		}
+				    }
+			    }
+		    }
 
-		//Metsubou Flg Check
-		if (PlayerPrefs.HasKey ("metsubou")) {
-			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-			audioSources [4].Play ();
-			audioSources [6].Play ();
+		    //Metsubou Flg Check
+		    if (PlayerPrefs.HasKey ("metsubou")) {
+			    AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+			    audioSources [4].Play ();
+			    audioSources [6].Play ();
 
-			string metsubou = PlayerPrefs.GetString ("metsubou");
-			List<string> metsubouList = new List<string> ();
-			if (metsubou.Contains (",")) {
-				metsubouList = new List<string> (metsubou.Split (delimiterChars));
-			} else {
-				metsubouList.Add (metsubou);
-			}
+			    string metsubou = PlayerPrefs.GetString ("metsubou");
+			    List<string> metsubouList = new List<string> ();
+			    if (metsubou.Contains (",")) {
+				    metsubouList = new List<string> (metsubou.Split (delimiterChars));
+			    } else {
+				    metsubouList.Add (metsubou);
+			    }
 
-			//Metsubou Message
-			string pathOfBack = "Prefabs/Event/TouchEventBack";
-			GameObject back = Instantiate (Resources.Load (pathOfBack)) as GameObject;
-			back.transform.SetParent (GameObject.Find ("Panel").transform);
-			back.transform.localScale = new Vector2 (1, 1);
-			back.transform.localPosition = new Vector2 (0, 0);
+			    //Metsubou Message
+			    string pathOfBack = "Prefabs/Event/TouchEventBack";
+			    GameObject back = Instantiate (Resources.Load (pathOfBack)) as GameObject;
+			    back.transform.SetParent (GameObject.Find ("Panel").transform);
+			    back.transform.localScale = new Vector2 (1, 1);
+			    back.transform.localPosition = new Vector2 (0, 0);
 
-			//make board
-			string pathOfBoard = "Prefabs/Event/EventBoard";
-			GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
-			board.transform.SetParent (GameObject.Find ("Panel").transform);
-			board.transform.localScale = new Vector2 (1, 1);
+			    //make board
+			    string pathOfBoard = "Prefabs/Event/EventBoard";
+			    GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
+			    board.transform.SetParent (GameObject.Find ("Panel").transform);
+			    board.transform.localScale = new Vector2 (1, 1);
 
-			back.GetComponent<CloseEventBoard> ().deleteObj = board;
-			back.GetComponent<CloseEventBoard> ().deleteObj2 = back;
-			board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj = board;
-			board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
+			    back.GetComponent<CloseEventBoard> ().deleteObj = board;
+			    back.GetComponent<CloseEventBoard> ().deleteObj2 = back;
+			    board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj = board;
+			    board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
 
-			string pathOfScroll = "Prefabs/Event/Metsubou";
-			GameObject scroll = Instantiate (Resources.Load (pathOfScroll)) as GameObject;
-			scroll.transform.SetParent (board.transform);
-			scroll.transform.localScale = new Vector2 (1, 1);
+			    string pathOfScroll = "Prefabs/Event/Metsubou";
+			    GameObject scroll = Instantiate (Resources.Load (pathOfScroll)) as GameObject;
+			    scroll.transform.SetParent (board.transform);
+			    scroll.transform.localScale = new Vector2 (1, 1);
 
-			string pathOfSlot = "Prefabs/Event/MetsubouSlot";
-			GameObject contents = scroll.transform.FindChild ("MetsubouScrollView/MetsubouContent").gameObject;
-			char[] delimiterChars2 = { ':' };
-			foreach (string text in metsubouList) {
-				GameObject slot = Instantiate (Resources.Load (pathOfSlot)) as GameObject;
-				slot.transform.SetParent (contents.transform);
-				List<string> metsubouTextList = new List<string> ();
-				metsubouTextList = new List<string> (text.Split (delimiterChars2));
-				string srcDaimyoName = daimyo.getName (int.Parse (metsubouTextList [0]));
-				string dstDaimyoName = daimyo.getName (int.Parse (metsubouTextList [1]));
-                string metsubouText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    metsubouText = dstDaimyoName + " was was destroyed completly by " + srcDaimyoName + ".";
-                }else {
-                    metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
-                }
+			    string pathOfSlot = "Prefabs/Event/MetsubouSlot";
+			    GameObject contents = scroll.transform.FindChild ("MetsubouScrollView/MetsubouContent").gameObject;
+			    char[] delimiterChars2 = { ':' };
+			    foreach (string text in metsubouList) {
+				    GameObject slot = Instantiate (Resources.Load (pathOfSlot)) as GameObject;
+				    slot.transform.SetParent (contents.transform);
+				    List<string> metsubouTextList = new List<string> ();
+				    metsubouTextList = new List<string> (text.Split (delimiterChars2));
+				    string srcDaimyoName = daimyo.getName (int.Parse (metsubouTextList [0]));
+				    string dstDaimyoName = daimyo.getName (int.Parse (metsubouTextList [1]));
+                    string metsubouText = "";
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        metsubouText = dstDaimyoName + " was was destroyed completly by " + srcDaimyoName + ".";
+                    }else {
+                        metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
+                    }
 
-                slot.transform.FindChild ("MetsubouText").GetComponent<Text> ().text = metsubouText;
-				slot.transform.localScale = new Vector2 (1, 1);
+                    slot.transform.FindChild ("MetsubouText").GetComponent<Text> ().text = metsubouText;
+				    slot.transform.localScale = new Vector2 (1, 1);
 
-				//Metsubou Daimyo Handling
-				string srcMetsubouTemp = "metsubou" + metsubouTextList [0];
-				string srcMetsubou = PlayerPrefs.GetString (srcMetsubouTemp);
-				string dstMetsubouTemp = "metsubou" + metsubouTextList [1];
-				string dstMetsubou = PlayerPrefs.GetString (dstMetsubouTemp);
+				    //Metsubou Daimyo Handling
+				    string srcMetsubouTemp = "metsubou" + metsubouTextList [0];
+				    string srcMetsubou = PlayerPrefs.GetString (srcMetsubouTemp);
+				    string dstMetsubouTemp = "metsubou" + metsubouTextList [1];
+				    string dstMetsubou = PlayerPrefs.GetString (dstMetsubouTemp);
 
-				string newSrcMetsubou = "";
-				if (srcMetsubou != null && srcMetsubou != "") {
-					newSrcMetsubou = srcMetsubou + "," + metsubouTextList [1];
-				} else {
-					newSrcMetsubou = metsubouTextList [1];
-				}
-				if (dstMetsubou != null && dstMetsubou != "") {
-					newSrcMetsubou = newSrcMetsubou + "," + dstMetsubou;
-				}
-				PlayerPrefs.SetString (srcMetsubouTemp, newSrcMetsubou);
+				    string newSrcMetsubou = "";
+				    if (srcMetsubou != null && srcMetsubou != "") {
+					    newSrcMetsubou = srcMetsubou + "," + metsubouTextList [1];
+				    } else {
+					    newSrcMetsubou = metsubouTextList [1];
+				    }
+				    if (dstMetsubou != null && dstMetsubou != "") {
+					    newSrcMetsubou = newSrcMetsubou + "," + dstMetsubou;
+				    }
+				    PlayerPrefs.SetString (srcMetsubouTemp, newSrcMetsubou);
 
-			}
+			    }
 
-			PlayerPrefs.DeleteKey ("metsubou");
-			PlayerPrefs.Flush ();
-		}
+			    PlayerPrefs.DeleteKey ("metsubou");
+			    PlayerPrefs.Flush ();
+		    }
 
 
-        /*--------------------*/
-        /*Enemy Action Event*/
-        /*--------------------*/
-        if (tutorialDoneFlg) {
+            /*--------------------*/
+            /*Enemy Action Event*/
+            /*--------------------*/       
             rdmEventTimer = PlayerPrefs.GetFloat ("rdmEventTimer", 0); 
 		    if (rdmEventTimer <= 0) {
 			    rdmEventTimer = UnityEngine.Random.Range (rdmEventMin, rdmEventMax);
@@ -1333,5 +1320,483 @@ public class MainStageController : MonoBehaviour {
 		}
 		return checkFlg;
 	}
+
+    public void SeasonChange() {
+
+        //Common
+        eventStopFlg = true;
+
+        GameObject map = GameObject.Find("Map").gameObject;
+        string pathOfBack = "Prefabs/Common/TouchBackForOne";
+        GameObject back = Instantiate(Resources.Load(pathOfBack)) as GameObject;
+        back.transform.SetParent(map.transform);
+        back.transform.localScale = new Vector2(1, 1);
+        back.transform.localPosition = new Vector3(0, 0, 0);
+        
+        string path = "Prefabs/Cyosyu/seasonChangeBoard";
+        GameObject seasonChangeBoard = Instantiate(Resources.Load(path)) as GameObject;
+        seasonChangeBoard.transform.SetParent(map.transform);
+        seasonChangeBoard.transform.localScale = new Vector2(1, 1);
+        seasonChangeBoard.transform.localPosition = new Vector3(0, 0, 0);
+
+        //Serifu
+        string yearSeason = PlayerPrefs.GetString("yearSeason");
+        char[] delimiterChars = { ',' };
+        string[] yearSeasonList = yearSeason.Split(delimiterChars);
+        int nowYear = int.Parse(yearSeasonList[0]);
+        nowSeason = int.Parse(yearSeasonList[1]);
+        
+        //Seasonal Data Change
+        if (nowSeason == 4) {
+            nowYear = nowYear + 1;
+            nowSeason = 1;
+        }else {
+            nowSeason = nowSeason + 1;
+        }
+
+        string seasonText = GetSeasonText(nowSeason);
+        seasonChangeBoard.transform.FindChild("textBoard").transform.FindChild("Text").GetComponent<TextReader>().scenarios.Add(seasonText);
+        back.GetComponent<CloseOneBoard>().deleteObj = seasonChangeBoard;
+        
+        string newYearSeason = nowYear.ToString() + "," + nowSeason.ToString();
+        PlayerPrefs.DeleteKey("bakuhuTobatsuDaimyoId");
+        PlayerPrefs.SetString("yearSeason", newYearSeason);
+
+        string lastSeasonChangeTime = System.DateTime.Now.ToString();
+        PlayerPrefs.SetString("lastSeasonChangeTime", lastSeasonChangeTime);
+
+        PlayerPrefs.DeleteKey("usedBusyo");
+        DoNextSeason DoNextSeason = new DoNextSeason();
+        DoNextSeason.deleteLinkCut();
+        DoNextSeason.deleteWinOver();
+        PlayerPrefs.Flush();
+
+        GameObject.Find("YearValue").GetComponent<Text>().text = nowYear.ToString();
+        SetSeason(nowSeason);
+
+
+        //Cyosyu Data Register
+        CyosyuDataRegister(nowSeason, seasonChangeBoard);
+        
+        seasonChangedFlg = false;
+    }
+
+    public void CyosyuDataRegister(int seasonId, GameObject seasonChangeBoard) {
+
+        Entity_naisei_mst naiseiMst = Resources.Load("Data/naisei_mst") as Entity_naisei_mst;
+        NaiseiController naisei = new NaiseiController();
+        int totalMoney = 0;
+        int kozanMoney = 0;
+        int totalHyourou = 0;
+        int totalYRL = 0;
+        int totalKBL = 0;
+        int totalYML = 0;
+        int totalTPL = 0;
+        int totalYRM = 0;
+        int totalKBM = 0;
+        int totalYMM = 0;
+        int totalTPM = 0;
+        int totalYRH = 0;
+        int totalKBH = 0;
+        int totalYMH = 0;
+        int totalTPH = 0;
+        int totalSNBL = 0;
+        int totalSNBM = 0;
+        int totalSNBH = 0;
+
+        string seiryoku = PlayerPrefs.GetString("seiryoku");
+        List<string> seiryokuList = new List<string>();
+        List<string> mySeiryokuList = new List<string>();
+        char[] delimiterChars = { ',' };
+
+        seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+        int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
+
+        //Get my Kuni
+        for (int i = 0; i < seiryokuList.Count; i++) {
+            int seiryokuId = int.Parse(seiryokuList[i]);
+            if (seiryokuId == myDaimyoId) {
+                int kuniId = i + 1;
+                mySeiryokuList.Add(kuniId.ToString());
+            }
+        }
+        
+        //Item Calculation
+        for (int i = 0; i < mySeiryokuList.Count; i++) {
+
+            int kuniKozan = 0;
+            int kuniSyogyo = 0;
+
+            int kuniId = int.Parse(mySeiryokuList[i]);
+            string temp = "kuni" + mySeiryokuList[i];
+            string clearedKuni = PlayerPrefs.GetString(temp);
+            //Shiro Qty
+            if (clearedKuni != null && clearedKuni != "") {
+                List<string> shiroList = new List<string>();
+                shiroList = new List<string>(clearedKuni.Split(delimiterChars));
+                string naiseiTemp = "naisei" + mySeiryokuList[i];
+                string naiseiString = PlayerPrefs.GetString(naiseiTemp);
+
+                if (PlayerPrefs.HasKey(naiseiTemp)) {
+                    List<string> naiseiList = new List<string>();
+                    naiseiList = new List<string>(naiseiString.Split(delimiterChars));
+                    char[] delimiterChars2 = { ':' };
+                    List<string> deletePanelList = new List<string>();
+
+                    for (int j = 1; j < naiseiList.Count; j++) {
+                        List<string> naiseiContentList = new List<string>();
+                        naiseiContentList = new List<string>(naiseiList[j].Split(delimiterChars2));
+
+                        if (naiseiContentList[0] != "0") {
+                            string type = naiseiMst.param[int.Parse(naiseiContentList[0])].code;
+                            List<int> naiseiEffectList = new List<int>();                            
+                            naiseiEffectList = naisei.getNaiseiList(type, int.Parse(naiseiContentList[1]));
+
+                            //Status
+                            if (type == "shop") {
+                                kuniSyogyo = kuniSyogyo + naiseiEffectList[0];
+                            }else if (type == "kzn") {
+                                kuniKozan = kuniKozan + naiseiEffectList[0];
+
+                            }else if (type == "ta") {
+                                totalHyourou = totalHyourou + naiseiEffectList[0];
+                            }else if (type == "yr") {
+                                if (int.Parse(naiseiContentList[1]) < 11) {
+                                    //Low
+                                    totalYRL = totalYRL + naiseiEffectList[0];
+                                }else if (int.Parse(naiseiContentList[1]) < 16) {
+                                    //Middle
+                                    totalYRM = totalYRM + naiseiEffectList[0];
+                                }else if (15 <= int.Parse(naiseiContentList[1])) {
+                                    //High
+                                    totalYRH = totalYRH + naiseiEffectList[0];
+                                }
+                            }else if (type == "kb") {
+                                if (int.Parse(naiseiContentList[1]) < 11) {
+                                    //Low
+                                    totalKBL = totalKBL + naiseiEffectList[0];
+                                }else if (int.Parse(naiseiContentList[1]) < 16) {
+                                    //Middle
+                                    totalKBM = totalKBM + naiseiEffectList[0];
+                                }else if (15 <= int.Parse(naiseiContentList[1])) {
+                                    //High
+                                    totalKBH = totalKBH + naiseiEffectList[0];
+                                }
+                            }else if (type == "ym") {
+                                if (int.Parse(naiseiContentList[1]) < 11) {
+                                    //Low
+                                    totalYML = totalYML + naiseiEffectList[0];
+                                }else if (int.Parse(naiseiContentList[1]) < 16) {
+                                    //Middle
+                                    totalYMM = totalYMM + naiseiEffectList[0];
+                                }else if (15 <= int.Parse(naiseiContentList[1])) {
+                                    //High
+                                    totalYMH = totalYMH + naiseiEffectList[0];                                
+                                }
+                            }else if (type == "tp") {
+                                if (int.Parse(naiseiContentList[1]) < 11) {
+                                    //Low
+                                    totalTPL = totalTPL + naiseiEffectList[0];
+                                }else if (int.Parse(naiseiContentList[1]) < 16) {
+                                    //Middle
+                                    totalTPM = totalTPM + naiseiEffectList[0];
+                                }else if (15 <= int.Parse(naiseiContentList[1])) {
+                                    //High
+                                    totalTPH = totalTPH + naiseiEffectList[0];
+                                }
+                            }else if (type == "snb") {
+                                if (int.Parse(naiseiContentList[1]) < 11) {
+                                    //Low
+                                    totalSNBL = totalSNBL + naiseiEffectList[0];
+                                }else if (int.Parse(naiseiContentList[1]) < 16) {
+                                    //Middle
+                                    totalSNBM = totalSNBM + naiseiEffectList[0];
+                                }else if (15 <= int.Parse(naiseiContentList[1])) {
+                                    //High
+                                    totalSNBH = totalSNBH + naiseiEffectList[0];
+                                }
+                            }
+                        }
+                    }
+
+                    //Jyosyu Addition
+                    string jyosyuTemp = "jyosyu" + kuniId;
+
+                    if (PlayerPrefs.HasKey(jyosyuTemp)) {
+                        int jyosyuId = PlayerPrefs.GetInt(jyosyuTemp);
+                        StatusGet sts = new StatusGet();
+                        int lv = PlayerPrefs.GetInt(jyosyuId.ToString());
+                        float naiseiSts = (float)sts.getDfc(jyosyuId, lv);
+
+                        float hpSts = (float)sts.getHp(jyosyuId, lv);
+                        float atkSts = (float)sts.getAtk(jyosyuId, lv);
+
+                        float tempKuniSyogyo = (float)kuniSyogyo;
+                        tempKuniSyogyo = tempKuniSyogyo + (tempKuniSyogyo * naiseiSts / 200);
+                        kuniSyogyo = (int)tempKuniSyogyo;
+
+                        float tempKuniKozan = (float)kuniKozan;
+                        tempKuniKozan = tempKuniKozan + (tempKuniKozan * naiseiSts / 200);
+                        kuniKozan = (int)tempKuniKozan;
+
+
+                    }
+                }
+            }
+            kozanMoney = kozanMoney + kuniKozan;
+            totalMoney = totalMoney + kuniSyogyo;
+        }
+
+        //Visualize & Data Register
+        GameObject Syukaku = seasonChangeBoard.transform.FindChild("Syukaku").gameObject;
+        if (nowSeason==1) {
+            //spring
+            Syukaku.transform.FindChild("TargetMoney").transform.FindChild("TargetMoneyValue").GetComponent<Text>().text = (totalMoney + kozanMoney).ToString();
+
+            //data
+            int nowMoney = PlayerPrefs.GetInt("money");
+            int resultMoney = nowMoney + totalMoney + kozanMoney;
+            if (resultMoney < 0) {
+                resultMoney = int.MaxValue;
+            }
+            PlayerPrefs.SetInt("money", resultMoney);
+            GameObject.Find("MoneyValue").GetComponent<Text>().text = resultMoney.ToString();
+
+            int TrackGetMoneyNo = PlayerPrefs.GetInt("TrackGetMoneyNo", 0);
+            TrackGetMoneyNo = TrackGetMoneyNo + totalMoney + kozanMoney;
+            PlayerPrefs.SetInt("TrackGetMoneyNo", TrackGetMoneyNo);
+
+        } else if(nowSeason==2 || nowSeason == 4) {
+            //summer or winter
+            Syukaku.transform.FindChild("TargetMoney").transform.FindChild("TargetMoneyValue").GetComponent<Text>().text = kozanMoney.ToString();
+
+            GameObject TargetGunjyu = Syukaku.transform.FindChild("TargetGunjyu").gameObject;
+            if(totalYRH != 0) {
+                TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueH").GetComponent<Text>().text = totalYRH.ToString();
+            }
+            if (totalYRM != 0) {
+                TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueM").GetComponent<Text>().text = totalYRM.ToString();
+            }
+            if (totalYRL != 0) {
+                TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueL").GetComponent<Text>().text = totalYRL.ToString();
+            }
+
+            if (totalKBH != 0) {
+                TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueH").GetComponent<Text>().text = totalKBH.ToString();
+            }
+            if (totalKBM != 0) {
+                TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueM").GetComponent<Text>().text = totalKBM.ToString();
+            }
+            if (totalKBL != 0) {
+                TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueL").GetComponent<Text>().text = totalKBL.ToString();
+            }
+
+            if(totalYMH != 0) {
+                TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueH").GetComponent<Text>().text = totalYMH.ToString();
+            }
+            if (totalYMM != 0) {
+                TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueM").GetComponent<Text>().text = totalYMM.ToString();
+            }
+            if (totalYML != 0) {
+                TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueL").GetComponent<Text>().text = totalYML.ToString();
+            }
+
+            if (totalTPH != 0) {
+                TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueH").GetComponent<Text>().text = totalTPH.ToString();
+            }
+            if (totalTPM != 0) {
+                TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueM").GetComponent<Text>().text = totalTPM.ToString();
+            }
+            if (totalTPL != 0) {
+                TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
+            }
+
+            if (totalSNBH != 0) {
+                TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
+            }
+            if (totalSNBM != 0) {
+                TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
+            }
+            if (totalSNBL != 0) {
+                TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
+            }
+
+
+            //data
+            //YR
+            if (totalYRL != 0 || totalYRM != 0 || totalYRH != 0) {
+                string cyoheiYRString = PlayerPrefs.GetString("cyouheiYR");
+                List<string> cyoheiYRList = new List<string>();
+                cyoheiYRList = new List<string>(cyoheiYRString.Split(delimiterChars));
+
+                int newYRL = totalYRL;
+                int newYRM = totalYRM;
+                int newYRH = totalYRH;
+
+                newYRL = newYRL + int.Parse(cyoheiYRList[0]);
+                newYRM = newYRM + int.Parse(cyoheiYRList[1]);
+                newYRH = newYRH + int.Parse(cyoheiYRList[2]);
+
+                string newCyoheiYR = newYRL + "," + newYRM + "," + newYRH;
+                PlayerPrefs.SetString("cyouheiYR", newCyoheiYR);
+            }
+            //KB
+            if (totalKBL != 0 || totalKBM != 0 || totalKBH != 0) {
+                string cyoheiKBString = PlayerPrefs.GetString("cyouheiKB");
+                List<string> cyoheiKBList = new List<string>();
+                cyoheiKBList = new List<string>(cyoheiKBString.Split(delimiterChars));
+                int newKBL = totalKBL;
+                int newKBM = totalKBM;
+                int newKBH = totalKBH;
+
+                newKBL = newKBL + int.Parse(cyoheiKBList[0]);
+                newKBM = newKBM + int.Parse(cyoheiKBList[1]);
+                newKBH = newKBH + int.Parse(cyoheiKBList[2]);
+
+                string newCyoheiKB = newKBL + "," + newKBM + "," + newKBH;
+                PlayerPrefs.SetString("cyouheiKB", newCyoheiKB);
+            }
+            //YM
+            if (totalYML != 0 || totalYMM != 0 || totalYMH != 0) {
+                string cyoheiYMString = PlayerPrefs.GetString("cyouheiYM");
+                List<string> cyoheiYMList = new List<string>();
+                cyoheiYMList = new List<string>(cyoheiYMString.Split(delimiterChars));
+                int newYML = totalYML;
+                int newYMM = totalYMM;
+                int newYMH = totalYMH;
+
+                newYML = newYML + int.Parse(cyoheiYMList[0]);
+                newYMM = newYMM + int.Parse(cyoheiYMList[1]);
+                newYMH = newYMH + int.Parse(cyoheiYMList[2]);
+
+                string newCyoheiYM = newYML + "," + newYMM + "," + newYMH;
+                PlayerPrefs.SetString("cyouheiYM", newCyoheiYM);
+            }
+            //TP
+            if (totalTPL != 0 || totalTPM != 0 || totalTPH != 0) {
+                string cyoheiTPString = PlayerPrefs.GetString("cyouheiTP");
+                List<string> cyoheiTPList = new List<string>();
+                cyoheiTPList = new List<string>(cyoheiTPString.Split(delimiterChars));
+                int newTPL = totalTPL;
+                int newTPM = totalTPM;
+                int newTPH = totalTPH;
+
+                newTPL = newTPL + int.Parse(cyoheiTPList[0]);
+                newTPM = newTPM + int.Parse(cyoheiTPList[1]);
+                newTPH = newTPH + int.Parse(cyoheiTPList[2]);
+
+                string newCyoheiTP = newTPL + "," + newTPM + "," + newTPH;
+                PlayerPrefs.SetString("cyouheiTP", newCyoheiTP);
+            }
+            //SNB
+            if (totalSNBL != 0 || totalSNBM != 0 || totalSNBH != 0) {
+                if (totalSNBL != 0) {
+                    int SNBQty = PlayerPrefs.GetInt("shinobiGe");
+                    int newQty = SNBQty + totalSNBL;
+
+                    PlayerPrefs.SetInt("shinobiGe", newQty);
+                }
+                if (totalSNBM != 0) {
+                    int SNBQty = PlayerPrefs.GetInt("shinobiCyu");
+                    int newQty = SNBQty + totalSNBM;
+
+                    PlayerPrefs.SetInt("shinobiCyu", newQty);
+                }
+                if (totalSNBH != 0) {
+                    int SNBQty = PlayerPrefs.GetInt("shinobiJyo");
+                    int newQty = SNBQty + totalSNBH;
+
+                    PlayerPrefs.SetInt("shinobiJyo", newQty);
+                }
+
+            }
+            int TrackGetSozaiNo = PlayerPrefs.GetInt("TrackGetSozaiNo", 0);
+            TrackGetSozaiNo = TrackGetSozaiNo + totalYRL + totalKBL + totalYML + totalTPL + totalYRM + totalKBM + totalYMM + totalTPM + totalYRH + totalKBH + totalYMH + totalTPH + totalSNBL + totalSNBM + totalSNBH;
+            PlayerPrefs.SetInt("TrackGetSozaiNo", TrackGetSozaiNo);            
+
+            if (kozanMoney != 0) {
+                int nowMoney = PlayerPrefs.GetInt("money");
+                int resultMoney = nowMoney + kozanMoney;
+                if (resultMoney < 0) {
+                    resultMoney = int.MaxValue;
+                }
+                PlayerPrefs.SetInt("money", resultMoney);
+                GameObject.Find("MoneyValue").GetComponent<Text>().text = resultMoney.ToString();
+
+                int TrackGetMoneyNo = PlayerPrefs.GetInt("TrackGetMoneyNo", 0);
+                TrackGetMoneyNo = TrackGetMoneyNo + kozanMoney;
+                PlayerPrefs.SetInt("TrackGetMoneyNo", TrackGetMoneyNo);
+            }
+
+
+        }else if (nowSeason == 3) {
+            //autumn
+            Syukaku.transform.FindChild("TargetMoney").transform.FindChild("TargetMoneyValue").GetComponent<Text>().text = kozanMoney.ToString();
+            Syukaku.transform.FindChild("TargetHyourou").transform.FindChild("TargetHyourouValue").GetComponent<Text>().text = totalHyourou.ToString();
+
+            //data
+            int nowHyourou = PlayerPrefs.GetInt("hyourou");
+            int maxHyourou = PlayerPrefs.GetInt("hyourouMax");
+            int resultHyourou = nowHyourou + totalHyourou;
+            if (resultHyourou > maxHyourou) resultHyourou = maxHyourou;
+            PlayerPrefs.SetInt("hyourou", resultHyourou);
+            GameObject.Find("HyourouCurrentValue").GetComponent<Text>().text = resultHyourou.ToString();
+                     
+            int TrackGetHyourouNo = PlayerPrefs.GetInt("TrackGetHyourouNo", 0);
+            TrackGetHyourouNo = TrackGetHyourouNo + totalHyourou;
+            PlayerPrefs.SetInt("TrackGetHyourouNo", TrackGetHyourouNo);
+
+            if (kozanMoney != 0) {
+                int nowMoney = PlayerPrefs.GetInt("money");
+                int resultMoney = nowMoney + kozanMoney;
+                if (resultMoney < 0) {
+                    resultMoney = int.MaxValue;
+                }
+                PlayerPrefs.SetInt("money", resultMoney);
+                GameObject.Find("MoneyValue").GetComponent<Text>().text = resultMoney.ToString();
+
+                int TrackGetMoneyNo = PlayerPrefs.GetInt("TrackGetMoneyNo", 0);
+                TrackGetMoneyNo = TrackGetMoneyNo + kozanMoney;
+                PlayerPrefs.SetInt("TrackGetMoneyNo", TrackGetMoneyNo);
+            }
+        }
+        PlayerPrefs.Flush();
+
+
+    }
+
+
+
+
+
+    public string GetSeasonText(int seasonId) {
+
+        string seasonText = "";
+
+        if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (seasonId == 1) {
+                seasonText = "Spring has come. You have levied money in this season. My lord, please develop your town, store or mine to increase income.";
+            }else if (seasonId == 2) {
+                seasonText = "Summer has come. You have levied weapon items in this season. My lord, please develop your town, Blacksmith of each item to increase income.";
+            }else if (seasonId == 3) {
+                seasonText = "Autumn has come. You have levied stamina in this season. My lord, please develop your town, farm to increase this income.";
+            }else if (seasonId == 4) {
+                seasonText = "Winter has come. You have levied weapon items in this season. My lord, please develop your town, Blacksmith of each item to increase income.";
+            }
+        }else {
+            if (seasonId == 1) {
+                seasonText = "春になりました。商人町と鉱山から金を徴収しました。金が無くては何も出来ませぬ、内政開発に励みましょうぞ。";
+            }else if (seasonId == 2) {
+                seasonText = "夏になりました。鍛冶屋などの職人町から素材を徴収しました。部隊を増やしたり忍を派遣できますゆえ、内政開発に励みましょうぞ。";
+            }else if (seasonId == 3) {
+                seasonText = "秋になりました。村落から兵糧を徴収しました。腹が減っては戦は出来ぬ、内政開発に励みましょうぞ。";
+            }else if (seasonId == 4) {
+                seasonText = "おお寒い、冬になりました。鍛冶屋などの職人町から素材を徴収しました。部隊を増やしたり忍を派遣できますゆえ、内政開発に励みましょうぞ。";
+            }
+        }
+
+        return seasonText;
+    }
+
 
 }

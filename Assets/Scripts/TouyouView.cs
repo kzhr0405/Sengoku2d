@@ -14,6 +14,9 @@ public class TouyouView : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
 
+        //Panel
+        GameObject.Find("Touyou").GetComponent<Canvas>().sortingLayerName = "unit";
+
 		//Pop View
 		BusyoStatusButton pop = new BusyoStatusButton ();
 		GameObject board = pop.commonPopup (27);
@@ -198,46 +201,41 @@ public class TouyouView : MonoBehaviour {
         }
 
         //Hired Check
-        string myBusyo = PlayerPrefs.GetString("myBusyo");
-        char[] delimiterChars = { ',' };
+        if (Application.loadedLevelName != "tutorialTouyou") {
+            string myBusyo = PlayerPrefs.GetString("myBusyo");
+            char[] delimiterChars = { ',' };
 
-        if(myBusyo != null && myBusyo != "") {
-            List<string> myBusyoList = new List<string>();
-            if (myBusyo.Contains(",")) {
-                myBusyoList = new List<string>(myBusyo.Split(delimiterChars));
-            }else {
-                myBusyoList.Add(myBusyo);
+            if(myBusyo != null && myBusyo != "") {
+                List<string> myBusyoList = new List<string>();
+                if (myBusyo.Contains(",")) {
+                    myBusyoList = new List<string>(myBusyo.Split(delimiterChars));
+                }else {
+                    myBusyoList.Add(myBusyo);
+                }
+
+                if (myBusyoList.Contains(busyoId.ToString())) {
+                    msg.makeMessage(msg.getMessage(137));
+
+                }
             }
+            //Zukan Check
+            string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
+            if (zukanBusyoHst != null && zukanBusyoHst != "") {
+                List<string> myZukanList = new List<string>();
+                if (zukanBusyoHst.Contains(",")) {
+                    myZukanList = new List<string>(zukanBusyoHst.Split(delimiterChars));
+                }else {
+                    myZukanList.Add(zukanBusyoHst);
+                }
 
-            if (myBusyoList.Contains(busyoId.ToString())) {
-                msg.makeMessage(msg.getMessage(137));
-
+                if (myZukanList.Contains(busyoId.ToString())) {
+                    string zukanPath = "Prefabs/Touyou/Zukan";
+                    GameObject zukan = Instantiate(Resources.Load(zukanPath)) as GameObject;
+                    zukan.transform.SetParent(board.transform);
+                    zukan.transform.localScale = new Vector2(1, 1);
+                    zukan.transform.localPosition = new Vector2(-41, 167);                    
+                }
             }
         }
-
-        //Zukan Check
-        string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
-        if (zukanBusyoHst != null && zukanBusyoHst != "") {
-            List<string> myZukanList = new List<string>();
-            if (zukanBusyoHst.Contains(",")) {
-                myZukanList = new List<string>(zukanBusyoHst.Split(delimiterChars));
-            }else {
-                myZukanList.Add(zukanBusyoHst);
-            }
-
-            if (myZukanList.Contains(busyoId.ToString())) {
-                string zukanPath = "Prefabs/Touyou/Zukan";
-                GameObject zukan = Instantiate(Resources.Load(zukanPath)) as GameObject;
-                zukan.transform.SetParent(board.transform);
-                zukan.transform.localScale = new Vector2(1, 1);
-                zukan.transform.localPosition = new Vector2(-41, 167);
-
-
-
-            }
-
-        }
-
-
     }
 }

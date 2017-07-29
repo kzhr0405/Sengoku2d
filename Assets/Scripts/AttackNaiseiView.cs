@@ -85,7 +85,12 @@ public class AttackNaiseiView : MonoBehaviour {
 		
 		//Clear Stage Setting
 		string clearedStage = "kuni" + kuniId;
-		string clearedStageString = PlayerPrefs.GetString (clearedStage);
+        string clearedStageString = "";
+        if (Application.loadedLevelName != "tutorialMain") {
+            clearedStageString = PlayerPrefs.GetString (clearedStage);
+        }else {
+            clearedStageString = "1,2,3,4,5,6,7,8,9,10";
+        }
 		List<string> clearedStageList = new List<string> ();
 		if (clearedStageString != null && clearedStageString != "") {
 			

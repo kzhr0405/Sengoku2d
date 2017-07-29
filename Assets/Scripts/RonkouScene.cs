@@ -71,26 +71,39 @@ public class RonkouScene : MonoBehaviour {
     }
 
 	public string createScrollView(List<string> myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
-		//Scroll View
-		string myBusyoString = PlayerPrefs.GetString ("myBusyo");
+        //Scroll View
+        string myBusyoString = "";
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+            myBusyoString = PlayerPrefs.GetString ("myBusyo");
+        }else {
+            //retry tutorial
+            myBusyoString = "19," + PlayerPrefs.GetInt("tutorialBusyo").ToString(); ;
+        }
 		char[] delimiterChars = {','};
 		myBusyo_list.AddRange (myBusyoString.Split (delimiterChars));
 
         //Sort by Jinkei
-        List<string> jinkeiTrueBusyoList = new List<string>();
-        List<string> jinkeiFalseBusyoList = new List<string>();
-        for (int i=0; i< myBusyo_list.Count; i++) {
-            int busyoId = int.Parse(myBusyo_list[i]);
-            bool jinkeiFlg = jinkeiBusyoCheck(busyoId);
-            if(jinkeiFlg) {
-                jinkeiTrueBusyoList.Add(busyoId.ToString());
-            }else {
-                jinkeiFalseBusyoList.Add(busyoId.ToString());
-            }
-        }
         List<string> myBusyoList = new List<string>();
-        myBusyoList.AddRange(jinkeiTrueBusyoList);
-        myBusyoList.AddRange(jinkeiFalseBusyoList);
+        List<string> jinkeiTrueBusyoList = new List<string>();
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+            List<string> jinkeiFalseBusyoList = new List<string>();
+            for (int i=0; i< myBusyo_list.Count; i++) {
+                int busyoId = int.Parse(myBusyo_list[i]);
+                bool jinkeiFlg = jinkeiBusyoCheck(busyoId);
+                if(jinkeiFlg) {
+                    jinkeiTrueBusyoList.Add(busyoId.ToString());
+                }else {
+                    jinkeiFalseBusyoList.Add(busyoId.ToString());
+                }
+            }
+        
+            myBusyoList.AddRange(jinkeiTrueBusyoList);
+            myBusyoList.AddRange(jinkeiFalseBusyoList);
+        }else {
+            //retry tutorial
+            myBusyoList.AddRange(myBusyo_list);
+        }
 
         //Instantiate scroll view
         string scrollPath = "Prefabs/Busyo/Slot";
@@ -229,7 +242,12 @@ public class RonkouScene : MonoBehaviour {
 	}
 
 	public void createBusyoStatusView(string busyoId){
-		int lv = PlayerPrefs.GetInt (busyoId);
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        int lv = 1;
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+            lv = PlayerPrefs.GetInt (busyoId);
+        }
+
 		StatusGet sts = new StatusGet ();
 		int hp = sts.getHp (int.Parse (busyoId), lv);
 		int atk = sts.getAtk (int.Parse (busyoId), lv);
@@ -260,7 +278,10 @@ public class RonkouScene : MonoBehaviour {
 		//Exp
 		string expId = "exp" + busyoId.ToString ();
 		string expString = "";
-		int nowExp = PlayerPrefs.GetInt(expId);
+        int nowExp = 0;
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+            nowExp = PlayerPrefs.GetInt(expId);
+        }
 		Exp exp = new Exp ();
 		int requiredExp = 0;
 		if (lv != maxLv) {
@@ -273,88 +294,112 @@ public class RonkouScene : MonoBehaviour {
 		GameObject.Find ("ExpValue").GetComponent<Text> ().text = expString;
 
 
-		//Kahou status
-		KahouStatusGet kahouSts = new KahouStatusGet ();
-		string[] KahouStatusArray =kahouSts.getKahouForStatus (busyoId,adjHp,adjAtk,adjDfc,spd);
-		int totalBusyoHp =0;
+        //Kahou status
+        int totalBusyoHp = 0;
+        int finalAtk = 0;
+        int finalHp = 0;
+        int finalDfc = 0;
+        int finalSpd = 0;
 
+        if (tutorialDoneFlg && Application.loadedLevelName != "tutorialBusyo") {
+            KahouStatusGet kahouSts = new KahouStatusGet ();
+		    string[] KahouStatusArray =kahouSts.getKahouForStatus (busyoId,adjHp,adjAtk,adjDfc,spd);
+		
+		    //Kanni
+		    string kanniTmp = "kanni" + busyoId;
+		    float addAtkByKanni = 0;
+		    float addHpByKanni = 0;
+		    float addDfcByKanni = 0;
 
-		//Kanni
-		string kanniTmp = "kanni" + busyoId;
-		float addAtkByKanni = 0;
-		float addHpByKanni = 0;
-		float addDfcByKanni = 0;
+		    if (PlayerPrefs.HasKey (kanniTmp)) {
+			    int kanniId = PlayerPrefs.GetInt (kanniTmp);
+			    Kanni kanni = new Kanni ();
+			    string kanniIkai = kanni.getIkai (kanniId);
+			    string kanniName = kanni.getKanni (kanniId);
+			    GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
 
-		if (PlayerPrefs.HasKey (kanniTmp)) {
-			int kanniId = PlayerPrefs.GetInt (kanniTmp);
-			Kanni kanni = new Kanni ();
-			string kanniIkai = kanni.getIkai (kanniId);
-			string kanniName = kanni.getKanni (kanniId);
-			GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
-
-			//Status
-			string kanniTarget = kanni.getEffectTarget(kanniId);
-			int effect = kanni.getEffect(kanniId);
-			if(kanniTarget=="atk"){
-				addAtkByKanni = ((float)adjAtk * (float)effect)/100;
-			}else if(kanniTarget=="hp"){
-				addHpByKanni = ((float)adjHp * (float)effect)/100;
-			}else if(kanniTarget=="dfc"){
-				addDfcByKanni = ((float)adjDfc * (float)effect)/100;
-			}
+			    //Status
+			    string kanniTarget = kanni.getEffectTarget(kanniId);
+			    int effect = kanni.getEffect(kanniId);
+			    if(kanniTarget=="atk"){
+				    addAtkByKanni = ((float)adjAtk * (float)effect)/100;
+			    }else if(kanniTarget=="hp"){
+				    addHpByKanni = ((float)adjHp * (float)effect)/100;
+			    }else if(kanniTarget=="dfc"){
+				    addDfcByKanni = ((float)adjDfc * (float)effect)/100;
+			    }
 
 		
-		} else {
+		    } else {
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
+                }
+                else {
+                    GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
+                }
+            }
+
+		    //Jyosyu
+		    string jyosyuTmp = "jyosyuBusyo" + busyoId;
+		    if (PlayerPrefs.HasKey (jyosyuTmp)) {
+			    int kuniId = PlayerPrefs.GetInt(jyosyuTmp);
+			    KuniInfo kuni = new KuniInfo();
+			    string kuniName = kuni.getKuniName(kuniId);
+
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\nLord";
+                }
+                else {
+                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\n城主";
+                }
+
+            } else {
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "No Feud";
+                }
+                else {
+                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "城無し";
+                }
+            }
+            
+		    //Show Additional Status
+		    finalAtk = int.Parse (KahouStatusArray [0]) + Mathf.FloorToInt (addAtkByKanni);
+		    finalHp = int.Parse (KahouStatusArray [1]) + Mathf.FloorToInt (addHpByKanni);
+		    finalDfc= int.Parse (KahouStatusArray [2]) + Mathf.FloorToInt (addDfcByKanni);
+		    finalSpd = int.Parse (KahouStatusArray [3]);
+
+		    GameObject.Find ("KahouAtkValue").GetComponent<Text> ().text = "+" + finalAtk.ToString ();
+		    GameObject.Find ("KahouHpValue").GetComponent<Text>().text = "+" + finalHp.ToString();
+		    totalBusyoHp = adjHp + finalHp;
+		    GameObject.Find ("KahouDfcValue").GetComponent<Text>().text = "+" + finalDfc.ToString();
+		    GameObject.Find ("KahouSpdValue").GetComponent<Text>().text = "+" + finalSpd.ToString();
+        }else {
+
+
             if (Application.systemLanguage != SystemLanguage.Japanese) {
                 GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
-            }
-            else {
+            }else {
                 GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
             }
-        }
-
-		//Jyosyu
-		string jyosyuTmp = "jyosyuBusyo" + busyoId;
-		if (PlayerPrefs.HasKey (jyosyuTmp)) {
-			int kuniId = PlayerPrefs.GetInt(jyosyuTmp);
-			KuniInfo kuni = new KuniInfo();
-			string kuniName = kuni.getKuniName(kuniId);
-
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\nLord";
-            }
-            else {
-                GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\n城主";
-            }
-
-        } else {
+            
             if (Application.systemLanguage != SystemLanguage.Japanese) {
                 GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "No Feud";
-            }
-            else {
+            }else {
                 GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "城無し";
             }
+
         }
-
-
-
-
-		//Show Additional Status
-		int finalAtk = int.Parse (KahouStatusArray [0]) + Mathf.FloorToInt (addAtkByKanni);
-		int finalHp = int.Parse (KahouStatusArray [1]) + Mathf.FloorToInt (addHpByKanni);
-		int finalDfc= int.Parse (KahouStatusArray [2]) + Mathf.FloorToInt (addDfcByKanni);
-		int finalSpd = int.Parse (KahouStatusArray [3]);
-
-		GameObject.Find ("KahouAtkValue").GetComponent<Text> ().text = "+" + finalAtk.ToString ();
-		GameObject.Find ("KahouHpValue").GetComponent<Text>().text = "+" + finalHp.ToString();
-		totalBusyoHp = adjHp + finalHp;
-		GameObject.Find ("KahouDfcValue").GetComponent<Text>().text = "+" + finalDfc.ToString();
-		GameObject.Find ("KahouSpdValue").GetComponent<Text>().text = "+" + finalSpd.ToString();
-
 
 		//Butai Status
 		string heiId = "hei" + busyoId.ToString ();
-		string chParam = PlayerPrefs.GetString (heiId, "0");
+        string chParam = "";
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+            chParam = PlayerPrefs.GetString (heiId, "0");
+        }else {
+            //retry tutorial
+            chParam = "TP: 1:1:1";
+        }
+
         if (chParam == "0") {
             StatusGet statusScript = new StatusGet();
             string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));

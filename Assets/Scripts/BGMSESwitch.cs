@@ -111,15 +111,17 @@ public class BGMSESwitch : MonoBehaviour {
     public void StopBGMVolume(){
 		bool BGMOffFlg = PlayerPrefs.GetBool ("BGMOffFlg");
 		if(BGMOffFlg){
-			AudioSource[] BGMAudioSources;
-			if (SceneManager.GetActiveScene ().name == "naisei") {
+			AudioSource[] BGMAudioSources = null;
+			if (SceneManager.GetActiveScene ().name == "naisei" || SceneManager.GetActiveScene().name == "tutorialNaisei") {
 				BGMAudioSources = GameObject.Find ("NaiseiBGMController").GetComponents<AudioSource> ();
 			} else {
-				BGMAudioSources = GameObject.Find ("BGMController").GetComponents<AudioSource> ();
-			}
+                if(GameObject.Find("BGMController")) {
+				    BGMAudioSources = GameObject.Find ("BGMController").GetComponents<AudioSource> ();
+                }
+            }
 
 			for(int i=0; i<BGMAudioSources.Length;i++){				
-			BGMAudioSources [i].volume = 0;
+			    BGMAudioSources [i].volume = 0;
 			}
 		}
 	}

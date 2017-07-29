@@ -47,27 +47,41 @@ public class TouyouController : MonoBehaviour {
 
         /*View Last Hit Busyo*/
         //Get History
-        string gacyaHst = PlayerPrefs.GetString("gacyaHst");
-		if (gacyaHst != null && gacyaHst != "") {
-			//View History
-			char[] delimiterChars = {','};
-			string[] tokens = gacyaHst.Split(delimiterChars);		
-			int[] hitBusyo = Array.ConvertAll<string, int>(tokens, int.Parse);
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        if (tutorialDoneFlg && Application.loadedLevelName != "tutorialTouyou") {
+            string gacyaHst = PlayerPrefs.GetString("gacyaHst");
+		    if (gacyaHst != null && gacyaHst != "") {
+			    //View History
+			    char[] delimiterChars = {','};
+			    string[] tokens = gacyaHst.Split(delimiterChars);		
+			    int[] hitBusyo = Array.ConvertAll<string, int>(tokens, int.Parse);
 
-			Gacya viewBusyo = new Gacya();
-			viewBusyo.viewBusyo(hitBusyo,false);
+			    Gacya viewBusyo = new Gacya();
+			    viewBusyo.viewBusyo(hitBusyo,false);
 
-		} else {
-			//View Message for only 1st time
-			Message msg = new Message();
+		    } else {
+			    //View Message for only 1st time
+			    Message msg = new Message();
+                string Text = msg.getMessage(53);
+			    msg.makeMessage(Text);
+			    GameObject messageObj = GameObject.Find ("MessageObject");
+			    messageObj.transform.SetParent(GameObject.Find ("CenterView").transform);
+			    RectTransform messageTransform = messageObj.GetComponent<RectTransform> ();
+			    messageTransform.anchoredPosition = new Vector3 (0, 0, 0);
+
+			    messageObj.GetComponent<FadeuGUI>().enabled = false;
+		    }
+        }else {
+            //View Message for only 1st time
+            Message msg = new Message();
             string Text = msg.getMessage(53);
-			msg.makeMessage(Text);
-			GameObject messageObj = GameObject.Find ("MessageObject");
-			messageObj.transform.SetParent(GameObject.Find ("CenterView").transform);
-			RectTransform messageTransform = messageObj.GetComponent<RectTransform> ();
-			messageTransform.anchoredPosition = new Vector3 (0, 0, 0);
+            msg.makeMessage(Text);
+            GameObject messageObj = GameObject.Find("MessageObject");
+            messageObj.transform.SetParent(GameObject.Find("CenterView").transform);
+            RectTransform messageTransform = messageObj.GetComponent<RectTransform>();
+            messageTransform.anchoredPosition = new Vector3(0, 0, 0);
 
-			messageObj.GetComponent<FadeuGUI>().enabled = false;
-		}
+            messageObj.GetComponent<FadeuGUI>().enabled = false;
+        }
 	}
 }

@@ -29,8 +29,10 @@ public class SeiryokuInfo : MonoBehaviour {
 
 	public void OnClick () {
 
-		//SE
-		AudioSource sound = GameObject.Find ("SEController").GetComponent<AudioSource> ();
+        MainStageController MainStageController = GameObject.Find("GameController").GetComponent<MainStageController>();
+
+        //SE
+        AudioSource sound = GameObject.Find ("SEController").GetComponent<AudioSource> ();
 		sound.PlayOneShot(sound.clip); 
 
 		//Initialization
@@ -95,32 +97,15 @@ public class SeiryokuInfo : MonoBehaviour {
             popText.GetComponent<Text> ().text = "内政状況";
         }
 
-        //Header
-        string headerPath = "Prefabs/Map/seiryoku/Syukaku";
-		GameObject header = Instantiate (Resources.Load (headerPath)) as GameObject;
-		header.transform.SetParent(popup.transform);
-		header.transform.localScale = new Vector2 (1, 1);
-		header.name = "Syukaku";
-		RectTransform headerTransform = header.GetComponent<RectTransform> ();
-		headerTransform.anchoredPosition = new Vector3 (0, 135, 0);
-
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
-            header.transform.FindChild("NowSeasonText").GetComponent<Text>().text = GameObject.Find("SeasonValue").GetComponent<Text>().text + " Gain";
-        }else {
-            header.transform.FindChild ("NowSeasonText").GetComponent<Text> ().text = GameObject.Find ("SeasonValue").GetComponent<Text> ().text + "収穫";
-        }
-
-        //Button
-        string btnPath = "Prefabs/Map/seiryoku/GetShigenBtn";
-		GameObject btn = Instantiate (Resources.Load (btnPath)) as GameObject;
-		btn.transform.SetParent(popup.transform);
-		btn.transform.localScale = new Vector2 (1, 1);
-		btn.name = "GetShigenBtn";
-		RectTransform btnTransform = btn.GetComponent<RectTransform> ();
-		btnTransform.anchoredPosition = new Vector3 (420, 160, 0);
+        //Cyosyu
+        string cyosyuPath = "Prefabs/Cyosyu/CyosyuObj";
+        GameObject CyosyuObj = Instantiate(Resources.Load(cyosyuPath)) as GameObject;
+        CyosyuObj.transform.SetParent(popup.transform);
+        CyosyuObj.transform.localScale = new Vector2(1, 1);
 
 
-		string seiryoku = PlayerPrefs.GetString ("seiryoku");
+
+        string seiryoku = PlayerPrefs.GetString ("seiryoku");
 		List<string> seiryokuList = new List<string> ();
 		List<string> mySeiryokuList = new List<string> ();
 		char[] delimiterChars = {','};
@@ -198,12 +183,8 @@ public class SeiryokuInfo : MonoBehaviour {
 
 							//Status
 							if(type == "shop"){
-                                //syogyo = syogyo + naiseiEffectList[0];
-                                //totalMoney = totalMoney + naiseiEffectList[0];
                                 kuniSyogyo = kuniSyogyo + naiseiEffectList[0];
                             }else if(type == "kzn"){
-                                //syogyo = syogyo + (naiseiEffectList[0] * 4);
-                                //kozanMoney = kozanMoney + naiseiEffectList[0];
                                 kuniKozan = kuniKozan + naiseiEffectList[0];
 
                             }else if(type == "ta"){
@@ -336,10 +317,6 @@ public class SeiryokuInfo : MonoBehaviour {
 						float hpSts = (float)sts.getHp(jyosyuId,lv);
 						float atkSts = (float)sts.getAtk(jyosyuId,lv);
 
-                        //float tempSyogyo = (float)syogyo;
-                        //tempSyogyo = tempSyogyo + (tempSyogyo * naiseiSts/200);
-                        //syogyo = (int)tempSyogyo;
-
                         float tempKuniSyogyo = (float)kuniSyogyo;
                         tempKuniSyogyo = tempKuniSyogyo + (tempKuniSyogyo * naiseiSts / 200);
                         kuniSyogyo = (int)tempKuniSyogyo;
@@ -348,9 +325,6 @@ public class SeiryokuInfo : MonoBehaviour {
                         tempKuniKozan = tempKuniKozan + (tempKuniKozan * naiseiSts / 200);
                         kuniKozan = (int)tempKuniKozan;
 
-                        //float tempNogyo = (float)nogyo;
-                        //tempNogyo = tempNogyo + (tempNogyo * naiseiSts/200);
-                        //nogyo = (int)tempNogyo;
 
                     }
                 }
@@ -362,13 +336,79 @@ public class SeiryokuInfo : MonoBehaviour {
         }//Kuni Loop Finish
 
 
-		/*visualize*/
-		string statusPath = "Prefabs/Map/seiryoku/StatusBack";
-		GameObject status = Instantiate (Resources.Load (statusPath)) as GameObject;
-		status.transform.SetParent(popup.transform);
-		status.transform.localScale = new Vector2 (1, 1);
-		status.transform.localPosition = new Vector2 (0, -120);
-		status.name = "StatusBack";
+        /*visualize*/
+        //Upper Board
+        GameObject spring = CyosyuObj.transform.FindChild("spring").gameObject;
+        spring.transform.FindChild("TargetMoney").transform.FindChild("Value").GetComponent<Text>().text = (totalMoney + kozanMoney).ToString();
+
+        GameObject summerWinter = CyosyuObj.transform.FindChild("summerWinter").gameObject;
+        summerWinter.transform.FindChild("TargetMoney").transform.FindChild("Value").GetComponent<Text>().text = kozanMoney.ToString();
+        GameObject TargetGunjyu = summerWinter.transform.FindChild("TargetGunjyu").gameObject;
+        if (totalYRH != 0) {
+            TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueH").GetComponent<Text>().text = totalYRH.ToString();
+        }
+        if (totalYRM != 0) {
+            TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueM").GetComponent<Text>().text = totalYRM.ToString();
+        }
+        if (totalYRL != 0) {
+            TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueL").GetComponent<Text>().text = totalYRL.ToString();
+        }
+        if (totalKBH != 0) {
+            TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueH").GetComponent<Text>().text = totalKBH.ToString();
+        }
+        if (totalKBM != 0) {
+            TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueM").GetComponent<Text>().text = totalKBM.ToString();
+        }
+        if (totalKBL != 0) {
+            TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueL").GetComponent<Text>().text = totalKBL.ToString();
+        }
+        if (totalYMH != 0) {
+            TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueH").GetComponent<Text>().text = totalYMH.ToString();
+        }
+        if (totalYMM != 0) {
+            TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueM").GetComponent<Text>().text = totalYMM.ToString();
+        }
+        if (totalYML != 0) {
+            TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueL").GetComponent<Text>().text = totalYML.ToString();
+        }
+        if (totalTPH != 0) {
+            TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueH").GetComponent<Text>().text = totalTPH.ToString();
+        }
+        if (totalTPM != 0) {
+            TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueM").GetComponent<Text>().text = totalTPM.ToString();
+        }
+        if (totalTPL != 0) {
+            TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
+        }
+        if (totalSNBH != 0) {
+            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
+        }
+        if (totalSNBM != 0) {
+            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
+        }
+        if (totalSNBL != 0) {
+            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
+        }
+
+        GameObject autumn = CyosyuObj.transform.FindChild("autumn").gameObject;
+        autumn.transform.FindChild("TargetMoney").transform.FindChild("Value").GetComponent<Text>().text = kozanMoney.ToString();
+        autumn.transform.FindChild("TargetHyourou").transform.FindChild("Value").GetComponent<Text>().text = totalHyourou.ToString();
+
+        //Color
+        int nowSeason = MainStageController.nowSeason;
+        if (nowSeason==1) {
+            summerWinter.transform.FindChild("summer").gameObject.AddComponent<TextBlinker>();
+        }else if(nowSeason==2) {
+            autumn.transform.FindChild("autumn").gameObject.AddComponent<TextBlinker>();
+        }else if(nowSeason==3) {
+            summerWinter.transform.FindChild("winter").gameObject.AddComponent<TextBlinker>();
+        }else if(nowSeason==4) {
+            spring.transform.FindChild("spring").gameObject.AddComponent<TextBlinker>();
+        }
+
+
+        //Lower Board
+        GameObject status = CyosyuObj.transform.FindChild("statusBack").gameObject;
 
 		//Kamon
 		string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + myDaimyoId.ToString ();
@@ -418,39 +458,50 @@ public class SeiryokuInfo : MonoBehaviour {
 		//Bunka
 		status.transform.FindChild("StatusBunka").transform.FindChild("BunkaValue").GetComponent<Text>().text = bunka.ToString();
 
-
-
-		//Set Total Amount
-		GetAllShigen btnScript = btn.GetComponent<GetAllShigen>();
-		btnScript.totalMoney = totalMoney;
-		btnScript.totalKozanMoney = kozanMoney;
-		btnScript.totalHyourou = totalHyourou;
-		btnScript.totalYRL = totalYRL;
-		btnScript.totalKBL = totalKBL;
-		btnScript.totalYML = totalYML;
-		btnScript.totalTPL = totalTPL;
-		btnScript.totalYRM = totalYRM;
-		btnScript.totalKBM = totalKBM;
-		btnScript.totalYMM = totalYMM;
-		btnScript.totalTPM = totalTPM;
-		btnScript.totalYRH = totalYRH;
-		btnScript.totalKBH = totalKBH;
-		btnScript.totalYMH = totalYMH;
-		btnScript.totalTPH = totalTPH;
-		btnScript.totalSNBL = totalSNBL;
-		btnScript.totalSNBM = totalSNBM;
-		btnScript.totalSNBH = totalSNBH;
-
-
         //tutorial
         if (Application.loadedLevelName == "tutorialMain") {
-            GameObject.Find("board").transform.FindChild("close").gameObject.SetActive(false);
-
-            TutorialController tutorialScript = new TutorialController();
-            Vector2 vect = new Vector2(0, 30);
-            GameObject GetShigenBtn = GameObject.Find("GetShigenBtn").gameObject;
-            GameObject animObj = tutorialScript.SetPointer(GetShigenBtn, vect);
-            animObj.transform.localScale = new Vector2(100, 100);
+            Destroy(transform.FindChild("point_up").gameObject);
+            TutorialController TutorialController = new TutorialController();
+            Vector2 vect = new Vector2(0, 50);
+            GameObject closeObj = popup.transform.FindChild("close").gameObject;
+            GameObject animObj = TutorialController.SetPointer(closeObj, vect);
+            animObj.transform.localScale = new Vector2(120, 120);
+            
+            GameObject SubButtonViewLeft = GameObject.Find("SubButtonViewLeft").gameObject;
+            GameObject.Find("SeiryokuInfo").transform.SetParent(SubButtonViewLeft.transform);
         }
     }
+
+    public string GetSeason(int seasonId) {
+        
+        string seasonName = "";
+
+        if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (seasonId == 1) {
+                seasonName = "Spring";
+            }else if (seasonId == 2) {
+                seasonName = "Summer";
+            }else if (seasonId == 3) {
+                seasonName = "Autumn";
+            }else if (seasonId == 4) {
+                seasonName = "Winter";
+            }
+        }else {
+            if (seasonId == 1) {
+                seasonName = "春";
+            }else if (seasonId == 2) {
+                seasonName = "夏";
+            }else if (seasonId == 3) {
+                seasonName = "秋";
+            }else if (seasonId == 4) {
+                seasonName = "冬";
+            }
+        }
+
+        return seasonName;
+    }
+
+
+
+
 }

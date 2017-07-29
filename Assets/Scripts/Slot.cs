@@ -96,7 +96,10 @@ public class Slot : MonoBehaviour,IDropHandler {
 							if (!item) {
 
                                 //hard
-                                bool hardFlg = PlayerPrefs.GetBool("hardFlg");                                
+                                bool hardFlg = false;
+                                if (Application.loadedLevelName != "tutorialHyojyo") {
+                                    hardFlg = PlayerPrefs.GetBool("hardFlg");
+                                }         
                                 if (hardFlg) {
                                     int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
                                     if(myDaimyo != DragHandler.itemBeginDragged.GetComponent<Senryoku>().belongDaimyoId) {
@@ -145,9 +148,9 @@ public class Slot : MonoBehaviour,IDropHandler {
                                         btn.transform.localScale = new Vector2(150, 150);
 
                                         TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
-                                        txtScript.SetText(11);
+                                        txtScript.SetText(13);
                                         txtScript.SetNextLine();
-                                        txtScript.tutorialId = 11;
+                                        txtScript.tutorialId = 13;
                                         txtScript.actOnFlg = false;
                                     }
                                 }

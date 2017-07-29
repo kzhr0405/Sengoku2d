@@ -42,17 +42,18 @@ public class Timer : MonoBehaviour {
 	private void Start(){
 		reset();
 
-        if (Application.loadedLevelName == "tutorialHyojyo") {
-            engunTime = 160.0f;
-        }
-
         mntMinusRatio = PlayerPrefs.GetFloat("mntMinusStatus",0);
 		seaMinusRatio = PlayerPrefs.GetFloat("seaMinusStatus",0);
 		rainMinusRatio = PlayerPrefs.GetFloat("rainMinusStatus",0);
 		snowMinusRatio = PlayerPrefs.GetFloat("snowMinusStatus",0);
 
-		//Player Engun Check
-		playerEngunList = PlayerPrefs.GetString("playerEngunList");
+        //Player Engun Check
+        if (Application.loadedLevelName != "tutorialKassen") {
+            playerEngunList = PlayerPrefs.GetString("playerEngunList");
+        }else {
+            playerEngunList = "1-158-50-20-10:1-141-50-20-10:1-52-50-20-10";
+        }
+
 		if (playerEngunList == null || playerEngunList == "") {
 			playerEngunList = PlayerPrefs.GetString("tempKyoutouList");
 		}
@@ -350,7 +351,7 @@ public class Timer : MonoBehaviour {
                             GameObject particleObj = Instantiate(Resources.Load(particlePath)) as GameObject;
                             particleObj.transform.SetParent(canvas.transform);
                             particleObj.transform.localPosition = new Vector2(0, 60);
-                            
+
                         }
 				
 				

@@ -62,23 +62,26 @@ public class BuildNaisei : MonoBehaviour {
 					}
 				}
 
+                bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+                if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialNaisei") {
 
-				/*Reduce Money & Hyourou*/
-				//Money
-				int resultMoney = nowMoney - requiredMoney;
-				int resultHyourou = nowHyourou - requiredHyourou;
-				PlayerPrefs.SetInt("money",resultMoney);
-				PlayerPrefs.SetInt("hyourou",resultHyourou);
+                    /*Reduce Money & Hyourou*/
+                    //Money
+                    int resultMoney = nowMoney - requiredMoney;
+				    int resultHyourou = nowHyourou - requiredHyourou;
+				    PlayerPrefs.SetInt("money",resultMoney);
+				    PlayerPrefs.SetInt("hyourou",resultHyourou);
 
-				//Track
-				int TrackBuildMoneyNo = PlayerPrefs.GetInt("TrackBuildMoneyNo",0);
-				TrackBuildMoneyNo = TrackBuildMoneyNo + requiredMoney;
-				PlayerPrefs.SetInt("TrackBuildMoneyNo",TrackBuildMoneyNo);
+				    //Track
+				    int TrackBuildMoneyNo = PlayerPrefs.GetInt("TrackBuildMoneyNo",0);
+				    TrackBuildMoneyNo = TrackBuildMoneyNo + requiredMoney;
+				    PlayerPrefs.SetInt("TrackBuildMoneyNo",TrackBuildMoneyNo);
 
-
-				PlayerPrefs.SetString (temp, newNaiseiString);
-				PlayerPrefs.SetBool ("questDailyFlg16",true);
-				PlayerPrefs.Flush();
+                
+				    PlayerPrefs.SetString (temp, newNaiseiString);
+				    PlayerPrefs.SetBool ("questDailyFlg16",true);
+				    PlayerPrefs.Flush();
+                }
 
                 //Message
                 string OKtext = "";

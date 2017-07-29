@@ -252,10 +252,24 @@ public class PlayerInstance : MonoBehaviour {
 		audio.addComponentMoveAttack (prefab,heisyu);
 
 
-		/*Child Instantiate*/
-		//set child object
-		string heiId = "hei" + busyoId.ToString();
-		string chParam = PlayerPrefs.GetString(heiId, "0");
+        /*Child Instantiate*/
+        //set child object
+        string heiId = "hei" + busyoId.ToString();
+        string chParam = "";
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialKassen") {
+            chParam = PlayerPrefs.GetString(heiId, "0");
+        }else {
+            //retry tutorial
+            if(busyoId==19) {
+                chParam = "TP:2:1:1";
+            }else {
+                StatusGet statusScript = new StatusGet();
+                string chParamHeisyu = statusScript.getHeisyu(busyoId);
+                chParam = chParamHeisyu + ":1:1:1";
+            }
+        }
+        
         if (chParam == "0") {
             StatusGet statusScript = new StatusGet();
             string chParamHeisyu = statusScript.getHeisyu(busyoId);

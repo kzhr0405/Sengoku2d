@@ -20,9 +20,11 @@ public class UnitMover : MonoBehaviour {
 	private float timeleft;
 
 
-	void Start () {
+    void Start () {
 
-		if (heisyu == "TP" || heisyu == "YM") {
+
+
+        if (heisyu == "TP" || heisyu == "YM") {
 			anim = this.GetComponent ("Animator") as Animator;
 
 
@@ -44,7 +46,7 @@ public class UnitMover : MonoBehaviour {
     }
 
     void Update () {
-		
+		    
 			if (touchEndPosition != Vector3.zero) {
 				Move (touchEndPosition);
 			} else {
@@ -101,9 +103,7 @@ public class UnitMover : MonoBehaviour {
 		if (heisyu == "TP" || heisyu == "YM") {
 			attackTPYM ();
 		}
-
-
-
+        
 	}
 
 	public void attackTPYM(){

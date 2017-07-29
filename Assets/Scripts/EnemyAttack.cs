@@ -17,12 +17,6 @@ public class EnemyAttack : MonoBehaviour {
     void Start() { 
 		anim = GetComponent( "Animator" ) as Animator;
 		anim.SetBool("IsAttack", false );
-		//if (GetComponent<AudioSource> ()) {
-			//AudioSource[] audioSources = GetComponents<AudioSource> ();
-			//audioSourceBattle = audioSources [1];
-		//}
-		//AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-		//audioSourceBattle = audioSources [11];
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
     }
 
@@ -56,8 +50,7 @@ public class EnemyAttack : MonoBehaviour {
 					//Attack Adjustment
 					string playerHeisyu = col.gameObject.GetComponent<Heisyu>().heisyu;
 					string enemyHeisyu = this.gameObject.GetComponent<Heisyu>().heisyu;
-					if((enemyHeisyu=="KB" && playerHeisyu=="YR")||(enemyHeisyu=="KB" && playerHeisyu=="YM")
-					   ||(enemyHeisyu=="YR" && playerHeisyu=="TP")){
+					if((enemyHeisyu=="KB" && playerHeisyu=="YR")||(enemyHeisyu=="YR" && playerHeisyu=="TP")){
 						Damage = Damage * 2;
 					}
 

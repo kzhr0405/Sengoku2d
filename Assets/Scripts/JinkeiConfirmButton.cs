@@ -21,42 +21,65 @@ public class JinkeiConfirmButton : MonoBehaviour {
             //Tutorial
             audioSources[5].Play();
 
-            GameObject Slot13 = GameObject.Find("copiedJinkeiView").transform.FindChild("Slot13").gameObject;
-            int chldBusyoId = 0;
-            foreach (Transform chld in Slot13.transform) {
-                chldBusyoId = int.Parse(chld.name);
+            bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+            PlayerPrefs.SetInt("tutorialId", 14);
+            
+            if(!tutorialDoneFlg) {
+
+                GameObject Slot13 = GameObject.Find("copiedJinkeiView").transform.FindChild("Slot13").gameObject;
+                int chldBusyoId = 0;
+                foreach (Transform chld in Slot13.transform) {
+                    chldBusyoId = int.Parse(chld.name);
+                }
+                PlayerPrefs.SetInt("1map13", chldBusyoId);
+
+                //Set Key
+                int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
+                aveLv = totalLv / jinkeiBusyoQty;
+                aveChLv = totalChLv / jinkeiBusyoQty;
+                aveChQty = totalChQty / jinkeiBusyoQty;
+                int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
+
+                PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
+                PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
+                PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
+                PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
+                PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
             }
 
-            //Set Key
-            PlayerPrefs.SetInt("1map13", chldBusyoId);
-            PlayerPrefs.SetInt("tutorialId",12);
-            
-            int jinkeiBusyoQty = int.Parse(GameObject.Find("jinkeiQtyValue").GetComponent<Text>().text);
-            aveLv = totalLv / jinkeiBusyoQty;
-            aveChLv = totalChLv / jinkeiBusyoQty;
-            aveChQty = totalChQty / jinkeiBusyoQty;
-            PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
-            PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
-            PlayerPrefs.SetInt("jinkeiBusyoQty", jinkeiBusyoQty);
-            PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
-
-            int heiryoku = int.Parse(GameObject.Find("totalHpValue").GetComponent<Text>().text);
-            PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
-            PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
-
             //Kassen
-            PlayerPrefs.SetBool("isAttackedFlg",true);
-            PlayerPrefs.SetInt("activeKuniId",1);
-            PlayerPrefs.SetInt("activeStageId", 10);
             PlayerPrefs.SetInt("activePowerType", 1);
-            PlayerPrefs.SetInt("pSRLv", 20);
+            PlayerPrefs.DeleteKey("emap1");
+            PlayerPrefs.DeleteKey("emap2");
+            PlayerPrefs.DeleteKey("emap3");
+            PlayerPrefs.DeleteKey("emap4");
+            PlayerPrefs.DeleteKey("emap5");
+            PlayerPrefs.DeleteKey("emap6");
+            PlayerPrefs.DeleteKey("emap7");
+            PlayerPrefs.DeleteKey("emap9");
+            PlayerPrefs.DeleteKey("emap10");
+            PlayerPrefs.DeleteKey("emap11");
+            PlayerPrefs.DeleteKey("emap12");
+            PlayerPrefs.DeleteKey("emap15");
+            PlayerPrefs.DeleteKey("emap16");
+            PlayerPrefs.DeleteKey("emap17");
+            PlayerPrefs.DeleteKey("emap18");
+            PlayerPrefs.DeleteKey("emap19");
+            PlayerPrefs.DeleteKey("emap20");
+            PlayerPrefs.DeleteKey("emap21");
+            PlayerPrefs.DeleteKey("emap22");
+            PlayerPrefs.DeleteKey("emap23");
+            PlayerPrefs.DeleteKey("emap24");
+            PlayerPrefs.DeleteKey("emap25");
+            
             PlayerPrefs.SetInt("emap14", 24);
             PlayerPrefs.SetInt("emap13", 202);
             PlayerPrefs.SetInt("emap8", 188);
-            PlayerPrefs.SetString("playerEngunList", "1-158-50-20-10:1-141-50-20-10:1-52-50-20-10");
-            
+                
             PlayerPrefs.Flush();
-
+            
+            //Application.LoadLevel("tutorialMain");
             Application.LoadLevel("tutorialKassen");
 
         } else { 

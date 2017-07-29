@@ -27,7 +27,9 @@ public class BackMain : MonoBehaviour {
 	}
 
 	public void OnClick () {
-		//Back to Main
+
+        
+        //Back to Main
         AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         
 		//back from naisei to main 
@@ -127,6 +129,10 @@ public class BackMain : MonoBehaviour {
             Application.LoadLevel("tutorialMain");
 
         }else if (Application.loadedLevelName == "tutorialTouyou") {
+            audioSources[1].Play();
+            Application.LoadLevel("tutorialMain");
+
+        }else if (Application.loadedLevelName == "tutorialBusyo") {
             audioSources[1].Play();
             Application.LoadLevel("tutorialMain");
 

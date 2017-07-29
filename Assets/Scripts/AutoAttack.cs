@@ -8,6 +8,7 @@ public class AutoAttack : MonoBehaviour {
     public bool onFlg = false;
     public GameObject cameraObjLeft;
     public GameObject cameraObjRight;
+    public float speed = 4;
 
     void Start() {
         cameraObjLeft = GameObject.Find("Left").gameObject;
@@ -21,7 +22,7 @@ public class AutoAttack : MonoBehaviour {
         if(!onFlg) {
 
             onFlg = true;
-            Time.timeScale = 4;
+            Time.timeScale = speed;
 
             //Disabled button
             if (GameObject.Find("AutoBtn")) {
@@ -127,14 +128,14 @@ public class AutoAttack : MonoBehaviour {
     }
 
     public void CameraSpeedDown() {
-        cameraObjLeft.GetComponent<MoveCamera>().speed = cameraObjLeft.GetComponent<MoveCamera>().speed / 4;
-        cameraObjRight.GetComponent<MoveCamera>().speed = cameraObjRight.GetComponent<MoveCamera>().speed / 4;
+        cameraObjLeft.GetComponent<MoveCamera>().speed = cameraObjLeft.GetComponent<MoveCamera>().speed / speed;
+        cameraObjRight.GetComponent<MoveCamera>().speed = cameraObjRight.GetComponent<MoveCamera>().speed / speed;
 
     }
 
     public void CameraSpeedUp() {
-        cameraObjLeft.GetComponent<MoveCamera>().speed = cameraObjLeft.GetComponent<MoveCamera>().speed * 4;
-        cameraObjRight.GetComponent<MoveCamera>().speed = cameraObjRight.GetComponent<MoveCamera>().speed * 4;
+        cameraObjLeft.GetComponent<MoveCamera>().speed = cameraObjLeft.GetComponent<MoveCamera>().speed * speed;
+        cameraObjRight.GetComponent<MoveCamera>().speed = cameraObjRight.GetComponent<MoveCamera>().speed * speed;
 
     }
 }

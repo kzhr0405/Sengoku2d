@@ -84,6 +84,9 @@ public class RewardController : MonoBehaviour {
                         }
                         obj.transform.FindChild("qty").GetComponent<Text>().text = "x " + qty.ToString();
                         obj.transform.FindChild("rank").GetComponent<Text>().text = rankTmp;
+                    }else if(grp.Contains("jinkei")) {
+
+
                     }
                 }
             }

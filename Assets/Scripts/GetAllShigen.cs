@@ -34,13 +34,43 @@ public class GetAllShigen : MonoBehaviour {
 
 		if (!doneCyosyuFlg) {
 			audioSources [3].Play ();
+            doneCyosyuFlg = true;
+            MainStageController main = new MainStageController();
 
-			doneCyosyuFlg = true;
-			MainStageController main = new MainStageController();
+            /*** season change Start ***/
+            string yearSeason = PlayerPrefs.GetString("yearSeason");
+            char[] delimiterChars = { ',' };
+            string[] yearSeasonList = yearSeason.Split(delimiterChars);
+            int nowYear = int.Parse(yearSeasonList[0]);
+            int nowSeason = int.Parse(yearSeasonList[1]);
+
+            if (nowSeason == 4) {
+                nowYear = nowYear + 1;
+                nowSeason = 1;
+            }else {
+                nowSeason = nowSeason + 1;
+            }
+
+            string newYearSeason = nowYear.ToString() + "," + nowSeason.ToString();
+            PlayerPrefs.DeleteKey("bakuhuTobatsuDaimyoId");
+            PlayerPrefs.SetString("yearSeason", newYearSeason);
+
+            string lastSeasonChangeTime = System.DateTime.Now.ToString();
+            PlayerPrefs.SetString("lastSeasonChangeTime", lastSeasonChangeTime);
+            PlayerPrefs.DeleteKey("usedBusyo");
+            DoNextSeason DoNextSeason = new DoNextSeason();
+            DoNextSeason.deleteLinkCut();
+            DoNextSeason.deleteWinOver();
+            PlayerPrefs.Flush();
+
+            //Change Label
+            GameObject.Find("YearValue").GetComponent<Text>().text = nowYear.ToString();
+            main.SetSeason(nowSeason);
+            /*** season change End ***/
+            
 
 			PlayerPrefs.SetBool("doneCyosyuFlg", doneCyosyuFlg);
 			string targetName = "";
-			char[] delimiterChars = {','};
 
 			//Cyosyu Handling
 			if(cyosyuTarget == "money"){

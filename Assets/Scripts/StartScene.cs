@@ -17,7 +17,7 @@ public class StartScene : MonoBehaviour {
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         //Under Button
         if (name == "Jinkei") {
-            if (tutorialDoneFlg) {
+            if (tutorialDoneFlg&& Application.loadedLevelName != "tutorialMain") {
                 Application.LoadLevel("hyojyo");
             }else {
                 Application.LoadLevel("tutorialHyojyo");
@@ -69,10 +69,14 @@ public class StartScene : MonoBehaviour {
             }
             
             
-        } else if (name == "Busyo") {
-			Application.LoadLevel ("busyo");
-		} else if (name == "Touyou") {
-            if(tutorialDoneFlg) {
+        } else if (name == "Busyo") {			
+            if (tutorialDoneFlg && Application.loadedLevelName != "tutorialMain") {
+                Application.LoadLevel("busyo");
+            }else {
+                Application.LoadLevel("tutorialBusyo");
+            }
+        } else if (name == "Touyou") {
+            if(tutorialDoneFlg && Application.loadedLevelName != "tutorialMain") {
 			    Application.LoadLevel ("touyou");
             }else {
                 Application.LoadLevel("tutorialTouyou");
@@ -169,7 +173,21 @@ public class StartScene : MonoBehaviour {
 
 			}
 
-		}else if (name == "Reward") {
+            //Auto
+            bool Auto2Flg = PlayerPrefs.GetBool("Auto2Flg");
+            if(Auto2Flg) {
+                GameObject onObj = board.transform.FindChild("Auto").transform.FindChild("2").gameObject;
+                onObj.GetComponent<Image>().color = onBtnColor;
+                onObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+                onObj.GetComponent<Button>().enabled = false;
+            }else {
+                GameObject onObj = board.transform.FindChild("Auto").transform.FindChild("4").gameObject;
+                onObj.GetComponent<Image>().color = onBtnColor;
+                onObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+                onObj.GetComponent<Button>().enabled = false;
+            }            
+        }
+        else if (name == "Reward") {
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
@@ -177,6 +195,39 @@ public class StartScene : MonoBehaviour {
             }else {
                 Application.LoadLevel("reward");
             }
+        }else if(name == "Tutorial") {
+            PlayerPrefs.SetInt("tutorialId",1);
+            PlayerPrefs.Flush();
+            Application.LoadLevel("tutorialMain");
+
+        }else if (name == "User") {
+            GameObject panel = GameObject.Find("Panel").gameObject;
+
+            string pathOfBack = "Prefabs/Common/TouchBackForOne";
+            GameObject back = Instantiate(Resources.Load(pathOfBack)) as GameObject;
+            back.transform.SetParent(panel.transform);
+            back.transform.localScale = new Vector2(1, 1);
+            back.transform.localPosition = new Vector2(0, 0);
+
+            string pathOfBoard = "Prefabs/Common/UserId";
+            GameObject board = Instantiate(Resources.Load(pathOfBoard)) as GameObject;
+            board.transform.SetParent(panel.transform);
+            board.transform.localScale = new Vector2(1, 1);
+            board.transform.localPosition = new Vector2(0, 0);
+
+            string userId = PlayerPrefs.GetString("userId");
+            board.transform.FindChild("userId").GetComponent<Text>().text = userId;
+
+            string versionNo = Application.version;
+            string verTxt = "( Ver." + versionNo + ")";
+            string final = SystemInfo.operatingSystem + verTxt;
+            board.transform.FindChild("ver").GetComponent<Text>().text = final;
+            back.GetComponent<CloseOneBoard>().deleteObj = board;
+
+        }
+        else if (name == "DataRecovery") {
+            //Under Development
+
         }
     }
 }

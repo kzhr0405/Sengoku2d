@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class CloseBoard : MonoBehaviour {
 
@@ -31,7 +32,20 @@ public class CloseBoard : MonoBehaviour {
         }
 
 
-		GameObject[] objects = GameObject.FindGameObjectsWithTag("Board");
+
+        if (Application.loadedLevelName == "tutorialMain") {
+            TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+            txtScript.SetText(5);
+            txtScript.SetNextLine();
+            txtScript.tutorialId = 5;
+            txtScript.actOnFlg = false;
+            PlayerPrefs.SetInt("tutorialId", 5);
+            PlayerPrefs.Flush();
+        }else if(Application.loadedLevelName == "tutorialTouyou" || Application.loadedLevelName == "touyou") {
+            GameObject.Find("Touyou").GetComponent<Canvas>().sortingLayerName = "Default";
+        }
+
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Board");
 		//配列内のオブジェクトの数だけループ
 		foreach (GameObject obj in objects) {
 			//オブジェクトを削除

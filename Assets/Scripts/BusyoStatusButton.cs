@@ -410,6 +410,13 @@ public class BusyoStatusButton : MonoBehaviour {
 		popTextTransform.anchoredPosition3D = new Vector3 (0, 260, 0);
 		popText.name = "popText";
 
+        //tutorial
+        if (Application.loadedLevelName == "tutorialBusyo") {
+            Destroy(popup.transform.FindChild("close").gameObject);                     
+        }
+
+
+
         return popup;
 
     }
@@ -449,16 +456,27 @@ public class BusyoStatusButton : MonoBehaviour {
 		//Required Item
 		Entity_cyouhei_mst Mst = Resources.Load ("Data/cyouhei_mst") as Entity_cyouhei_mst;
 		string itemType = Mst.param [ch_num].requiredItemTyp;
-		int itemQty = Mst.param [ch_num].requiredItemQty;
-		int money = Mst.param [ch_num].requiredMoney;
-		GameObject.Find ("RequiredChigyouValue").GetComponent<Text>().text = "/" + itemQty;
-		GameObject.Find ("RequiredMoneyValue").GetComponent<Text>().text = money.ToString();
-		
-		//Item Icon Setting
-		//Low:5657FFFF
-		//Mid:EC5D5DFF
-		//High:CFE85FFF
-		GameObject popBack = GameObject.Find ("PopBack").gameObject;
+        int itemQty = 0;
+        int money = 0;
+        if (Application.loadedLevelName != "tutorialBusyo") {
+            itemQty = Mst.param [ch_num].requiredItemQty;
+		    money = Mst.param [ch_num].requiredMoney;
+        }else {
+            Destroy(transform.FindChild("point_up").gameObject);
+            TutorialController tutorialScript = new TutorialController();
+            Vector2 vect = new Vector2(0, 50);
+            GameObject btn = GameObject.Find("DoCyouheiButton").gameObject;
+            GameObject animObj = tutorialScript.SetPointer(btn, vect);
+            animObj.transform.localScale = new Vector2(100, 100);
+        }
+        GameObject.Find("RequiredChigyouValue").GetComponent<Text>().text = "/" + itemQty;
+        GameObject.Find("RequiredMoneyValue").GetComponent<Text>().text = money.ToString();
+
+        //Item Icon Setting
+        //Low:5657FFFF
+        //Mid:EC5D5DFF
+        //High:CFE85FFF
+        GameObject popBack = GameObject.Find ("PopBack").gameObject;
 		foreach(Transform obj in popBack.transform){
 			if (obj.tag == "Kahou") {
 				Destroy (obj.gameObject);

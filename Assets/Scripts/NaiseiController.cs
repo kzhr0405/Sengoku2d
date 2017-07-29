@@ -41,8 +41,9 @@ public class NaiseiController : MonoBehaviour {
 	public void Start () {
 		//SE
 		audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
 
-		BGMSESwitch bgm = new BGMSESwitch ();
+        BGMSESwitch bgm = new BGMSESwitch ();
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
         
@@ -68,7 +69,7 @@ public class NaiseiController : MonoBehaviour {
 		GameObject.Find("Question").GetComponent<QA> ().qaId = 8;
 
 
-		if (PlayerPrefs.HasKey (jyosyuTemp)) {
+		if (PlayerPrefs.HasKey (jyosyuTemp) && tutorialDoneFlg) {
 			//Jyosyu Exist
 			jyosyuId = PlayerPrefs.GetInt (jyosyuTemp);
 			string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
@@ -173,9 +174,20 @@ public class NaiseiController : MonoBehaviour {
 		panelByKuniLv();
 
 
-		if (PlayerPrefs.HasKey (temp)) {
-			/*initial setting*/
-			string naiseiString = PlayerPrefs.GetString (temp);
+        int tutorialId = PlayerPrefs.GetInt("tutorialId");
+        if (PlayerPrefs.HasKey (temp)) {
+            /*initial setting*/
+            string naiseiString = "";
+            if(Application.loadedLevelName == "tutorialNaisei") {
+                if (tutorialId !=3) {
+                    naiseiString = "1,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0";
+                }else {
+                    naiseiString = "1,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,1:1,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0,0:0";
+                }
+            }else {
+                naiseiString = PlayerPrefs.GetString(temp);
+            }
+
             List<string> naiseiList = new List<string>();
 			char[] delimiterChars = {','};
 			naiseiList = new List<string>(naiseiString.Split (delimiterChars));
@@ -421,7 +433,6 @@ public class NaiseiController : MonoBehaviour {
 
 
         //Tutorial
-        int tutorialId = PlayerPrefs.GetInt("tutorialId");
         if (Application.loadedLevelName == "tutorialNaisei" && tutorialId == 3) {
             GameObject tBtnObj = GameObject.Find("tButton").gameObject;
             Destroy(tBtnObj.transform.FindChild("12").gameObject);
@@ -662,7 +673,13 @@ public class NaiseiController : MonoBehaviour {
 	public void panelByShiro(int activeKuniId){
 		int count = 0;
 		string temp = "kuni" + activeKuniId.ToString ();
-		string clearedStage = PlayerPrefs.GetString (temp);
+        string clearedStage = "";
+        if (Application.loadedLevelName != "tutorialNaisei") {
+            clearedStage = PlayerPrefs.GetString(temp);
+        }else {
+            clearedStage = "1,2,3,4,5,6,7,8,9,10";
+        }
+
 		char[] delimiterChars = {','};
 		string[] ch_list = clearedStage.Split (delimiterChars);
 		count = ch_list.Length;
