@@ -28,7 +28,7 @@
                                 .json({ error: 500 });
                         });
                 }
-                else res.send("Finish!");
+                else res.json({ "message": "Finish!" });
             })
             .catch(function (err) {
                 res.status(500)

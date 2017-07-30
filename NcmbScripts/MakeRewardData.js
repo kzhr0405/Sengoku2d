@@ -15,7 +15,7 @@
     // fasleが0になったら終わり
     function LookFor(){
         pvpTmp.equalTo("endDate", endDate)
-        .notEqualTo("atkNo", 0)
+        .notEqualTo("totalWinNo", 0)
         .notEqualTo("rewardFlag", true)
         .limit(1)
         .count()
@@ -25,7 +25,7 @@
                 results[0].set("rewardFlag", true);
                 return results[0].update();
             }
-            else res.send("Finish!");
+            else res.json({ "message": "Finish!" });
         })
         .then(function (user) {
             GetRank(user);
