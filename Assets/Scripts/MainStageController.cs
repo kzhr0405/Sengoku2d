@@ -1156,7 +1156,7 @@ public class MainStageController : MonoBehaviour {
 							    //View Previous
 							    string path = "Prefabs/Map/Gunzei";
 							    GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
-							    Gunzei.transform.SetParent (GameObject.Find ("Panel").transform);
+							    Gunzei.transform.SetParent (GameObject.Find ("Panel").transform.FindChild("GunzeiView").transform);
 
 							    Gunzei.GetComponent<Gunzei> ().key = keyTemp;
 							    Gunzei.GetComponent<Gunzei> ().srcKuni = int.Parse (srcDstKuniList [0]);

@@ -233,7 +233,7 @@ public class MainEventHandler : MonoBehaviour {
 								if(!ExistFlg){
 									string path = "Prefabs/Map/Gunzei";
 									GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
-									Gunzei.transform.SetParent (GameObject.Find ("Panel").transform);
+									Gunzei.transform.SetParent (GameObject.Find ("Panel").transform.FindChild("GunzeiView").transform);
 									Gunzei.transform.localScale = new Vector2 (1, 1);
 
 									//Location
