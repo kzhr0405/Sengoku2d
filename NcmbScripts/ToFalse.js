@@ -17,7 +17,7 @@
                     results[0].set("rewardFlag", false);
                     return results[0].update();
                 }
-                else res.send("Finish!");
+                else res.json({ "message": "Finish!" });
             })
             .then(function () {
                 Loop();
