@@ -39,6 +39,7 @@ public class DoTouyou : MonoBehaviour {
 		} else {
 			audioSources [3].Play ();
 			audioSources [7].Play ();
+            GameObject.Find("Touyou").GetComponent<Canvas>().sortingLayerName = "Default";
 
             //Track
             bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");

@@ -277,7 +277,11 @@ public class AreaButton : MonoBehaviour {
                 GameObject.Find("board(Clone)").transform.FindChild("close").gameObject.SetActive(false);
                 
                 foreach (Transform child in scroll.transform.FindChild("NaiseiContent").transform) {
-                    if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaisei>().naiseiId != 1) {
+                    if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaisei>()) {
+                        if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaisei>().naiseiId != 1) {
+                            child.gameObject.SetActive(false);
+                        }
+                    }else if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaiseiWithItem>()) {
                         child.gameObject.SetActive(false);
                     }
                 }

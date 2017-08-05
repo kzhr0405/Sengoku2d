@@ -160,9 +160,7 @@ public class Gunzei : MonoBehaviour {
             MsgBack.GetComponent<Image> ().enabled = true;
 			MsgText.GetComponent<Text> ().enabled = true;
 			MsgText.GetComponent<Text> ().text = syouhai;
-			if (leftFlg == true) {
-				MsgText.transform.localScale = new Vector2 (-0.12f, 0.17f);
-			}
+			
 			gameObject.GetComponent<GunzeiFadeOut> ().enabled = true;
 			
 			MainStageController main = new MainStageController ();

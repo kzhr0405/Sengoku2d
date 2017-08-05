@@ -13,7 +13,7 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.SetString ("seiryoku","1,1,3,1,1,1,17,1,3,1,1,1,1,1,17,1,1,17,8,17,17,28,8,8,8,8,19,19,19,28,28,28,28,28,28,28,28,1,1,1,1,1,38,38,31,38,38,38,31,38,31,31,31,31,31,38,31,38,45,45,45,45,45,45,41");
         //PlayerPrefs.SetInt ("hyourou",100);
         //PlayerPrefs.SetString("cyoutei", "1000,1000,1000");
-        PlayerPrefs.SetInt ("money",20000000);
+        PlayerPrefs.SetInt ("money",200000000);
         //PlayerPrefs.SetInt ("busyoDama",9999999);
         PlayerPrefs.SetString ("gokuiItem","100,110,120,130,140");
         PlayerPrefs.SetString ("cyouheiYR","200,200,200");
@@ -34,11 +34,11 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.SetInt ("exp72",55143300);
 
         //PlayerPrefs.DeleteKey ("usedBusyo");
-        //PlayerPrefs.SetInt ("shinobiGe",99);
-        //PlayerPrefs.SetInt ("shinobiCyu",99);
-        //PlayerPrefs.SetInt ("shinobiJyo",100);
+        PlayerPrefs.SetInt ("shinobiGe",99);
+        PlayerPrefs.SetInt ("shinobiCyu",99);
+        PlayerPrefs.SetInt ("shinobiJyo",100);
         PlayerPrefs.SetString("kengouItem","10,10,10,10,10,10,10,10,10,10");
-        //PlayerPrefs.SetString("nanbanItem","100,100,100");
+        PlayerPrefs.SetString("nanbanItem","100,100,100");
         //PlayerPrefs.DeleteKey ("bakuhuTobatsuDaimyoId");
         //PlayerPrefs.DeleteKey ("soubujireiFlg");
         //		PlayerPrefs.SetInt ("saku19",19);
@@ -70,7 +70,7 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.DeleteKey ("naiseiTabibitoCounter1");
         //PlayerPrefs.SetInt ("kuniLv",99);
         //PlayerPrefs.SetInt("kuniExp", 50131711);
-        PlayerPrefs.SetBool ("gameClearFlg",true);
+        //PlayerPrefs.SetBool ("gameClearFlg",true);
 
         //PlayerPrefs.SetString ("clearedKuni","1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65");
 
@@ -107,8 +107,8 @@ public class TestDataMaker : MonoBehaviour {
         PlayerPrefs.SetString("gameClearDaimyoHard","2");
         //PlayerPrefs.SetString("gacyaHst", "16,107,108");
         //PlayerPrefs.SetString("gacyaHst","1,107,108");
-        //int myDaimyo = PlayerPrefs.SetInt("myDaimyo");
-        //PlayerPrefs.SetInt ("syogunDaimyoId",myDaimyo);
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        PlayerPrefs.SetInt ("syogunDaimyoId",myDaimyo);
         //PlayerPrefs.SetBool ("gameClearFlg",true);
         //PlayerPrefs.DeleteKey("gameClearItemSetFlg");
         PlayerPrefs.SetInt("meisei",100);

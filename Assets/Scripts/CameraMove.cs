@@ -129,6 +129,8 @@ public class CameraMove : MonoBehaviour {
                                 }else {
                                     Time.timeScale = 1;
                                 }
+                            }else {
+                                Time.timeScale = 1;
                             }
                         }
 				    }
@@ -145,6 +147,8 @@ public class CameraMove : MonoBehaviour {
                     }else {
                         Time.timeScale = 1;
                     }
+                }else {
+                    Time.timeScale = 1;
                 }
             }
 

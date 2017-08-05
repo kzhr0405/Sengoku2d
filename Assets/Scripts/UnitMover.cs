@@ -38,10 +38,11 @@ public class UnitMover : MonoBehaviour {
 
 			GetComponent<AttackLong> ().coolTime = coolTime;
 
-			GetComponent<SenpouController> ().initCoolTime = coolTime;
-			GetComponent<SenpouController> ().initDisTarget = DisTarget;
-
-		}
+            if(GetComponent<SenpouController>()) {
+			    GetComponent<SenpouController> ().initCoolTime = coolTime;
+			    GetComponent<SenpouController> ().initDisTarget = DisTarget;
+            }
+        }
 
     }
 

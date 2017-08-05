@@ -146,6 +146,8 @@ public class EnemyInstance : MonoBehaviour {
         }
         GameObject dtl = Instantiate(Resources.Load (dtlPath)) as GameObject;
 		dtl.transform.SetParent(prefab.transform);
+        dtl.transform.localPosition = new Vector3(0, 1.3f, -1);
+        dtl.transform.localScale = new Vector3(-1.3f, 1.3f, 0);
         dtl.name = "BusyoDtlEnemy";
 
         //Name

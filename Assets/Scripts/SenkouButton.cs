@@ -29,6 +29,10 @@ public class SenkouButton : MonoBehaviour {
 		for(int i=0;i<livingBusyo.Count;i++){
 			int id = livingBusyo[i].id;
 			int senkou = livingBusyo[i].senkou;
+            if(senkou<0) {
+                senkou = 0;
+            }
+
 			int juni = i + 1;
 
 			//Slot

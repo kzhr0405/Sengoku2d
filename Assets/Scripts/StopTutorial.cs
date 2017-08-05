@@ -14,6 +14,8 @@ public class StopTutorial : MonoBehaviour {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[0].Play();
 
+        Time.timeScale = 1;
+
         Application.LoadLevel("mainStage");
     }
 }

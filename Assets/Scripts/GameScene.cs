@@ -102,13 +102,14 @@ public class GameScene : MonoBehaviour {
                 activeStageId = 10;
             }
 
+            
             if (isAttackedFlg) {
 			    GameObject.Find ("GiveupBtn").SetActive (false);
 
 			    //Shiro & Toride Setting
 			    makeShiroTorideObject();
-		    }
-        
+    		}
+            
             if (activeStageId != 0) {
                 //Active
 			    int stageMapId = stage.getStageMap (activeKuniId, activeStageId);

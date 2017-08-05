@@ -86,6 +86,10 @@ public class SakuCollider : MonoBehaviour {
                 ch_prefab.GetComponent<Homing>().speed = nbnSpd;
                 ch_prefab.GetComponent<PlayerHP>().dfc = nbnDfc;
 
+                //SE
+                AudioController audio = new AudioController();
+                audio.addComponentMoveAttack(ch_prefab, "SHP");
+
             }
         }
     }
