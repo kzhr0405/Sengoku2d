@@ -174,6 +174,9 @@ public class PvPDataStore : MonoBehaviour {
 
     /* Weekly Start */
     public void GetPvPCountWeekly(int todayNCMB) {
+
+        Debug.Log(todayNCMB);
+
         //PvPCount
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
 
@@ -183,7 +186,7 @@ public class PvPDataStore : MonoBehaviour {
         query.CountAsync((int count, NCMBException e) => {
             if (e != null) {
                 //件数取得失敗
-                Debug.Log(count);
+                Debug.Log("pvpTmp:" + count);
             }else {
                 //件数取得成功
                 pvpCountWeekly = count;
