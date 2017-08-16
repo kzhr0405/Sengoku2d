@@ -94,7 +94,6 @@ public class DoTouyou : MonoBehaviour {
                 //My Busyo Exist Check
                 string myBusyoString = PlayerPrefs.GetString("myBusyo");
                 List<string> myBusyoList = new List<string>();
-                char[] delimiterChars2 = { ',' };
                 if (myBusyoString.Contains(",")) {
                     myBusyoList = new List<string>(myBusyoString.Split(delimiterChars));
                 }else {

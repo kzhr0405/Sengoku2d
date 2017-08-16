@@ -30,7 +30,7 @@ public class QA : MonoBehaviour {
 		GameObject qaBoard = Instantiate (Resources.Load (boardPath)) as GameObject;
 
 		//Each Scene
-		if (Application.loadedLevelName == "naisei" || Application.loadedLevelName == "touyou" || Application.loadedLevelName == "shisya" || Application.loadedLevelName == "busyo" || Application.loadedLevelName == "hyojyo" || Application.loadedLevelName == "tutorialBusyo" || Application.loadedLevelName == "tutorialTouyou") {
+		if (Application.loadedLevelName == "naisei" || Application.loadedLevelName == "touyou" || Application.loadedLevelName == "shisya" || Application.loadedLevelName == "busyo" || Application.loadedLevelName == "hyojyo" || Application.loadedLevelName == "tutorialBusyo" || Application.loadedLevelName == "tutorialTouyou" || Application.loadedLevelName == "dataRecovery") {
 			qaBoard.transform.SetParent (GameObject.Find ("Panel").transform);
 		} else if(Application.loadedLevelName == "pvp") {
             qaBoard.transform.SetParent(GameObject.Find("Panel").transform);

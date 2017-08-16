@@ -24,8 +24,10 @@ public class simpleHPCounter : MonoBehaviour {
     void Awake() {
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>(); GameObject.Find("SEController").GetComponents<AudioSource>();
         heiText = GetComponent<TextMesh>();
-        atkTxtScript = GameObject.Find(targetTag).transform.FindChild("Atk").GetComponent<TextMesh>();
-        dfcTxtScript = GameObject.Find(targetTag).transform.FindChild("Dfc").GetComponent<TextMesh>();
+        atkTxtScript = transform.parent.FindChild("Atk").GetComponent<TextMesh>();
+        dfcTxtScript = transform.parent.FindChild("Dfc").GetComponent<TextMesh>();
+        //atkTxtScript = GameObject.Find(targetTag).transform.FindChild("Atk").GetComponent<TextMesh>();
+        //dfcTxtScript = GameObject.Find(targetTag).transform.FindChild("Dfc").GetComponent<TextMesh>();
     }
 
     void Update () {

@@ -37,7 +37,7 @@ public class StartScene : MonoBehaviour {
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(136));
+                msg.makeMessage(msg.getMessage(5));
             }else {
                 string PvPName = PlayerPrefs.GetString("PvPName");
                 
@@ -191,7 +191,7 @@ public class StartScene : MonoBehaviour {
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(136));
+                msg.makeMessage(msg.getMessage(5));
             }else {
                 Application.LoadLevel("reward");
             }
@@ -226,8 +226,7 @@ public class StartScene : MonoBehaviour {
 
         }
         else if (name == "DataRecovery") {
-            //Under Development
-
+            Application.LoadLevel("dataRecovery");
         }
     }
 }

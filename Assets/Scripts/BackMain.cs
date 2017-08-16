@@ -140,6 +140,11 @@ public class BackMain : MonoBehaviour {
             audioSources[1].Play();
             Destroy(GameObject.Find("PvPDataStore"));
             Application.LoadLevel("mainStage");
+        }else if (Application.loadedLevelName == "dataRecovery") {
+            audioSources[1].Play();
+            Destroy(GameObject.Find("PvPDataStore"));
+            Destroy(GameObject.Find("DataStore"));            
+            Application.LoadLevel("top");
         }else {
             if(fromSceneName == "" || fromSceneName == null) {
                 audioSources[1].Play();
