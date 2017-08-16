@@ -5,13 +5,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22429976}
-  - 222: {fileID: 22269596}
-  - 114: {fileID: 11419966}
-  - 114: {fileID: 11458022}
-  - 114: {fileID: 11428250}
+  - component: {fileID: 22429976}
+  - component: {fileID: 22269596}
+  - component: {fileID: 11419966}
+  - component: {fileID: 11458022}
+  - component: {fileID: 11428250}
+  - component: {fileID: 114660221846763682}
   m_Layer: 5
   m_Name: 37
   m_TagString: Untagged
@@ -32,6 +33,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: a85c5d1ea34292c46b74e72cbf0a7f27, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -51,8 +58,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b843118ed6d03b44fb3f677fcce036d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soubujireiFlg: 0
+  bakuhuFlg: 0
   kuniId: 24
   kuniName: "\u7532\u6590"
+  daimyoId: 0
+  daimyoName: 
+  daimyoBusyoId: 0
+  daimyoBusyoAtk: 0
+  daimyoBusyoDfc: 0
+  openFlg: 0
+  clearFlg: 0
+  busyoQty: 0
+  busyoLv: 0
+  butaiQty: 0
+  butaiLv: 0
+  heiryoku: 0
+  myYukouValue: 0
+  kuniQty: 0
+  doumeiFlg: 0
+  naiseiItem: 
+  aggressiveFlg: 0
+  cyouhouSnbRankId: 0
+  gameClearFlg: 0
+  busyoHaveFlg: 0
+  sound: {fileID: 0}
+  toubatsu: {fileID: 0}
 --- !u!114 &11458022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,11 +104,11 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
-    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
-    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -123,11 +154,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 165, y: 10}
   m_SizeDelta: {x: 40, y: 50}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -143,3 +175,17 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 146018}
   m_IsPrefabParent: 1
+--- !u!114 &114660221846763682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1

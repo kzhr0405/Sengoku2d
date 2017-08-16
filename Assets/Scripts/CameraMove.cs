@@ -30,7 +30,7 @@ public class CameraMove : MonoBehaviour {
     }
 
 	void Update () {
-            if(!nowCameraMove) {
+        if(!nowCameraMove) {
 		    if (Input.GetMouseButton (0)) {
 
 			    touchPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
