@@ -52,7 +52,7 @@ public class SendParam : MonoBehaviour {
             if (Application.loadedLevelName != "tutorialMain") {
                 string pathOfBack = "Prefabs/Common/TouchBack";
 			    GameObject back = Instantiate (Resources.Load (pathOfBack)) as GameObject;
-			    back.transform.parent = GameObject.Find ("Panel").transform;
+			    back.transform.SetParent(GameObject.Find ("Panel").transform);
 			    back.transform.localScale = new Vector2 (1, 1);
 			    back.transform.localPosition = new Vector2 (0, 0);
             }
@@ -61,7 +61,7 @@ public class SendParam : MonoBehaviour {
 
 				string pathOfBoard = "Prefabs/Map/smallBoard";
 				GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
-				board.transform.parent = GameObject.Find ("Panel").transform;
+				board.transform.SetParent(GameObject.Find ("Panel").transform);
 				board.transform.localScale = new Vector2 (1, 1);
 
                 if (Application.loadedLevelName == "tutorialMain") {
@@ -446,7 +446,7 @@ public class SendParam : MonoBehaviour {
 				//Select Initial Daimyo Screen
 				string pathOfBoard = "Prefabs/clearOrGameOver/DaimyoSelectBoard";
 				GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
-				board.transform.parent = GameObject.Find ("Panel").transform;
+				board.transform.SetParent(GameObject.Find ("Panel").transform);
 				board.transform.localScale = new Vector2 (1, 1);
 				GameObject selectBtn = board.transform.FindChild ("SelectButton").gameObject;
 

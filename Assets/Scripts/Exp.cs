@@ -123,7 +123,15 @@ public class Exp : MonoBehaviour {
 		return stockLimit;
 	}
 
-	public int getKuniExpforNextLv(int nowLv){
+    public int getTotalExp(int nowLv) {
+        int totalExp = 0;
+        totalExp = KuniMst.param[nowLv].totalExp;        
+        return totalExp;
+    }
+
+
+
+    public int getKuniExpforNextLv(int nowLv){
 		int totalExp = 0;
 		if (nowLv != 100) {
 			totalExp = KuniMst.param [nowLv].totalExp;

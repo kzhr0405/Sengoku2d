@@ -45,6 +45,10 @@ public class DataRegister : MonoBehaviour {
                 //Reward
                 DataReward DataReward = GetComponent<DataReward>();
                 DataReward.GetRewardMaster(userId);
+
+                //Delete Gunzei Data : Rescue
+                DataDelete DataDelete = GetComponent<DataDelete>();
+                DataDelete.GunzeiDelete(userId);
             }
         }
 
