@@ -23,6 +23,7 @@ public class AdfuriMoviepop : MonoBehaviour {
             GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
             AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
             au.setMovieRewardSrcObject(this.gameObject);
+            au.initializeMovieReward();
         }
         switch (this.sceneState) {
         case SCENE_STATE.MAIN:
@@ -40,8 +41,25 @@ public class AdfuriMoviepop : MonoBehaviour {
 
 
     public void PushAdsense() {
+        // topに戻るのを伏せぐためのフラグ変更
+        GameObject ob = GameObject.Find("GameController");
+        MainStageController mc = ob.GetComponent<MainStageController>();
+        if (!mc.adRunFlg)
+        {
+            StartCoroutine(PlayAdsense());
+            mc.adRunFlg = true;
+        }
+    }
+
+    // 準備ができたら広告を再生する
+    IEnumerator PlayAdsense()
+    {
         GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
         AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
+        while (!au.isPreparedMovieReward())
+        {
+            yield return null;
+        }
         au.playMovieReward();
     }
 
@@ -62,7 +80,11 @@ public class AdfuriMoviepop : MonoBehaviour {
                 Debug.Log("The ad was started.");
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
-                
+                // topに戻るのを伏せぐためのフラグ変更
+                GameObject ob = GameObject.Find("GameController");
+                MainStageController mc = ob.GetComponent<MainStageController>();
+                mc.adRunFlg = false;
+
                 int busyoDamaQty = 0;
                 string atariMsg = "";
                 float rankPercent = UnityEngine.Random.value;
