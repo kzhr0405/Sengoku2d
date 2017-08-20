@@ -37,7 +37,12 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
 		GetComponent<CanvasGroup> ().blocksRaycasts = true;
 		if (transform.parent == startParent) {
 			transform.position = startPosition;
-		} else {
+
+            GridLayoutGroup GridLayoutGroup = startParent.GetComponent<GridLayoutGroup>();
+            GridLayoutGroup.enabled = false;
+            GridLayoutGroup.enabled = true;
+
+        }else {
 
 			//From ScrollView to JinkeiView
 			if(startParent.name == "Slot"){

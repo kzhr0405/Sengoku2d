@@ -619,14 +619,15 @@ public class PvPController : MonoBehaviour {
                 }else {
                     Slot.transform.FindChild("Rank").GetComponent<Text>().text = rank.ToString();
                 }
-                
 
+                int busyoId = PvPDataStore.Top10PtWeeklyBusyoList[i];
+                if (busyoId == 0) busyoId = 19; //nobunaga
 
-                string imagePath1 = "Prefabs/Player/Sprite/unit" + PvPDataStore.Top10PtWeeklyBusyoList[i].ToString();
+                string imagePath1 = "Prefabs/Player/Sprite/unit" + busyoId.ToString();
                 Slot.transform.FindChild("Image").GetComponent<Image>().sprite =
                     Resources.Load(imagePath1, typeof(Sprite)) as Sprite;
                 
-                string imagePath3 = "Prefabs/Sashimono/" + PvPDataStore.Top10PtWeeklyBusyoList[i].ToString();
+                string imagePath3 = "Prefabs/Sashimono/" + busyoId.ToString();
                 GameObject tmpObj = Resources.Load(imagePath3) as GameObject;
                 Slot.transform.FindChild("Sashimono").GetComponent<Image>().sprite =
                     tmpObj.GetComponent<SpriteRenderer>().sprite;
