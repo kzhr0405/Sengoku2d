@@ -294,17 +294,21 @@ public class GaikouMenu : MonoBehaviour {
 				GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
 				busyo.name = daimyoBusyoId.ToString ();
 				busyo.transform.SetParent (daimyo.transform);
-				busyo.transform.localScale = new Vector2 (4, 4);
+				busyo.transform.localScale = new Vector2 (4.0f, 4.5f);
 				busyo.GetComponent<DragHandler> ().enabled = false;
-				
-				RectTransform busyoTransform = busyo.GetComponent<RectTransform> ();
-				busyoTransform.anchoredPosition = new Vector3 (70, 80, 0);
-				busyoTransform.sizeDelta = new Vector2 (35, 40);
+                foreach (Transform obj in busyo.transform) {
+                    Destroy(obj.gameObject);
+                }
+
+               RectTransform busyoTransform = busyo.GetComponent<RectTransform> ();
+               busyoTransform.anchoredPosition = new Vector3 (70, 80, 0);
+               busyoTransform.sizeDelta = new Vector2 (35, 40);
 
 
 
 
-			}else{
+            }
+            else {
 				msg.makeMessage(msg.getMessage(9));
 			}
 		}
