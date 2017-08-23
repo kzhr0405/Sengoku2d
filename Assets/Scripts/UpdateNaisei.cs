@@ -2,6 +2,7 @@
 using System.Collections;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class UpdateNaisei : MonoBehaviour {
 
@@ -102,13 +103,16 @@ public class UpdateNaisei : MonoBehaviour {
 
                 //Close Tab
                 GameObject.Find ("close").GetComponent<CloseBoard> ().onClick ();
-				
-				//Initialization
-				NaiseiController naisei = new NaiseiController ();
-				naisei.Start ();
 
-			
-			}
-		}
+                //Initialization
+                NaiseiController naisei = new NaiseiController();
+				naisei.Start ();
+                NaiseiController naiseiObjScript = GameObject.Find("NaiseiController").GetComponent<NaiseiController>();
+                naiseiObjScript.total = int.Parse(GameObject.Find("Tabibito").transform.FindChild("TabibitoMaxValue").GetComponent<Text>().text);
+                naiseiObjScript.remain = int.Parse(GameObject.Find("Tabibito").transform.FindChild("TabibitoCountDownValue").GetComponent<Text>().text);
+
+
+            }
+        }
 	}	
 }

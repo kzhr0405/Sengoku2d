@@ -101,9 +101,14 @@ public class StatusGet : MonoBehaviour {
 		//Get Senpou Lv
 		String senpouLvTmp = "senpou" + busyoInt;
 		int senpouLv = PlayerPrefs.GetInt(senpouLvTmp,1);
+        if (senpouLv > 20) {
+            senpouLv = 20;
+            PlayerPrefs.SetInt(senpouLvTmp, senpouLv);
+            PlayerPrefs.Flush();
+        }
 
-		//Get Senpou Status
-		object senpoulst = senpouMst.param[senpouId-1];
+        //Get Senpou Status
+        object senpoulst = senpouMst.param[senpouId-1];
 		Type t = senpoulst.GetType();
 		String param = "lv" + senpouLv;
 		FieldInfo f = t.GetField(param);

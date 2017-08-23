@@ -122,13 +122,18 @@ public class Saku : MonoBehaviour {
             PlayerPrefs.SetInt(temp, 1);
             PlayerPrefs.Flush();
         }
+        if (sakuLv > 20) {
+            sakuLv = 20;
+            PlayerPrefs.SetInt(temp, sakuLv);
+            PlayerPrefs.Flush();
+        }
 
         //Get Saku Status
         Entity_saku_mst sakuMst = Resources.Load ("Data/saku_mst") as Entity_saku_mst;
 		object sakulst = sakuMst.param[sakuId-1];
 		Type t = sakulst.GetType();
 		String param = "lv" + sakuLv;
-		FieldInfo f = t.GetField(param);
+        FieldInfo f = t.GetField(param);
 		int sakuStatus =(int)f.GetValue(sakulst);
         string effection = "";
         if (Application.systemLanguage != SystemLanguage.Japanese) {

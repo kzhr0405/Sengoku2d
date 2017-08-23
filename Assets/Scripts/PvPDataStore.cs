@@ -260,7 +260,9 @@ public class PvPDataStore : MonoBehaviour {
         pvpWeekly["endDate"] = endDateNCMB;
         pvpWeekly["userName"] = userName;
         pvpWeekly["kuniLv"] = kuniLv;
-        pvpWeekly["soudaisyo"] = soudaisyo;
+        if (soudaisyo != 0) {
+            pvpWeekly["soudaisyo"] = soudaisyo;
+        }
         pvpWeekly["jinkeiHeiryoku"] = jinkeiHeiryoku;
         pvpWeekly["rewardFlag"] = false;
         pvpWeekly.SaveAsync();
@@ -278,7 +280,9 @@ public class PvPDataStore : MonoBehaviour {
                 if (objList.Count != 0) {
                     objList[0]["userName"] = userName;
                     objList[0]["kuniLv"] = kuniLv;
-                    objList[0]["soudaisyo"] = soudaisyo;
+                    if (soudaisyo != 0) {
+                        objList[0]["soudaisyo"] = soudaisyo;
+                    }
                     objList[0]["jinkeiHeiryoku"] = jinkeiHeiryoku;
 
                     objList[0].SaveAsync();
@@ -975,7 +979,6 @@ public class PvPDataStore : MonoBehaviour {
                         objList[0]["totalPt"] = totalPt;
                         objList[0].SaveAsync();
                         donePlusUpdatePtFlg = true;
-                        Debug.Log("A");
                     }else {
                         totalPt = totalPt - getPt;
                         if(totalPt < 0) {
@@ -984,8 +987,6 @@ public class PvPDataStore : MonoBehaviour {
                         objList[0]["totalPt"] = totalPt;
                         objList[0].SaveAsync();
                         doneMinusUpdatePtFlg = true;
-                        Debug.Log("B");
-
                     }
                 }else {
                     if (plusFlg) {

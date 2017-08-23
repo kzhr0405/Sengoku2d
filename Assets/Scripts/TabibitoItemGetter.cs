@@ -241,7 +241,7 @@ public class TabibitoItemGetter : MonoBehaviour {
 		nanbanList = new List<string> (nanbanString.Split (delimiterChars));
 		
 		string qty = nanbanList [itemId - 1];
-		int newQty = int.Parse (qty) + itemQty;
+		int newQty = int.Parse (qty) + 1;
 		nanbanList [itemId - 1] = newQty.ToString ();
 		
 		string newNanbanString = "";
