@@ -1,4 +1,4 @@
-﻿
+﻿/**
 using UnityEngine;
 using UnityEngine.Advertisements;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
@@ -97,3 +97,4 @@ public class UnityAdsExample : MonoBehaviour {
         }
     }
 }
+**/

@@ -54,7 +54,6 @@ public class AdfurikunMovieRewardUtility : MonoBehaviour {
 
 	private static AdfurikunMovieRewardUtility mInstance = null;
 	private GameObject mMovieRewardSrcObject = null;
-	private string currentAppID = "";
 
 	#if UNITY_IPHONE
 	[DllImport("__Internal")]
@@ -67,7 +66,6 @@ public class AdfurikunMovieRewardUtility : MonoBehaviour {
 	private static extern void disposeIOS_();
 
 	#elif UNITY_ANDROID
-	private float androidDensity = 1.0f;
 	#endif
 
 	public static AdfurikunMovieRewardUtility instance

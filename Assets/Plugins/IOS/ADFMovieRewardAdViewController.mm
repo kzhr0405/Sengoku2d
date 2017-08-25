@@ -1,14 +1,6 @@
 #import "ADFMovieRewardAdViewController.h"
 #import "ADFMovieUtilForUnity.h"
 
-#import "MovieReward6000.h"//AppLovin
-#import "MovieReward6001.h"//UnityAds
-#import "MovieReward6002.h"//AdColony
-#import "MovieReward6004.h"//maio
-#import "MovieReward6005.h"//Tapjoy
-#import "MovieReward6006.h"//Vungle
-#import "MovieReward6007.h"//SMAAD Video
-
 //
 // Unity出力の設定を呼び出しています。
 // classes/iPhone_view.mm にて取得できるメソッドが確認できますので、適宜必要な情報を取得してください。

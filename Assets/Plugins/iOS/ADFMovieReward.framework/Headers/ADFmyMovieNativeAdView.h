@@ -1,0 +1,99 @@
+//
+//  ADFmyMovieNativeAdView.h
+//  ADFMovieReword
+//
+//  Created by Toru Furuya on 2017/02/23.
+//  (c) 2017 ADFULLY Inc.
+//
+
+#import <UIKit/UIKit.h>
+
+#import "ADFmyMovieNative.h"
+#import "ADFMovieNativeAdInfo.h"
+
+/**
+ 動画ネイティブ広告のレイアウトパターン
+
+ - ADFMovieNativeAdLayoutPattern_Default: デフォルトのレイアウト
+ */
+typedef NS_ENUM(NSInteger, ADFMovieNativeAdLayoutPattern) {
+    ADFMovieNativeAdLayoutPattern_Default = 0,
+};
+
+@protocol ADFMovieNativeAdLayoutProtocol;
+@protocol ADFmyMovieNativeAdViewDelegate;
+/**
+ 動画ネイティブView広告API
+ */
+@interface ADFmyMovieNativeAdView : NSObject
+- (instancetype)init __unavailable;
+
+/**
+ 動画ネイティブ広告の広告View
+ このViewを自身のViewに追加して広告を表示してください
+ */
+@property (nonatomic, readonly) UIView<ADFMovieNativeAdLayoutProtocol> *adView;
+
+/**
+ 広告の自動切り替えを管理するフラグ
+ YESの場合は定期的に広告の内容を切り替えます
+ デフォルトYES
+ */
+@property (nonatomic) BOOL autoLoad;
+
+/**
+ サポートされているOSのバージョンか確認
+
+ @return サポートされているOSのバージョンか否か
+ */
++ (BOOL)isSupportedOSVersion;
+
+/**
+ 広告枠の情報をアドフリくんサーバから取得して動画ネイティブ広告の初期化
+
+ @param appID 広告枠ID
+ */
++ (void)configureWithAppID:(NSString *)appID;
+
+/**
+ 動画ネイティブView広告の初期化
+
+ @param appID 広告枠ID
+ @param layoutPattern 広告のレイアウトパターン
+ @return 動画ネイティブView広告のインスタンス
+ */
+- (instancetype)initWithAppID:(NSString *)appID layoutPattern:(ADFMovieNativeAdLayoutPattern)layoutPattern;
+
+/**
+ 広告の取得リクエスト
+
+ @param delegate ADFmyMovieNativeAdViewDelegateに準拠したデリゲート
+ */
+- (void)loadAndNotifyTo:(NSObject<ADFmyMovieNativeAdViewDelegate> *)delegate;
+
+/**
+ 動画広告の再生
+ */
+- (void)playVideo;
+
+/**
+ 動画広告の一時停止
+ */
+- (void)pauseVideo;
+
+@end
+
+
+@protocol ADFmyMovieNativeAdViewDelegate <NSObject>
+@optional
+/**
+ *  広告の取得成功
+ */
+- (void)onNativeMovieAdViewLoadFinish:(NSString *)appID;
+
+/**
+ *  広告の取得失敗
+ */
+- (void)onNativeMovieAdViewLoadError:(ADFMovieError *)error appID:(NSString *)appID;
+@end
+

@@ -33,9 +33,12 @@ public class AdfurikunMovieRewardPostProcess {
 			if(!useThis){return;}
 
 			string projPath = path + "/Unity-iPhone.xcodeproj/project.pbxproj";
-
 			PBXProject proj = new PBXProject();
 			proj.ReadFromString(File.ReadAllText(projPath));
+
+			string plistPath = Path.Combine (path, "Info.plist");
+			var plist = new PlistDocument ();
+			plist.ReadFromFile (plistPath);
 
 			string target = proj.TargetGuidByName("Unity-iPhone");
 			string frameworkSuffix = (is_iOS9orOver) ? "tbd" : "dylib";
@@ -75,6 +78,12 @@ public class AdfurikunMovieRewardPostProcess {
 				proj.AddFrameworkToProject(target, "WebKit.framework", true);//Optional
 				proj.AddFileToBuild(target, proj.AddFile(
 					"usr/lib/libz.1.2.5."+frameworkSuffix, "libz.1.2.5."+frameworkSuffix, PBXSourceTree.Sdk));
+
+				//プライバシー設定
+				plist.root.SetString("NSCalendarsUsageDescription", "Adding events");
+				plist.root.SetString("NSPhotoLibraryUsageDescription", "Taking selfies");
+				plist.root.SetString("NSCameraUsageDescription", "Taking selfies");
+				plist.root.SetString("NSMotionUsageDescription", "Interactive ad controls");
 			}
 
 			//UnityAds
@@ -119,6 +128,7 @@ public class AdfurikunMovieRewardPostProcess {
 				proj.AddFrameworkToProject(target, "SystemConfiguration.framework", false);
 				proj.AddFrameworkToProject(target, "Twitter.framework", false);
 				proj.AddFrameworkToProject(target, "UIKit.framework", false);
+				proj.AddFrameworkToProject(target, "ImageIO.framework", false);
 				proj.AddFileToBuild(target, proj.AddFile(
 					"usr/lib/libxml2."+frameworkSuffix, "libxml2."+frameworkSuffix, PBXSourceTree.Sdk));
 				proj.AddFileToBuild(target, proj.AddFile(
@@ -155,6 +165,8 @@ public class AdfurikunMovieRewardPostProcess {
 				proj.AddFrameworkToProject(target, "MediaPlayer.framework", false);
 				proj.AddFrameworkToProject(target, "AdSupport.framework", false);
 				proj.AddFrameworkToProject(target, "SystemConfiguration.framework", false);
+				//SmaADは、バージョン1.1.3の時点ではbitcodeに対応しておりません
+				proj.SetBuildProperty(target, "ENABLE_BITCODE", "NO");
 			}
 
 			//Five
@@ -168,10 +180,10 @@ public class AdfurikunMovieRewardPostProcess {
 
 			// フレームワーク検索パスの設定
 			proj.SetBuildProperty(target, "FRAMEWORK_SEARCH_PATHS", "$(inherited)");
-			string assetBasePath = System.IO.Path.GetDirectoryName(
-				System.IO.Path.GetDirectoryName(System.Environment.CurrentDirectory)
-				);
-			proj.AddBuildProperty(target, "FRAMEWORK_SEARCH_PATHS", assetBasePath);
+			// Frameworks/Plugins/iOS/**/*.framework
+			// Use ** to make search setting in Xcode recursive
+			proj.AddBuildProperty(target, "FRAMEWORK_SEARCH_PATHS", "$(PROJECT_DIR)/Frameworks/Plugins/iOS/**");
+
 			//エクスポート時に文字列のパスが加えられること(Unity由来の事象)への対応
 			proj.UpdateBuildProperty (target, "HEADER_SEARCH_PATHS",
 				new string[]{"$(SRCROOT)/Classes", "$(SRCROOT)"}, new string[]{"\"$(SRCROOT)/Classes\"", "\"$(SRCROOT)\""});
@@ -198,6 +210,7 @@ public class AdfurikunMovieRewardPostProcess {
 			}
 			//Debug.Log(target);
 			File.WriteAllText(projPath, proj.WriteToString());
+			plist.WriteToFile (plistPath);
 		}
 	}
 }

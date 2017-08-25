@@ -72,6 +72,9 @@ public class AdfuriMoviepop : MonoBehaviour {
         Message msg = new Message();
         string text = "";
 
+        GameObject ob = GameObject.Find("GameController");
+        MainStageController mc = ob.GetComponent<MainStageController>();
+
         AdfurikunMovieRewardUtility.ADF_MovieStatus state = (AdfurikunMovieRewardUtility.ADF_MovieStatus)stateName; switch (state) {
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.PrepareSuccess:
                 Debug.Log("The ad was preapred.");
@@ -80,9 +83,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                 Debug.Log("The ad was started.");
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
-                // topに戻るのを伏せぐためのフラグ変更
-                GameObject ob = GameObject.Find("GameController");
-                MainStageController mc = ob.GetComponent<MainStageController>();
+                // topに戻るのを伏せぐためのフラグ変更                
                 mc.adRunFlg = false;
 
                 int busyoDamaQty = 0;
@@ -130,6 +131,8 @@ public class AdfuriMoviepop : MonoBehaviour {
                 break;
 
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
+                mc.adRunFlg = false;
+
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                     text = "There is no available video now. Please try it later.";
                 }else {
