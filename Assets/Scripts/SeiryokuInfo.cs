@@ -381,13 +381,13 @@ public class SeiryokuInfo : MonoBehaviour {
             TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
         }
         if (totalSNBH != 0) {
-            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
+            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
         }
         if (totalSNBM != 0) {
-            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
+            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
         }
         if (totalSNBL != 0) {
-            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("CyouheiSNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
+            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
         }
 
         GameObject autumn = CyosyuObj.transform.FindChild("autumn").gameObject;

@@ -26,8 +26,9 @@ public class DoNextSeason : MonoBehaviour {
 				PlayerPrefs.SetInt ("busyoDama",newBusyoDama);
 
 
-				//Season Change
-				MainStageController mainScript = GameObject.Find("GameController").GetComponent<MainStageController>();
+                //Season Change
+                /*
+				
 				string yearSeason = PlayerPrefs.GetString ("yearSeason");
 				char[] delimiterChars = {','};
 				string[] yearSeasonList = yearSeason.Split (delimiterChars);
@@ -40,30 +41,32 @@ public class DoNextSeason : MonoBehaviour {
 				}else{
 					nowSeason = nowSeason + 1;
 				}
-
 				string newYearSeason = nowYear.ToString() + "," + nowSeason.ToString();
 				PlayerPrefs.SetString ("yearSeason", newYearSeason);	
 
-				string lastSeasonChangeTime = System.DateTime.Now.ToString ();
+                string lastSeasonChangeTime = System.DateTime.Now.ToString ();
 				PlayerPrefs.SetString ("lastSeasonChangeTime", lastSeasonChangeTime);
 				PlayerPrefs.SetBool ("doneCyosyuFlg", false);
 				mainScript.doneCyosyuFlg = false;
 				PlayerPrefs.DeleteKey ("usedBusyo");
                 deleteLinkCut();
                 deleteWinOver();
+                */
 
                 PlayerPrefs.SetBool ("questDailyFlg36",true);
 				PlayerPrefs.DeleteKey ("bakuhuTobatsuDaimyoId");
 				PlayerPrefs.Flush ();
 
-				//Extension Mark Handling
-				MainStageController main = new MainStageController();
-				main.questExtension();
+                //Extension Mark Handling
+                //MainStageController main = new MainStageController();
+                //main.questExtension();
 
-				//Change Label
-				GameObject.Find ("YearValue").GetComponent<Text> ().text = nowYear.ToString ();			
-				mainScript.SetSeason(nowSeason);
-				mainScript.yearTimer = mainScript.cyosyuMstTime;
+                //Change Label
+                //GameObject.Find ("YearValue").GetComponent<Text> ().text = nowYear.ToString ();			
+                //mainScript.SetSeason(nowSeason);
+
+                MainStageController mainScript = GameObject.Find("GameController").GetComponent<MainStageController>();
+                mainScript.yearTimer = 1;
 
 				msg.makeMessageOnBoard (msg.getMessage(1));
 
