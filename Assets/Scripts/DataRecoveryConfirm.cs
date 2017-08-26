@@ -32,7 +32,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
             PlayerPrefs.SetInt("kuniLv", RecoveryDataStore.kuniLv);
             Exp expScript = new Exp();
             int totalExp = expScript.getTotalExp(RecoveryDataStore.kuniLv);
-            PlayerPrefs.SetInt("exp", totalExp);
+            PlayerPrefs.SetInt("kuniExp", totalExp);
             int jinkeiLimit = expScript.getJinkeiLimit(RecoveryDataStore.kuniLv);
             int stockLimit = expScript.getStockLimit(RecoveryDataStore.kuniLv);
             PlayerPrefs.SetInt("jinkeiLimit", jinkeiLimit);

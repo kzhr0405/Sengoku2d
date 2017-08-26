@@ -216,7 +216,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 		GameObject content = GameObject.Find ("ScrollView").transform.FindChild ("Content").gameObject;
 		string path = "Prefabs/Purchase/Purchased";
 
-		if (PlayerPrefs.HasKey ("addJinkei1")) {
+		if (PlayerPrefs.GetBool ("addJinkei1")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
 			GameObject btn = content.transform.FindChild ("addjinkei1").gameObject;
 			icon.transform.SetParent(btn.transform);
@@ -225,7 +225,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 			btn.GetComponent<Button> ().enabled = false;
 
 		}
-		if (PlayerPrefs.HasKey ("addJinkei2")) {
+		if (PlayerPrefs.GetBool("addJinkei2")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
 			GameObject btn = content.transform.FindChild ("addjinkei2").gameObject;
 			icon.transform.SetParent(btn.transform);
@@ -234,7 +234,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 			btn.GetComponent<Button> ().enabled = false;
 
 		}
-		if (PlayerPrefs.HasKey ("addJinkei3")) {
+		if (PlayerPrefs.GetBool("addJinkei3")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
 			GameObject btn = content.transform.FindChild ("addjinkei3").gameObject;
 			icon.transform.SetParent(btn.transform);
@@ -244,7 +244,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 			btn.GetComponent<Button> ().enabled = false;
 
 		}
-		if (PlayerPrefs.HasKey ("addJinkei4")) {
+		if (PlayerPrefs.GetBool("addJinkei4")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
 			GameObject btn = content.transform.FindChild ("addjinkei4").gameObject;
 			icon.transform.SetParent(btn.transform);
