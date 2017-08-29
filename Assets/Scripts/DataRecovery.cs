@@ -14,7 +14,6 @@ public class DataRecovery : MonoBehaviour {
     public bool Fetched1 = false;
     public bool Fetched2 = false;
     public bool Fetched3 = false;
-    public bool Fetched4 = false;
 
     public void Start() {
         RecoveryDataStore = GameObject.Find("RecoveryDataStore").GetComponent<RecoveryDataStore>();
@@ -37,7 +36,8 @@ public class DataRecovery : MonoBehaviour {
             } else {
                 //Check user Id not equal current
                 string userId = PlayerPrefs.GetString("userId");
-                if(inputUserId == userId) {
+                //string userId = "";//test
+                if (inputUserId == userId) {
                     audioSources[4].Play();
                     msg.makeMessage(msg.getMessage(146));                
                 }else {
@@ -47,8 +47,9 @@ public class DataRecovery : MonoBehaviour {
                         msg.makeMessage(msg.getMessage(147));
                     } else {
                         //Start
-                        //Check user Id exist
-                        RecoveryDataStore.GetUserId(inputUserId);
+                        //Get All user stored data(dataStore or userId+jinkeiPvP)
+                        audioSources[0].Play();
+                        RecoveryDataStore.GetDataStore(inputUserId);
                     }
                 }                
             }
@@ -56,26 +57,19 @@ public class DataRecovery : MonoBehaviour {
     }
 
     void Update() {
-        if (RecoveryDataStore.userIdCount != -1 && !Fetched1) {
+        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && !Fetched1) {
             //Check never recovered in server
             RecoveryDataStore.GetDataRecoveryCount(inputUserId);
             Fetched1 = true;
         }
 
-        if (RecoveryDataStore.userIdCount != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0  && !Fetched2) {
-            //Check jinkei exist
-            RecoveryDataStore.GetPvPJinkei(inputUserId);
+        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0 && !Fetched2) {
+            RecoveryDataStore.GetPvP(inputUserId);
             Fetched2 = true;
         }
-
-        if (RecoveryDataStore.userIdCount != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0 && Fetched2 && !Fetched3) {
-            RecoveryDataStore.GetPvP(inputUserId);
-            Fetched3 = true;
-        }
-
-
+        
         //Create confirm Board
-        if (RecoveryDataStore.userIdCount != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0 && Fetched2 && Fetched3 && !Fetched4) {
+        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0 && Fetched2 && !Fetched3) {
 
             audioSources[0].Play();
 
@@ -99,7 +93,7 @@ public class DataRecovery : MonoBehaviour {
             msg.transform.FindChild("NoButton").GetComponent<DataRecoveryConfirm>().back = back;
             msg.transform.FindChild("NoButton").GetComponent<DataRecoveryConfirm>().msg = msg;
 
-            Fetched4 = true;
+            Fetched3 = true;
         }
     }
 }

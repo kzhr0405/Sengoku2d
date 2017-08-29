@@ -139,13 +139,10 @@ public class KuniInfo : MonoBehaviour {
 		return flg;
 	}
 
-	public void updateOpenKuni(){
-		string seiryoku = PlayerPrefs.GetString ("seiryoku");
+	public void updateOpenKuni(int myDaimyo, string seiryoku) {
 		List<string> seiryokuList = new List<string> ();
 		char[] delimiterChars = {','};
 		seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
-		List<string> mySeiryokuList = new List<string>();
-		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 
 		List<int> newOpenKuniList =  new List<int> ();
 		for(int i=0; i<seiryokuList.Count; i++){
@@ -153,7 +150,7 @@ public class KuniInfo : MonoBehaviour {
 			if(myDaimyo == compDaimyo){
 				int kuniId = i+1; 
 				newOpenKuniList.AddRange(getMappingKuni (kuniId));
-			}
+            }
 		}
 
 		string newOpenKuni = "";
@@ -170,14 +167,41 @@ public class KuniInfo : MonoBehaviour {
 			}
 		}
 
-		//Open kuni initial data setting
-		PlayerPrefs.SetString("openKuni", newOpenKuni);
+        //Open kuni initial data setting
+        PlayerPrefs.SetString("openKuni", newOpenKuni);
 		PlayerPrefs.Flush();
 		
 	}
 
+    public void updateClearedKuni(int myDaimyo, string seiryoku) {
+        List<string> seiryokuList = new List<string>();
+        char[] delimiterChars = { ',' };
+        seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+        List<string> mySeiryokuList = new List<string>();
 
-	public void deleteDoumeiKuniIcon(int doumeiDaimyoId){
+        string clearedKuni = "";
+        for (int i = 0; i < seiryokuList.Count; i++) {
+            int compDaimyo = int.Parse(seiryokuList[i]);
+            if (myDaimyo == compDaimyo) {
+                int kuniId = i + 1;
+                if(clearedKuni == "" || clearedKuni == null) {
+                    clearedKuni = kuniId.ToString();
+                }else {
+                    clearedKuni = clearedKuni + "," + kuniId.ToString();
+                }
+                string tmpClearedStage = "kuni" + kuniId.ToString();
+                PlayerPrefs.SetString(tmpClearedStage, "1,2,3,4,5,6,7,8,9,10");
+            }
+        }
+
+
+        PlayerPrefs.SetString("clearedKuni", clearedKuni);
+        PlayerPrefs.Flush();
+
+    }
+
+
+    public void deleteDoumeiKuniIcon(int doumeiDaimyoId){
 
 		GameObject kuniIconView = GameObject.Find ("KuniIconView");
 
@@ -255,4 +279,5 @@ public class KuniInfo : MonoBehaviour {
 		}
 		return kuniId;
 	}
+
 }

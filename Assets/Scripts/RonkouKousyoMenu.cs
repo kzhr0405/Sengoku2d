@@ -289,8 +289,12 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				string tmp = "gokui" + busyoId;
 				if (PlayerPrefs.HasKey (tmp)) {
 					int gokuiId = PlayerPrefs.GetInt (tmp);
-					sakuList = saku.getGokuiInfoForNextLv(int.Parse(busyoId), gokuiId);
-				} else {
+                    if(gokuiId != 0) {
+                        sakuList = saku.getGokuiInfoForNextLv(int.Parse(busyoId), gokuiId);
+                    }else {
+                        sakuList = saku.getSakuInfoForNextLv(int.Parse(busyoId));
+                    }
+                } else {
 					sakuList = saku.getSakuInfoForNextLv (int.Parse (busyoId));
 				}
 

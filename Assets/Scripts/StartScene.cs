@@ -212,7 +212,11 @@ public class StartScene : MonoBehaviour {
             string pathOfBoard = "Prefabs/Common/UserId";
             GameObject board = Instantiate(Resources.Load(pathOfBoard)) as GameObject;
             board.transform.SetParent(panel.transform);
-            board.transform.localScale = new Vector2(1, 1);
+            if (Application.loadedLevelName != "top") {
+                board.transform.localScale = new Vector2(1, 1);
+            }else {
+                board.transform.localScale = new Vector2(1.2f, 1);
+            }
             board.transform.localPosition = new Vector2(0, 0);
 
             string userId = PlayerPrefs.GetString("userId");

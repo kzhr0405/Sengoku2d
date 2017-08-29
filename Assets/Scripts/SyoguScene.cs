@@ -121,14 +121,22 @@ public class SyoguScene : MonoBehaviour {
 				kanniName.transform.FindChild("effectValue").GetComponent<Text>().text = "+" + effect.ToString() + "%"; 
 
 				kanni.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
-			}
+			}else {
+                foreach (Transform n in kanni.transform) {
+                    if (n.name == "KanniName") {
+                        Destroy(n.gameObject);
+                    }
+                }
+
+                kanni.GetComponent<RonkouKousyoMenu>().kanniId = 0;
+                kanni.transform.FindChild("Text").GetComponent<Text>().enabled = true;
+            }
 		} else {
 			foreach(Transform n in kanni.transform){
 				if(n.name == "KanniName"){
 					Destroy(n.gameObject);
 				}
 			}
-
 
 			kanni.GetComponent<RonkouKousyoMenu> ().kanniId = 0;
 			kanni.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;

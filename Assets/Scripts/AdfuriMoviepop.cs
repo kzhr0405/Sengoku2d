@@ -82,7 +82,7 @@ public class AdfuriMoviepop : MonoBehaviour {
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.StartPlaying:
                 Debug.Log("The ad was started.");
                 break;
-        case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
+        case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
                 // topに戻るのを伏せぐためのフラグ変更                
                 mc.adRunFlg = false;
 
@@ -129,8 +129,10 @@ public class AdfuriMoviepop : MonoBehaviour {
                 audioSources[3].Play();
                 GameObject.Find("GameController").GetComponent<MainStageController>().adRunFlg = false;
                 break;
+                default:
+                return;
 
-        case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
+            case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
                 mc.adRunFlg = false;
 
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
@@ -141,11 +143,11 @@ public class AdfuriMoviepop : MonoBehaviour {
                 msg.makeMessageOnBoard(text);
 
                 break;
-        case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
-                Debug.Log("The ad was closed.");
-                break;
-                default:
-                return;
+            //case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
+            //        Debug.Log("The ad was closed.");
+            //break;
+            //default:
+            //return;
         }
     }
 }

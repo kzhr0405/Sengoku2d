@@ -468,6 +468,7 @@ public class Saku : MonoBehaviour {
 
 
 	public List<string> getGokuiInfo(int busyoId, int gokuiId){
+
 		List<string> sakuList = new List<string>();
 
 		Entity_busyo_mst busyoMst = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;

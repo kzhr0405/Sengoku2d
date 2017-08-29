@@ -38,6 +38,9 @@ public class StartGame : MonoBehaviour {
         //Data Loard Start        
         tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
 
+        string versionNo = Application.version;
+        GameObject.Find("Ver").GetComponent<Text>().text = versionNo;
+
     }
 
 	public void OnClick(){

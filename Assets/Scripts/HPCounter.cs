@@ -308,7 +308,9 @@ public class HPCounter : MonoBehaviour {
                             
 					            //Delete open
 					            KuniInfo kuni = new KuniInfo ();
-					            kuni.updateOpenKuni ();
+                                int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+                                string seiryoku = PlayerPrefs.GetString("seiryoku");
+                                kuni.updateOpenKuni (myDaimyo,seiryoku);
 					            PlayerPrefs.Flush ();
 					
 				            } else {
@@ -1426,7 +1428,7 @@ public class HPCounter : MonoBehaviour {
 		PlayerPrefs.SetString("seiryoku",newSeiryoku);
 
 		//Delete open
-		kuni.updateOpenKuni ();
+		kuni.updateOpenKuni (myDaimyo, newSeiryoku);
 		PlayerPrefs.Flush ();
 
 	}

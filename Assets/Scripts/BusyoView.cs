@@ -146,27 +146,35 @@ public class BusyoView : MonoBehaviour {
 
 			if (PlayerPrefs.HasKey (kanniTmp)) {
 				int kanniId = PlayerPrefs.GetInt (kanniTmp);
-				Kanni kanni = new Kanni ();
-				string kanniIkai = kanni.getIkai (kanniId);
-				string kanniName = kanni.getKanni (kanniId);
-				GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
+                if (kanniId != 0) {
+                    Kanni kanni = new Kanni ();
+				    string kanniIkai = kanni.getIkai (kanniId);
+				    string kanniName = kanni.getKanni (kanniId);
+				    GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
 
-				//Status
-				string kanniTarget = kanni.getEffectTarget(kanniId);
-				int effect = kanni.getEffect(kanniId);
-				if(kanniTarget=="atk"){
-					addAtkByKanni = ((float)adjAtk * (float)effect)/100;
-				}else if(kanniTarget=="hp"){
-					addHpByKanni = ((float)adjHp * (float)effect)/100;
-				}else if(kanniTarget=="dfc"){
-					addDfcByKanni = ((float)adjDfc * (float)effect)/100;
-				}
-			} else {
+				    //Status
+				    string kanniTarget = kanni.getEffectTarget(kanniId);
+				    int effect = kanni.getEffect(kanniId);
+				    if(kanniTarget=="atk"){
+					    addAtkByKanni = ((float)adjAtk * (float)effect)/100;
+				    }else if(kanniTarget=="hp"){
+					    addHpByKanni = ((float)adjHp * (float)effect)/100;
+				    }else if(kanniTarget=="dfc"){
+					    addDfcByKanni = ((float)adjDfc * (float)effect)/100;
+				    }
+                }else {
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
+                    }else {
+                        GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
+                    }
+                }
+            } else {
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                     GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = "No Rank";
                 }else {
                     GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
-                }
+                }                
 			}
 
 			//Jyosyu
@@ -321,7 +329,7 @@ public class BusyoView : MonoBehaviour {
 			kahou.createKahouStatusView(busyoId);
 		} else if (GameObject.Find ("GameScene").GetComponent<NowOnButton> ().onButton == "Syogu") {
 			NowOnBusyoScript.OnBusyo = busyoId;
-					NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId));
+			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId));
 			SyoguScene syogu = new SyoguScene();
 			syogu.createSyoguView(busyoId);
 		}

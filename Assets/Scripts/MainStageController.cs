@@ -239,8 +239,7 @@ public class MainStageController : MonoBehaviour {
                 }else {
                     clearedKuni = "1";
                 }
-
-
+                
                 List<string> clearedKuniList = new List<string> ();
 				if (clearedKuni != null && clearedKuni != "") {
 					if (clearedKuni.Contains (",")) {
@@ -436,7 +435,6 @@ public class MainStageController : MonoBehaviour {
 
 				for (int i=0; i<openKuniList.Count; i++) {
 					string openKuniId = openKuniList [i];
-
 					//Flg Change
 					GameObject targetOpenKuni = GameObject.Find ("KuniIconView").transform.FindChild (openKuniId).gameObject;
 					targetOpenKuni.GetComponent<SendParam> ().openFlg = true;

@@ -70,19 +70,21 @@ public class Senryoku : MonoBehaviour {
 
 		    if (PlayerPrefs.HasKey (kanniTmp)) {
 			    int kanniId = PlayerPrefs.GetInt (kanniTmp);
-			    Kanni kanni = new Kanni ();
+                if(kanniId != 0) {
+			        Kanni kanni = new Kanni ();
 
-			    //Status
-			    string kanniTarget = kanni.getEffectTarget(kanniId);
-			    int effect = kanni.getEffect(kanniId);
-			    if(kanniTarget=="atk"){
-				    addAtkByKanni = ((float)adjAtk * (float)effect)/100;
-			    }else if(kanniTarget=="hp"){
-				    addHpByKanni = ((float)adjHp * (float)effect)/100;
-			    }else if(kanniTarget=="dfc"){
-				    addDfcByKanni = ((float)adjDfc * (float)effect)/100;
-			    }
-		    }
+			        //Status
+			        string kanniTarget = kanni.getEffectTarget(kanniId);
+			        int effect = kanni.getEffect(kanniId);
+			        if(kanniTarget=="atk"){
+				        addAtkByKanni = ((float)adjAtk * (float)effect)/100;
+			        }else if(kanniTarget=="hp"){
+				        addHpByKanni = ((float)adjHp * (float)effect)/100;
+			        }else if(kanniTarget=="dfc"){
+				        addDfcByKanni = ((float)adjDfc * (float)effect)/100;
+			        }
+                }
+            }
 
 		    totalBusyoAtk = adjAtk + int.Parse(KahouStatusArray[0]) + Mathf.FloorToInt (addAtkByKanni);
 		    totalBusyoHp = adjHp + int.Parse(KahouStatusArray[1]) + Mathf.FloorToInt (addHpByKanni) + addJyosyuHei;

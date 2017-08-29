@@ -506,7 +506,11 @@ public class GameScene : MonoBehaviour {
 			string tmp = "gokui" + busyoId;
 			if (PlayerPrefs.HasKey (tmp)) {
 				int gokuiId = PlayerPrefs.GetInt (tmp);
-				sakuList = saku.getGokuiInfo(busyoId, gokuiId);
+                if (gokuiId != 0) {
+                    sakuList = saku.getGokuiInfo(busyoId, gokuiId);
+                }else {
+                    sakuList = saku.getSakuInfo(busyoId);
+                }
 			} else {
 				sakuList = saku.getSakuInfo (busyoId);
 			}

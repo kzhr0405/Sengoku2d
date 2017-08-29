@@ -237,7 +237,7 @@ public class DoSoubujirei : MonoBehaviour {
 
 
 			//Update OpenKuniIcon
-			kuni.updateOpenKuni ();
+			kuni.updateOpenKuni (myDaimyo, newSeiryoku);
 
 			//Close
 			board.transform.FindChild ("close").GetComponent<CloseBoard> ().onClick ();

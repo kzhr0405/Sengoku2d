@@ -206,19 +206,21 @@ public class EnemyAttackPop : MonoBehaviour {
 
         if (PlayerPrefs.HasKey(kanniTmp)) {
             int kanniId = PlayerPrefs.GetInt(kanniTmp);
-            Kanni kanni = new Kanni();
+            if(kanniId != 0) {
+                Kanni kanni = new Kanni();
 
-            //Status
-            string kanniTarget = kanni.getEffectTarget(kanniId);
-            int effect = kanni.getEffect(kanniId);
-            if (kanniTarget == "atk") {
-                addAtkByKanni = ((float)atk * (float)effect) / 100;
-            }
-            else if (kanniTarget == "hp") {
-                addHpByKanni = ((float)hp * (float)effect) / 100;
-            }
-            else if (kanniTarget == "dfc") {
-                addDfcByKanni = ((float)dfc * (float)effect) / 100;
+                //Status
+                string kanniTarget = kanni.getEffectTarget(kanniId);
+                int effect = kanni.getEffect(kanniId);
+                if (kanniTarget == "atk") {
+                    addAtkByKanni = ((float)atk * (float)effect) / 100;
+                }
+                else if (kanniTarget == "hp") {
+                    addHpByKanni = ((float)hp * (float)effect) / 100;
+                }
+                else if (kanniTarget == "dfc") {
+                    addDfcByKanni = ((float)dfc * (float)effect) / 100;
+                }
             }
         }
 

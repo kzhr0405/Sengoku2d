@@ -31,16 +31,16 @@ public class JinkeiScene : MonoBehaviour {
 
             /*Status Initial View*/
             int addLimit = 0;
-            if (PlayerPrefs.HasKey("addJinkei1")) {
+            if (PlayerPrefs.GetBool("addJinkei1")) {
                 addLimit = 1;
             }
-            if (PlayerPrefs.HasKey("addJinkei2")) {
+            if (PlayerPrefs.GetBool("addJinkei2")) {
                 addLimit = addLimit + 1;
             }
-            if (PlayerPrefs.HasKey("addJinkei3")) {
+            if (PlayerPrefs.GetBool("addJinkei3")) {
                 addLimit = addLimit + 1;
             }
-            if (PlayerPrefs.HasKey("addJinkei4")) {
+            if (PlayerPrefs.GetBool("addJinkei4")) {
                 addLimit = addLimit + 1;
             }
             int totalLimit = jinkeiLimit + addLimit;

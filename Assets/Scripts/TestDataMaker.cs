@@ -14,7 +14,7 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.SetInt ("hyourou",100);
         //PlayerPrefs.SetString("cyoutei", "1000,1000,1000");
         PlayerPrefs.SetInt ("money",200000000);
-        //PlayerPrefs.SetInt ("busyoDama",9999999);
+        PlayerPrefs.SetInt ("busyoDama",9999999);
         PlayerPrefs.SetString ("gokuiItem","100,110,120,130,140");
         PlayerPrefs.SetString ("cyouheiYR","200,200,200");
         PlayerPrefs.SetString ("cyouheiKB","200,200,200");
@@ -28,7 +28,7 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.SetInt ("exp19", 55143342);
         //PlayerPrefs.SetInt("exp4", 1830143342);
         //PlayerPrefs.SetInt("addlv4", 100);
-        //PlayerPrefs.SetInt("addlv19", 100);
+        PlayerPrefs.SetInt("addlv19", 100);
         //PlayerPrefs.SetString("gacyaHst", "4,19,108");
         //PlayerPrefs.SetInt ("72",99);
         //PlayerPrefs.SetInt ("exp72",55143300);

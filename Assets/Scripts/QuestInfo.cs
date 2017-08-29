@@ -79,12 +79,12 @@ public class QuestInfo : MonoBehaviour {
 				bool activeFlg = PlayerPrefs.GetBool (tmp, false);
                 
 				if (activeFlg) {
-					//active
-
+                    //active
+                    
 					//received or not
 					string tmp2 = "questSpecialReceivedFlg" + i.ToString ();
 					bool activeFlg2 = PlayerPrefs.GetBool (tmp2, false);
-					if (!activeFlg2) {
+                    if (!activeFlg2) {
 						activeSpecialList.Add (i);
 					}
 
