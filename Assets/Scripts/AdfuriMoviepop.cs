@@ -130,7 +130,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                 GameObject.Find("GameController").GetComponent<MainStageController>().adRunFlg = false;
 
                 //縦動画後に横固定に変更用
-                Screen.orientation = ScreenOrientation.Portrait;
+                //Screen.orientation = ScreenOrientation.Portrait;
 
                 break;
                 default:
