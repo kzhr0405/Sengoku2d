@@ -534,7 +534,7 @@ public class GameScene : MonoBehaviour {
 				//Hei Status
 				string heiId = "hei" + busyoId.ToString();
 				string chParam = PlayerPrefs.GetString(heiId,"0");
-                if (chParam == "0") {
+                if (chParam == "0" || chParam == "") {
                     StatusGet statusScript = new StatusGet();
                     string heisyu = statusScript.getHeisyu(busyoId);
                     chParam = heisyu + ":1:1:1";

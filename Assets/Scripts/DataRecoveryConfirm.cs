@@ -62,10 +62,12 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 /***dataStore***/
                 PlayerPrefs.SetInt("kuniExp", RecoveryDataStore.kuniExp);
                 PlayerPrefs.SetString("yearSeason", RecoveryDataStore.yearSeason);
-                PlayerPrefs.SetString("seiryoku", RecoveryDataStore.seiryoku);
+                string seiryoku = RecoveryDataStore.seiryoku;
+                if (seiryoku == "") seiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
+                PlayerPrefs.SetString("seiryoku", seiryoku);
                 KuniInfo kuniScript = new KuniInfo();
-                kuniScript.updateOpenKuni(RecoveryDataStore.myDaimyo, RecoveryDataStore.seiryoku);
-                kuniScript.updateClearedKuni(RecoveryDataStore.myDaimyo, RecoveryDataStore.seiryoku);
+                kuniScript.updateOpenKuni(RecoveryDataStore.myDaimyo, seiryoku);
+                kuniScript.updateClearedKuni(RecoveryDataStore.myDaimyo, seiryoku);
                 PlayerPrefs.SetInt("money", RecoveryDataStore.money);
                 PlayerPrefs.SetInt("busyoDama", RecoveryDataStore.busyoDama);
                 PlayerPrefs.SetInt("syogunDaimyoId", RecoveryDataStore.syogunDaimyoId);
@@ -153,7 +155,9 @@ public class DataRecoveryConfirm : MonoBehaviour {
                     }
                 }
 
-
+                PlayerPrefs.SetInt("myDaimyo", RecoveryDataStore.myDaimyo);
+                Daimyo daimyoScript = new Daimyo();
+                PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo));
                 PlayerPrefs.SetString("myBusyo", myBusyo);
                 PlayerPrefs.SetString("myKanni", RecoveryDataStore.myKanni);
                 PlayerPrefs.SetString("availableBugu", RecoveryDataStore.availableBugu);
@@ -166,8 +170,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetString("kanjyo", RecoveryDataStore.kanjyo);
                 PlayerPrefs.SetString("cyouheiYR", RecoveryDataStore.cyouheiYR);
                 PlayerPrefs.SetString("cyouheiKB", RecoveryDataStore.cyouheiKB);
-                PlayerPrefs.SetString("CyouheiTP", RecoveryDataStore.CyouheiTP);
-                PlayerPrefs.SetString("CyouheiYM", RecoveryDataStore.CyouheiYM);
+                PlayerPrefs.SetString("cyouheiTP", RecoveryDataStore.cyouheiTP);
+                PlayerPrefs.SetString("cyouheiYM", RecoveryDataStore.cyouheiYM);
                 PlayerPrefs.SetInt("hidensyoGe", RecoveryDataStore.hidensyoGe);
                 PlayerPrefs.SetInt("hidensyoCyu", RecoveryDataStore.hidensyoCyu);
                 PlayerPrefs.SetInt("hidensyoJyo", RecoveryDataStore.hidensyoJyo);
@@ -232,6 +236,10 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 /***userId + pvpJinkei***/
                 int totalExp = expScript.getTotalExp(RecoveryDataStore.kuniLv);
                 PlayerPrefs.SetInt("kuniExp", totalExp);
+                Debug.Log(RecoveryDataStore.myDaimyo);
+                PlayerPrefs.SetInt("myDaimyo", RecoveryDataStore.myDaimyo);
+                Daimyo daimyoScript = new Daimyo();
+                PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo));
 
                 //pvp jinkei
                 string myBusyoString = PlayerPrefs.GetString("myBusyo");

@@ -128,6 +128,10 @@ public class AdfuriMoviepop : MonoBehaviour {
                 GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = newBusyoDama.ToString();
                 audioSources[3].Play();
                 GameObject.Find("GameController").GetComponent<MainStageController>().adRunFlg = false;
+
+                //縦動画後に横固定に変更用
+                Screen.orientation = ScreenOrientation.Portrait;
+
                 break;
                 default:
                 return;

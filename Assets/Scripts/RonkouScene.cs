@@ -405,7 +405,7 @@ public class RonkouScene : MonoBehaviour {
             chParam = "TP: 1:1:1";
         }
 
-        if (chParam == "0") {
+        if (chParam == "0" || chParam == "") {
             StatusGet statusScript = new StatusGet();
             string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));
             chParam = chParamHeisyu + ":1:1:1";

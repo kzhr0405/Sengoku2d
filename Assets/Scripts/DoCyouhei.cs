@@ -58,7 +58,7 @@ public class DoCyouhei : MonoBehaviour {
 			string busyoId = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyo;
 			string temp = "hei" + busyoId;
 			string childStsString = PlayerPrefs.GetString (temp,"0");
-            if (childStsString == "0") {
+            if (childStsString == "0" || childStsString == "") {
                 StatusGet statusScript = new StatusGet();
                 string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));
                 childStsString = chParamHeisyu + ":1:1:1";

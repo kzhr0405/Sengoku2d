@@ -212,7 +212,7 @@ public class BusyoView : MonoBehaviour {
 			string heiId = "hei" + busyoId.ToString ();
 			string chParam = PlayerPrefs.GetString (heiId,"0");
             
-            if(chParam == "0") {
+            if(chParam == "0" || chParam == "") {
                 StatusGet statusScript = new StatusGet();
                 string heisyu = statusScript.getHeisyu(int.Parse(busyoId));
                 chParam = heisyu + ":1:1:1";

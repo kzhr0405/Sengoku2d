@@ -68,8 +68,8 @@ public class RecoveryDataStore : MonoBehaviour {
     public string kanjyo = "";
     public string cyouheiYR = "";
     public string cyouheiKB = "";
-    public string CyouheiTP = "";
-    public string CyouheiYM = "";
+    public string cyouheiTP = "";
+    public string cyouheiYM = "";
     public int hidensyoGe = 0;
     public int hidensyoCyu = 0;
     public int hidensyoJyo = 0;
@@ -124,6 +124,7 @@ public class RecoveryDataStore : MonoBehaviour {
                         addJinkei2 = System.Convert.ToBoolean(obj["addJinkei2"]);
                         addJinkei3 = System.Convert.ToBoolean(obj["addJinkei3"]);
                         addJinkei4 = System.Convert.ToBoolean(obj["addJinkei4"]);
+                        myDaimyo = System.Convert.ToInt32(obj["myDaimyo"]);
                         GetPvPJinkei(userId);                        
                     }
                 }else {
@@ -211,8 +212,8 @@ public class RecoveryDataStore : MonoBehaviour {
                         kanjyo = System.Convert.ToString(obj["kanjyo"]);
                         cyouheiYR = System.Convert.ToString(obj["cyouheiYR"]);
                         cyouheiKB = System.Convert.ToString(obj["cyouheiKB"]);
-                        CyouheiTP = System.Convert.ToString(obj["CyouheiTP"]);
-                        CyouheiYM = System.Convert.ToString(obj["CyouheiYM"]);
+                        cyouheiTP = System.Convert.ToString(obj["cyouheiTP"]);
+                        cyouheiYM = System.Convert.ToString(obj["cyouheiYM"]);
                         hidensyoGe = System.Convert.ToInt32(obj["hidensyoGe"]);
                         hidensyoCyu = System.Convert.ToInt32(obj["hidensyoCyu"]);
                         hidensyoJyo = System.Convert.ToInt32(obj["hidensyoJyo"]);

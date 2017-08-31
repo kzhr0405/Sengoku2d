@@ -140,7 +140,8 @@ public class KuniInfo : MonoBehaviour {
 	}
 
 	public void updateOpenKuni(int myDaimyo, string seiryoku) {
-		List<string> seiryokuList = new List<string> ();
+
+        List<string> seiryokuList = new List<string> ();
 		char[] delimiterChars = {','};
 		seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
 
@@ -174,6 +175,7 @@ public class KuniInfo : MonoBehaviour {
 	}
 
     public void updateClearedKuni(int myDaimyo, string seiryoku) {
+
         List<string> seiryokuList = new List<string>();
         char[] delimiterChars = { ',' };
         seiryokuList = new List<string>(seiryoku.Split(delimiterChars));

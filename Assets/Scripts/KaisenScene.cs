@@ -272,7 +272,7 @@ public class KaisenScene : MonoBehaviour {
                     //Hei Status
                     string heiId = "hei" + busyoId.ToString();
                     string chParam = PlayerPrefs.GetString(heiId, "0");
-                    if (chParam == "0") {
+                    if (chParam == "0" || chParam == "") {
                         StatusGet statusScript = new StatusGet();
                         string chParamHeisyu = statusScript.getHeisyu(busyoId);
                         chParam = chParamHeisyu + ":1:1:1";

@@ -13,7 +13,7 @@ public class DataRegister : MonoBehaviour {
 
         //Init Data Maker
         userId = PlayerPrefs.GetString("userId", "");
-        initDataDoneFlg = PlayerPrefs.GetBool("initDataFlg",false);
+        initDataDoneFlg = PlayerPrefs.GetBool("initDataFlg");
         if (!initDataDoneFlg) {
             if(userId == "" || userId == null) {
                 InitDataMaker initData = transform.FindChild("InitDataMaker").GetComponent<InitDataMaker>();
@@ -24,33 +24,35 @@ public class DataRegister : MonoBehaviour {
         //User Data Update
         DataUserId DataUserId = GetComponent<DataUserId>();
         DataJinkei DataJinkei = GetComponent<DataJinkei>();
+        bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
 
-        if (userId == "" ) {
-            //New UserId
-            string randomA = StringUtils.GeneratePassword(10);
-            System.DateTime now = System.DateTime.Now;
-            string randomB = now.ToString("yyyyMMddHHmmss");
-            string userId = randomA + randomB;
-            PlayerPrefs.SetString("userId", userId);
-            PlayerPrefs.Flush();
-            if (Application.internetReachability != NetworkReachability.NotReachable) {
-                DataUserId.InsertUserId(userId);
-            }
-        }else {
-            //Update UserId
-            if (Application.internetReachability != NetworkReachability.NotReachable) {
-                DataUserId.UpdateUserId(userId);
-                DataJinkei.UpdateJinkei(userId);
+        if(tutorialDoneFlg) {
+            if (userId == "" ) {
+                //New UserId
+                string randomA = StringUtils.GeneratePassword(10);
+                System.DateTime now = System.DateTime.Now;
+                string randomB = now.ToString("yyyyMMddHHmmss");
+                string userId = randomA + randomB;
+                PlayerPrefs.SetString("userId", userId);
+                PlayerPrefs.Flush();
+                if (Application.internetReachability != NetworkReachability.NotReachable) {
+                    DataUserId.InsertUserId(userId);
+                }
+            }else {
+                //Update UserId
+                if (Application.internetReachability != NetworkReachability.NotReachable) {
+                    DataUserId.UpdateUserId(userId);
+                    DataJinkei.UpdateJinkei(userId);
 
-                //Reward
-                DataReward DataReward = GetComponent<DataReward>();
-                DataReward.GetRewardMaster(userId);
+                    //Reward
+                    DataReward DataReward = GetComponent<DataReward>();
+                    DataReward.GetRewardMaster(userId);
 
-                //Delete Gunzei Data : Rescue
-                DataDelete DataDelete = GetComponent<DataDelete>();
-                DataDelete.GunzeiDelete(userId);
+                    //Delete Gunzei Data : Rescue
+                    DataDelete DataDelete = GetComponent<DataDelete>();
+                    DataDelete.GunzeiDelete(userId);
+                }
             }
         }
-
     }    
 }
