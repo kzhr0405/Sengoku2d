@@ -17,7 +17,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
     public List<string> kahouList = new List<string>();
     public List<int> senpouLvList = new List<int>();
     public List<int> sakuLvList = new List<int>();
-
+    public List<int> countSpecialList = new List<int>();
 
     public void OnClick() {
 
@@ -62,6 +62,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 /***dataStore***/
                 PlayerPrefs.SetInt("kuniExp", RecoveryDataStore.kuniExp);
                 PlayerPrefs.SetString("yearSeason", RecoveryDataStore.yearSeason);
+                PlayerPrefs.SetInt("movieCount", RecoveryDataStore.movieCount);
                 string seiryoku = RecoveryDataStore.seiryoku;
                 if (seiryoku == "") seiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
                 PlayerPrefs.SetString("seiryoku", seiryoku);
@@ -86,7 +87,28 @@ public class DataRecoveryConfirm : MonoBehaviour {
                         PlayerPrefs.SetBool(tmp2, false);
                     }
                 }
-            
+
+                Entity_quest_count_mst questCountMst = Resources.Load("Data/quest_count_mst") as Entity_quest_count_mst;
+                for (int i = 0; i < questCountMst.param.Count; i++) {
+                    bool dailyFlg = questCountMst.param[i].daily;
+                    if(!dailyFlg) {
+                        countSpecialList.Add(i);
+                    }
+                }
+                if(RecoveryDataStore.questSpecialCountReceivedFlg.Count != 0) {
+                    for (int i = 0; i < countSpecialList.Count; i++) {
+                        int id = countSpecialList[i];
+                        string tmp = "questSpecialCountReceivedFlg" + id.ToString();
+                        bool questReceivedFlg = RecoveryDataStore.questSpecialCountReceivedFlg[i];
+                        if (questReceivedFlg) {
+                            PlayerPrefs.SetBool(tmp, true);
+                        }else {
+                            PlayerPrefs.SetBool(tmp, false);
+                        }
+                    }
+                }
+
+                
                 int count = 0;
                 string myBusyo = "";
                 for (int i=0;i<RecoveryDataStore.busyoList.Count; i++) {
@@ -108,6 +130,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                         
                         //lv
                         PlayerPrefs.SetInt(busyoId.ToString(), lv);
+                        if (lv <= 0) lv = 1;
 
                         //hei
                         string heiTmp = "hei" + busyoId.ToString();                    

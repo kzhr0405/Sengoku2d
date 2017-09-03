@@ -312,9 +312,10 @@ public class CyouteiPop : MonoBehaviour {
 			}else{
 				audioSources [4	].Play ();
 
-				string NGtext = msg.getMessage(7);
-				msg.makeMessage (NGtext);
-			}
+                //string NGtext = msg.getMessage(7);
+                //msg.makeMessage (NGtext);
+                msg.hyourouMovieMessage();
+            }
 		}
 	}
 

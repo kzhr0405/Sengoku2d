@@ -23,6 +23,7 @@ public class DataUserId : MonoBehaviour {
     string doumei = "";
     List<int> questSpecialFlgId = new List<int>();
     List<bool> questSpecialReceivedFlgId = new List<bool>();
+    List<bool> questSpecialCountReceivedFlg = new List<bool>();
     string myBusyo = "";
     string gacyaDaimyoHst = "";
     List<string> myBusyoList = new List<string>();
@@ -34,6 +35,7 @@ public class DataUserId : MonoBehaviour {
     List<int> addLvList = new List<int>();
     List<int> gokuiList = new List<int>();
     List<int> kanniList = new List<int>();
+    int movieCount = 0;
 
     string myKanni = "";
     string availableBugu = "";
@@ -81,8 +83,6 @@ public class DataUserId : MonoBehaviour {
     List<string> naiseiList = new List<string>();
     List<int> naiseiShiroList = new List<int>();
 
-
-
     public void InsertUserId (string userId) {
         getAllData();
         NCMBObject userIdClass = new NCMBObject("dataStore");
@@ -109,7 +109,9 @@ public class DataUserId : MonoBehaviour {
         userIdClass["doumei"] = doumei;
         userIdClass["questSpecialFlgId"] = questSpecialFlgId;
         userIdClass["questSpecialReceivedFlgId"] = questSpecialReceivedFlgId;
+        userIdClass["questSpecialCountReceivedFlg"] = questSpecialCountReceivedFlg;
         userIdClass["yearSeason"] = yearSeason;
+        userIdClass["movieCount"] = movieCount;
 
         //busyo
         userIdClass["gacyaDaimyoHst"] = gacyaDaimyoHst;
@@ -211,7 +213,9 @@ public class DataUserId : MonoBehaviour {
                         objList[0]["doumei"] = doumei;
                         objList[0]["questSpecialFlgId"] = questSpecialFlgId;
                         objList[0]["questSpecialReceivedFlgId"] = questSpecialReceivedFlgId;
-                        objList[0]["yearSeason"] = yearSeason;
+                        objList[0]["questSpecialCountReceivedFlg"] = questSpecialCountReceivedFlg;
+                        objList[0]["yearSeason"] = yearSeason;                        
+                        objList[0]["movieCount"] = movieCount;
 
                         //busyo
                         objList[0]["gacyaDaimyoHst"] = gacyaDaimyoHst;
@@ -299,8 +303,9 @@ public class DataUserId : MonoBehaviour {
         busyoDama = PlayerPrefs.GetInt("busyoDama");
         syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
         doumei = PlayerPrefs.GetString("doumei");
-        Entity_quest_mst questMst = Resources.Load("Data/quest_mst") as Entity_quest_mst;
+        movieCount = PlayerPrefs.GetInt("movieCount");
 
+        Entity_quest_mst questMst = Resources.Load("Data/quest_mst") as Entity_quest_mst;
         for (int i = 0; i < questMst.param.Count; i++) {
             bool dailyFlg = questMst.param[i].daily;
             if (!dailyFlg) {
@@ -319,6 +324,20 @@ public class DataUserId : MonoBehaviour {
                 }
             }
         }
+        Entity_quest_count_mst questCountMst = Resources.Load("Data/quest_count_mst") as Entity_quest_count_mst;
+        for (int i = 0; i < questCountMst.param.Count; i++) {
+            bool dailyFlg = questCountMst.param[i].daily;
+            if (!dailyFlg) {
+                string tmp = "questSpecialCountReceivedFlg" + i.ToString();
+                bool activeFlg = PlayerPrefs.GetBool(tmp, false);
+                if (activeFlg) {
+                    questSpecialCountReceivedFlg.Add(true);                    
+                }else {
+                    questSpecialCountReceivedFlg.Add(false);
+                }
+            }
+        }
+
 
         //busyo
         myBusyo = PlayerPrefs.GetString("myBusyo");
@@ -430,5 +449,5 @@ public class DataUserId : MonoBehaviour {
         }
     }
 
-
+    
 }

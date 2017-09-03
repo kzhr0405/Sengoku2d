@@ -208,9 +208,9 @@ public class BakuhuMenu : MonoBehaviour {
 				audioSources [4].Play ();
 
 				Message msg = new Message ();
-				msg.makeMessageOnBoard (msg.getMessage(7));
-
-			}
+				//msg.makeMessageOnBoard (msg.getMessage(7));
+                msg.hyourouMovieMessage();
+            }
 
 		} else if (name == "DfcOrderBtn") {
 			//Boueirei
@@ -399,8 +399,9 @@ public class BakuhuMenu : MonoBehaviour {
 
 				//Hyourou NG
 				Message msg = new Message ();
-				msg.makeMessageOnBoard (msg.getMessage(7));
-			}
+				//msg.makeMessageOnBoard (msg.getMessage(7));
+                msg.hyourouMovieMessage();
+            }
 
 		} else if (name == "RelationshipBtn") {
 
@@ -518,8 +519,9 @@ public class BakuhuMenu : MonoBehaviour {
 
 				//Hyourou NG
 				Message msg = new Message ();
-				msg.makeMessageOnBoard (msg.getMessage(7));
-			}
+				//msg.makeMessageOnBoard (msg.getMessage(7));
+                msg.hyourouMovieMessage();
+            }
 				
 		} else if (name == "SobujiKessenBtn") {
 
@@ -564,8 +566,9 @@ public class BakuhuMenu : MonoBehaviour {
 
 				//Hyourou NG
 				Message msg = new Message ();
-				msg.makeMessageOnBoard (msg.getMessage(7));
-			}
+				//msg.makeMessageOnBoard (msg.getMessage(7));
+                msg.hyourouMovieMessage();
+            }
 		} else if (name == "KessenBtn") {
 			if (hyourou >= hyourouNo) {
 				audioSources [0].Play ();
@@ -610,8 +613,9 @@ public class BakuhuMenu : MonoBehaviour {
 
 				//Hyourou NG
 				Message msg = new Message ();
-				msg.makeMessageOnBoard (msg.getMessage(7));
-			}
+				//msg.makeMessageOnBoard (msg.getMessage(7));
+                msg.hyourouMovieMessage();
+            }
 		}
 
 

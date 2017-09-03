@@ -33,9 +33,10 @@ public class BuildNaisei : MonoBehaviour {
 			if (nowHyourou < requiredHyourou) {
 				//Error
 				audioSources [4].Play ();
-				msg.makeMessage(msg.getMessage(7));
-
-			} else {
+				//msg.makeMessage(msg.getMessage(7));
+                msg.hyourouMovieMessage();
+                GameObject.Find("close").GetComponent<CloseBoard>().onClick();
+            } else {
 				audioSources [3].Play ();
 
 				activeKuniId = GameObject.Find ("NaiseiController").GetComponent<NaiseiController> ().activeKuniId;

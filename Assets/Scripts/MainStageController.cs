@@ -724,7 +724,18 @@ public class MainStageController : MonoBehaviour {
 						    }
 					    }
 
-					    lastLoginDateString = System.DateTime.Today.ToString ();
+                        Entity_quest_count_mst questCountMst = Resources.Load("Data/quest_count_mst") as Entity_quest_count_mst;
+                        for (int i = 0; i < questCountMst.param.Count; i++) {
+                            bool dailyFlg = questCountMst.param[i].daily;
+
+                            if (dailyFlg) {
+                                string tmp = "questDailyCountReceivedFlg" + i.ToString();                                
+                                PlayerPrefs.DeleteKey(tmp);
+                            }
+                        }
+                        
+
+                        lastLoginDateString = System.DateTime.Today.ToString ();
 					    PlayerPrefs.SetString ("loginDate", lastLoginDateString);
 
 					    PlayerPrefs.SetBool ("questDailyFlg14", true);
@@ -1293,7 +1304,6 @@ public class MainStageController : MonoBehaviour {
 
 	}
 
-    
 	void OnApplicationPause (bool pauseStatus) {
 		if (!pauseStatus) {
             if (!adRunFlg && !iapRunFlg) {
@@ -1307,7 +1317,6 @@ public class MainStageController : MonoBehaviour {
             }
         }
 	}
-    
 
 	public bool CheckByProbability (int ratio) {
 		bool checkFlg = false;
@@ -1379,6 +1388,8 @@ public class MainStageController : MonoBehaviour {
         GameObject.Find("YearValue").GetComponent<Text>().text = nowYear.ToString();
         SetSeason(nowSeason);
 
+        PlayerPrefs.SetBool("questDailyFlg38", true);
+        PlayerPrefs.Flush();
 
         //Cyosyu Data Register
         CyosyuDataRegister(nowSeason, seasonChangeBoard);

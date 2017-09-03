@@ -36,7 +36,9 @@ public class RecoveryDataStore : MonoBehaviour {
     public string doumei = "";
     public List<int> questSpecialFlgId = new List<int>();
     public List<bool> questSpecialReceivedFlgId = new List<bool>();
+    public List<bool> questSpecialCountReceivedFlg = new List<bool>();
     public int kuniExp;
+    public int movieCount = 0;
 
     //busyo
     public string myBusyo = "";
@@ -167,7 +169,7 @@ public class RecoveryDataStore : MonoBehaviour {
                         busyoDama = System.Convert.ToInt32(obj["busyoDama"]);
                         syogunDaimyoId = System.Convert.ToInt32(obj["syogunDaimyoId"]);
                         doumei = System.Convert.ToString(obj["doumei"]);
-
+                        if (checkDataExist(obj, "movieCount")) movieCount = System.Convert.ToInt32(obj["movieCount"]);                        
                         ArrayList arraylist1 = (ArrayList)obj["questSpecialFlgId"];
                         foreach (object o in arraylist1) questSpecialFlgId.Add(System.Convert.ToInt32(o));
 
@@ -212,8 +214,8 @@ public class RecoveryDataStore : MonoBehaviour {
                         kanjyo = System.Convert.ToString(obj["kanjyo"]);
                         cyouheiYR = System.Convert.ToString(obj["cyouheiYR"]);
                         cyouheiKB = System.Convert.ToString(obj["cyouheiKB"]);
-                        cyouheiTP = System.Convert.ToString(obj["cyouheiTP"]);
-                        cyouheiYM = System.Convert.ToString(obj["cyouheiYM"]);
+                        if (checkDataExist(obj, "cyouheiTP")) cyouheiTP = System.Convert.ToString(obj["cyouheiTP"]);
+                        if (checkDataExist(obj, "cyouheiYM")) cyouheiYM = System.Convert.ToString(obj["cyouheiYM"]);
                         hidensyoGe = System.Convert.ToInt32(obj["hidensyoGe"]);
                         hidensyoCyu = System.Convert.ToInt32(obj["hidensyoCyu"]);
                         hidensyoJyo = System.Convert.ToInt32(obj["hidensyoJyo"]);
@@ -249,7 +251,10 @@ public class RecoveryDataStore : MonoBehaviour {
                         ArrayList arraylist14 = (ArrayList)obj["naiseiShiroList"];
                         foreach (object o in arraylist14) naiseiShiroList.Add(System.Convert.ToInt32(o));
 
-
+                        if (checkDataExist(obj, "questSpecialCountReceivedFlg")) {
+                            ArrayList arraylist15 = (ArrayList)obj["questSpecialCountReceivedFlg"];
+                            foreach (object o in arraylist15) questSpecialCountReceivedFlg.Add(System.Convert.ToBoolean(o));
+                        }
                         GetPvPJinkeiMap(userId);
                     }
                 }else {
@@ -425,5 +430,15 @@ public class RecoveryDataStore : MonoBehaviour {
         DataRecovery.Fetched3 = false;
         DataRecovery.inputUserId = "";
 
+    }
+
+    private bool checkDataExist(NCMBObject obj, string key) {
+        try {
+            object test = obj[key];
+        }
+        catch (NCMBException ex) {
+            return false;
+        }
+        return true;
     }
 }

@@ -757,9 +757,10 @@ public class DoGaikou : MonoBehaviour {
 			//Message
 			audioSources [4].Play ();
 
-			string NGtext = msg.getMessage(7);
-			msg.makeMessage (NGtext);
-		}
+			//string NGtext = msg.getMessage(7);
+			//msg.makeMessage (NGtext);
+            msg.hyourouMovieMessage();
+        }
 	}
 
 	public void reduceMoneyHyourou (){

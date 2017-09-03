@@ -221,7 +221,8 @@ public class DoBuy : MonoBehaviour {
 		} else {
 			//Message
 			audioSources [4].Play ();
-			msg.makeMessage (msg.getMessage(7));
-		}
+            //msg.makeMessage (msg.getMessage(7));
+            msg.hyourouMovieMessage();
+        }
 	}
 }

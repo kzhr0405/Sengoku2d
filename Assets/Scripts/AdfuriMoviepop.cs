@@ -3,9 +3,10 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
-
+using UnityEngine.SceneManagement;
 public class AdfuriMoviepop : MonoBehaviour {
 
+    public bool hyourouFlg = false; //reward hyourou or busyoDama
     private int test_num;
     private SCENE_STATE sceneState = SCENE_STATE.MAIN;
 
@@ -42,12 +43,17 @@ public class AdfuriMoviepop : MonoBehaviour {
 
     public void PushAdsense() {
         // topに戻るのを伏せぐためのフラグ変更
-        GameObject ob = GameObject.Find("GameController");
-        MainStageController mc = ob.GetComponent<MainStageController>();
-        if (!mc.adRunFlg)
-        {
+
+        if (SceneManager.GetActiveScene().name == "mainStage") {
+            GameObject ob = GameObject.Find("GameController");
+            MainStageController mc = ob.GetComponent<MainStageController>();
+            if (!mc.adRunFlg)
+            {
+                StartCoroutine(PlayAdsense());
+                mc.adRunFlg = true;
+            }
+        }else {
             StartCoroutine(PlayAdsense());
-            mc.adRunFlg = true;
         }
     }
 
@@ -56,6 +62,7 @@ public class AdfuriMoviepop : MonoBehaviour {
     {
         GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
         AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
+
         while (!au.isPreparedMovieReward())
         {
             yield return null;
@@ -67,14 +74,11 @@ public class AdfuriMoviepop : MonoBehaviour {
         int stateName = (int)vars[0];
         string appID = (string)vars[1];
         string adnetworkKey = (string)vars[2];
-
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         Message msg = new Message();
         string text = "";
-
-        GameObject ob = GameObject.Find("GameController");
-        MainStageController mc = ob.GetComponent<MainStageController>();
-
+        
+        
         AdfurikunMovieRewardUtility.ADF_MovieStatus state = (AdfurikunMovieRewardUtility.ADF_MovieStatus)stateName; switch (state) {
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.PrepareSuccess:
                 Debug.Log("The ad was preapred.");
@@ -83,68 +87,125 @@ public class AdfuriMoviepop : MonoBehaviour {
                 Debug.Log("The ad was started.");
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
-                // topに戻るのを伏せぐためのフラグ変更                
-                mc.adRunFlg = false;
 
-                int busyoDamaQty = 0;
-                string atariMsg = "";
-                float rankPercent = UnityEngine.Random.value;
-                rankPercent = rankPercent * 100;
-                if (rankPercent <= 10) {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                        atariMsg = "My lord, Big Hit! \n";
-                    }else {
-                        atariMsg = "大当たりですぞ。\n";
+                int movieCount = PlayerPrefs.GetInt("movieCount");
+                movieCount = movieCount + 1;
+                PlayerPrefs.SetInt("movieCount",movieCount);
+
+                if(!hyourouFlg) {
+                    int busyoDamaQty = 0;
+                    string atariMsg = "";
+                    float rankPercent = UnityEngine.Random.value;
+                    rankPercent = rankPercent * 100;
+                    if (rankPercent <= 10) {
+                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            atariMsg = "My lord, Big Hit! \n";
+                        }else {
+                            atariMsg = "大当たりですぞ。\n";
+                        }
+                        busyoDamaQty = UnityEngine.Random.Range(20, 51); //20-50
+                    }else if (10 < rankPercent && rankPercent <= 40) {
+                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            atariMsg = "My lord, Mid Hit. \n";
+                        }else {
+                            atariMsg = "中当たりですぞ。\n";
+                        }
+                        busyoDamaQty = UnityEngine.Random.Range(10, 21); //10-20
+                    }else if (40 < rankPercent) {
+                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            atariMsg = "My lord, Low Hit. \n";
+                        }else {
+                            atariMsg = "小当たりですぞ。\n";
+                        }
+                        busyoDamaQty = UnityEngine.Random.Range(5, 11); //5-10
                     }
-                    busyoDamaQty = UnityEngine.Random.Range(20, 51); //20-50
-                }else if (10 < rankPercent && rankPercent <= 40) {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                        atariMsg = "My lord, Mid Hit. \n";
-                    }else {
-                        atariMsg = "中当たりですぞ。\n";
-                    }
-                    busyoDamaQty = UnityEngine.Random.Range(10, 21); //10-20
-                }else if (40 < rankPercent) {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                        atariMsg = "My lord, Low Hit. \n";
-                    }else {
-                        atariMsg = "小当たりですぞ。\n";
-                    }
-                    busyoDamaQty = UnityEngine.Random.Range(5, 11); //5-10
-                }
                 
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    text = atariMsg + "You got " + busyoDamaQty + " stone.";
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        text = atariMsg + "You got " + busyoDamaQty + " stone.";
+                    }else {
+                        text = atariMsg + "武将珠を" + busyoDamaQty + "個手に入れましたぞ。";
+                    }
+                    msg.makeMessageOnBoard(text);
+
+                    int busyoDama = PlayerPrefs.GetInt("busyoDama");
+                    int newBusyoDama = busyoDama + busyoDamaQty;
+                    PlayerPrefs.SetInt("busyoDama", newBusyoDama);
+                    PlayerPrefs.Flush();
+                    GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = newBusyoDama.ToString();
                 }else {
-                    text = atariMsg + "武将珠を" + busyoDamaQty + "個手に入れましたぞ。";
+
+                    int hyourouQty = 0;
+                    string atariMsg = "";
+                    float rankPercent = UnityEngine.Random.value;
+                    rankPercent = rankPercent * 100;
+                    if (rankPercent <= 10) {
+                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            atariMsg = "My lord, Big Hit! \n";
+                        }
+                        else {
+                            atariMsg = "大当たりですぞ。\n";
+                        }
+                        hyourouQty = UnityEngine.Random.Range(30, 51); //30-50
+                    }
+                    else if (10 < rankPercent && rankPercent <= 40) {
+                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            atariMsg = "My lord, Mid Hit. \n";
+                        }
+                        else {
+                            atariMsg = "中当たりですぞ。\n";
+                        }
+                        hyourouQty = UnityEngine.Random.Range(20, 31); //20-30
+                    }
+                    else if (40 < rankPercent) {
+                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            atariMsg = "My lord, Low Hit. \n";
+                        }
+                        else {
+                            atariMsg = "小当たりですぞ。\n";
+                        }
+                        hyourouQty = UnityEngine.Random.Range(10, 21); //10-20
+                    }
+
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        text = atariMsg + "You got " + hyourouQty + " stamina.";
+                    }else {
+                        text = atariMsg + "兵糧を" + hyourouQty + "個手に入れましたぞ。";
+                    }
+                    msg.makeMessageOnBoard(text);
+
+                    int hyourou = PlayerPrefs.GetInt("hyourou");
+                    int newHyourou = hyourou + hyourouQty;
+                    if (newHyourou > 100) newHyourou = 100;
+                    PlayerPrefs.SetInt("hyourou", newHyourou);
+                    PlayerPrefs.Flush();
+                    GameObject.Find("HyourouCurrentValue").GetComponent<Text>().text = newHyourou.ToString();
+                    
                 }
-                msg.makeMessageOnBoard(text);
 
-                int busyoDama = PlayerPrefs.GetInt("busyoDama");
-                int newBusyoDama = busyoDama + busyoDamaQty;
-                PlayerPrefs.SetInt("busyoDama", newBusyoDama);
-                PlayerPrefs.Flush();
-
-                GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = newBusyoDama.ToString();
                 audioSources[3].Play();
-                GameObject.Find("GameController").GetComponent<MainStageController>().adRunFlg = false;
-
-                //縦動画後に横固定に変更用
-                //Screen.orientation = ScreenOrientation.Portrait;
+                if (SceneManager.GetActiveScene().name == "mainStage") {
+                    GameObject ob = GameObject.Find("GameController");
+                    MainStageController mc = ob.GetComponent<MainStageController>();
+                    mc.adRunFlg = false;
+                }
+                GameObject.Find("MessageStaminaObject").transform.FindChild("Close").GetComponent<CloseMessageStamina>().OnClick();
 
                 break;
                 default:
                 return;
 
             case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
-                mc.adRunFlg = false;
-
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                     text = "There is no available video now. Please try it later.";
                 }else {
                     text = "再生可能な動画広告がありません。時間を置いて試してくだされ。";
                 }
                 msg.makeMessageOnBoard(text);
+                if (SceneManager.GetActiveScene().name == "mainStage") {
+                    GameObject ob = GameObject.Find("GameController");
+                    MainStageController mc = ob.GetComponent<MainStageController>();
+                    mc.adRunFlg = false;
+                }
 
                 break;
             //case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:

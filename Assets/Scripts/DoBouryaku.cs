@@ -745,8 +745,8 @@ public class DoBouryaku : MonoBehaviour {
 		
 		} else {
 			audioSources [4].Play ();
-
-			msg.makeMessage (msg.getMessage(7));
+            msg.hyourouMovieMessage();
+            //msg.makeMessage (msg.getMessage(7));
 
 		}
 

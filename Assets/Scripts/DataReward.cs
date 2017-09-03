@@ -18,14 +18,24 @@ public class DataReward : MonoBehaviour {
             if (e == null) {
                 foreach (NCMBObject obj in objList) {
                     objectIdList.Add(obj.ObjectId);
-                    itemTitleList.Add(System.Convert.ToString(obj["title"]));
-                    itemGrpList.Add(System.Convert.ToString(obj["grp"]));
-                    itemRankList.Add(System.Convert.ToString(obj["rank"]));
-                    itemQtyList.Add(System.Convert.ToInt32(obj["qty"]));                 
+                    if (checkDataExist(obj, "title")) itemTitleList.Add(System.Convert.ToString(obj["title"]));
+                    if (checkDataExist(obj, "grp")) itemGrpList.Add(System.Convert.ToString(obj["grp"]));
+                    if (checkDataExist(obj, "rank")) itemRankList.Add(System.Convert.ToString(obj["rank"]));
+                    if (checkDataExist(obj, "qty")) itemQtyList.Add(System.Convert.ToInt32(obj["qty"]));                 
                 }
             }
         });
     }
 
-    
+    private bool checkDataExist(NCMBObject obj, string key) {
+        try {
+            object test = obj[key];
+        }
+        catch (NCMBException ex) {
+            return false;
+        }
+        return true;
+    }
+
+
 }

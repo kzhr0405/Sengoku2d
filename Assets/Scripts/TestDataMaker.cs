@@ -8,7 +8,7 @@ public class TestDataMaker : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
+        PlayerPrefs.SetInt("movieCount",15000);
         //PlayerPrefs.SetInt("16", 100);
         //PlayerPrefs.SetString ("seiryoku","1,1,3,1,1,1,17,1,3,1,1,1,1,1,17,1,1,17,8,17,17,28,8,8,8,8,19,19,19,28,28,28,28,28,28,28,28,1,1,1,1,1,38,38,31,38,38,38,31,38,31,31,31,31,31,38,31,38,45,45,45,45,45,45,41");
         //PlayerPrefs.SetInt ("hyourou",100);

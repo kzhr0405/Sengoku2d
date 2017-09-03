@@ -54,17 +54,28 @@ public class QuestInfo : MonoBehaviour {
             popText.GetComponent<Text>().text = "達成目標";
         }
 
-
         //Quest Scroll
         string scrollPath = "Prefabs/Map/quest/QuestScrollView";
 		GameObject scroll = Instantiate (Resources.Load (scrollPath)) as GameObject;
 		scroll.transform.SetParent (popup.transform);
 		scroll.transform.localScale = new Vector2 (1, 1);
 		scroll.transform.localPosition = new Vector2 (0,230);
+        scroll.name = "QuestScrollView";
 
+        //Quest Menu
+        string QuestMenuPath = "Prefabs/Map/quest/QuestMenu";
+        GameObject menu = Instantiate(Resources.Load(QuestMenuPath)) as GameObject;
+        menu.transform.SetParent(popup.transform);
+        menu.transform.localScale = new Vector2(1, 1);
+        menu.name = "QuestMenu";
+        QuestMenu QuestMenuDaily = menu.transform.FindChild("Daily").GetComponent<QuestMenu>();
+        QuestMenu QuestMenuSpecial = menu.transform.FindChild("Special").GetComponent<QuestMenu>();
+        QuestMenuDaily.scrollObj = scroll;
+        QuestMenuSpecial.scrollObj = scroll;        
 
-		//Slot
-		List<int> activeSpecialList = new List<int> ();
+        /*
+        //Slot
+        List<int> activeSpecialList = new List<int> ();
 		List<int> activeDailyList = new List<int> ();
 		List<int> inactiveDailyList = new List<int> ();
 
@@ -200,11 +211,11 @@ public class QuestInfo : MonoBehaviour {
 		//Scroll Position
 		ScrollRect scrollRect = scroll.GetComponent<ScrollRect>();
 		scrollRect.verticalNormalizedPosition = 1;
+        */
+    }
 
-	}
 
-
-	public string getQuestTitle(int id){
+    public string getQuestTitle(int id){
 		Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
         string title = "";
         if (Application.systemLanguage != SystemLanguage.Japanese) {
@@ -239,6 +250,8 @@ public class QuestInfo : MonoBehaviour {
 		bool daily = questMst.param[id].daily;
 		return daily;
 	}
+
+
 
 
 }

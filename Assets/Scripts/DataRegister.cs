@@ -6,7 +6,7 @@ using NCMB;
 
 public class DataRegister : MonoBehaviour {
 
-    public string userId;
+    public string userId = "";
     public bool initDataDoneFlg = false;
 
     private void Start() {
@@ -20,14 +20,13 @@ public class DataRegister : MonoBehaviour {
                 initData.makeInitData();
             }
         }
-
+        
         //User Data Update
-        DataUserId DataUserId = GetComponent<DataUserId>();
+        DataUserId DataUserId = GetComponent<DataUserId>();        
         DataJinkei DataJinkei = GetComponent<DataJinkei>();
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
-
         if(tutorialDoneFlg) {
-            if (userId == "" ) {
+            if (userId == "" || userId == null) {
                 //New UserId
                 string randomA = StringUtils.GeneratePassword(10);
                 System.DateTime now = System.DateTime.Now;

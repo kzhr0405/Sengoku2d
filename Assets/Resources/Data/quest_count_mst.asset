@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf373cfc08656f458f848ed89f28772, type: 3}
+  m_Name: quest_count_mst
+  m_EditorClassIdentifier: 
+  param:
+  - daily: 1
+    grp: 1
+    title: "\u667A\u5C06\u306F\u52D9\u3081\u3066\u6575\u306B\u98DF\u3080(1)"
+    exp: "\u52D5\u753B\u5E83\u544A\u30925\u56DE\u8996\u308B"
+    target: busyoDama
+    criteriaTyp: movieCount
+    criteria: 5
+    amnt: 100
+    titleEng: 5 Movies
+    expEng: Watch movie for 5 times
+  - daily: 1
+    grp: 1
+    title: "\u667A\u5C06\u306F\u52D9\u3081\u3066\u6575\u306B\u98DF\u3080(2)"
+    exp: "\u52D5\u753B\u5E83\u544A\u309215\u56DE\u8996\u308B"
+    target: busyoDama
+    criteriaTyp: movieCount
+    criteria: 15
+    amnt: 200
+    titleEng: 15 Movies
+    expEng: Watch movie for 15 times
+  - daily: 1
+    grp: 1
+    title: "\u667A\u5C06\u306F\u52D9\u3081\u3066\u6575\u306B\u98DF\u3080(3)"
+    exp: "\u52D5\u753B\u5E83\u544A\u309230\u56DE\u8996\u308B"
+    target: busyoDama
+    criteriaTyp: movieCount
+    criteria: 30
+    amnt: 500
+    titleEng: 30 Movies
+    expEng: Watch movie for 30 times
+  - daily: 0
+    grp: 2
+    title: "\u667A\u5C06\u306F\u52D9\u3081\u3066\u6575\u306B\u98DF\u3080(1)"
+    exp: "\u52D5\u753B\u5E83\u544A\u3092100\u56DE\u8996\u308B"
+    target: busyoDama
+    criteriaTyp: movieCount
+    criteria: 100
+    amnt: 500
+    titleEng: Movie Beginner
+    expEng: Watch movie for 100 times
+  - daily: 0
+    grp: 2
+    title: "\u667A\u5C06\u306F\u52D9\u3081\u3066\u6575\u306B\u98DF\u3080(2)"
+    exp: "\u52D5\u753B\u5E83\u544A\u30921000\u56DE\u8996\u308B"
+    target: busyoDama
+    criteriaTyp: movieCount
+    criteria: 1000
+    amnt: 2500
+    titleEng: Movie Expert
+    expEng: Watch movie for 1000 times
+  - daily: 0
+    grp: 2
+    title: "\u667A\u5C06\u306F\u52D9\u3081\u3066\u6575\u306B\u98DF\u3080(3)"
+    exp: "\u52D5\u753B\u5E83\u544A\u309210000\u56DE\u8996\u308B"
+    target: busyoDama
+    criteriaTyp: movieCount
+    criteria: 10000
+    amnt: 5000
+    titleEng: Movie Master
+    expEng: Watch movie for 10000 times
+  - daily: 0
+    grp: 3
+    title: "\u8FC2\u3092\u4EE5\u3066\u76F4\u3068\u70BA\u3057(1)"
+    exp: "\u6B66\u5C06\u3092100\u4EBA\u96C6\u3081\u308B"
+    target: busyoDama
+    criteriaTyp: zukanBusyoHstCount
+    criteria: 100
+    amnt: 100
+    titleEng: Samurai Beginner
+    expEng: Hire 100 samurais
+  - daily: 0
+    grp: 3
+    title: "\u8FC2\u3092\u4EE5\u3066\u76F4\u3068\u70BA\u3057(2)"
+    exp: "\u6B66\u5C06\u3092200\u4EBA\u96C6\u3081\u308B"
+    target: busyoDama
+    criteriaTyp: zukanBusyoHstCount
+    criteria: 200
+    amnt: 200
+    titleEng: Samurai Expert
+    expEng: Hire 200 samurais
+  - daily: 0
+    grp: 3
+    title: "\u8FC2\u3092\u4EE5\u3066\u76F4\u3068\u70BA\u3057(3)"
+    exp: "\u6B66\u5C06\u3092300\u4EBA\u96C6\u3081\u308B"
+    target: busyoDama
+    criteriaTyp: zukanBusyoHstCount
+    criteria: 300
+    amnt: 500
+    titleEng: Samurai Master
+    expEng: Hire 300 samurais
+  - daily: 0
+    grp: 4
+    title: "\u5FC5\u305A\u5168\u304D\u3092\u4EE5\u3063\u3066\u5929\u4E0B\u306B\u4E89\u3046(1)"
+    exp: "5\u5927\u540D\u5BB6\u3067\u5929\u4E0B\u7D71\u4E00\u3059\u308B"
+    target: busyoDama
+    criteriaTyp: gameClearDaimyoCount
+    criteria: 5
+    amnt: 100
+    titleEng: Clan Beginner
+    expEng: World unification with 5 clans
+  - daily: 0
+    grp: 4
+    title: "\u5FC5\u305A\u5168\u304D\u3092\u4EE5\u3063\u3066\u5929\u4E0B\u306B\u4E89\u3046(2)"
+    exp: "10\u5927\u540D\u5BB6\u3067\u5929\u4E0B\u7D71\u4E00\u3059\u308B"
+    target: busyoDama
+    criteriaTyp: gameClearDaimyoCount
+    criteria: 10
+    amnt: 500
+    titleEng: Clan Expert
+    expEng: World unification with 10 clans
+  - daily: 0
+    grp: 4
+    title: "\u5FC5\u305A\u5168\u304D\u3092\u4EE5\u3063\u3066\u5929\u4E0B\u306B\u4E89\u3046(3)"
+    exp: "30\u5927\u540D\u5BB6\u3067\u5929\u4E0B\u7D71\u4E00\u3059\u308B"
+    target: busyoDama
+    criteriaTyp: gameClearDaimyoCount
+    criteria: 30
+    amnt: 1000
+    titleEng: Clan Master
+    expEng: World unification with 30 clans
+  - daily: 0
+    grp: 4
+    title: "\u5FC5\u305A\u5168\u304D\u3092\u4EE5\u3063\u3066\u5929\u4E0B\u306B\u4E89\u3046(4)"
+    exp: "60\u5927\u540D\u5BB6\u3067\u5929\u4E0B\u7D71\u4E00\u3059\u308B"
+    target: busyoDama
+    criteriaTyp: gameClearDaimyoCount
+    criteria: 60
+    amnt: 2000
+    titleEng: Clan Master
+    expEng: World unification with 60 clans

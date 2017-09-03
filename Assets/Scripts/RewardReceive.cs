@@ -11,6 +11,7 @@ public class RewardReceive : MonoBehaviour {
     public string grp;
     public string rank;
     public int qty;
+    public string value;
 
     public int busyoId;
     public List<string> kahoTypList;
@@ -127,6 +128,16 @@ public class RewardReceive : MonoBehaviour {
                 }
                 msgScript.makeMessage(msg);
 
+            }else {
+                PlayerPrefs.SetInt(grp, qty);
+                Message msgScript = new Message();
+                string msg = "";
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    msg = "You got " + qty.ToString() + " " + grp + ".";
+                }else {
+                    msg = grp + "を" + qty + "入手しました。";
+                }
+                msgScript.makeMessage(msg);
             }
             PlayerPrefs.Flush();
         }

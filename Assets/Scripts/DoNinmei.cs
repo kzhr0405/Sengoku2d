@@ -23,9 +23,11 @@ public class DoNinmei : MonoBehaviour {
 			int nowHyourou = PlayerPrefs.GetInt("hyourou");
 			if(nowHyourou<10){
 				audioSources [4].Play ();
-				msgLine.makeMessage(msgLine.getMessage(7));
-
-			}else{
+				//msgLine.makeMessage(msgLine.getMessage(7));
+                msgLine.hyourouMovieMessage();
+                GameObject.Find("close").GetComponent<CloseBoard>().onClick();
+            }
+            else{
 				audioSources [3].Play ();
 				//Reduce Money & Hyourou
 				int newMoney = nowMoney - 1000;

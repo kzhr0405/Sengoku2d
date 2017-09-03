@@ -32,8 +32,12 @@ public class RewardController : MonoBehaviour {
 
             foreach (Transform obj in imageContent.transform) {
                 if(obj.name != grp) {
+                   
                     Destroy(obj.gameObject);
-                }else {
+                    slot.transform.FindChild("circle").transform.FindChild("Text").GetComponent<Text>().text = grp;
+                    slot.transform.FindChild("circle").transform.FindChild("Text").GetComponent<Text>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+                }
+                else {
                     if (grp == "money") {
                         obj.transform.FindChild("qty").GetComponent<Text>().text = qty.ToString();
                     }
@@ -84,9 +88,6 @@ public class RewardController : MonoBehaviour {
                         }
                         obj.transform.FindChild("qty").GetComponent<Text>().text = "x " + qty.ToString();
                         obj.transform.FindChild("rank").GetComponent<Text>().text = rankTmp;
-                    }else if(grp.Contains("jinkei")) {
-
-
                     }
                 }
             }

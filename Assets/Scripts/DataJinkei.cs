@@ -81,7 +81,7 @@ public class DataJinkei : MonoBehaviour {
                 if (objList.Count == 0) { //never registered
                     InsertJinkei(userId);
                 }else { //Update              
-                    string jinkeiId = PlayerPrefs.GetString("jinkei");
+                    int jinkeiId = PlayerPrefs.GetInt("jinkei");
                     int jinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
                     string soudaisyo = "soudaisyo" + jinkeiId.ToString();
                     int soudaisyoBusyoId = PlayerPrefs.GetInt(soudaisyo);

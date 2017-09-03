@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Message : MonoBehaviour {
 
@@ -25,7 +26,13 @@ public class Message : MonoBehaviour {
 	public void makeMessageOnBoard (string Text) {
 		string Path = "Prefabs/Common/MessageObject";
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
-		messageObj.transform.SetParent(GameObject.Find ("Map").transform);
+        GameObject panel = null;
+        if (SceneManager.GetActiveScene().name == "mainStage") {
+            panel = GameObject.Find("Map").gameObject;
+        }else {
+            panel = GameObject.Find("Naisei").gameObject;
+        }
+        messageObj.transform.SetParent(panel.transform);
 		messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
 		messageObj.name = "MessageObject";
 		
@@ -152,5 +159,33 @@ public class Message : MonoBehaviour {
         }
         
         return message;
+    }
+
+
+    public void hyourouMovieMessage() {
+        GameObject panel = null;
+        if (SceneManager.GetActiveScene().name == "naisei") {
+            panel = GameObject.Find("Naisei").gameObject;
+        }else if(SceneManager.GetActiveScene().name == "pvp") {
+            panel = GameObject.Find("Canvas").gameObject;
+            panel.GetComponent<Canvas>().sortingLayerName = "UI";
+        }else {
+            panel = GameObject.Find("Map").gameObject;
+            panel.GetComponent<Canvas>().sortingLayerName = "UI";
+        }
+        
+        string Path = "Prefabs/Common/MessageStaminaObject";
+        GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
+        messageObj.transform.SetParent(panel.transform);
+        messageObj.name = "MessageStaminaObject";
+        CloseMessageStamina CloseMessageStamina = messageObj.transform.FindChild("Close").GetComponent<CloseMessageStamina>();
+        CloseMessageStamina.board = messageObj;
+        CloseMessageStamina.panel = panel;
+        CloseMessageStamina CloseMessageStamina2 = messageObj.GetComponent<CloseMessageStamina>();
+        CloseMessageStamina2.board = messageObj;
+        CloseMessageStamina2.panel = panel;
+
+        messageObj.transform.localScale = new Vector2(1, 1);
+        messageObj.transform.localPosition = new Vector3(0, 0, 0);
     }
 }

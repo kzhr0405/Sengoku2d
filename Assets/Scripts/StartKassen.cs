@@ -217,7 +217,7 @@ public class StartKassen : MonoBehaviour {
 			    //Error Message
 			    audioSources [4].Play ();
                 
-			    msg.makeUpperMessageOnBoard(msg.getMessage(7));
+			    msg.hyourouMovieMessage();
 
 		    }
         }

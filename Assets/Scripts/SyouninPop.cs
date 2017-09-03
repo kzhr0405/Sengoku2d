@@ -332,8 +332,9 @@ public class SyouninPop : MonoBehaviour {
                 }
 			} else {
 				audioSources [4].Play ();	
-				msg.makeMessage (msg.getMessage(7));
-			}
+				//msg.makeMessage (msg.getMessage(7));
+                msg.hyourouMovieMessage();
+            }
 		}
 	}
 	
