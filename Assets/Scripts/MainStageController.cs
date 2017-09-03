@@ -618,7 +618,7 @@ public class MainStageController : MonoBehaviour {
 				}
                 
 
-                changerableByTime ();                
+                changerableByTime (seiryokuList);                
 			}
 		}
 	}	
@@ -932,7 +932,7 @@ public class MainStageController : MonoBehaviour {
 		}
 	}
 
-	public void changerableByTime(){
+	public void changerableByTime(List<string> seiryokuList) {
 		Daimyo daimyo = new Daimyo ();
 		char[] delimiterChars = { ',' };
 
@@ -1116,13 +1116,12 @@ public class MainStageController : MonoBehaviour {
 
                             if (gunzeiSpantime >= 300) {
                             //if (gunzeiSpantime >= 0) { //test
-							    //Has past
+							    
 							    //Simulation
 							    Gunzei gunzei = new Gunzei ();
 							    myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
-							    if (dstDaimyoId != myDaimyo) {
-								
-								    int enemyHei = gunzei.heiryokuCalc (int.Parse (srcDstKuniList [1]));
+							    if (dstDaimyoId != myDaimyo && seiryokuList[dstKuni-1] != myDaimyo.ToString()) {
+                                    int enemyHei = gunzei.heiryokuCalc (int.Parse (srcDstKuniList [1]));
 
 								    int engunTotalHei = 0;
 								    if (dstEngunFlg) {
@@ -1158,6 +1157,13 @@ public class MainStageController : MonoBehaviour {
 									    deleteKeyHistory (keyTemp);
 								    }
 							    } else {
+                                    if (seiryokuList[dstKuni - 1] == myDaimyo.ToString()) {
+                                        //自大名が勢力を拡大したことにより、途中で攻撃対象の大名が自大名に変わったケース
+                                        dstDaimyoId = myDaimyo;
+                                        dstEngunFlg = false;
+                                        dstEngunDaimyoId = "";
+                                        dstEngunSts = "";
+                                    }
 								    MyDaimyoWasAttacked atked = new MyDaimyoWasAttacked ();
 								    atked.wasAttacked (keyTemp, srcKuni, dstKuni, srcDaimyoId, dstDaimyoId, dstEngunFlg, dstEngunDaimyoId, dstEngunSts);
 

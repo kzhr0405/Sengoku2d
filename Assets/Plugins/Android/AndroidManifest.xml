@@ -114,7 +114,7 @@
 				android:value="true" />
 		</activity>
 
-		<!-- Unity用 -->
+		<!-- Unity -->
 		<meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
 
 		<!-- AppLovin -->
@@ -123,14 +123,14 @@
 		<meta-data
 			android:name="applovin.sdk.key"
 			android:value="c3Mi1VLcRGdiZxI7-NonTyektGx5Wlc8o-rqTARwQ3c__w7zHvklsNSidOp87QHwP6kuHAoiDPhCJqAbiuLZFp" />
-		<!-- 詳細ログを表示する
+		<!-- Detail Log
 		<meta-data
 			android:name="applovin.sdk.verbose_logging"
 			android:value="true" />
 		-->
 
 		<!-- UnityAds -->
-		<!-- AARに含まれまぁE-->
+		<!-- AAR Contains-->
 
 		<!-- AdColony -->
 		<activity 
@@ -218,7 +218,7 @@
 			android:name="com.google.android.gms.version"
 			android:value="@integer/google_play_services_version" />
 
-		<!-- アドフリくんチE��チE��ログ -->
+		<!-- Adfurikun log -->
         <meta-data
             android:name="adfurikun_test"
             android:value="false" />
