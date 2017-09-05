@@ -215,7 +215,9 @@ public class RecoveryDataStore : MonoBehaviour {
                         cyouheiYR = System.Convert.ToString(obj["cyouheiYR"]);
                         cyouheiKB = System.Convert.ToString(obj["cyouheiKB"]);
                         if (checkDataExist(obj, "cyouheiTP")) cyouheiTP = System.Convert.ToString(obj["cyouheiTP"]);
+                        else if(checkDataExist(obj, "CyouheiTP")) cyouheiTP = System.Convert.ToString(obj["CyouheiTP"]);
                         if (checkDataExist(obj, "cyouheiYM")) cyouheiYM = System.Convert.ToString(obj["cyouheiYM"]);
+                        else if (checkDataExist(obj, "CyouheiYM")) cyouheiYM = System.Convert.ToString(obj["CyouheiYM"]);
                         hidensyoGe = System.Convert.ToInt32(obj["hidensyoGe"]);
                         hidensyoCyu = System.Convert.ToInt32(obj["hidensyoCyu"]);
                         hidensyoJyo = System.Convert.ToInt32(obj["hidensyoJyo"]);
