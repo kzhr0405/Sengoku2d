@@ -12,7 +12,7 @@ public class StartGame : MonoBehaviour {
     public bool tutorialDoneFlg = false;
     public bool clickedFlg = false;
     public GameObject loading;
-    public int criteria = 0;
+    public int criteria = 1000000;
 
     public void Start(){
 
