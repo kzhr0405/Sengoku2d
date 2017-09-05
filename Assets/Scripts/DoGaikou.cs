@@ -270,7 +270,6 @@ public class DoGaikou : MonoBehaviour {
 						} else {
 							playerKyoutouList = playerKyoutouList + ":" + +targetKuniId + "-" + kyoutou.getEngunSts (daimyoId.ToString ());
 						}
-						Debug.Log (playerKyoutouList);
 						PlayerPrefs.SetString ("playerKyoutouList", playerKyoutouList);
 
                         //Msg

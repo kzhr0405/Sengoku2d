@@ -852,7 +852,6 @@ public class MainEventHandler : MonoBehaviour {
 
                                 }else {
                                     if (CheckByProbability(50)) {
-                                        Debug.Log("woooooooo");
                                         if (Application.systemLanguage != SystemLanguage.Japanese) {
                                             messageList = MakeNonDaimyoShisya(13, "Royal Court Senior Messanger", messageList, 0);
                                         }else {
@@ -1469,7 +1468,6 @@ public class MainEventHandler : MonoBehaviour {
 			    bool myDoumeiExistFlg =doumei.myDoumeiExistCheck (srcDaimyoId);
 			    if (!myDoumeiExistFlg) {
 				    //Shisya
-				    Debug.Log ("myDoumei!!!");
 				    messageList = MakeShisya (1, srcDaimyoName, messageList, srcDaimyoId);
 			    }
 

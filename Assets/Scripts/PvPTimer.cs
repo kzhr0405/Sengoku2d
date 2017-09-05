@@ -55,7 +55,6 @@ public class PvPTimer : MonoBehaviour {
             yield return new WaitForSeconds(1);
 
             if (Date == DateTime.MinValue) {
-                Debug.Log("Time is not received.");
                 Application.LoadLevel("pvp");
             }
             else {
@@ -98,8 +97,7 @@ public class PvPTimer : MonoBehaviour {
 
         // リクエスト待機コルーチン実行
         StartCoroutine(WaitForRequest());
-
-        Debug.Log("Thread is started.");
+        
     }
 
     // NTPサーバに対してリクエストを実行する

@@ -386,9 +386,7 @@ public class DataUserId : MonoBehaviour {
             string kanniTmp = "kanni" + busyoId;
             int kanniId = PlayerPrefs.GetInt(kanniTmp);
             kanniList.Add(kanniId);
-
-            Debug.Log(gokuiId + "," + kanniId);
-
+            
         }
 
         //item

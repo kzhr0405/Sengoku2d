@@ -63,6 +63,9 @@ public class AdfuriMoviepop : MonoBehaviour {
         GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
         AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
 
+        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+
+
         while (!au.isPreparedMovieReward())
         {
             yield return null;
@@ -75,6 +78,7 @@ public class AdfuriMoviepop : MonoBehaviour {
         string appID = (string)vars[1];
         string adnetworkKey = (string)vars[2];
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        audioSources[0].Play();
         Message msg = new Message();
         string text = "";
         
@@ -87,6 +91,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                 Debug.Log("The ad was started.");
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
 
                 int movieCount = PlayerPrefs.GetInt("movieCount");
                 movieCount = movieCount + 1;
@@ -195,6 +200,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                 return;
 
             case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
+                audioSources[4].Play();
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                     text = "There is no available video now. Please try it later.";
                 }else {

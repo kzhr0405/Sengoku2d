@@ -21,8 +21,7 @@ public class GeneralFuncController : MonoBehaviour {
 			collide2dObj = Physics2D.OverlapPoint(touchPosition);
 			
 			if (scrollStartFlg == false && collide2dObj) {
-				GameObject obj = collide2dObj.transform.gameObject;
-				Debug.Log(obj.name);
+				GameObject obj = collide2dObj.transform.gameObject;				
 			}else{
 				scrollStartFlg = true;
 				if(scrollStartPos.x == 0.0f){

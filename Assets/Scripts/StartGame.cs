@@ -63,7 +63,6 @@ public class StartGame : MonoBehaviour {
             clickedFlg = true;
 
             if (Application.internetReachability == NetworkReachability.NotReachable) {
-                Debug.Log("No Network");
                 //接続されていないときの処理                     
                 fade.FadeIn(2, () => {
                     if (!tutorialDoneFlg) {

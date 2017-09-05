@@ -101,7 +101,6 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 
 
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions) {
-        Debug.Log("OnInitialized: PASS");
         m_StoreController = controller;
         m_StoreExtensionProvider = extensions;
     }

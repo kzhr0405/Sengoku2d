@@ -92,12 +92,18 @@ public class AttackNaiseiView : MonoBehaviour {
             clearedStageString = "1,2,3,4,5,6,7,8,9,10";
         }
 		List<string> clearedStageList = new List<string> ();
-		if (clearedStageString != null && clearedStageString != "") {
-			
-			clearedStageList = new List<string> (clearedStageString.Split (delimiterChars));
-			
+		if (clearedStageString != null && clearedStageString != "") {			
+			clearedStageList = new List<string> (clearedStageString.Split (delimiterChars));			
 		}
 		
+        //Data adjustment
+        if(!clearFlg && clearedStageList.Count == 10) {
+            clearedStageList = new List<string>();
+            clearedStageString = "";
+            PlayerPrefs.DeleteKey(clearedStage);
+        }
+
+
 		//Default Value
 		Entity_stage_mst stageMst = Resources.Load ("Data/stage_mst") as Entity_stage_mst;
 		int startline = 10 * kuniId - 10;

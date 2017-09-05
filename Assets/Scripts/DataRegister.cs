@@ -12,7 +12,8 @@ public class DataRegister : MonoBehaviour {
     private void Start() {
 
         //Init Data Maker
-        userId = PlayerPrefs.GetString("userId");
+        //userId = PlayerPrefs.GetString("userId"); //test
+        userId = "testtphnii20170323113213";
         initDataDoneFlg = PlayerPrefs.GetBool("initDataFlg");
         if (!initDataDoneFlg) {
             if(userId == "" || userId == null) {

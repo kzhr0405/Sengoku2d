@@ -14,8 +14,7 @@ public class DataDelete : MonoBehaviour {
             if (e == null) {
                 if (objList.Count != 0) { //delete
                     string objectId = objList[0].ObjectId;
-                    Debug.Log(objectId);
-
+                    
                     NCMBObject deleteQuery = new NCMBObject("deleteGunzei");
                     deleteQuery.ObjectId = objectId;
                     deleteQuery.DeleteAsync();

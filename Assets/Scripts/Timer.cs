@@ -100,12 +100,10 @@ public class Timer : MonoBehaviour {
 					    engunTimerflg = true;
 
 					    if(playerEngunFlg){
-						    Debug.Log ("味方援軍きたよ！" + playerEngunList);
 						    playerEngunInstance(playerEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
 					    }
 
 					    if(enemyEngunFlg){
-						    Debug.Log ("敵援軍きたよ！" + enemyEngunList);
 						    enemyEngunInstance(enemyEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
 					    }
 				    }

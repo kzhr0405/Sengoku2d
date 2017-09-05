@@ -16,7 +16,6 @@ public class FpsMeasure : MonoBehaviour {
 		
 		if ( Time.time >= nextTime ) {
 			// 1秒経ったらFPSを表示
-			Debug.Log("FPS : " + frameCount);
 			frameCount = 0;
 			nextTime += 1;
 		}

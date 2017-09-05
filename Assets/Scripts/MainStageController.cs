@@ -12,7 +12,7 @@ public class MainStageController : MonoBehaviour {
 	public float timer;
 	public GameObject timerObj;
 	public bool hyourouFull = false;
-	public int hyourouMax;
+	public int hyourouMax = 100;
 	public int nowHyourou;
 	public bool doneCyosyuFlg = false;
 	public double cyosyuMstTime = 10800;
@@ -56,14 +56,19 @@ public class MainStageController : MonoBehaviour {
 
     //public reward
     public GameObject reward;
+    Text HyourouCurrentValue;
+
+    //Seiryoku KuniQty
+    public List<int> daimyoKuniQtyList;
+    public List<int> daimyoList;
 
     public void Start () {
 
-        //test
-        //cyosyuMstTime = 3;
-        
 
         Resources.UnloadUnusedAssets();
+
+        //Set Object
+        HyourouCurrentValue = GameObject.Find("HyourouCurrentValue").GetComponent<Text>();
         tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         
         /*Sound Controller*/
@@ -271,10 +276,16 @@ public class MainStageController : MonoBehaviour {
 					if (seiryokuId == myDaimyo) {
 						myKuniQty = myKuniQty + 1;
 					}
-				}
+                }
 
-				//My Doumei
-				Color doumeiColor = new Color (100f / 255f, 130f / 255f, 255f / 255f, 255f / 255f); //Blue
+                //count enemy kuni qty
+                Dictionary<string, int> dic = new Dictionary<string, int>();
+                foreach (string key in seiryokuList) {
+                    if (dic.ContainsKey(key)) dic[key]++; else dic.Add(key, 1);
+                }
+                
+                //My Doumei
+                Color doumeiColor = new Color (100f / 255f, 130f / 255f, 255f / 255f, 255f / 255f); //Blue
                 string myDoumei = "";
                 if (Application.loadedLevelName != "tutorialMain") {
                     myDoumei = PlayerPrefs.GetString ("doumei");
@@ -292,7 +303,9 @@ public class MainStageController : MonoBehaviour {
 
 
                 KuniInfo kuniScript = new KuniInfo();
-				for (int i=0; i<kuniMst.param.Count; i++) {
+                kuniScript.updateOpenKuni(myDaimyo,seiryoku);
+
+                for (int i=0; i<kuniMst.param.Count; i++) {
 					int kuniId = kuniMst.param [i].kunId;
 
 					string newKuniPath = kuniPath + kuniId.ToString ();
@@ -334,8 +347,15 @@ public class MainStageController : MonoBehaviour {
 					//Count QTY of Enemy Kuni
 					List<string> checkedKuniList = new List<string> ();
 					if (daimyoId != myDaimyo) {
-						enemyKuniQty = countLinkedKuniQty (1, kuniId, daimyoId, seiryokuList, checkedKuniList);
-						if(enemyKuniQty>=myKuniQty){
+						
+                        //For peformance improvement
+                        //enemyKuniQty = countLinkedKuniQty (1, kuniId, daimyoId, seiryokuList, checkedKuniList);
+                        //need coding!
+                        foreach (string key in dic.Keys) {
+                            if (int.Parse(key) == daimyoId) enemyKuniQty = dic[key];
+                        }
+
+                        if (enemyKuniQty>=myKuniQty){
 							myKuniQtyIsBiggestFlg = false;
 						}
 						if (2 * enemyKuniQty > myKuniQty) {
@@ -630,7 +650,8 @@ public class MainStageController : MonoBehaviour {
 			    if (!gameOverFlg) {
 				    //Hyourou Check
 				    if (hyourouFull == true) {
-					    nowHyourou = int.Parse (currentHyourou.GetComponent<Text> ().text);
+                        Debug.Log("2. hyourouFull" + hyourouFull);
+                        nowHyourou = int.Parse (currentHyourou.GetComponent<Text> ().text);
 					    if (nowHyourou < hyourouMax) {
 						    hyourouFull = false;
 					    }
@@ -647,7 +668,7 @@ public class MainStageController : MonoBehaviour {
 					    } else {
 
 						    //Add Hyourou
-						    int hyourou = int.Parse (GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text);
+						    int hyourou = int.Parse (HyourouCurrentValue.text);
 						    hyourou = hyourou + 1;
 
 						    if (hyourou >= hyourouMax) {
@@ -933,6 +954,7 @@ public class MainStageController : MonoBehaviour {
 	}
 
 	public void changerableByTime(List<string> seiryokuList) {
+        
 		Daimyo daimyo = new Daimyo ();
 		char[] delimiterChars = { ',' };
 
@@ -954,12 +976,10 @@ public class MainStageController : MonoBehaviour {
 		int amariSec = (int)spantime - (addHyourou * 180);
 		amariSec = 180 - amariSec;
 
-		//HyourouMax
-		hyourouMax = PlayerPrefs.GetInt ("hyourouMax");
 		GameObject.Find ("HyourouMaxValue").GetComponent<Text> ().text = hyourouMax.ToString ();
-
-		//Now Hyourou
-		int nowHyourou = PlayerPrefs.GetInt ("hyourou");
+        //Now Hyourou
+        int nowHyourou = PlayerPrefs.GetInt ("hyourou");
+        Debug.Log("2," + nowHyourou);
 		currentHyourou = GameObject.Find ("HyourouCurrentValue").gameObject;
 		currentHyourou.GetComponent<Text> ().text = nowHyourou.ToString ();
 

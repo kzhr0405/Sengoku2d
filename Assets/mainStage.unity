@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2748,7 +2748,7 @@ MonoBehaviour:
   timer: 0
   timerObj: {fileID: 0}
   hyourouFull: 0
-  hyourouMax: 0
+  hyourouMax: 100
   nowHyourou: 0
   doneCyosyuFlg: 0
   cyosyuMstTime: 10800
@@ -2776,6 +2776,8 @@ MonoBehaviour:
   iapRunFlg: 0
   tutorialDoneFlg: 0
   reward: {fileID: 1348412047}
+  daimyoKuniQtyList: 
+  daimyoList: 
 --- !u!4 &346508865
 Transform:
   m_ObjectHideFlags: 0
@@ -8767,6 +8769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aede55d1630825418b014fb3e0d13d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hyourouFlg: 0
 --- !u!114 &1415583515
 MonoBehaviour:
   m_ObjectHideFlags: 0

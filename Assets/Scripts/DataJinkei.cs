@@ -9,14 +9,14 @@ public class DataJinkei : MonoBehaviour {
     public bool RegisteredFlg = false;
 
     public void InsertJinkei(string userId) {
-        string jinkeiId = PlayerPrefs.GetString("jinkei");
+        int jinkeiId = PlayerPrefs.GetInt("jinkei");
         int jinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
         string soudaisyo = "soudaisyo" + jinkeiId.ToString();
         int soudaisyoBusyoId = PlayerPrefs.GetInt(soudaisyo);
 
         NCMBObject jinkeiClass = new NCMBObject("pvpJinkei");
         jinkeiClass["userId"] = userId;
-        jinkeiClass["jinkeiId"] = jinkeiId;
+        jinkeiClass["jinkeiId"] = jinkeiId.ToString();
         jinkeiClass["jinkeiHeiryoku"] = jinkeiHeiryoku;
         jinkeiClass["soudaisyo"] = soudaisyoBusyoId;
 
@@ -86,7 +86,7 @@ public class DataJinkei : MonoBehaviour {
                     string soudaisyo = "soudaisyo" + jinkeiId.ToString();
                     int soudaisyoBusyoId = PlayerPrefs.GetInt(soudaisyo);
 
-                    objList[0]["jinkeiId"] = jinkeiId;
+                    objList[0]["jinkeiId"] = jinkeiId.ToString();
                     objList[0]["jinkeiHeiryoku"] = jinkeiHeiryoku;
                     objList[0]["soudaisyo"] = soudaisyoBusyoId;
 

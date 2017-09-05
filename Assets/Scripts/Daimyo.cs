@@ -83,4 +83,6 @@ public class Daimyo : MonoBehaviour {
 
 		return remain1DaimyoFlg;
 	}
+
+
 }

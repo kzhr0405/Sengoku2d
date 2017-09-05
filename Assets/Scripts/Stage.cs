@@ -17,8 +17,6 @@ public class Stage : MonoBehaviour {
 		
 		string stageName = "";
 		int targetline = ((kuniId - 1) * 10) + stageId - 1;
-        Debug.Log(kuniId + ":" + stageId);
-        Debug.Log(targetline);
 
         if (Application.systemLanguage != SystemLanguage.Japanese) {
             stageName = Mst.param [targetline].stageNameEng;

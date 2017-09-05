@@ -222,7 +222,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetString("gameClearDaimyoHard", RecoveryDataStore.gameClearDaimyoHard);
 
                 //jinkei
-                PlayerPrefs.SetInt("jinkeiId", RecoveryDataStore.jinkeiId);
+                PlayerPrefs.SetInt("jinkei", RecoveryDataStore.jinkeiId);
                 PlayerPrefs.SetInt("soudaisyo" + RecoveryDataStore.jinkeiId, RecoveryDataStore.soudaisyo);
                 for (int i = 0; i < 25; i++) {
                     int busyoId = RecoveryDataStore.busyoMapList[i];
@@ -259,7 +259,6 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 /***userId + pvpJinkei***/
                 int totalExp = expScript.getTotalExp(RecoveryDataStore.kuniLv);
                 PlayerPrefs.SetInt("kuniExp", totalExp);
-                Debug.Log(RecoveryDataStore.myDaimyo);
                 PlayerPrefs.SetInt("myDaimyo", RecoveryDataStore.myDaimyo);
                 Daimyo daimyoScript = new Daimyo();
                 PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo));

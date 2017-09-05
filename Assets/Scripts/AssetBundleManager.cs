@@ -44,7 +44,6 @@ public class AssetBundleManager : MonoBehaviour {
             return assetBundleCache.LoadAsset<Sprite>(assetName);
         }
         catch (NullReferenceException e) {
-            Debug.Log(e.ToString());
             return null;
         }
     }

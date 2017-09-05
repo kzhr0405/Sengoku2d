@@ -198,11 +198,9 @@ public class SakuCollider : MonoBehaviour {
 					reduceHp = 2 * reduceHp;
 				}
 				int temp = (int)(baseHP * reduceHp) / 100;
-				Debug.Log (temp);
 				float newHP = baseHP - temp;
 				col.GetComponent<PlayerHP> ().life = newHP;
-				Debug.Log ("Player:" + col.name + ":" + baseHP + "*" + temp + "=" + newHP);
-
+				
 				if (col.GetComponent<UnitMover> () != null) {
 					GameObject value = col.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
 					value.GetComponent<MeshRenderer> ().enabled = true;
