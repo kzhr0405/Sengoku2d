@@ -59,7 +59,8 @@ public class DataRecovery : MonoBehaviour {
     void Update() {
         if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && !Fetched1) {
             //Check never recovered in server
-            RecoveryDataStore.GetDataRecoveryCount(inputUserId);
+            //RecoveryDataStore.GetDataRecoveryCount(inputUserId);
+
             Fetched1 = true;
         }
 

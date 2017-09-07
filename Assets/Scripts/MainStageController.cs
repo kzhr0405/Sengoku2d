@@ -68,8 +68,11 @@ public class MainStageController : MonoBehaviour {
         Resources.UnloadUnusedAssets();
 
         //Set Object
-        HyourouCurrentValue = GameObject.Find("HyourouCurrentValue").GetComponent<Text>();
+        HyourouCurrentValue = currentHyourou.GetComponent<Text>();
         tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        GameObject.Find("HyourouMaxValue").GetComponent<Text>().text = hyourouMax.ToString();
+        nowHyourou = PlayerPrefs.GetInt("hyourou");
+        currentHyourou.GetComponent<Text>().text = nowHyourou.ToString();
         
         /*Sound Controller*/
         if (GameObject.Find ("BGMController") == null) {			
@@ -612,7 +615,7 @@ public class MainStageController : MonoBehaviour {
 						int half = kessenHyourou / 2;
 						int newKessenHyourou = nowKessenHyourou - half;
 						PlayerPrefs.SetInt ("hyourou",newKessenHyourou);
-						GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = newKessenHyourou.ToString ();
+                        HyourouCurrentValue.text = newKessenHyourou.ToString ();
 						PlayerPrefs.Flush ();
 					}
 					PlayerPrefs.DeleteKey ("winChecker");
@@ -636,7 +639,6 @@ public class MainStageController : MonoBehaviour {
 							Resources.Load (daimyoImagePath, typeof(Sprite)) as Sprite;
 					}
 				}
-                
 
                 changerableByTime (seiryokuList);                
 			}
@@ -650,7 +652,6 @@ public class MainStageController : MonoBehaviour {
 			    if (!gameOverFlg) {
 				    //Hyourou Check
 				    if (hyourouFull == true) {
-                        Debug.Log("2. hyourouFull" + hyourouFull);
                         nowHyourou = int.Parse (currentHyourou.GetComponent<Text> ().text);
 					    if (nowHyourou < hyourouMax) {
 						    hyourouFull = false;
@@ -667,16 +668,16 @@ public class MainStageController : MonoBehaviour {
 					
 					    } else {
 
-						    //Add Hyourou
-						    int hyourou = int.Parse (HyourouCurrentValue.text);
-						    hyourou = hyourou + 1;
+                            //Add Hyourou
+                            nowHyourou = int.Parse (HyourouCurrentValue.text);
+                            nowHyourou = nowHyourou + 1;
 
-						    if (hyourou >= hyourouMax) {
+						    if (nowHyourou >= hyourouMax) {
 							    hyourouFull = true;
 						    }
 
-						    GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = hyourou.ToString ();
-						    PlayerPrefs.SetInt ("hyourou", hyourou);
+                            HyourouCurrentValue.text = nowHyourou.ToString ();
+						    PlayerPrefs.SetInt ("hyourou", nowHyourou);
 						    System.DateTime now = System.DateTime.Now;
 						    PlayerPrefs.SetString ("lasttime", now.ToString ());
 						    PlayerPrefs.Flush ();
@@ -976,18 +977,11 @@ public class MainStageController : MonoBehaviour {
 		int amariSec = (int)spantime - (addHyourou * 180);
 		amariSec = 180 - amariSec;
 
-		GameObject.Find ("HyourouMaxValue").GetComponent<Text> ().text = hyourouMax.ToString ();
-        //Now Hyourou
-        int nowHyourou = PlayerPrefs.GetInt ("hyourou");
-        Debug.Log("2," + nowHyourou);
-		currentHyourou = GameObject.Find ("HyourouCurrentValue").gameObject;
-		currentHyourou.GetComponent<Text> ().text = nowHyourou.ToString ();
 
-
-		//Hyourou Full Check
+        //Hyourou Full Check
 		if (hyourouMax <= nowHyourou) {
 			hyourouFull = true;
-			GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = hyourouMax.ToString ();
+            HyourouCurrentValue.text = hyourouMax.ToString ();
 			PlayerPrefs.SetInt ("hyourou", hyourouMax);
 			PlayerPrefs.Flush ();
 
@@ -1000,13 +994,13 @@ public class MainStageController : MonoBehaviour {
 					hyourouFull = true;
 					PlayerPrefs.SetInt ("hyourou", hyourouMax);
 					PlayerPrefs.Flush ();
-					GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = hyourouMax.ToString ();
+                    HyourouCurrentValue.text = hyourouMax.ToString ();
 
 				} else {
 					hyourouFull = false;
 					PlayerPrefs.SetInt ("hyourou", newHyourou);
 					PlayerPrefs.Flush ();
-					GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = newHyourou.ToString ();
+                    HyourouCurrentValue.text = newHyourou.ToString ();
 
 					//Timer
 					GameObject.Find ("TimerValue").GetComponent<Text> ().text = amariSec.ToString ();
@@ -1024,7 +1018,7 @@ public class MainStageController : MonoBehaviour {
 				hyourouFull = false;
 				PlayerPrefs.SetInt ("hyourou", nowHyourou);
 				PlayerPrefs.Flush ();
-				GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = nowHyourou.ToString ();
+                HyourouCurrentValue.text = nowHyourou.ToString ();
 
 				//Timer
 				GameObject.Find ("TimerValue").GetComponent<Text> ().text = amariSec.ToString ();
@@ -1782,7 +1776,7 @@ public class MainStageController : MonoBehaviour {
             int resultHyourou = nowHyourou + totalHyourou;
             if (resultHyourou > maxHyourou) resultHyourou = maxHyourou;
             PlayerPrefs.SetInt("hyourou", resultHyourou);
-            GameObject.Find("HyourouCurrentValue").GetComponent<Text>().text = resultHyourou.ToString();
+            HyourouCurrentValue.text = resultHyourou.ToString();
                      
             int TrackGetHyourouNo = PlayerPrefs.GetInt("TrackGetHyourouNo", 0);
             TrackGetHyourouNo = TrackGetHyourouNo + totalHyourou;

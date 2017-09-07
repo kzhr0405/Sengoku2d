@@ -289,6 +289,7 @@ public class DataUserId : MonoBehaviour {
     void getAllData() {
 
         kuniLv = PlayerPrefs.GetInt("kuniLv");
+        if (kuniLv <= 0) kuniLv = 1; PlayerPrefs.SetInt("kuniLv", kuniLv);
         kuniExp = PlayerPrefs.GetInt("kuniExp");
         myDaimyo = PlayerPrefs.GetInt("myDaimyo");
         addJinkei1 = PlayerPrefs.GetBool("addJinkei1");
