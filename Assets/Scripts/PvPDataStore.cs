@@ -348,9 +348,9 @@ public class PvPDataStore : MonoBehaviour {
         queryPvPTmp.WhereNotEqualTo("userId", myUserId);
         queryPvPTmp.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
         queryPvPTmp.WhereLessThanOrEqualTo("totalPt", myTotalPt * 2);
-        queryPvPTmp.WhereGreaterThanOrEqualTo("totalPt", myTotalPt/2);
-        queryPvPTmp.WhereLessThanOrEqualTo("jinkeiHeiryoku", HpBase * 2);
-        queryPvPTmp.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", HpBase / 2);
+        queryPvPTmp.WhereGreaterThanOrEqualTo("totalPt", myTotalPt);
+        //queryPvPTmp.WhereLessThanOrEqualTo("jinkeiHeiryoku", HpBase * 2);
+        //queryPvPTmp.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", HpBase / 2);
 
         queryPvPTmp.CountAsync((int count, NCMBException eCount) => {
             if (eCount == null) {

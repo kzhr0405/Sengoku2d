@@ -56,8 +56,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
             }else {
                 PlayerPrefs.SetBool("addJinkei4", false);
             }
-
-
+            
             if (RecoveryDataStore.dataStore_userId==0) {
                 /***dataStore***/
                 PlayerPrefs.SetInt("kuniExp", RecoveryDataStore.kuniExp);
@@ -394,7 +393,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
             PlayerPrefs.Flush();            
 
             //add data recovery history
-            RecoveryDataStore.InsertDataRecovery(RecoveryDataStore.inputUserId);
+            RecoveryDataStore.UpdateDataRecovery(RecoveryDataStore.inputUserId);
 
 
             //Final Process

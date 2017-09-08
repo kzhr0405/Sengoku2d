@@ -63,8 +63,6 @@ public class AdfuriMoviepop : MonoBehaviour {
         GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
         AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
 
-        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-
 
         while (!au.isPreparedMovieReward())
         {
@@ -93,11 +91,16 @@ public class AdfuriMoviepop : MonoBehaviour {
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
                 Screen.orientation = ScreenOrientation.LandscapeLeft;
 
+                //set count data
                 int movieCount = PlayerPrefs.GetInt("movieCount");
                 movieCount = movieCount + 1;
                 PlayerPrefs.SetInt("movieCount",movieCount);
 
-                if(!hyourouFlg) {
+                //stop running gunzei
+                CyouteiPop CyouteiPop = new CyouteiPop();
+                CyouteiPop.stopGunzei();
+
+                if (!hyourouFlg) {
                     int busyoDamaQty = 0;
                     string atariMsg = "";
                     float rankPercent = UnityEngine.Random.value;

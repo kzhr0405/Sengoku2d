@@ -169,7 +169,8 @@ public class RecoveryDataStore : MonoBehaviour {
                         busyoDama = System.Convert.ToInt32(obj["busyoDama"]);
                         syogunDaimyoId = System.Convert.ToInt32(obj["syogunDaimyoId"]);
                         doumei = System.Convert.ToString(obj["doumei"]);
-                        if (checkDataExist(obj, "movieCount")) movieCount = System.Convert.ToInt32(obj["movieCount"]);                        
+                        if (checkDataExist(obj, "movieCount")) movieCount = System.Convert.ToInt32(obj["movieCount"]);
+                        
                         ArrayList arraylist1 = (ArrayList)obj["questSpecialFlgId"];
                         foreach (object o in arraylist1) questSpecialFlgId.Add(System.Convert.ToInt32(o));
 
@@ -202,7 +203,7 @@ public class RecoveryDataStore : MonoBehaviour {
 
                         ArrayList arraylist11 = (ArrayList)obj["kanniList"];
                         foreach (object o in arraylist11) kanniList.Add(System.Convert.ToInt32(o));
-
+                        
                         myKanni = System.Convert.ToString(obj["myKanni"]);
                         availableBugu = System.Convert.ToString(obj["availableBugu"]);
                         availableKabuto = System.Convert.ToString(obj["availableKabuto"]);
@@ -404,9 +405,32 @@ public class RecoveryDataStore : MonoBehaviour {
 
     }
 
-    public void InsertDataRecovery(string userId) {
+
+    public void UpdateDataRecovery(string userId) {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("dataRecovery");
+        query.WhereEqualTo("userId", userId);
+        
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {
+                if (objList.Count == 0) { //never registered
+                    InsertDataRecovery(userId);
+                }else { //Update  
+                    foreach (NCMBObject obj in objList) {
+                        int count = 1;
+                        if (checkDataExist(obj, "count")) count = System.Convert.ToInt32(objList[0]["count"]) + 1; Debug.Log(count);
+                        objList[0]["count"] = count;
+                        objList[0].SaveAsync();
+                    }
+                }
+            }
+        });
+    }
+
+
+    public void InsertDataRecovery(string userId) {        
         NCMBObject query = new NCMBObject("dataRecovery");
         query["userId"] = userId;
+        query["count"] = 1;
         query.SaveAsync();
     }
 

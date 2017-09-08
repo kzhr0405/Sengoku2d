@@ -13,11 +13,17 @@ public class StartGame : MonoBehaviour {
     public bool clickedFlg = false;
     public GameObject loading;
     public int criteria = 1000000;
+    public int ban = 0;
 
     public void Start(){
 
 		Resources.UnloadUnusedAssets ();
         GetLock();
+        tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        if (tutorialDoneFlg) {
+            string userId = PlayerPrefs.GetString("userId");
+            GetBanCount(userId);
+        }
         fade = GameObject.Find("FadeCanvas").GetComponent<Fade>();
 
         /*Sound Controller Start*/
@@ -38,9 +44,6 @@ public class StartGame : MonoBehaviour {
 		bgm.StopBGMVolume ();
         /*Sound Controller End*/
 
-        //Data Loard Start        
-        tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
-
         string versionNo = Application.version;
         GameObject.Find("Ver").GetComponent<Text>().text = versionNo;
 
@@ -55,22 +58,28 @@ public class StartGame : MonoBehaviour {
             msg.makeMessage(msg.getMessage(153));
             audioSources[4].Play();
         }else { 
-            loading.SetActive(true);
-            GetComponent<Button>().enabled = false;
+            if(ban>0) {
+                Message msg = new Message();
+                msg.makeMessage(msg.getMessage(153));
+                audioSources[4].Play();
+            }else { 
+                loading.SetActive(true);
+                GetComponent<Button>().enabled = false;
 
-		    //SE	   
-		    audioSources [5].Play ();
-            clickedFlg = true;
+		        //SE	   
+		        audioSources [5].Play ();
+                clickedFlg = true;
 
-            if (Application.internetReachability == NetworkReachability.NotReachable) {
-                //接続されていないときの処理                     
-                fade.FadeIn(2, () => {
-                    if (!tutorialDoneFlg) {
-                        SceneManager.LoadScene("tutorialMain");
-                    }else {
-                        SceneManager.LoadScene("mainStage");
-                    }
-                });           
+                if (Application.internetReachability == NetworkReachability.NotReachable) {
+                    //接続されていないときの処理                     
+                    fade.FadeIn(2, () => {
+                        if (!tutorialDoneFlg) {
+                            SceneManager.LoadScene("tutorialMain");
+                        }else {
+                            SceneManager.LoadScene("mainStage");
+                        }
+                    });           
+                }
             }
         }
 
@@ -101,5 +110,14 @@ public class StartGame : MonoBehaviour {
             }
         });
     }
+
+    public void GetBanCount(string userId) {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("ban");
+        query.WhereEqualTo("userId", userId);
+        query.CountAsync((int count, NCMBException e) => {
+            ban = count;   
+        });
+    }
+    
 
 }

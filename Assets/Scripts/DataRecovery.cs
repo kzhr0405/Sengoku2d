@@ -64,13 +64,13 @@ public class DataRecovery : MonoBehaviour {
             Fetched1 = true;
         }
 
-        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0 && !Fetched2) {
+        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && !Fetched2) {
             RecoveryDataStore.GetPvP(inputUserId);
             Fetched2 = true;
         }
         
         //Create confirm Board
-        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && RecoveryDataStore.dataRecoveryCount == 0 && Fetched2 && !Fetched3) {
+        if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && Fetched2 && !Fetched3) {
 
             audioSources[0].Play();
 
