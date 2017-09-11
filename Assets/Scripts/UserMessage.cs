@@ -13,12 +13,14 @@ public class UserMessage : MonoBehaviour {
     public List<string> messageList;
 
     void Start() {
-        GetMessage();
+        audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        if (Application.internetReachability != NetworkReachability.NotReachable) {
+            GetMessage();
+        }
     }
 
     public void OnClick () {
         Message msg = new Message();
-        audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         if (Application.internetReachability == NetworkReachability.NotReachable) {
             audioSources[4].Play();
             msg.makeMessage(msg.getMessage(5));
