@@ -29,17 +29,28 @@ namespace PreviewLabs
 		private static string[] seperators = new string[]{PARAMETERS_SEPERATOR,KEY_VALUE_SEPERATOR};
 		private static readonly string fileName = Application.persistentDataPath + "/PlayerPrefs.txt";
 		private static readonly string secureFileName = Application.persistentDataPath + "/AdvancedPlayerPrefs.txt";
+		private static readonly string tempFileName = Application.persistentDataPath + "/TempPlayerPrefs.txt";
+		private static readonly string workingFlushFileName = Application.persistentDataPath + "/Writing.dat";//ファイル書き込み中のみ存在するファイル
 		//NOTE modify the iw3q part to an arbitrary string of length 4 for your project, as this is the encryption key
 		private static byte[] bytes = ASCIIEncoding.ASCII.GetBytes ("iw3q" + SystemInfo.deviceUniqueIdentifier.Substring (0, 4));
 		private static bool wasEncrypted = false;
 		private static bool securityModeEnabled = false;
+		private static object guard = new object();//ロック用オブジェクト
 		
 		static PlayerPrefs ()
 		{
+//			Debug.Log("PlayerPrefs start. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 			#if !UNITY_WEBPLAYER
 			//load previous settings
 			StreamReader fileReader = null;
 			
+			//バックグラウンド移行時に作成される一時ファイルのチェックと置換処理
+			if (File.Exists (tempFileName) && isExistWorkingFlushFile()) {
+				Debug.Log("Temp Flush File Exist");
+				//一時ファイルがあるので、置換する
+				replaceFlushFile();
+				removeWorkingFlushFile();
+			}
 			
 			if (File.Exists (secureFileName)) {
 				fileReader = new StreamReader (secureFileName);
@@ -82,172 +93,208 @@ namespace PreviewLabs
 		
 		public static bool HasKey (string key)
 		{
-			return playerPrefsHashtable.ContainsKey (key);
+			lock(guard) {
+				return playerPrefsHashtable.ContainsKey (key);
+			}
 		}
 		
 		public static void SetString (string key, string value)
 		{
-			if (!playerPrefsHashtable.ContainsKey (key)) {
-				playerPrefsHashtable.Add (key, value);
-			} else {
-				playerPrefsHashtable [key] = value;
+			lock(guard) {
+				if (!playerPrefsHashtable.ContainsKey (key)) {
+					playerPrefsHashtable.Add (key, value);
+				} else {
+					playerPrefsHashtable [key] = value;
+				}
+				
+				hashTableChanged = true;
 			}
-			
-			hashTableChanged = true;
 		}
 		
 		public static void SetInt (string key, int value)
 		{
-			if (!playerPrefsHashtable.ContainsKey (key)) {
-				playerPrefsHashtable.Add (key, value);
-			} else {
-				playerPrefsHashtable [key] = value;
+			lock(guard) {
+				if (!playerPrefsHashtable.ContainsKey (key)) {
+					playerPrefsHashtable.Add (key, value);
+				} else {
+					playerPrefsHashtable [key] = value;
+				}
+				
+				hashTableChanged = true;
 			}
-			
-			hashTableChanged = true;
 		}
 		
 		public static void SetFloat (string key, float value)
 		{
-			if (!playerPrefsHashtable.ContainsKey (key)) {
-				playerPrefsHashtable.Add (key, value);
-			} else {
-				playerPrefsHashtable [key] = value;
+			lock(guard) {
+				if (!playerPrefsHashtable.ContainsKey (key)) {
+					playerPrefsHashtable.Add (key, value);
+				} else {
+					playerPrefsHashtable [key] = value;
+				}
+				
+				hashTableChanged = true;
 			}
-			
-			hashTableChanged = true;
 		}
 		
 		public static void SetBool (string key, bool value)
 		{
-			if (!playerPrefsHashtable.ContainsKey (key)) {
-				playerPrefsHashtable.Add (key, value);
-			} else {
-				playerPrefsHashtable [key] = value;
+			lock(guard) {
+				if (!playerPrefsHashtable.ContainsKey (key)) {
+					playerPrefsHashtable.Add (key, value);
+				} else {
+					playerPrefsHashtable [key] = value;
+				}
+				
+				hashTableChanged = true;
 			}
-			
-			hashTableChanged = true;
 		}
 		
 		public static void SetLong (string key, long value)
 		{
-			if (!playerPrefsHashtable.ContainsKey (key)) {
-				playerPrefsHashtable.Add (key, value);
-			} else {
-				playerPrefsHashtable [key] = value;
+			lock(guard) {
+				if (!playerPrefsHashtable.ContainsKey (key)) {
+					playerPrefsHashtable.Add (key, value);
+				} else {
+					playerPrefsHashtable [key] = value;
+				}
+				
+				hashTableChanged = true;
 			}
-			
-			hashTableChanged = true;
 		}
 		
 		public static string GetString (string key)
 		{			
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return playerPrefsHashtable [key].ToString ();
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return playerPrefsHashtable [key].ToString ();
+				}
+				
+				return null;
 			}
-			
-			return null;
 		}
 		
 		public static string GetString (string key, string defaultValue)
 		{
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return playerPrefsHashtable [key].ToString ();
-			} else {
-				playerPrefsHashtable.Add (key, defaultValue);
-				hashTableChanged = true;
-				return defaultValue;
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return playerPrefsHashtable [key].ToString ();
+				} else {
+					playerPrefsHashtable.Add (key, defaultValue);
+					hashTableChanged = true;
+					return defaultValue;
+				}
 			}
 		}
 		
 		public static int GetInt (string key)
 		{			
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (int)playerPrefsHashtable [key];
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (int)playerPrefsHashtable [key];
+				}
+				
+				return 0;
 			}
-			
-			return 0;
 		}
 		
 		public static int GetInt (string key, int defaultValue)
 		{
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (int)playerPrefsHashtable [key];
-			} else {
-				playerPrefsHashtable.Add (key, defaultValue);
-				hashTableChanged = true;
-				return defaultValue;
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (int)playerPrefsHashtable [key];
+				} else {
+					playerPrefsHashtable.Add (key, defaultValue);
+					hashTableChanged = true;
+					return defaultValue;
+				}
 			}
 		}
 		
 		public static long GetLong (string key)
 		{			
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (long)playerPrefsHashtable [key];
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (long)playerPrefsHashtable [key];
+				}
+				
+				return 0;
 			}
-			
-			return 0;
 		}
 		
 		public static long GetLong (string key, long defaultValue)
 		{
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (long)playerPrefsHashtable [key];
-			} else {
-				playerPrefsHashtable.Add (key, defaultValue);
-				hashTableChanged = true;
-				return defaultValue;
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (long)playerPrefsHashtable [key];
+				} else {
+					playerPrefsHashtable.Add (key, defaultValue);
+					hashTableChanged = true;
+					return defaultValue;
+				}
 			}
 		}
 		
 		public static float GetFloat (string key)
 		{			
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (float)playerPrefsHashtable [key];
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (float)playerPrefsHashtable [key];
+				}
+				
+				return 0.0f;
 			}
-			
-			return 0.0f;
 		}
 		
 		public static float GetFloat (string key, float defaultValue)
 		{
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (float)playerPrefsHashtable [key];
-			} else {
-				playerPrefsHashtable.Add (key, defaultValue);
-				hashTableChanged = true;
-				return defaultValue;
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (float)playerPrefsHashtable [key];
+				} else {
+					playerPrefsHashtable.Add (key, defaultValue);
+					hashTableChanged = true;
+					return defaultValue;
+				}
 			}
 		}
 		
 		public static bool GetBool (string key)
 		{			
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (bool)playerPrefsHashtable [key];
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (bool)playerPrefsHashtable [key];
+				}
+				
+				return false;
 			}
-			
-			return false;
 		}
 		
 		public static bool GetBool (string key, bool defaultValue)
 		{
-			if (playerPrefsHashtable.ContainsKey (key)) {
-				return (bool)playerPrefsHashtable [key];
-			} else {
-				playerPrefsHashtable.Add (key, defaultValue);
-				hashTableChanged = true;
-				return defaultValue;
+			lock(guard) {
+				if (playerPrefsHashtable.ContainsKey (key)) {
+					return (bool)playerPrefsHashtable [key];
+				} else {
+					playerPrefsHashtable.Add (key, defaultValue);
+					hashTableChanged = true;
+					return defaultValue;
+				}
 			}
 		}
 		
 		public static void DeleteKey (string key)
 		{
-			playerPrefsHashtable.Remove (key);
+			lock(guard) {
+				playerPrefsHashtable.Remove (key);
+			}
 		}
 		
 		public static void DeleteAll ()
 		{
-			playerPrefsHashtable.Clear ();
+			lock(guard) {
+				playerPrefsHashtable.Clear ();
+			}
 		}
 		
 		//This is important to check to avoid a weakness in your security when you are using encryption to avoid the users from editing your playerprefs.
@@ -260,37 +307,56 @@ namespace PreviewLabs
 		{
 			securityModeEnabled = enabled;
 		}
-		
-		public static void Flush ()
+		public static void Flush (bool isOnPause = false)
 		{	
-			if (hashTableChanged) {
-				Serialize ();
-				
-				string output = (securityModeEnabled ? Encrypt (serializedOutput) : serializedOutput);
-				#if !UNITY_WEBPLAYER
-				StreamWriter fileWriter = null;
-				
-				fileWriter = File.CreateText ((securityModeEnabled ? secureFileName : fileName));
-				
-				File.Delete((securityModeEnabled ? fileName : secureFileName));
-				
-				if (fileWriter == null) { 
-					Debug.LogWarning ("PlayerPrefs::Flush() opening file for writing failed: " + fileName);
-					return;
+			lock(guard) {
+				try{
+					if (hashTableChanged) {
+						Serialize ();
+						//Debug.Log("Flush start -----------------------------------");
+						string output = (securityModeEnabled ? Encrypt (serializedOutput) : serializedOutput);
+						#if !UNITY_WEBPLAYER
+						StreamWriter fileWriter = null;
+
+						//ファイルの書き出しは常に一時ファイルへ行う
+						initFlush();
+						fileWriter = File.CreateText (tempFileName);
+
+						if (fileWriter == null) { 
+							Debug.LogWarning ("PlayerPrefs::Flush() opening file for writing failed: " + tempFileName);
+							return;
+						}
+
+						fileWriter.Write (output);
+
+						fileWriter.Close ();
+
+						if (!isOnPause) {
+							//通常の保存時はここでフラッシュデータの置換を行う
+							replaceFlushFile();
+						} else {
+							//バックグラウンド移行時は、
+							//一時ファイルの生成が正常に完了したことを示すフラグファイルを作成する
+							createWorkingFlushFile();
+						}
+
+						//異なるモードのファイルは削除する（既存処理）
+						File.Delete((securityModeEnabled ? fileName : secureFileName));
+
+						#else
+						UnityEngine.PlayerPrefs.SetString("data", output);
+						UnityEngine.PlayerPrefs.SetString("encryptedData", securityModeEnabled.ToString());
+
+						UnityEngine.PlayerPrefs.Save();
+						#endif
+
+						serializedOutput = "";
+
+						//Debug.Log("Flush end *******************************************");
+					}
+				}catch(Exception e){
+					Debug.Log("exception on flusing: " + e.Message );
 				}
-				
-				fileWriter.Write (output);
-				
-				fileWriter.Close ();
-				
-				#else
-				UnityEngine.PlayerPrefs.SetString("data", output);
-				UnityEngine.PlayerPrefs.SetString("encryptedData", securityModeEnabled.ToString());
-				
-				UnityEngine.PlayerPrefs.Save();
-				#endif
-				
-				serializedOutput = "";
 			}
 		}
 		
@@ -410,6 +476,62 @@ namespace PreviewLabs
 			}	
 			
 			return null;
+		}
+		
+		//書き込み中を示すファイルを作成する
+		private static void createWorkingFlushFile()
+		{
+			using (FileStream hStream = File.Create(workingFlushFileName)) {
+				// 作成時に返される FileStream を利用して閉じる
+				if (hStream != null) {
+					hStream.Close();
+				}
+			}
+		}
+
+		private static void removeWorkingFlushFile()
+		{
+			File.Delete(workingFlushFileName);
+		}
+
+		private static bool isExistWorkingFlushFile()
+		{
+			return File.Exists(workingFlushFileName);
+		}
+
+		//Flush前に不要ファイルを削除する
+		private static void initFlush()
+		{
+			File.Delete(workingFlushFileName);
+			File.Delete(tempFileName);
+		}
+
+		//一時ファイルをデータファイルとして置換する
+		private static void replaceFlushFile()
+		{
+			string writeFileName = securityModeEnabled ? secureFileName : fileName;
+
+			//バックアップファイルがあれば消す
+			string backupFileName = writeFileName + "_bkup";
+			if (File.Exists(backupFileName)) {
+				File.Delete(backupFileName);
+			}
+
+			//元データファイルをバックアップファイルとしてリネーム
+			if (File.Exists(writeFileName)) {
+				File.Move(writeFileName, backupFileName);
+			}
+
+			//一時データファイルを元データファイルとしてリネーム
+			File.Move(tempFileName, writeFileName);//Flush完了
+
+			//バックアップファイルがあれば消す
+			if (File.Exists(backupFileName)) {
+				File.Delete(backupFileName);
+			}
+
+			//保存完了
+//			Debug.Log("Flush Data Replace Completed !");
 		}
 	}	
 }

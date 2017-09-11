@@ -14,6 +14,9 @@ public class StartScene : MonoBehaviour {
 		sound = GameObject.Find ("SEController").GetComponent<AudioSource> ();
 		sound.PlayOneShot(sound.clip);
 
+		//シーン遷移前にデータを書き出す
+		PlayerPrefs.Flush();
+
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         //Under Button
         if (name == "Jinkei") {

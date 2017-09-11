@@ -775,7 +775,6 @@ public class MainStageController : MonoBehaviour {
 
 				        }
 				        PlayerPrefs.SetFloat ("rdmEventTimer", rdmEventTimer);
-				        PlayerPrefs.Flush ();
                     }
                 
 			    }
@@ -1333,9 +1332,13 @@ public class MainStageController : MonoBehaviour {
                     Destroy(GameObject.Find("DataStore").gameObject);
                 }
                 //back to top
+				PlayerPrefs.Flush();//通常のFlushを行い、現在の状態をファイルへ反映する
                 SceneManager.LoadScene ("top");
             }
-        }
+		} else {
+			//アプリがバックグラウンドに移行する時
+			PlayerPrefs.Flush(true);//専用のFlushを行い、現在の状態を一時ファイルへ書き出す
+		}
 	}
 
 	public bool CheckByProbability (int ratio) {
