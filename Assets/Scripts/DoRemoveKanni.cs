@@ -49,25 +49,27 @@ public class DoRemoveKanni : MonoBehaviour {
 		
 		//Remove from myBusyoKanni
 		string myKanniWithBusyo = PlayerPrefs.GetString ("myKanniWithBusyo");
-		List<string> myKanniWithBusyoList = new List<string> ();
-		if(myKanniWithBusyo.Contains(",")){
-			char[] delimiterChars = {','};
-			myKanniWithBusyoList = new List<string> (myKanniWithBusyo.Split (delimiterChars));
-		}else{
-			myKanniWithBusyoList.Add(myKanniWithBusyo);
-		}
-		myKanniWithBusyoList.Remove (kanniId.ToString());
+        if(myKanniWithBusyo!="" && myKanniWithBusyo!=null) {
+		    List<string> myKanniWithBusyoList = new List<string> ();
+		    if(myKanniWithBusyo.Contains(",")){
+			    char[] delimiterChars = {','};
+			    myKanniWithBusyoList = new List<string> (myKanniWithBusyo.Split (delimiterChars));
+		    }else{
+			    myKanniWithBusyoList.Add(myKanniWithBusyo);
+		    }
+		    myKanniWithBusyoList.Remove (kanniId.ToString());
 		
-		string newMyKanniWithBusyo = "";
-		for (int i=0; i<myKanniWithBusyoList.Count; i++) {
-			if(i==0){
-				newMyKanniWithBusyo = myKanniWithBusyoList[i];
-			}else{
-				newMyKanniWithBusyo = newMyKanni + "," + myKanniWithBusyoList[i];
-			}
-		}
-		PlayerPrefs.SetString ("myKanniWithBusyo", newMyKanniWithBusyo);
-		PlayerPrefs.DeleteKey(tmp);
+		    string newMyKanniWithBusyo = "";
+		    for (int i=0; i<myKanniWithBusyoList.Count; i++) {
+			    if(i==0){
+				    newMyKanniWithBusyo = myKanniWithBusyoList[i];
+			    }else{
+				    newMyKanniWithBusyo = newMyKanni + "," + myKanniWithBusyoList[i];
+			    }
+		    }
+		    PlayerPrefs.SetString ("myKanniWithBusyo", newMyKanniWithBusyo);
+        }
+        PlayerPrefs.DeleteKey(tmp);
 		PlayerPrefs.Flush ();
 
 		//Remove Kanni

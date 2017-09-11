@@ -110,6 +110,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 
                 int count = 0;
                 string myBusyo = "";
+                string myKanniWithBusyo = "";
                 for (int i=0;i<RecoveryDataStore.busyoList.Count; i++) {
                     int busyoId = RecoveryDataStore.busyoList[i];
                 
@@ -170,13 +171,17 @@ public class DataRecoveryConfirm : MonoBehaviour {
                         string kanniTmp = "kanni" + busyoId.ToString();
                         int kanni = RecoveryDataStore.kanniList[count];
                         if (kanni != 0) {
-                            PlayerPrefs.SetInt(kanniTmp, kanni);
+                            PlayerPrefs.SetInt(kanniTmp, kanni);                        
+                            if (myKanniWithBusyo == null || myKanniWithBusyo == "") {
+                                myKanniWithBusyo = kanni.ToString();
+                            }else {
+                                myKanniWithBusyo = myKanniWithBusyo + "," + kanni.ToString();
+                            }
                         }
-
                         count = count + 1;
                     }
                 }
-
+                PlayerPrefs.SetString("myKanniWithBusyo", myKanniWithBusyo);
                 PlayerPrefs.SetInt("myDaimyo", RecoveryDataStore.myDaimyo);
                 Daimyo daimyoScript = new Daimyo();
                 PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo));

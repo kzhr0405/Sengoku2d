@@ -37,16 +37,37 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					RectTransform scrollTransform = scroll.GetComponent<RectTransform> ();
 					scrollTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 
-					List<string> myKanniList = new List<string> ();
-
-					if (myKanni.Contains (",")) {
+					List<string> myKanniListTmp = new List<string> ();
+                    List<string> myKanniList = new List<string>();
+                    if (myKanni.Contains (",")) {
 						char[] delimiterChars = { ',' };
-						myKanniList = new List<string> (myKanni.Split (delimiterChars));
+                        myKanniListTmp = new List<string> (myKanni.Split (delimiterChars));
 					} else {
-						myKanniList.Add (myKanni);
+                        myKanniListTmp.Add (myKanni);
 					}
 
-					myKanniList.Sort ();
+                    /* Data Adjustment Start*/
+                    //distinct
+                    foreach (string i in myKanniListTmp) {
+                        if (!myKanniList.Contains(i)) {
+                            myKanniList.Add(i);
+                        }
+                    }
+                    //remove
+                    string myKanniWithBusyo = PlayerPrefs.GetString("myKanniWithBusyo");                   
+                    List<string> myKanniWithBusyoList = new List<string>();
+                    if(myKanniWithBusyo != "" && myKanniWithBusyo != null) {
+                        if (myKanniWithBusyo.Contains(",")) {
+                            char[] delimiterChars = { ',' };
+                            myKanniWithBusyoList = new List<string>(myKanniWithBusyo.Split(delimiterChars));
+                        }else {
+                            myKanniWithBusyoList.Add(myKanniWithBusyo);
+                        }
+                        myKanniList.RemoveAll(myKanniWithBusyoList.Contains);
+                    }
+                    /* Data Adjustment End*/
+
+                    myKanniList.Sort ();
 
 					string pathSlot = "Prefabs/Busyo/KanniSlot";
 					Kanni kanni = new Kanni ();
