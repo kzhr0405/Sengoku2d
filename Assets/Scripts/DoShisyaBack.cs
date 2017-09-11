@@ -84,7 +84,9 @@ public class DoShisyaBack : MonoBehaviour {
 			PlayerPrefs.DeleteKey("shisya19");
 			PlayerPrefs.DeleteKey("shisya20");
 			PlayerPrefs.DeleteKey("shisya21");
-			Application.LoadLevel("mainStage");
+            PlayerPrefs.SetBool("fromShisyaFlg", true);
+
+            Application.LoadLevel("mainStage");
 
 		} else {
 			audioSources [1].Play ();

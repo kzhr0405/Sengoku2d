@@ -476,7 +476,8 @@ public class MainStageController : MonoBehaviour {
                 //From Naisei or Kassen Check
                 bool fromNaiseiFlg = PlayerPrefs.GetBool ("fromNaiseiFlg");
 				bool fromKassenFlg = PlayerPrefs.GetBool ("fromKassenFlg");
-				bool isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
+                bool fromShisyaFlg = PlayerPrefs.GetBool("fromShisyaFlg");
+                bool isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
 				bool isKessenFlg = PlayerPrefs.GetBool ("isKessenFlg");
 				int winValue = PlayerPrefs.GetInt ("winChecker");
 				if (!isAttackedFlg && !isKessenFlg) {
@@ -513,10 +514,15 @@ public class MainStageController : MonoBehaviour {
                         //random kick event
                         if(tutorialDoneFlg && Application.loadedLevelName != "tutorialMain") {
                             if (!eventStopFlg) {
-                                int rdmId = UnityEngine.Random.Range(1, 11);
-                                if(rdmId >= 5) {
-                                    MainEventHandler gameEvent = new MainEventHandler();
-                                    gameEvent.mainHandler();
+                                if(!fromShisyaFlg) {
+                                    int rdmId = UnityEngine.Random.Range(1, 11);
+                                    if(rdmId >= 5) {
+                                        MainEventHandler gameEvent = new MainEventHandler();
+                                        gameEvent.mainHandler();
+                                    }
+                                }else {
+                                    PlayerPrefs.SetBool("fromShisyaFlg", false);
+                                    PlayerPrefs.Flush();
                                 }
                             }
                         }

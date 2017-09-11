@@ -37,21 +37,30 @@ public class Kanni : MonoBehaviour {
 				myKanniList.Add(myKanni);
 			}
 		}
+        string myKanniWithBusyo = PlayerPrefs.GetString("myKanniWithBusyo");
+        List<string> myKanniWithBusyoList = new List<string>();
+        if (myKanniWithBusyo != null && myKanniWithBusyo != "") {
+            if (myKanniWithBusyo.Contains(",")) {
+                myKanniWithBusyoList = new List<string>(myKanniWithBusyo.Split(delimiterChars));
+            }else {
+                myKanniWithBusyoList.Add(myKanniWithBusyo);
+            }
+        }
+        myKanniList.AddRange(myKanniWithBusyoList);
 
 
-		//Make TargetList
-		List<int> targetKanniList = new List<int> ();
+        //Make TargetList
+        List<int> targetKanniList = new List<int> ();
 		char[] delimiterChars2 = {':'};
 		for(int i=0; i<kanniMst.param.Count; i++){
 			int tmpSyoukaijyoRank = kanniMst.param[i].SyoukaijyoRank;
-
+            
 			if(tmpSyoukaijyoRank<=syoukaijyoRank){
 
 				int needKuniQty = kanniMst.param[i].NeedKuniQty;
 				if(needKuniQty<=kuniQty){
-
-					string kuniId = kanniMst.param[i].TargetKuni;
-					if(kuniId == "null"){
+                    string kuniId = kanniMst.param[i].TargetKuni;
+                    if (kuniId == "null"){
 						int tmp = i + 1;
 						if(!myKanniList.Contains(tmp.ToString ())){
 							targetKanniList.Add(tmp);
@@ -70,7 +79,6 @@ public class Kanni : MonoBehaviour {
 									}
 								}
 							}
-
 						}else{
 							int tmp = i + 1;
 							if(mySeiryokuList.Contains(tmp)){

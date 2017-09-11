@@ -405,8 +405,12 @@ public class preKassen : MonoBehaviour {
 
 		/*Plyaer Jinkei*/
 		jinkei = PlayerPrefs.GetInt ("jinkei");
-        if (jinkei == 0) jinkei = 1; PlayerPrefs.SetInt("jinkei", 1); PlayerPrefs.Flush();
-        //changeFormButtonColor(jinkei);
+        if (jinkei == 0) {
+            jinkei = 1;
+            PlayerPrefs.SetInt("jinkei", jinkei);
+            PlayerPrefs.Flush();
+        }
+        changeFormButtonColor(jinkei);
         prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,false);
 
             

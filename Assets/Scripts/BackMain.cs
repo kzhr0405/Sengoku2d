@@ -121,6 +121,8 @@ public class BackMain : MonoBehaviour {
                 msg.name = "ShisyaBackConfirm";
                 msg.transform.FindChild("NoButton").GetComponent<DoShisyaBack>().back = back;
             }else {
+                PlayerPrefs.SetBool("fromShisyaFlg", true);
+                PlayerPrefs.Flush();
                 Application.LoadLevel("mainStage");
             }
             
