@@ -11,6 +11,9 @@ public class RonkouKousyoMenu : MonoBehaviour {
 	public int jyosyuKuniId = 0;
 	public string jyosyuName = "";
 
+    public bool kanniHpFlg = false;
+    public int kanniEffect = 0;
+
 	public void OnClick(){
 
 		BusyoStatusButton bsb = new BusyoStatusButton ();
@@ -19,7 +22,6 @@ public class RonkouKousyoMenu : MonoBehaviour {
 		if (name == "kanni") {
 			if (kanniId == 0) {
 				string myKanni = PlayerPrefs.GetString ("myKanni");
-
 				if (myKanni != null && myKanni != "") {
 					audioSources [0].Play ();
 
@@ -39,8 +41,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 
 					List<string> myKanniListTmp = new List<string> ();
                     List<string> myKanniList = new List<string>();
-                    if (myKanni.Contains (",")) {
-						char[] delimiterChars = { ',' };
+                    char[] delimiterChars = { ',' };
+                    if (myKanni.Contains (",")) {						
                         myKanniListTmp = new List<string> (myKanni.Split (delimiterChars));
 					} else {
                         myKanniListTmp.Add (myKanni);
@@ -54,17 +56,18 @@ public class RonkouKousyoMenu : MonoBehaviour {
                         }
                     }
                     //remove
-                    string myKanniWithBusyo = PlayerPrefs.GetString("myKanniWithBusyo");                   
-                    List<string> myKanniWithBusyoList = new List<string>();
-                    if(myKanniWithBusyo != "" && myKanniWithBusyo != null) {
-                        if (myKanniWithBusyo.Contains(",")) {
-                            char[] delimiterChars = { ',' };
-                            myKanniWithBusyoList = new List<string>(myKanniWithBusyo.Split(delimiterChars));
-                        }else {
-                            myKanniWithBusyoList.Add(myKanniWithBusyo);
+                    string myBusyo = PlayerPrefs.GetString("myBusyo");
+                    List<string> myBusyoList = new List<string>();
+                    List<string> givenKaniList = new List<string>();
+                    myBusyoList.AddRange(myBusyo.Split(delimiterChars));
+                    foreach(string busyoId in myBusyoList) {
+                        string kanniTmp = "kanni" + busyoId.ToString();
+                        int givenKanni = PlayerPrefs.GetInt(kanniTmp);
+                        if (givenKanni != 0) {
+                            givenKaniList.Add(givenKanni.ToString());
                         }
-                        myKanniList.RemoveAll(myKanniWithBusyoList.Contains);
                     }
+                    myKanniList.RemoveAll(givenKaniList.Contains);
                     /* Data Adjustment End*/
 
                     myKanniList.Sort ();
@@ -81,7 +84,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						string kanniName = kanni.getKanni (kanniIdTmp);
 						string kanniIkai = kanni.getIkai (kanniIdTmp);
 						string EffectLabel = kanni.getEffectLabel (kanniIdTmp);
-						int effect = kanni.getEffect (kanniIdTmp);
+                        string getEffectTarget = kanni.getEffectTarget(kanniIdTmp);
+                        int effect = kanni.getEffect (kanniIdTmp);
 
 						slot.transform.FindChild ("Name").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
 						slot.transform.FindChild ("EffectLabel").GetComponent<Text> ().text = EffectLabel;
@@ -90,8 +94,11 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						GameObject btn = slot.transform.FindChild ("GiveButton").gameObject;
 						btn.GetComponent<GiveKanni> ().busyoId = busyoId;
 						btn.GetComponent<GiveKanni> ().kanniId = kanniIdTmp;
-
-					}
+                        if(getEffectTarget=="hp") {
+                            btn.GetComponent<GiveKanni>().hpFlg = true;
+                            btn.GetComponent<GiveKanni>().effect = effect;
+                        }
+                    }
 
 
 
@@ -124,7 +131,12 @@ public class RonkouKousyoMenu : MonoBehaviour {
                 }else {
                     remove.transform.FindChild("RemoveText").GetComponent<Text>().text = busyoName + "殿の官位を\n罷免なさるのですか？";
                 }
-			}
+                remove.transform.FindChild("YesButton").GetComponent<DoRemoveKanni>().effect = kanniEffect;
+                remove.transform.FindChild("YesButton").GetComponent<DoRemoveKanni>().hpFlg = kanniHpFlg;
+
+
+
+            }
 
 
 

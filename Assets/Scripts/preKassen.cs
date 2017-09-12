@@ -22,8 +22,8 @@ public class preKassen : MonoBehaviour {
 
     void Start () {
 
-		//Sound
-		BGMSESwitch bgm = new BGMSESwitch ();
+        //Sound
+        BGMSESwitch bgm = new BGMSESwitch ();
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
 
@@ -87,7 +87,7 @@ public class preKassen : MonoBehaviour {
 		Stage stage = new Stage ();
 		int stageMapId = 0;
 
-		GameObject panel = GameObject.Find ("Panel").gameObject;
+        GameObject panel = GameObject.Find ("Panel").gameObject;
 		if (isAttackedFlg) {
 			//Passive
 			GameObject tettaiBtn = GameObject.Find ("TettaiBtn").gameObject;
@@ -146,8 +146,9 @@ public class preKassen : MonoBehaviour {
 				}
 			}
 		} else {
-			//Normal or Kessen
-			if (isKessenFlg) {
+
+            //Normal or Kessen
+            if (isKessenFlg) {
 				kessenHyourou = PlayerPrefs.GetInt ("kessenHyourou");
 
 				GameObject startBtn = GameObject.Find ("StartBtn");
@@ -217,11 +218,11 @@ public class preKassen : MonoBehaviour {
 				}
 			}
 
-		}
+        }
 
-		/*Status Down by Weather & Map*/
-		//Delete Previous minus status
-		PlayerPrefs.DeleteKey("mntMinusStatus");
+        /*Status Down by Weather & Map*/
+        //Delete Previous minus status
+        PlayerPrefs.DeleteKey("mntMinusStatus");
 		PlayerPrefs.DeleteKey("seaMinusStatus");
 		PlayerPrefs.DeleteKey("rainMinusStatus");
 		PlayerPrefs.DeleteKey("snowMinusStatus");
@@ -401,19 +402,25 @@ public class preKassen : MonoBehaviour {
 
 		PlayerPrefs.Flush ();
 
-
-
-		/*Plyaer Jinkei*/
-		jinkei = PlayerPrefs.GetInt ("jinkei");
+        /*Plyaer Jinkei*/
+        jinkei = PlayerPrefs.GetInt ("jinkei");
         if (jinkei == 0) {
             jinkei = 1;
             PlayerPrefs.SetInt("jinkei", jinkei);
             PlayerPrefs.Flush();
         }
         changeFormButtonColor(jinkei);
-        prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,false);
 
-            
+        int stageId = PlayerPrefs.GetInt("activeStageId");
+        bool strongFlg = false;
+        if(stageId == 5 || stageId == 10) {
+            strongFlg = true;
+        }
+        strongFlg = PlayerPrefs.GetBool("lastOneFlg");
+        PlayerPrefs.DeleteKey("lastOneFlg");
+        System.Diagnostics.Stopwatch sw5 = new System.Diagnostics.Stopwatch();
+        prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, false, strongFlg);
+
     }
 
 
@@ -522,7 +529,7 @@ public class preKassen : MonoBehaviour {
 
 	//PowerType1
 	//Busyo + Mob
-	public int powerType1(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId){
+	public int powerType1(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId, bool strongFlg){
 		int totalHei = 0;
 
 		int activeBusyoQty = PlayerPrefs.GetInt ("activeBusyoQty");
@@ -562,17 +569,46 @@ public class preKassen : MonoBehaviour {
 				}
 			}
 		}
-		/*Busyo Master Setting End*/
-		
-		/*Random Shuffle*/
-		for (int i = 0; i < busyoList.Count; i++) {
-			int temp = busyoList [i];
-			int randomIndex = UnityEngine.Random.Range (0, busyoList.Count);
-			busyoList [i] = busyoList [randomIndex];
-			busyoList [randomIndex] = temp;
-		}
-		
-		for (int i = 0; i < mapList.Count; i++) {
+        /*Busyo Master Setting End*/
+
+        if (strongFlg) {
+            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+            List<int> SrankList = new List<int>();
+            List<int> ArankList = new List<int>();
+            List<int> BrankList = new List<int>();
+            List<int> CrankList = new List<int>();
+
+            for (int i = 0; i < busyoList.Count; i++) {
+                //Strong Sort S > C rank
+                int temp = busyoList[i];
+                string rank = BusyoInfoGet.getRank(temp);
+                if (rank == "S") {
+                    SrankList.Add(temp);
+                }else if (rank == "A") {
+                    ArankList.Add(temp);
+                }else if (rank == "B") {
+                    BrankList.Add(temp);
+                }else if (rank == "C") {
+                    CrankList.Add(temp);
+                }
+            }
+            busyoList = new List<int>();
+            busyoList.AddRange(SrankList);
+            busyoList.AddRange(ArankList);
+            busyoList.AddRange(BrankList);
+            busyoList.AddRange(CrankList);
+
+        } else {
+            for (int i = 0; i < busyoList.Count; i++) {
+                //Random Shuffle
+                int temp = busyoList[i];
+                int randomIndex = UnityEngine.Random.Range(0, busyoList.Count);
+                busyoList[i] = busyoList[randomIndex];
+                busyoList[randomIndex] = temp;
+            }
+        }
+
+        for (int i = 0; i < mapList.Count; i++) {
 			int temp = mapList [i];
 			int randomIndex = UnityEngine.Random.Range (0, mapList.Count);
 			mapList [i] = mapList [randomIndex];
@@ -751,7 +787,7 @@ public class preKassen : MonoBehaviour {
 
 	//PowerType2
 	//Busyo + Busyo
-	public int powerType2(List<int> mapList, int taisyoMapId, int linkNo,  int activeDaimyoId){
+	public int powerType2(List<int> mapList, int taisyoMapId, int linkNo,  int activeDaimyoId, bool strongFlg){
 		int totalHei = 0;
 
 		int activeBusyoQty = PlayerPrefs.GetInt ("activeBusyoQty");
@@ -791,17 +827,48 @@ public class preKassen : MonoBehaviour {
 				}
 			}
 		}
-		/*Busyo Master Setting End*/
-		
-		/*Random Shuffle*/
-		for (int i = 0; i < busyoList.Count; i++) {
-			int temp = busyoList [i];
-			int randomIndex = UnityEngine.Random.Range (0, busyoList.Count);
-			busyoList [i] = busyoList [randomIndex];
-			busyoList [randomIndex] = temp;
-		}
-		
-		for (int i = 0; i < mapList.Count; i++) {
+        /*Busyo Master Setting End*/
+
+        if (strongFlg) {
+            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+            List<int> SrankList = new List<int>();
+            List<int> ArankList = new List<int>();
+            List<int> BrankList = new List<int>();
+            List<int> CrankList = new List<int>();
+
+            for (int i = 0; i < busyoList.Count; i++) {
+                //Strong Sort S > C rank
+                int temp = busyoList[i];
+                string rank = BusyoInfoGet.getRank(temp);
+                if (rank == "S") {
+                    SrankList.Add(temp);
+                }
+                else if (rank == "A") {
+                    ArankList.Add(temp);
+                }
+                else if (rank == "B") {
+                    BrankList.Add(temp);
+                }
+                else if (rank == "C") {
+                    CrankList.Add(temp);
+                }
+            }
+            busyoList = new List<int>();
+            busyoList.AddRange(SrankList);
+            busyoList.AddRange(ArankList);
+            busyoList.AddRange(BrankList);
+            busyoList.AddRange(CrankList);
+        }else {
+            for (int i = 0; i < busyoList.Count; i++) {
+                //Random Shuffle
+                int temp = busyoList[i];
+                int randomIndex = UnityEngine.Random.Range(0, busyoList.Count);
+                busyoList[i] = busyoList[randomIndex];
+                busyoList[randomIndex] = temp;
+            }
+        }
+
+        for (int i = 0; i < mapList.Count; i++) {
 			int temp = mapList [i];
 			int randomIndex = UnityEngine.Random.Range (0, mapList.Count);
 			mapList [i] = mapList [randomIndex];
@@ -1040,7 +1107,7 @@ public class preKassen : MonoBehaviour {
 
 	//PowerType3
 	//Daimyo + Busyo
-	public int powerType3(List<int> mapList, int taisyoMapId, int linkNo,  int activeDaimyoId){
+	public int powerType3(List<int> mapList, int taisyoMapId, int linkNo,  int activeDaimyoId, bool strongFlg){
 		int totalHei = 0;
 
 		int activeBusyoQty = PlayerPrefs.GetInt ("activeBusyoQty");
@@ -1150,9 +1217,9 @@ public class preKassen : MonoBehaviour {
 			metsubouDaimyoList.Add (activeDaimyoId.ToString ());
 			
 			Entity_busyo_mst busyoMst = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
-			List<int> busyoList = new List<int> ();
-			
-			for (int i=0; i<busyoMst.param.Count; i++) {
+			List<int> busyoListTmp = new List<int> ();
+            List<int> busyoList = new List<int>();
+            for (int i=0; i<busyoMst.param.Count; i++) {
 				int busyoId = busyoMst.param [i].id;
 				int daimyoId = busyoMst.param [i].daimyoId;
 				
@@ -1162,16 +1229,44 @@ public class preKassen : MonoBehaviour {
 					}
 				}
 			}
-			
-			//Random Shuffle
-			for (int i = 0; i < busyoList.Count; i++) {
-				int temp = busyoList [i];
-				int randomIndex = UnityEngine.Random.Range (0, busyoList.Count);
-				busyoList [i] = busyoList [randomIndex];
-				busyoList [randomIndex] = temp;
-			}
-			
-			for (int i = 0; i < mapList.Count; i++) {
+          
+            if (strongFlg) {
+                BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+                List<int> SrankList = new List<int>();
+                List<int> ArankList = new List<int>();
+                List<int> BrankList = new List<int>();
+                List<int> CrankList = new List<int>();
+
+                for (int i=0; i<busyoList.Count; i ++) {
+                    //Strong Sort S > C rank
+                    int temp = busyoList[i];
+                    string rank = BusyoInfoGet.getRank(temp);
+                    if (rank == "S") {
+                        SrankList.Add(temp);
+                    }else if (rank == "A") {
+                        ArankList.Add(temp);
+                    }else if (rank == "B") {
+                        BrankList.Add(temp);
+                    }else if (rank == "C") {
+                        CrankList.Add(temp);
+                    }                                      
+                }
+                busyoList = new List<int>();
+                busyoList.AddRange(SrankList);
+                busyoList.AddRange(ArankList);
+                busyoList.AddRange(BrankList);
+                busyoList.AddRange(CrankList);
+            }else { 
+                for (int i = 0; i < busyoList.Count; i++) {                
+                    //Random Shuffle
+                    int temp = busyoList [i];
+				    int randomIndex = UnityEngine.Random.Range (0, busyoList.Count);
+				    busyoList [i] = busyoList [randomIndex];
+				    busyoList [randomIndex] = temp;                
+                }
+            }
+
+            for (int i = 0; i < mapList.Count; i++) {
 				int temp = mapList [i];
 				int randomIndex = UnityEngine.Random.Range (0, mapList.Count);
 				mapList [i] = mapList [randomIndex];
@@ -1535,7 +1630,7 @@ public class preKassen : MonoBehaviour {
 
 	}
 
-    public void prekassenPlayerJinkei(int jinkeiId, int weatherId, bool isAttackedFlg, bool onlyPlayerFlg) {
+    public void prekassenPlayerJinkei(int jinkeiId, int weatherId, bool isAttackedFlg, bool onlyPlayerFlg, bool strongFlg) {
 
         //reset disabled slot
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
@@ -1955,8 +2050,7 @@ public class preKassen : MonoBehaviour {
         JinkeiPowerEffection powerEffection = new JinkeiPowerEffection();
         powerEffection.UpdateSenryoku();
 
-        //test
-        GameObject.Find("BusyoScrollMenu").transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu(jinkeiBusyo_list);
+        GameObject.Find("BusyoScrollMenu").transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().jinkeiBusyo_list = jinkeiBusyo_list;
 
         jinkeiLimit = PlayerPrefs.GetInt("jinkeiLimit");
         int addLimit = 0;
@@ -2012,17 +2106,17 @@ public class preKassen : MonoBehaviour {
             if (powerType == 1) {
                 //busyo + mob
                 mapList = enemyJinkeiMaker(enemyJinkei);
-                enemyHei = powerType1(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
+                enemyHei = powerType1(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, strongFlg);
             }
             else if (powerType == 2) {
                 //busyo only
                 mapList = enemyJinkeiMaker(enemyJinkei);
-                enemyHei = powerType2(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
+                enemyHei = powerType2(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, strongFlg);
             }
             else if (powerType == 3 || powerType == 0) {
                 //daimyo + busyo
                 mapList = enemyJinkeiMaker(enemyJinkei);
-                enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
+                enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, strongFlg);
             }
 
             Text enemyHeiText = GameObject.Find("EnemyHei").transform.FindChild("HeiValue").GetComponent<Text>();

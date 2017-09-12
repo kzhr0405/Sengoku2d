@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class DoRemoveKanni : MonoBehaviour {
 
-	public string busyoId = "";
+    public bool hpFlg = false;
+    public int effect = 0;
+    public string busyoId = "";
 
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
@@ -45,30 +47,7 @@ public class DoRemoveKanni : MonoBehaviour {
 		}else{
 			newMyKanni = kanniId.ToString();
 		}
-		PlayerPrefs.SetString ("myKanni", newMyKanni);
-		
-		//Remove from myBusyoKanni
-		string myKanniWithBusyo = PlayerPrefs.GetString ("myKanniWithBusyo");
-        if(myKanniWithBusyo!="" && myKanniWithBusyo!=null) {
-		    List<string> myKanniWithBusyoList = new List<string> ();
-		    if(myKanniWithBusyo.Contains(",")){
-			    char[] delimiterChars = {','};
-			    myKanniWithBusyoList = new List<string> (myKanniWithBusyo.Split (delimiterChars));
-		    }else{
-			    myKanniWithBusyoList.Add(myKanniWithBusyo);
-		    }
-		    myKanniWithBusyoList.Remove (kanniId.ToString());
-		
-		    string newMyKanniWithBusyo = "";
-		    for (int i=0; i<myKanniWithBusyoList.Count; i++) {
-			    if(i==0){
-				    newMyKanniWithBusyo = myKanniWithBusyoList[i];
-			    }else{
-				    newMyKanniWithBusyo = newMyKanni + "," + myKanniWithBusyoList[i];
-			    }
-		    }
-		    PlayerPrefs.SetString ("myKanniWithBusyo", newMyKanniWithBusyo);
-        }
+		PlayerPrefs.SetString ("myKanni", newMyKanni);		
         PlayerPrefs.DeleteKey(tmp);
 		PlayerPrefs.Flush ();
 
@@ -82,5 +61,13 @@ public class DoRemoveKanni : MonoBehaviour {
 		//Activate
 		kanni.transform.FindChild("Text").GetComponent<Text>().enabled = true;
 		kanni.GetComponent<RonkouKousyoMenu>().kanniId = 0;
-	}
+
+        if (hpFlg) {
+            Jinkei Jinkei = new Jinkei();
+            int baseHP = GameObject.Find("GameScene").GetComponent<NowOnBusyo>().HP;
+            int var = (baseHP * effect) / 100;
+            Jinkei.jinkeiHpUpda(false, var);
+        }
+
+    }
 }

@@ -39,12 +39,10 @@ public class ShiroAttack : MonoBehaviour {
         //Count down
 
         if(!rakujyoFlg) {
-            time -= Time.deltaTime;
-            PlayerPrefs.SetFloat(dataName, time);
-            PlayerPrefs.Flush();
-
+            time -= Time.deltaTime;            
             if (time > 0.0f){
                 //On Play
+                PlayerPrefs.SetFloat(dataName, time);
                 timeText.text = ((int)time).ToString();
             }else{
                 //Enemy Win

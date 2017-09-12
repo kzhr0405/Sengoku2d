@@ -7,9 +7,13 @@ public class DeleteKahou : MonoBehaviour {
 	public string kahouType;
 	public int kahouId;
 	public string selectedButton;
+    public string kahouName;
+    public string kahouTypeName;
+    public int kahouEffect;
+    public string kahouUnit;
 
-	// Use this for initialization
-	public void OnClick() {
+    // Use this for initialization
+    public void OnClick() {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [4].Play ();
 
@@ -107,5 +111,18 @@ public class DeleteKahou : MonoBehaviour {
 		CloseBoard close = new CloseBoard ();
 		close.onClick();
 
-	}	
+        //Adjust jinkei hp
+        if (kahouType == "kabuto") {
+            Jinkei Jinkei = new Jinkei();
+            int baseHP = GameObject.Find("GameScene").GetComponent<NowOnBusyo>().HP;
+            int var = (baseHP * kahouEffect) / 100;
+            Jinkei.jinkeiHpUpda(false, var);
+        }
+
+        //Message
+        Message msg = new Message();
+        string msgTxt = kahouName + "\n" + kahouTypeName + " -" + kahouEffect.ToString() + kahouUnit;
+        msg.makeMessage(msgTxt);
+
+    }	
 }

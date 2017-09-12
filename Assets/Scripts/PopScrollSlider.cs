@@ -15,6 +15,10 @@ public class PopScrollSlider : MonoBehaviour {
     }
 
     public void SlideIn() {
+        //create busyo
+        if(transform.FindChild("ScrollView").transform.FindChild("Content").childCount == 0) {
+            transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu();            
+        }
         StartCoroutine(StartSlidePanel(false));
     }
 

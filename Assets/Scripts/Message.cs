@@ -188,4 +188,7 @@ public class Message : MonoBehaviour {
         messageObj.transform.localScale = new Vector2(1, 1);
         messageObj.transform.localPosition = new Vector3(0, 0, 0);
     }
+
+
+   
 }

@@ -7,8 +7,12 @@ public class EquipKahou : MonoBehaviour {
 	public string kahouType;
 	public int kahouId;
 	public string selectedButton;
+    public string kahouName;
+    public string kahouTypeName;
+    public int kahouEffect;
+    public string kahouUnit;
 
-	public void OnClick () {
+    public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [3].Play ();
 
@@ -49,7 +53,7 @@ public class EquipKahou : MonoBehaviour {
 		//Attach Kaho to Busyo
 		GameObject mainController = GameObject.Find ("GameScene");
 		string busyoId = mainController.GetComponent<NowOnBusyo>().OnBusyo;
-		string tempBusyo = "kahou" + busyoId;
+        string tempBusyo = "kahou" + busyoId;
 		string busyoKahou = PlayerPrefs.GetString (tempBusyo);
 
 		//Sample "0,1,0,0,0,0,0,0"
@@ -112,5 +116,18 @@ public class EquipKahou : MonoBehaviour {
 		CloseBoard close = new CloseBoard ();
 		close.onClick();
 
-	}	
+        //Adjust jinkei hp
+        if(kahouType== "Kabuto") {
+            Jinkei Jinkei = new Jinkei();
+            int baseHP = GameObject.Find("GameScene").GetComponent<NowOnBusyo>().HP;
+            int var = (baseHP * kahouEffect) / 100;
+            Jinkei.jinkeiHpUpda(true, var);
+        }
+        //Message
+        Message msg = new Message();
+        string msgTxt = kahouName + "\n" + kahouTypeName + " +" + kahouEffect.ToString() + kahouUnit;
+        msg.makeMessage(msgTxt);
+
+       
+    }	
 }

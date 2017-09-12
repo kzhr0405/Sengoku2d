@@ -516,7 +516,11 @@ public class BusyoStatusButton : MonoBehaviour {
             else {
                 item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
             }
-			GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = itemList[0];
+            if (Application.loadedLevelName == "tutorialBusyo") {
+                GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = 0.ToString();
+            }else {
+                GameObject.Find("CurrentChigyouValue").GetComponent<Text>().text = itemList[0];
+            }
 			DoCyouhei.GetComponent<DoCyouhei>().nowItem = int.Parse(itemList[0]);
 			//Shortage
 			if(int.Parse(itemList[0])<itemQty){

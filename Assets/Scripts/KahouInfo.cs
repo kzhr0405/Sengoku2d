@@ -224,12 +224,17 @@ public class KahouInfo : MonoBehaviour {
 
 			kahou.GetComponent<Button> ().enabled = false;
 
-			//Send Param Delete Button
-			GameObject.Find ("DeleteButton").GetComponent<DeleteKahou> ().kahouType = kahouType;
-			GameObject.Find ("DeleteButton").GetComponent<DeleteKahou> ().kahouId = kahouId;
+            //Send Param Delete Button
+            DeleteKahou DeleteKahou = GameObject.Find("DeleteButton").GetComponent<DeleteKahou>();
 
+            DeleteKahou.kahouType = kahouType;
+            DeleteKahou.kahouId = kahouId;
+            DeleteKahou.kahouName = kahouName;
+            DeleteKahou.kahouTypeName = kahouTarget;
+            DeleteKahou.kahouEffect = kahouEffect;
+            DeleteKahou.kahouUnit = kahouUnit;
 
-		} else if (Application.loadedLevelName == "zukan") {
+        } else if (Application.loadedLevelName == "zukan") {
 
 			string pathOfBack = "Prefabs/Common/TouchBack";
 			GameObject back = Instantiate (Resources.Load (pathOfBack)) as GameObject;
@@ -298,6 +303,7 @@ public class KahouInfo : MonoBehaviour {
 			GameObject.Find("EffectValue").GetComponent<Text>().text = effect;
 			GameObject.Find("ExpValue").GetComponent<Text>().text = kahouInfoList[1];
 			
+
 		}
 	}
 }	

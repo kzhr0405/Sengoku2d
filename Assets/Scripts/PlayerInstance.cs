@@ -284,14 +284,25 @@ public class PlayerInstance : MonoBehaviour {
         char[] delimiterChars = {':'};
 		string[] ch_list = chParam.Split(delimiterChars);
 
-		string ch_type = ch_list[0];
+        bool updateParam = false;
+        string ch_type = ch_list[0];
 		int ch_num = int.Parse (ch_list[1]);
-		int ch_lv = int.Parse (ch_list[2]);
-		float ch_status = float.Parse (ch_list[3]);
+        if (ch_num > 20) {
+            ch_num = 20;
+            updateParam = true;
+        }
+        int ch_lv = int.Parse (ch_list[2]);
+        if (ch_lv > 100) {
+            ch_lv = 100;
+            updateParam = true;
+        }
+        float ch_status = float.Parse (ch_list[3]);
 		ch_status = ch_status * 10;
+        if (updateParam) {
+            PlayerPrefs.SetString(heiId, ch_type + ":" + ch_num.ToString() + ":" + ch_lv.ToString() + ":" + ch_status.ToString());
+        }
 
-		string ch_path = "Prefabs/Player/" + ch_type;
-
+        string ch_path = "Prefabs/Player/" + ch_type;
 		float y1 = 3.0f;
 		float y2 = 3.0f;
 		float y3 = 3.0f;

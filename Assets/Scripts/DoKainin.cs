@@ -25,6 +25,7 @@ public class DoKainin : MonoBehaviour {
 
 			//JyosyuHei Kainin
 			string temp2 = "jyosyuHei" + busyoId;
+            int jyosyuHei = PlayerPrefs.GetInt(temp2);
 			PlayerPrefs.DeleteKey(temp2);
 
 			string temp3 = "jyosyuBusyo" + busyoId;
@@ -39,9 +40,12 @@ public class DoKainin : MonoBehaviour {
 			//Message
 			Message msg = new Message(); 
 			msg.makeMessage(msg.getMessage(87));
-			
-			//Initialization
-			if (Application.loadedLevelName == "naisei") {
+
+            Jinkei Jinkei = new Jinkei();
+            Jinkei.jinkeiHpUpda(false, jyosyuHei);
+
+            //Initialization
+            if (Application.loadedLevelName == "naisei") {
 				NaiseiController naisei = new NaiseiController ();
 				naisei.Start ();
 			}else if(Application.loadedLevelName == "busyo"){

@@ -455,6 +455,7 @@ public class AttackNaiseiView : MonoBehaviour {
 
         viewKuniLink(board, kuniMap, seiryokuList);
 
+
         /*Kassen Event Controller End*/
 
     }

@@ -5,9 +5,11 @@ using System.Collections.Generic;
 
 public class GiveKanni : MonoBehaviour {
 
-	public int kanniId = 0;
-	public string busyoId = "";
-	public GameObject board;
+    public bool hpFlg = false;
+    public int kanniId = 0;
+    public int effect = 0;
+    public string busyoId = "";
+	public GameObject board;    
 
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
@@ -38,20 +40,18 @@ public class GiveKanni : MonoBehaviour {
 		}
 		PlayerPrefs.SetString ("myKanni", newMyKanni);
 
-		//Add Busyo Kanni
-		string newMyKanniWithBusyo = "";
-		string myKanniWithBusyo = PlayerPrefs.GetString ("myKanniWithBusyo");
-		if (myKanniWithBusyo != null && myKanniWithBusyo != "") {
-			newMyKanniWithBusyo = myKanniWithBusyo + "," + kanniId;
-		} else {
-			newMyKanniWithBusyo = kanniId.ToString();		
-		}
-		PlayerPrefs.SetString ("myKanniWithBusyo", newMyKanniWithBusyo);
-
 		PlayerPrefs.SetBool ("questSpecialFlg8",true);
 		PlayerPrefs.Flush ();
 
-		SyoguScene syogu = new SyoguScene();
+        if(hpFlg) {
+            Jinkei Jinkei = new Jinkei();
+            int baseHP = GameObject.Find("GameScene").GetComponent<NowOnBusyo>().HP;
+            int var = (baseHP * effect) / 100;
+            Jinkei.jinkeiHpUpda(true, var);
+        }
+        
+
+        SyoguScene syogu = new SyoguScene();
 		syogu.createSyoguView(busyoId);
 		
 		//Close Board

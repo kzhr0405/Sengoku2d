@@ -23,8 +23,9 @@ public class StartKassen : MonoBehaviour {
 
 	public int linkNo = 0;
 	public int powerType = 0;
+    public bool lastOneFlg = false;
 
-	public void OnClick () {
+    public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
 
@@ -61,8 +62,11 @@ public class StartKassen : MonoBehaviour {
 			    PlayerPrefs.SetInt ("activeButaiQty", activeButaiQty);
 			    PlayerPrefs.SetInt ("activeButaiLv", activeButaiLv);
 
-			    //Gaikou
-			    int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
+                //lastOneFlg
+                PlayerPrefs.SetBool("lastOneFlg", lastOneFlg);
+
+                //Gaikou
+                int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 			    Gaikou gaikou = new Gaikou ();
 			    gaikou.downGaikouByAttack (myDaimyo, activeDaimyoId);
 

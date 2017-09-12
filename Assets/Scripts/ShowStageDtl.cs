@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class ShowStageDtl : MonoBehaviour {
 
@@ -21,8 +22,8 @@ public class ShowStageDtl : MonoBehaviour {
 	//Stage Value
 	public int linkNo = 0;
 	public int powerType = 0;
-
-	private Text labelDataStage;
+    public bool lastOneFlg;
+    private Text labelDataStage;
 	private Text labelDataExp;
 	private Text labelDataMoney;
 
@@ -57,8 +58,22 @@ public class ShowStageDtl : MonoBehaviour {
 		labelDataMoney = GameObject.Find ("Data_Money").GetComponent<Text> ();
 		labelDataMoney.text = showMoney;
 
-
-		GameObject bttlBttn = GameObject.Find ("BattleButton");
+        //last one check
+        GameObject parent = transform.parent.gameObject;
+        lastOneFlg = true;
+        foreach (Transform chld in parent.transform) {
+            if(chld.tag == "Stage") {
+                if(chld.GetComponent<ShowStageDtl>().stageId != stageId) {
+                    if(!chld.GetComponent<ShowStageDtl>().clearedFlg) {
+                        lastOneFlg = false;
+                    }
+                }
+            }
+        }
+        if (lastOneFlg) {
+            powerType = 3;
+        }
+        GameObject bttlBttn = GameObject.Find ("BattleButton");
 		bttlBttn.GetComponent<StartKassen> ().activeKuniId = kuniId;
 		bttlBttn.GetComponent<StartKassen> ().activeStageId = stageId;
 		bttlBttn.GetComponent<StartKassen> ().activeStageName = stageName;
@@ -70,7 +85,8 @@ public class ShowStageDtl : MonoBehaviour {
 		bttlBttn.GetComponent<StartKassen> ().activeItemQty = itemQty;
 		bttlBttn.GetComponent<StartKassen> ().linkNo = linkNo;
 		bttlBttn.GetComponent<StartKassen> ().powerType = powerType;
-	}
+        bttlBttn.GetComponent<StartKassen>().lastOneFlg = lastOneFlg;
+    }
 
 
 }

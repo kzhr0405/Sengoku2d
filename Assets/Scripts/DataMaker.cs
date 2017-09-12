@@ -149,7 +149,6 @@ public class DataMaker : MonoBehaviour {
 		PlayerPrefs.DeleteKey("snowMinusStatus");
 
 		//Kanni
-		PlayerPrefs.DeleteKey("myKanniWithBusyo");
 		PlayerPrefs.DeleteKey("cyouteiPoint");
 
 		//Gaikou

@@ -1503,7 +1503,7 @@ public class preKaisen : MonoBehaviour {
         JinkeiPowerEffection powerEffection = new JinkeiPowerEffection();
         powerEffection.UpdateSenryoku();
 
-        GameObject.Find("BusyoScrollMenu").transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu(jinkeiBusyo_list);
+        GameObject.Find("BusyoScrollMenu").transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().jinkeiBusyo_list = jinkeiBusyo_list;
         jinkeiLimit = PlayerPrefs.GetInt("jinkeiLimit");
         int addLimit = 0;
         if (PlayerPrefs.GetBool("addJinkei1"))

@@ -234,7 +234,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				}else if(target =="Kabuto"){
 					Entity_kahou_kabuto_mst kabutoKahouMst  = Resources.Load ("Data/kahou_kabuto_mst") as Entity_kahou_kabuto_mst;
                     string kahouName = "";
@@ -252,7 +252,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 
 				}else if (target =="Gusoku"){
 					Entity_kahou_gusoku_mst gusokuKahouMst  = Resources.Load ("Data/kahou_gusoku_mst") as Entity_kahou_gusoku_mst;
@@ -271,7 +271,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 
 				}else if (target =="Meiba"){
 					Entity_kahou_meiba_mst meibaKahouMst  = Resources.Load ("Data/kahou_meiba_mst") as Entity_kahou_meiba_mst;
@@ -290,7 +290,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
 				}else if (target =="Cyadougu"){
 					Entity_kahou_cyadougu_mst cyadouguKahouMst  = Resources.Load ("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
@@ -309,7 +309,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
 				}else if (target =="Heihousyo"){
 					Entity_kahou_heihousyo_mst heihousyoKahouMst  = Resources.Load ("Data/kahou_heihousyo_mst") as Entity_kahou_heihousyo_mst;
@@ -328,7 +328,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
 				}else if (target =="Chishikisyo"){
 					Entity_kahou_chishikisyo_mst chishikisyoKahouMst  = Resources.Load ("Data/kahou_chishikisyo_mst") as Entity_kahou_chishikisyo_mst;
@@ -347,7 +347,7 @@ public class KahouSelect : MonoBehaviour {
 					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
-					setKahouInfo(kahouSlot,target,kahouId);
+					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				}
 			}
 		}else{
@@ -376,7 +376,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
 			}else if(target =="Kabuto"){
 				Entity_kahou_kabuto_mst kabutoKahouMst  = Resources.Load ("Data/kahou_kabuto_mst") as Entity_kahou_kabuto_mst;
@@ -395,7 +395,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
 			}else if (target =="Gusoku"){
 				Entity_kahou_gusoku_mst gusokuKahouMst  = Resources.Load ("Data/kahou_gusoku_mst") as Entity_kahou_gusoku_mst;
@@ -414,7 +414,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
 			}else if (target =="Meiba"){
 				Entity_kahou_meiba_mst meibaKahouMst  = Resources.Load ("Data/kahou_meiba_mst") as Entity_kahou_meiba_mst;
@@ -433,7 +433,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
 			}else if (target =="Cyadougu"){
 				Entity_kahou_cyadougu_mst cyadouguKahouMst  = Resources.Load ("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
@@ -452,7 +452,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
 			}else if (target =="Heihousyo"){
 				Entity_kahou_heihousyo_mst heihousyoKahouMst  = Resources.Load ("Data/kahou_heihousyo_mst") as Entity_kahou_heihousyo_mst;
@@ -471,7 +471,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
 			}else if (target =="Chishikisyo"){
 				Entity_kahou_chishikisyo_mst chishikisyoKahouMst  = Resources.Load ("Data/kahou_chishikisyo_mst") as Entity_kahou_chishikisyo_mst;
@@ -490,7 +490,7 @@ public class KahouSelect : MonoBehaviour {
 				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
 				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
-				setKahouInfo(kahouSlot,target,int.Parse(availableKahou));
+				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
 			}
 		}		
@@ -515,8 +515,15 @@ public class KahouSelect : MonoBehaviour {
 		rankTransform.transform.localScale = new Vector2 (0.1f, 0.1f);
 
 	}
-	public void setKahouInfo(GameObject obj, string kahouType, int kahouId){
-		obj.transform.FindChild ("KahouName/EquipButton").GetComponent<EquipKahou> ().kahouId = kahouId;
-		obj.transform.FindChild ("KahouName/EquipButton").GetComponent<EquipKahou> ().kahouType = kahouType;
-	}
+	public void setKahouInfo(GameObject obj, string kahouType, int kahouId, string kahouName, string kahouTypName, int kahouEffect, string kahouUnit) {
+
+        EquipKahou EquipKahou = obj.transform.FindChild("KahouName/EquipButton").GetComponent<EquipKahou>();
+
+        EquipKahou.kahouId = kahouId;
+        EquipKahou.kahouType = kahouType;
+        EquipKahou.kahouName = kahouName;
+        EquipKahou.kahouTypeName = kahouTypName;
+        EquipKahou.kahouEffect = kahouEffect;
+        EquipKahou.kahouUnit = kahouUnit;
+    }
 }

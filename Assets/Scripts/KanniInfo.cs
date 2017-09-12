@@ -20,18 +20,21 @@ public class KanniInfo : MonoBehaviour {
 			}
 		}
 
-		string myKanniWithBusyo = PlayerPrefs.GetString ("myKanniWithBusyo");
-		List<string> myKanniWithBusyoList = new List<string>();
-		if (myKanniWithBusyo != null && myKanniWithBusyo != "") {
-			if(myKanniWithBusyo.Contains(",")){
-				myKanniWithBusyoList = new List<string>(myKanniWithBusyo.Split (delimiterChars));
-			}else{
-				myKanniWithBusyoList.Add(myKanniWithBusyo);
-			}
-		}
-		myKanniList.AddRange (myKanniWithBusyoList);
+        string myBusyo = PlayerPrefs.GetString("myBusyo");
+        List<string> myBusyoList = new List<string>();
+        List<string> givenKaniList = new List<string>();
+        myBusyoList.AddRange(myBusyo.Split(delimiterChars));
+        foreach (string busyoId in myBusyoList) {
+            //gokui
+            string kanniTmp = "kanni" + busyoId.ToString();
+            int givenKanni = PlayerPrefs.GetInt(kanniTmp);
+            if (givenKanni != 0) {
+                givenKaniList.Add(givenKanni.ToString());
+            }
+        }
+        myKanniList.AddRange(givenKaniList);
 
-		if (myKanniList.Count == 0) {
+        if (myKanniList.Count == 0) {
 			Message msg = new Message ();
 			msg.makeMessageOnBoard (msg.getMessage(135));
 		

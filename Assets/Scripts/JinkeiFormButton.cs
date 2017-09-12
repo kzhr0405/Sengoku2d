@@ -35,7 +35,7 @@ public class JinkeiFormButton : MonoBehaviour {
             int weatherId = preKassenScript.weatherId;
             bool isAttackedFlg = preKassenScript.isAttackedFlg;
 
-            preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,true);
+            preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,true, false);
 
 
         }else if(Application.loadedLevelName == "preKaisen") {

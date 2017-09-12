@@ -586,7 +586,7 @@ public class PvPController : MonoBehaviour {
 
     public int getCalcPt(int playerHP, int enemyHP) {
         int getPt = 100; //base 100
-        getPt = Mathf.CeilToInt((float)getPt * ((float)enemyHP / (float)playerHP)); 
+        getPt = Mathf.CeilToInt((float)getPt * ((float)enemyHP / (float)playerHP));
         return getPt;
     }
 

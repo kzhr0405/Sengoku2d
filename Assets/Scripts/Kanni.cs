@@ -37,17 +37,20 @@ public class Kanni : MonoBehaviour {
 				myKanniList.Add(myKanni);
 			}
 		}
-        string myKanniWithBusyo = PlayerPrefs.GetString("myKanniWithBusyo");
-        List<string> myKanniWithBusyoList = new List<string>();
-        if (myKanniWithBusyo != null && myKanniWithBusyo != "") {
-            if (myKanniWithBusyo.Contains(",")) {
-                myKanniWithBusyoList = new List<string>(myKanniWithBusyo.Split(delimiterChars));
-            }else {
-                myKanniWithBusyoList.Add(myKanniWithBusyo);
+
+        string myBusyo = PlayerPrefs.GetString("myBusyo");
+        List<string> myBusyoList = new List<string>();
+        List<string> givenKaniList = new List<string>();
+        myBusyoList.AddRange(myBusyo.Split(delimiterChars));
+        foreach (string busyoId in myBusyoList) {
+            //gokui
+            string kanniTmp = "kanni" + busyoId.ToString();
+            int givenKanni = PlayerPrefs.GetInt(kanniTmp);
+            if (givenKanni != 0) {
+                givenKaniList.Add(givenKanni.ToString());
             }
         }
-        myKanniList.AddRange(myKanniWithBusyoList);
-
+        myKanniList.AddRange(givenKaniList);
 
         //Make TargetList
         List<int> targetKanniList = new List<int> ();

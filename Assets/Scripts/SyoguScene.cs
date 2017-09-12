@@ -113,11 +113,17 @@ public class SyoguScene : MonoBehaviour {
 
 				string kanniNameString = kanniScript.getKanni(kanniId);
 				string kanniIkai = kanniScript.getIkai(kanniId);
-				kanniName.transform.FindChild("value").GetComponent<Text>().text = kanniIkai + "\n" + kanniNameString; 
-
-				string effectLabel = kanniScript.getEffectLabel(kanniId);
+				kanniName.transform.FindChild("value").GetComponent<Text>().text = kanniIkai + "\n" + kanniNameString;
+                string effectTarget = kanniScript.getEffectTarget(kanniId);
+                string effectLabel = kanniScript.getEffectLabel(kanniId);
 				int effect = kanniScript.getEffect(kanniId);
-				kanniName.transform.FindChild("effectLabel").GetComponent<Text>().text = effectLabel;
+                kanni.GetComponent<RonkouKousyoMenu>().kanniEffect = effect;
+                if(effectTarget=="hp") {
+                    kanni.GetComponent<RonkouKousyoMenu>().kanniHpFlg = true;
+                }else {
+                    kanni.GetComponent<RonkouKousyoMenu>().kanniHpFlg = false;
+                }
+                kanniName.transform.FindChild("effectLabel").GetComponent<Text>().text = effectLabel;
 				kanniName.transform.FindChild("effectValue").GetComponent<Text>().text = "+" + effect.ToString() + "%"; 
 
 				kanni.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;

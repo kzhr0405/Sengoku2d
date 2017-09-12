@@ -43,12 +43,14 @@ public class GaikouBusyoSelect : MonoBehaviour {
 
 
 		if (DoBtn.name == "DoDoumeiBtn") {
-			//=友好度/10*知略/100
+			//=友好度/20*知略/100
 			string yukoudo = GameObject.Find ("YukouValue").GetComponent<Text> ().text;
-			int ratio = (int.Parse (yukoudo) / 10 + int.Parse (chiryaku) / 100) * kuniDiff;
-			if(ratio>100){
-				ratio = 100;
-			}
+			int ratio = (int.Parse (yukoudo) / 20 + int.Parse (chiryaku) / 100) * kuniDiff;
+			if(ratio>80){
+				ratio = 80;
+			}else if(ratio<0) {
+                ratio = 0;
+            }
 			GameObject.Find ("DoumeiRatio").transform.FindChild ("Value").GetComponent<Text> ().text = ratio.ToString () + "%";
 			GameObject.Find ("DoDoumeiBtn").GetComponent<DoGaikou> ().doumeiRatio = ratio;
 		
@@ -64,7 +66,9 @@ public class GaikouBusyoSelect : MonoBehaviour {
 			float ratio = temp1 * temp3;
 			if(ratio<1){
 				ratio = 1;
-			}
+			}else if(ratio > 80) {
+                ratio = 80;
+            }
 			GameObject.Find ("DoDoukatsuBtn").GetComponent<DoGaikou> ().doukatsuRatio = ratio;
 			GameObject.Find ("DoDoukatsuBtn").GetComponent<DoGaikou> ().moneyOKflg = true;
 

@@ -40,8 +40,13 @@ public class DoKessen : MonoBehaviour {
 
 			//Dummy
 			PlayerPrefs.SetInt("activeStageId", 0);
-			PlayerPrefs.SetInt("activeStageMoney", busyoQty*busyoLv*100);
-			PlayerPrefs.SetInt("activeStageExp", busyoQty*busyoLv*10);
+            int activeStageMoney = busyoQty * busyoLv * 100;
+            int activeStageExp = busyoQty * busyoLv * 10;
+            if (activeStageMoney > 30000) activeStageMoney = 30000;
+            if (activeStageExp > 3000) activeStageExp = 3000;
+
+            PlayerPrefs.SetInt("activeStageMoney", activeStageMoney);
+			PlayerPrefs.SetInt("activeStageExp", activeStageExp);
 			PlayerPrefs.SetString("activeItemType", "");
 			PlayerPrefs.SetInt("activeItemId", 0);
 			PlayerPrefs.SetFloat("activeItemRatio", 0);
@@ -129,8 +134,9 @@ public class DoKessen : MonoBehaviour {
 			//Delete "Start Kassen Flg"
 			PlayerPrefs.DeleteKey("activeLink");
 			PlayerPrefs.SetInt("activePowerType",3);
+            PlayerPrefs.SetBool("lastOneFlg", true);
 
-			PlayerPrefs.Flush();
+            PlayerPrefs.Flush();
 			Application.LoadLevel("preKassen");
 
 

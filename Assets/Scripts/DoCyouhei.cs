@@ -72,9 +72,11 @@ public class DoCyouhei : MonoBehaviour {
 			int bfrChildQty = int.Parse(childStsList[1]);
 			int aftChildQty = bfrChildQty + 1;
 
-			string newChildStsString = childStsString;
-			newChildStsString = childStsList[0] + ":" + aftChildQty.ToString() + ":" + childStsList[2] + ":" + childStsList[3];
-			PlayerPrefs.SetString (temp,newChildStsString);
+            string newChildStsString = childStsList[0] + ":" + aftChildQty.ToString() + ":" + childStsList[2] + ":" + childStsList[3];
+            bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+            if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+                PlayerPrefs.SetString (temp,newChildStsString);
+            }
 
 			PlayerPrefs.SetBool ("questDailyFlg22",true);
 			PlayerPrefs.Flush();

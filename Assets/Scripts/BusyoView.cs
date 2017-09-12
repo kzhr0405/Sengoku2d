@@ -115,9 +115,10 @@ public class BusyoView : MonoBehaviour {
 			GameObject.Find ("BuyuuValue").GetComponent<Text> ().text = adjAtk.ToString ();
 			GameObject.Find ("ChiryakuValue").GetComponent<Text> ().text = adjDfc.ToString ();
 			GameObject.Find ("SpeedValue").GetComponent<Text> ().text = spd.ToString ();
+            NowOnBusyoScript.HP = adjHp;
 
-			//Exp
-			string expId = "exp" + busyoId.ToString ();
+            //Exp
+            string expId = "exp" + busyoId.ToString ();
 			string expString = "";
 			int nowExp = PlayerPrefs.GetInt(expId);
 			Exp exp = new Exp ();
@@ -224,13 +225,24 @@ public class BusyoView : MonoBehaviour {
             if (chParam.Contains(":")) {
 			    char[] delimiterChars = {':'};
 			    string[] ch_list = chParam.Split (delimiterChars);
-			
-			    string ch_type = ch_list [0];
+                bool updateParam = false;
+                string ch_type = ch_list [0];
 			    int ch_num = int.Parse (ch_list [1]);
-			    int ch_lv = int.Parse (ch_list [2]);
-			    float ch_status = float.Parse (ch_list [3]);
-            
-			    string heisyu = "";
+                if (ch_num > 20) {
+                    ch_num = 20;
+                    updateParam = true;
+                }
+                int ch_lv = int.Parse (ch_list [2]);
+                if (ch_lv > 100) {
+                    ch_lv = 100;
+                    updateParam = true;
+                }
+                float ch_status = float.Parse (ch_list [3]);
+                if(updateParam) {
+                    PlayerPrefs.SetString(heiId, ch_type + ":" + ch_num.ToString() + ":" + ch_lv.ToString() + ":" + ch_status.ToString());
+                }
+
+                string heisyu = "";
                 Message msg = new Message();
                 if (ch_type == "KB") {
                     heisyu = msg.getMessage(55);

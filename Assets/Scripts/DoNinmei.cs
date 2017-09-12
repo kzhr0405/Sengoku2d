@@ -72,8 +72,11 @@ public class DoNinmei : MonoBehaviour {
                 string type = "ninmei";
 				msg.makeMessage (text, int.Parse (busyoId), type);
 
-				//Initialization
-				if (Application.loadedLevelName == "naisei") {
+                Jinkei Jinkei = new Jinkei();                
+                Jinkei.jinkeiHpUpda(true, jyosyuHei);
+
+                //Initialization
+                if (Application.loadedLevelName == "naisei") {
 					NaiseiController naisei = new NaiseiController ();
 					naisei.Start ();
 				}else if(Application.loadedLevelName == "busyo"){

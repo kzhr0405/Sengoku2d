@@ -386,13 +386,7 @@ public class GaikouMenu : MonoBehaviour {
 
 			//Get Chiryaku
 			StatusGet sts = new StatusGet();
-            int lv = 0;
-            bool hardFlg = PlayerPrefs.GetBool("hardFlg");
-            if(hardFlg) {
-                lv = 1;
-            }else {
-                lv = PlayerPrefs.GetInt(myBusyoId);
-            }
+            int lv = 1;
             float chiryakuSts = (float)sts.getDfc(int.Parse(myBusyoId),lv);
 			chiryakuSts = chiryakuSts *10;
 
@@ -410,8 +404,9 @@ public class GaikouMenu : MonoBehaviour {
 			}
 
 		}
-
-	}
+        //Scroll Position
+        contents.transform.parent.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0.0f;
+    }
 
 	public void OffGaikouMenuList(){
 		

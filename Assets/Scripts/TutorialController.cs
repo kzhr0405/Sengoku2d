@@ -168,6 +168,9 @@ public class TutorialController : MonoBehaviour {
             GameObject.Find("KumoRight").GetComponent<KumoMove>().runFlg = true;
             GameObject.Find("KumoLeft").GetComponent<KumoMove>().tutorialDoneFlg = true;
             GameObject.Find("KumoRight").GetComponent<KumoMove>().tutorialDoneFlg = true;
+
+            PlayerPrefs.SetBool("questSpecialFlg13", true);
+            PlayerPrefs.Flush();
         }
     }
 

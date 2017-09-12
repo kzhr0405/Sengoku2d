@@ -6,8 +6,10 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class PrepBusyoScrollMenu : MonoBehaviour {
 
-	// Use this for initialization
-	public void PrepareBusyoScrollMenu (List<string> jinkeiBusyo_list) {
+    // Use this for initialization
+    public List<string> jinkeiBusyo_list;
+
+    public void PrepareBusyoScrollMenu () {
         
         //Clear Previous Unit
         foreach (Transform chd in GameObject.Find("Content").transform) {
