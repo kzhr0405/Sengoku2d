@@ -1087,7 +1087,11 @@ public class GameScene : MonoBehaviour {
 		int activeButaiQty = PlayerPrefs.GetInt ("activeButaiQty");
 		int activeButaiLv = PlayerPrefs.GetInt ("activeButaiLv");
 
-		StatusGet sts = new StatusGet ();
+        if (Application.loadedLevelName == "tutorialKassen") {
+            activeBusyoLv = 10;
+        }
+
+        StatusGet sts = new StatusGet ();
 		BusyoInfoGet info = new BusyoInfoGet();
 		int hp = sts.getHp (busyoId, activeBusyoLv);
 		int atk = sts.getAtk (busyoId, activeBusyoLv);

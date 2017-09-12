@@ -263,7 +263,9 @@ public class TutorialController : MonoBehaviour {
             if (obj.GetComponent<Homing>()) {
                 obj.GetComponent<Homing>().enabled = true;
             }else {
-                obj.GetComponent<HomingLong>().enabled = true;
+                if (obj.GetComponent<HomingLong>()) {
+                    obj.GetComponent<HomingLong>().enabled = true;
+                }
             }
         }
         //Player
