@@ -49,13 +49,36 @@ public class KousakuConfirm : MonoBehaviour {
 
 				//Make Scroll
 				GameObject content = scrollObj.transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
-
-				foreach (Transform obj in content.transform) {
+                foreach (Transform obj in content.transform) {
 					Destroy (obj.gameObject);
 				}
 
+                //Sort by Rank
+                List<string> sList = new List<string>();
+                List<string> aList = new List<string>();
+                List<string> bList = new List<string>();
+                List<string> cList = new List<string>();
+                BusyoInfoGet busyoScript = new BusyoInfoGet();
+                foreach (string busyoIdString in myBusyoList) {
+                    string rank = busyoScript.getRank(int.Parse(busyoIdString));
+                    if (rank == "S") {
+                        sList.Add(busyoIdString);
+                    }else if (rank == "A") {
+                        aList.Add(busyoIdString);
+                    }else if (rank == "B") {
+                        bList.Add(busyoIdString);
+                    }else {
+                        cList.Add(busyoIdString);
+                    }
+                }
+                myBusyoList = new List<string>();
+                myBusyoList.AddRange(sList);
+                myBusyoList.AddRange(aList);
+                myBusyoList.AddRange(bList);
+                myBusyoList.AddRange(cList);
+                
 
-				string slotPath = "Prefabs/Map/kousaku/Slot";
+                string slotPath = "Prefabs/Map/kousaku/Slot";
 				string dfcPath = "Prefabs/Map/kousaku/TextObj";
 				for(int i=0; i<myBusyoList.Count; i++){
 
@@ -84,7 +107,7 @@ public class KousakuConfirm : MonoBehaviour {
 					txtObj.transform.localPosition = new Vector3 (5, -12, 0);
 
 					StatusGet sts = new StatusGet();
-					int lv = PlayerPrefs.GetInt (busyoId);
+					int lv = 1;
 					float chiryakuSts = (float)sts.getDfc(int.Parse(busyoId),lv);
 					chiryakuSts = chiryakuSts *10;
 

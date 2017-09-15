@@ -70,17 +70,18 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     myKanniList.RemoveAll(givenKaniList.Contains);
                     /* Data Adjustment End*/
 
-                    myKanniList.Sort ();
+                    List<int> myKanniIntList = myKanniList.ConvertAll(x => int.Parse(x));
+                    myKanniIntList.Sort();
 
-					string pathSlot = "Prefabs/Busyo/KanniSlot";
+                    string pathSlot = "Prefabs/Busyo/KanniSlot";
 					Kanni kanni = new Kanni ();
 					GameObject content = scroll.transform.FindChild ("KanniContent").gameObject;
-					for (int i = 0; i < myKanniList.Count; i++) {
+					for (int i = 0; i < myKanniIntList.Count; i++) {
 						GameObject slot = Instantiate (Resources.Load (pathSlot)) as GameObject;
 						slot.transform.SetParent (content.transform);
 						slot.transform.localScale = new Vector2 (1, 1);
 
-						int kanniIdTmp = int.Parse (myKanniList [i]);
+                        int kanniIdTmp = myKanniIntList[i];
 						string kanniName = kanni.getKanni (kanniIdTmp);
 						string kanniIkai = kanni.getIkai (kanniIdTmp);
 						string EffectLabel = kanni.getEffectLabel (kanniIdTmp);
@@ -99,10 +100,11 @@ public class RonkouKousyoMenu : MonoBehaviour {
                             btn.GetComponent<GiveKanni>().effect = effect;
                         }
                     }
+                    //Scroll Position
+                    scroll.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0.0f;
 
 
-
-				} else {
+                } else {
 					Message msg = new Message ();
 					audioSources [4].Play ();
 					msg.makeMessage (msg.getMessage(60));

@@ -187,12 +187,12 @@ public class Gacya : MonoBehaviour {
 		}
 
         //keep gacya history
-
         string hitBusyoString = hitBusyo [0] + "," + hitBusyo [1] +","+ hitBusyo [2];
         PlayerPrefs.SetString("gacyaHst",hitBusyoString);
 		PlayerPrefs.Flush();
 
-		return hitBusyo;
+        //hitBusyo = new int[3] { 111, 111, 111 };
+        return hitBusyo;
 	}
 
     public int[] doTutorialGacya() {

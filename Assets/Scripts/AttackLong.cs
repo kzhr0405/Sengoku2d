@@ -144,10 +144,9 @@ public class AttackLong : MonoBehaviour {
 
 	public void ChildAttack(GameObject bullet,float aim, string heisyu, bool leftFlg){
 		foreach (Transform child in transform) {
-			Bullet b = new Bullet ();
 			if (child.tag == "PlayerChild" || child.tag == "EnemyChild") {
 				GameObject bull = Instantiate (bullet, child.transform.position, child.transform.rotation) as GameObject;
-				b = bull.GetComponent<Bullet> ();
+                Bullet b = bull.GetComponent<Bullet> ();
 				if(leftFlg){
 					Vector2 targetScale = b.transform.localScale;
 					targetScale.x *= -1;
@@ -165,16 +164,38 @@ public class AttackLong : MonoBehaviour {
 			}
 		}
 	}
+    /*
+    public void ChildAttack(GameObject bullet, float aim, string heisyu, bool leftFlg) {
+        foreach (Transform child in transform) {
+            Bullet b = new Bullet();
+            if (child.tag == "PlayerChild" || child.tag == "EnemyChild") {
+                GameObject bull = Instantiate(bullet, child.transform.position, child.transform.rotation) as GameObject;
+                b = bull.GetComponent<Bullet>();
+                if (leftFlg) {
+                    Vector2 targetScale = b.transform.localScale;
+                    targetScale.x *= -1;
+                    b.transform.localScale = targetScale;
+                }
+                b.attack = childAttack;
+                b.tag = this.tag;
+                b.myHeisyu = heisyu;
+
+                b.aim = aim;
+                b.parent = gameObject.transform;
+
+                //SE
+                audioSourceBattle.Play();
+            }
+        }
+    }
+    */
 
 
+    void OnDisable(){
+        StopCoroutine (coroutine);
+    }
 
-
-
-	void OnDisable(){
-		StopCoroutine (coroutine);
-	}
-
-	void OnEnable(){
+    void OnEnable(){
 		StartCoroutine (coroutine);
 	}
 

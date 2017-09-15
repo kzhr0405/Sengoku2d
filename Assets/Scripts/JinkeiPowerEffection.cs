@@ -140,6 +140,5 @@ public class JinkeiPowerEffection : MonoBehaviour {
             msgObj.transform.FindChild("Text").GetComponent<Text>().text = "総武勇+" + totalAddAtk + "\n" + "総守備+" + totalAddDfc;
         }
 	}
-
-
+    
 }

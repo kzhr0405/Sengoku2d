@@ -8,9 +8,9 @@ public class RonkouScene : MonoBehaviour {
 
     public GameObject firstSlot = null;
 	public Color OKClorBtn = new Color (255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
-	public Color OKClorTxt = new Color (255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+	public Color OKClorTxt = new Color (255f / 255f, 255f / 255f, 255f / 255f, 200f / 255f);
 	public Color NGClorBtn = new Color (133 / 255f, 133 / 255f, 80 / 255f, 255f / 255f);
-	public Color NGClorTxt = new Color (90 / 255f, 90 / 255f, 40 / 255f, 255f / 255f);
+	public Color NGClorTxt = new Color (90 / 255f, 90 / 255f, 40 / 255f, 255f / 200f);
 
 	public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
@@ -73,6 +73,7 @@ public class RonkouScene : MonoBehaviour {
 	public string createScrollView(List<string> myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
         //Scroll View
         string myBusyoString = "";
+        BusyoInfoGet busyoScript = new BusyoInfoGet();
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
             myBusyoString = PlayerPrefs.GetString ("myBusyo");
@@ -99,6 +100,30 @@ public class RonkouScene : MonoBehaviour {
             }
         
             myBusyoList.AddRange(jinkeiTrueBusyoList);
+
+            //Sort by Rank
+            List<string> sList = new List<string>();
+            List<string> aList = new List<string>();
+            List<string> bList = new List<string>();
+            List<string> cList = new List<string>();
+            foreach (string busyoIdString in jinkeiFalseBusyoList) {
+                string rank = busyoScript.getRank(int.Parse(busyoIdString));
+                if (rank == "S") {
+                    sList.Add(busyoIdString);
+                }else if (rank == "A") {
+                    aList.Add(busyoIdString);
+                }else if (rank == "B") {
+                    bList.Add(busyoIdString);
+                }else {
+                    cList.Add(busyoIdString);
+                }
+            }
+            jinkeiFalseBusyoList = new List<string>();
+            jinkeiFalseBusyoList.AddRange(sList);
+            jinkeiFalseBusyoList.AddRange(aList);
+            jinkeiFalseBusyoList.AddRange(bList);
+            jinkeiFalseBusyoList.AddRange(cList);            
+
             myBusyoList.AddRange(jinkeiFalseBusyoList);
         }else {
             //retry tutorial
@@ -107,7 +132,6 @@ public class RonkouScene : MonoBehaviour {
 
         //Instantiate scroll view
         string scrollPath = "Prefabs/Busyo/Slot";
-        BusyoInfoGet busyoScript = new BusyoInfoGet();
         GameObject content = GameObject.Find("Content");
         for (int j=0; j< myBusyoList.Count; j++) {
 			//Slot

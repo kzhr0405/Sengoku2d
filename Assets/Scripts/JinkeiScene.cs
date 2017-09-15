@@ -480,11 +480,10 @@ public class JinkeiScene : MonoBehaviour {
 		foreach (Transform chd in GameObject.Find ("Content").transform){
 			//Delete
 			Destroy(chd.gameObject);
-
 		}
 
-		//Scroll View Change
-		string myBusyoString = PlayerPrefs.GetString ("myBusyo");
+        //Scroll View Change
+        string myBusyoString = PlayerPrefs.GetString ("myBusyo");
 		char[] delimiterChars = {','};
 
 		List<string> myBusyo_list = new List<string>();
@@ -498,9 +497,35 @@ public class JinkeiScene : MonoBehaviour {
 			myBusyo_list.Remove(jinkeiBusyo_list[i]);
 		}
 
-		//Instantiate scroll view
-		string scrollPath = "Prefabs/Jinkei/Slot";
+        //Sort by Rank
+        List<string> sList = new List<string>();
+        List<string> aList = new List<string>();
+        List<string> bList = new List<string>();
+        List<string> cList = new List<string>();
         BusyoInfoGet busyoScript = new BusyoInfoGet();
+        foreach (string busyoIdString in myBusyo_list) {
+            string rank = busyoScript.getRank(int.Parse(busyoIdString));
+            if (rank == "S") {
+                sList.Add(busyoIdString);
+            }
+            else if (rank == "A") {
+                aList.Add(busyoIdString);
+            }
+            else if (rank == "B") {
+                bList.Add(busyoIdString);
+            }
+            else {
+                cList.Add(busyoIdString);
+            }
+        }
+        myBusyo_list = new List<string>();
+        myBusyo_list.AddRange(sList);
+        myBusyo_list.AddRange(aList);
+        myBusyo_list.AddRange(bList);
+        myBusyo_list.AddRange(cList);        
+
+        //Instantiate scroll view
+        string scrollPath = "Prefabs/Jinkei/Slot";        
 		for(int j=0; j<myBusyo_list.Count; j++){
 
             if(myBusyo_list[j] != "0") {

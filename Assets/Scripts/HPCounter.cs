@@ -102,9 +102,13 @@ public class HPCounter : MonoBehaviour {
                         audioSources[4].Play();
                         Color color = Color.blue;
                         if (Application.systemLanguage != SystemLanguage.Japanese) {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "Lose";
+                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "Lose";
+                            }
                         }else {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "敗北";
+                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "敗北";
+                            }
                         }
                         GameObject.Find("winlose").GetComponent<TextMesh>().color = color;
 
@@ -144,9 +148,13 @@ public class HPCounter : MonoBehaviour {
 				        //Chane word
 				        Color color = Color.blue;
                         if (Application.systemLanguage != SystemLanguage.Japanese) {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "Lose";
+                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "Lose";
+                            }
                         } else {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "敗北";
+                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "敗北";
+                            }
                         }
 				        GameObject.Find ("winlose").GetComponent<TextMesh>().color = color;
 					
@@ -448,9 +456,13 @@ public class HPCounter : MonoBehaviour {
 				        string stageName = PlayerPrefs.GetString("activeStageName");
 
                         if (Application.systemLanguage != SystemLanguage.Japanese) {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "Win";
+                            if(GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "Win";
+                            }
                         }else {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "勝利";
+                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "勝利";
+                            }
                         }
 
 

@@ -215,10 +215,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 60e23a9b059f2764285aa6695ebc45ea, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 1
+    m_FontSize: 100
+    m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 1
     m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -329,6 +329,7 @@ MonoBehaviour:
   Circle: {fileID: 0}
   CyouteiSelectScrollView: {fileID: 0}
   SyouninSelectScrollView: {fileID: 0}
+  RequestBuyItem: {fileID: 0}
 --- !u!222 &22204066
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -379,7 +380,7 @@ RectTransform:
   m_GameObject: {fileID: 130384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 22413214}
   m_RootOrder: 2
@@ -387,7 +388,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 145, y: -31.5}
-  m_SizeDelta: {x: 2416.7, y: 361.32}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22413214
 RectTransform:
@@ -450,5 +451,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc79c31262b63b4ea1f5941ab162585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishFontSize: 200
+  englishFontSize: 60
   arialFg: 1
