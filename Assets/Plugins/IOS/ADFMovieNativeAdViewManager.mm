@@ -15,7 +15,8 @@ extern void UnitySendMessage(const char *, const char *, const char *);
 extern "C" {
     void initializeMovieNativeAdViewIOS_(char* appID);
     void loadMovieNativeAdViewIOS_(char* appID);
-    void showMovieNativeAdViewIOS_(char* appID, float x, float y , float width, float height);
+    void showMovieNativeAdViewIOS_(char* appID, float x, float y , float width, float height, float screenW);
+    void setMovieNativeAdViewFrameIOS_(char* appID, float x, float y , float width, float height, float screenW);
     void playMovieNativeAdViewIOS_(char* appID);
     void pauseMovieNativeAdViewIOS_(char* appID);
     void hideMovieNativeAdViewIOS_(char* appID);
@@ -43,7 +44,7 @@ static const char* UTILITY_FUNC_NAME = "MovieNativeAdViewCallback";
 - (id)init {
     self = [super init];
     if ( self ) {
-        
+
     }
     return self;
 }
@@ -53,17 +54,17 @@ static const char* UTILITY_FUNC_NAME = "MovieNativeAdViewCallback";
     if ( instance == nil) {
         instance = [[ADFMovieNativeAdViewManager alloc] init];
     }
-    
+
     if(adMovieNativeAdList == nil){
         adMovieNativeAdList = [@{} mutableCopy];
     }
-    
+
     //iOSが対応バージョンなら、指定した広告枠で動画読み込みを開始
     if(![ADFmyMovieNativeAdView isSupportedOSVersion]){
         return;
     }
     [ADFmyMovieNativeAdView configureWithAppID:appId];
-    
+
     //Unity用のアダプタークラスを生成
     ADFMovieNativeAdViewUnityAdapter* unityAdapter = [[ADFMovieNativeAdViewUnityAdapter alloc] initWithAppID:appId];
     //unityAdapter.delegate = instance;
@@ -93,6 +94,15 @@ static const char* UTILITY_FUNC_NAME = "MovieNativeAdViewCallback";
         ADFmyMovieNativeAdView *nativeAdView = [adapter getMovieNativeAdView];
         [unityView addSubview:nativeAdView.adView];
         nativeAdView.adView.frame = CGRectMake(x, y, width, height);
+    }
+}
+
++ (void)setMovieNativeAdViewFrame:(NSString*)appId x:(float)x y:(float)y width:(float)w height:(float)h {
+    adf_debug_NSLog(@"setMovieNativeAdView");
+    ADFMovieNativeAdViewUnityAdapter* adapter = [ADFMovieNativeAdViewManager getAdapter:appId];
+    if (adapter) {
+        ADFmyMovieNativeAdView *native = [adapter getMovieNativeAdView];
+        native.adView.frame = CGRectMake(x, y, w, h);
     }
 }
 
@@ -170,8 +180,26 @@ void loadMovieNativeAdViewIOS_(char* appID){
     [ADFMovieNativeAdViewManager loadMovieNativeAdView:[NSString stringWithCString:appID encoding:NSUTF8StringEncoding]];
 }
 
-void showMovieNativeAdViewIOS_(char* appID, float x, float y , float width, float height){
-    [ADFMovieNativeAdViewManager showMovieNativeAdView:[NSString stringWithCString:appID encoding:NSUTF8StringEncoding] x:x y:y width:width height:height];
+void showMovieNativeAdViewIOS_(char* appID, float x, float y, float width, float height, float screenW) {
+    float scale = UIScreen.mainScreen.bounds.size.width / screenW;
+    float _w = width * scale;
+    float _h = height * scale;
+    float _x = x * scale;
+    float _y = y * scale;
+
+    NSString *_appID = [NSString stringWithCString:appID encoding:NSUTF8StringEncoding];
+    [ADFMovieNativeAdViewManager showMovieNativeAdView:_appID x:_x y:_y width:_w height:_h];
+}
+
+void setMovieNativeAdViewFrameIOS_(char* appID, float x, float y, float width, float height, float screenW) {
+    float scale = UIScreen.mainScreen.bounds.size.width / screenW;
+    float _w = width * scale;
+    float _h = height * scale;
+    float _x = x * scale;
+    float _y = y * scale;
+
+    NSString *_appID = [NSString stringWithCString:appID encoding:NSUTF8StringEncoding];
+    [ADFMovieNativeAdViewManager setMovieNativeAdViewFrame:_appID x:_x y:_y width:_w height:_h];
 }
 
 void playMovieNativeAdViewIOS_(char* appID){

@@ -43,7 +43,10 @@ public class AdfurikunMovieNativeAdViewUtility : MonoBehaviour
 	private static extern void loadMovieNativeAdViewIOS_(string appID);
 
 	[DllImport("__Internal")]
-	private static extern void showMovieNativeAdViewIOS_(string appID, float x, float y, float width, float height);
+	private static extern void showMovieNativeAdViewIOS_(string appID, float x, float y, float width, float height, float screenW);
+
+	[DllImport("__Internal")]
+	private static extern void setMovieNativeAdViewFrameIOS_(string appID, float x, float y, float width, float height, float screenW);
 
 	[DllImport("__Internal")]
 	private static extern void playMovieNativeAdViewIOS_(string appID);
@@ -156,6 +159,7 @@ public class AdfurikunMovieNativeAdViewUtility : MonoBehaviour
 		#elif UNITY_ANDROID
 		if (Application.platform == RuntimePlatform.Android) {
 			this.makeInstance_AdfurikunMovieNativeAdViewController ().CallStatic ("load", appId);
+
 		}
 		#endif
 	}
@@ -170,11 +174,42 @@ public class AdfurikunMovieNativeAdViewUtility : MonoBehaviour
 		#if UNITY_IPHONE
 		if (Application.platform == RuntimePlatform.IPhonePlayer)
 		{
-			showMovieNativeAdViewIOS_(appId, x, y, width, height);
+			showMovieNativeAdViewIOS_(appId, x, y, width, height, Screen.width);
 		}
 		#elif UNITY_ANDROID
 		if (Application.platform == RuntimePlatform.Android) {
-			this.makeInstance_AdfurikunMovieNativeAdViewController ().CallStatic ("show", appId, x, y, width * androidDensity, height * androidDensity);
+			AndroidJavaClass player = new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
+			AndroidJavaObject activity = player.GetStatic<AndroidJavaObject> ("currentActivity");
+			AndroidJavaObject window = activity.Call<AndroidJavaObject> ("getWindow");
+			AndroidJavaObject decorView = window.Call<AndroidJavaObject> ("getDecorView");
+			int decorViewW  = decorView.Call<int> ("getWidth");
+			int decorViewH  = decorView.Call<int> ("getHeight");
+
+			float densityW = decorViewW * (width/Screen.width);
+			float densityH = decorViewH * (height/Screen.height);
+			float pointX   = decorViewW * (x/Screen.width);
+			float pointY   = decorViewH * (y/Screen.height);
+
+			this.makeInstance_AdfurikunMovieNativeAdViewController ().CallStatic ("show", appId, pointX, pointY, densityW, densityH);
+		}
+		#endif
+	}
+
+	public void setMovieNativeAdViewFrame (float x, float y, float width, float height)
+	{
+		this.setMovieNativeAdViewFrame (this.getAppID (), x, y, width, height);
+	}
+
+	public void setMovieNativeAdViewFrame (string appId, float x, float y, float width, float height)
+	{
+		#if UNITY_IPHONE
+		if (Application.platform == RuntimePlatform.IPhonePlayer)
+		{
+			setMovieNativeAdViewFrameIOS_(appId, x, y, width, height, Screen.width);
+		}
+		#elif UNITY_ANDROID
+		if (Application.platform == RuntimePlatform.Android) {
+			this.setMovieNativeAdView(appId, x, y, width, height);
 		}
 		#endif
 	}

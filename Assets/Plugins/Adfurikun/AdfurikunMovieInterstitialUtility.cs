@@ -54,6 +54,7 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 
 	private static AdfurikunMovieInterstitialUtility mInstance = null;
 	private GameObject mMovieInterstitialSrcObject = null;
+	private AdfurikunUnityListener mAdfurikunUnityListener = null;
 
 	#if UNITY_IPHONE
 	[DllImport("__Internal")]
@@ -136,7 +137,10 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 			//動画リワード
 			AndroidJavaClass player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 			AndroidJavaObject activity = player.GetStatic<AndroidJavaObject>("currentActivity");
-			this.makeInstance_AdfurikunMovieInterstitialController().CallStatic("initialize", activity, appId);
+			if (mAdfurikunUnityListener == null) {
+				mAdfurikunUnityListener = new AdfurikunUnityListener();
+			}
+			this.makeInstance_AdfurikunMovieInterstitialController().CallStatic("initialize", activity, appId, mAdfurikunUnityListener);
 		}
 		#endif
 	}
@@ -177,13 +181,7 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 		}
 		this.mMovieInterstitialSrcObject = movieInterstitialSrcObject;
 		if (this.isPreparedMovieInterstitial (appId)) {
-			if (this.mMovieInterstitialSrcObject != null) {
-				ArrayList arr = new ArrayList();
-				arr.Add((int)ADF_MovieStatus.PrepareSuccess);
-				arr.Add(appId);
-				arr.Add("");
-				this.mMovieInterstitialSrcObject.SendMessage("MovieInterstitialCallback", arr);
-			}
+			this.sendMessage (ADF_MovieStatus.PrepareSuccess, appId, "");
 		}
 	}
 
@@ -204,13 +202,7 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 		if (Application.platform == RuntimePlatform.IPhonePlayer)
 		{
 			if (!isPreparedMovieInterstitial (appId)) {
-				if (this.mMovieInterstitialSrcObject != null) {
-					ArrayList arr = new ArrayList();
-					arr.Add((int)ADF_MovieStatus.NotPrepared);
-					arr.Add(appId);
-					arr.Add("");
-					this.mMovieInterstitialSrcObject.SendMessage("MovieInterstitialCallback", arr);
-				}
+				this.sendMessage (ADF_MovieStatus.NotPrepared, appId, "");
 			}else{
 				playMovieInterstitialIOS_(appId);
 			}
@@ -219,13 +211,7 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 		if (Application.platform == RuntimePlatform.Android)
 		{
 			if (!isPreparedMovieInterstitial (appId)) {
-				if (this.mMovieInterstitialSrcObject != null) {
-					ArrayList arr = new ArrayList();
-					arr.Add((int)ADF_MovieStatus.NotPrepared);
-					arr.Add(appId);
-					arr.Add("");
-					this.mMovieInterstitialSrcObject.SendMessage("MovieInterstitialCallback", arr);
-				}
+				this.sendMessage (ADF_MovieStatus.NotPrepared, appId, "");
 			}else{
 				Screen.orientation = ScreenOrientation.AutoRotation;
 				//動画リワード
@@ -237,6 +223,7 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 
 	/**
 	 * コールバック受け取りメソッド
+	 * iOS
 	 */
 	public void MovieInterstitialCallback(string param){
 
@@ -269,11 +256,46 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 		default:
 			return;
 		}
-		ArrayList arr = new ArrayList();
-		arr.Add((int)messageStateName);
-		arr.Add(appID);
-		arr.Add(adNetworkKey);
+		this.sendMessage (messageStateName, appID, adNetworkKey);
+	}
+
+	/**
+	 * コールバック受け取りメソッド
+	 * Android
+	 */
+	public class AdfurikunUnityListener : AndroidJavaProxy{
+
+		public AdfurikunUnityListener() : base("jp.tjkapp.adfurikunsdk.moviereward.UnityMovieListener"){
+
+		}
+
+		public void onPrepareSuccess(String appId){
+			AdfurikunMovieInterstitialUtility.mInstance.sendMessage (ADF_MovieStatus.PrepareSuccess, appId, "");
+		}
+
+		public void onStartPlaying(String appId , String adnetworkKey){
+			AdfurikunMovieInterstitialUtility.mInstance.sendMessage (ADF_MovieStatus.StartPlaying, appId, adnetworkKey);
+		}
+
+		public void onFinishedPlaying(String appId , String adnetworkKey){
+			AdfurikunMovieInterstitialUtility.mInstance.sendMessage (ADF_MovieStatus.FinishedPlaying, appId, adnetworkKey);
+		}
+
+		public void onFailedPlaying(String appId , String adnetworkKey){
+			AdfurikunMovieInterstitialUtility.mInstance.sendMessage (ADF_MovieStatus.FailedPlaying, appId, adnetworkKey);
+		}
+
+		public void onAdClose(String appId , String adnetworkKey){
+			AdfurikunMovieInterstitialUtility.mInstance.sendMessage (ADF_MovieStatus.AdClose, appId, adnetworkKey);
+		}
+	}
+
+	public void sendMessage(ADF_MovieStatus status , String appId , String adnetworkKey){
 		if (this.mMovieInterstitialSrcObject != null) {
+			ArrayList arr = new ArrayList();
+			arr.Add((int)status);
+			arr.Add(appId);
+			arr.Add(adnetworkKey);
 			this.mMovieInterstitialSrcObject.SendMessage("MovieInterstitialCallback", arr);
 		}
 	}

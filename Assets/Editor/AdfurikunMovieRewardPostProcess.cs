@@ -23,7 +23,7 @@ public class AdfurikunMovieRewardPostProcess {
 	private static bool use_Tapjoy = true; //Tapjoyを有効にしたい場合はtrue
 	private static bool use_Vungle = true; //Vungleを有効にしたい場合はtrue
 	private static bool use_SmaadVideo = true; //SMAAD Videoを有効にしたい場合はtrue
-	private static bool use_Five = false; //Fiveを有効にしたい場合はtrue
+	private static bool use_Five = true; //Fiveを有効にしたい場合はtrue
 
 	// ビルド時に実行される
 	[PostProcessBuild]
