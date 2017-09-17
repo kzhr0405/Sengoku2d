@@ -230,8 +230,11 @@ public class DoCyouteiMenu : MonoBehaviour {
 				}
 
 
-				//Hist
-				PlayerPrefs.SetInt ("cyoutekiDaimyo", targetDaimyoId);
+                //Hist
+                PlayerPrefs.SetBool("questSpecialFlg11", true);
+                MainStageController main = new MainStageController();
+                main.questExtension();
+                PlayerPrefs.SetInt ("cyoutekiDaimyo", targetDaimyoId);
 				PlayerPrefs.Flush ();
 
 
@@ -296,10 +299,12 @@ public class DoCyouteiMenu : MonoBehaviour {
 				anim.transform.localScale = new Vector2 (200, 200);
 				anim.transform.localPosition = new Vector2 (0, 100);
 
-
-
-
-			} else {
+                PlayerPrefs.SetBool("questSpecialFlg10", true);
+                MainStageController main = new MainStageController();
+                main.questExtension();
+                PlayerPrefs.Flush();
+                
+            } else {
 				audioSources [4].Play ();
 				msg.makeMessage (msg.getMessage(34));
 			}

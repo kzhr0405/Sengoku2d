@@ -304,7 +304,7 @@ public class EnemyInstance : MonoBehaviour {
 			prefab.GetComponent<EnemyHP> ().taisyo = true;
 
 		}
-
+        
 		//SE
 		AudioController audio = new AudioController();
 		audio.addComponentMoveAttack (prefab,ch_type);
@@ -468,11 +468,10 @@ public class EnemyInstance : MonoBehaviour {
 				if (shiroFlg && AIType == 3) {
 					AIType = 1;
 				}
-
 			}
 
-			//Size
-			buildingObj.GetComponent<ShiroSearch> ().busyoObjSize.Add(prefab.transform.localScale);
+            //Size
+            buildingObj.GetComponent<ShiroSearch> ().busyoObjSize.Add(prefab.transform.localScale);
 			prefab.transform.localScale = new Vector2 (0,0);
 
 			//AI
@@ -484,9 +483,7 @@ public class EnemyInstance : MonoBehaviour {
 			float randomValue = randomList [rdm];
 			buildingObj.transform.FindChild("BusyoDtlEnemy").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = (float)hp * randomValue;
 			buildingObj.GetComponent<EnemyHP>().life = (float)hp*randomValue;
-
-
-
+            
 		}
 
 	}
@@ -512,12 +509,10 @@ public class EnemyInstance : MonoBehaviour {
 				AIType = 3;			
 			}
 		}
-
-		return AIType;
+        return AIType;
 	}
 
-
-	public int getChildStatus(int lv, string ch_type, int linkNo){
+    public int getChildStatus(int lv, string ch_type, int linkNo){
 		Entity_lvch_mst chLvMst  = Resources.Load ("Data/lvch_mst") as Entity_lvch_mst;
 		
 		int startline = 0;

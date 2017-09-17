@@ -12,19 +12,18 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 		/*******************************/
 		System.DateTime now = System.DateTime.Now;
 		PlayerPrefs.SetString ("lasttime", now.ToString ());
-		//PlayerPrefs.SetInt ("hyourou",100);
-		//PlayerPrefs.SetInt ("money",10000);
 		PlayerPrefs.SetString ("yearSeason","1560,1");
 		PlayerPrefs.DeleteKey("gameClearFlg");
 		PlayerPrefs.DeleteKey("gameClearItemGetFlg");
 		PlayerPrefs.DeleteKey("gameOverFlg");
 		PlayerPrefs.DeleteKey("kuniClearedFlg");
-
-
-		/*******************************/
-		/*****   Delete History    *****/
-		/*******************************/
-		PlayerPrefs.DeleteKey("TrackTotalKassenNo");
+        PlayerPrefs.DeleteKey("rengouFlg");
+        PlayerPrefs.DeleteKey("rengouDaimyo");
+        
+        /*******************************/
+        /*****   Delete History    *****/
+        /*******************************/
+        PlayerPrefs.DeleteKey("TrackTotalKassenNo");
 		PlayerPrefs.DeleteKey("TrackWinNo");
 		PlayerPrefs.DeleteKey("TrackTettaiNo");
 		PlayerPrefs.DeleteKey("TrackBiggestDaimyoId");

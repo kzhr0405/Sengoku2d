@@ -18,5 +18,7 @@ public class Entity_daimyo_mst : ScriptableObject
 		public int busyoId;
 		public int senryoku;
 		public string daimyoNameEng;
+		public string clanName;
+		public string clanNameEng;
 	}
 }

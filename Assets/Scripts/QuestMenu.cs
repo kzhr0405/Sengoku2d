@@ -142,6 +142,7 @@ public class QuestMenu : MonoBehaviour {
                 GameObject slot = Instantiate(Resources.Load(activeCountSlotPath)) as GameObject;
                 slot.transform.SetParent(content.transform);
                 slot.transform.localScale = new Vector2(1, 1);
+                slot.name = "ActiveQuestCountSlot" + id.ToString();
                 string title = "";
                 if (Application.systemLanguage != SystemLanguage.Japanese) {
                     title = questCountMst.param[id].titleEng;
@@ -247,6 +248,7 @@ public class QuestMenu : MonoBehaviour {
                 GameObject slot = Instantiate(Resources.Load(activeSlotPath)) as GameObject;
                 slot.transform.SetParent(content.transform);
                 slot.transform.localScale = new Vector2(1, 1);
+                slot.name = "ActiveQuestSlot" + id.ToString();
 
                 string title = questScript.getQuestTitle(id);
                 string exp = questScript.getQuestExp(id);
@@ -298,6 +300,7 @@ public class QuestMenu : MonoBehaviour {
                 GameObject slot = Instantiate(Resources.Load(inactiveSlotPath)) as GameObject;
                 slot.transform.SetParent(content.transform);
                 slot.transform.localScale = new Vector2(1, 1);
+                slot.name = "InactiveQuestSlot" + id.ToString();
 
                 string title = questScript.getQuestTitle(id);
                 string exp = questScript.getQuestExp(id);

@@ -25,7 +25,6 @@ public class MainStageController : MonoBehaviour {
 
     public int addJinkeiNo = 0;
     public int minusBusyoQty = 0;
-    public float minustPercent = 50;
     public bool hardFlg;
 
     //Season
@@ -203,6 +202,7 @@ public class MainStageController : MonoBehaviour {
                 if (PlayerPrefs.GetBool("addJinkei4")) {
                     addJinkeiNo = addJinkeiNo + 1;
                 }
+                float minustPercent = 20;
                 for (int i = 0; i < addJinkeiNo; i++) {
                     float percent = Random.value;
                     percent = percent * 100;
@@ -303,8 +303,6 @@ public class MainStageController : MonoBehaviour {
 				}
 
 				string kuniPath = "Prefabs/Map/Kuni/";
-
-
                 KuniInfo kuniScript = new KuniInfo();
                 kuniScript.updateOpenKuni(myDaimyo,seiryoku);
 
@@ -472,6 +470,9 @@ public class MainStageController : MonoBehaviour {
 						}
 					}
 				}
+                bool rengouFlg = PlayerPrefs.GetBool("rengouFlg");
+                string rengouDaimyo = PlayerPrefs.GetString("rengouDaimyo");
+                UpdateRengouKuniIcon(rengouFlg, rengouDaimyo);
                 
                 //From Naisei or Kassen Check
                 bool fromNaiseiFlg = PlayerPrefs.GetBool ("fromNaiseiFlg");
@@ -518,7 +519,7 @@ public class MainStageController : MonoBehaviour {
                                     int rdmId = UnityEngine.Random.Range(1, 11);
                                     if(rdmId >= 5) {
                                         MainEventHandler gameEvent = new MainEventHandler();
-                                        gameEvent.mainHandler();
+                                        gameEvent.mainHandler(myKuniQtyIsBiggestFlg, myKuniQtyIsTwiceFlg);                                        
                                     }
                                 }else {
                                     PlayerPrefs.SetBool("fromShisyaFlg", false);
@@ -775,7 +776,7 @@ public class MainStageController : MonoBehaviour {
                         rdmEventTimer -= Time.deltaTime;
 				        if (rdmEventTimer <= 0) {
 					        MainEventHandler gameEvent = new MainEventHandler ();
-					        gameEvent.mainHandler ();
+					        gameEvent.mainHandler (myKuniQtyIsBiggestFlg, myKuniQtyIsTwiceFlg);
 
 					        rdmEventTimer = UnityEngine.Random.Range (rdmEventMin, rdmEventMax);
 
@@ -1843,5 +1844,24 @@ public class MainStageController : MonoBehaviour {
         return seasonText;
     }
 
+    public void UpdateRengouKuniIcon(bool rengouFlg, string rengouDaimyo) {
+        if(rengouFlg) {
+            if(rengouDaimyo != "" && rengouDaimyo != null) {
+                char[] delimiterChars = { ',' };
+                List<string> rengouDaimyoList = new List<string>();
+                rengouDaimyoList = new List<string>(rengouDaimyo.Split(delimiterChars));
 
+                GameObject KuniIconView = GameObject.Find("KuniIconView").gameObject;
+                Color rengouColor = new Color(255f / 255f, 80f / 255f, 0f / 255f, 150f / 255f); //Red
+                foreach (Transform kuni in KuniIconView.transform) {
+                    int daimyoId = kuni.GetComponent<SendParam>().daimyoId;
+                    if(rengouDaimyoList.Contains(daimyoId.ToString())) {
+                        //Change Color
+                        Outline Outline = kuni.GetComponent<Outline>();
+                        Outline.effectColor = rengouColor;
+                    }
+                }
+            }
+        }
+    }
 }

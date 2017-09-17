@@ -13,7 +13,8 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 		GameObject kuniView = GameObject.Find("KuniIconView");
 		if (kuniView.transform.FindChild (srcKuni.ToString ())) {
 			SendParam param = kuniView.transform.FindChild (srcKuni.ToString ()).GetComponent<SendParam> ();
-			int busyoQty = param.busyoQty;
+            Gaikou gaikou = new Gaikou();
+            int busyoQty = param.busyoQty;
 			int busyoLv = param.busyoLv;
 			int butaiQty = param.butaiQty;
 			int butaiLv = param.butaiLv;
@@ -40,6 +41,7 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 			PlayerPrefs.SetString ("activeStageName", kassenName);
 
 			PlayerPrefs.SetInt ("activeDaimyoId", srcDaimyoId);
+            Debug.Log("busyoQty" + busyoQty);
 			PlayerPrefs.SetInt ("activeBusyoQty", busyoQty);
 			PlayerPrefs.SetInt ("activeBusyoLv", busyoLv);
 			PlayerPrefs.SetInt ("activeButaiQty", butaiQty);
@@ -62,8 +64,81 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 				PlayerPrefs.DeleteKey ("enemyEngunList");
 			}
 
-			//Gaikou Down
-			Gaikou gaikou = new Gaikou ();
+            //Enemy Rengou
+            bool rengouFlg = PlayerPrefs.GetBool("rengouFlg");
+            if(rengouFlg) {
+                string rengouDaimyo = PlayerPrefs.GetString("rengouDaimyo");
+                char[] delimiterChars = { ',' };
+                List<string> rengouDaimyoList = new List<string>();
+                rengouDaimyoList = new List<string>(rengouDaimyo.Split(delimiterChars));
+
+                //Target Kuni List Prep.
+                List<int> baseKuni = new List<int>();
+                string seiryoku = PlayerPrefs.GetString("seiryoku");
+                List<string> seiryokuList = new List<string>();
+                seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+
+                baseKuni.AddRange(kuni.getMappingKuni(dstKuni));
+                for(int i=0; i<seiryokuList.Count; i++) {
+                    string daimyoId = seiryokuList[i];
+                    if (int.Parse(daimyoId) == srcDaimyoId) {
+                        int kuniId = i + 1;
+                        baseKuni.AddRange(kuni.getMappingKuni(kuniId));
+                    }
+                }
+                List<int> engunDaimyoList = new List<int>();
+                for (int i = 0; i < baseKuni.Count; i++) {
+                    int tmpDaimyoId = int.Parse(seiryokuList[baseKuni[i] - 1]);
+                    if (!engunDaimyoList.Contains(tmpDaimyoId)) {
+                        if(rengouDaimyoList.Contains(tmpDaimyoId.ToString())) {
+                            engunDaimyoList.Add(tmpDaimyoId);
+                        }
+                    }
+                }
+                if (engunDaimyoList.Count != 0) {
+                    Doumei doumei = new Doumei();
+                    for (int k = 0; k < engunDaimyoList.Count; k++) {
+                        string engunDaimyo = engunDaimyoList[k].ToString();
+                        int yukoudo = gaikou.getExistGaikouValue(int.Parse(engunDaimyo), srcDaimyoId);
+
+                        //mydaimyo doumei check
+                        bool myDoumeiFlg = false;
+                        myDoumeiFlg = doumei.myDoumeiExistCheck(int.Parse(engunDaimyo));
+                        if (myDoumeiFlg) {
+                            yukoudo = yukoudo / 2;
+                        }
+
+                        //engun check
+                        MainEventHandler main = new MainEventHandler();
+                        bool engunFlg = main.CheckByProbability(yukoudo);
+                        if (engunFlg) {
+                            //rengou check
+                            int count = 1;//engun busyo count
+                            if (rengouFlg && rengouDaimyoList.Contains(engunDaimyo)) count = UnityEngine.Random.Range(2, 6);//2-5
+                            for (int i = 0; i < count; i++) {
+                                //Engun OK
+                                engunFlg = true;
+                                if (dstEngunDaimyoId != null && dstEngunDaimyoId != "") {
+                                    dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
+                                    string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList);
+                                    dstEngunSts = dstEngunSts + ":" + engunDaimyo + "-" + tempEngunSts;
+                                }
+                                else {
+                                    dstEngunDaimyoId = engunDaimyo;
+                                    string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList);
+                                    dstEngunSts = engunDaimyo + "-" + tempEngunSts;
+
+                                }
+                            }
+                        }
+                    }
+                    PlayerPrefs.SetString("enemyEngunList", dstEngunSts);
+                }
+
+
+            }
+
+            //Gaikou Down
 			gaikou.downGaikouByAttack (srcDaimyoId, dstDaimyoId);
 
 			//Delete "Start Kassen Flg"

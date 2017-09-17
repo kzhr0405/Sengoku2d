@@ -79,9 +79,16 @@ public class StartKassen : MonoBehaviour {
 
 			    //Enemy Doumei Handling
 			    PlayerPrefs.DeleteKey("enemyEngunList");
-			    string doumeiTemp = "doumei" + activeDaimyoId;
+                bool rengouFlg = PlayerPrefs.GetBool("rengouFlg");
+                string rengouDaimyo = PlayerPrefs.GetString("rengouDaimyo");
+                List<string> rengouDaimyoList = new List<string>();
+                char[] delimiterChars = { ',' };
+                if (rengouDaimyo != "" && rengouDaimyo != null) {
+                    rengouDaimyoList = new List<string>(rengouDaimyo.Split(delimiterChars));
+                }
+                string doumeiTemp = "doumei" + activeDaimyoId;
 			    string enemyDoumeiString = PlayerPrefs.GetString (doumeiTemp);
-			    char[] delimiterChars = {','};
+			    
 			    List<string> doumeiList = new List<string>();
 			    if(enemyDoumeiString != null && enemyDoumeiString !=""){
 				    if(enemyDoumeiString.Contains(",")){
@@ -118,22 +125,26 @@ public class StartKassen : MonoBehaviour {
 					    MainEventHandler main = new MainEventHandler();
 					    bool dstEngunFlg = main.CheckByProbability (yukoudo);
 					    if(dstEngunFlg){
-						    //Engun OK
-						    dstEngunFlg = true;
-						    if(dstEngunDaimyoId !=null && dstEngunDaimyoId !=""){
-							    dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-							    string tempEngunSts = main.getEngunSts(engunDaimyo);
-							    dstEngunSts = dstEngunSts + ":" + engunDaimyo + "-" + tempEngunSts;
+                            //rengou check
+                            int count = 1;//engun busyo count
+                            if (rengouFlg && rengouDaimyoList.Contains(engunDaimyo)) count = UnityEngine.Random.Range(2, 6);//2-5
+                            for(int i=0; i<count; i++) {
+                                //Engun OK
+                                dstEngunFlg = true;
+						        if(dstEngunDaimyoId !=null && dstEngunDaimyoId !=""){
+							        dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
+							        string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts,seiryokuList);
+							        dstEngunSts = dstEngunSts + ":" + engunDaimyo + "-" + tempEngunSts;
+						        }else{
+							        dstEngunDaimyoId = engunDaimyo;
+							        string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList);
+							        dstEngunSts = engunDaimyo + "-" + tempEngunSts;
 							
-						    }else{
-							    dstEngunDaimyoId = engunDaimyo;
-							    string tempEngunSts = main.getEngunSts(engunDaimyo);
-							    dstEngunSts = engunDaimyo + "-" + tempEngunSts;
-							
-						    }
-					    }
+						        }
+                            }
+                        }
 				    }
-				    PlayerPrefs.SetString("enemyEngunList", dstEngunSts);
+                    PlayerPrefs.SetString("enemyEngunList", dstEngunSts);
 
 			    }
 

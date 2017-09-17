@@ -33,7 +33,7 @@ public class MainEventHandler : MonoBehaviour {
     public List<int> downDaimyo1List = new List<int>();
     public List<int> downDaimyo2List = new List<int>();
 
-    public void mainHandler(){
+    public void mainHandler(bool myKuniQtyIsBiggestFlg, bool myKuniQtyIsTwiceFlg) {
 
         /*Hard Mode*/
         bool hardFlg = PlayerPrefs.GetBool("hardFlg");
@@ -700,12 +700,12 @@ public class MainEventHandler : MonoBehaviour {
 			}
 		}
 
-		/************/
-		/***Syogun***/
-		/************/
-		//Exist Check
-		if(CheckByProbability (syogunShisyaRatio)){
-			int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
+        /************/
+        /***Syogun***/
+        /************/
+        //Exist Check
+        int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
+        if (CheckByProbability (syogunShisyaRatio)){			
 			if (syogunDaimyoId != myDaimyo) {
 
 				string syogunDaimyoName = daimyo.getName (syogunDaimyoId);
@@ -1168,9 +1168,101 @@ public class MainEventHandler : MonoBehaviour {
 			PlayerPrefs.Flush ();
 		}
 
-		
-		/*Message*/
-		if (messageList.Count != 0) {
+        if (myKuniQtyIsBiggestFlg && myKuniQtyIsTwiceFlg) {
+            /**rengou**/
+            bool rengouFlg = PlayerPrefs.GetBool("rengouFlg");
+            if (!rengouFlg) {
+                Debug.Log("rengoooooooooo");
+                //doumei each other
+                List<string> rengouDaimyoList = new List<string>();
+                List<string> rengouSeiryokuList = seiryokuList;
+                foreach (string daimyoId in rengouSeiryokuList) {
+                    if(!rengouDaimyoList.Contains(daimyoId)) {
+                        rengouDaimyoList.Add(daimyoId);
+                    }
+                }
+                List<string> removeDaimyoList = new List<string>();
+                foreach (string daimyoId in rengouDaimyoList) {
+                    string gaikouTmp = "gaikou" + daimyoId;
+                    int gaikouValue = PlayerPrefs.GetInt(gaikouTmp);
+                    float percent = UnityEngine.Random.value;
+                    percent = percent * 100;
+                    if (percent < gaikouValue) {                       
+                        removeDaimyoList.Add(daimyoId);
+                    }
+                }
+
+                rengouDaimyoList.Remove(myDaimyo.ToString()); //remove my daimyo
+                rengouDaimyoList.RemoveAll(myDoumeiList.Contains); //remove my doumei
+                rengouDaimyoList.RemoveAll(removeDaimyoList.Contains); //remove my good gaikou daimyo
+
+                if (rengouDaimyoList.Count > 1) {
+
+                    string allClanName = "";
+                    string rengouDaimyo = "";
+                    Daimyo daimyo = new Daimyo();
+                    DoGaikou gaikoScript = new DoGaikou();
+                    string yourClanName = daimyo.getClanName(myDaimyo);
+                    foreach (string daimyoId in rengouDaimyoList) {
+                        //reduce my gaikou to 0
+                        string temp = "gaikou" + daimyoId.ToString();
+                        PlayerPrefs.SetInt(temp, 0);
+                        gaikoScript.downYukouOnIcon(int.Parse(daimyoId), 0);
+
+                        string clanName = daimyo.getClanName(int.Parse(daimyoId));
+                        if(allClanName == "" || allClanName == null) {
+                            allClanName = clanName;
+                            rengouDaimyo = daimyoId;
+                        }else {
+                            allClanName = allClanName + "," + clanName;
+                            rengouDaimyo = rengouDaimyo + "," + daimyoId;
+                        }
+
+                        string doumeiTmp = "doumei" + daimyoId;
+                        string doumeiString = "";
+                        foreach (string doumeiDaimyoId in rengouDaimyoList) {
+                            if(doumeiDaimyoId != daimyoId) {
+                                //doumei
+                                if (doumeiString != "" && doumeiString != null) {
+                                    doumeiString = doumeiString + "," + doumeiDaimyoId;
+                                }else {
+                                    doumeiString = doumeiDaimyoId;
+                                }
+                                //gaikou
+                                if (int.Parse(daimyoId) < int.Parse(doumeiDaimyoId)) {
+                                    temp = daimyoId.ToString() + "gaikou" + doumeiDaimyoId.ToString();
+                                }else {
+                                    temp = doumeiDaimyoId.ToString() + "gaikou" + daimyoId.ToString();
+                                }
+                                PlayerPrefs.SetInt(temp, 100);
+                            }
+                            PlayerPrefs.SetString(doumeiTmp, doumeiString);
+                        }
+                    }
+                    //shisya
+                    string messageText = "";
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        messageText = allClanName + " became the allied powers.";
+                    }else {
+                        messageText = allClanName + "が連合を結成し、" + yourClanName +"包囲網を敷きました。";
+                    }
+                    messageList.Add(messageText);
+
+                    MainStageController main = new MainStageController();
+                    main.UpdateRengouKuniIcon(true, rengouDaimyo);
+                    //flg
+                    PlayerPrefs.SetBool("rengouFlg",true);
+                    PlayerPrefs.SetString("rengouDaimyo",rengouDaimyo);
+                    PlayerPrefs.Flush();
+                }
+            }
+        }
+
+
+
+
+        /*Message*/
+        if (messageList.Count != 0) {
 			audioSources[5].Play();
 
 			/*Common Process*/
@@ -1424,7 +1516,81 @@ public class MainEventHandler : MonoBehaviour {
 		return engunSts;
 	}
 
-	public int getEngunHei(string engunSts){
+
+    public int randomEngunBusyoWODuplication(int activeDaimyoId, List<int>doneBusyoList) {
+        int engunBusyoId = 0;
+
+        Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
+        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
+        int daimyoBusyoId = daimyoMst.param[activeDaimyoId - 1].busyoId;
+        List<int> busyoList = new List<int>();
+
+        for (int i = 0; i < busyoMst.param.Count; i++) {
+            int busyoId = busyoMst.param[i].id;
+            int daimyoId = busyoMst.param[i].daimyoId;
+            if (daimyoId == activeDaimyoId) {
+                busyoList.Add(busyoId);
+            }
+        }
+        busyoList.RemoveAll(doneBusyoList.Contains);
+
+        int rdmId = UnityEngine.Random.Range(0, busyoList.Count);
+        if (busyoList.Count != 0) {
+            engunBusyoId = busyoList[rdmId];
+        }else {
+            engunBusyoId = 35;
+        }
+        return engunBusyoId;
+    }
+
+
+    public string getSomeEngunSts(string engunDaimyoId, string enemyEngunList, List<string> seiryokuList) {
+
+        List<string> daimyoEnguniList = new List<string>();
+        char[] delimiterChars = { ':' };
+        char[] delimiterChars2 = { '-' };
+        if (enemyEngunList.Contains(":")) {
+            daimyoEnguniList = new List<string>(enemyEngunList.Split(delimiterChars));
+        }else {
+            daimyoEnguniList.Add(enemyEngunList);
+        }
+
+        List<int> doneBusyoList = new List<int>();
+        for (int i = 0; i < daimyoEnguniList.Count; i++) {
+            string daimyoEngunString = daimyoEnguniList[i];
+            if(daimyoEngunString != "" && daimyoEngunString != null) {
+                List<string> unitEnguniList = new List<string>();
+                unitEnguniList = new List<string>(daimyoEngunString.Split(delimiterChars2));
+                doneBusyoList.Add(int.Parse(unitEnguniList[1]));                
+            }
+        }
+
+
+        string engunSts = "";//BusyoId-BusyoLv-ButaiQty-ButaiLv:
+        int kuniId = 0;
+        for (int i = 0; i<seiryokuList.Count; i++) {
+            if (engunDaimyoId == seiryokuList[i]) {
+                kuniId = i + 1;
+                break;
+            }
+        }
+
+        GameObject targetKuni = GameObject.Find("KuniIconView");
+        SendParam sendParam = targetKuni.transform.FindChild(kuniId.ToString()).GetComponent<SendParam>();
+
+        int busyoId = randomEngunBusyoWODuplication(int.Parse(engunDaimyoId), doneBusyoList);
+        int busyoLv = sendParam.busyoLv;
+        int butaiQty = sendParam.butaiQty;
+        int butaiLv = sendParam.butaiLv;
+
+
+        engunSts = busyoId.ToString() + "-" + busyoLv.ToString() + "-" + butaiQty.ToString() + "-" + butaiLv.ToString();
+
+        return engunSts;
+    }
+
+
+    public int getEngunHei(string engunSts){
 		int totalHei = 0;
 
 		char[] delimiterChars = {'-'};
@@ -1658,6 +1824,7 @@ public class MainEventHandler : MonoBehaviour {
 		return messageList;
 	}
 
+
     public bool CheckMyDoumei(int daimyoId) {
         bool flg = false;
         char[] delimiterChars = { ',' };
@@ -1725,4 +1892,5 @@ public class MainEventHandler : MonoBehaviour {
 
         PlayerPrefs.Flush();        
     }
+
 }

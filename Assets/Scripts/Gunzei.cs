@@ -475,9 +475,15 @@ public class Gunzei : MonoBehaviour {
 
 		}
 
+        bool rengouFlg = PlayerPrefs.GetBool("rengouFlg");
+        string rengouDaimyo = PlayerPrefs.GetString("rengouDaimyo");
+        MainStageController MainStageController = new MainStageController();
+        MainStageController.UpdateRengouKuniIcon(rengouFlg, rengouDaimyo);
 
 
-	}
+
+
+    }
 
 
 	public void deleteGunzei(GameObject Gunzei){

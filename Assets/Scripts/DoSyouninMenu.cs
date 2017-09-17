@@ -421,9 +421,13 @@ public class DoSyouninMenu : MonoBehaviour {
 						newcyakaiDouguHst = newcyakaiDouguHst + "," + cyakaiDouguHstlist[i];
 					}
 				}
-				PlayerPrefs.SetString ("cyakaiDouguHst",newcyakaiDouguHst);
+                PlayerPrefs.SetBool("questSpecialFlg12", true);
+                MainStageController main = new MainStageController();
+                main.questExtension();
+                PlayerPrefs.SetString ("cyakaiDouguHst",newcyakaiDouguHst);
+                PlayerPrefs.Flush();
 
-				string finalTxt = "";
+                string finalTxt = "";
 				if (!doneCyadouguFlg) {
                     if (Application.systemLanguage != SystemLanguage.Japanese) {
                         finalTxt = "It was good tea party.\n You got " + targetKuniQty + " reputation item. \n Traveller will visit your country.";

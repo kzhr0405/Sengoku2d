@@ -351,7 +351,7 @@ public class SyouninMenu : MonoBehaviour {
 					bool doneCyadouguFlg1 = false;
 					bool doneCyadouguFlg2 = false;
 
-					int targetKuniQty = 0;
+					int targetKuniQty = 1;//base
 					Kahou kahou = new Kahou ();
 					if (kahouList [4] != "0") {
 						string kahouId1 = kahouList [4];
@@ -372,18 +372,12 @@ public class SyouninMenu : MonoBehaviour {
 						}
 
 						string kahouRank = kahou.getKahouRank ("cyadougu",int.Parse(kahouId1));
-						if (doneCyadouguFlg1) {
-							targetKuniQty = targetKuniQty + 1;
-						} else {
+						if (!doneCyadouguFlg1) {
 							if (kahouRank == "S") {
-								targetKuniQty = targetKuniQty + 5;
-							} else if (kahouRank == "A") {
-								targetKuniQty = targetKuniQty + 3;
-							} else if (kahouRank == "B") {
 								targetKuniQty = targetKuniQty + 2;
-							} else if (kahouRank == "C") {
+							} else if (kahouRank == "A") {
 								targetKuniQty = targetKuniQty + 1;
-							}
+							} 
 						}
 
 
@@ -417,22 +411,16 @@ public class SyouninMenu : MonoBehaviour {
 						}
 
 						string kahouRank = kahou.getKahouRank ("cyadougu",int.Parse(kahouId2));
-						if (doneCyadouguFlg2) {
-							targetKuniQty = targetKuniQty + 1;
-						} else {
-							if (kahouRank == "S") {
-								targetKuniQty = targetKuniQty + 5;
-							} else if (kahouRank == "A") {
-								targetKuniQty = targetKuniQty + 3;
-							} else if (kahouRank == "B") {
-								targetKuniQty = targetKuniQty + 2;
-							} else if (kahouRank == "C") {
-								targetKuniQty = targetKuniQty + 1;
-							}
-						}
+                        if (!doneCyadouguFlg1) {
+                            if (kahouRank == "S") {
+                                targetKuniQty = targetKuniQty + 2;
+                            }else if (kahouRank == "A") {
+                                targetKuniQty = targetKuniQty + 1;
+                            }
+                        }
 
 
-					} else {
+                    } else {
 						//Not Exist
 						string cyadouguPath = "Prefabs/Item/Kahou/NoCyadougu";
 						GameObject cya = Instantiate (Resources.Load (cyadouguPath)) as GameObject;

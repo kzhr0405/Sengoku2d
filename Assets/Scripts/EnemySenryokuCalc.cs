@@ -23,7 +23,12 @@ public class EnemySenryokuCalc : MonoBehaviour {
             busyoQty = Mathf.CeilToInt(jinkeiBusyoQty * 1.5f);
         }
         //Adjust 
-        List<float> randomPercent = new List<float> { 0.6f, 0.8f, 1.0f, 1.2f, 1.3f};
+        List<float> randomPercent = new List<float>();
+        if (!hardFlg) {
+            randomPercent = new List<float>() { 0.8f, 1.0f, 1.2f, 1.4f };
+        }else {
+            randomPercent = new List<float>(){ 1.0f, 1.2f, 1.5f, 2.0f};
+        }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];
         busyoQty = Mathf.CeilToInt(busyoQty * rdmPwr);
@@ -34,7 +39,6 @@ public class EnemySenryokuCalc : MonoBehaviour {
         }else {
             busyoQty = busyoQty + 1;
         }
-
         if (busyoQty > 12) {
 			busyoQty = 12;
 		}else if(busyoQty < 1){
@@ -58,7 +62,7 @@ public class EnemySenryokuCalc : MonoBehaviour {
         if (!hardFlg) {
             randomPercent = new List<float> { 0.8f, 0.9f, 1.0f, 1.2f, 1.3f, 1.5f, 1.8f};
         }else {
-            randomPercent = new List<float> { 1.0f, 1.1f, 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+            randomPercent = new List<float> { 1.2f, 1.4f, 1.6f, 1.8f, 2.0f, 2.5f, 3.0f };
         }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];
@@ -100,15 +104,16 @@ public class EnemySenryokuCalc : MonoBehaviour {
         if (!hardFlg) {
             randomPercent = new List<float> { 0.8f, 1.0f, 1.2f, 1.3f, 1.5f };
         }else {
-            randomPercent = new List<float> { 1.0f, 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+            randomPercent = new List<float> { 1.2f, 1.4f, 1.6f, 2.0f, 2.5f, 3.0f };
         }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];
         butaiQty = Mathf.CeilToInt(butaiQty * rdmPwr);
-        
+
         //Final Adjsut
+        if (butaiQty < myButaiQty / 2) butaiQty = myButaiQty / 2;
         if (butaiQty <= 5){
-            butaiQty = 5;
+            butaiQty = 5;            
         }else if (butaiQty >= 20){
             butaiQty = 20;
         }
@@ -130,7 +135,7 @@ public class EnemySenryokuCalc : MonoBehaviour {
         if (!hardFlg) {
             randomPercent = new List<float> { 0.8f, 1.0f, 1.2f, 1.3f, 1.5f, 1.8f };
         }else {
-            randomPercent = new List<float> { 1.0f, 1.2f, 1.4f, 1.6f, 1.8f, 2.0f };
+            randomPercent = new List<float> { 1.2f, 1.4f, 1.6f, 2.0f, 2.5f, 3.0f };
         }
         int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
         float rdmPwr = randomPercent[rmd];

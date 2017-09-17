@@ -84,5 +84,15 @@ public class Daimyo : MonoBehaviour {
 		return remain1DaimyoFlg;
 	}
 
-
+    public string getClanName(int daimyoId) {
+        string clanName = "";
+        if (daimyoId != 0) {
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                clanName = daimyoMst.param[daimyoId - 1].clanNameEng;
+            }else {
+                clanName = daimyoMst.param[daimyoId - 1].clanName;
+            }
+        }
+        return clanName;
+    }
 }

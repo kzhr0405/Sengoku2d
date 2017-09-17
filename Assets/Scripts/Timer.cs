@@ -501,9 +501,9 @@ public class Timer : MonoBehaviour {
 		}else{
 			daimyoEnguniList.Add(enemyEngunList);
 		}
-		
-		for(int i=0; i<daimyoEnguniList.Count; i++){
-			StatusGet sts = new StatusGet ();
+
+        StatusGet sts = new StatusGet();
+        for (int i=0; i<daimyoEnguniList.Count; i++){
 			string daimyoEngunString = daimyoEnguniList[i];
 			List<string> unitEnguniList = new List<string> ();
 			unitEnguniList = new List<string> (daimyoEngunString.Split (delimiterChars2));

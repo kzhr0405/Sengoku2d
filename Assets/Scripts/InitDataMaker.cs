@@ -29,8 +29,8 @@ public class InitDataMaker : MonoBehaviour {
 		        PlayerPrefs.SetInt ("myBusyoQty",1);
 		        PlayerPrefs.SetInt ("syogunDaimyoId",14);
 
-		        //Busyo
-		        int myDaimyo = 1; //Oda Nobunaga
+                //Busyo
+                int myDaimyo = 1; //Oda Nobunaga
 		        PlayerPrefs.SetInt("myDaimyo",myDaimyo);
 		        PlayerPrefs.SetInt("myDaimyoBusyo",19);
 

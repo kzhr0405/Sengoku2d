@@ -220,9 +220,8 @@ public class PlayerInstance : MonoBehaviour {
         //HP Status        
 		int adjHpWithKahou = adjHp + int.Parse(KahouStatusArray[1]) + Mathf.FloorToInt (addHpByKanni);
         GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
-        minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou;
+        minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerHP> ().life = adjHpWithKahou + addJyosyuHei;
-        
 
         //spd adjust
         float adjSpd = ((float)spd + float.Parse(KahouStatusArray[3]))/10;
@@ -248,9 +247,9 @@ public class PlayerInstance : MonoBehaviour {
 		if (busyoId == soudaisyo) {
 			prefab.GetComponent<PlayerHP> ().taisyo = true;
 		}
-
-		//SE
-		AudioController audio = new AudioController();
+        
+        //SE
+        AudioController audio = new AudioController();
 		audio.addComponentMoveAttack (prefab,heisyu);
 
 
@@ -540,6 +539,7 @@ public class PlayerInstance : MonoBehaviour {
 		prefab.GetComponent<PlayerHP>().dfc = adjDfc;
         prefab.GetComponent<UnitMover>().heisyu = ch_type;
 
+        
         //SE
         AudioController audio = new AudioController();
 		audio.addComponentMoveAttack (prefab,ch_type);
@@ -894,7 +894,7 @@ public class PlayerInstance : MonoBehaviour {
             adjSpd = 1;
         }
         GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
-        minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou;
+        minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerHP>().life = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerAttack>().attack = adjAtkWithKahou;
         prefab.GetComponent<UnitMover>().speed = adjSpd;

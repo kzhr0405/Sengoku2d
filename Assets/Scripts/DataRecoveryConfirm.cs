@@ -29,6 +29,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
 
             //Common
             PlayerPrefs.SetBool("tutorialDoneFlg", true);
+            if (RecoveryDataStore.kuniLv > 100) RecoveryDataStore.kuniLv = 100;
+            if (RecoveryDataStore.kuniLv < 1) RecoveryDataStore.kuniLv = 1;
             PlayerPrefs.SetInt("kuniLv", RecoveryDataStore.kuniLv);
             Exp expScript = new Exp();
             int jinkeiLimit = expScript.getJinkeiLimit(RecoveryDataStore.kuniLv);
@@ -56,6 +58,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
             }else {
                 PlayerPrefs.SetBool("addJinkei4", false);
             }
+            PlayerPrefs.DeleteKey("rengouFlg");
+            PlayerPrefs.DeleteKey("rengouDaimyo");
             
             if (RecoveryDataStore.dataStore_userId==0) {
                 /***dataStore***/
@@ -217,6 +221,14 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetString("zukanHeihousyoHst", RecoveryDataStore.zukanHeihousyoHst);
                 PlayerPrefs.SetString("gameClearDaimyo", RecoveryDataStore.gameClearDaimyo);
                 PlayerPrefs.SetString("gameClearDaimyoHard", RecoveryDataStore.gameClearDaimyoHard);
+
+                //Gaikou
+                Gaikou gaikou = new Gaikou();
+                for (int l = 2; l < 47; l++) {
+                    int value = gaikou.getGaikouValue(RecoveryDataStore.myDaimyo, l);
+                    string temp = "gaikou" + l.ToString();
+                    PlayerPrefs.SetInt(temp, value);
+                }
 
                 //jinkei
                 PlayerPrefs.SetInt("jinkei", RecoveryDataStore.jinkeiId);

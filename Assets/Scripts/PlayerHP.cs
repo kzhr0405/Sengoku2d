@@ -46,7 +46,9 @@ public class PlayerHP : MonoBehaviour {
 				//Atk, Dfc, Hp 1/2
 				foreach (GameObject obs in  GameObject.FindGameObjectsWithTag("Player")){
 					obs.GetComponent<PlayerHP>().life = Mathf.Ceil (obs.GetComponent<PlayerHP>().life/2);
-					obs.GetComponent<PlayerHP>().dfc = Mathf.Ceil (obs.GetComponent<PlayerHP>().dfc/2);
+                    obs.GetComponent<PlayerHP>().childHPTmp = Mathf.Ceil(obs.GetComponent<PlayerHP>().childHPTmp / 2);
+                    obs.GetComponent<PlayerHP>().childHP = Mathf.Ceil(obs.GetComponent<PlayerHP>().childHP / 2);
+                    obs.GetComponent<PlayerHP>().dfc = Mathf.Ceil (obs.GetComponent<PlayerHP>().dfc/2);
 					
 					if(obs.GetComponent<PlayerAttack>() != null){
 						obs.GetComponent<PlayerAttack>().attack = Mathf.Ceil (obs.GetComponent<PlayerAttack>().attack/2);
