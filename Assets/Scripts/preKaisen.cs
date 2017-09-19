@@ -145,7 +145,7 @@ public class preKaisen : MonoBehaviour {
         PlayerPrefs.Flush();
 
         jinkei = PlayerPrefs.GetInt("jinkei");
-        //changeFormButtonColor(jinkei);
+        changeFormButtonColor(jinkei);
         prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, false);
 
     }
@@ -1568,7 +1568,8 @@ public class preKaisen : MonoBehaviour {
                 mapList = enemyJinkeiMaker(enemyJinkei);
                 enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
             }
-
+            JinkeiPowerEffection JinkeiPowerEffection = new JinkeiPowerEffection();
+            JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId);
             Text enemyHeiText = GameObject.Find("EnemyHei").transform.FindChild("HeiValue").GetComponent<Text>();
             enemyHeiText.text = enemyHei.ToString();
 

@@ -350,10 +350,10 @@ public class DataUserId : MonoBehaviour {
         char[] delimiterChars = { ',' };
         if (myBusyo.Contains(",")) {
             myBusyoList = new List<string>(myBusyo.Split(delimiterChars));
-        }
-        else {
+        }else {
             myBusyoList.Add(myBusyo);
         }
+
         for (int i = 0; i < myBusyoList.Count; i++) {
             string busyoId = myBusyoList[i];
 

@@ -10,8 +10,9 @@ public class CloseMessageStamina : MonoBehaviour {
     public void OnClick() {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[1].Play();
-
+        
         panel.GetComponent<Canvas>().sortingLayerName = "Default";
-        Destroy(board);
+        board.SetActive(false);
+
     }
 }

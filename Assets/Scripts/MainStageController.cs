@@ -61,6 +61,9 @@ public class MainStageController : MonoBehaviour {
     public List<int> daimyoKuniQtyList;
     public List<int> daimyoList;
 
+    //movie
+    public GameObject MessageStaminaObject;
+
     public void Start () {
 
 

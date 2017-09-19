@@ -892,6 +892,7 @@ public class PvPDataStore : MonoBehaviour {
         query.OrderByDescending("totalPt");
         query.AddDescendingOrder("totalWinNo");
         query.Limit = 10;
+        RecoveryDataStore RecoveryDataStore = new RecoveryDataStore();
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e != null) {
             }else {
@@ -907,7 +908,11 @@ public class PvPDataStore : MonoBehaviour {
                     Top10PtWeeklyUserIdList.Add(userId);
                     Top10PtWeeklyNameList.Add(System.Convert.ToString(obj["userName"]));
                     Top10PtWeeklyRankList.Add(System.Convert.ToInt32(obj["kuniLv"]));
-                    Top10PtWeeklyBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    if (checkDataExist(obj, "soudaisyo")) {
+                        Top10PtWeeklyBusyoList.Add(System.Convert.ToInt32(obj["soudaisyo"]));
+                    }else {
+                        Top10PtWeeklyBusyoList.Add(19);//default
+                    }
                     Top10PtWeeklyHeiList.Add(System.Convert.ToInt32(obj["jinkeiHeiryoku"]));                    
                 }
             }
@@ -998,5 +1003,13 @@ public class PvPDataStore : MonoBehaviour {
 
     }
 
-
+    private bool checkDataExist(NCMBObject obj, string key) {
+        try {
+            object test = obj[key];
+        }
+        catch (NCMBException ex) {
+            return false;
+        }
+        return true;
+    }
 }

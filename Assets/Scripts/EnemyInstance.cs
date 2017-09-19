@@ -512,6 +512,7 @@ public class EnemyInstance : MonoBehaviour {
         return AIType;
 	}
 
+
     public int getChildStatus(int lv, string ch_type, int linkNo){
 		Entity_lvch_mst chLvMst  = Resources.Load ("Data/lvch_mst") as Entity_lvch_mst;
 		

@@ -19,6 +19,7 @@ public class preKassen : MonoBehaviour {
     public int busyoCurrentQty = 0;
     public int weatherId = 0;
     public int activeKuniId;
+    public List<int> enemyBusyoList;
 
     void Start () {
 
@@ -530,7 +531,8 @@ public class preKassen : MonoBehaviour {
 	//PowerType1
 	//Busyo + Mob
 	public int powerType1(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId, bool strongFlg){
-		int totalHei = 0;
+
+        int totalHei = 0;
 
 		int activeBusyoQty = PlayerPrefs.GetInt ("activeBusyoQty");
 		int activeBusyoLv = PlayerPrefs.GetInt ("activeBusyoLv");
@@ -2118,10 +2120,10 @@ public class preKassen : MonoBehaviour {
                 mapList = enemyJinkeiMaker(enemyJinkei);
                 enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, strongFlg);
             }
-
+            JinkeiPowerEffection JinkeiPowerEffection = new JinkeiPowerEffection();
+            JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId);
             Text enemyHeiText = GameObject.Find("EnemyHei").transform.FindChild("HeiValue").GetComponent<Text>();
             enemyHeiText.text = enemyHei.ToString();
-
             startScript.enemySoudaisyo = tempEnemySoudaisyo;
 
 

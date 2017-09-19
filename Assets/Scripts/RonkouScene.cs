@@ -88,9 +88,28 @@ public class RonkouScene : MonoBehaviour {
         List<string> myBusyoList = new List<string>();
         List<string> jinkeiTrueBusyoList = new List<string>();
         if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
+            
+            //remove dup
+            List<string> nodup = new List<string>();
+            string newMyBusyo = "";
+            for (int i = 0; i < myBusyo_list.Count; i++) {
+                string busyo = myBusyo_list[i];
+                if (!nodup.Contains(busyo)) {
+                    nodup.Add(busyo);
+
+                    if (newMyBusyo == "") {
+                        newMyBusyo = busyo;
+                    }else {
+                        newMyBusyo = newMyBusyo + "," + busyo;
+                    }
+                }
+            }
+            if (myBusyoString != newMyBusyo) PlayerPrefs.SetString("myBusyo", newMyBusyo);
+            
+
             List<string> jinkeiFalseBusyoList = new List<string>();
-            for (int i=0; i< myBusyo_list.Count; i++) {
-                int busyoId = int.Parse(myBusyo_list[i]);
+            for (int i=0; i< nodup.Count; i++) {
+                int busyoId = int.Parse(nodup[i]);
                 bool jinkeiFlg = jinkeiBusyoCheck(busyoId);
                 if(jinkeiFlg) {
                     jinkeiTrueBusyoList.Add(busyoId.ToString());

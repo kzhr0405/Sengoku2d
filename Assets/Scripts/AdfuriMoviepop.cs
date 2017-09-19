@@ -6,11 +6,13 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using UnityEngine.SceneManagement;
 public class AdfuriMoviepop : MonoBehaviour {
 
-    public bool hyourouFlg = false; //reward hyourou or busyoDama
-    private int test_num;
-    private SCENE_STATE sceneState = SCENE_STATE.MAIN;
+    public GameObject board;
+    public GameObject panel;
 
+    public bool hyourouFlg = false; //reward hyourou or busyoDama
+    private SCENE_STATE sceneState = SCENE_STATE.MAIN;
     bool initialized = false;
+
     enum SCENE_STATE {
         MAIN,
         QUIT_WAIT,
@@ -27,70 +29,94 @@ public class AdfuriMoviepop : MonoBehaviour {
             au.initializeMovieReward();
         }
         switch (this.sceneState) {
-        case SCENE_STATE.MAIN:
-            break;
-        case SCENE_STATE.QUIT_WAIT:
-            this.sceneState = SCENE_STATE.QUIT;
-            break;
-        case SCENE_STATE.QUIT:
-            this.sceneState = SCENE_STATE.END;
-            break;
-        case SCENE_STATE.END:
-            break;
-        }
+            case SCENE_STATE.MAIN:
+                break;
+            case SCENE_STATE.QUIT_WAIT:
+                this.sceneState = SCENE_STATE.QUIT;
+                break;
+            case SCENE_STATE.QUIT:
+                this.sceneState = SCENE_STATE.END;
+                break;
+            case SCENE_STATE.END:
+                break;
+            }
     }
 
 
     public void PushAdsense() {
         // topに戻るのを伏せぐためのフラグ変更
+        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        audioSources[0].Play();
 
-        if (SceneManager.GetActiveScene().name == "mainStage") {
-            GameObject ob = GameObject.Find("GameController");
-            MainStageController mc = ob.GetComponent<MainStageController>();
-            if (!mc.adRunFlg)
-            {
-                StartCoroutine(PlayAdsense());
-                mc.adRunFlg = true;
-            }
-        }else {
-            StartCoroutine(PlayAdsense());
-        }
-    }
-
-    // 準備ができたら広告を再生する
-    IEnumerator PlayAdsense()
-    {
         GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
         AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
 
+        Message msg = new Message();
+        if (SceneManager.GetActiveScene().name == "mainStage") {
+            GameObject GameController = GameObject.Find("GameController");
+            MainStageController mc = GameController.GetComponent<MainStageController>();
+            mc.adRunFlg = true;
+            //StartCoroutine(PlayAdsense());
+            if(au.isPreparedMovieReward()) {
+                au.playMovieReward();
+            }else {
+                msg.makeMessageOnBoard(msg.getMessage(154));
+            }
+        }
+        else {
+            //StartCoroutine(PlayAdsense());
+            if (au.isPreparedMovieReward()) {
+                au.playMovieReward();
+            }else {
+                msg.makeMessageOnBoard(msg.getMessage(154));
+            }
 
-        while (!au.isPreparedMovieReward())
-        {
+        }
+    }
+
+    // 準備ができたら広告を再生する    
+    IEnumerator PlayAdsense(){
+        GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
+        AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
+        
+        while (!au.isPreparedMovieReward()){
             yield return null;
         }
         au.playMovieReward();
     }
-
+    
     void MovieRewardCallback(ArrayList vars) {
         int stateName = (int)vars[0];
         string appID = (string)vars[1];
         string adnetworkKey = (string)vars[2];
-        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-        audioSources[0].Play();
+        
         Message msg = new Message();
         string text = "";
-        
-        
-        AdfurikunMovieRewardUtility.ADF_MovieStatus state = (AdfurikunMovieRewardUtility.ADF_MovieStatus)stateName; switch (state) {
+        GameObject ob = GameObject.Find("AdfurikunMovieRewardUtility");
+        AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
+
+        AdfurikunMovieRewardUtility.ADF_MovieStatus state = (AdfurikunMovieRewardUtility.ADF_MovieStatus)stateName;
+        switch (state) {
+        case AdfurikunMovieRewardUtility.ADF_MovieStatus.NotPrepared:
+                Debug.Log("Sengoku2d : The ad was not preapred.");
+                break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.PrepareSuccess:
-                Debug.Log("The ad was preapred.");
+                Debug.Log("Sengoku2d : The ad was preapred.");
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.StartPlaying:
-                Debug.Log("The ad was started.");
+                Debug.Log("Sengoku2d : The ad was started.");
+                break;
+        case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
+                Debug.Log("Sengoku2d : The ad finished playing.");
+                au.playMovieReward();
+                break;
+        case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
+                Debug.Log("Sengoku2d :  The ad failed playing.");
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
                 Screen.orientation = ScreenOrientation.LandscapeLeft;
-
+                Debug.Log("Sengoku2d : The ad was closed.");
+               
                 //set count data
                 int movieCount = PlayerPrefs.GetInt("movieCount");
                 movieCount = movieCount + 1;
@@ -99,8 +125,9 @@ public class AdfuriMoviepop : MonoBehaviour {
                 //stop running gunzei
                 CyouteiPop CyouteiPop = new CyouteiPop();
                 CyouteiPop.stopGunzei();
-
+                
                 if (!hyourouFlg) {
+                    
                     int busyoDamaQty = 0;
                     string atariMsg = "";
                     float rankPercent = UnityEngine.Random.value;
@@ -109,21 +136,21 @@ public class AdfuriMoviepop : MonoBehaviour {
                         if (Application.systemLanguage != SystemLanguage.Japanese) {
                             atariMsg = "My lord, Big Hit! \n";
                         }else {
-                            atariMsg = "大当たりですぞ。\n";
+                            atariMsg = "大当たりです。\n";
                         }
                         busyoDamaQty = UnityEngine.Random.Range(20, 51); //20-50
                     }else if (10 < rankPercent && rankPercent <= 40) {
                         if (Application.systemLanguage != SystemLanguage.Japanese) {
                             atariMsg = "My lord, Mid Hit. \n";
                         }else {
-                            atariMsg = "中当たりですぞ。\n";
+                            atariMsg = "中当たりです。\n";
                         }
                         busyoDamaQty = UnityEngine.Random.Range(10, 21); //10-20
                     }else if (40 < rankPercent) {
                         if (Application.systemLanguage != SystemLanguage.Japanese) {
                             atariMsg = "My lord, Low Hit. \n";
                         }else {
-                            atariMsg = "小当たりですぞ。\n";
+                            atariMsg = "小当たりです。\n";
                         }
                         busyoDamaQty = UnityEngine.Random.Range(5, 11); //5-10
                     }
@@ -187,41 +214,24 @@ public class AdfuriMoviepop : MonoBehaviour {
                     PlayerPrefs.SetInt("hyourou", newHyourou);
                     PlayerPrefs.Flush();
                     GameObject.Find("HyourouCurrentValue").GetComponent<Text>().text = newHyourou.ToString();
-                    
+                    panel.GetComponent<Canvas>().sortingLayerName = "Default";
+                    board.SetActive(false);
+
                 }
 
-                audioSources[3].Play();
+                //AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+                //audioSources[3].Play();
+                /*
                 if (SceneManager.GetActiveScene().name == "mainStage") {
-                    GameObject ob = GameObject.Find("GameController");
-                    MainStageController mc = ob.GetComponent<MainStageController>();
+                    GameObject GameController = GameObject.Find("GameController");
+                    MainStageController mc = GameController.GetComponent<MainStageController>();
                     mc.adRunFlg = false;
-                }
-                GameObject.Find("MessageStaminaObject").transform.FindChild("Close").GetComponent<CloseMessageStamina>().OnClick();
+                } 
+                */           
 
-                break;
-                default:
-                return;
-
-            case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
-                audioSources[4].Play();
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    text = "There is no available video now. Please try it later.";
-                }else {
-                    text = "再生可能な動画広告がありません。時間を置いて試してくだされ。";
-                }
-                msg.makeMessageOnBoard(text);
-                if (SceneManager.GetActiveScene().name == "mainStage") {
-                    GameObject ob = GameObject.Find("GameController");
-                    MainStageController mc = ob.GetComponent<MainStageController>();
-                    mc.adRunFlg = false;
-                }
-
-                break;
-            //case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
-            //        Debug.Log("The ad was closed.");
-            //break;
-            //default:
-            //return;
+            break;
+        default:
+            return;
         }
     }
 }

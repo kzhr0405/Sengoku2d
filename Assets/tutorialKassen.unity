@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2584,6 +2584,8 @@ MonoBehaviour:
   enemySoudaisyo: 0
   totalSenpouLv: 0
   aveSenpouLv: 0
+  sameDaimyoList: []
+  sameDaimyoNumList: []
   sakuFlg: 0
   sakuId: 0
   sakuEffect: 0
@@ -3158,7 +3160,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -42.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_SizeDelta.x
@@ -3166,7 +3168,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_AnchorMin.x

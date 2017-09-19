@@ -18,6 +18,8 @@ public class KaisenScene : MonoBehaviour {
     public int soudaisyoSpd;
     public int enemySoudaisyo;
     public int aveSenpouLv = 0;
+    public List<string> sameDaimyoList;
+    public List<string> sameDaimyoNumList;
 
     //saku
     public bool sakuFlg;
@@ -57,6 +59,23 @@ public class KaisenScene : MonoBehaviour {
         if (Auto2Flg) {
             GameObject.Find("AutoBtn").transform.FindChild("Num").GetComponent<Text>().text = "2";
             GameObject.Find("AutoBtn").GetComponent<AutoAttack>().speed = 2;
+        }
+
+        //EnemySameDaimyoNum
+        string sameDaimyo = PlayerPrefs.GetString("sameDaimyo");
+        string sameDaimyoNum = PlayerPrefs.GetString("sameDaimyoNum");
+        PlayerPrefs.DeleteKey("sameDaimyo");
+        PlayerPrefs.DeleteKey("sameDaimyoNum");
+
+        char[] delimiterCharsNum = { ',' };
+        if (sameDaimyo != null && sameDaimyo != "") {
+            if (sameDaimyo.Contains(",")) {
+                sameDaimyoList = new List<string>(sameDaimyo.Split(delimiterCharsNum));
+                sameDaimyoNumList = new List<string>(sameDaimyoNum.Split(delimiterCharsNum));
+            }else {
+                sameDaimyoList.Add(sameDaimyo);
+                sameDaimyoNumList.Add(sameDaimyoNum);
+            }
         }
 
         //Dinamic Map
@@ -608,6 +627,18 @@ public class KaisenScene : MonoBehaviour {
             enemyTaisyoFlg = true;
         }
 
+        //same daimyo  
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
+        int num = 0;
+        if (sameDaimyoList.Contains(daimyoId.ToString())) {
+            int i = sameDaimyoList.IndexOf(daimyoId.ToString());
+            num = int.Parse(sameDaimyoNumList[i]);
+            int addRatio = (num - 1) * 5;
+            atk = atk + Mathf.FloorToInt(((float)atk * (float)addRatio) / 100);
+            dfc = dfc + Mathf.FloorToInt(((float)dfc * (float)addRatio) / 100);
+        }
+        
         //View Object & pass status to it.
         EnemyInstance inst = new EnemyInstance();
         inst.makeKaisenInstance(mapId, busyoId, shipId,activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName, linkNo, enemyTaisyoFlg, senpouArray);

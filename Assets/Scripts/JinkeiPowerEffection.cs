@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class JinkeiPowerEffection : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class JinkeiPowerEffection : MonoBehaviour {
 				allObjList.Add (busyoObj.gameObject);
 				if (busyoObj.gameObject.GetComponent<Senryoku> ().myDaimyoBusyoFlg) {
 					myDaimyoBusyoOnFlg = true;
-
+                    Debug.Log(busyoObj.parent.name);
 					busyoObj.GetComponent<Soudaisyo> ().OnClick ();
 
 				}
@@ -140,5 +141,75 @@ public class JinkeiPowerEffection : MonoBehaviour {
             msgObj.transform.FindChild("Text").GetComponent<Text>().text = "総武勇+" + totalAddAtk + "\n" + "総守備+" + totalAddDfc;
         }
 	}
-    
+
+    public void EnemySameDaimyoNum(int daimyoId) {
+
+        Daimyo daimyo = new Daimyo();
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        int daimyoBusyoId = daimyo.getDaimyoBusyoId(daimyoId);
+        bool daimyoBusyoFlg = false;
+        List<int> daimyoIdList = new List<int>() { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        foreach (GameObject obs in GameObject.FindGameObjectsWithTag("EnemySlot")) {
+            int mapId = int.Parse(obs.name.Substring(4));
+            
+            if (obs.transform.childCount > 0) {
+                int childBusyoId = int.Parse(obs.transform.GetChild(0).name);                
+                int belongDaimyoId = BusyoInfoGet.getDaimyoId(childBusyoId);
+                daimyoIdList[mapId-1] = belongDaimyoId;
+                if (childBusyoId == daimyoBusyoId) {
+                    daimyoBusyoFlg = true;
+                }                
+            }else {
+                daimyoIdList[mapId-1] = 0;
+            }
+        }
+        string flagPath = "Prefabs/Jinkei/Flag";
+        GameObject EnemyJinkeiView = GameObject.Find("EnemyJinkeiView");
+        List<int> sameDaimyoList = new List<int>();
+        List<int> sameDaimyoNumList = new List<int>();
+        for (int i = 0; i< daimyoIdList.Count; i++) {
+            int daimyoId1 = daimyoIdList[i];
+            int mapId = i + 1;
+            int count = 0;
+            foreach(int daimyoId2 in daimyoIdList) {
+                if(daimyoId1 == daimyoId2) {
+                    count = count + 1;
+                }
+            }
+            if(count>=2 && daimyoId1 !=0) {
+                //flag                
+                GameObject flag = Instantiate(Resources.Load(flagPath)) as GameObject;
+                string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId1.ToString();
+                flag.GetComponent<Image>().sprite =
+                    Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+                flag.transform.SetParent(EnemyJinkeiView.transform.FindChild("Slot" + mapId).GetChild(0).transform);
+                flag.transform.localScale = new Vector3(0.5f, 0.5f, 0);
+                flag.transform.localPosition = new Vector3(0, 0, 0);
+                
+                if(!sameDaimyoList.Contains(daimyoId1)) {
+                    sameDaimyoList.Add(daimyoId1);
+                    sameDaimyoNumList.Add(count);
+                }
+            }
+        }
+
+        string sameDaimyoString = "";
+        string sameDaimyoNumString = "";        
+        for(int i=0; i<sameDaimyoList.Count; i++) {
+            string sameDaimyo = sameDaimyoList[i].ToString();
+            string sameDaimyoNum = sameDaimyoNumList[i].ToString();
+            if (sameDaimyoString == "") {
+                sameDaimyoString = sameDaimyo;
+                sameDaimyoNumString = sameDaimyoNum;
+            }else {
+                sameDaimyoString = sameDaimyoString + "," + sameDaimyo;
+                sameDaimyoNumString = sameDaimyoNumString + "," + sameDaimyoNum;
+            }
+        }
+        GameObject.Find("StartBtn").GetComponent<startKassen2>().sameDaimyo = sameDaimyoString;
+        GameObject.Find("StartBtn").GetComponent<startKassen2>().sameDaimyoNum = sameDaimyoNumString;
+
+    }
+
+
 }

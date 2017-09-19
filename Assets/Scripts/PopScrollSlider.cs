@@ -7,6 +7,7 @@ public class PopScrollSlider : MonoBehaviour {
     public Vector3 inPosition;        // スライドイン後の位置
     public Vector3 outPosition;      // スライドアウト後の位置
     public float duration = 1.0f;    // スライド時間（秒）
+    public bool onceSlideInFlg = false;
 
     public void SlideOut() {
         StartCoroutine(StartSlidePanel(true));
@@ -16,9 +17,14 @@ public class PopScrollSlider : MonoBehaviour {
 
     public void SlideIn() {
         //create busyo
-        if(transform.FindChild("ScrollView").transform.FindChild("Content").childCount == 0) {
-            transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu();            
+        //if(transform.FindChild("ScrollView").transform.FindChild("Content").childCount == 0) {
+        if(name == "BusyoScrollMenu") {
+            if(!onceSlideInFlg) {
+                transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu();
+                onceSlideInFlg = true;
+            }
         }
+        //}
         StartCoroutine(StartSlidePanel(false));
     }
 

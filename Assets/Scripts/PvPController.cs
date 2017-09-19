@@ -66,6 +66,9 @@ public class PvPController : MonoBehaviour {
     public string todayNCMB;
     public bool timerFlg = false;
 
+    //movie
+    public GameObject MessageStaminaObject;
+
     void Start () {
         ShowKassen();
 

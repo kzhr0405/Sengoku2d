@@ -36,9 +36,10 @@ public class JinkeiFormButton : MonoBehaviour {
             bool isAttackedFlg = preKassenScript.isAttackedFlg;
 
             preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,true, false);
+            GameObject.Find("BusyoScrollMenu").GetComponent<PopScrollSlider>().onceSlideInFlg = false;
 
-
-        }else if(Application.loadedLevelName == "preKaisen") {
+        }
+        else if(Application.loadedLevelName == "preKaisen") {
             preKaisen preKassenScript = GameObject.Find("GameScene").GetComponent<preKaisen>();
             int jinkei = 0;
             if (name == "Gyorin") {
@@ -60,8 +61,10 @@ public class JinkeiFormButton : MonoBehaviour {
             bool isAttackedFlg = preKassenScript.isAttackedFlg;
 
             preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, true);
+            GameObject.Find("BusyoScrollMenu").GetComponent<PopScrollSlider>().onceSlideInFlg = false;
 
-        }else {
+        }
+        else {
             GameObject kakuteiButton = GameObject.Find ("KakuteiButton");
 		    GameObject gameScene = GameObject.Find("GameScene") as GameObject;
 		    int busyoQty = 0;
@@ -386,7 +389,6 @@ public class JinkeiFormButton : MonoBehaviour {
 
 		    //Qty of Busyo on Status
 		    GameObject.Find ("jinkeiQtyValue").GetComponent<Text> ().text = busyoQty.ToString ();
-
 		    JinkeiPowerEffection powerEffection = new JinkeiPowerEffection ();
 		    powerEffection.UpdateSenryoku ();
 
