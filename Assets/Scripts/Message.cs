@@ -29,6 +29,8 @@ public class Message : MonoBehaviour {
         GameObject panel = null;
         if (SceneManager.GetActiveScene().name == "mainStage") {
             panel = GameObject.Find("Map").gameObject;
+        }else if(SceneManager.GetActiveScene().name == "pvp") {
+            panel = GameObject.Find("Canvas").gameObject;
         }else {
             panel = GameObject.Find("Naisei").gameObject;
         }
@@ -37,9 +39,10 @@ public class Message : MonoBehaviour {
 		messageObj.name = "MessageObject";
 		
 		messageObj.transform.localScale = new Vector2 (1, 1);
-		RectTransform messageTransform = messageObj.GetComponent<RectTransform> ();
-		messageTransform.anchoredPosition = new Vector3 (0, 0, 0);
-	}
+        messageObj.transform.localPosition = new Vector3(0, 0, 0);
+        //RectTransform messageTransform = messageObj.GetComponent<RectTransform> ();
+        //messageTransform.anchoredPosition = new Vector3 (0, 0, 0);
+    }
 
 	public GameObject makeKassenMessage (string Text) {
 		string Path = "Prefabs/Common/KassenMessage";
@@ -163,17 +166,22 @@ public class Message : MonoBehaviour {
 
 
     public void hyourouMovieMessage() {
-        GameObject panel = null;
+        GameObject canvas = null;
+        GameObject MessageStaminaObject = null;
         if (SceneManager.GetActiveScene().name == "naisei") {
-            panel = GameObject.Find("Naisei").gameObject;
+            canvas = GameObject.Find("Naisei").gameObject;
+            MessageStaminaObject = GameObject.Find("NaiseiController").GetComponent<NaiseiController>().MessageStaminaObject;
         }else if(SceneManager.GetActiveScene().name == "pvp") {
-            panel = GameObject.Find("Canvas").gameObject;
-            panel.GetComponent<Canvas>().sortingLayerName = "UI";
+            canvas = GameObject.Find("Canvas").gameObject;
+            MessageStaminaObject = GameObject.Find("GameScene").GetComponent<PvPController>().MessageStaminaObject;
+            canvas.GetComponent<Canvas>().sortingLayerName = "UI";
         }else {
-            panel = GameObject.Find("Map").gameObject;
-            panel.GetComponent<Canvas>().sortingLayerName = "UI";
+            canvas = GameObject.Find("Map").gameObject;
+            MessageStaminaObject = GameObject.Find("GameController").GetComponent<MainStageController>().MessageStaminaObject;
+            canvas.GetComponent<Canvas>().sortingLayerName = "UI";
         }
-        
+        MessageStaminaObject.SetActive(true);
+        /*
         string Path = "Prefabs/Common/MessageStaminaObject";
         GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
         messageObj.transform.SetParent(panel.transform);
@@ -184,9 +192,13 @@ public class Message : MonoBehaviour {
         CloseMessageStamina CloseMessageStamina2 = messageObj.GetComponent<CloseMessageStamina>();
         CloseMessageStamina2.board = messageObj;
         CloseMessageStamina2.panel = panel;
+        AdfuriMoviepop AdfuriMoviepop = messageObj.transform.FindChild("Video").GetComponent<AdfuriMoviepop>();
+        AdfuriMoviepop.board = messageObj;
+        AdfuriMoviepop.panel = panel;
 
         messageObj.transform.localScale = new Vector2(1, 1);
         messageObj.transform.localPosition = new Vector3(0, 0, 0);
+        */
     }
 
 

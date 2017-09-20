@@ -358,9 +358,9 @@ public class simpleHPCounter : MonoBehaviour {
                     tempQty = tempQty + 1;
                     newCyouheiString = cyouheiList[0] + "," + cyouheiList[1] + "," + tempQty.ToString();
                 }
-
-                PlayerPrefs.SetString("cyouheiYR", newCyouheiString);
-
+                    if (newCyouheiString != "") {
+                        PlayerPrefs.SetString("cyouheiYR", newCyouheiString);
+                    }
             }else if (itemType.Contains("KB") == true) {
                 string cyouheiString = PlayerPrefs.GetString("cyouheiKB");
                 string[] cyouheiList = cyouheiString.Split(delimiterChars);
@@ -381,9 +381,9 @@ public class simpleHPCounter : MonoBehaviour {
                     tempQty = tempQty + 1;
                     newCyouheiString = cyouheiList[0] + "," + cyouheiList[1] + "," + tempQty.ToString();
                 }
-
-                PlayerPrefs.SetString("cyouheiKB", newCyouheiString);
-
+                    if (newCyouheiString != "") {
+                        PlayerPrefs.SetString("cyouheiKB", newCyouheiString);
+                    }
             }else if (itemType.Contains("TP") == true) {
                 string cyouheiString = PlayerPrefs.GetString("cyouheiTP");
                 string[] cyouheiList = cyouheiString.Split(delimiterChars);
@@ -404,9 +404,9 @@ public class simpleHPCounter : MonoBehaviour {
                     tempQty = tempQty + 1;
                     newCyouheiString = cyouheiList[0] + "," + cyouheiList[1] + "," + tempQty.ToString();
                 }
-
-                PlayerPrefs.SetString("cyouheiTP", newCyouheiString);
-
+                if (newCyouheiString != "" ) {
+                   PlayerPrefs.SetString("cyouheiTP", newCyouheiString);
+                }
             }else if (itemType.Contains("YM") == true) {
                 string cyouheiString = PlayerPrefs.GetString("cyouheiYM");
                 string[] cyouheiList = cyouheiString.Split(delimiterChars);
@@ -427,8 +427,9 @@ public class simpleHPCounter : MonoBehaviour {
                     tempQty = tempQty + 1;
                     newCyouheiString = cyouheiList[0] + "," + cyouheiList[1] + "," + tempQty.ToString();
                 }
-
-                PlayerPrefs.SetString("cyouheiYM", newCyouheiString);
+                    if (newCyouheiString != "") {
+                        PlayerPrefs.SetString("cyouheiYM", newCyouheiString);
+                    }
             }
 
 

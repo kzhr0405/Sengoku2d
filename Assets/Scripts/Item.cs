@@ -81,10 +81,11 @@ public class Item : MonoBehaviour {
                 rankName = "上級";
             }
 		}
-		PlayerPrefs.SetString (temp,newItemString);
-		PlayerPrefs.Flush ();
-
-		shigenName = rankName + shigenName;
+        if(newItemString != "") {
+		    PlayerPrefs.SetString (temp,newItemString);
+		    PlayerPrefs.Flush ();
+        }
+        shigenName = rankName + shigenName;
 		return shigenName;
 
 	}

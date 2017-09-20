@@ -26,8 +26,8 @@ public class startKassen2 : MonoBehaviour {
     public int totalLv = 0;
     public int totalChLv = 0;
     public int totalChQty = 0;
-
-
+    public string sameDaimyo;
+    public string sameDaimyoNum;
 
     public void Start() {
         JinkeiView = GameObject.Find("PlayerJinkeiView").gameObject;
@@ -367,9 +367,8 @@ public class startKassen2 : MonoBehaviour {
                         PlayerPrefs.SetInt("jinkeiAveChQty", aveChQty);
                     }
                     */
-
-
-
+                    PlayerPrefs.SetString("sameDaimyo", sameDaimyo);
+                    PlayerPrefs.SetString("sameDaimyoNum", sameDaimyoNum);
 
                     PlayerPrefs.Flush ();
 

@@ -36,7 +36,10 @@ public class NaiseiController : MonoBehaviour {
 	public bool isNanbanFlg = false;
 	public bool isBukkyoFlg = false;
 
-	public AudioSource[] audioSources;
+    //movie
+    public GameObject MessageStaminaObject;
+
+    public AudioSource[] audioSources;
 
 	public void Start () {
 		//SE
@@ -122,12 +125,12 @@ public class NaiseiController : MonoBehaviour {
 		int hyourou = PlayerPrefs.GetInt("hyourou");
 		GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = hyourou.ToString();
 
-		//HyourouMax
-		int hyourouMax = PlayerPrefs.GetInt("hyourouMax");
-		GameObject.Find ("HyourouMaxValue").GetComponent<Text> ().text = hyourouMax.ToString();
+        //HyourouMax
+        //int hyourouMax = PlayerPrefs.GetInt("hyourouMax");
+        //GameObject.Find ("HyourouMaxValue").GetComponent<Text> ().text = hyourouMax.ToString();
 
-		//Naisei Icon List
-		KuniInfo kuni = new KuniInfo ();
+        //Naisei Icon List
+        KuniInfo kuni = new KuniInfo ();
 		shigen = kuni.getKuniNaisei (activeKuniId);
 
 

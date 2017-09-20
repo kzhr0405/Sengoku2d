@@ -487,13 +487,28 @@ public class JinkeiScene : MonoBehaviour {
 		char[] delimiterChars = {','};
 
 		List<string> myBusyo_list = new List<string>();
-		if (myBusyoString.Contains (",")) {
-			myBusyo_list = new List<string> (myBusyoString.Split (delimiterChars));
+        List<string> myBusyo_listTmp = new List<string>();
+        if (myBusyoString.Contains (",")) {
+            myBusyo_listTmp = new List<string> (myBusyoString.Split (delimiterChars));
 		} else {
-			myBusyo_list.Add(myBusyoString);
+            myBusyo_listTmp.Add(myBusyoString);
 		}
+        string newMyBusyo = "";
+        for (int i = 0; i < myBusyo_listTmp.Count; i++) {
+            string busyo = myBusyo_listTmp[i];
+            if (!myBusyo_list.Contains(busyo)) {
+                myBusyo_list.Add(busyo);
 
-		for(int i=0; i < jinkeiBusyo_list.Count; i++ ){
+                if (newMyBusyo == "") {
+                    newMyBusyo = busyo;
+                }else {
+                    newMyBusyo = newMyBusyo + "," + busyo;
+                }
+            }
+        }
+        if (myBusyoString != newMyBusyo) PlayerPrefs.SetString("myBusyo", newMyBusyo);
+        
+        for (int i=0; i < jinkeiBusyo_list.Count; i++ ){
 			myBusyo_list.Remove(jinkeiBusyo_list[i]);
 		}
 

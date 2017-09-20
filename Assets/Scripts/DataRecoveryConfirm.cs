@@ -192,9 +192,13 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetString("availableHeihousyo", RecoveryDataStore.availableHeihousyo);
                 PlayerPrefs.SetString("availableChishikisyo", RecoveryDataStore.availableChishikisyo);
                 PlayerPrefs.SetString("kanjyo", RecoveryDataStore.kanjyo);
+                if (RecoveryDataStore.cyouheiYR == "" || RecoveryDataStore.cyouheiYR == null) RecoveryDataStore.cyouheiYR = "0,0,0";
                 PlayerPrefs.SetString("cyouheiYR", RecoveryDataStore.cyouheiYR);
+                if (RecoveryDataStore.cyouheiKB == "" || RecoveryDataStore.cyouheiKB == null) RecoveryDataStore.cyouheiKB = "0,0,0";
                 PlayerPrefs.SetString("cyouheiKB", RecoveryDataStore.cyouheiKB);
+                if (RecoveryDataStore.cyouheiTP == "" || RecoveryDataStore.cyouheiTP == null) RecoveryDataStore.cyouheiTP = "0,0,0";
                 PlayerPrefs.SetString("cyouheiTP", RecoveryDataStore.cyouheiTP);
+                if (RecoveryDataStore.cyouheiYM == "" || RecoveryDataStore.cyouheiYM == null) RecoveryDataStore.cyouheiYM = "0,0,0";
                 PlayerPrefs.SetString("cyouheiYM", RecoveryDataStore.cyouheiYM);
                 PlayerPrefs.SetInt("hidensyoGe", RecoveryDataStore.hidensyoGe);
                 PlayerPrefs.SetInt("hidensyoCyu", RecoveryDataStore.hidensyoCyu);
@@ -415,12 +419,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
             msgScript.makeMessage(msgScript.getMessage(151));
 
         }else {
-            RecoveryDataStore RecoveryDataStore = GameObject.Find("RecoveryDataStore").GetComponent<RecoveryDataStore>();
-            RecoveryDataStore.ResetValue();
-
             audioSources[1].Play();
-            Destroy(back.gameObject);
-            Destroy(msg.gameObject);
+            GameObject.Find("Button").GetComponent<BackMain>().OnClick();
         }
     }
 

@@ -14,6 +14,7 @@ public class DataRecovery : MonoBehaviour {
     public bool Fetched1 = false;
     public bool Fetched2 = false;
     public bool Fetched3 = false;
+    public bool ClickedFlg = false;
 
     public void Start() {
         RecoveryDataStore = GameObject.Find("RecoveryDataStore").GetComponent<RecoveryDataStore>();
@@ -30,6 +31,7 @@ public class DataRecovery : MonoBehaviour {
             audioSources[4].Play();
             msg.makeMessage(msg.getMessage(5));
         }else {
+
             if (inputUserId == "") {
                 audioSources[4].Play();
                 msg.makeMessage(msg.getMessage(145));                
@@ -48,8 +50,14 @@ public class DataRecovery : MonoBehaviour {
                     } else {
                         //Start
                         //Get All user stored data(dataStore or userId+jinkeiPvP)
-                        audioSources[0].Play();
-                        RecoveryDataStore.GetDataStore(inputUserId);
+                        if(!ClickedFlg) {
+                            ClickedFlg = true;
+                            audioSources[0].Play();
+                            RecoveryDataStore.GetDataStore(inputUserId);
+                        }else {
+                            audioSources[4].Play();
+                            msg.makeMessage(msg.getMessage(155));
+                        }
                     }
                 }                
             }

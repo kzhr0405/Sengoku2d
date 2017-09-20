@@ -5,7 +5,7 @@ using UnityEngine;
 public class OpenPopMenu : MonoBehaviour {
 
     public bool busyoFlg = false;
-
+    
 	public void OnClick() {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[0].Play();

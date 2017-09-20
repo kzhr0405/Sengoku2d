@@ -13,6 +13,7 @@ public class Homing : MonoBehaviour {
 	public string targetTag;
 	Animator anim;
 	public bool leftFlg = false; //左を向いているか
+    public bool KBFlg = false;
 
 	void Start(){
 
@@ -24,7 +25,9 @@ public class Homing : MonoBehaviour {
 		anim = this.GetComponent ("Animator") as Animator;
 		nearObj = serchTagOnLine (gameObject, targetTag);
 
-		if (AIType != 3) {
+        if (GetComponent<Heisyu>().heisyu == "KB") KBFlg = true;
+
+        if (AIType != 3) {
 			Move (nearObj);
 		}
 
@@ -50,15 +53,11 @@ public class Homing : MonoBehaviour {
 				if (AIType != 3) { //Don't move and Waiting at shiro
 					Move (nearObj);
 				}
-
 			} else {
 				//相手が居ない場合ストップ
 				GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 				GetComponent<Rigidbody2D> ().angularVelocity = 0;
-
 				anim.SetBool ("IsAttack", false); 
-
-
 			}
 		} else {
 

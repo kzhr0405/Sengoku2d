@@ -1172,7 +1172,6 @@ public class MainEventHandler : MonoBehaviour {
             /**rengou**/
             bool rengouFlg = PlayerPrefs.GetBool("rengouFlg");
             if (!rengouFlg) {
-                Debug.Log("rengoooooooooo");
                 //doumei each other
                 List<string> rengouDaimyoList = new List<string>();
                 List<string> rengouSeiryokuList = seiryokuList;

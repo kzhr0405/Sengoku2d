@@ -60,8 +60,9 @@ public class DoBuy : MonoBehaviour {
 							newCyouheiYRString = cyouheiYR_list[0] + "," + cyouheiYR_list[1] + "," + newQty.ToString();
 							
 						}
-						PlayerPrefs.SetString ("cyouheiYR",newCyouheiYRString);
-						
+                        if (newCyouheiYRString != "") {
+                            PlayerPrefs.SetString ("cyouheiYR",newCyouheiYRString);
+                        }
 					}else if(item.Contains("KB")==true){
 						string cyouheiKBString = PlayerPrefs.GetString("cyouheiKB");
 						string[] cyouheiKB_list = cyouheiKBString.Split (delimiterChars);
@@ -84,8 +85,9 @@ public class DoBuy : MonoBehaviour {
 							newCyouheiKBString = cyouheiKB_list[0] + "," + cyouheiKB_list[1] + "," + newQty.ToString();
 							
 						}
-						PlayerPrefs.SetString ("cyouheiKB",newCyouheiKBString);
-						
+                        if (newCyouheiKBString != "") {
+                            PlayerPrefs.SetString ("cyouheiKB",newCyouheiKBString);
+                        }
 					}else if(item.Contains("TP")==true){
 						string cyouheiTPString = PlayerPrefs.GetString("cyouheiTP");
 						string[] cyouheiTP_list = cyouheiTPString.Split (delimiterChars);
@@ -108,8 +110,9 @@ public class DoBuy : MonoBehaviour {
 							newCyouheiTPString = cyouheiTP_list[0] + "," + cyouheiTP_list[1] + "," + newQty.ToString();
 							
 						}
-						PlayerPrefs.SetString ("cyouheiTP",newCyouheiTPString);
-						
+                        if (newCyouheiTPString != "") {
+                            PlayerPrefs.SetString ("cyouheiTP",newCyouheiTPString);
+                        }
 					}else if(item.Contains("YM")==true){
 						string cyouheiYMString = PlayerPrefs.GetString("cyouheiYM");
 						string[] cyouheiYM_list = cyouheiYMString.Split (delimiterChars);
@@ -132,7 +135,9 @@ public class DoBuy : MonoBehaviour {
 							newCyouheiYMString = cyouheiYM_list[0] + "," + cyouheiYM_list[1] + "," + newQty.ToString();
 							
 						}
-						PlayerPrefs.SetString ("cyouheiYM",newCyouheiYMString);
+                        if (newCyouheiYMString != "") {
+                            PlayerPrefs.SetString ("cyouheiYM",newCyouheiYMString);
+                        }
 					}
 					
 				

@@ -41,7 +41,6 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 			PlayerPrefs.SetString ("activeStageName", kassenName);
 
 			PlayerPrefs.SetInt ("activeDaimyoId", srcDaimyoId);
-            Debug.Log("busyoQty" + busyoQty);
 			PlayerPrefs.SetInt ("activeBusyoQty", busyoQty);
 			PlayerPrefs.SetInt ("activeBusyoLv", busyoLv);
 			PlayerPrefs.SetInt ("activeButaiQty", butaiQty);

@@ -19,9 +19,11 @@ public class GameScene : MonoBehaviour {
 	public int enemySoudaisyo;
 	public int totalSenpouLv = 0;
 	public int aveSenpouLv = 0;
+    public List<string> sameDaimyoList;
+    public List<string> sameDaimyoNumList;
 
-	//saku
-	public bool sakuFlg;
+    //saku
+    public bool sakuFlg;
 	public int sakuId;
 	public int sakuEffect;
 	public GameObject sakuBtn;
@@ -82,6 +84,24 @@ public class GameScene : MonoBehaviour {
             GameObject.Find("AutoBtn").transform.FindChild("Num").GetComponent<Text>().text = "2";
             GameObject.Find("AutoBtn").GetComponent<AutoAttack>().speed = 2;
         }
+
+        //EnemySameDaimyoNum
+        string sameDaimyo = PlayerPrefs.GetString("sameDaimyo");
+        string sameDaimyoNum = PlayerPrefs.GetString("sameDaimyoNum");
+        PlayerPrefs.DeleteKey("sameDaimyo");
+        PlayerPrefs.DeleteKey("sameDaimyoNum");
+                 
+        char[] delimiterCharsNum = { ',' };
+        if (sameDaimyo != null && sameDaimyo != "") {
+            if (sameDaimyo.Contains(",")) {
+                sameDaimyoList = new List<string>(sameDaimyo.Split(delimiterCharsNum));
+                sameDaimyoNumList = new List<string>(sameDaimyoNum.Split(delimiterCharsNum));
+            }else {
+                sameDaimyoList.Add(sameDaimyo);
+                sameDaimyoNumList.Add(sameDaimyoNum);
+            }
+        }
+        
 
         if (!pvpFlg) {
             if(GameObject.Find("PvPName")) {
@@ -1068,10 +1088,10 @@ public class GameScene : MonoBehaviour {
 			//Passive
 			boubi = PlayerPrefs.GetInt("activeBoubi", 0);
 		}
+        
 
-
-		//View Object & pass status to it. 
-		PlayerInstance inst = new PlayerInstance ();
+        //View Object & pass status to it. 
+        PlayerInstance inst = new PlayerInstance ();
 		inst.makeInstance (busyoId, mapId, hp, atk, dfc, spd, senpouArray, busyoName, soudaisyo, boubi);
 
 		return busyoId;
@@ -1182,6 +1202,19 @@ public class GameScene : MonoBehaviour {
             activeButaiLv = 10;
             activeButaiQty = 20;
         }
+
+        //same daimyo  
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
+        int num = 0;
+        if (sameDaimyoList.Contains(daimyoId.ToString())) {
+            int i = sameDaimyoList.IndexOf(daimyoId.ToString());
+            num = int.Parse(sameDaimyoNumList[i]);
+            int addRatio = (num - 1) * 5;
+            atk = atk + Mathf.FloorToInt(((float)atk * (float)addRatio) / 100);
+            dfc = dfc + Mathf.FloorToInt(((float)dfc * (float)addRatio) / 100);
+        }
+        
         inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"");
 	}
 

@@ -67,15 +67,33 @@ public class ZukanMenu : MonoBehaviour {
 		//Prepare Master & History
 		Entity_busyo_mst tempBusyoMst  = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
 		string zukanBusyoHst = PlayerPrefs.GetString ("zukanBusyoHst");
-		List<string> zukanBusyoHstList = new List<string> ();
+        List<string> zukanBusyoHstListTmp = new List<string>();
+        List<string> zukanBusyoHstList = new List<string> ();
 		char[] delimiterChars = {','};
 		if (zukanBusyoHst != null && zukanBusyoHst != "") {
 			if (zukanBusyoHst.Contains (",")) {
-				zukanBusyoHstList = new List<string> (zukanBusyoHst.Split (delimiterChars));
+                zukanBusyoHstListTmp = new List<string> (zukanBusyoHst.Split (delimiterChars));
 			} else {
-				zukanBusyoHstList.Add (zukanBusyoHst);
+                zukanBusyoHstListTmp.Add (zukanBusyoHst);
 			}
 		}
+
+        //remove dup
+        string newZukanBusyoHst = "";
+        for (int i = 0; i < zukanBusyoHstListTmp.Count; i++) {
+            string busyo = zukanBusyoHstListTmp[i];
+            if (!zukanBusyoHstList.Contains(busyo)) {
+                zukanBusyoHstList.Add(busyo);
+
+                if (newZukanBusyoHst == "") {
+                    newZukanBusyoHst = busyo;
+                }else {
+                    newZukanBusyoHst = newZukanBusyoHst + "," + busyo;
+                }
+            }
+        }
+        if (zukanBusyoHst != newZukanBusyoHst) PlayerPrefs.SetString("zukanBusyoHst", newZukanBusyoHst);
+
 
         //add temporary daimyo busyo
         int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
