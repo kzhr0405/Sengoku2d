@@ -81,13 +81,16 @@ public class DataJinkei : MonoBehaviour {
                 if (objList.Count == 0) { //never registered
                     InsertJinkei(userId);
                 }else { //Update              
-                    int jinkeiId = PlayerPrefs.GetInt("jinkei");
-                    int jinkeiHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                    int jinkeiId = PlayerPrefs.GetInt("jinkei");                    
+                    int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
+                    if (pvpHeiryoku == 0) {
+                        pvpHeiryoku = PlayerPrefs.GetInt("jinkeiHeiryoku");
+                    }
                     string soudaisyo = "soudaisyo" + jinkeiId.ToString();
                     int soudaisyoBusyoId = PlayerPrefs.GetInt(soudaisyo);
 
                     objList[0]["jinkeiId"] = jinkeiId.ToString();
-                    objList[0]["jinkeiHeiryoku"] = jinkeiHeiryoku;
+                    objList[0]["jinkeiHeiryoku"] = pvpHeiryoku;
                     objList[0]["soudaisyo"] = soudaisyoBusyoId;
 
                     for (int i = 1; i < 26; i++) {

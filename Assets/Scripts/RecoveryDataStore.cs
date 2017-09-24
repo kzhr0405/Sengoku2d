@@ -417,7 +417,7 @@ public class RecoveryDataStore : MonoBehaviour {
                 }else { //Update  
                     foreach (NCMBObject obj in objList) {
                         int count = 1;
-                        if (checkDataExist(obj, "count")) count = System.Convert.ToInt32(objList[0]["count"]) + 1; Debug.Log(count);
+                        if (checkDataExist(obj, "count")) count = System.Convert.ToInt32(objList[0]["count"]) + 1;
                         objList[0]["count"] = count;
                         objList[0].SaveAsync();
                     }

@@ -25,8 +25,9 @@ public class DataRegister : MonoBehaviour {
         //User Data Update
         DataUserId DataUserId = GetComponent<DataUserId>();        
         DataJinkei DataJinkei = GetComponent<DataJinkei>();
+        DataPvP DataPvP = GetComponent<DataPvP>();
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
-        if(tutorialDoneFlg) {
+        if (tutorialDoneFlg) {
             if (userId == "" || userId == null) {
                 //New UserId
                 string randomA = StringUtils.GeneratePassword(10);
@@ -43,6 +44,7 @@ public class DataRegister : MonoBehaviour {
                 if (Application.internetReachability != NetworkReachability.NotReachable) {
                     DataUserId.UpdateUserId(userId);
                     DataJinkei.UpdateJinkei(userId);
+                    DataPvP.UpdatePvP(userId);
 
                     //Reward
                     DataReward DataReward = GetComponent<DataReward>();

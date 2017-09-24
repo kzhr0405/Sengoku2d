@@ -6896,62 +6896,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1071725536}
---- !u!1001 &1079842718
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000011969100282, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-      propertyPath: m_Name
-      value: AdfurikunMovieRewardUtility
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013185165316, guid: 7a9787c6565a4416aab05823221b5db7,
-        type: 2}
-      propertyPath: config.iPhoneAppID
-      value: 597392e52e3495a43000019e
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000013185165316, guid: 7a9787c6565a4416aab05823221b5db7,
-        type: 2}
-      propertyPath: config.androidAppID
-      value: 597392cb2d34959d79000202
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7a9787c6565a4416aab05823221b5db7, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1100071226
 GameObject:
   m_ObjectHideFlags: 0
@@ -9632,6 +9576,52 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1505457029}
+--- !u!1 &1509260545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1000011969100282, guid: 7a9787c6565a4416aab05823221b5db7,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1509260547}
+  - component: {fileID: 1509260546}
+  m_Layer: 0
+  m_Name: AdfurikunMovieRewardUtility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1509260546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114000013185165316, guid: 7a9787c6565a4416aab05823221b5db7,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1509260545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150228dcab43f28489dd98aa668c4e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config:
+    iPhoneAppID: 
+    androidAppID: 
+--- !u!4 &1509260547
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4000010801005590, guid: 7a9787c6565a4416aab05823221b5db7,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1509260545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1516527653
 GameObject:
   m_ObjectHideFlags: 0

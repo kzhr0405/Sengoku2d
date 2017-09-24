@@ -88,9 +88,11 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
                 List<int> engunDaimyoList = new List<int>();
                 for (int i = 0; i < baseKuni.Count; i++) {
                     int tmpDaimyoId = int.Parse(seiryokuList[baseKuni[i] - 1]);
-                    if (!engunDaimyoList.Contains(tmpDaimyoId)) {
-                        if(rengouDaimyoList.Contains(tmpDaimyoId.ToString())) {
-                            engunDaimyoList.Add(tmpDaimyoId);
+                    if(tmpDaimyoId != srcDaimyoId) {
+                        if (!engunDaimyoList.Contains(tmpDaimyoId)) {
+                            if(rengouDaimyoList.Contains(tmpDaimyoId.ToString())) {
+                                engunDaimyoList.Add(tmpDaimyoId);
+                            }
                         }
                     }
                 }
@@ -109,11 +111,19 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 
                         //engun check
                         MainEventHandler main = new MainEventHandler();
-                        bool engunFlg = main.CheckByProbability(yukoudo);
+                        bool engunFlg = main.CheckByProbability(yukoudo);                        
                         if (engunFlg) {
                             //rengou check
+                            bool hardFlg = PlayerPrefs.GetBool("hardFlg");
                             int count = 1;//engun busyo count
-                            if (rengouFlg && rengouDaimyoList.Contains(engunDaimyo)) count = UnityEngine.Random.Range(2, 6);//2-5
+                            if (rengouFlg && rengouDaimyoList.Contains(engunDaimyo)) {
+                                if(hardFlg) {
+                                    count = UnityEngine.Random.Range(4, 7);//3-6
+                                }else {
+                                    count = UnityEngine.Random.Range(2, 5);//2-4
+                                }
+                            }
+
                             for (int i = 0; i < count; i++) {
                                 //Engun OK
                                 engunFlg = true;

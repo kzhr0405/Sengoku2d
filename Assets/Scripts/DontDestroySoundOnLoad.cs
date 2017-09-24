@@ -12,9 +12,11 @@ public class DontDestroySoundOnLoad : MonoBehaviour {
 		}
     }
 
+    
 	//アプリケーションクラッシュ対策用
 	void OnApplicationQuit() {
 		//強制保存
 		PlayerPrefs.Flush();
     }
+    
 }

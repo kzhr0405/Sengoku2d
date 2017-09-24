@@ -21,8 +21,7 @@ public class JinkeiPowerEffection : MonoBehaviour {
 				//myDaimyoBusyo Check
 				allObjList.Add (busyoObj.gameObject);
 				if (busyoObj.gameObject.GetComponent<Senryoku> ().myDaimyoBusyoFlg) {
-					myDaimyoBusyoOnFlg = true;
-                    Debug.Log(busyoObj.parent.name);
+					myDaimyoBusyoOnFlg = true;                    
 					busyoObj.GetComponent<Soudaisyo> ().OnClick ();
 
 				}
