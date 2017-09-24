@@ -66,8 +66,9 @@ public class MainStageController : MonoBehaviour {
 
     public void Start () {
 
-
+        //Common
         Resources.UnloadUnusedAssets();
+        Time.timeScale = 1;
 
         //Set Object
         HyourouCurrentValue = currentHyourou.GetComponent<Text>();
@@ -991,7 +992,7 @@ public class MainStageController : MonoBehaviour {
 		if (hyourouMax <= nowHyourou) {
 			hyourouFull = true;
             HyourouCurrentValue.text = hyourouMax.ToString ();
-			PlayerPrefs.SetInt ("hyourou", hyourouMax);
+			PlayerPrefs.SetInt ("hyourou", 100);
 			PlayerPrefs.Flush ();
 
 		} else {
@@ -1002,13 +1003,11 @@ public class MainStageController : MonoBehaviour {
 				if (hyourouMax <= newHyourou) {
 					hyourouFull = true;
 					PlayerPrefs.SetInt ("hyourou", hyourouMax);
-					PlayerPrefs.Flush ();
                     HyourouCurrentValue.text = hyourouMax.ToString ();
 
 				} else {
 					hyourouFull = false;
 					PlayerPrefs.SetInt ("hyourou", newHyourou);
-					PlayerPrefs.Flush ();
                     HyourouCurrentValue.text = newHyourou.ToString ();
 
 					//Timer
@@ -1416,8 +1415,6 @@ public class MainStageController : MonoBehaviour {
         DoNextSeason DoNextSeason = new DoNextSeason();
         DoNextSeason.deleteLinkCut();
         DoNextSeason.deleteWinOver();
-        PlayerPrefs.Flush();
-
         GameObject.Find("YearValue").GetComponent<Text>().text = nowYear.ToString();
         SetSeason(nowSeason);
 

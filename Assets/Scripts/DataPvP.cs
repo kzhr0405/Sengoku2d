@@ -31,9 +31,8 @@ public class DataPvP : MonoBehaviour {
         pvpClass.SaveAsync();
     }
 
-    public void UpdatePvP() {
+    public void UpdatePvP(string userId) {
 
-        string userId = PlayerPrefs.GetString("userId");
         string userName = PlayerPrefs.GetString("PvPName");
         int pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
         if(pvpHeiryoku == 0) {

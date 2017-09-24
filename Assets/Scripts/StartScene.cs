@@ -63,8 +63,11 @@ public class StartScene : MonoBehaviour {
                     
                 }else {
                     if(GameObject.Find("DataStore")) {
-                        DataPvP pvpScript = GameObject.Find("DataStore").GetComponent<DataPvP>();
-                        pvpScript.UpdatePvP();
+                        DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
+                        DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
+                        string userId = PlayerPrefs.GetString("userId");
+                        DataPvP.UpdatePvP(userId);
+                        DataJinkei.UpdateJinkei(userId);
                     }
                     Application.LoadLevel("pvp");
                 }

@@ -139,8 +139,10 @@ public class Timer : MonoBehaviour {
                     if (GameObject.Find ("GiveupBtn")) {
 					    GameObject.Find ("GiveupBtn").SetActive (false);
 				    }
-
-				    if (!isAttackedFlg) {
+                    if (GameObject.Find("AutoBtn")) {
+                        GameObject.Find("AutoBtn").SetActive(false);
+                    }
+                    if (!isAttackedFlg) {
                         //Player Attacked
                         //Game Over
                         string backPath = "Prefabs/PostKassen/back";

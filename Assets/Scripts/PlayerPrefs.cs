@@ -1,4 +1,4 @@
-﻿/*
+/*
 	PreviewLabs.PlayerPrefs
 	April 1, 2014 version
 
@@ -39,10 +39,12 @@ namespace PreviewLabs
 		
 		static PlayerPrefs ()
 		{
-//			Debug.Log("PlayerPrefs start. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-			#if !UNITY_WEBPLAYER
-			//load previous settings
-			StreamReader fileReader = null;
+            
+            //Debug.Log("PlayerPrefs() start. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+            //try{
+            #if !UNITY_WEBPLAYER
+            //load previous settings
+            StreamReader fileReader = null;
 			
 			//バックグラウンド移行時に作成される一時ファイルのチェックと置換処理
 			if (File.Exists (tempFileName) && isExistWorkingFlushFile()) {
@@ -86,12 +88,14 @@ namespace PreviewLabs
 			if (fileReader != null) {
 				fileReader.Close ();
 			}
-			#endif
-			
-			
-		}
-		
-		public static bool HasKey (string key)
+            #endif
+            //}catch(Exception e){
+            //	Debug.Log("PlayerPrefs : exception on PlayerPrefs(): " + e.Message );
+            //}
+
+        }
+
+        public static bool HasKey (string key)
 		{
 			lock(guard) {
 				return playerPrefsHashtable.ContainsKey (key);
@@ -309,11 +313,12 @@ namespace PreviewLabs
 		}
 		public static void Flush (bool isOnPause = false)
 		{	
+			//Debug.Log("PlayerPrefs : Flush start -----------------------------------" + isOnPause.ToString());
 			lock(guard) {
 				try{
-					if (hashTableChanged) {
+                    //initAndroidPath();//test
+                    if (hashTableChanged) {
 						Serialize ();
-						//Debug.Log("Flush start -----------------------------------");
 						string output = (securityModeEnabled ? Encrypt (serializedOutput) : serializedOutput);
 						#if !UNITY_WEBPLAYER
 						StreamWriter fileWriter = null;
@@ -323,7 +328,7 @@ namespace PreviewLabs
 						fileWriter = File.CreateText (tempFileName);
 
 						if (fileWriter == null) { 
-							Debug.LogWarning ("PlayerPrefs::Flush() opening file for writing failed: " + tempFileName);
+							Debug.LogWarning ("PlayerPrefs : Flush() opening file for writing failed: " + tempFileName);
 							return;
 						}
 
@@ -352,10 +357,10 @@ namespace PreviewLabs
 
 						serializedOutput = "";
 
-						//Debug.Log("Flush end *******************************************");
+						//Debug.Log("PlayerPrefs : Flush end *******************************************");
 					}
 				}catch(Exception e){
-					Debug.Log("exception on flusing: " + e.Message );
+					Debug.Log("PlayerPrefs : exception on flushing: " + e.Message );
 				}
 			}
 		}
@@ -531,7 +536,48 @@ namespace PreviewLabs
 			}
 
 			//保存完了
-//			Debug.Log("Flush Data Replace Completed !");
+			//Debug.Log("Flush Data Replace Completed !");
 		}
-	}	
+
+        private static string _FilesDir;
+        private static string _CacheDir;
+        private static string _ExternalFilesDir;
+        private static string _ExternalCacheDir;
+        private static void initAndroidPath() {
+        #if !UNITY_EDITOR && UNITY_ANDROID
+			        using( AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer") )
+			        {
+				        using( AndroidJavaObject currentActivity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity") )
+				        {
+					        using( AndroidJavaObject filesDir = currentActivity.Call<AndroidJavaObject>( "getFilesDir" ) )
+					        {
+						        _FilesDir = filesDir.Call<string>( "getCanonicalPath" );
+					        }
+
+					        using( AndroidJavaObject cacheDir = currentActivity.Call<AndroidJavaObject>( "getCacheDir" ) )
+					        {
+						        _CacheDir = cacheDir.Call<string>( "getCanonicalPath" );
+					        }
+
+					        using( AndroidJavaObject externalFilesDir = currentActivity.Call<AndroidJavaObject>("getExternalFilesDir",null ) )
+					        {
+						        _ExternalFilesDir = externalFilesDir.Call<string>("getCanonicalPath");
+					        }
+
+					        using( AndroidJavaObject externalCacheDir = currentActivity.Call<AndroidJavaObject>("getExternalCacheDir" ) )
+					        {
+						        _ExternalCacheDir = externalCacheDir.Call<string>("getCanonicalPath");
+					        }
+				        }
+			        }
+			        Debug.Log( "PlayerPrefs : getFilesDir : " + _FilesDir );
+			        Debug.Log( "PlayerPrefs : getCacheDir : " + _CacheDir );
+			        Debug.Log( "PlayerPrefs : getExternalFilesDir : " + _ExternalFilesDir );
+			        Debug.Log( "PlayerPrefs : getExternalCacheDir : " + _ExternalCacheDir );
+
+        #endif
+        }
+
+    }    
 }
+
