@@ -585,4 +585,19 @@ public class Saku : MonoBehaviour {
 
     }
 
+    public string getSakuName(int sakuId) {
+        string sakuName = "";
+        
+        Entity_saku_mst sakuMst = Resources.Load("Data/saku_mst") as Entity_saku_mst;
+        if (Application.systemLanguage != SystemLanguage.Japanese) {
+            sakuName = sakuMst.param[sakuId - 1].nameEng;           
+        }else {
+            sakuName = sakuMst.param[sakuId - 1].name;
+        }
+        return sakuName;
+
+    }
+
+
+
 }

@@ -212,11 +212,11 @@ public class BusyoView : MonoBehaviour {
 			//Butai Status
 			string heiId = "hei" + busyoId.ToString ();
 			string chParam = PlayerPrefs.GetString (heiId,"0");
-            
-            if(chParam == "0" || chParam == "") {
-                StatusGet statusScript = new StatusGet();
-                string heisyu = statusScript.getHeisyu(int.Parse(busyoId));
-                chParam = heisyu + ":1:1:1";
+
+            StatusGet statusScript = new StatusGet();
+            string heisyuString = statusScript.getHeisyu(int.Parse(busyoId));
+            if (chParam == "0" || chParam == "") {                
+                chParam = heisyuString + ":1:1:1";
                 PlayerPrefs.SetString(heiId, chParam);
                 PlayerPrefs.Flush();
             }
@@ -226,8 +226,9 @@ public class BusyoView : MonoBehaviour {
 			    char[] delimiterChars = {':'};
 			    string[] ch_list = chParam.Split (delimiterChars);
                 bool updateParam = false;
-                string ch_type = ch_list [0];
-			    int ch_num = int.Parse (ch_list [1]);
+                //string ch_type = ch_list [0];
+                string ch_type = heisyuString;
+                int ch_num = int.Parse (ch_list [1]);
                 if (ch_num > 20) {
                     ch_num = 20;
                     updateParam = true;

@@ -47,8 +47,9 @@ public class GacyaSpecial : MonoBehaviour {
             TouyouSpecialController TouyouSpecialController = GameObject.Find("Controller").GetComponent<TouyouSpecialController>();
             Dictionary<int, Busyo> tmpBusyoListDic = new Dictionary<int, Busyo>();
             tmpBusyoListDic = TouyouSpecialController.busyoListDic;
-            TouyouSpecialController.doGacyaSpecial(transform.parent.name, gacyaCount, hireCount, tmpBusyoListDic);
-
+            string gacyaName = transform.parent.transform.FindChild("Text").GetComponent<Text>().text;
+            TouyouSpecialController.doGacyaSpecial(transform.parent.name, gacyaCount, hireCount, tmpBusyoListDic, gacyaName);
+            
         } else {
             //Error
             Message msg = new Message();

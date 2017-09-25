@@ -770,8 +770,9 @@ public class MainStageController : MonoBehaviour {
 
                         lastLoginDateString = System.DateTime.Today.ToString ();
 					    PlayerPrefs.SetString ("loginDate", lastLoginDateString);
+                        PlayerPrefs.DeleteKey("todayGacyaSpecialFlg");
 
-					    PlayerPrefs.SetBool ("questDailyFlg14", true);
+                        PlayerPrefs.SetBool ("questDailyFlg14", true);
 					    PlayerPrefs.Flush ();
 				    }
 

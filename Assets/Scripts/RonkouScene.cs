@@ -451,10 +451,9 @@ public class RonkouScene : MonoBehaviour {
             //retry tutorial
             chParam = "TP:1:1:1";
         }
-
-        if (chParam == "0" || chParam == "") {
-            StatusGet statusScript = new StatusGet();
-            string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));
+        StatusGet statusScript = new StatusGet();
+        string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));
+        if (chParam == "0" || chParam == "") {            
             chParam = chParamHeisyu + ":1:1:1";
             PlayerPrefs.SetString(heiId, chParam);
             PlayerPrefs.Flush();
@@ -462,9 +461,10 @@ public class RonkouScene : MonoBehaviour {
         
         char[] delimiterChars = {':'};
 		string[] ch_list = chParam.Split (delimiterChars);
-		
-		string ch_type = ch_list [0];
-		int ch_num = int.Parse (ch_list [1]);
+
+        //string ch_type = ch_list [0];
+        string ch_type = chParamHeisyu;
+        int ch_num = int.Parse (ch_list [1]);
         bool updateParam = false;
         if (ch_num > 20) {
             ch_num = 20;

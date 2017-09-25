@@ -35,9 +35,9 @@ public class DoKunren : MonoBehaviour {
 			//increase target Lv
 			string tmp = "hei" + busyoId;
 			string chParam = PlayerPrefs.GetString (tmp,"0");
-            if (chParam == "0" || chParam == "") {
-                StatusGet statusScript = new StatusGet();
-                string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));
+            StatusGet statusScript = new StatusGet();
+            string chParamHeisyu = statusScript.getHeisyu(int.Parse(busyoId));
+            if (chParam == "0" || chParam == "") {                
                 chParam = chParamHeisyu + ":1:1:1";
                 PlayerPrefs.SetString(tmp, chParam);
                 PlayerPrefs.Flush();
@@ -49,7 +49,7 @@ public class DoKunren : MonoBehaviour {
 			//get pure status
 			Entity_lvch_mst lvMst  = Resources.Load ("Data/lvch_mst") as Entity_lvch_mst;
 			int startline = 0;
-			string ch_type = ch_list [0];
+            string ch_type = chParamHeisyu;
 
 			if(ch_type=="KB"){
 				startline = 0;

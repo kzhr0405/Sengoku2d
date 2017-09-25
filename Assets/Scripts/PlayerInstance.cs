@@ -284,8 +284,9 @@ public class PlayerInstance : MonoBehaviour {
 		string[] ch_list = chParam.Split(delimiterChars);
 
         bool updateParam = false;
-        string ch_type = ch_list[0];
-		int ch_num = int.Parse (ch_list[1]);
+        //string ch_type = ch_list[0];
+        string ch_type = heisyu;
+        int ch_num = int.Parse (ch_list[1]);
         if (ch_num > 20) {
             ch_num = 20;
             updateParam = true;
