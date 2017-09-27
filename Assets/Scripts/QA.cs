@@ -35,7 +35,7 @@ public class QA : MonoBehaviour {
 		} else if(Application.loadedLevelName == "pvp") {
             qaBoard.transform.SetParent(GameObject.Find("Panel").transform);
             GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "UI";
-        } else if(Application.loadedLevelName == "reward") {
+        } else if(Application.loadedLevelName == "reward" || Application.loadedLevelName == "touyouEvent") {
             qaBoard.transform.SetParent(GameObject.Find("Canvas").transform);
         }else {
             qaBoard.transform.SetParent(GameObject.Find("Map").transform);
@@ -49,6 +49,13 @@ public class QA : MonoBehaviour {
 		qaBoard.transform.FindChild ("Kakejiku").transform.FindChild ("Exp").GetComponent<Text> ().text = qaExp;
 		qaBoard.transform.FindChild ("Kakejiku").transform.FindChild ("Title").GetComponent<Text> ().text = qaTitle;
 
-
-	}
+        //Sort
+        if(GameObject.Find("Canvas")) {
+            GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "UI";
+        }else if (GameObject.Find("Map")) {
+            GameObject.Find("Map").GetComponent<Canvas>().sortingLayerName = "UI";
+        }else if (GameObject.Find("Jinkei")) {
+            GameObject.Find("Jinkei").GetComponent<Canvas>().sortingLayerName = "UI";
+        }
+    }
 }

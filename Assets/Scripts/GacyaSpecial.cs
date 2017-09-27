@@ -41,15 +41,17 @@ public class GacyaSpecial : MonoBehaviour {
             //OK
             audioSources[8].Play();
             int newBusyoDama = busyoDama - requiredStone;
-            //PlayerPrefs.SetInt("busyoDama",newBusyoDama);
-            //GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = newBusyoDama.ToString();
+            PlayerPrefs.SetInt("busyoDama",newBusyoDama);
+            GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = newBusyoDama.ToString();
 
             TouyouSpecialController TouyouSpecialController = GameObject.Find("Controller").GetComponent<TouyouSpecialController>();
             Dictionary<int, Busyo> tmpBusyoListDic = new Dictionary<int, Busyo>();
             tmpBusyoListDic = TouyouSpecialController.busyoListDic;
             string gacyaName = transform.parent.transform.FindChild("Text").GetComponent<Text>().text;
             TouyouSpecialController.doGacyaSpecial(transform.parent.name, gacyaCount, hireCount, tmpBusyoListDic, gacyaName);
-            
+
+            GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "unit";
+
         } else {
             //Error
             Message msg = new Message();

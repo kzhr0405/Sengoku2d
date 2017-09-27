@@ -13,8 +13,10 @@ public class GacyaSpecialSelect : MonoBehaviour {
     public Color selectColor;
     public Color deselectColor;
     public int busyoId;
+    public AudioSource[] audioSources;
 
     private void Start() {
+        audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         selectColor = new Color(40f / 255f, 20f / 255f, 10f / 255f, 255f / 255f);
         deselectColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 100f / 255f);
     }
@@ -22,13 +24,16 @@ public class GacyaSpecialSelect : MonoBehaviour {
 
     public void OnClick() {
 
+        audioSources[2].Play();
+
         if (Button.GetComponent<GacyaSpecialTouyou>().hireCount == 1) onlyOneFlg = true;
 
         if (onlyOneFlg) {
-            selectFlg = true;
             foreach(Transform chld in transform.parent) {
                 setDeselectColor(chld.gameObject);
+                chld.GetComponent<GacyaSpecialSelect>().selectFlg = false;
             }
+            selectFlg = true;
             visualizeBusyo(busyoId);
             setSelectColor(gameObject);
             Button.GetComponent<GacyaSpecialTouyou>().OnlyOneCount();
@@ -44,6 +49,7 @@ public class GacyaSpecialSelect : MonoBehaviour {
                     Button.GetComponent<GacyaSpecialTouyou>().PlusCount();
                     visualizeBusyo(busyoId);
                 }else {
+                    audioSources[4].Play();
                     Message msg = new Message();
                     msg.makeMessage(msg.getMessage(156));
                 }

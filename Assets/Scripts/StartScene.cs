@@ -237,6 +237,14 @@ public class StartScene : MonoBehaviour {
         }
         else if (name == "DataRecovery") {
             Application.LoadLevel("dataRecovery");
+        }else if (name == "NormalGacya") {
+            if(Application.loadedLevelName == "touyouEvent") {
+                Application.LoadLevel("touyou");
+            }
+        }else if(name == "SpecialGacya") {
+            if (Application.loadedLevelName == "touyou") {
+                Application.LoadLevel("touyouEvent");
+            }
         }
     }
 }

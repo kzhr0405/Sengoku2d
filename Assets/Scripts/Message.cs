@@ -16,14 +16,26 @@ public class Message : MonoBehaviour {
 
 		messageObj.transform.localScale = new Vector2 (1, 1);
 		messageObj.transform.localPosition = new Vector3(0, 11, 0);
-        //RectTransform messageTransform = messageObj.GetComponent<RectTransform> ();
-        //messageTransform.anchoredPosition = new Vector3 (0, 0, 0);
 
         return messageObj;
 
     }
 
-	public void makeMessageOnBoard (string Text) {
+    public GameObject makeMidMessage(string Text) {
+        string Path = "Prefabs/Common/MessageMidObject";
+        GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
+        messageObj.transform.SetParent(GameObject.Find("Panel").transform);
+        messageObj.transform.FindChild("MessageText").transform.GetComponent<Text>().text = Text;
+        messageObj.name = "MessageObject";
+
+        messageObj.transform.localScale = new Vector2(1, 1);
+        messageObj.transform.localPosition = new Vector3(0, 11, 0);
+
+        return messageObj;
+
+    }
+
+    public void makeMessageOnBoard (string Text) {
 		string Path = "Prefabs/Common/MessageObject";
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
         GameObject panel = null;

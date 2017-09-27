@@ -17,6 +17,8 @@ public class TouyouSpecialController : MonoBehaviour {
     public GameObject Slot;
     public GameObject Content;
     public GameObject lightning;
+    public GameObject gacyaEffectS;
+    public GameObject gacyaEffectA;
 
     void Start () {
         //Common
@@ -32,7 +34,12 @@ public class TouyouSpecialController : MonoBehaviour {
         for (int i = 0; i < busyoMst.param.Count; i++) {
             int busyoId = busyoMst.param[i].id;            
             string rank = busyoMst.param[i].rank;
-            string busyoName = busyoMst.param[i].name;
+            string busyoName = "";
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                busyoName = busyoMst.param[i].nameEng;
+            } else {
+                busyoName = busyoMst.param[i].name;
+            }
             string heisyu = busyoMst.param[i].heisyu;
             int daimyoId = busyoMst.param[i].daimyoId;
             int daimyoHst = busyoMst.param[i].daimyoHst;
@@ -40,8 +47,8 @@ public class TouyouSpecialController : MonoBehaviour {
         }
 
         //target
-        //bool todayGacyaSpecialFlg = PlayerPrefs.GetBool("todayGacyaSpecialFlg");
-        bool todayGacyaSpecialFlg = false; //test
+        bool todayGacyaSpecialFlg = PlayerPrefs.GetBool("todayGacyaSpecialFlg");
+        //bool todayGacyaSpecialFlg = false; //test
         if (!todayGacyaSpecialFlg) {
             List<string> targetHeisyuList = new List<string>() { "YR", "KB", "TP", "YM"};
             int rdmHeisyuId = UnityEngine.Random.Range(0, targetHeisyuList.Count);
@@ -268,13 +275,7 @@ public class TouyouSpecialController : MonoBehaviour {
             string heisyu = hitBusyo[0].heisyu;
             hitBusyo.RemoveAt(0);
             audioSources[0].Play();
-
-            if (rank == "S" || rank == "A") {
-                GameObject lightningObj = Instantiate(lightning);
-                lightningObj.transform.SetParent(Panel.transform,false);
-                lightningObj.transform.localScale = new Vector3(100,120,0);
-            }
-
+            
             //Set Busyo
             GameObject SlotObj = Instantiate(Slot);
             SlotObj.transform.SetParent(Content.transform, false);
@@ -290,6 +291,25 @@ public class TouyouSpecialController : MonoBehaviour {
             SlotObj.GetComponent<GacyaSpecialSelect>().Button = Button;
             SlotObj.GetComponent<GacyaSpecialSelect>().Detail = Detail;
             if(myZukanList.Contains(busyoId.ToString())) SlotObj.GetComponent<GacyaSpecialSelect>().zukanExistFlg = true;
+
+            if (rank == "S" || rank == "A") {
+                GameObject lightningObj = Instantiate(lightning);
+                audioSources[6].Play();
+                if (rank == "S") {
+                    GameObject gacyaEffectSObj = Instantiate(gacyaEffectS);
+                    gacyaEffectSObj.transform.SetParent(SlotObj.transform, false);
+                    gacyaEffectSObj.transform.localScale = new Vector3(100,40,0);
+                    gacyaEffectSObj.transform.localPosition = new Vector3(0, 15, 0);
+                }else if (rank == "A") {
+                    GameObject gacyaEffectAObj = Instantiate(gacyaEffectA);
+                    gacyaEffectAObj.transform.SetParent(SlotObj.transform, false);
+                    gacyaEffectAObj.transform.localScale = new Vector3(100, 40, 0);
+                    gacyaEffectAObj.transform.localPosition = new Vector3(0, 15, 0);
+                }
+                lightningObj.transform.SetParent(SlotObj.transform, false);
+                lightningObj.transform.localScale = new Vector3(100, 180, 0);
+            }
+
 
             if (hitBusyo.Count != 0) {
                     yield return new WaitForSeconds(0.1f);
