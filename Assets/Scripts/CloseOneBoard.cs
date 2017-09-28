@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CloseOneBoard : MonoBehaviour {
 
@@ -8,7 +9,9 @@ public class CloseOneBoard : MonoBehaviour {
 	public void OnClick(){
 
         if(GameObject.Find("Canvas")) {
-            GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "Default";
+            if (SceneManager.GetActiveScene().name != "kassen" && SceneManager.GetActiveScene().name != "kaisen") {
+                GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "Default";
+            }
         }else if(GameObject.Find("Map")) {
             GameObject.Find("Map").GetComponent<Canvas>().sortingLayerName = "Default";
         }else if (GameObject.Find("Jinkei")) {
