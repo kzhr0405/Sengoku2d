@@ -141,9 +141,10 @@ public class IconClick : MonoBehaviour {
 
 		//Stock Limit
 		int stockLimit = PlayerPrefs.GetInt ("stockLimit");
-		int myBusyoQty = PlayerPrefs.GetInt ("myBusyoQty");
-		string value = myBusyoQty.ToString () + "/" + stockLimit.ToString ();
-		kuni.transform.FindChild ("TouyouQtyValue").GetComponent<Text> ().text = value;
+        int addSpace = PlayerPrefs.GetInt("space");
+        int myBusyoQty = PlayerPrefs.GetInt ("myBusyoQty");
+		string value = myBusyoQty.ToString () + "/" + stockLimit.ToString () + "<Color=#35D74BFF>+" + addSpace + "</Color>";
+        kuni.transform.FindChild ("TouyouQtyValue").GetComponent<Text> ().text = value;
 
 
         //SyutsujinQtyUpLvValue

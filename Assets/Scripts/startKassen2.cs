@@ -187,6 +187,8 @@ public class startKassen2 : MonoBehaviour {
 
                         //Soudaisyo
                         PlayerPrefs.SetInt("jinkei", myJinkei);
+                        Jinkei jinkei = new Jinkei();
+                        soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, myJinkei);
                         PlayerPrefs.SetInt ("soudaisyo1", soudaisyo);			
 			            PlayerPrefs.Flush ();
 
@@ -219,6 +221,8 @@ public class startKassen2 : MonoBehaviour {
 
                         //Soudaisyo
                         PlayerPrefs.SetInt("jinkei", myJinkei);
+                        Jinkei jinkei = new Jinkei();
+                        soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, myJinkei);
                         PlayerPrefs.SetInt ("soudaisyo2", soudaisyo);
 			            PlayerPrefs.Flush ();
 
@@ -251,6 +255,8 @@ public class startKassen2 : MonoBehaviour {
 
                         //Soudaisyo
                         PlayerPrefs.SetInt("jinkei", myJinkei);
+                        Jinkei jinkei = new Jinkei();
+                        soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, myJinkei);
                         PlayerPrefs.SetInt ("soudaisyo3", soudaisyo);
 			            PlayerPrefs.Flush ();
 
@@ -283,7 +289,9 @@ public class startKassen2 : MonoBehaviour {
 
 
                         PlayerPrefs.SetInt("jinkei",myJinkei);
-			            PlayerPrefs.SetInt ("soudaisyo4", soudaisyo);
+                        Jinkei jinkei = new Jinkei();
+                        soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, myJinkei);
+                        PlayerPrefs.SetInt ("soudaisyo4", soudaisyo);
 			            PlayerPrefs.Flush ();
 
 
@@ -372,8 +380,18 @@ public class startKassen2 : MonoBehaviour {
 
                     PlayerPrefs.Flush ();
 
-		            //Stop BGM
-		            GameObject.Find ("BGMController").GetComponent<DontDestroySoundOnLoad> ().DestoryFlg = true;
+                    //PvP Heiryoku
+                    //Set Data
+                    if (Application.internetReachability != NetworkReachability.NotReachable) {
+                        DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
+                        DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
+                        string userId = PlayerPrefs.GetString("userId");
+                        DataPvP.UpdatePvP(userId);
+                        DataJinkei.UpdateJinkei(userId);
+                    }
+                    
+                    //Stop BGM
+                    GameObject.Find ("BGMController").GetComponent<DontDestroySoundOnLoad> ().DestoryFlg = true;
 
                     //Scene Change
                     if (Application.loadedLevelName == "preKaisen") {

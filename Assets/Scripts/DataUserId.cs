@@ -36,6 +36,7 @@ public class DataUserId : MonoBehaviour {
     List<int> gokuiList = new List<int>();
     List<int> kanniList = new List<int>();
     int movieCount = 0;
+    int space = 0;
 
     string myKanni = "";
     string availableBugu = "";
@@ -112,6 +113,7 @@ public class DataUserId : MonoBehaviour {
         userIdClass["questSpecialCountReceivedFlg"] = questSpecialCountReceivedFlg;
         userIdClass["yearSeason"] = yearSeason;
         userIdClass["movieCount"] = movieCount;
+        userIdClass["space"] = space;
 
         //busyo
         userIdClass["gacyaDaimyoHst"] = gacyaDaimyoHst;
@@ -216,6 +218,7 @@ public class DataUserId : MonoBehaviour {
                         objList[0]["questSpecialCountReceivedFlg"] = questSpecialCountReceivedFlg;
                         objList[0]["yearSeason"] = yearSeason;                        
                         objList[0]["movieCount"] = movieCount;
+                        objList[0]["space"] = space;
 
                         //busyo
                         objList[0]["gacyaDaimyoHst"] = gacyaDaimyoHst;
@@ -308,6 +311,7 @@ public class DataUserId : MonoBehaviour {
         syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
         doumei = PlayerPrefs.GetString("doumei");
         movieCount = PlayerPrefs.GetInt("movieCount");
+        space = PlayerPrefs.GetInt("space");
 
         Entity_quest_mst questMst = Resources.Load("Data/quest_mst") as Entity_quest_mst;
         for (int i = 0; i < questMst.param.Count; i++) {

@@ -108,10 +108,10 @@ public class AdfuriMoviepop : MonoBehaviour {
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.FinishedPlaying:
                 Debug.Log("Sengoku2d : The ad finished playing.");
-                au.playMovieReward();
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.FailedPlaying:
                 Debug.Log("Sengoku2d :  The ad failed playing.");
+                au.playMovieReward();
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
                 Screen.orientation = ScreenOrientation.LandscapeLeft;

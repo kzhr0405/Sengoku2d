@@ -43,6 +43,10 @@ public class StartKassenPvP : MonoBehaviour {
             msg.hyourouMovieMessage();
         }
 
+
+
+
+
     }
 
     void Update() {

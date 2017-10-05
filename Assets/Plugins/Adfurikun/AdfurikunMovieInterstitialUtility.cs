@@ -213,8 +213,7 @@ public class AdfurikunMovieInterstitialUtility : MonoBehaviour {
 			if (!isPreparedMovieInterstitial (appId)) {
 				this.sendMessage (ADF_MovieStatus.NotPrepared, appId, "");
 			}else{
-				Screen.orientation = ScreenOrientation.AutoRotation;
-				//動画リワード
+				//動画インタースティシャル
 				this.makeInstance_AdfurikunMovieInterstitialController().CallStatic("play", appId);
 			}
 		}

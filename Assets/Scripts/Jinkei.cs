@@ -26,4 +26,18 @@ public class Jinkei : MonoBehaviour {
         PlayerPrefs.SetInt("pvpHeiryoku", pvpHeiryoku);
         PlayerPrefs.Flush();
     }
+
+    public int soudaisyoBusyoIdCheck(int soudaisyoBusyoId, int jinkeiId) {        
+        int newSoudaisyoBusyoId = soudaisyoBusyoId;
+        if(newSoudaisyoBusyoId == 0) {
+            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
+                if (obs.transform.childCount > 0) {
+                    //Get Name 
+                    newSoudaisyoBusyoId = int.Parse(obs.transform.GetChild(0).name);
+                    break;
+                }
+            }
+        }
+        return newSoudaisyoBusyoId;
+    }
 }

@@ -62,14 +62,23 @@ public class StartScene : MonoBehaviour {
                     board.transform.FindChild("NoButton").GetComponent<AddHyourou>().touchBackObj = back;
                     
                 }else {
-                    if(GameObject.Find("DataStore")) {
-                        DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
-                        DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
-                        string userId = PlayerPrefs.GetString("userId");
-                        DataPvP.UpdatePvP(userId);
-                        DataJinkei.UpdateJinkei(userId);
+                    //soudaisyo check
+                    int jinkei = PlayerPrefs.GetInt("jinkei");
+                    string tmp = "soudaisyo" + jinkei.ToString();
+                    int mySoudaisyo = PlayerPrefs.GetInt(tmp);
+                    if(mySoudaisyo !=0) {
+                        if (GameObject.Find("DataStore")) {
+                            DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
+                            DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
+                            string userId = PlayerPrefs.GetString("userId");
+                            DataPvP.UpdatePvP(userId);
+                            DataJinkei.UpdateJinkei(userId);
+                        }
+                        Application.LoadLevel("pvp");
+                    }else {
+                        Message msg = new Message();
+                        msg.makeMessage(msg.getMessage(161));
                     }
-                    Application.LoadLevel("pvp");
                 }
 
             }

@@ -175,8 +175,10 @@ public class JinkeiConfirmButton : MonoBehaviour {
                             if (nowHeiryoku < heiryoku) {
                                 PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
                             }
-                    
+
                             //Soudaisyo
+                            Jinkei jinkei = new Jinkei();
+                            soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, selectedJinkei);
                             PlayerPrefs.SetInt("soudaisyo1", soudaisyo);
 
                             PlayerPrefs.SetInt("jinkei", selectedJinkei);
@@ -226,6 +228,8 @@ public class JinkeiConfirmButton : MonoBehaviour {
                             }
 
                             //Soudaisyo
+                            Jinkei jinkei = new Jinkei();
+                            soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, selectedJinkei);
                             PlayerPrefs.SetInt("soudaisyo2", soudaisyo);
 
                             PlayerPrefs.SetInt("jinkei", selectedJinkei);
@@ -276,6 +280,8 @@ public class JinkeiConfirmButton : MonoBehaviour {
                             }
 
                             //Soudaisyo
+                            Jinkei jinkei = new Jinkei();
+                            soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, selectedJinkei);
                             PlayerPrefs.SetInt("soudaisyo3", soudaisyo);
 
                             PlayerPrefs.SetInt("jinkei", selectedJinkei);
@@ -326,6 +332,8 @@ public class JinkeiConfirmButton : MonoBehaviour {
                             }
 
                             //Soudaisyo
+                            Jinkei jinkei = new Jinkei();
+                            soudaisyo = jinkei.soudaisyoBusyoIdCheck(soudaisyo, selectedJinkei);
                             PlayerPrefs.SetInt("soudaisyo4", soudaisyo);
                             PlayerPrefs.SetInt("jinkei", selectedJinkei);
                         }
@@ -333,6 +341,15 @@ public class JinkeiConfirmButton : MonoBehaviour {
                         PlayerPrefs.SetBool("questSpecialFlg6", true);
                         PlayerPrefs.Flush();
                         Application.LoadLevel("mainStage");
+
+                        //Set Data
+                        if (Application.internetReachability != NetworkReachability.NotReachable) {
+                            DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
+                            DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
+                            string userId = PlayerPrefs.GetString("userId");
+                            DataPvP.UpdatePvP(userId);
+                            DataJinkei.UpdateJinkei(userId);
+                        }
                     }
                 }
             }

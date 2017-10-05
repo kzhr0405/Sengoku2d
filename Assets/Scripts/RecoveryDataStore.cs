@@ -39,6 +39,7 @@ public class RecoveryDataStore : MonoBehaviour {
     public List<bool> questSpecialCountReceivedFlg = new List<bool>();
     public int kuniExp;
     public int movieCount = 0;
+    public int space = 0;
 
     //busyo
     public string myBusyo = "";
@@ -170,7 +171,8 @@ public class RecoveryDataStore : MonoBehaviour {
                         syogunDaimyoId = System.Convert.ToInt32(obj["syogunDaimyoId"]);
                         doumei = System.Convert.ToString(obj["doumei"]);
                         if (checkDataExist(obj, "movieCount")) movieCount = System.Convert.ToInt32(obj["movieCount"]);
-                        
+                        if (checkDataExist(obj, "space")) space = System.Convert.ToInt32(obj["space"]);
+
                         ArrayList arraylist1 = (ArrayList)obj["questSpecialFlgId"];
                         foreach (object o in arraylist1) questSpecialFlgId.Add(System.Convert.ToInt32(o));
 

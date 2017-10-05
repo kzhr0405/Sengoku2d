@@ -213,7 +213,6 @@ public class AdfurikunMovieRewardUtility : MonoBehaviour {
 			if (!isPreparedMovieReward (appId)) {
 				this.sendMessage (ADF_MovieStatus.NotPrepared, appId, "");
 			}else{
-				Screen.orientation = ScreenOrientation.AutoRotation;
 				//動画リワード
 				this.makeInstance_AdfurikunMovieRewardController().CallStatic("play", appId);
 			}

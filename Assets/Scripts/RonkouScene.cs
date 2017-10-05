@@ -214,8 +214,9 @@ public class RonkouScene : MonoBehaviour {
 
         //Busyo Qty Limit
         int stockLimit = PlayerPrefs.GetInt ("stockLimit");
-		GameObject.Find ("LimitBusyoQtyValue").GetComponent<Text>().text = stockLimit.ToString ();
-		GameObject.Find ("NowBusyoQtyValue").GetComponent<Text>().text = myBusyoList.Count.ToString ();
+        int addSpace = PlayerPrefs.GetInt("space");
+        GameObject.Find ("LimitBusyoQtyValue").GetComponent<Text>().text = stockLimit.ToString () + "<Color=#35C748FF>+" + addSpace + "</Color>";
+        GameObject.Find ("NowBusyoQtyValue").GetComponent<Text>().text = myBusyoList.Count.ToString ();
 
         //Scroll Position
         content.transform.parent.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0.0f;

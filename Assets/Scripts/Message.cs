@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class Message : MonoBehaviour {
 
@@ -213,6 +214,39 @@ public class Message : MonoBehaviour {
         */
     }
 
+    public void makeSpaceBuyBoard(string text) {
 
-   
+        int busyoDama = PlayerPrefs.GetInt("busyoDama");
+
+        if(busyoDama<100) {
+            makeMessage(text);
+        }else {
+            GameObject Panel = GameObject.Find("Panel");
+            string pathOfBack = "Prefabs/Common/TouchBackForOne";
+            GameObject back = Instantiate(Resources.Load(pathOfBack)) as GameObject;
+            back.transform.SetParent(Panel.transform, false);
+
+            string Path = "Prefabs/Common/SpaceBuyBoard";
+            GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
+            messageObj.transform.SetParent(Panel.transform,false);        
+            messageObj.transform.FindChild("Text").GetComponent<Text>().text = text;
+
+            //Slider
+            GameObject slider = messageObj.transform.FindChild("Space").transform.FindChild("BusyoDamaSlider").gameObject;
+            GameObject btn = messageObj.transform.FindChild("Space").transform.FindChild("DoBuy").gameObject;
+            Slider sliderScript = slider.GetComponent<Slider>();
+            int maxValue = busyoDama / 100;
+            
+            sliderScript.minValue = 1;
+            sliderScript.maxValue = maxValue;
+            btn.GetComponent<DoSpaceBuy>().busyoDamaOKflg = true;
+            btn.GetComponent<DoSpaceBuy>().paiedBusyoDama = 100;
+            btn.GetComponent<DoSpaceBuy>().touchBackObj = back;
+            slider.GetComponent<BusyoDamaSlider>().doBtn = btn;
+            back.GetComponent<CloseOneBoard>().deleteObj = messageObj;
+        }
+
+
+    }
+
 }

@@ -20,7 +20,10 @@ public class DoTouyou : MonoBehaviour {
         
 		//Limit Check
 		int stockLimit = PlayerPrefs.GetInt("stockLimit");
-		int myBusyoQty = PlayerPrefs.GetInt("myBusyoQty");
+        int space = PlayerPrefs.GetInt("space");
+        stockLimit = stockLimit + space;
+
+        int myBusyoQty = PlayerPrefs.GetInt("myBusyoQty");
 		char[] delimiterChars = {','};
 
 		if (myBusyoQty + 1 > stockLimit && Application.loadedLevelName != "tutorialTouyou") {
@@ -29,11 +32,11 @@ public class DoTouyou : MonoBehaviour {
 			Message msg = new Message();
             string Text = "";
             if (Application.systemLanguage != SystemLanguage.Japanese) {
-                Text = "You can hire samurai by " + stockLimit.ToString()+ " members.";
+                Text = "You have hired max number " + stockLimit.ToString()+ " samurais. You can buy an additional samurai space.";
             }else {
                 Text = "現在の国力では登用出来る武将数は" + stockLimit.ToString()+ "人までですぞ。";
             }
-			msg.makeMessage (Text);
+			msg.makeSpaceBuyBoard(Text);
 
 		} else {
 			audioSources [3].Play ();
