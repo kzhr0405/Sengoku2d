@@ -44,6 +44,7 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> PvP1LvList = new List<int>();
     public List<string> PvP1HeiList = new List<string>();
     public List<int> PvP1SenpouLvList = new List<int>();
+    public List<int> PvP1SakuList = new List<int>();
     public List<int> PvP1SakuLvList = new List<int>();
     public List<string> PvP1KahouList = new List<string>();
     public int soudaisyo1;
@@ -52,6 +53,7 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> PvP2LvList = new List<int>();
     public List<string> PvP2HeiList = new List<string>();
     public List<int> PvP2SenpouLvList = new List<int>();
+    public List<int> PvP2SakuList = new List<int>();
     public List<int> PvP2SakuLvList = new List<int>();
     public List<string> PvP2KahouList = new List<string>();
     public int soudaisyo2;
@@ -60,6 +62,7 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> PvP3LvList = new List<int>();
     public List<string> PvP3HeiList = new List<string>();
     public List<int> PvP3SenpouLvList = new List<int>();
+    public List<int> PvP3SakuList = new List<int>();
     public List<int> PvP3SakuLvList = new List<int>();
     public List<string> PvP3KahouList = new List<string>();
     public int soudaisyo3;
@@ -98,12 +101,14 @@ public class PvPDataStore : MonoBehaviour {
 
 
     //Time
-    public PvPTimer PvPTimer;
+    public GameObject PvPTimer;
     public int todayNCMB;
 
     public void Start() {
         //Get Current Time Script
-        PvPTimer = GameObject.Find("Timer").GetComponent<PvPTimer>();
+        if(!PvPTimer) {
+            PvPTimer = GameObject.Find("Timer");
+        }
     }
 
 
@@ -341,16 +346,15 @@ public class PvPDataStore : MonoBehaviour {
     /* Matching Start */
     public void GetRandomEnemy(string myUserId, int HpBase, int startDateNCMB, int endDateNCMB, int todayNCMB, int myTotalPt) {
 
-        //Test
-        //myTotalPt = 1000000;
-
         NCMBQuery<NCMBObject> queryPvPTmp = new NCMBQuery<NCMBObject>("pvpTmp");
         queryPvPTmp.WhereNotEqualTo("userId", myUserId);
+        queryPvPTmp.WhereNotEqualTo("soudaisyo", 0);
+
         queryPvPTmp.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
-        //queryPvPTmp.WhereLessThanOrEqualTo("totalPt", myTotalPt * 2);
         queryPvPTmp.WhereGreaterThanOrEqualTo("totalPt", myTotalPt);
-        queryPvPTmp.WhereLessThanOrEqualTo("jinkeiHeiryoku", HpBase * 5);
-        queryPvPTmp.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", HpBase / 5);
+        int myKuniLv = PlayerPrefs.GetInt("kuniLv");
+        queryPvPTmp.WhereLessThanOrEqualTo("kuniLv", Mathf.CeilToInt((float)myKuniLv * 1.5f));
+        queryPvPTmp.WhereGreaterThanOrEqualTo("kuniLv", Mathf.CeilToInt((float)myKuniLv / 1.5f));
 
         queryPvPTmp.CountAsync((int count, NCMBException eCount) => {
             if (eCount == null) {
@@ -363,8 +367,9 @@ public class PvPDataStore : MonoBehaviour {
                 if (matchCount == 0) {
                     NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
                     query.WhereNotEqualTo("userId", myUserId);
-                    query.WhereLessThanOrEqualTo("jinkeiHeiryoku", Mathf.CeilToInt((float)HpBase * 1.5f));
-                    query.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", Mathf.CeilToInt((float)HpBase / 1.5f));
+                    query.WhereNotEqualTo("soudaisyo", 0);
+                    query.WhereLessThanOrEqualTo("kuniLv", Mathf.CeilToInt((float)myKuniLv * 1.5f));
+                    query.WhereGreaterThanOrEqualTo("kuniLv", Mathf.CeilToInt((float)myKuniLv / 1.5f));
                     query.WhereNotEqualTo("atkNo", 0);
 
                     query.CountAsync((int pvpCount, NCMBException PvPexpection) => {
@@ -476,102 +481,7 @@ public class PvPDataStore : MonoBehaviour {
                     });
                 }
             }
-        });
-
-
-
-
-
-
-        /*
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
-        query.WhereNotEqualTo("userId", myUserId);
-        query.WhereLessThanOrEqualTo("jinkeiHeiryoku", Mathf.CeilToInt((float)HpBase * 1.5f));
-        query.WhereGreaterThanOrEqualTo("jinkeiHeiryoku", Mathf.CeilToInt((float)HpBase/1.5f));
-        query.WhereNotEqualTo("atkNo",0);
-
-        int rdmSkip = 0;
-        query.CountAsync((int count, NCMBException eCount) => {
-            if (eCount == null) {
-                matchCount = count;
-                rdmSkip = UnityEngine.Random.Range(0, matchCount) - 3;
-                if (rdmSkip < 0) rdmSkip = 0;
-
-                if (matchCount == 0) {
-                    matchedFlg = true;
-                }else {
-                    //Random Id
-                    query.Skip = rdmSkip;
-                    query.Limit = 3;
-
-                    query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
-                        if (e != null) {
-                            Debug.Log("Ther is no user : exception");
-                        }
-                        else {
-                            int jinkeiJudgeCount = 0;
-                            for (int i = 0; i < objList.Count; i++) {
-
-                                if (pvpUserIdList.Count == 3) {
-                                    matchedFlg = true;
-                                    break;
-                                }
-
-                                int index = UnityEngine.Random.Range(0, objList.Count);
-                                string userId = System.Convert.ToString(objList[index]["userId"]);
-
-                                // userIdに対応するpvpjinkeiが存在するか
-                                NCMBQuery<NCMBObject> jinkeiQuery = new NCMBQuery<NCMBObject>("pvpJinkei");
-                                jinkeiQuery.WhereEqualTo("userId", userId);
-                                jinkeiQuery.CountAsync((int jinkeiCount, NCMBException exception) => {
-                                    if (exception == null) {
-                                        // pvpjinkeiが存在するもののみ追加
-                                        if (jinkeiCount > 0) {
-                                            string userName = System.Convert.ToString(objList[index]["userName"]);
-                                            int soudaisyo = System.Convert.ToInt32(objList[index]["soudaisyo"]);
-                                            int kuniLv = System.Convert.ToInt32(objList[index]["kuniLv"]);
-                                            int hp = System.Convert.ToInt32(objList[index]["jinkeiHeiryoku"]);
-
-                                            pvpUserIdList.Add(userId);
-                                            pvpUserNameList.Add(userName);
-                                            pvpSoudaisyoList.Add(soudaisyo);
-                                            pvpKuniLvList.Add(kuniLv);
-                                            pvpHpList.Add(hp);
-
-                                            //Enemy Pt & Rank
-                                            NCMBQuery<NCMBObject> queryPvPTmp = new NCMBQuery<NCMBObject>("pvpTmp");
-                                            queryPvPTmp.WhereEqualTo("userId", userId);
-                                            queryPvPTmp.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
-                                            queryPvPTmp.FindAsync((List<NCMBObject> objPvPList, NCMBException ePvP) => {
-                                                if (ePvP == null) {
-                                                    if (objPvPList.Count == 0) { //never registered
-                                                        InsertPvPWeekly(userId, startDateNCMB, endDateNCMB, userName, kuniLv, soudaisyo, hp);
-                                                        pvpPtList.Add(1000);
-                                                    }
-                                                    else { //Get Data
-                                                        foreach (NCMBObject objPvP in objPvPList) {
-                                                            int pt = System.Convert.ToInt32(objPvP["totalPt"]);
-                                                            pvpPtList.Add(pt);
-                                                        }
-                                                    }
-                                                }
-                                            });
-                                        }
-                                    }
-
-                                    jinkeiJudgeCount++;
-                                    if (jinkeiJudgeCount == 3) {
-                                        matchedFlg = true;
-                                    }
-                                });
-
-                            }
-                        }
-                    });
-                }
-            }
-        });
-        */
+        });        
     }
 
     public void GetEnemyJinkei(string userId, int PvPId) {
@@ -615,6 +525,10 @@ public class PvPDataStore : MonoBehaviour {
                         ArrayList arraylist5 = (ArrayList)ncbObject["kahouList"];
                         foreach (object o in arraylist5) PvP1KahouList.Add(System.Convert.ToString(o));
 
+                        if (checkDataExist(ncbObject, "sakuList")) {
+                            ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
+                            foreach (object o in arraylist6) PvP1SakuList.Add(System.Convert.ToInt32(o));
+                        }
                         soudaisyo1 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
 
                     }else if(PvPId == 2) {
@@ -633,6 +547,10 @@ public class PvPDataStore : MonoBehaviour {
                         ArrayList arraylist5 = (ArrayList)ncbObject["kahouList"];
                         foreach (object o in arraylist5) PvP2KahouList.Add(System.Convert.ToString(o));
 
+                        if (checkDataExist(ncbObject, "sakuList")) {
+                            ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
+                            foreach (object o in arraylist6) PvP2SakuList.Add(System.Convert.ToInt32(o));
+                        }
                         soudaisyo2 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
 
                     }else if (PvPId == 3) {
@@ -650,6 +568,11 @@ public class PvPDataStore : MonoBehaviour {
 
                         ArrayList arraylist5 = (ArrayList)ncbObject["kahouList"];
                         foreach (object o in arraylist5) PvP3KahouList.Add(System.Convert.ToString(o));
+
+                        if (checkDataExist(ncbObject, "sakuList")) {
+                            ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
+                            foreach (object o in arraylist6) PvP3SakuList.Add(System.Convert.ToInt32(o));
+                        }
 
                         soudaisyo3 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
                     }

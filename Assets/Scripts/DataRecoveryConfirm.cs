@@ -18,6 +18,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
     public List<int> senpouLvList = new List<int>();
     public List<int> sakuLvList = new List<int>();
     public List<int> countSpecialList = new List<int>();
+    public List<int> countDailyList = new List<int>();
 
     public void OnClick() {
 
@@ -67,6 +68,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetString("yearSeason", RecoveryDataStore.yearSeason);
                 PlayerPrefs.SetInt("movieCount", RecoveryDataStore.movieCount);
                 PlayerPrefs.SetInt("space", RecoveryDataStore.space);
+                if(RecoveryDataStore.pvpHeiryoku !=0 ) PlayerPrefs.SetInt("pvpHeiryoku", RecoveryDataStore.pvpHeiryoku);
                 string seiryoku = RecoveryDataStore.seiryoku;
                 if (seiryoku == "") seiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
                 PlayerPrefs.SetString("seiryoku", seiryoku);
@@ -78,7 +80,20 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetInt("syogunDaimyoId", RecoveryDataStore.syogunDaimyoId);
                 PlayerPrefs.SetString("doumei", RecoveryDataStore.doumei);
 
-                for(int i=0; i<RecoveryDataStore.questSpecialFlgId.Count; i++) {
+                for (int i = 0; i < RecoveryDataStore.questDailyFlgId.Count; i++) {
+                    int questId = RecoveryDataStore.questDailyFlgId[i];
+                    string tmp = "questDailyFlg" + questId.ToString();
+                    string tmp2 = "questDailyReceivedFlg" + questId.ToString();
+                    PlayerPrefs.SetBool(tmp, true);
+                    bool questReceivedFlg = RecoveryDataStore.questDailyReceivedFlgId[i];
+                    if (questReceivedFlg) {
+                        PlayerPrefs.SetBool(tmp2, true);
+                    }else {
+                        PlayerPrefs.SetBool(tmp2, false);
+                    }
+                }
+                
+                for (int i=0; i<RecoveryDataStore.questSpecialFlgId.Count; i++) {
                     int questId = RecoveryDataStore.questSpecialFlgId[i];
                     string tmp = "questSpecialFlg" + questId.ToString();
                     string tmp2 = "questSpecialReceivedFlg" + questId.ToString();
@@ -97,6 +112,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
                     bool dailyFlg = questCountMst.param[i].daily;
                     if(!dailyFlg) {
                         countSpecialList.Add(i);
+                    }else {
+                        countDailyList.Add(i);
                     }
                 }
                 if(RecoveryDataStore.questSpecialCountReceivedFlg.Count != 0) {
@@ -111,8 +128,19 @@ public class DataRecoveryConfirm : MonoBehaviour {
                         }
                     }
                 }
+                if (RecoveryDataStore.questDailyCountReceivedFlg.Count != 0) {
+                    for (int i = 0; i < countDailyList.Count; i++) {
+                        int id = countDailyList[i];
+                        string tmp = "questDailyCountReceivedFlg" + id.ToString();
+                        bool questReceivedFlg = RecoveryDataStore.questDailyCountReceivedFlg[i];
+                        if (questReceivedFlg) {
+                            PlayerPrefs.SetBool(tmp, true);
+                        }else {
+                            PlayerPrefs.SetBool(tmp, false);
+                        }
+                    }
+                }
 
-                
                 int count = 0;
                 string myBusyo = "";
                 for (int i=0;i<RecoveryDataStore.busyoList.Count; i++) {

@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2304,6 +2304,12 @@ MonoBehaviour:
   isAttackedFlg: 0
   isKessenFlg: 0
   audioSources: []
+  EnemySakuList: []
+  EnemySakuTimerList: []
+  sakuTimer: 0
+  sakuTimerId: 0
+  timerTxt: {fileID: 0}
+  PvPFlg: 0
 --- !u!114 &1231295167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,6 +3125,8 @@ MonoBehaviour:
   soudaisyoSpd: 0
   enemySoudaisyo: 0
   aveSenpouLv: 0
+  sameDaimyoList: []
+  sameDaimyoNumList: []
   sakuFlg: 0
   sakuId: 0
   sakuEffect: 0
@@ -3127,6 +3135,9 @@ MonoBehaviour:
   sakuHeiSts: 0
   sakuBusyoId: 0
   sakuBusyoSpeed: 0
+  totalSakuLv: 0
+  aveSakuLv: 0
+  EnemySakuList: []
 --- !u!4 &1636556274
 Transform:
   m_ObjectHideFlags: 0
@@ -4017,7 +4028,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -42.5
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_SizeDelta.x
@@ -4025,7 +4036,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 22487316, guid: 01b459fe7078aec4ab3e7a1f84c02622, type: 2}
       propertyPath: m_AnchorMin.x

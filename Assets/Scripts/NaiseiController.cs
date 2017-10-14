@@ -200,7 +200,9 @@ public class NaiseiController : MonoBehaviour {
 			List<string> deletePanelList = new List<string>();
 			Entity_naisei_mst naiseiMst = Resources.Load ("Data/naisei_mst") as Entity_naisei_mst;
 
-			for(int i=1; i<naiseiList.Count;i++){
+            GameObject NaiseiView = GameObject.Find("NaiseiView");
+            string popupPath = "Prefabs/PreKassen/Damage";
+            for (int i=1; i<naiseiList.Count;i++){
 
 				List<string> naiseiContentList = new List<string>();
 				naiseiContentList = new List<string>(naiseiList[i].Split (delimiterChars2));
@@ -225,7 +227,7 @@ public class NaiseiController : MonoBehaviour {
 					string bldg = type + "_" + bldgRank;
 					string bldgPath = "Prefabs/Naisei/Bldg/" + bldg;
 					GameObject bldgObj = Instantiate (Resources.Load (bldgPath)) as GameObject;
-					bldgObj.transform.parent = GameObject.Find ("NaiseiView").transform;
+                    bldgObj.transform.SetParent(NaiseiView.transform);
 					bldgObj.transform.localScale = new Vector3 (1, 1, 1);
 					setBldg(bldgObj, i);
 					bldgObj.name = i.ToString();
@@ -234,8 +236,16 @@ public class NaiseiController : MonoBehaviour {
 					bldgObj.GetComponent<AreaButton>().lv = naiseiContentList[1];
 					bldgObj.GetComponent<AreaButton>().naiseiId = int.Parse(naiseiContentList[0]);
 
-					//Effect by Level
-					List<int> naiseiEffectList = new List<int>();
+                    //popup
+                    GameObject popupObj = Instantiate(Resources.Load(popupPath)) as GameObject;
+                    popupObj.transform.SetParent(bldgObj.transform,false);
+                    popupObj.GetComponent<Text>().text = "Lv " + naiseiContentList[1];
+                    popupObj.GetComponent<DamagePop>().divSpeed = 10f;
+                    popupObj.GetComponent<DamagePop>().deleteTime = 2f;
+                    popupObj.GetComponent<DamagePop>().attackBoardflg = true;
+
+                    //Effect by Level
+                    List<int> naiseiEffectList = new List<int>();
 					naiseiEffectList = getNaiseiList(type, int.Parse(naiseiContentList[1]));
 					if(type != "kzn"){
 						if(type != "yr" &&type != "kb"&&type != "tp" &&type != "ym" &&type !="snb"){
@@ -321,12 +331,11 @@ public class NaiseiController : MonoBehaviour {
 			RectTransform maskPanel_transform = maskPanel.GetComponent<RectTransform>();
 			maskPanel_transform.anchoredPosition3D = new Vector3(0,-20,0);
 			maskPanel.name = "shiro_" + rank;
+            
 
-
-			//Status Handling
-
-			//Status Jyosyu Modification
-			if (PlayerPrefs.HasKey (jyosyuTemp)) {
+            //Status Handling
+            //Status Jyosyu Modification
+            if (PlayerPrefs.HasKey (jyosyuTemp)) {
 				StatusGet sts = new StatusGet();
 				int lv = PlayerPrefs.GetInt (jyosyuId.ToString());
 				float naiseiSts = (float)sts.getDfc(jyosyuId,lv);
@@ -872,7 +881,17 @@ public class NaiseiController : MonoBehaviour {
             shiro.GetComponent<AreaButton>().naiseiName = naiseiMst.param[0].name;
         }
 
-		ashigaru = ashigaru + naiseiEffectList[0];
+        //popup
+        string popupPath = "Prefabs/PreKassen/Damage";
+        GameObject popupObj = Instantiate(Resources.Load(popupPath)) as GameObject;
+        popupObj.transform.SetParent(shiro.transform, false);
+        popupObj.GetComponent<Text>().text = "Lv " + lv;
+        popupObj.GetComponent<DamagePop>().divSpeed = 10f;
+        popupObj.GetComponent<DamagePop>().deleteTime = 2f;
+        popupObj.GetComponent<DamagePop>().attackBoardflg = true;
+
+
+        ashigaru = ashigaru + naiseiEffectList[0];
 		boubi = boubi + naiseiEffectList[0];
 	}
 

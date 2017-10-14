@@ -8,35 +8,33 @@ public class SakuCollider : MonoBehaviour {
 
 	public int sakuId = 0;
 	public int sakuEffect = 0;
-	public float sakuTempEffect = 0;
     public Vector2 vect;
     public Color upColor = new Color (50f / 255f, 190f / 255f, 35f / 255f, 255f / 255f); //Green Up
+    public string targetTag = "";
 
     public void Start() {
+
         if (sakuId == 9) {
-            string nanbanString = PlayerPrefs.GetString("nanbanItem");
-            List<string> nanbanList = new List<string>();
-            char[] delimiterChars = { ',' };
-            nanbanList = new List<string>(nanbanString.Split(delimiterChars));
-
-            int qty = int.Parse(nanbanList[1]);
-
-            int remainQty = qty - 1;
-            nanbanList[1] = remainQty.ToString();
-
-            string newNanbanString = "";
-            for (int i = 0; i < nanbanList.Count; i++) {
-
-                if (i == 0) {
-                    newNanbanString = nanbanList[i];
+            if(LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {             
+                string nanbanString = PlayerPrefs.GetString("nanbanItem");
+                List<string> nanbanList = new List<string>();
+                char[] delimiterChars = { ',' };
+                nanbanList = new List<string>(nanbanString.Split(delimiterChars));
+                int qty = int.Parse(nanbanList[1]);
+                int remainQty = qty - 1;
+                nanbanList[1] = remainQty.ToString();
+                string newNanbanString = "";
+                for (int i = 0; i < nanbanList.Count; i++) {
+                    if (i == 0) {
+                        newNanbanString = nanbanList[i];
+                    }else {
+                        newNanbanString = newNanbanString + "," + nanbanList[i];
+                    }
                 }
-                else {
-                    newNanbanString = newNanbanString + "," + nanbanList[i];
-                }
+                PlayerPrefs.SetString("nanbanItem", newNanbanString);
+                PlayerPrefs.Flush();
             }
-            PlayerPrefs.SetString("nanbanItem", newNanbanString);
-            PlayerPrefs.Flush();
-            
+
             if (Application.loadedLevelName == "kaisen") {
                 AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
                 audioSources[10].Play();
@@ -98,178 +96,215 @@ public class SakuCollider : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D col){
 		if (sakuId == 1) {
-			//Kobu
-			//Check Player
-			if (col.tag == "Player") {
+            //Kobu
 
-				//OK
-				AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-				audioSources [7].Play ();//Sakebi
+            if (col.name != "hukuhei") {
+                string targetTag = "";
+                if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
+                    targetTag = "Player";
+                }else {
+                    targetTag = "Enemy";
+                }
 
-				//string 
-				float addAtk = 0;
+                if (col.tag == targetTag) {
+				    AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+				    audioSources [7].Play ();//Sakebi
+				    float addAtk = 0;
+                    if(targetTag == "Player") {
+				        if (col.GetComponent<PlayerAttack> ()) {
+					        float baseAtk = col.GetComponent<PlayerAttack> ().attack;
+					        float temp = baseAtk * sakuEffect;
+					        addAtk = temp / 100;
+					        float newAtk = Mathf.Ceil (baseAtk + addAtk);
+					        col.GetComponent<PlayerAttack> ().attack = newAtk;
+				        } else if (col.GetComponent<AttackLong> ()) {
+					        float baseAtk = col.GetComponent<AttackLong> ().attack;
+					        float temp = baseAtk * sakuEffect;
+					        addAtk = temp / 100;
+					        float newAtk = Mathf.Ceil (baseAtk + addAtk);
+					        col.GetComponent<AttackLong> ().attack = newAtk;
+				        }
+                    }else {
+                        if (col.GetComponent<EnemyAttack>()) {
+                            float baseAtk = col.GetComponent<EnemyAttack>().attack;
+                            float temp = baseAtk * sakuEffect;
+                            addAtk = temp / 100;
+                            float newAtk = Mathf.Ceil(baseAtk + addAtk);
+                            col.GetComponent<EnemyAttack>().attack = newAtk;
+                        }else if (col.GetComponent<AttackLong>()) {
+                            float baseAtk = col.GetComponent<AttackLong>().attack;
+                            float temp = baseAtk * sakuEffect;
+                            addAtk = temp / 100;
+                            float newAtk = Mathf.Ceil(baseAtk + addAtk);
+                            col.GetComponent<AttackLong>().attack = newAtk;
+                        }
+                    }
 
-				//Check YR,KB or TP,YM
-				if (col.GetComponent<PlayerAttack> () != null) {
-
-					float baseAtk = col.GetComponent<PlayerAttack> ().attack;
-					float temp = baseAtk * sakuEffect;
-					addAtk = temp / 100;
-					float newAtk = Mathf.Ceil (baseAtk + addAtk);
-					col.GetComponent<PlayerAttack> ().attack = newAtk;
-
-				} else if (col.GetComponent<AttackLong> () != null) {
-					float baseAtk = col.GetComponent<AttackLong> ().attack;
-					float temp = baseAtk * sakuEffect;
-					addAtk = temp / 100;
-					float newAtk = Mathf.Ceil (baseAtk + addAtk);
-					col.GetComponent<AttackLong> ().attack = newAtk;
-				}
-
-				//Only Parent
-				if (col.GetComponent<UnitMover> () != null) {
-					GameObject dtl = col.transform.FindChild ("BusyoDtlPlayer").gameObject;
-					GameObject effect = dtl.transform.FindChild ("atk_up").gameObject;
-					effect.GetComponent<FadeoutOff> ().currentRemainTime = 5;
-					effect.GetComponent<SpriteRenderer> ().enabled = true;
-					effect.GetComponent<Animator> ().enabled = true;
-					effect.GetComponent<FadeoutOff> ().enabled = true;
-
-					GameObject value = dtl.transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					value.GetComponent<MeshRenderer> ().enabled = true;
-					value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					value.GetComponent<TextMesh> ().text = (Mathf.Ceil(addAtk)).ToString () + "⇡";
-					value.GetComponent<TextMesh> ().color = upColor;
-				}
-			}
-
+                    //View
+                    string text = "";                                
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        text = "ATK " + sakuEffect + "% ⇡";
+                    }else {
+                        text = "武勇 " + sakuEffect + "% ⇡";
+                    }
+                    if (col.GetComponent<UnitMover>()) {
+                        sakuPop(col.gameObject, text);
+                    }else {
+                        if (col.GetComponent<Homing>() || col.GetComponent<HomingLong>()) {
+                            sakuPop(col.gameObject, text);
+                        }
+                    }     
+			    }
+            }
 		} else if (sakuId == 2 ||sakuId == 8) {
-			//Hokyu or Seiyouigaku
-			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-			audioSources [3].Play ();
+            //Hokyu or Seiyouigaku
 
-			//Check Player
-			if (col.tag == "Player") {
-				float baseHP = col.GetComponent<PlayerHP> ().life;
-				float initLife = col.GetComponent<PlayerHP> ().initLife;
-				float newHP = 0;
+            if(col.name != "hukuhei") {
+                string targetTag = "";
+                if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
+                    targetTag = "Player";
+                }else {
+                    targetTag = "Enemy";
+                }
+                AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+			    audioSources [3].Play ();
 
-				if(sakuId == 2){
-					newHP = baseHP + sakuEffect;
-				}else if(sakuId == 8){
-					sakuTempEffect = (int)(initLife*sakuEffect/100);
-					newHP = baseHP + sakuTempEffect;
-				}
-				col.GetComponent<PlayerHP> ().life = newHP;
-			
-				//Only Parent
-				if (col.name != "hukuhei") {
-					if (col.GetComponent<UnitMover> () != null) {
-						GameObject dtl = col.transform.FindChild ("BusyoDtlPlayer").gameObject;
-						GameObject effect = dtl.transform.FindChild ("hp_up").gameObject;
-						effect.GetComponent<FadeoutOff> ().currentRemainTime = 5;
-						effect.GetComponent<SpriteRenderer> ().enabled = true;
-						effect.GetComponent<Animator> ().enabled = true;
-						effect.GetComponent<FadeoutOff> ().enabled = true;
+                if (col.tag == targetTag) {
+                    int popup = 0;
+                     if (targetTag == "Player") {
+				        float baseHP = col.GetComponent<PlayerHP> ().life;
+				        float initLife = col.GetComponent<PlayerHP> ().initLife;
+				        float newHP = 0;
+				        if(sakuId == 2){
+					        newHP = baseHP + sakuEffect;
+                            popup = sakuEffect;
+                        }else if(sakuId == 8){
+                            int sakuEffectTmp = (int)(initLife*sakuEffect/100);
+                            newHP = baseHP + sakuEffectTmp;
+                            popup = sakuEffectTmp;
+                        }
+                        col.GetComponent<PlayerHP> ().life = newHP;			    	
+			        }else {
+                        float baseHP = col.GetComponent<EnemyHP>().life;
+                        float initLife = col.GetComponent<EnemyHP>().initLife;
+                        float newHP = 0;
+                        if (sakuId == 2) {
+                            newHP = baseHP + sakuEffect;
+                            popup = sakuEffect;
+                        }else if (sakuId == 8) {
+                            int sakuEffectTmp = (int)(initLife * sakuEffect / 100);
+                            newHP = baseHP + sakuEffectTmp;
+                            popup = sakuEffectTmp;
+                        }
+                        col.GetComponent<EnemyHP>().life = newHP;
+                    }
 
-						GameObject value = dtl.transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-						value.GetComponent<MeshRenderer> ().enabled = true;
-						value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-						if (sakuId == 2) {
-							value.GetComponent<TextMesh> ().text = sakuEffect.ToString () + "⇡";
-						} else if (sakuId == 8) {
-							value.GetComponent<TextMesh> ().text = sakuTempEffect.ToString () + "⇡";
-						}
-						value.GetComponent<TextMesh> ().color = upColor;
-					}
-				}
-			}
-
-
-		} else if (sakuId == 4) {
+                    //View
+                    string text = "";
+                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        text = "HP " + popup + " ⇡";
+                    }else {
+                        text = "兵力 " + popup + " ⇡";
+                    }
+                    if (targetTag == "Player") {
+                        if (col.GetComponent<UnitMover>()) {
+                            sakuPop(col.gameObject, text);
+                        }else {
+                            if (col.GetComponent<Homing>() || col.GetComponent<HomingLong>()) {
+                                sakuPop(col.gameObject, text);
+                            }
+                        }
+                    }else {
+                        if (col.GetComponent<Homing>() || col.GetComponent<HomingLong>()) {
+                            sakuPop(col.gameObject, text);
+                        }                        
+                    }
+                }
+            }
+        } else if (sakuId == 4) {
 			//Mizuzeme
 			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 			audioSources [6].Play ();
 
 			float reduceHp = sakuEffect;
-			if (col.tag == "Player") {
+            int temp = 0;
+            if (col.tag == "Player") {
 				float baseHP = col.GetComponent<PlayerHP> ().life;
 				if (col.GetComponent<Heisyu> ().heisyu == "TP" || col.GetComponent<Heisyu> ().heisyu == "YM") {
 					reduceHp = 2 * reduceHp;
 				}
-				int temp = (int)(baseHP * reduceHp) / 100;
+				temp = (int)(baseHP * reduceHp) / 100;
 				float newHP = baseHP - temp;
 				col.GetComponent<PlayerHP> ().life = newHP;
 				
-				if (col.GetComponent<UnitMover> () != null) {
-					GameObject value = col.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					value.GetComponent<MeshRenderer> ().enabled = true;
-					value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					value.GetComponent<TextMesh> ().text = temp.ToString () + "⇣";
-				}
-
 			} else if (col.tag == "Enemy") {
 				float baseHP = col.GetComponent<EnemyHP> ().life;
 				if (col.GetComponent<Heisyu> ().heisyu == "TP" || col.GetComponent<Heisyu> ().heisyu == "YM") {
 					reduceHp = 2 * reduceHp;
 				}
-				int temp = (int)(baseHP * reduceHp) / 100;
+				temp = (int)(baseHP * reduceHp) / 100;
 				float newHP = baseHP - temp;
-
-				col.GetComponent<EnemyHP> ().life = newHP;
-
-				if (col.GetComponent<Homing> () != null || col.GetComponent<HomingLong> () != null) {
-					GameObject value = col.transform.FindChild ("BusyoDtlEnemy").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					value.GetComponent<MeshRenderer> ().enabled = true;
-					value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					value.GetComponent<TextMesh> ().text = temp.ToString () + "⇣";
-				}
+				col.GetComponent<EnemyHP> ().life = newHP;                
 			}
 
-		} else if (sakuId == 6) {
+            //View
+            string text = "";
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                text = "HP " + temp + " ⇣";
+            }else {
+                text = "兵力 " + temp + " ⇣";
+            }
+            if (col.GetComponent<UnitMover>()) {
+                sakuPop(col.gameObject, text);
+            }else {
+                if (col.GetComponent<Homing>() || col.GetComponent<HomingLong>()) {
+                    sakuPop(col.gameObject, text);
+                }
+            }
+            
+
+
+        } else if (sakuId == 6) {
 			//Kakei
 			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 			audioSources [6].Play ();
 
 
 			float reduceHp = sakuEffect;
-			if (col.tag == "Player") {
+            int temp = 0;
+            if (col.tag == "Player") {
 				float baseHP = col.GetComponent<PlayerHP> ().life;
 				if (col.GetComponent<Heisyu> ().heisyu == "YR" || col.GetComponent<Heisyu> ().heisyu == "KB") {
 					reduceHp = 2 * reduceHp;
 				}
-				int temp = (int)(baseHP * reduceHp) / 100;
+				temp = (int)(baseHP * reduceHp) / 100;
 				float newHP = baseHP - temp;
-				col.GetComponent<PlayerHP> ().life = newHP;
-
-				
-				if (col.GetComponent<UnitMover> () != null) {
-					GameObject value = col.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					value.GetComponent<MeshRenderer> ().enabled = true;
-					value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					value.GetComponent<TextMesh> ().text = temp.ToString () + "⇣";
-				}
-				
+				col.GetComponent<PlayerHP> ().life = newHP;				
 			} else if (col.tag == "Enemy") {
-
 				float baseHP = col.GetComponent<EnemyHP> ().life;
 				if (col.GetComponent<Heisyu> ().heisyu == "YR" || col.GetComponent<Heisyu> ().heisyu == "KB") {
 					reduceHp = 2 * reduceHp;
 				}
-				int temp = (int)(baseHP * reduceHp) / 100;
-				float newHP = baseHP - temp;
-				
-				col.GetComponent<EnemyHP> ().life = newHP;
-				
-				if (col.GetComponent<Homing> () != null || col.GetComponent<HomingLong> () != null) {
-					GameObject value = col.transform.FindChild ("BusyoDtlEnemy").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					value.GetComponent<MeshRenderer> ().enabled = true;
-					value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					value.GetComponent<TextMesh> ().text = temp.ToString () + "⇣";
-				}
+				temp = (int)(baseHP * reduceHp) / 100;
+				float newHP = baseHP - temp;				
+				col.GetComponent<EnemyHP> ().life = newHP;				
 			}
+            //View       
+            string text = "";
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                text = "HP " + temp + " ⇣";
+            }else {
+                text = "兵力 " + temp + " ⇣";
+            }
+            if (col.GetComponent<UnitMover>()) {
+                sakuPop(col.gameObject, text);
+            }else {
+                if (col.GetComponent<Homing>() || col.GetComponent<HomingLong>()) {
+                    sakuPop(col.gameObject, text);
+                }
+            }
 
-		} else if (sakuId == 9) {
+        } else if (sakuId == 9) {
             //Engosyageki
             if (Application.loadedLevelName != "kaisen") {
 
@@ -277,44 +312,44 @@ public class SakuCollider : MonoBehaviour {
     			audioSources [10].Play ();
                 
                 float reduceHp = sakuEffect;
-			    if (col.tag == "Player") {
+                int temp = 0;
+                if (col.tag == "Player") {
 				    float baseHP = col.GetComponent<PlayerHP> ().life;
-				    int temp = (int)(baseHP * reduceHp) / 100;
+				    temp = (int)(baseHP * reduceHp) / 100;
 				    float newHP = baseHP - temp;
-				    col.GetComponent<PlayerHP> ().life = newHP;
-
-				    if (col.GetComponent<UnitMover> () != null) {
-					    GameObject value = col.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					    value.GetComponent<MeshRenderer> ().enabled = true;
-					    value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					    value.GetComponent<TextMesh> ().text = temp.ToString () + "⇣";
-				    }
-
-			    } else if (col.tag == "Enemy") {
-				
+				    col.GetComponent<PlayerHP> ().life = newHP;                    
+			    } else if (col.tag == "Enemy") {				
 				    float baseHP = col.GetComponent<EnemyHP> ().life;
-
-				    int temp = (int)(baseHP * reduceHp) / 100;
-				    float newHP = baseHP - temp;
-
-				    col.GetComponent<EnemyHP> ().life = newHP;
-
-				    if (col.GetComponent<Homing> () != null || col.GetComponent<HomingLong> () != null) {
-					    GameObject value = col.transform.FindChild ("BusyoDtlEnemy").transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
-					    value.GetComponent<MeshRenderer> ().enabled = true;
-					    value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
-					    value.GetComponent<TextMesh> ().text = temp.ToString () + "⇣";
-				    }
+				    temp = (int)(baseHP * reduceHp) / 100;
+				    float newHP = baseHP - temp;                
+				    col.GetComponent<EnemyHP> ().life = newHP;				    
 			    }
-            
+                //View 
+                string text = "";
+                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    text = "HP " + temp + " ⇣";
+                }else {
+                    text = "兵力 " + temp + " ⇣";
+                }
+                if (col.GetComponent<UnitMover>()) {
+                    sakuPop(col.gameObject, text);
+                }else {
+                    if (col.GetComponent<Homing>() || col.GetComponent<HomingLong>()) {
+                        sakuPop(col.gameObject, text);
+                    }
+                }
+            }
+        }else if(11<=sakuId && sakuId <=15){
+            //Stop Once & Run Animation
+            bool playerFlg;
+            if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
+                playerFlg = true;
+            }else {
+                playerFlg = false;
             }
 
-        }
-        else if(11<=sakuId && sakuId <=15){
-			//Stop Once & Run Animation
-			if (col.tag == "Enemy") {
+            if (playerFlg && col.tag == "Enemy") {
 				if (col.name != "shiro") {
-
 					//Gokui
 					if (sakuId == 11) {
 						//Ittouryu
@@ -356,13 +391,14 @@ public class SakuCollider : MonoBehaviour {
                         }
 					} else if (sakuId == 13) {
 						//kodachi
-						int count = 1;
+						int count = 0;
 						foreach (Transform child in col.transform) {
 							if (child.tag == "EnemyChild") {
 								child.transform.DetachChildren ();
 								Destroy (child.gameObject);
+                                col.GetComponent<EnemyHP>().childQty--;
 
-								count = count + 1;
+                                count = count + 1;
 								if (count >= sakuEffect) {
 									break;
 								}
@@ -380,15 +416,15 @@ public class SakuCollider : MonoBehaviour {
                         }
 
 					} else if (sakuId == 15) {
-						//yagyu shingakeryu
-
-
-						int count = 1;
+						//yagyu shingakeryu                        
+						int count = 0;
 						SenpouBetray betrayScript = new SenpouBetray ();
 						foreach (Transform child in col.transform) {
 							if (child.tag == "EnemyChild") {
 								betrayScript.betrayEnemy(child.gameObject);
-								count = count + 1;
+                                col.GetComponent<EnemyHP>().childQty--;
+
+                                count = count + 1;
 								if (count >= sakuEffect) {
 									break;
 								}
@@ -404,17 +440,112 @@ public class SakuCollider : MonoBehaviour {
                         }else {
                             damageObj.GetComponent<TextMesh>().text = sakuEffect + " unit betrayed";
                         }
-
 					}
-
-
 				}
+			}else if (!playerFlg && col.tag == "Player"){
+                if (col.name != "shiro") {
+                    
+                    //Gokui
+                    if (sakuId == 11) {
+                        //Ittouryu
+                        float baseHP = col.GetComponent<PlayerHP>().life;
 
-			}
+                        int temp = (int)(baseHP * sakuEffect) / 100;                        
+                        col.gameObject.GetComponent<PlayerHP>().DirectDamage(temp);
 
+                        string damagePath = "Prefabs/PreKassen/ArialMessage";
+                        GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
+                        damageObj.transform.SetParent(gameObject.transform);
+                        damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
+                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
+                        damageObj.GetComponent<TextMesh>().text = "-" + temp;
+
+                    }
+                    else if (sakuId == 12) {
+                        //ichino tachi
+                        bool successFlg = CheckByProbability(sakuEffect);
+                        string damagePath = "Prefabs/PreKassen/SakuMessage";
+                        GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
+                        damageObj.transform.SetParent(gameObject.transform);
+                        damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
+                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
+
+                        if (Application.systemLanguage == SystemLanguage.Japanese) {
+                            if (successFlg) {
+                                Destroy(col.gameObject);
+                                damageObj.GetComponent<TextMesh>().text = "撃破";
+                            }else {
+                                damageObj.GetComponent<TextMesh>().text = "失敗";
+                            }
+                        }else {
+                            if (successFlg) {
+                                Destroy(col.gameObject);
+                                damageObj.GetComponent<TextMesh>().text = "Destroied";
+                            }else {
+                                damageObj.GetComponent<TextMesh>().text = "Failed";
+                            }
+                        }
+                    }
+                    else if (sakuId == 13) {
+                        //kodachi
+                        int count = 0;
+                        foreach (Transform child in col.transform) {
+                            if (child.tag == "PlayerChild") {
+                                child.transform.DetachChildren();
+                                Destroy(child.gameObject);
+                                col.GetComponent<PlayerHP>().childQty--;
+
+                                count = count + 1;
+                                if (count >= sakuEffect) {
+                                    break;
+                                }
+                            }
+                        }
+
+                        string damagePath = "Prefabs/PreKassen/SakuMessage";
+                        GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
+                        damageObj.transform.SetParent(gameObject.transform);
+                        damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
+                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
+                        if (Application.systemLanguage == SystemLanguage.Japanese) {
+                            damageObj.GetComponent<TextMesh>().text = "撃破" + sakuEffect + "部隊";
+                        }
+                        else {
+                            damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffect + " unit";
+                        }
+
+                    }else if (sakuId == 15) {
+                        //yagyu shingakeryu                        
+                        int count = 0;
+                        SenpouBetray betrayScript = new SenpouBetray();
+                        foreach (Transform child in col.transform) {
+                            if (child.tag == "PlayerChild") {
+                                betrayScript.betrayPlayer(child.gameObject);
+                                col.GetComponent<PlayerHP>().childQty--;
+
+                                count = count + 1;
+                                if (count >= sakuEffect) {
+                                    break;
+                                }
+                            }
+                        }
+                        string damagePath = "Prefabs/PreKassen/SakuMessage";
+                        GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
+                        damageObj.transform.SetParent(gameObject.transform);
+                        damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
+                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
+                        if (Application.systemLanguage == SystemLanguage.Japanese) {
+                            damageObj.GetComponent<TextMesh>().text = "寝返" + sakuEffect + "部隊";
+                        }
+                        else {
+                            damageObj.GetComponent<TextMesh>().text = sakuEffect + " unit betrayed";
+                        }
+                    }
+                }
+            }
 		}
-
 	}
+
 	public bool CheckByProbability (int ratio) {
 		bool checkFlg = false;
 
@@ -426,4 +557,16 @@ public class SakuCollider : MonoBehaviour {
 		}
 		return checkFlg;
 	}
+
+    public void sakuPop(GameObject baseObj, string text) {
+        GameObject canvas = GameObject.Find("Canvas").gameObject;
+        //string pvpPath = "Prefabs/PvP/GetPt";
+        string pvpPath = "Prefabs/PreKassen/PopupMesh";
+        GameObject popObj = Instantiate(Resources.Load(pvpPath)) as GameObject;
+        popObj.transform.SetParent(canvas.transform,false);
+        popObj.transform.position = new Vector3(baseObj.transform.position.x, baseObj.transform.position.y,0);
+        popObj.GetComponent<TextMesh>().text = text;
+
+        
+    }
 }

@@ -7,10 +7,14 @@ public class TestDataMaker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        PlayerPrefs.SetInt("8", 199);
-        PlayerPrefs.SetInt("addlv8", 100);
-        
+        //PlayerPrefs.SetInt("8", 199);
+        //PlayerPrefs.SetInt("addlv8", 100);
 
+        PlayerPrefs.SetInt("money", 200000000);
+        PlayerPrefs.SetInt("busyoDama", 99999);
+        PlayerPrefs.SetString("cyoutei", "100,100,100");
+        PlayerPrefs.SetString("koueki", "100,100,100");
+        PlayerPrefs.SetString("nanbanItem", "100,100,100");
         /*
         PlayerPrefs.SetInt("movieCount",15000);
         //PlayerPrefs.SetString ("seiryoku","1,1,3,1,1,1,17,1,3,1,1,1,1,1,17,1,1,17,8,17,17,28,8,8,8,8,19,19,19,28,28,28,28,28,28,28,28,1,1,1,1,1,38,38,31,38,38,38,31,38,31,31,31,31,31,38,31,38,45,45,45,45,45,45,41");

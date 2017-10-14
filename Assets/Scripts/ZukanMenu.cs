@@ -431,7 +431,7 @@ public class ZukanMenu : MonoBehaviour {
 		for (int i=0; i<cyadouguMst.param.Count; i++) {
 			int kahouId = cyadouguMst.param[i].id;
 
-			string kahouPath = "Prefabs/Item/Kahou/cyadougu" + kahouId; 
+			string kahouPath = "Prefabs/Item/Kahou/cyadougu" + kahouId;
 			GameObject kahouIcon = Instantiate (Resources.Load (kahouPath)) as GameObject;
 			kahouIcon.transform.SetParent(Content.transform);
 			kahouIcon.transform.localScale = new Vector2 (1, 1);

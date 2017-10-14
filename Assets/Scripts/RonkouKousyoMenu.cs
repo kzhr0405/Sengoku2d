@@ -966,7 +966,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					popBack.transform.FindChild ("RequiredMoney").transform.FindChild ("RequiredMoneyValue").GetComponent<Text> ().color = shortageColor;
 				} else {
 					btn.GetComponent<DoSyugyo> ().moneyOKFlg = true;
-				}
+                    btn.GetComponent<DoSyugyo>().paiedMoney = money;
+                }
 
 
 			

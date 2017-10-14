@@ -73,8 +73,9 @@ public class BouryakuMenu : MonoBehaviour {
 
 					Message msg = new Message ();
 					msg.makeMessage (msg.getMessage(14));
+                    close.layer = close.layer - 1;
 
-				} else {
+                } else {
 					audioSources [0].Play ();
 
 					
@@ -222,7 +223,7 @@ public class BouryakuMenu : MonoBehaviour {
 			slot.name = "Ge";
 			
 			GameObject shinobi = Instantiate (Resources.Load (shinobiItemPath)) as GameObject;	
-			shinobi.transform.SetParent (slot.transform);
+			shinobi.transform.SetParent (slot.transform,false);
 			shinobi.transform.localScale = new Vector3 (1, 1, 1);
 			
 			Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
@@ -233,13 +234,15 @@ public class BouryakuMenu : MonoBehaviour {
                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
             }
 			shinobi.transform.FindChild("Qty").GetComponent<Text>().text = shinobiGe.ToString();
-			
-			RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
-			shinobiTransform.sizeDelta = new Vector2( 155, 190);
-			RectTransform qtyTransform = shinobi.transform.FindChild("Qty").GetComponent<RectTransform> ();
-			qtyTransform.anchoredPosition = new Vector3 (-50, -65, 0);
-			
-			slot.GetComponent<GaikouShinobiSelect>().Gunzei = targetGunzei;
+
+            RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
+            shinobiTransform.sizeDelta = new Vector2( 155, 190);
+
+            GameObject Qty = shinobi.transform.FindChild("Qty").gameObject;
+            Qty.GetComponent<Text>().fontSize = 150;
+            Qty.transform.localPosition = new Vector2(-40,-60);
+
+            slot.GetComponent<GaikouShinobiSelect>().Gunzei = targetGunzei;
 			slot.GetComponent<GaikouShinobiSelect>().Content = content;
 			slot.GetComponent<GaikouShinobiSelect>().DoBtn = btn;
 			slot.GetComponent<GaikouShinobiSelect>().qty = shinobiGe;
@@ -270,10 +273,11 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
 			shinobiTransform.sizeDelta = new Vector2( 155, 190);
-			RectTransform qtyTransform = shinobi.transform.FindChild("Qty").GetComponent<RectTransform> ();
-			qtyTransform.anchoredPosition = new Vector3 (-50, -65, 0);
-			
-			slot.GetComponent<GaikouShinobiSelect>().Gunzei = targetGunzei;
+            GameObject Qty = shinobi.transform.FindChild("Qty").gameObject;
+            Qty.GetComponent<Text>().fontSize = 150;
+            Qty.transform.localPosition = new Vector2(-40, -60);
+
+            slot.GetComponent<GaikouShinobiSelect>().Gunzei = targetGunzei;
 			slot.GetComponent<GaikouShinobiSelect>().Content = content;
 			slot.GetComponent<GaikouShinobiSelect>().DoBtn = btn;
 			slot.GetComponent<GaikouShinobiSelect>().qty = shinobiCyu;
@@ -306,10 +310,11 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
 			shinobiTransform.sizeDelta = new Vector2( 155, 190);
-			RectTransform qtyTransform = shinobi.transform.FindChild("Qty").GetComponent<RectTransform> ();
-			qtyTransform.anchoredPosition = new Vector3 (-50, -65, 0);
-			
-			slot.GetComponent<GaikouShinobiSelect>().Gunzei = targetGunzei;
+            GameObject Qty = shinobi.transform.FindChild("Qty").gameObject;
+            Qty.GetComponent<Text>().fontSize = 150;
+            Qty.transform.localPosition = new Vector2(-40, -60);
+
+            slot.GetComponent<GaikouShinobiSelect>().Gunzei = targetGunzei;
 			slot.GetComponent<GaikouShinobiSelect>().Content = content;
 			slot.GetComponent<GaikouShinobiSelect>().DoBtn = btn;
 			slot.GetComponent<GaikouShinobiSelect>().qty = shinobiJyo;

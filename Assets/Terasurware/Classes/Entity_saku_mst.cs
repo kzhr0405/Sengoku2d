@@ -14,6 +14,7 @@ public class Entity_saku_mst : ScriptableObject
 		public string typ;
 		public string name;
 		public string effection;
+		public int runPlace;
 		public int lv1;
 		public int lv2;
 		public int lv3;

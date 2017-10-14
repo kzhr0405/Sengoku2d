@@ -306,7 +306,7 @@ MonoBehaviour:
     kahouRank: B
     kahouExp: "\u5DE6\u53F3\u306E\u938C\u304C\u7A42\u5148\u306B\u5411\u304B\u3063\u3066\u53CD\u3063\u3066\u3044\u308B\u69D8\u3092\u5343\u9CE5\u306B\u898B\u7ACB\u3066\u3066\u3053\u3046\u547C\u3076\u3002"
     kahouTarget: "\u6B66\u52C7"
-    kahouEffect: 4
+    kahouEffect: 8
     unit: '%'
     kahouBuy: 15000
     kahouSell: 10000
@@ -321,7 +321,7 @@ MonoBehaviour:
     kahouRank: C
     kahouExp: "\u938C\u5009\u6642\u4EE3\u306B\u4F5C\u3089\u308C\u305F\u8599\u5200\u3002\u8C6A\u58EE\u3055\u304C\u611F\u3058\u3089\u308C\u308B\u3002"
     kahouTarget: "\u6B66\u52C7"
-    kahouEffect: 2
+    kahouEffect: 6
     unit: '%'
     kahouBuy: 3000
     kahouSell: 2000
@@ -335,7 +335,7 @@ MonoBehaviour:
     kahouRank: C
     kahouExp: "\u5BA4\u753A\u6642\u4EE3\u306B\u4F5C\u3089\u308C\u305F\u8599\u5200\u3002\u67C4\u306B\u9ED2\u6F06\u304C\u307B\u3069\u3053\u3055\u308C\u305F\u4E00\u822C\u7684\u306A\u3082\u306E\u3067\u3042\u308B\u3002"
     kahouTarget: "\u6B66\u52C7"
-    kahouEffect: 1
+    kahouEffect: 5
     unit: '%'
     kahouBuy: 3000
     kahouSell: 2000
@@ -530,4 +530,220 @@ MonoBehaviour:
     kahouExpEng: Sword kuwana 's swordwork Muramasa created at the death of Nichiren.
       Mr. Muramasa is famous as a masterpiece, and it was transmitted to the Nagoshima
       clan of Saga lord.
+    kahouTargetEng: Attack
+  - id: 35
+    kahouType: bugu
+    kahouName: "\u4E00\u5F35\u5F13"
+    kahouRank: S
+    kahouExp: "\u5C0F\u7B20\u539F\u6D41\u5F13\u8853\u306E\u6700\u9AD8\u4F4D\u306B\u4F4D\u7F6E\u3059\u308B\u3001\u4E00\u5F35\u5F13\u514D\u8A31\u3092\u53D6\u5F97\u3057\u305F\u8005\u3060\u3051\u304C\u4F7F\u7528\u3092\u8A31\u3055\u308C\u308B\u5F13\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Iccyou Bow
+    kahouExpEng: A bow that is only allowed to use by those who acquired the Iccyou
+      Bow license which is the highest rank of Ogasawara archery style.
+    kahouTargetEng: Attack
+  - id: 36
+    kahouType: bugu
+    kahouName: "\u98DB\u71D5"
+    kahouRank: S
+    kahouExp: "\u53E4\u4EE3\u4E2D\u56FD\u306E\u5F13\u306E\u540D\u624B\u98DB\u885B\u304C\u611B\u7528\u3057\u3066\u3044\u305F\u3068\u4F1D\u3048\u3089\u308C\u308B\u5F13\u3002\u98DB\u885B\u306E\u6280\u306F\u795E\u6280\u3068\u8A55\u3055\u308C\u767E\u6B69\u9694\u3066\u305F\u67F3\u306E\u8449\u3084\u6E21\u308A\u9CE5\u306E\u7FA4\u308C\u3092\u4E00\u7FBD\u6B8B\u3089\u305A\u5C04\u308B\u3053\u3068\u304C\u3067\u304D\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Hien
+    kahouExpEng: A bow that master Hiei used in ancient China. The technique of him
+      was reputed as God skill, and it was able to shoot the leaves from hundred s
+      paces away.
+    kahouTargetEng: Attack
+  - id: 37
+    kahouType: bugu
+    kahouName: "\u7A2E\u5B50\u5CF6\u7B52"
+    kahouRank: S
+    kahouExp: "\u548C\u88FD\u9244\u7832\u306E\u7B2C\uFF11\u53F7\u3002\u7A2E\u5B50\u5CF6\u6642\u582F\u304C\u5357\u86EE\u9244\u7832\u3092\u8CB7\u3044\u53D6\u308A\u3001\u935B\u51B6\u8077\u91D1\u5175\u885B\u5C09\u6E05\u5B9A\u306B\u6A21\u4F5C\u3055\u305B\u305F\u3002\u6226\u56FD\u6642\u4EE3\u6700\u5927\u306E\u6280\u8853\u9769\u65B0\u306E\u5148\u99C6\u3068\u3057\u3066\u306E\u610F\u7FA9\u306F\u5927\u304D\u3044\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Tanegashima Gun
+    kahouExpEng: The first of Japanese gun. Tanegashima bought a western gun and order
+      smith of Kinbe Yaita to imitate. It is significant as a forerunner of the greatest
+      tech. innovation.
+    kahouTargetEng: Attack
+  - id: 38
+    kahouType: bugu
+    kahouName: "\u583A\u7B52"
+    kahouRank: S
+    kahouExp: "\u6A58\u5C4B\u53C8\u4E09\u90CE\u304C\u7A2E\u5B50\u5CF6\u3067\u5B66\u3093\u3060\u6280\u8853\u304C\u4F1D\u308F\u308A\u583A\u3067\u306E\u9244\u7832\u751F\u7523\u304C\u59CB\u307E\u3063\u305F\u3002\u9AD8\u3044\u92F3\u7269\u6280\u8853\u5E2B\u3068\u5E83\u3044\u5546\u570F\u3092\u3082\u3064\u583A\u306F\u3001\u4EE5\u5F8C\u5929\u4E0B\u4E00\u306E\u9244\u7832\u306E\u4F9B\u7D66\u5730\u3068\u306A\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Sakai Gun
+    kahouExpEng: Techniques learned by Tachibana at Tanegashima have been transmitted
+      and production of guns in Sakai has started. Sakai was the biggest supply point
+      since then.
+    kahouTargetEng: Attack
+  - id: 39
+    kahouType: bugu
+    kahouName: "\u7BA1\u6253\u5F0F\u9283"
+    kahouRank: S
+    kahouExp: "\u706B\u85AC\u3092\u8A70\u3081\u305F\u96F7\u7BA1\u3092\u6483\u9244\u3067\u6253\u3061\u3001\u305D\u306E\u885D\u6483\u3067\u70B9\u706B\u3059\u308B\u9283\u3002\u706B\u7E04\u9283\u3088\u308A\u6539\u826F\u3092\u91CD\u306D\u3066\u751F\u307F\u51FA\u3055\u308C\u305F\u3002\u96E8\u4E0B\u3067\u306E\u70B9\u706B\u304C\u3088\u308A\u78BA\u5B9F\u306B\u306A\u308A\u3001\u9283\u306E\u52D5\u63FA\u3082\u5C11\u306A\u3044\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 25
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Stab type Gun
+    kahouExpEng: A gun that strikes a detonator filled with explosive with a hammer
+      and ignites it with its impact. Ignition under rain becomes more reliable, and
+      guns are less shaken.
+    kahouTargetEng: Attack
+  - id: 40
+    kahouType: bugu
+    kahouName: "\u99AC\u4E0A\u7B52"
+    kahouRank: S
+    kahouExp: "\u77ED\u7B52\u306E\u4E00\u7A2E\u3002\u99AC\u4E0A\u3067\u5F3E\u3092\u3053\u3081\u3066\u6483\u3066\u308B\u3088\u3046\u306B\u706B\u7E04\u9283\u3092\u6539\u9020\u3057\u305F\u3082\u306E\u3002\u9283\u8EAB\u306E\u9577\u3055\u3092\u901A\u5E38\u306E\u534A\u5206\u7A0B\u5EA6\u306B\u3057\u3001\u90E8\u54C1\u3082\u8EFD\u91CF\u5316\u3059\u308B\u306A\u3069\u306E\u5DE5\u592B\u304C\u306A\u3055\u308C\u3066\u3044\u308B\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 30
+    unit: '%'
+    kahouBuy: 150000
+    kahouSell: 100000
+    kahouRatio: 1
+    kahouNameEng: Hourseback Gun
+    kahouExpEng: 'A type of short tube. It was remodeled a firegun like to shoot with
+      a bullet on a horse. '
+    kahouTargetEng: Attack
+  - id: 41
+    kahouType: bugu
+    kahouName: "\u56FD\u53CB\u7B52"
+    kahouRank: A
+    kahouExp: "\u8FD1\u6C5F\u56FD\u53CB\u3067\u306F\u5C06\u8ECD\u8DB3\u5229\u7FA9\u6674\u306E\u547D\u306B\u3088\u308A\u7D30\u5DDD\u6674\u5143\u3092\u901A\u3058\u3066\u9244\u7832\u751F\u7523\u304C\u59CB\u307E\u3063\u305F\u3002\u56FD\u53CB\u306F\u88FD\u9244\u3067\u540D\u9AD8\u3044\u4F0A\u5439\u5C71\u306E\u305D\u3070\u306B\u4F4D\u7F6E\u3057\u9244\u7832\u751F\u7523\u304C\u53EF\u80FD\u306A\u9AD8\u3044\u6280\u8853\u304C\u3042\u3063\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 20
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Kunitomo Gun
+    kahouExpEng: In Omi Kunitomo, gun production began through Hosokawa Harumoto.
+      Kunitomo was located near famous steelmaker so there was capability of gun production.
+    kahouTargetEng: Attack
+  - id: 42
+    kahouType: bugu
+    kahouName: "\u7D00\u5DDE\u7B52"
+    kahouRank: A
+    kahouExp: "\u7D00\u5DDE\u6839\u6765\u5BFA\u306E\u6749\u574A\u304C\u3001\u7A2E\u5B50\u5CF6\u3067\u5B66\u3093\u3060\u6280\u8853\u3092\u6301\u3061\u5E30\u3063\u305F\u306E\u304C\u8D77\u6E90\u3002\u4EE5\u6765\u3053\u306E\u5730\u3067\u306F\u9244\u7832\u751F\u7523\u304C\u76DB\u3093\u3067\u9244\u7832\u6B66\u88C5\u3057\u305F\u50E7\u5175\u304C\u7E54\u7530\u4FE1\u9577\u3089\u3092\u82E6\u3057\u3081\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 15
+    unit: '%'
+    kahouBuy: 75000
+    kahouSell: 50000
+    kahouRatio: 5
+    kahouNameEng: Kisyu Gun
+    kahouExpEng: Nejoji Temple's monk brought back the technology learned at Tanegashima.
+      Since then, gun production was thriving and soldiers armed with guns tormented
+      Oda Nobunaga.
+    kahouTargetEng: Attack
+  - id: 43
+    kahouType: bugu
+    kahouName: "\u76F8\u4F4D\u5F13"
+    kahouRank: B
+    kahouExp: "\u5C0F\u7B20\u539F\u6D41\u5F13\u8853\u306E\u7B2C\uFF13\u968E\u8A31\u3057\u306E\u5F13\u3002\u91CD\u85E4\u5F13\u3068\u540C\u3058\u3088\u3046\u306B\u9ED2\u6F06\u3067\u5857\u3089\u308C\u305F\u5F13\u306B\u85E4\u3092\u5DFB\u3044\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Soui Bow
+    kahouExpEng: A bow for the 3rd license of Ogasawara archery style. It is a bow
+      with wisteria wrapped around a bow painted with black lacquer.
+    kahouTargetEng: Attack
+  - id: 44
+    kahouType: bugu
+    kahouName: "\u85A9\u6469\u7B52"
+    kahouRank: B
+    kahouExp: "\u85A9\u6469\u306F\u6226\u56FD\u6642\u4EE3\u304B\u3089\u9244\u7832\u751F\u7523\u304C\u76DB\u3093\u3067\u3042\u3063\u305F\u3002\u7A2E\u5B50\u5CF6\u6642\u582F\u304C\u5CF6\u6D25\u7FA9\u4E45\u306B\u9244\u7832\u3092\u732E\u3058\u3066\u4EE5\u6765\u3001\u5CF6\u6D25\u5BB6\u306F\u9244\u7832\u751F\u7523\u306B\u529B\u3092\u5165\u308C\u4ED6\u5BB6\u306B\u5148\u3093\u3058\u3066\u5B9F\u6226\u3067\u7528\u3044\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Satsuma Gun
+    kahouExpEng: Satsuma was flourishing in gun production. Satsuma's owner Shimazu
+      clan put efforts into the gun production and used it in the actual war.
+    kahouTargetEng: Attack
+  - id: 45
+    kahouType: bugu
+    kahouName: "\u5341\u624B\u9244\u7832"
+    kahouRank: B
+    kahouExp: "\u5909\u308F\u308A\u7B52\u306E\uFF11\u3064\u3002\u5341\u624B\u306B\u898B\u305B\u304B\u3051\u305F\u9244\u7832\u3002\u610F\u8868\u3092\u3064\u304F\u8972\u6483\u7528\u3001\u8B77\u8EAB\u7528\u3068\u3057\u3066\u4F5C\u3089\u308C\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 10
+    unit: '%'
+    kahouBuy: 15000
+    kahouSell: 10000
+    kahouRatio: 10
+    kahouNameEng: Jitte Gun
+    kahouExpEng: One of the strange gun.  It was made for unexpected attacks and for
+      self-defense.
+    kahouTargetEng: Attack
+  - id: 46
+    kahouType: bugu
+    kahouName: "\u7AF9\u5F13"
+    kahouRank: C
+    kahouExp: "\u7AF9\u3092\u5F35\u308A\u5408\u308F\u305B\u305F\u7C21\u7D20\u306A\u5F13\u3002\u524A\u3063\u305F\u6728\u306B\u5F26\u3092\u5F35\u3063\u305F\u3060\u3051\u306E\u4E38\u6728\u5F13\u306B\u6BD4\u3079\u3001\u7AF9\u306E\u5F3E\u529B\u6027\u306B\u3088\u308A\u3001\u5C04\u7A0B\u5A01\u529B\u304C\u98DB\u8E8D\u3057\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 7
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Bamboo Bow
+    kahouExpEng: Simple bow with bamboo stuck together. Compared to the bow with a
+      shaved trees, the shooting range has increased due to the elasticity of the
+      bamboo.
+    kahouTargetEng: Attack
+  - id: 47
+    kahouType: bugu
+    kahouName: "\u4E09\u54C1\u85E4\u5F13"
+    kahouRank: C
+    kahouExp: "\u5C0F\u7B20\u539F\u6D41\u5F13\u8853\u306E\u7B2C\uFF15\u968E\u8A31\u3057\u306E\u5F13\u3002\u767D\u6728\u5F13\u306B\u7CF8\u307E\u305F\u306F\u9EBB\u3092\u5DFB\u304D\u3001\u8D64\u6F06\u3092\u5857\u3063\u3066\u56FA\u3081\u305F\u3082\u306E\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 6
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Wisteria Bow
+    kahouExpEng: A bow for the 5th license of Ogasawara archery style. Wrapped yarn
+      or hemp on a bow and hardened with red lacquer.
+    kahouTargetEng: Attack
+  - id: 48
+    kahouType: bugu
+    kahouName: "\u694A\u5F13"
+    kahouRank: C
+    kahouExp: "\u904A\u622F\u7528\u306E\u5C0F\u5F13\u3002\u4E2D\u56FD\u6625\u79CB\u6642\u4EE3\u306E\u5F13\u306E\u540D\u624B\u3067\u3042\u308B\u990A\u7531\u8D77\u304C\u3001\u694A\u67F3\u306E\u8449\u3092\u5C04\u305F\u6545\u4E8B\u304B\u3089\u540D\u3065\u3051\u3089\u308C\u305F\u3002"
+    kahouTarget: "\u6B66\u52C7"
+    kahouEffect: 5
+    unit: '%'
+    kahouBuy: 3000
+    kahouSell: 2000
+    kahouRatio: 30
+    kahouNameEng: Yang Bow
+    kahouExpEng: "A small bow for play. It was named by chinese ancient story that
+      Y\u01CEng y\xF3u q\u01D0 shooted leaves."
     kahouTargetEng: Attack

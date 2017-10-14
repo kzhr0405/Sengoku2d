@@ -72,7 +72,7 @@ public class RonkouScene : MonoBehaviour {
 
 	public string createScrollView(List<string> myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
         //Scroll View
-        string myBusyoString = "";
+        string myBusyoString = "";       
         BusyoInfoGet busyoScript = new BusyoInfoGet();
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
@@ -87,8 +87,7 @@ public class RonkouScene : MonoBehaviour {
         //Sort by Jinkei
         List<string> myBusyoList = new List<string>();
         List<string> jinkeiTrueBusyoList = new List<string>();
-        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {
-            
+        if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialBusyo") {            
             //remove dup
             List<string> nodup = new List<string>();
             string newMyBusyo = "";
@@ -105,8 +104,7 @@ public class RonkouScene : MonoBehaviour {
                 }
             }
             if (myBusyoString != newMyBusyo) PlayerPrefs.SetString("myBusyo", newMyBusyo);
-            
-
+           
             List<string> jinkeiFalseBusyoList = new List<string>();
             for (int i=0; i< nodup.Count; i++) {
                 int busyoId = int.Parse(nodup[i]);
@@ -118,7 +116,7 @@ public class RonkouScene : MonoBehaviour {
                 }
             }
         
-            myBusyoList.AddRange(jinkeiTrueBusyoList);
+            myBusyoList.AddRange(jinkeiTrueBusyoList);           
 
             //Sort by Rank
             List<string> sList = new List<string>();
@@ -144,7 +142,56 @@ public class RonkouScene : MonoBehaviour {
             jinkeiFalseBusyoList.AddRange(cList);            
 
             myBusyoList.AddRange(jinkeiFalseBusyoList);
-        }else {
+
+            //Sort by DaimyoId & LV
+            List<Busyo> baseBusyoList = new List<Busyo>();
+            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+            foreach (string busyoIdString in jinkeiFalseBusyoList) {
+                int busyoId = int.Parse(busyoIdString);
+                string busyoNameSort = BusyoInfoGet.getName(busyoId);
+                string rank = BusyoInfoGet.getRank(busyoId);
+                string heisyu = BusyoInfoGet.getHeisyu(busyoId);
+                int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
+                int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
+                if (daimyoId == 0) daimyoId = daimyoHst;
+                int lv = PlayerPrefs.GetInt(busyoId.ToString());
+                baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, heisyu, daimyoId, daimyoHst, lv));                
+            }
+            List<Busyo> myBusyoDaimyoSortListTmp = new List<Busyo>(baseBusyoList);
+            myBusyoDaimyoSortListTmp.Sort((a, b) => {
+                int result = a.daimyoId - b.daimyoId;
+                return result != 0 ? result : b.lv - a.lv;
+            });
+
+            List<string> myBusyoDaimyoSortList = new List<string>(jinkeiTrueBusyoList);
+            foreach(Busyo busyo in myBusyoDaimyoSortListTmp) {
+                string busyoId = busyo.busyoId.ToString();
+                myBusyoDaimyoSortList.Add(busyoId);
+            }
+
+            List<Busyo> myBusyoLvSortListTmp = new List<Busyo>(baseBusyoList);
+            myBusyoLvSortListTmp.Sort((a, b) => {
+                int result = b.lv - a.lv;
+                return result != 0 ? result : a.daimyoId - a.daimyoId;
+            });
+
+            List<string> myBusyoLvSortList = new List<string>(jinkeiTrueBusyoList);
+            foreach (Busyo busyo in myBusyoLvSortListTmp) {
+                string busyoId = busyo.busyoId.ToString();
+                myBusyoLvSortList.Add(busyoId);
+            }
+
+
+            //Set rank sort
+            if(GameObject.Find("BusyoSortDropdown")) {
+                BusyoSort BusyoSort = GameObject.Find("BusyoSortDropdown").GetComponent<BusyoSort>();
+                BusyoSort.myBusyoRankSortList = myBusyoList;
+                BusyoSort.myBusyoDaimyoSortList = myBusyoDaimyoSortList;
+                BusyoSort.myBusyoLvSortList = myBusyoLvSortList;
+                BusyoSort.jinkeiTrueBusyoList = jinkeiTrueBusyoList;
+            }
+        }
+        else {
             //retry tutorial
             myBusyoList.AddRange(myBusyo_list);
         }
@@ -223,7 +270,6 @@ public class RonkouScene : MonoBehaviour {
 
         return minBusyoId;
 	}
-
 
 
 	public void createBusyoView(string busyoId){
@@ -338,9 +384,12 @@ public class RonkouScene : MonoBehaviour {
 			requiredExp = exp.getExpLvMax(maxLv);
 		}
 
-		expString = nowExp + "/" + requiredExp;
-		GameObject.Find ("ExpValue").GetComponent<Text> ().text = expString;
-
+        int diff = requiredExp - nowExp;
+        if (Application.systemLanguage != SystemLanguage.Japanese) {
+            GameObject.Find ("ExpValue").GetComponent<Text> ().text = "another " + diff.ToString();
+        }else {
+            GameObject.Find("ExpValue").GetComponent<Text>().text = "あと" + diff.ToString();
+        }
 
         //Kahou status
         int totalBusyoHp = 0;

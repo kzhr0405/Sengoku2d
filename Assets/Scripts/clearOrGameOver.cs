@@ -38,10 +38,12 @@ public class clearOrGameOver : MonoBehaviour {
 
             //Change Name
             string exp = "";// popObj.transform.FindChild("ExpValue").GetComponent<Text>().text;
+            Daimyo daimyo = new Daimyo();
+            string clanName = daimyo.getClanName(myDaimyo);
             if (Application.systemLanguage != SystemLanguage.Japanese) {
-                exp = myDaimyoName + " clan was downfallen. He fell in battle and there is no one remember his name now.";
+                exp = clanName + " clan was downfallen. " + myDaimyoName + " fell in battle and there is no one remember his name now.";
             }else {
-                exp = myDaimyoName + "の一族は滅亡した。武運尽きた"+ myDaimyoName + "は、戦場の露と消え、今や彼の者を覚えるものは無い。";
+                exp = clanName + "の一族は滅亡した。武運尽きた"+ myDaimyoName + "は、戦場の露と消え、今や彼の者を覚えるものは無い。";
             }   
 			popObj.transform.FindChild("ExpValue").GetComponent<Text>().text = exp;
 

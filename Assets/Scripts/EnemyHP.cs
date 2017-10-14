@@ -15,8 +15,8 @@ public class EnemyHP : MonoBehaviour {
 	public float childHP = 0;
 	public float childHPTmp = 0;
 
-	//Damage
-	GameObject canvas;
+    //Damage
+    GameObject canvas;
 	string damagePath = "";
 	public bool callHelpFlg = false;
     public float dmgOpt = 0;
@@ -151,7 +151,19 @@ public class EnemyHP : MonoBehaviour {
 
 				childQty -= 1;
 				childHPTmp = childHP;
-			}
+
+                //minus atk & dfc
+                float chldAtk = GetComponent<Heisyu>().atk;
+                float chldDfc = GetComponent<Heisyu>().dfc;
+                dfc = dfc - chldDfc;
+                if(GetComponent<EnemyAttack>()) {
+                    float prntAtk = GetComponent<EnemyAttack>().attack;
+                    GetComponent<EnemyAttack>().attack = prntAtk - chldAtk;
+                }else if(GetComponent<AttackLong>()){
+                    float prntAtk = GetComponent<AttackLong>().attack;
+                    GetComponent<AttackLong>().attack = prntAtk - chldAtk;
+                }
+            }
 		}
 
         return actualDamage;

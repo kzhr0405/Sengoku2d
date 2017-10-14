@@ -52,20 +52,22 @@ public class AdfuriMoviepop : MonoBehaviour {
         AdfurikunMovieRewardUtility au = ob.GetComponent<AdfurikunMovieRewardUtility>();
 
         Message msg = new Message();
+        CyouteiPop CyouteiPop = new CyouteiPop();
         if (SceneManager.GetActiveScene().name == "mainStage") {
             GameObject GameController = GameObject.Find("GameController");
             MainStageController mc = GameController.GetComponent<MainStageController>();
             mc.adRunFlg = true;
             //StartCoroutine(PlayAdsense());
-            if(au.isPreparedMovieReward()) {
+            if(au.isPreparedMovieReward()) {                
+                CyouteiPop.stopGunzei();
                 au.playMovieReward();
             }else {
                 msg.makeMessageOnBoard(msg.getMessage(154));
             }
-        }
-        else {
+        }else {
             //StartCoroutine(PlayAdsense());
             if (au.isPreparedMovieReward()) {
+                CyouteiPop.stopGunzei();
                 au.playMovieReward();
             }else {
                 msg.makeMessageOnBoard(msg.getMessage(154));
@@ -114,17 +116,13 @@ public class AdfuriMoviepop : MonoBehaviour {
                 au.playMovieReward();
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
-                Screen.orientation = ScreenOrientation.LandscapeLeft;
+                //Screen.orientation = ScreenOrientation.LandscapeLeft;
                 Debug.Log("Sengoku2d : The ad was closed.");
                
                 //set count data
                 int movieCount = PlayerPrefs.GetInt("movieCount");
                 movieCount = movieCount + 1;
                 PlayerPrefs.SetInt("movieCount",movieCount);
-
-                //stop running gunzei
-                CyouteiPop CyouteiPop = new CyouteiPop();
-                CyouteiPop.stopGunzei();
                 
                 if (!hyourouFlg) {
                     

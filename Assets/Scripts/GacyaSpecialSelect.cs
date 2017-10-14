@@ -87,7 +87,7 @@ public class GacyaSpecialSelect : MonoBehaviour {
         int sakuId = BusyoInfoGet.getSakuId(busyoId);
         int senpouId = BusyoInfoGet.getSenpouId(busyoId);
         string sakuName = saku.getSakuName(sakuId);
-        string senpouName = senpou.getName(sakuId);
+        string senpouName = senpou.getName(senpouId);
 
         Detail.transform.FindChild("HP").transform.FindChild("Value").GetComponent<Text>().text = hp.ToString();
         Detail.transform.FindChild("ATK").transform.FindChild("Value").GetComponent<Text>().text = atk.ToString();

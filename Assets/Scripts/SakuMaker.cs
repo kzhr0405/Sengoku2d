@@ -27,15 +27,30 @@ public class SakuMaker : MonoBehaviour {
 	void Start () {
 
 		if (sakuId == 3) {
-			//Hukuhei
-			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+            //Hukuhei
+            string targetTag = "";
+            if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
+                targetTag = "Player";
+            }else {
+                targetTag = "Enemy";
+            }
+
+            AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 			audioSources [7].Play ();
 
             string ch_path = "";
             if (Application.loadedLevelName == "kaisen") {
-                ch_path = "Prefabs/Kaisen/3";
+                if (targetTag == "Player") {
+                    ch_path = "Prefabs/Kaisen/3";
+                }else {
+                    ch_path = "Prefabs/Kaisen/3Enemy";
+                }
             }else {
-			    ch_path = "Prefabs/Player/hukuhei" + sakuHeisyu;
+                if(targetTag=="Player") {
+			        ch_path = "Prefabs/Player/hukuhei" + sakuHeisyu;
+                }else {
+                    ch_path = "Prefabs/Enemy/hukuhei" + sakuHeisyu;
+                }
             }
             float y1 = 3.0f;
 			float y2 = 3.0f;
@@ -160,20 +175,36 @@ public class SakuMaker : MonoBehaviour {
 				
 				//Half Heiryoku
 				float totalHei = sakuHeiSts * 10;
-				
-				ch_prefab.GetComponent<PlayerHP> ().life = totalHei;
-				if (ch_prefab.GetComponent<PlayerAttack> ()) {
-					ch_prefab.GetComponent<PlayerAttack> ().attack = sakuHeiSts;
-				} else {
-					ch_prefab.GetComponent<AttackLong> ().attack = sakuHeiSts;
-				}
-				ch_prefab.GetComponent<PlayerHP> ().dfc = sakuHeiSts;
+                if (targetTag == "Player") {
+                    ch_prefab.GetComponent<PlayerHP> ().life = totalHei;
+				    if (ch_prefab.GetComponent<PlayerAttack> ()) {
+					    ch_prefab.GetComponent<PlayerAttack> ().attack = sakuHeiSts;
+				    } else {
+					    ch_prefab.GetComponent<AttackLong> ().attack = sakuHeiSts;
+				    }
+				    ch_prefab.GetComponent<PlayerHP> ().dfc = sakuHeiSts;
 
-				if (ch_prefab.GetComponent<Homing> () != null) {
-					ch_prefab.GetComponent<Homing> ().speed = sakuBusyoSpeed;
-				} else if (ch_prefab.GetComponent<HomingLong> () != null) {
-					ch_prefab.GetComponent<HomingLong> ().speed = sakuBusyoSpeed;
-				}
+				    if (ch_prefab.GetComponent<Homing> () != null) {
+					    ch_prefab.GetComponent<Homing> ().speed = sakuBusyoSpeed;
+				    } else if (ch_prefab.GetComponent<HomingLong> () != null) {
+					    ch_prefab.GetComponent<HomingLong> ().speed = sakuBusyoSpeed;
+				    }
+                }else {
+                    ch_prefab.GetComponent<EnemyHP>().life = totalHei;
+                    if (ch_prefab.GetComponent<EnemyAttack>()) {
+                        ch_prefab.GetComponent<EnemyAttack>().attack = sakuHeiSts;
+                    }else {
+                        ch_prefab.GetComponent<AttackLong>().attack = sakuHeiSts;
+                    }
+                    ch_prefab.GetComponent<EnemyHP>().dfc = sakuHeiSts;
+
+                    if (ch_prefab.GetComponent<Homing>() != null) {
+                        ch_prefab.GetComponent<Homing>().speed = sakuBusyoSpeed;
+                    }else if (ch_prefab.GetComponent<HomingLong>() != null) {
+                        ch_prefab.GetComponent<HomingLong>().speed = sakuBusyoSpeed;
+                    }
+
+                }
 
 				//SE
 				AudioController audio = new AudioController ();
@@ -182,10 +213,11 @@ public class SakuMaker : MonoBehaviour {
 			}
 
 		} else if (sakuId == 7) {
+            //Kengou
 			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 			audioSources [7].Play ();
 			GameScene GameSceneScript = GameObject.Find ("GameScene").GetComponent<GameScene> ();
-			kengouHp = GameSceneScript.soudaisyoHp * sakuEffect;
+			kengouHp = GameSceneScript.soudaisyoHp * sakuEffect;            
 			kengouAtk = GameSceneScript.soudaisyoAtk * sakuEffect / 10;
 			kengouDfc = GameSceneScript.soudaisyoDfc * sakuEffect / 10;
 			kengouSpd = GameSceneScript.soudaisyoSpd;
@@ -193,8 +225,7 @@ public class SakuMaker : MonoBehaviour {
 				kengouSpd = 1;
 			}
 			kengouName = GameSceneScript.kengouName;
-
-
+            
 			//Reduce Qty
 			string kengouString = PlayerPrefs.GetString ("kengouItem");
 			List<string> kengouList = new List<string> ();
@@ -373,10 +404,14 @@ public class SakuMaker : MonoBehaviour {
 	}
 
 	public void makeKengou(int effect, string kengouName){
-		//need to update
+        bool playerFlg;
+        if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
+            playerFlg = true;
+        }else {
+            playerFlg = false;
+        }
 
-
-		GameScene GameSceneScript = GameObject.Find ("GameScene").GetComponent<GameScene> ();
+        GameScene GameSceneScript = GameObject.Find ("GameScene").GetComponent<GameScene> ();
 		kengouHp = GameSceneScript.soudaisyoHp * effect;
 		kengouAtk = GameSceneScript.soudaisyoAtk * effect / 10;
 		kengouDfc = GameSceneScript.soudaisyoDfc * effect / 10;
@@ -385,20 +420,39 @@ public class SakuMaker : MonoBehaviour {
 			kengouSpd = 1;
 		}
 
-		//Make Instance
-		string kengouPath = "Prefabs/Player/kengou";
-		GameObject kengou = Instantiate (Resources.Load (kengouPath)) as GameObject;
+        //Make Instance
+        string kengouPath = "";
+        if(playerFlg) {
+            kengouPath = "Prefabs/Player/kengou";
+        }else {
+            kengouPath = "Prefabs/Enemy/kengou";
+        }
+        GameObject kengou = Instantiate (Resources.Load (kengouPath)) as GameObject;
 		kengou.name = "kengou";
 
         string dtlPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
-            dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
+        if(playerFlg) {
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
+            }else {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
+            }
         }else {
-            dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
+            }else {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
+            }
         }
+
+
         GameObject dtl = Instantiate (Resources.Load (dtlPath)) as GameObject;
 		dtl.transform.SetParent (kengou.transform);
-        dtl.name = "BusyoDtlPlayer";
+        if (playerFlg) {
+            dtl.name = "BusyoDtlPlayer";
+        }else {
+            dtl.name = "BusyoDtlEnemy";
+        }
 
 		//random position
 		int rdmX = UnityEngine.Random.Range (0, 5);
@@ -422,10 +476,17 @@ public class SakuMaker : MonoBehaviour {
 		GameObject minHpBar = dtl.transform.FindChild ("MinHpBar").gameObject;
 		minHpBar.GetComponent<BusyoHPBar> ().initLife = kengouHp;
 
-		kengou.GetComponent<PlayerHP> ().life = kengouHp;
-		kengou.GetComponent<PlayerAttack> ().attack = kengouAtk;
-		kengou.GetComponent<Homing> ().speed = kengouSpd;
-		kengou.GetComponent<PlayerHP> ().dfc = kengouDfc;
+        if (playerFlg) {
+            kengou.GetComponent<PlayerHP> ().life = kengouHp;
+		    kengou.GetComponent<PlayerAttack> ().attack = kengouAtk;
+		    kengou.GetComponent<Homing> ().speed = kengouSpd;
+		    kengou.GetComponent<PlayerHP> ().dfc = kengouDfc;
+        }else {
+            kengou.GetComponent<EnemyHP>().life = kengouHp;
+            kengou.GetComponent<EnemyAttack>().attack = kengouAtk;
+            kengou.GetComponent<Homing>().speed = kengouSpd;
+            kengou.GetComponent<EnemyHP>().dfc = kengouDfc;
+        }
 
 		//SE
 		AudioController audio = new AudioController ();

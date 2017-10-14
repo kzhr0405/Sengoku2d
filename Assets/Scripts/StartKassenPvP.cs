@@ -82,7 +82,7 @@ public class StartKassenPvP : MonoBehaviour {
             PvPDataStore.enemyUserName = enemyUserName;
             PvPDataStore.myUserName = PvPController.myUserName;
             PvPDataStore.getPt = getPt;
-            PvPDataStore.todayNCMB = int.Parse(PvPDataStore.PvPTimer.todayNCMB);
+            PvPDataStore.todayNCMB = int.Parse(PvPDataStore.PvPTimer.GetComponent<PvPTimer>().todayNCMB);
         }
 
         //register temp lose tran

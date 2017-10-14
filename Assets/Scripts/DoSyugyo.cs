@@ -64,7 +64,7 @@ public class DoSyugyo : MonoBehaviour {
 					} else {
 						target = "availableHeihousyo";
 					}
-					reduce.reduceKahou (target,kahouId);
+					reduce.reduceKahou (target,kahouId,1);
 				}
 
 				//reduce Money

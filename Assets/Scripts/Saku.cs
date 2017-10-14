@@ -598,6 +598,25 @@ public class Saku : MonoBehaviour {
 
     }
 
+    public EnemySaku getEnemySaku(int sakuId, int sakuLv, int busyoId, string heisyu, float SakuHeiSts, float SakuBusyoSpeed) {
+        if (sakuLv == 0) {
+            sakuLv = 1;
+        }else if (sakuLv > 20) {
+            sakuLv = 20;
+        }
 
+        Entity_saku_mst sakuMst = Resources.Load("Data/saku_mst") as Entity_saku_mst;
+        string typ = sakuMst.param[sakuId - 1].typ;
+        int runPlace = sakuMst.param[sakuId - 1].runPlace;
+        object sakulst = sakuMst.param[sakuId - 1];
+        Type t = sakulst.GetType();
+        String param = "lv" + sakuLv;
+        FieldInfo f = t.GetField(param);
+        int status = (int)f.GetValue(sakulst);
+
+        EnemySaku EnemySaku = new EnemySaku(sakuId, typ, runPlace, status, busyoId, heisyu, SakuHeiSts/10, SakuBusyoSpeed/10);
+        return EnemySaku;
+
+    }
 
 }

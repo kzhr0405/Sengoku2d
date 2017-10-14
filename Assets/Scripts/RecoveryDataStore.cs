@@ -34,12 +34,16 @@ public class RecoveryDataStore : MonoBehaviour {
     public int busyoDama = 0;
     public int syogunDaimyoId = 0;
     public string doumei = "";
+    public List<int> questDailyFlgId = new List<int>();
+    public List<bool> questDailyReceivedFlgId = new List<bool>();
     public List<int> questSpecialFlgId = new List<int>();
     public List<bool> questSpecialReceivedFlgId = new List<bool>();
     public List<bool> questSpecialCountReceivedFlg = new List<bool>();
+    public List<bool> questDailyCountReceivedFlg = new List<bool>();
     public int kuniExp;
     public int movieCount = 0;
     public int space = 0;
+    public int pvpHeiryoku = 0;
 
     //busyo
     public string myBusyo = "";
@@ -172,12 +176,24 @@ public class RecoveryDataStore : MonoBehaviour {
                         doumei = System.Convert.ToString(obj["doumei"]);
                         if (checkDataExist(obj, "movieCount")) movieCount = System.Convert.ToInt32(obj["movieCount"]);
                         if (checkDataExist(obj, "space")) space = System.Convert.ToInt32(obj["space"]);
+                        if (checkDataExist(obj, "pvpHeiryoku")) pvpHeiryoku = System.Convert.ToInt32(obj["pvpHeiryoku"]);
 
-                        ArrayList arraylist1 = (ArrayList)obj["questSpecialFlgId"];
-                        foreach (object o in arraylist1) questSpecialFlgId.Add(System.Convert.ToInt32(o));
-
-                        ArrayList arraylist2 = (ArrayList)obj["questSpecialReceivedFlgId"];
-                        foreach (object o in arraylist2) questSpecialReceivedFlgId.Add(System.Convert.ToBoolean(o));
+                        if(checkDataExist(obj, "questDailyFlgId")){
+                            ArrayList arraylistDaily = (ArrayList)obj["questDailyFlgId"];
+                            foreach (object o in arraylistDaily) questDailyFlgId.Add(System.Convert.ToInt32(o));
+                        }
+                        if (checkDataExist(obj, "questDailyReceivedFlgId")) {
+                            ArrayList arraylistDailyReceived = (ArrayList)obj["questDailyReceivedFlgId"];
+                            foreach (object o in arraylistDailyReceived) questDailyReceivedFlgId.Add(System.Convert.ToBoolean(o));
+                        }
+                        if (checkDataExist(obj, "questSpecialFlgId")) {
+                            ArrayList arraylist1 = (ArrayList)obj["questSpecialFlgId"];
+                            foreach (object o in arraylist1) questSpecialFlgId.Add(System.Convert.ToInt32(o));
+                        }
+                        if (checkDataExist(obj, "questSpecialReceivedFlgId")) {
+                            ArrayList arraylist2 = (ArrayList)obj["questSpecialReceivedFlgId"];
+                            foreach (object o in arraylist2) questSpecialReceivedFlgId.Add(System.Convert.ToBoolean(o));
+                        }
 
                         ArrayList arraylist3 = (ArrayList)obj["myBusyoList"];
                         foreach (object o in arraylist3) busyoList.Add(System.Convert.ToInt32(o));
@@ -259,6 +275,10 @@ public class RecoveryDataStore : MonoBehaviour {
                         if (checkDataExist(obj, "questSpecialCountReceivedFlg")) {
                             ArrayList arraylist15 = (ArrayList)obj["questSpecialCountReceivedFlg"];
                             foreach (object o in arraylist15) questSpecialCountReceivedFlg.Add(System.Convert.ToBoolean(o));
+                        }
+                        if (checkDataExist(obj, "questDailyCountReceivedFlg")) {
+                            ArrayList arraylist16 = (ArrayList)obj["questDailyCountReceivedFlg"];
+                            foreach (object o in arraylist16) questDailyCountReceivedFlg.Add(System.Convert.ToBoolean(o));
                         }
                         GetPvPJinkeiMap(userId);
                     }
