@@ -39,7 +39,16 @@ public class Timer : MonoBehaviour {
 	//SE
 	public AudioSource[] audioSources;
 
-	private void Start(){
+    //Enemy Saku
+    public List<EnemySaku> EnemySakuList;
+    public List<float> EnemySakuTimerList;
+    public float sakuTimer;
+    public int sakuTimerId = 0;
+
+    public Text timerTxt;
+    public bool PvPFlg;
+
+    private void Start(){
 		reset();
 
         mntMinusRatio = PlayerPrefs.GetFloat("mntMinusStatus",0);
@@ -78,9 +87,18 @@ public class Timer : MonoBehaviour {
 		} else {
 			cyouryakuFlg = true;
 		}
+        isAttackedFlg = PlayerPrefs.GetBool("isAttackedFlg");
 
-		isAttackedFlg = PlayerPrefs.GetBool("isAttackedFlg");
-	}
+        //Enemy Saku
+        for (int i = 0; i < 12; i++) {
+            EnemySakuTimerList.Add(UnityEngine.Random.Range(140, 175));
+        }
+        EnemySakuTimerList.Sort((x, y) => y.CompareTo(x));
+        sakuTimer = EnemySakuTimerList[sakuTimerId];
+
+        timerTxt = gameObject.transform.FindChild("timerText").GetComponent<Text>();
+
+    }
 	
 	private void reset(){
 		timer = startTime;
@@ -89,195 +107,102 @@ public class Timer : MonoBehaviour {
 	private void Update(){
 		
         if(!paused) {
-		    timer -= Time.deltaTime;
+            timer -= Time.deltaTime;
+
 		    if (timer > 0.0f) {
-			    //On Play
-			    gameObject.transform.FindChild("timerText").GetComponent<Text>().text = ((int)timer).ToString();
+                //On Play
+                if(!PvPFlg) {
+                    timerTxt.text = ((int)timer).ToString();
 
-			    //Engun Time
-			    if(!engunTimerflg){
-				    if(timer < engunTime){
-					    engunTimerflg = true;
+			        //Engun Time
+			        if(!engunTimerflg){
+				        if(timer < engunTime){
+					        engunTimerflg = true;
 
-					    if(playerEngunFlg){
-						    playerEngunInstance(playerEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
-					    }
-
-					    if(enemyEngunFlg){
-						    enemyEngunInstance(enemyEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
-					    }
-				    }
-			    }
-
-			    //cyouryaku
-			    if (!cyouryakuFlg) {
-				    if (timer < cyouryakuTime) {
-					    cyouryakuFlg = true;
-					    cyouryaku(cyouryakuHeiQty,cyouryakuTmp);
-
-				    }
-			    }
-
-
-
-		    } else {
-			    if (!flag) {
-                    Time.timeScale = 1;
-                    audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-				    audioSources [5].Play ();
-
-				    GameObject canvas = GameObject.Find ("Canvas").gameObject;
-
-				    //Player battle stop
-				    canvas.transform.FindChild ("playerHp").GetComponent<HPCounter> ().flag = true;
-				    canvas.transform.FindChild ("enemyHp").GetComponent<HPCounter> ().flag = true;
-
-				    //Enable Button
-                    if(GameObject.Find("ScrollView")) {
-				        GameObject.Find ("ScrollView").SetActive (false);
-                    }
-                    if (GameObject.Find ("GiveupBtn")) {
-					    GameObject.Find ("GiveupBtn").SetActive (false);
-				    }
-                    if (GameObject.Find("AutoBtn")) {
-                        GameObject.Find("AutoBtn").SetActive(false);
-                    }
-                    if (!isAttackedFlg) {
-                        //Player Attacked
-                        //Game Over
-                        string backPath = "Prefabs/PostKassen/back";
-					    GameObject backObj = Instantiate (Resources.Load (backPath)) as GameObject;
-					    backObj.transform.SetParent (canvas.transform);
-					    backObj.transform.localScale = new Vector2 (70, 63);
-					    backObj.transform.localPosition = new Vector2 (0,0);
-
-					    //Chane word
-					    Color color = Color.blue;
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
-                            GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
-                        }else {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
-                        }
-					    GameObject.Find ("winlose").GetComponent<TextMesh> ().color = color;
-					    audioSources [4].Play ();
-					    busouKaijyo ();
-
-					    string blackPath = "Prefabs/PostKassen/black";
-					    GameObject blackObj = Instantiate (Resources.Load (blackPath)) as GameObject;
-					    blackObj.transform.SetParent (canvas.transform);
-					    blackObj.transform.localScale = new Vector2 (330, 300);
-					    blackObj.transform.localPosition = new Vector2 (0,0);
-
-					    string makimonoPath = "Prefabs/PostKassen/makimono";
-					    GameObject makimonoObj = Instantiate (Resources.Load (makimonoPath)) as GameObject;
-					    makimonoObj.transform.SetParent (canvas.transform);
-					    makimonoObj.transform.localScale = new Vector2 (1, 1);
-					    makimonoObj.transform.localPosition = new Vector2 (0, -135);
-					
-					    //Button List
-					    string nextbtnPath = "Prefabs/PostKassen/bttnList";
-					    GameObject bttnListObj = Instantiate (Resources.Load (nextbtnPath)) as GameObject;
-					    bttnListObj.transform.SetParent (canvas.transform);
-					    bttnListObj.transform.localScale = new Vector2 (1, 1);		
-					    bttnListObj.transform.localPosition = new Vector2 (0,0);
-
-					    bool isKessenFlg = PlayerPrefs.GetBool("isKessenFlg");
-					    if(isKessenFlg){
-						    HPCounter kessen = new HPCounter ();
-						    kessen.kessenResult(false);
-					    }
-
-
-				    } else {
-                        //Enemy Attacked
-
-                        //history
-                        if (Application.loadedLevelName != "tutorialKassen") {
-                            string tKey = PlayerPrefs.GetString("activeKey");
-					        MainStageController main = new MainStageController();
-					        main.deleteKeyHistory(tKey);
-					        PlayerPrefs.DeleteKey("isAttacked");
-					        PlayerPrefs.Flush();
-                        
-					        bool twiceHeiFlg = PlayerPrefs.GetBool ("twiceHeiFlg");
-					        if (twiceHeiFlg) {
-						        PlayerPrefs.SetBool ("questDailyFlg15",true);
-						        PlayerPrefs.DeleteKey ("twiceHeiFlg");
-						        PlayerPrefs.Flush();
+					        if(playerEngunFlg){
+						        playerEngunInstance(playerEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
 					        }
-                        
-                            //View
+					        if(enemyEngunFlg){
+						        enemyEngunInstance(enemyEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
+					        }
+				        }
+			        }
+
+			        //cyouryaku
+			        if (!cyouryakuFlg) {
+				        if (timer < cyouryakuTime) {
+					        cyouryakuFlg = true;
+					        cyouryaku(cyouryakuHeiQty,cyouryakuTmp);
+				        }
+			        }
+                }
+                //Enemy Saku
+                if(EnemySakuList.Count > sakuTimerId) {
+                    if (timer< sakuTimer) {
+                        //run
+                        EnemySaku EnemySaku = EnemySakuList[sakuTimerId];
+                        RunEnemySaku(EnemySaku);
+                        sakuTimerId++;
+                        if(sakuTimerId < 12) sakuTimer = EnemySakuTimerList[sakuTimerId];
+                    }
+                }
+
+
+            } else {
+                if (!PvPFlg) {
+                    if (!flag) {
+                        Time.timeScale = 1;
+                        audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+				        audioSources [5].Play ();
+
+				        GameObject canvas = GameObject.Find ("Canvas").gameObject;
+
+				        //Player battle stop
+				        canvas.transform.FindChild ("playerHp").GetComponent<HPCounter> ().flag = true;
+				        canvas.transform.FindChild ("enemyHp").GetComponent<HPCounter> ().flag = true;
+
+				        //Enable Button
+                        if(GameObject.Find("ScrollView")) {
+				            GameObject.Find ("ScrollView").SetActive (false);
+                        }
+                        if (GameObject.Find ("GiveupBtn")) {
+					        GameObject.Find ("GiveupBtn").SetActive (false);
+				        }
+                        if (GameObject.Find("AutoBtn")) {
+                            GameObject.Find("AutoBtn").SetActive(false);
+                        }
+                        if (!isAttackedFlg) {
+                            //Player Attacked
+                            //Game Over
                             string backPath = "Prefabs/PostKassen/back";
-					        GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
+					        GameObject backObj = Instantiate (Resources.Load (backPath)) as GameObject;
 					        backObj.transform.SetParent (canvas.transform);
-					        backObj.transform.localScale = new Vector2(70,63);
+					        backObj.transform.localScale = new Vector2 (70, 63);
 					        backObj.transform.localPosition = new Vector2 (0,0);
 
-					        string particlePath = "Prefabs/PostKassen/particle";
-					        GameObject particleObj = Instantiate(Resources.Load (particlePath)) as GameObject;
-					        particleObj.transform.SetParent (canvas.transform);
-					        particleObj.transform.localPosition = new Vector2(0,60);
-
-					        string blackPath = "Prefabs/PostKassen/black";
-					        GameObject blackObj = Instantiate(Resources.Load (blackPath)) as GameObject;
-					        blackObj.transform.SetParent (canvas.transform);
-					        blackObj.transform.localScale = new Vector2(330,300);
-					        blackObj.transform.localPosition = new Vector2 (0,0);
-
-					        string makimonoPath = "Prefabs/PostKassen/makimono";
-					        GameObject makimonoObj = Instantiate(Resources.Load (makimonoPath)) as GameObject;
-					        makimonoObj.transform.SetParent (canvas.transform);
-					        makimonoObj.transform.localScale = new Vector2(1,1);
-					        makimonoObj.transform.localPosition = new Vector2(0,-135);
-
+					        //Chane word
+					        Color color = Color.blue;
                             if (Application.systemLanguage != SystemLanguage.Japanese) {
                                 GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
                             }else {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "時勝切れ";
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
                             }
-					        string stageName = PlayerPrefs.GetString("activeStageName");
-					        audioSources [3].Play ();
-					        audioSources [7].Play ();
+					        GameObject.Find ("winlose").GetComponent<TextMesh> ().color = color;
+					        audioSources [4].Play ();
 					        busouKaijyo ();
 
-					        //Item List
-					        string itemListPath = "Prefabs/PostKassen/itemList";
-					        GameObject itemListObj = Instantiate(Resources.Load (itemListPath)) as GameObject;
-					        itemListObj.transform.SetParent (canvas.transform);
-					        itemListObj.transform.localScale = new Vector2(1,1);
-					        itemListObj.transform.localPosition = new Vector2 (0,-136);
+					        string blackPath = "Prefabs/PostKassen/black";
+					        GameObject blackObj = Instantiate (Resources.Load (blackPath)) as GameObject;
+					        blackObj.transform.SetParent (canvas.transform);
+					        blackObj.transform.localScale = new Vector2 (330, 300);
+					        blackObj.transform.localPosition = new Vector2 (0,0);
 
-					        //Money
-					        int activeStageMoney = PlayerPrefs.GetInt("activeStageMoney",0);
-					        GameObject.Find ("moneyAmt").GetComponent<Text>().text = activeStageMoney.ToString();
-					        int currentMoney = PlayerPrefs.GetInt("money");
-					        currentMoney = currentMoney + activeStageMoney;
-                            if (currentMoney < 0) {
-                                currentMoney = int.MaxValue;
-                            }
-                            PlayerPrefs.SetInt("money",currentMoney);
-
-					        //kuniExp
-					        int activeStageExp = PlayerPrefs.GetInt("activeStageExp",0);
-					        GameObject.Find ("expAmt").GetComponent<Text>().text = activeStageExp.ToString();
-					        int currentKuniExp = PlayerPrefs.GetInt ("kuniExp");
-					        currentKuniExp = currentKuniExp + activeStageExp;
-					        int kuniLv = PlayerPrefs.GetInt ("kuniLv");
-					        Exp kuniExp = new Exp();
-					        int newKuniLv = kuniExp.getKuniLv(kuniLv,currentKuniExp);
-
-					        if(newKuniLv>kuniLv){
-						        //lv up
-						        int jinkeiLimit = kuniExp.getJinkeiLimit(newKuniLv);
-						        int stockLimit = kuniExp.getStockLimit(newKuniLv);
-						        PlayerPrefs.SetInt("jinkeiLimit",jinkeiLimit);
-						        PlayerPrefs.SetInt("stockLimit",stockLimit);
-                            }else{
-						        Debug.Log ("No level up");
-					        }
-
-
-
+					        string makimonoPath = "Prefabs/PostKassen/makimono";
+					        GameObject makimonoObj = Instantiate (Resources.Load (makimonoPath)) as GameObject;
+					        makimonoObj.transform.SetParent (canvas.transform);
+					        makimonoObj.transform.localScale = new Vector2 (1, 1);
+					        makimonoObj.transform.localPosition = new Vector2 (0, -135);
+					
 					        //Button List
 					        string nextbtnPath = "Prefabs/PostKassen/bttnList";
 					        GameObject bttnListObj = Instantiate (Resources.Load (nextbtnPath)) as GameObject;
@@ -285,85 +210,180 @@ public class Timer : MonoBehaviour {
 					        bttnListObj.transform.localScale = new Vector2 (1, 1);		
 					        bttnListObj.transform.localPosition = new Vector2 (0,0);
 
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                itemListObj.transform.FindChild ("stageName").transform.FindChild("stageNameValue").GetComponent<Text> ().text = stageName + " Succeed";
-                            }else {
-                                itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = stageName + "成功";
-                            }
-
-					        //Get Exp
-					        SenkouButton senkou = new SenkouButton();
-					        List<BusyoSenkou> senkouList = new List<BusyoSenkou>();
-					        senkouList=senkou.getSenkou ();
-					        for(int i=0;i<senkouList.Count;i++){
-
-						        int busyoId = senkouList[i].id;
-						        int senkouAmt = senkouList[i].senkou;
-						        Exp exp = new Exp();
-
-						        //Modify by Cyadougu Kahou
-						        senkouAmt = exp.getExpbyCyadougu(busyoId,senkouAmt);
-
-						        //Busyo Exp
-						        string tempExp = "exp" + busyoId;
-						        int nowExp = PlayerPrefs.GetInt(tempExp);
-						        int newExp = nowExp + senkouAmt;
-						        PlayerPrefs.SetInt(tempExp, newExp);
-
-						        //Busyo Lv
-						        int nowLv = PlayerPrefs.GetInt(busyoId.ToString());
-                                string addLvTmp = "addlv" + busyoId.ToString();
-                                int maxLv = 100 + PlayerPrefs.GetInt(addLvTmp);
-                                if (maxLv > 200) {
-                                    maxLv = 200;
-                                }
-                                int newLv = exp.getLvbyTotalExp(nowLv,newExp, maxLv);
-						        PlayerPrefs.SetInt(busyoId.ToString(), newLv);
-
-						        PlayerPrefs.Flush();
+					        bool isKessenFlg = PlayerPrefs.GetBool("isKessenFlg");
+					        if(isKessenFlg){
+						        HPCounter kessen = new HPCounter ();
+						        kessen.kessenResult(false);
 					        }
-                        }else {
-                            busouKaijyo();
-
-                            string backPath = "Prefabs/PostKassen/back";
-                            GameObject backObj = Instantiate(Resources.Load(backPath)) as GameObject;
-                            backObj.transform.SetParent(canvas.transform);
-                            backObj.transform.localScale = new Vector2(70, 63);
-                            backObj.transform.localPosition = new Vector2(0, 0);
-
-                            string blackPath = "Prefabs/PostKassen/black";
-                            GameObject blackObj = Instantiate(Resources.Load(blackPath)) as GameObject;
-                            blackObj.transform.SetParent(canvas.transform);
-                            blackObj.transform.localScale = new Vector2(330, 300);
-                            blackObj.transform.localPosition = new Vector2(0, 0);
-
-                            string nextbtnPath = "Prefabs/Tutorial/tutorialBttnList";
-                            GameObject bttnListObj = Instantiate(Resources.Load(nextbtnPath)) as GameObject;
-                            bttnListObj.transform.SetParent(canvas.transform);
-                            bttnListObj.transform.localScale = new Vector2(1, 1);
-                            bttnListObj.transform.localPosition = new Vector2(0, 20);
                             
-                            //Win
-                            audioSources[3].Play();
-                            audioSources[7].Play();
+				        } else {
+                            //Enemy Attacked
+                            //history
+                            if (Application.loadedLevelName != "tutorialKassen") {
+                                string tKey = PlayerPrefs.GetString("activeKey");
+					            MainStageController main = new MainStageController();
+					            main.deleteKeyHistory(tKey);
+					            PlayerPrefs.DeleteKey("isAttacked");
+					            PlayerPrefs.Flush();
+                        
+					            bool twiceHeiFlg = PlayerPrefs.GetBool ("twiceHeiFlg");
+					            if (twiceHeiFlg) {
+						            PlayerPrefs.SetBool ("questDailyFlg15",true);
+						            PlayerPrefs.DeleteKey ("twiceHeiFlg");
+						            PlayerPrefs.Flush();
+					            }
+                        
+                                //View
+                                string backPath = "Prefabs/PostKassen/back";
+					            GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
+					            backObj.transform.SetParent (canvas.transform);
+					            backObj.transform.localScale = new Vector2(70,63);
+					            backObj.transform.localPosition = new Vector2 (0,0);
 
-                            string particlePath = "Prefabs/PostKassen/particle";
-                            GameObject particleObj = Instantiate(Resources.Load(particlePath)) as GameObject;
-                            particleObj.transform.SetParent(canvas.transform);
-                            particleObj.transform.localPosition = new Vector2(0, 60);
+					            string particlePath = "Prefabs/PostKassen/particle";
+					            GameObject particleObj = Instantiate(Resources.Load (particlePath)) as GameObject;
+					            particleObj.transform.SetParent (canvas.transform);
+					            particleObj.transform.localPosition = new Vector2(0,60);
 
-                        }
-				
-				
-				
-				    }
+					            string blackPath = "Prefabs/PostKassen/black";
+					            GameObject blackObj = Instantiate(Resources.Load (blackPath)) as GameObject;
+					            blackObj.transform.SetParent (canvas.transform);
+					            blackObj.transform.localScale = new Vector2(330,300);
+					            blackObj.transform.localPosition = new Vector2 (0,0);
 
-				    //Time Stop
-				    GameObject.Find ("timer").GetComponent<Timer> ().enabled = false;
-				    flag = true;
+					            string makimonoPath = "Prefabs/PostKassen/makimono";
+					            GameObject makimonoObj = Instantiate(Resources.Load (makimonoPath)) as GameObject;
+					            makimonoObj.transform.SetParent (canvas.transform);
+					            makimonoObj.transform.localScale = new Vector2(1,1);
+					            makimonoObj.transform.localPosition = new Vector2(0,-135);
 
+                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
+                                }else {
+                                    GameObject.Find("winlose").GetComponent<TextMesh>().text = "時勝切れ";
+                                }
+					            string stageName = PlayerPrefs.GetString("activeStageName");
+					            audioSources [3].Play ();
+					            audioSources [7].Play ();
+					            busouKaijyo ();
 
-                    PlayerPrefs.Flush();
+					            //Item List
+					            string itemListPath = "Prefabs/PostKassen/itemList";
+					            GameObject itemListObj = Instantiate(Resources.Load (itemListPath)) as GameObject;
+					            itemListObj.transform.SetParent (canvas.transform);
+					            itemListObj.transform.localScale = new Vector2(1,1);
+					            itemListObj.transform.localPosition = new Vector2 (0,-136);
+
+					            //Money
+					            int activeStageMoney = PlayerPrefs.GetInt("activeStageMoney",0);
+					            GameObject.Find ("moneyAmt").GetComponent<Text>().text = activeStageMoney.ToString();
+					            int currentMoney = PlayerPrefs.GetInt("money");
+					            currentMoney = currentMoney + activeStageMoney;
+                                if (currentMoney < 0) {
+                                    currentMoney = int.MaxValue;
+                                }
+                                PlayerPrefs.SetInt("money",currentMoney);
+
+					            //kuniExp
+					            int activeStageExp = PlayerPrefs.GetInt("activeStageExp",0);
+					            GameObject.Find ("expAmt").GetComponent<Text>().text = activeStageExp.ToString();
+					            int currentKuniExp = PlayerPrefs.GetInt ("kuniExp");
+					            currentKuniExp = currentKuniExp + activeStageExp;
+					            int kuniLv = PlayerPrefs.GetInt ("kuniLv");
+					            Exp kuniExp = new Exp();
+					            int newKuniLv = kuniExp.getKuniLv(kuniLv,currentKuniExp);
+
+					            if(newKuniLv>kuniLv){
+						            //lv up
+						            int jinkeiLimit = kuniExp.getJinkeiLimit(newKuniLv);
+						            int stockLimit = kuniExp.getStockLimit(newKuniLv);
+						            PlayerPrefs.SetInt("jinkeiLimit",jinkeiLimit);
+						            PlayerPrefs.SetInt("stockLimit",stockLimit);
+                                }else{
+						            Debug.Log ("No level up");
+					            }
+                                
+					            //Button List
+					            string nextbtnPath = "Prefabs/PostKassen/bttnList";
+					            GameObject bttnListObj = Instantiate (Resources.Load (nextbtnPath)) as GameObject;
+					            bttnListObj.transform.SetParent (canvas.transform);
+					            bttnListObj.transform.localScale = new Vector2 (1, 1);		
+					            bttnListObj.transform.localPosition = new Vector2 (0,0);
+
+                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    itemListObj.transform.FindChild ("stageName").transform.FindChild("stageNameValue").GetComponent<Text> ().text = stageName + " Succeed";
+                                }else {
+                                    itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = stageName + "成功";
+                                }
+
+					            //Get Exp
+					            SenkouButton senkou = new SenkouButton();
+					            List<BusyoSenkou> senkouList = new List<BusyoSenkou>();
+					            senkouList=senkou.getSenkou ();
+					            for(int i=0;i<senkouList.Count;i++){
+
+						            int busyoId = senkouList[i].id;
+						            int senkouAmt = senkouList[i].senkou;
+						            Exp exp = new Exp();
+
+						            //Modify by Cyadougu Kahou
+						            senkouAmt = exp.getExpbyCyadougu(busyoId,senkouAmt);
+
+						            //Busyo Exp
+						            string tempExp = "exp" + busyoId;
+						            int nowExp = PlayerPrefs.GetInt(tempExp);
+						            int newExp = nowExp + senkouAmt;
+						            PlayerPrefs.SetInt(tempExp, newExp);
+
+						            //Busyo Lv
+						            int nowLv = PlayerPrefs.GetInt(busyoId.ToString());
+                                    string addLvTmp = "addlv" + busyoId.ToString();
+                                    int maxLv = 100 + PlayerPrefs.GetInt(addLvTmp);
+                                    if (maxLv > 200) {
+                                        maxLv = 200;
+                                    }
+                                    int newLv = exp.getLvbyTotalExp(nowLv,newExp, maxLv);
+						            PlayerPrefs.SetInt(busyoId.ToString(), newLv);
+
+						            PlayerPrefs.Flush();
+					            }
+                            }else {
+                                busouKaijyo();
+
+                                string backPath = "Prefabs/PostKassen/back";
+                                GameObject backObj = Instantiate(Resources.Load(backPath)) as GameObject;
+                                backObj.transform.SetParent(canvas.transform);
+                                backObj.transform.localScale = new Vector2(70, 63);
+                                backObj.transform.localPosition = new Vector2(0, 0);
+
+                                string blackPath = "Prefabs/PostKassen/black";
+                                GameObject blackObj = Instantiate(Resources.Load(blackPath)) as GameObject;
+                                blackObj.transform.SetParent(canvas.transform);
+                                blackObj.transform.localScale = new Vector2(330, 300);
+                                blackObj.transform.localPosition = new Vector2(0, 0);
+
+                                string nextbtnPath = "Prefabs/Tutorial/tutorialBttnList";
+                                GameObject bttnListObj = Instantiate(Resources.Load(nextbtnPath)) as GameObject;
+                                bttnListObj.transform.SetParent(canvas.transform);
+                                bttnListObj.transform.localScale = new Vector2(1, 1);
+                                bttnListObj.transform.localPosition = new Vector2(0, 20);
+                            
+                                //Win
+                                audioSources[3].Play();
+                                audioSources[7].Play();
+
+                                string particlePath = "Prefabs/PostKassen/particle";
+                                GameObject particleObj = Instantiate(Resources.Load(particlePath)) as GameObject;
+                                particleObj.transform.SetParent(canvas.transform);
+                                particleObj.transform.localPosition = new Vector2(0, 60);
+                            }				
+				        }
+
+				        //Time Stop
+				        GameObject.Find ("timer").GetComponent<Timer> ().enabled = false;
+				        flag = true;
+                        PlayerPrefs.Flush();
+                    }
 			    }
             }
         }
@@ -784,5 +804,87 @@ public class Timer : MonoBehaviour {
 		}
 
 	}
+
+    void RunEnemySaku(EnemySaku EnemySaku) {
+
+        int runPlace = EnemySaku.runPlace; //0:My Place, 1:Enemy Attack, 2:Middle
+        string sakuPath = "Prefabs/Saku/SakuEvent/" + EnemySaku.id;
+        GameObject saku = Instantiate(Resources.Load(sakuPath)) as GameObject;
+        saku.layer = LayerMask.NameToLayer("EnemySaku");
+        Vector2 worldPos = new Vector3(0, 0, 0);//Camera.main.ScreenToWorldPoint(TouchPosition);
+        if(runPlace==0) {
+            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy")) {
+                if (obs.name != "hukuhei" && obs.name != "shiro") {
+                    worldPos = obs.transform.localPosition;
+                    break;
+                }
+            }
+        }else if(runPlace==1){
+
+            List<GameObject> objList = new List<GameObject>();
+            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Player")) {
+                if(obs.name != "hukuhei" && obs.name != "shiro") {
+                    worldPos = obs.transform.localPosition;
+                    break;
+                }
+            }            
+            
+        } else if(runPlace==2) {
+            Vector2 pPos = new Vector3(0, 0, 0);
+            Vector2 ePos = new Vector3(0, 0, 0);
+            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy")) {
+                ePos = obs.transform.localPosition;
+                break;
+            }
+
+            foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Player")) {
+                pPos = obs.transform.localPosition;
+                break;
+            }           
+            worldPos = new Vector3((pPos.x + ePos.x)/2, (pPos.y + ePos.y) / 2, 0);
+        }
+        
+        
+        if (11 <= EnemySaku.id && EnemySaku.id <= 15) {
+            //Gokui
+            Vector2 cameraVector = GameObject.Find("Main Camera").transform.localPosition;
+            RectTransform sakuTransform = saku.GetComponent<RectTransform>();
+            sakuTransform.anchoredPosition = cameraVector;
+
+        }else {
+            RectTransform sakuTransform = saku.GetComponent<RectTransform>();
+            sakuTransform.anchoredPosition = new Vector2(worldPos.x, worldPos.y);
+        }
+        
+        if (saku.GetComponent<SakuCollider>() != null) {
+            saku.GetComponent<SakuCollider>().sakuId = EnemySaku.id;
+            saku.GetComponent<SakuCollider>().sakuEffect = EnemySaku.status;
+
+        }else {
+            saku.GetComponent<SakuMaker>().sakuId = EnemySaku.id;
+            saku.GetComponent<SakuMaker>().sakuEffect = EnemySaku.status;
+            saku.GetComponent<SakuMaker>().vect = worldPos;
+            saku.GetComponent<SakuMaker>().sakuHeisyu = EnemySaku.sakuHeisyu;
+            saku.GetComponent<SakuMaker>().sakuHeiSts = EnemySaku.sakuHeiSts;
+            saku.GetComponent<SakuMaker>().sakuBusyoId = EnemySaku.sakuBusyoId;
+            saku.GetComponent<SakuMaker>().sakuBusyoSpeed = EnemySaku.sakuBusyoSpeed;
+
+            if (EnemySaku.id == 5) {
+                //Yasen Chikujyo
+                AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+                audioSources[5].Play();
+                audioSources[6].Play();
+                Destroy(saku.GetComponent<PlayerHP>());
+                saku.AddComponent<EnemyHP>().life = EnemySaku.status;
+                saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = EnemySaku.status;
+                saku.tag = "Enemy";
+                saku.layer = LayerMask.NameToLayer("Enemy");
+                string barPath = "Prefabs/PostKassen/Sprite/minHpBar3";
+                saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<SpriteRenderer>().sprite =                    
+                    Resources.Load(barPath, typeof(Sprite)) as Sprite;
+            }
+
+        }
+    }
 
 }

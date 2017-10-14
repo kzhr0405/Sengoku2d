@@ -11,13 +11,14 @@ public class Message : MonoBehaviour {
 	public GameObject makeMessage (string Text) {
 		string Path = "Prefabs/Common/MessageObject";
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
-		messageObj.transform.SetParent(GameObject.Find ("Panel").transform);
-		messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
-		messageObj.name = "MessageObject";
+        if(GameObject.Find("Panel")) {
+		    messageObj.transform.SetParent(GameObject.Find ("Panel").transform);
+		    messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
+		    messageObj.name = "MessageObject";
 
-		messageObj.transform.localScale = new Vector2 (1, 1);
-		messageObj.transform.localPosition = new Vector3(0, 11, 0);
-
+		    messageObj.transform.localScale = new Vector2 (1, 1);
+		    messageObj.transform.localPosition = new Vector3(0, 11, 0);
+        }
         return messageObj;
 
     }

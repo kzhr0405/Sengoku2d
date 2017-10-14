@@ -30,6 +30,11 @@ public class KaisenScene : MonoBehaviour {
     public float sakuHeiSts;
     public int sakuBusyoId;
     public float sakuBusyoSpeed;
+    
+    //enemy saku (no PvP)
+    public int totalSakuLv;
+    public int aveSakuLv;
+    public List<EnemySaku> EnemySakuList;
 
     void Start () {
 
@@ -282,6 +287,7 @@ public class KaisenScene : MonoBehaviour {
                 slot.transform.localScale = new Vector2(1, 1);
 
                 slot.GetComponent<Saku>().sakuId = int.Parse(sakuList[0]);
+                totalSakuLv = totalSakuLv + int.Parse(sakuList[3]);
                 slot.GetComponent<Saku>().sakuEffect = int.Parse(sakuList[4]);
 
                 if (sakuList[0] == "3") {
@@ -311,6 +317,7 @@ public class KaisenScene : MonoBehaviour {
                 }
             }
         }
+        aveSakuLv = totalSakuLv / myBusyoList.Count;
 
         //Nanban
         string nanbanString = PlayerPrefs.GetString("nanbanItem");
@@ -440,6 +447,8 @@ public class KaisenScene : MonoBehaviour {
             int mapId = 25;
             getEnemyStsAndMakeInstance(linkNo, mapId,  rainMinusRatio, snowMinusRatio);
         }
+
+        GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
 
         /*Dynamic Enemy Setting Finish*/
         //合戦開始エフェクト
@@ -601,6 +610,8 @@ public class KaisenScene : MonoBehaviour {
 
         StatusGet sts = new StatusGet();
         BusyoInfoGet info = new BusyoInfoGet();
+        Saku saku = new Saku();
+        EnemyInstance inst = new EnemyInstance();
         int shipId = info.getShipId(busyoId);
         int hp = sts.getHp(busyoId, activeBusyoLv);
         int atk = sts.getAtk(busyoId, activeBusyoLv);
@@ -608,7 +619,11 @@ public class KaisenScene : MonoBehaviour {
         int spd = sts.getSpd(busyoId, activeBusyoLv);
         string busyoName = sts.getBusyoName(busyoId);
         string heisyu = sts.getHeisyu(busyoId);
-
+        int sakuId = info.getSakuId(busyoId);
+        if (saku.getSakuShipFlg(sakuId)) {
+            int childStatus = inst.getChildStatus(activeButaiLv, heisyu, 0);
+            EnemySakuList.Add(saku.getEnemySaku(sakuId, aveSakuLv, busyoId, heisyu, childStatus, spd));
+        }
         int playerBusyoQty = PlayerPrefs.GetInt("jinkeiBusyoQty");
         aveSenpouLv = Mathf.CeilToInt(totalSenpouLv / playerBusyoQty);
         ArrayList senpouArray = sts.getEnemySenpou(busyoId, aveSenpouLv, "");
@@ -640,7 +655,6 @@ public class KaisenScene : MonoBehaviour {
         }
         
         //View Object & pass status to it.
-        EnemyInstance inst = new EnemyInstance();
         inst.makeKaisenInstance(mapId, busyoId, shipId,activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName, linkNo, enemyTaisyoFlg, senpouArray);
     }
 

@@ -302,7 +302,6 @@ public class EnemyInstance : MonoBehaviour {
 
 		if (taisyo) {
 			prefab.GetComponent<EnemyHP> ().taisyo = true;
-
 		}
         
 		//SE
@@ -425,7 +424,6 @@ public class EnemyInstance : MonoBehaviour {
 
 				//Child Unit HP
 				prefab.GetComponent<EnemyHP>().childHP = ch_status;
-
 				//Attack
 				if (ch_type == "YM") {
 					prefab.GetComponent<AttackLong> ().childAttack = atkDfc * 3;
@@ -438,7 +436,7 @@ public class EnemyInstance : MonoBehaviour {
 					prefab.GetComponent<Heisyu> ().atk = atkDfc;
 				}
 
-				//Dfc
+                //Dfc               
 				prefab.GetComponent<EnemyHP> ().dfc = prefab.GetComponent<EnemyHP> ().dfc + (ch_num*atkDfc);
 				prefab.GetComponent<Heisyu> ().dfc = atkDfc;
 

@@ -1111,7 +1111,7 @@ public class DoShisya : MonoBehaviour {
 			string itemDataCd = script.itemDataCd;
 
 			DoSell kahouSell = new DoSell ();
-			kahouSell.reduceKahou (itemDataCd,int.Parse(kahouId));
+			kahouSell.reduceKahou (itemDataCd,int.Parse(kahouId),1);
 
 		}
 

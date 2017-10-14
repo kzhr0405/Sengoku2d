@@ -51,8 +51,9 @@ public class AttackNaiseiView : MonoBehaviour {
 		/*Common Process*/
 		string pathOfBoard = "Prefabs/Map/Popup";
 		GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
-		board.transform.parent = GameObject.Find ("Map").transform;
-		board.transform.localScale = new Vector2 (1, 0.8f);
+		board.transform.SetParent(GameObject.Find ("Map").transform);
+        board.transform.SetSiblingIndex(1);
+        board.transform.localScale = new Vector2 (1, 0.8f);
 		board.transform.localPosition = new Vector2 (0, 0);
 		board.name = "AttackStagePopup";
 		Daimyo daimyo = new Daimyo();

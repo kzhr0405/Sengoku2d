@@ -383,11 +383,13 @@ public class startKassen2 : MonoBehaviour {
                     //PvP Heiryoku
                     //Set Data
                     if (Application.internetReachability != NetworkReachability.NotReachable) {
-                        DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
-                        DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
-                        string userId = PlayerPrefs.GetString("userId");
-                        DataPvP.UpdatePvP(userId);
-                        DataJinkei.UpdateJinkei(userId);
+                        if(GameObject.Find("DataStore")) {
+                            DataPvP DataPvP = GameObject.Find("DataStore").GetComponent<DataPvP>();
+                            DataJinkei DataJinkei = GameObject.Find("DataStore").GetComponent<DataJinkei>();
+                            string userId = PlayerPrefs.GetString("userId");
+                            DataPvP.UpdatePvP(userId);
+                            DataJinkei.UpdateJinkei(userId);
+                        }
                     }
                     
                     //Stop BGM

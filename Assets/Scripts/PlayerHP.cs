@@ -107,7 +107,19 @@ public class PlayerHP : MonoBehaviour {
 
 				childQty -= 1;
 				childHPTmp = childHP;
-			}
+
+                //minus atk & dfc
+                float chldAtk = GetComponent<Heisyu>().atk;
+                float chldDfc = GetComponent<Heisyu>().dfc;
+                dfc = dfc - chldDfc;
+                if (GetComponent<PlayerAttack>()) {
+                    float prntAtk = GetComponent<PlayerAttack>().attack;
+                    GetComponent<PlayerAttack>().attack = prntAtk - chldAtk;
+                }else if (GetComponent<AttackLong>()) {
+                    float prntAtk = GetComponent<AttackLong>().attack;
+                    GetComponent<AttackLong>().attack = prntAtk - chldAtk;
+                }
+            }
 		}
 	}
 

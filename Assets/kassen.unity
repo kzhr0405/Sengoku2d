@@ -1470,6 +1470,12 @@ MonoBehaviour:
   isAttackedFlg: 0
   isKessenFlg: 0
   audioSources: []
+  EnemySakuList: []
+  EnemySakuTimerList: []
+  sakuTimer: 0
+  sakuTimerId: 0
+  timerTxt: {fileID: 0}
+  PvPFlg: 0
 --- !u!114 &1231295167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2109,6 +2115,8 @@ MonoBehaviour:
   enemySoudaisyo: 0
   totalSenpouLv: 0
   aveSenpouLv: 0
+  sameDaimyoList: []
+  sameDaimyoNumList: []
   sakuFlg: 0
   sakuId: 0
   sakuEffect: 0
@@ -2118,6 +2126,9 @@ MonoBehaviour:
   sakuBusyoId: 0
   sakuBusyoSpeed: 0
   soudaisyo: 0
+  totalSakuLv: 0
+  aveSakuLv: 0
+  EnemySakuList: []
   kengouQty: 0
   kengouCd: 
   kengouName: 

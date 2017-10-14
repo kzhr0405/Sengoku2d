@@ -7,10 +7,11 @@ public class DamagePop : MonoBehaviour {
 	Text text;
     public float divSpeed = 1;
     public bool attackBoardflg = false;
+    public float deleteTime = 1;
 
 	void Start () {
 		//delete
-		Destroy(gameObject, 1);
+		Destroy(gameObject, deleteTime);
 		text = gameObject.GetComponent<Text>();
 	}
 

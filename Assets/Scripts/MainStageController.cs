@@ -973,8 +973,7 @@ public class MainStageController : MonoBehaviour {
 		/*Timer Handling*/
 		//Last Log-In Time
 		string timestring = PlayerPrefs.GetString ("lasttime");
-		if (timestring == null || timestring == "")
-			timestring = System.DateTime.Now.ToString ();
+		if (timestring == null || timestring == "")timestring = System.DateTime.Now.ToString ();
 		System.DateTime datetime = System.DateTime.Parse (timestring);
 		System.TimeSpan span = System.DateTime.Now - datetime;
 
@@ -1333,6 +1332,7 @@ public class MainStageController : MonoBehaviour {
 
 	}
 
+    
 	void OnApplicationPause (bool pauseStatus) {
 		if (!pauseStatus) {
             if (!adRunFlg && !iapRunFlg) {

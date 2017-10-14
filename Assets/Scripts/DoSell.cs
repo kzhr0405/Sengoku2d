@@ -38,11 +38,13 @@ public class DoSell : MonoBehaviour {
 			} else if (kahouType == "chishikisyo") {
 				 target = "availableChishikisyo";
 			}
-			reduceKahou (target,kahouId);
+            int sellQty = (int)GameObject.Find("SellSlider").GetComponent<Slider>().value;
+            reduceKahou (target,kahouId, sellQty);
 
 			//Add money
 			money = PlayerPrefs.GetInt ("money");
-			money = money + kahouSell;
+			int addMoney = int.Parse(GameObject.Find("GetMoneyValue").GetComponent<Text>().text);
+            money = money + addMoney;
             if (money < 0) {
                 money = int.MaxValue;
             }
@@ -50,18 +52,18 @@ public class DoSell : MonoBehaviour {
 			PlayerPrefs.SetBool ("questDailyFlg20",true);
 
 			PlayerPrefs.Flush();
-			
-			//Reload
-			GameObject.Find ("MoneyValue").GetComponent<Text> ().text = money.ToString();		
+
+            //Reload
+            GameObject.Find ("MoneyValue").GetComponent<Text> ().text = money.ToString();		
 			GameObject.Find ("Kahou").GetComponent<KahouSoukoScene> ().OnClick ();	
 
 			//Msg
 			Message msg = new Message();
             string OKtext = "";
             if (Application.systemLanguage != SystemLanguage.Japanese) {
-                OKtext= "Sold " + kahouName + ".";
+                OKtext= "Sold " + sellQty.ToString() + " " + kahouName + ".";
             }else {
-                OKtext = kahouName + "を売却致しました。";
+                OKtext = kahouName + "を" + sellQty.ToString() + "個売却致しました。";
             }
 			msg.makeMessage(OKtext);
 
@@ -433,7 +435,7 @@ public class DoSell : MonoBehaviour {
 
 	}
 
-	public void reduceKahou(string target, int reduceKahouId){
+	public void reduceKahou(string target, int reduceKahouId, int sellQty){
 		//Common Prametor
 		char[] delimiterChars = {','};
 
@@ -444,14 +446,19 @@ public class DoSell : MonoBehaviour {
 			
 			ArrayList newAvailableList = new ArrayList ();
 			bool flag = false;
-			
+
+            int count = 0;
 			for(int i=0;i<available_list.Length;i++){
 				int tempKahouId = int.Parse(available_list[i]);
 				
 				if(reduceKahouId==tempKahouId){
-					if(flag==false){
-						flag = true;
-					}else{
+					if(!flag){
+                        //count sellQty
+                        count++;
+                        if(count == sellQty) {
+						    flag = true;
+                        }
+                    }else{
 						newAvailableList.Add(tempKahouId);
 					}
 				}else{

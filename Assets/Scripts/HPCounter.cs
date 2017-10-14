@@ -1033,19 +1033,27 @@ public class HPCounter : MonoBehaviour {
 
                             //Busyo Lv
                             int nowLv = PlayerPrefs.GetInt(busyoId.ToString());
-                            string addLvTmp = "addlv" + busyoId.ToString();
+                            string addLvTmp = "addlv" + busyoId.ToString();                            
                             int maxLv = 100 + PlayerPrefs.GetInt(addLvTmp);
-                            if(maxLv>200) {
+                            
+                            if (maxLv>200) {
                                 maxLv = 200;
                             }
-                            int newLv = exp.getLvbyTotalExp(nowLv,newExp, maxLv);
-                            
+
+                            int newLv = exp.getLvbyTotalExp(nowLv,newExp, maxLv);                            
                             if (newLv == maxLv) {
 						        newExp = exp.getExpLvMax (maxLv);
 					        }
 
 					        PlayerPrefs.SetInt(busyoId.ToString(), newLv);
 					        PlayerPrefs.SetInt(tempExp, newExp);
+
+                            //Adjustment
+                            if(nowLv>maxLv) {                                
+                                PlayerPrefs.SetInt(busyoId.ToString(), maxLv);
+                                PlayerPrefs.SetInt(tempExp, exp.getExpLvMax(maxLv));
+                            }
+                            
 					        PlayerPrefs.Flush();
 				        }
 			        }

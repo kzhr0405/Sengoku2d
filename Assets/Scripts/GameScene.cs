@@ -33,8 +33,13 @@ public class GameScene : MonoBehaviour {
 	public float sakuBusyoSpeed;
 	public int soudaisyo;
 
-	//saku kengou
-	public int kengouQty;
+    //enemy saku (no PvP)
+    public int totalSakuLv;
+    public int aveSakuLv;
+    public List<EnemySaku> EnemySakuList;
+
+    //saku kengou
+    public int kengouQty;
 	public string kengouCd;
 	public string kengouName;
 	public int soudaisyoHp;
@@ -218,7 +223,7 @@ public class GameScene : MonoBehaviour {
             DataStore = GameObject.Find("PvPDataStore").GetComponent<PvPDataStore>();
 
             //timer
-            GameObject.Find("timer").GetComponent<Timer>().enabled = false;
+            GameObject.Find("timer").GetComponent<Timer>().PvPFlg = true;
             GameObject.Find("timer").transform.FindChild("timerText").GetComponent<Text>().text = "∞";
 
             //Name
@@ -545,7 +550,8 @@ public class GameScene : MonoBehaviour {
 			slot.transform.localScale = new Vector2 (1, 1);
 
 			slot.GetComponent<Saku>().sakuId = int.Parse(sakuList[0]);
-			slot.GetComponent<Saku>().sakuEffect = int.Parse(sakuList[4]);
+            totalSakuLv = totalSakuLv + int.Parse(sakuList[3]);
+            slot.GetComponent<Saku>().sakuEffect = int.Parse(sakuList[4]);
 
 			if(sakuList[0] == "3"){
 				//hukuhei
@@ -577,6 +583,7 @@ public class GameScene : MonoBehaviour {
                 slot.GetComponent<Saku>().sakuBusyoSpeed = adjSpd;
             }
 		}
+        aveSakuLv = totalSakuLv / myBusyoList.Count;
 
         if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialKassen") {
             //Kengou
@@ -799,12 +806,16 @@ public class GameScene : MonoBehaviour {
 			    int mapId = 25;
 			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
 		    }
-        }else {
+
+            GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
+
+        } else {
             //PvP
             List<int> PvPBusyoList = new List<int>();
             List<int> PvPLvList = new List<int>();
             List<string> PvPHeiList = new List<string>();
             List<int> PvPSenpouLvList = new List<int>();
+            List<int> PvPSakuList = new List<int>();
             List<int> PvPSakuLvList = new List<int>();
             List<string> PvPKahouList = new List<string>();
             int soudaisyo = 0;
@@ -814,6 +825,7 @@ public class GameScene : MonoBehaviour {
                 PvPHeiList = DataStore.PvP1HeiList;
                 PvPSenpouLvList = DataStore.PvP1SenpouLvList;
                 PvPSakuLvList = DataStore.PvP1SakuLvList;
+                PvPSakuList = DataStore.PvP1SakuList;
                 PvPKahouList = DataStore.PvP1KahouList;
                 soudaisyo = DataStore.soudaisyo1;
             }else if(pvpStageId==2) {
@@ -822,6 +834,7 @@ public class GameScene : MonoBehaviour {
                 PvPHeiList = DataStore.PvP2HeiList;
                 PvPSenpouLvList = DataStore.PvP2SenpouLvList;
                 PvPSakuLvList = DataStore.PvP2SakuLvList;
+                PvPSakuList = DataStore.PvP2SakuList;
                 PvPKahouList = DataStore.PvP2KahouList;
                 soudaisyo = DataStore.soudaisyo2;
             }else if(pvpStageId==3) {
@@ -830,6 +843,7 @@ public class GameScene : MonoBehaviour {
                 PvPHeiList = DataStore.PvP3HeiList;
                 PvPSenpouLvList = DataStore.PvP3SenpouLvList;
                 PvPSakuLvList = DataStore.PvP3SakuLvList;
+                PvPSakuList = DataStore.PvP3SakuList;
                 PvPKahouList = DataStore.PvP3KahouList;
                 soudaisyo = DataStore.soudaisyo3;
             }
@@ -861,6 +875,13 @@ public class GameScene : MonoBehaviour {
                     int sakuLv = PvPSakuLvList[counter];
                     string kahouList = PvPKahouList[counter];
 
+                    int sakuId = 1;
+                    if (PvPSakuList.Count == 0) {
+                        sakuId = info.getSakuId(busyoId);
+                    }else {
+                        sakuId = PvPSakuList[counter];
+                    }                    
+
                     //map Id modification
                     int mapId = i + 1;
                     if(plus4List.Contains(mapId)) {
@@ -872,11 +893,11 @@ public class GameScene : MonoBehaviour {
                     }else if (minus2List.Contains(mapId)) {
                         mapId = mapId - 2;
                     }
-                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
                     counter = counter + 1;
                 }
             }
-            
+            GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
 
         }
 
@@ -1109,18 +1130,25 @@ public class GameScene : MonoBehaviour {
 
         if (Application.loadedLevelName == "tutorialKassen") {
             activeBusyoLv = 10;
+            activeButaiLv = 1;
         }
 
         StatusGet sts = new StatusGet ();
 		BusyoInfoGet info = new BusyoInfoGet();
-		int hp = sts.getHp (busyoId, activeBusyoLv);
+        Saku saku = new Saku();
+        EnemyInstance inst = new EnemyInstance();
+        int hp = sts.getHp (busyoId, activeBusyoLv);
 		int atk = sts.getAtk (busyoId, activeBusyoLv);
 		int dfc = sts.getDfc (busyoId, activeBusyoLv);
 		int spd = sts.getSpd (busyoId, activeBusyoLv);
 		string busyoName = sts.getBusyoName (busyoId);
 		string heisyu = sts.getHeisyu (busyoId);
+        int sakuId = info.getSakuId(busyoId);
+        int childStatus = inst.getChildStatus(activeButaiLv,heisyu,0);
+        EnemySakuList.Add(saku.getEnemySaku(sakuId, aveSakuLv, busyoId, heisyu, childStatus, spd));
 
-		int playerBusyoQty = PlayerPrefs.GetInt ("jinkeiBusyoQty");
+
+        int playerBusyoQty = PlayerPrefs.GetInt ("jinkeiBusyoQty");
 		aveSenpouLv = Mathf.CeilToInt(totalSenpouLv / playerBusyoQty);
 		ArrayList senpouArray = sts.getEnemySenpou(busyoId, aveSenpouLv, "");
 
@@ -1197,7 +1225,6 @@ public class GameScene : MonoBehaviour {
 		}
 
 		//View Object & pass status to it.
-		EnemyInstance inst = new EnemyInstance ();
         if (Application.loadedLevelName == "tutorialKassen") {
             activeButaiLv = 10;
             activeButaiQty = 20;
@@ -1218,11 +1245,12 @@ public class GameScene : MonoBehaviour {
         inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"");
 	}
 
-    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio) {
+    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio) {
 
         //Get Basic Info.
-        StatusGet sts = new StatusGet();
-        BusyoInfoGet info = new BusyoInfoGet();
+        StatusGet sts = new StatusGet();        
+        Saku saku = new Saku();
+        EnemyInstance inst = new EnemyInstance();
         int hp = sts.getHp(busyoId, busyoLv);
         int atk = sts.getAtk(busyoId, busyoLv);
         int dfc = sts.getDfc(busyoId, busyoLv);
@@ -1230,6 +1258,8 @@ public class GameScene : MonoBehaviour {
         string busyoName = sts.getBusyoName(busyoId);
         string heisyu = sts.getHeisyu(busyoId);
         ArrayList senpouArray = sts.getEnemySenpou(busyoId, senpouLv, kahouList);
+        
+        EnemySakuList.Add(saku.getEnemySaku(sakuId, sakuLv, busyoId, heisyu, butaiStatus, spd));
 
         //Map & Weather Minus
         if (mntMinusRatio != 0) {
@@ -1302,7 +1332,6 @@ public class GameScene : MonoBehaviour {
         }
 
         //View Object & pass status to it.
-        EnemyInstance inst = new EnemyInstance();
         inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList);
     }
 

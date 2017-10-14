@@ -51,7 +51,6 @@ public class ItemInfo : MonoBehaviour {
 
 			//Slider value
 			GameObject SellSlider = GameObject.Find ("SellSlider");
-
             //max value check
             int unitPrice = int.Parse(itemInfoList[5]);
             int maxSellQty = 9999999/unitPrice;

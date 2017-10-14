@@ -44,7 +44,7 @@ public class Exp : MonoBehaviour {
 			resultLv = maxLv;
 		}
 
-		return resultLv;
+        return resultLv;
 	}
 
 	public int getExpbyCyadougu(int busyoId, int nowExp){

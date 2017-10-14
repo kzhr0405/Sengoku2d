@@ -27,7 +27,7 @@ public class DoKousaku : MonoBehaviour {
 
 		} else {
 
-			if (nowHyourou < 2) {
+			if (nowHyourou < 5) {
 				msg.makeUpperMessageOnBoard (msg.getMessage(7));
 
 			} else {
@@ -37,7 +37,7 @@ public class DoKousaku : MonoBehaviour {
 				PlayerPrefs.SetInt ("TrackBouryakuNo", TrackBouryakuNo);
 
 
-				nowHyourou = nowHyourou - 2;
+				nowHyourou = nowHyourou - 5;
 				PlayerPrefs.SetInt ("hyourou",nowHyourou);
 				GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = nowHyourou.ToString ();
 

@@ -77,6 +77,9 @@ public class JinkeiFormButton : MonoBehaviour {
 			    }
 		    }
 
+            //Set sorting as default
+            GameObject.Find("BusyoSortDropdown").GetComponent<Dropdown>().value = 0;
+
             //魚鱗
             BusyoInfoGet busyoScript = new BusyoInfoGet();
             if (name == "Gyorin"){

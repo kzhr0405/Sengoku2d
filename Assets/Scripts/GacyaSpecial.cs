@@ -41,7 +41,6 @@ public class GacyaSpecial : MonoBehaviour {
 
             int stockLimit = PlayerPrefs.GetInt("stockLimit");
             int space = PlayerPrefs.GetInt("space");
-            Debug.Log(space);
             stockLimit = stockLimit + space;
 
             int myBusyoQty = PlayerPrefs.GetInt("myBusyoQty");

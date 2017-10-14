@@ -5,8 +5,9 @@ using System.Collections.Generic;
 
 public class KahouInfo : MonoBehaviour {
 
-	//bugu,kabuto,gusoku,meiba,cyadougu,heihousyo,chisikisyo
-	public int kahouId;
+    //bugu,kabuto,gusoku,meiba,cyadougu,heihousyo,chisikisyo
+    public int rank;
+    public int kahouId;
 	public string kahouType;
 	public string kahouName;
 	public string kahouTarget;
@@ -16,6 +17,7 @@ public class KahouInfo : MonoBehaviour {
 	public int kahouBuy;
 	public int kahouSell;
 	public float kahouRatio;
+    public int qty;
 
 	public void OnClick(){
 
@@ -23,8 +25,30 @@ public class KahouInfo : MonoBehaviour {
 		audioSources [0].Play ();
 
 		if (Application.loadedLevelName == "souko") {
-			//Souko Scene
-			GameObject.Find ("GetMoney").GetComponent<Image> ().enabled = true;
+
+            //Slider
+            GameObject.Find("Background").GetComponent<Image>().enabled = true;
+            GameObject.Find("Fill").GetComponent<Image>().enabled = true;
+            GameObject.Find("Handle").GetComponent<Image>().enabled = true;
+            GameObject.Find("SellQty").GetComponent<Image>().enabled = true;
+
+            GameObject SellSlider = GameObject.Find ("SellSlider");
+            int maxSellQty = 9999999/ kahouSell;
+            if(maxSellQty < qty) {
+                qty = maxSellQty;
+            }
+            SellSlider.GetComponent<Slider>().maxValue = qty;
+            SellSlider.GetComponent<Slider>().minValue = 1;
+            SellSlider.GetComponent<SellSlider>().unitPrice = kahouSell;
+
+
+            //Default value
+            GameObject.Find("SellQtyValue").GetComponent<Text>().text = "1";
+            GameObject.Find("GetMoneyValue").GetComponent<Text>().text = "+" + kahouSell;
+            SellSlider.GetComponent<Slider>().value = 1;
+
+            //Souko Scene
+            GameObject.Find ("GetMoney").GetComponent<Image> ().enabled = true;
 			GameObject sellBtn = GameObject.Find ("SellButton");
 			sellBtn.GetComponent<Image> ().enabled = true;
 			sellBtn.GetComponent<Button> ().enabled = true;

@@ -71,7 +71,7 @@ public class KahouSoukoScene : MonoBehaviour {
 		//Clear Previous Data
 		GameObject content = GameObject.Find ("Content");
 		foreach ( Transform n in content.transform ){
-			GameObject.Destroy(n.gameObject);
+			Destroy(n.gameObject);
 		}
 
 		//Common Prametor
@@ -80,30 +80,45 @@ public class KahouSoukoScene : MonoBehaviour {
 
 		//availableBugu				
 		string availableBuguString = PlayerPrefs.GetString("availableBugu");
-		if(availableBuguString != null && availableBuguString !=""){
+        string numPath = "Prefabs/Souko/Num";
+        List<string> doneKahouList = new List<string>();
+        if (availableBuguString != null && availableBuguString !=""){
 			string[] availableBugu_list = availableBuguString.Split (delimiterChars);
+            Dictionary<string, int> dicBugu = new Dictionary<string, int>();
+            foreach (string key in availableBugu_list) {
+                if (dicBugu.ContainsKey(key)) dicBugu[key]++; else dicBugu.Add(key, 1);
+            }
 
-			for(int i=0; i<availableBugu_list.Length; i++){
-				string kahouId = availableBugu_list[i];
-				string kahouTyp = "bugu";
+            foreach (string key in dicBugu.Keys) {
+                string kahouId = key;
+                string kahouTyp = "bugu";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+                    
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform,false);
+                Num.GetComponent<Text>().text = dicBugu[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
 				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicBugu[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);
+                
 			}
 		}
 
@@ -111,28 +126,41 @@ public class KahouSoukoScene : MonoBehaviour {
 		string availableKabutoString = PlayerPrefs.GetString("availableKabuto");
 		if(availableKabutoString != null && availableKabutoString !=""){
 			string[] availableKabuto_list = availableKabutoString.Split (delimiterChars);
-			
-			for(int i=0; i<availableKabuto_list.Length; i++){
-				string kahouId = availableKabuto_list[i];
-				string kahouTyp = "kabuto";
+            Dictionary<string, int> dicKabuto = new Dictionary<string, int>();
+            foreach (string key in availableKabuto_list) {
+                if (dicKabuto.ContainsKey(key)) dicKabuto[key]++; else dicKabuto.Add(key, 1);
+            }
+
+            foreach (string key in dicKabuto.Keys) {
+                string kahouId = key;
+                string kahouTyp = "kabuto";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+                
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform, false);
+                Num.GetComponent<Text>().text = dicKabuto[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
-				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicKabuto[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);
+                
 			}
 		}
 
@@ -140,28 +168,41 @@ public class KahouSoukoScene : MonoBehaviour {
 		string availableGusokuString = PlayerPrefs.GetString("availableGusoku");
 		if(availableGusokuString != null && availableGusokuString !=""){
 			string[] availableGusoku_list = availableGusokuString.Split (delimiterChars);
-			
-			for(int i=0; i<availableGusoku_list.Length; i++){
-				string kahouId = availableGusoku_list[i];
-				string kahouTyp = "gusoku";
+            Dictionary<string, int> dicGusoku = new Dictionary<string, int>();
+            foreach (string key in availableGusoku_list) {
+                if (dicGusoku.ContainsKey(key)) dicGusoku[key]++; else dicGusoku.Add(key, 1);
+            }
+
+            foreach (string key in dicGusoku.Keys) {
+                string kahouId = key;
+                string kahouTyp = "gusoku";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+
+                
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform, false);
+                Num.GetComponent<Text>().text = dicGusoku[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
-				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicGusoku[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);            
 
 			}
 		}
@@ -170,29 +211,41 @@ public class KahouSoukoScene : MonoBehaviour {
 		string availableMeibaString = PlayerPrefs.GetString("availableMeiba");
 		if(availableMeibaString != null && availableMeibaString !=""){
 			string[] availableMeiba_list = availableMeibaString.Split (delimiterChars);
-			
-			for(int i=0; i<availableMeiba_list.Length; i++){
-				string kahouId = availableMeiba_list[i];
-				string kahouTyp = "meiba";
+            Dictionary<string, int> dicMeiba = new Dictionary<string, int>();
+            foreach (string key in availableMeiba_list) {
+                if (dicMeiba.ContainsKey(key)) dicMeiba[key]++; else dicMeiba.Add(key, 1);
+            }
+
+            foreach (string key in dicMeiba.Keys) {
+                string kahouId = key;
+                string kahouTyp = "meiba";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+                
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform, false);
+                Num.GetComponent<Text>().text = dicMeiba[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
-				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
-
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicMeiba[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);
+                
 			}
 		}
 
@@ -200,29 +253,41 @@ public class KahouSoukoScene : MonoBehaviour {
 		string availableCyadouguString = PlayerPrefs.GetString("availableCyadougu");
 		if(availableCyadouguString != null && availableCyadouguString !=""){
 			string[] availableCyadougu_list = availableCyadouguString.Split (delimiterChars);
-			
-			for(int i=0; i<availableCyadougu_list.Length; i++){
-				string kahouId = availableCyadougu_list[i];
-				string kahouTyp = "cyadougu";
+            Dictionary<string, int> dicCyadougu = new Dictionary<string, int>();
+            foreach (string key in availableCyadougu_list) {
+                if (dicCyadougu.ContainsKey(key)) dicCyadougu[key]++; else dicCyadougu.Add(key, 1);
+            }
+
+            foreach (string key in dicCyadougu.Keys) {
+                string kahouId = key;
+                string kahouTyp = "cyadougu";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+                
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform, false);
+                Num.GetComponent<Text>().text = dicCyadougu[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
-				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
-
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicCyadougu[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);
+                
 			}
 		}
 
@@ -230,29 +295,41 @@ public class KahouSoukoScene : MonoBehaviour {
 		string availableHeihousyoString = PlayerPrefs.GetString("availableHeihousyo");
 		if(availableHeihousyoString != null && availableHeihousyoString !=""){
 			string[] availableHeihousyo_list = availableHeihousyoString.Split (delimiterChars);
-			
-			for(int i=0; i<availableHeihousyo_list.Length; i++){
-				string kahouId = availableHeihousyo_list[i];
-				string kahouTyp = "heihousyo";
+            Dictionary<string, int> dicHeihousyo = new Dictionary<string, int>();
+            foreach (string key in availableHeihousyo_list) {
+                if (dicHeihousyo.ContainsKey(key)) dicHeihousyo[key]++; else dicHeihousyo.Add(key, 1);
+            }
+
+            foreach (string key in dicHeihousyo.Keys) {
+                string kahouId = key;
+                string kahouTyp = "heihousyo";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform, false);
+                Num.GetComponent<Text>().text = dicHeihousyo[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
-				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
-
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicHeihousyo[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);
+                
 			}
 		}
 
@@ -260,29 +337,40 @@ public class KahouSoukoScene : MonoBehaviour {
 		string availableChishikisyoString = PlayerPrefs.GetString("availableChishikisyo");
 		if(availableChishikisyoString != null && availableChishikisyoString !=""){
 			string[] availableChishikisyo_list = availableChishikisyoString.Split (delimiterChars);
-			
-			for(int i=0; i<availableChishikisyo_list.Length; i++){
-				string kahouId = availableChishikisyo_list[i];
-				string kahouTyp = "chishikisyo";
+            Dictionary<string, int> dicChishikisyo = new Dictionary<string, int>();
+            foreach (string key in availableChishikisyo_list) {
+                if (dicChishikisyo.ContainsKey(key)) dicChishikisyo[key]++; else dicChishikisyo.Add(key, 1);
+            }
+
+            foreach (string key in dicChishikisyo.Keys) {
+                string kahouId = key;
+                string kahouTyp = "chishikisyo";
 				string kahouTypId = kahouTyp + kahouId;
-				string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
+                
+                string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 				GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
 				kahouIcon.transform.SetParent(content.transform);
 				kahouIcon.transform.localScale = new Vector2 (1, 1);
 				kahouIcon.transform.localPosition = new Vector3 (0, 0, 0);
+                GameObject Num = Instantiate(Resources.Load(numPath)) as GameObject;
+                Num.transform.SetParent(kahouIcon.transform, false);
+                Num.GetComponent<Text>().text = dicChishikisyo[key].ToString();
+                Num.name = "Num";
 
-				//Kahou Status
-				List<string> kahouInfoList = new List<string> ();
-				kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
-				kahouIcon.GetComponent<KahouInfo>().kahouId = int.Parse(kahouId);
-				kahouIcon.GetComponent<KahouInfo>().kahouType = kahouTyp;
-				kahouIcon.GetComponent<KahouInfo>().kahouName = kahouInfoList[0];
-				kahouIcon.GetComponent<KahouInfo>().kahouTarget = kahouInfoList[2];
-				kahouIcon.GetComponent<KahouInfo>().kahouEffect = int.Parse(kahouInfoList[3]);
-				kahouIcon.GetComponent<KahouInfo>().kahouUnit = kahouInfoList[4];
-				kahouIcon.GetComponent<KahouInfo>().kahouSell = int.Parse(kahouInfoList[6]);
-				kahouIcon.name = kahouTypId;
-
+                //Kahou Status
+                List<string> kahouInfoList = new List<string> ();
+                KahouInfo KahouInfo = kahouIcon.GetComponent<KahouInfo>();
+                kahouInfoList = kahouStatus.getKahouInfo(kahouTyp,int.Parse(kahouId));
+                KahouInfo.kahouId = int.Parse(kahouId);
+                KahouInfo.kahouType = kahouTyp;
+                KahouInfo.kahouName = kahouInfoList[0];
+                KahouInfo.kahouTarget = kahouInfoList[2];
+                KahouInfo.kahouEffect = int.Parse(kahouInfoList[3]);
+                KahouInfo.kahouUnit = kahouInfoList[4];
+                KahouInfo.kahouSell = int.Parse(kahouInfoList[6]);
+                KahouInfo.qty = dicChishikisyo[key];
+                kahouIcon.name = kahouTypId;
+                doneKahouList.Add(kahouTypId);                
 			}
 		}
 

@@ -57,6 +57,7 @@ public class JinkeiScene : MonoBehaviour {
 
 		    //Jinkei View Change
 		    int jinkei = PlayerPrefs.GetInt ("jinkei");
+            if (jinkei == 0) jinkei = 1;
             KakuteiButton.GetComponent<Jinkei> ().selectedJinkei = jinkei;
 
             BusyoInfoGet busyoScript = new BusyoInfoGet();
@@ -476,8 +477,9 @@ public class JinkeiScene : MonoBehaviour {
 
 	public void UnitOnScrollView(List<string> jinkeiBusyo_list){
 
-		//Clear Previous Unit
-		foreach (Transform chd in GameObject.Find ("Content").transform){
+        //Clear Previous Unit
+        GameObject Content = GameObject.Find("Content");
+        foreach (Transform chd in Content.transform){
 			//Delete
 			Destroy(chd.gameObject);
 		}
@@ -522,14 +524,11 @@ public class JinkeiScene : MonoBehaviour {
             string rank = busyoScript.getRank(int.Parse(busyoIdString));
             if (rank == "S") {
                 sList.Add(busyoIdString);
-            }
-            else if (rank == "A") {
+            }else if (rank == "A") {
                 aList.Add(busyoIdString);
-            }
-            else if (rank == "B") {
+            }else if (rank == "B") {
                 bList.Add(busyoIdString);
-            }
-            else {
+            }else {
                 cList.Add(busyoIdString);
             }
         }
@@ -537,7 +536,54 @@ public class JinkeiScene : MonoBehaviour {
         myBusyo_list.AddRange(sList);
         myBusyo_list.AddRange(aList);
         myBusyo_list.AddRange(bList);
-        myBusyo_list.AddRange(cList);        
+        myBusyo_list.AddRange(cList);
+
+        //Sort by DaimyoId & LV
+        List<Busyo> baseBusyoList = new List<Busyo>();
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        foreach (string busyoIdString in myBusyo_list) {
+            int busyoId = int.Parse(busyoIdString);
+            string busyoNameSort = BusyoInfoGet.getName(busyoId);
+            string rank = BusyoInfoGet.getRank(busyoId);
+            string heisyu = BusyoInfoGet.getHeisyu(busyoId);
+            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
+            int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
+            if (daimyoId == 0) daimyoId = daimyoHst;
+            int lv = PlayerPrefs.GetInt(busyoId.ToString());
+            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, heisyu, daimyoId, daimyoHst, lv));
+        }
+        List<Busyo> myBusyoDaimyoSortListTmp = new List<Busyo>(baseBusyoList);
+        myBusyoDaimyoSortListTmp.Sort((a, b) => {
+            int result = a.daimyoId - b.daimyoId;
+            return result != 0 ? result : b.lv - a.lv;
+        });
+
+        List<string> myBusyoDaimyoSortList = new List<string>();
+        foreach (Busyo busyo in myBusyoDaimyoSortListTmp) {
+            string busyoId = busyo.busyoId.ToString();
+            myBusyoDaimyoSortList.Add(busyoId);
+        }
+
+        List<Busyo> myBusyoLvSortListTmp = new List<Busyo>(baseBusyoList);
+        myBusyoLvSortListTmp.Sort((a, b) => {
+            int result = b.lv - a.lv;
+            return result != 0 ? result : a.daimyoId - a.daimyoId;
+        });
+
+        List<string> myBusyoLvSortList = new List<string>();
+        foreach (Busyo busyo in myBusyoLvSortListTmp) {
+            string busyoId = busyo.busyoId.ToString();
+            myBusyoLvSortList.Add(busyoId);
+        }
+
+
+        //Set rank sort
+        if(GameObject.Find("BusyoSortDropdown")) {
+            BusyoSort BusyoSort = GameObject.Find("BusyoSortDropdown").GetComponent<BusyoSort>();
+            BusyoSort.myBusyoRankSortList = myBusyo_list;
+            BusyoSort.myBusyoDaimyoSortList = myBusyoDaimyoSortList;
+            BusyoSort.myBusyoLvSortList = myBusyoLvSortList;
+        }
 
         //Instantiate scroll view
         string scrollPath = "Prefabs/Jinkei/Slot";        
@@ -546,7 +592,7 @@ public class JinkeiScene : MonoBehaviour {
             if(myBusyo_list[j] != "0") {
 			    //Slot
 			    GameObject prefab = Instantiate (Resources.Load (scrollPath)) as GameObject;
-			    prefab.transform.SetParent(GameObject.Find ("Content").transform);
+			    prefab.transform.SetParent(Content.transform);
 			    prefab.transform.localScale = new Vector3 (1, 1, 1);
 			    prefab.transform.localPosition = new Vector3(0, 0, 0);
 			    prefab.name = "Slot";

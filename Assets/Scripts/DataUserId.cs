@@ -21,9 +21,12 @@ public class DataUserId : MonoBehaviour {
     int busyoDama = 0;
     int syogunDaimyoId = 0;
     string doumei = "";
+    List<int> questDailyFlgId = new List<int>();
+    List<bool> questDailyReceivedFlgId = new List<bool>();
     List<int> questSpecialFlgId = new List<int>();
     List<bool> questSpecialReceivedFlgId = new List<bool>();
     List<bool> questSpecialCountReceivedFlg = new List<bool>();
+    List<bool> questDailyCountReceivedFlg = new List<bool>();
     string myBusyo = "";
     string gacyaDaimyoHst = "";
     List<string> myBusyoList = new List<string>();
@@ -37,6 +40,7 @@ public class DataUserId : MonoBehaviour {
     List<int> kanniList = new List<int>();
     int movieCount = 0;
     int space = 0;
+    int pvpHeiryoku = 0;
 
     string myKanni = "";
     string availableBugu = "";
@@ -108,12 +112,16 @@ public class DataUserId : MonoBehaviour {
         userIdClass["busyoDama"] = busyoDama;
         userIdClass["syogunDaimyoId"] = syogunDaimyoId;
         userIdClass["doumei"] = doumei;
+        userIdClass["questDailyFlgId"] = questDailyFlgId;
+        userIdClass["questDailyReceivedFlgId"] = questDailyReceivedFlgId;
         userIdClass["questSpecialFlgId"] = questSpecialFlgId;
         userIdClass["questSpecialReceivedFlgId"] = questSpecialReceivedFlgId;
         userIdClass["questSpecialCountReceivedFlg"] = questSpecialCountReceivedFlg;
+        userIdClass["questDailyCountReceivedFlg"] = questDailyCountReceivedFlg;
         userIdClass["yearSeason"] = yearSeason;
         userIdClass["movieCount"] = movieCount;
         userIdClass["space"] = space;
+        userIdClass["pvpHeiryoku"] = pvpHeiryoku;
 
         //busyo
         userIdClass["gacyaDaimyoHst"] = gacyaDaimyoHst;
@@ -213,12 +221,16 @@ public class DataUserId : MonoBehaviour {
                         objList[0]["busyoDama"] = busyoDama;
                         objList[0]["syogunDaimyoId"] = syogunDaimyoId;
                         objList[0]["doumei"] = doumei;
+                        objList[0]["questDailyFlgId"] = questDailyFlgId;
+                        objList[0]["questDailyReceivedFlgId"] = questDailyReceivedFlgId;
                         objList[0]["questSpecialFlgId"] = questSpecialFlgId;
                         objList[0]["questSpecialReceivedFlgId"] = questSpecialReceivedFlgId;
                         objList[0]["questSpecialCountReceivedFlg"] = questSpecialCountReceivedFlg;
+                        objList[0]["questDailyCountReceivedFlg"] = questDailyCountReceivedFlg;
                         objList[0]["yearSeason"] = yearSeason;                        
                         objList[0]["movieCount"] = movieCount;
                         objList[0]["space"] = space;
+                        objList[0]["pvpHeiryoku"] = pvpHeiryoku;
 
                         //busyo
                         objList[0]["gacyaDaimyoHst"] = gacyaDaimyoHst;
@@ -312,6 +324,7 @@ public class DataUserId : MonoBehaviour {
         doumei = PlayerPrefs.GetString("doumei");
         movieCount = PlayerPrefs.GetInt("movieCount");
         space = PlayerPrefs.GetInt("space");
+        pvpHeiryoku = PlayerPrefs.GetInt("pvpHeiryoku");
 
         Entity_quest_mst questMst = Resources.Load("Data/quest_mst") as Entity_quest_mst;
         for (int i = 0; i < questMst.param.Count; i++) {
@@ -330,6 +343,19 @@ public class DataUserId : MonoBehaviour {
                         questSpecialReceivedFlgId.Add(true);
                     }
                 }
+            }else {
+                string tmp = "questDailyFlg" + i.ToString();
+                bool activeFlg = PlayerPrefs.GetBool(tmp, false);
+                if (activeFlg) {
+                    questDailyFlgId.Add(i);
+                    string tmp2 = "questDailyReceivedFlg" + i.ToString();
+                    bool activeFlg2 = PlayerPrefs.GetBool(tmp2, false);
+                    if (!activeFlg2) {
+                        questDailyReceivedFlgId.Add(false);
+                    }else {
+                        questDailyReceivedFlgId.Add(true);
+                    }
+                }
             }
         }
         Entity_quest_count_mst questCountMst = Resources.Load("Data/quest_count_mst") as Entity_quest_count_mst;
@@ -342,6 +368,14 @@ public class DataUserId : MonoBehaviour {
                     questSpecialCountReceivedFlg.Add(true);                    
                 }else {
                     questSpecialCountReceivedFlg.Add(false);
+                }
+            }else {
+                string tmp = "questDailyCountReceivedFlg" + i.ToString();
+                bool activeFlg = PlayerPrefs.GetBool(tmp, false);
+                if (activeFlg) {
+                    questDailyCountReceivedFlg.Add(true);
+                }else {
+                    questDailyCountReceivedFlg.Add(false);
                 }
             }
         }

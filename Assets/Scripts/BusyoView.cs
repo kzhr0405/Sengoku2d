@@ -130,11 +130,15 @@ public class BusyoView : MonoBehaviour {
 			}
 
 
-			expString = nowExp + "/" + requiredExp;
-			GameObject.Find ("ExpValue").GetComponent<Text> ().text = expString;
+            int diff = requiredExp - nowExp;
+            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                GameObject.Find("ExpValue").GetComponent<Text>().text = "another " + diff.ToString();
+            }else {
+                GameObject.Find("ExpValue").GetComponent<Text>().text = "あと" + diff.ToString();
+            }
 
-			//Kahou status
-			KahouStatusGet kahouSts = new KahouStatusGet ();
+            //Kahou status
+            KahouStatusGet kahouSts = new KahouStatusGet ();
 			string[] KahouStatusArray =kahouSts.getKahouForStatus (busyoId,adjHp,adjAtk,adjDfc,spd);
 			int totalBusyoHp =0;
 
