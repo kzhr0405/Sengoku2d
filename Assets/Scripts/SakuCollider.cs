@@ -98,11 +98,7 @@ public class SakuCollider : MonoBehaviour {
 		if (sakuId == 1) {
             //Kobu
 
-<<<<<<< HEAD
             if (col.name != "hukuhei" && col.name != "shiro") {
-=======
-            if (col.name != "hukuhei") {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
                 string targetTag = "";
                 if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
                     targetTag = "Player";
@@ -397,25 +393,16 @@ public class SakuCollider : MonoBehaviour {
 					} else if (sakuId == 13) {
 						//kodachi
 						int count = 0;
-<<<<<<< HEAD
-
                         int sakuEffectRandom = UnityEngine.Random.Range(1, sakuEffect + 1);
                         
                         foreach (Transform child in col.transform) {
-=======
-						foreach (Transform child in col.transform) {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 							if (child.tag == "EnemyChild") {
 								child.transform.DetachChildren ();
 								Destroy (child.gameObject);
                                 col.GetComponent<EnemyHP>().childQty--;
 
                                 count = count + 1;
-<<<<<<< HEAD
 								if (count >= sakuEffectRandom) {
-=======
-								if (count >= sakuEffect) {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 									break;
 								}
 							}
@@ -434,23 +421,15 @@ public class SakuCollider : MonoBehaviour {
 					} else if (sakuId == 15) {
 						//yagyu shingakeryu                        
 						int count = 0;
-<<<<<<< HEAD
                         int sakuEffectRandom = UnityEngine.Random.Range(1, sakuEffect + 1);
                         SenpouBetray betrayScript = new SenpouBetray ();
-=======
-						SenpouBetray betrayScript = new SenpouBetray ();
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 						foreach (Transform child in col.transform) {
 							if (child.tag == "EnemyChild") {
 								betrayScript.betrayEnemy(child.gameObject);
                                 col.GetComponent<EnemyHP>().childQty--;
 
                                 count = count + 1;
-<<<<<<< HEAD
 								if (count >= sakuEffectRandom) {
-=======
-								if (count >= sakuEffect) {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 									break;
 								}
 							}

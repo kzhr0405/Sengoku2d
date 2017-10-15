@@ -886,14 +886,9 @@ public class GameScene : MonoBehaviour {
                     int senpouLv = PvPSenpouLvList[counter];
                     int sakuLv = PvPSakuLvList[counter];
                     string kahouList = PvPKahouList[counter];
-
-<<<<<<< HEAD
                     int kanniId = PvPKanniList[counter];                    
                     int jyosyuHei = PvPJyosyuHeiList[counter];
 
-
-=======
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
                     int sakuId = 1;
                     if (PvPSakuList.Count == 0) {
                         sakuId = info.getSakuId(busyoId);
@@ -912,11 +907,7 @@ public class GameScene : MonoBehaviour {
                     }else if (minus2List.Contains(mapId)) {
                         mapId = mapId - 2;
                     }
-<<<<<<< HEAD
                     getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, kanniId, jyosyuHei);
-=======
-                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
                     counter = counter + 1;
                 }
             }
@@ -1268,11 +1259,7 @@ public class GameScene : MonoBehaviour {
         inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"", 0, 0);
 	}
 
-<<<<<<< HEAD
     public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio, int kanniId, int jyosyuHei) {
-=======
-    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio) {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 
         //Get Basic Info.
         StatusGet sts = new StatusGet();        
@@ -1359,7 +1346,6 @@ public class GameScene : MonoBehaviour {
         }
 
         //View Object & pass status to it.
-<<<<<<< HEAD
         enemyTotalHeiryoku = enemyTotalHeiryoku + inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList, kanniId, jyosyuHei);
         if(playerTotalHeiryoku!=0) {
             DataStore.UpdateHeiryoku(true, DataStore.userId, playerTotalHeiryoku);            
@@ -1368,9 +1354,6 @@ public class GameScene : MonoBehaviour {
             DataStore.UpdateHeiryoku(false, DataStore.enemyUserId, enemyTotalHeiryoku);
         }    
          
-=======
-        inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList);
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
     }
 
 

@@ -336,11 +336,7 @@ public class NaiseiController : MonoBehaviour {
 
             //Status Handling
             //Status Jyosyu Modification
-<<<<<<< HEAD
             if (PlayerPrefs.HasKey (jyosyuTemp) && jyosyuId != 0) {
-=======
-            if (PlayerPrefs.HasKey (jyosyuTemp)) {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 				StatusGet sts = new StatusGet();
 				int lv = PlayerPrefs.GetInt (jyosyuId.ToString());
 				float naiseiSts = (float)sts.getDfc(jyosyuId,lv);

@@ -444,15 +444,10 @@ public class EnemyInstance : MonoBehaviour {
 
 				//Child Unit HP
 				prefab.GetComponent<EnemyHP>().childHP = ch_status;
-<<<<<<< HEAD
                 totalHeiryoku = totalHeiryoku + (ch_num * ch_status);
 
                 //Attack
                 if (ch_type == "YM") {
-=======
-				//Attack
-				if (ch_type == "YM") {
->>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
 					prefab.GetComponent<AttackLong> ().childAttack = atkDfc * 3;
 					prefab.GetComponent<Heisyu> ().atk = atkDfc * 3;
 				} else if (ch_type == "TP") {
