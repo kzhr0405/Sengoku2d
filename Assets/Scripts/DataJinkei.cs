@@ -26,9 +26,12 @@ public class DataJinkei : MonoBehaviour {
         List<int> sakuLvList = new List<int>();
         List<string> kahouList = new List<string>();
         List<int> sakuList = new List<int>(); //saku + gokui
+<<<<<<< HEAD
         List<int> jyosyuHeiList = new List<int>();
         List<int> kanniList = new List<int>();
             
+=======
+>>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
 
         for (int i=1; i<26; i++) {
@@ -99,8 +102,11 @@ public class DataJinkei : MonoBehaviour {
         List<int> sakuLvList = new List<int>();
         List<string> kahouList = new List<string>();
         List<int> sakuList = new List<int>(); //saku + gokui
+<<<<<<< HEAD
         List<int> jyosyuHeiList = new List<int>();
         List<int> kanniList = new List<int>();        
+=======
+>>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
 
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {

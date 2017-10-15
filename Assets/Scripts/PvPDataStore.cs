@@ -535,6 +535,7 @@ public class PvPDataStore : MonoBehaviour {
                             ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
                             foreach (object o in arraylist6) PvP1SakuList.Add(System.Convert.ToInt32(o));
                         }
+<<<<<<< HEAD
 
                         if (checkDataExist(ncbObject, "jyosyuHeiList")) {
                             ArrayList arraylist7 = (ArrayList)ncbObject["jyosyuHeiList"];
@@ -546,6 +547,8 @@ public class PvPDataStore : MonoBehaviour {
                             foreach (object o in arraylist8) PvP1KanniList.Add(System.Convert.ToInt32(o));
                         }
 
+=======
+>>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
                         soudaisyo1 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
 
                     }else if(PvPId == 2) {
@@ -568,6 +571,7 @@ public class PvPDataStore : MonoBehaviour {
                             ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
                             foreach (object o in arraylist6) PvP2SakuList.Add(System.Convert.ToInt32(o));
                         }
+<<<<<<< HEAD
 
                         if (checkDataExist(ncbObject, "jyosyuHeiList")) {
                             ArrayList arraylist7 = (ArrayList)ncbObject["jyosyuHeiList"];
@@ -580,6 +584,8 @@ public class PvPDataStore : MonoBehaviour {
                         }
 
 
+=======
+>>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
                         soudaisyo2 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
 
                     }else if (PvPId == 3) {
@@ -603,6 +609,7 @@ public class PvPDataStore : MonoBehaviour {
                             foreach (object o in arraylist6) PvP3SakuList.Add(System.Convert.ToInt32(o));
                         }
 
+<<<<<<< HEAD
                         if (checkDataExist(ncbObject, "jyosyuHeiList")) {
                             ArrayList arraylist7 = (ArrayList)ncbObject["jyosyuHeiList"];
                             foreach (object o in arraylist7) PvP3JyosyuHeiList.Add(System.Convert.ToInt32(o));
@@ -614,6 +621,8 @@ public class PvPDataStore : MonoBehaviour {
                         }
 
 
+=======
+>>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
                         soudaisyo3 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
                     }
                 }

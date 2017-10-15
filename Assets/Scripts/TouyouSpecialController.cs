@@ -44,7 +44,11 @@ public class TouyouSpecialController : MonoBehaviour {
             int daimyoId = busyoMst.param[i].daimyoId;
             int daimyoHst = busyoMst.param[i].daimyoHst;
             //busyoListDic.Add(busyoId, new Busyo { busyoId = busyoId, busyoName= busyoName, rank = rank, heisyu = heisyu, daimyoId = daimyoId , daimyoHst = daimyoHst });
+<<<<<<< HEAD
             busyoListDic.Add(busyoId, new Busyo (busyoId, busyoName, rank, heisyu, daimyoId, daimyoHst,0 ,0,0,0,0));
+=======
+            busyoListDic.Add(busyoId, new Busyo (busyoId, busyoName, rank, heisyu, daimyoId, daimyoHst,0 ));
+>>>>>>> 413620e13ab3157948fd4a086ffb3b7e50ac0478
         }
 
         //target
