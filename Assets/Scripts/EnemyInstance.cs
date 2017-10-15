@@ -8,7 +8,8 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 public class EnemyInstance : MonoBehaviour {
 
 
-	public void makeInstance(int mapId, int busyoId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc,int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray, string kahouList) {
+	public int makeInstance(int mapId, int busyoId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc,int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray, string kahouList, int kanniId, int jyosyuHei) {
+        int totalHeiryoku = 0;
 
         /*Roujyo Start*/
         bool shiroFlg = false;
@@ -259,10 +260,30 @@ public class EnemyInstance : MonoBehaviour {
             spdWithKahou = ((float)spd + float.Parse(KahouStatusArray[3]));
         }
 
+        /*Kahou Adjustment*/
+        float addAtkByKanni = 0;
+        float addHpByKanni = 0;
+        float addDfcByKanni = 0;
+
+        if (kanniId !=0) {            
+            Kanni kanni = new Kanni();
+            string kanniTarget = kanni.getEffectTarget(kanniId);
+            int effect = kanni.getEffect(kanniId);
+            if (kanniTarget == "atk") {
+                addAtkByKanni = ((float)atk * (float)effect) / 100;
+            }else if (kanniTarget == "hp") {
+                addHpByKanni = ((float)hp * (float)effect) / 100;
+            }else if (kanniTarget == "dfc") {
+                addDfcByKanni = ((float)dfc * (float)effect) / 100;
+            }
+            
+        }
+        
         //HP Bar
         GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
-		minHpBar.GetComponent<BusyoHPBar>().initLife = hp;
-		prefab.GetComponent<EnemyHP>().life = hp;
+		minHpBar.GetComponent<BusyoHPBar>().initLife = hp + jyosyuHei + Mathf.FloorToInt(addHpByKanni);
+        prefab.GetComponent<EnemyHP>().life = hp + jyosyuHei + Mathf.FloorToInt(addHpByKanni);
+        totalHeiryoku = hp + jyosyuHei + Mathf.FloorToInt(addHpByKanni);
 
         //adjust spd
         float adjSpd = spdWithKahou / 10;
@@ -271,9 +292,8 @@ public class EnemyInstance : MonoBehaviour {
 			if (linkNo != 0) {
 				float adjstAtk = atk * linkAdjst;
 				atk = atk + (int)adjstAtk;
-
 			}
-			prefab.GetComponent<EnemyAttack> ().attack = atk;
+			prefab.GetComponent<EnemyAttack> ().attack = atk + Mathf.FloorToInt(addAtkByKanni);
 			if (adjSpd <= 0) {
                 adjSpd = 1;
 			}
@@ -291,16 +311,16 @@ public class EnemyInstance : MonoBehaviour {
 				atk = atk + (int)adjstAtk;
 			}
 
-			prefab.GetComponent<AttackLong> ().attack = atk;
-			if (adjSpd <= 0) {
+			prefab.GetComponent<AttackLong> ().attack = atk + Mathf.FloorToInt(addAtkByKanni);
+            if (adjSpd <= 0) {
                 adjSpd = 1;
 			}
 			prefab.GetComponent<HomingLong> ().speed = adjSpd;
 			prefab.GetComponent<HomingLong>().leftFlg = true;
 		}
-		prefab.GetComponent<EnemyHP> ().dfc = dfc;
+		prefab.GetComponent<EnemyHP> ().dfc = dfc + Mathf.FloorToInt(addDfcByKanni);
 
-		if (taisyo) {
+        if (taisyo) {
 			prefab.GetComponent<EnemyHP> ().taisyo = true;
 		}
         
@@ -424,8 +444,10 @@ public class EnemyInstance : MonoBehaviour {
 
 				//Child Unit HP
 				prefab.GetComponent<EnemyHP>().childHP = ch_status;
-				//Attack
-				if (ch_type == "YM") {
+                totalHeiryoku = totalHeiryoku + (ch_num * ch_status);
+
+                //Attack
+                if (ch_type == "YM") {
 					prefab.GetComponent<AttackLong> ().childAttack = atkDfc * 3;
 					prefab.GetComponent<Heisyu> ().atk = atkDfc * 3;
 				} else if (ch_type == "TP") {
@@ -484,6 +506,7 @@ public class EnemyInstance : MonoBehaviour {
             
 		}
 
+        return totalHeiryoku;
 	}
 
 	public int getAIType(int atk, int dfc, bool taisyo){
@@ -731,14 +754,16 @@ public class EnemyInstance : MonoBehaviour {
         }
 
         if (shipId == 1) {
-            hp = hp * 2;
-            dfc = dfc * 2;
-            adjSpd = Mathf.FloorToInt((float)adjSpd * 0.5f);
+            atk = Mathf.FloorToInt((float)atk * 1.4f);
+            dfc = Mathf.FloorToInt((float)dfc * 1.4f);
+            adjSpd = Mathf.FloorToInt((float)adjSpd * 0.4f);
         }else if (shipId == 2) {
-            hp = Mathf.FloorToInt((float)hp * 1.5f);
-            dfc = Mathf.FloorToInt((float)dfc * 1.5f);
+            atk = Mathf.FloorToInt((float)atk * 1.2f);
+            dfc = Mathf.FloorToInt((float)dfc * 1.2f);
             adjSpd = Mathf.FloorToInt((float)adjSpd * 0.6f);
         }else if (shipId == 3) {
+            atk = Mathf.FloorToInt((float)atk * 0.8f);
+            dfc = Mathf.FloorToInt((float)dfc * 0.8f);
             adjSpd = Mathf.FloorToInt((float)adjSpd * 0.8f);
         }
             atk = atk * 10;

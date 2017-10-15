@@ -201,9 +201,27 @@ public class DataRecoveryConfirm : MonoBehaviour {
 
                         //gokui
                         string kanniTmp = "kanni" + busyoId.ToString();
-                        int kanni = RecoveryDataStore.kanniList[count];
-                        if (kanni != 0) {
-                            PlayerPrefs.SetInt(kanniTmp, kanni);
+                        if (RecoveryDataStore.kanniList.Count != 0) {
+                            int kanni = RecoveryDataStore.kanniList[count];
+                            if (kanni != 0) {
+                                PlayerPrefs.SetInt(kanniTmp, kanni);
+                            }
+                        }
+                        //jyosyuHei
+                        string jyosyuHeiTmp = "jyosyuHei" + busyoId.ToString();
+                        if (RecoveryDataStore.jyosyuHeiList.Count != 0) {
+                            int jyosyuHei = RecoveryDataStore.jyosyuHeiList[count];
+                            if (jyosyuHei != 0) {
+                                PlayerPrefs.SetInt(jyosyuHeiTmp, jyosyuHei);
+                            }
+                        }
+                        //jyosyuBusyo
+                        string jyosyuBusyoTmp = "jyosyuBusyo" + busyoId.ToString();
+                        if(RecoveryDataStore.jyosyuBusyoList.Count !=0) {
+                            int jyosyuBusyo = RecoveryDataStore.jyosyuBusyoList[count];
+                            if (jyosyuBusyo != 0) {
+                                PlayerPrefs.SetInt(jyosyuBusyoTmp, jyosyuBusyo);
+                            }
                         }
                         count = count + 1;
                     }
@@ -284,9 +302,17 @@ public class DataRecoveryConfirm : MonoBehaviour {
                     string naiseiTmp = "naisei" + kuniId.ToString();
                     PlayerPrefs.SetString(naiseiTmp, RecoveryDataStore.naiseiList[i]);
 
-                    if(RecoveryDataStore.naiseiShiroList[i] !=0) {                       
-                        string shiroTmp = "shiro" + kuniId.ToString();
-                        PlayerPrefs.SetInt(shiroTmp, RecoveryDataStore.naiseiShiroList[i]);
+                    if (RecoveryDataStore.naiseiShiroList.Count != 0) {
+                        if (RecoveryDataStore.naiseiShiroList[i] !=0) {                       
+                           string shiroTmp = "shiro" + kuniId.ToString();
+                            PlayerPrefs.SetInt(shiroTmp, RecoveryDataStore.naiseiShiroList[i]);
+                        }
+                    }
+                    if (RecoveryDataStore.jyosyuList.Count != 0) {
+                        if (RecoveryDataStore.jyosyuList[i] != 0) {
+                            string jyosyuTmp = "jyosyu" + kuniId.ToString();
+                            PlayerPrefs.SetInt(jyosyuTmp, RecoveryDataStore.jyosyuList[i]);
+                        }
                     }
                 }
                 

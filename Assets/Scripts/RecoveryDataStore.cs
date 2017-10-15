@@ -51,6 +51,8 @@ public class RecoveryDataStore : MonoBehaviour {
     public List<int> lvList = new List<int>();
     public List<string> heiList = new List<string>();
     public List<string> kahouList = new List<string>();
+    public List<int> jyosyuHeiList = new List<int>();
+    public List<int> jyosyuBusyoList = new List<int>();
     public List<int> senpouLvList = new List<int>();
     public List<int> sakuLvList = new List<int>();
     public List<int> addLvList = new List<int>();
@@ -109,7 +111,7 @@ public class RecoveryDataStore : MonoBehaviour {
     public List<int> naiseiKuniList = new List<int>();
     public List<string> naiseiList = new List<string>();
     public List<int> naiseiShiroList = new List<int>();
-
+    public List<int> jyosyuList = new List<int>();
 
     void Start() {
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
@@ -219,9 +221,19 @@ public class RecoveryDataStore : MonoBehaviour {
                         ArrayList arraylist10 = (ArrayList)obj["gokuiList"];
                         foreach (object o in arraylist10) gokuiList.Add(System.Convert.ToInt32(o));
 
-                        ArrayList arraylist11 = (ArrayList)obj["kanniList"];
-                        foreach (object o in arraylist11) kanniList.Add(System.Convert.ToInt32(o));
-                        
+                        if (checkDataExist(obj, "kanniList")) {
+                            ArrayList arraylist11 = (ArrayList)obj["kanniList"];
+                            foreach (object o in arraylist11) kanniList.Add(System.Convert.ToInt32(o));
+                        }
+                        if (checkDataExist(obj, "jyosyuHeiList")) {
+                            ArrayList arraylistJyosyuHei = (ArrayList)obj["jyosyuHeiList"];
+                            foreach (object o in arraylistJyosyuHei) jyosyuHeiList.Add(System.Convert.ToInt32(o));
+                        }
+                        if (checkDataExist(obj, "jyosyuBusyoList")) {
+                            ArrayList arraylistJyosyuBusyoList = (ArrayList)obj["jyosyuBusyoList"];
+                            foreach (object o in arraylistJyosyuBusyoList) jyosyuBusyoList.Add(System.Convert.ToInt32(o));
+                        }
+
                         myKanni = System.Convert.ToString(obj["myKanni"]);
                         availableBugu = System.Convert.ToString(obj["availableBugu"]);
                         availableKabuto = System.Convert.ToString(obj["availableKabuto"]);
@@ -271,6 +283,11 @@ public class RecoveryDataStore : MonoBehaviour {
 
                         ArrayList arraylist14 = (ArrayList)obj["naiseiShiroList"];
                         foreach (object o in arraylist14) naiseiShiroList.Add(System.Convert.ToInt32(o));
+
+                        if (checkDataExist(obj, "jyosyuList")) {
+                            ArrayList arraylistJyosyuList = (ArrayList)obj["jyosyuList"];
+                            foreach (object o in arraylistJyosyuList) jyosyuList.Add(System.Convert.ToInt32(o));
+                        }
 
                         if (checkDataExist(obj, "questSpecialCountReceivedFlg")) {
                             ArrayList arraylist15 = (ArrayList)obj["questSpecialCountReceivedFlg"];
@@ -469,6 +486,8 @@ public class RecoveryDataStore : MonoBehaviour {
         lvList = new List<int>();
         heiList = new List<string>();
         kahouList = new List<string>();
+        jyosyuHeiList = new List<int>();
+        jyosyuBusyoList = new List<int>();
         senpouLvList = new List<int>();
         sakuLvList = new List<int>();
 

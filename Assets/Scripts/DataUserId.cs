@@ -38,6 +38,8 @@ public class DataUserId : MonoBehaviour {
     List<int> addLvList = new List<int>();
     List<int> gokuiList = new List<int>();
     List<int> kanniList = new List<int>();
+    List<int> jyosyuHeiList = new List<int>();
+    List<int> jyosyuBusyoList = new List<int>();
     int movieCount = 0;
     int space = 0;
     int pvpHeiryoku = 0;
@@ -87,7 +89,8 @@ public class DataUserId : MonoBehaviour {
     List<int> naiseiKuniList = new List<int>();
     List<string> naiseiList = new List<string>();
     List<int> naiseiShiroList = new List<int>();
-
+    List<int> jyosyuList = new List<int>();
+    
     public void InsertUserId (string userId) {
         getAllData();
         NCMBObject userIdClass = new NCMBObject("dataStore");
@@ -134,6 +137,8 @@ public class DataUserId : MonoBehaviour {
         userIdClass["addLvList"] = addLvList;
         userIdClass["gokuiList"] = gokuiList;
         userIdClass["kanniList"] = kanniList;
+        userIdClass["jyosyuHeiList"] = jyosyuHeiList;
+        userIdClass["jyosyuBusyoList"] = jyosyuBusyoList;
 
         //kaho
         userIdClass["availableBugu"] = availableBugu;
@@ -183,6 +188,7 @@ public class DataUserId : MonoBehaviour {
         userIdClass["naiseiKuniList"] = naiseiKuniList;
         userIdClass["naiseiList"] = naiseiList;
         userIdClass["naiseiShiroList"] = naiseiShiroList;
+        userIdClass["jyosyuList"] = jyosyuList;
 
         userIdClass.SaveAsync();
         RegisteredFlg = true;
@@ -243,6 +249,8 @@ public class DataUserId : MonoBehaviour {
                         objList[0]["addLvList"] = addLvList;
                         objList[0]["gokuiList"] = gokuiList;
                         objList[0]["kanniList"] = kanniList;
+                        objList[0]["jyosyuHeiList"] = jyosyuHeiList;
+                        objList[0]["jyosyuBusyoList"] = jyosyuBusyoList;
 
                         //kaho
                         objList[0]["availableBugu"] = availableBugu;
@@ -292,6 +300,7 @@ public class DataUserId : MonoBehaviour {
                         objList[0]["naiseiKuniList"] = naiseiKuniList;
                         objList[0]["naiseiList"] = naiseiList;
                         objList[0]["naiseiShiroList"] = naiseiShiroList;
+                        objList[0]["jyosyuList"] = jyosyuList;
 
                         objList[0].SaveAsync();
                         RegisteredFlg = true;
@@ -428,7 +437,17 @@ public class DataUserId : MonoBehaviour {
             string kanniTmp = "kanni" + busyoId;
             int kanniId = PlayerPrefs.GetInt(kanniTmp);
             kanniList.Add(kanniId);
+
+            string jyosyuHeiTmp = "jyosyuHei" + busyoId;
+            int jyosyuHei = PlayerPrefs.GetInt(jyosyuHeiTmp);
+            jyosyuHeiList.Add(jyosyuHei);
+
+            string jyosyuBusyoTmp = "jyosyuBusyo" + busyoId;
+            int jyosyuBusyo = PlayerPrefs.GetInt(jyosyuBusyoTmp);
+            jyosyuBusyoList.Add(jyosyuBusyo);
+
             
+
         }
 
         //item
@@ -485,6 +504,11 @@ public class DataUserId : MonoBehaviour {
                 string shiroTmp = "shiro" + kuniId;
                 int shiroId = PlayerPrefs.GetInt(shiroTmp, 0);
                 naiseiShiroList.Add(shiroId);
+
+                string jyosyuTemp = "jyosyu" + kuniId;
+                int busyoId = PlayerPrefs.GetInt(jyosyuTemp, 0);
+                jyosyuList.Add(busyoId);
+
             }
         }
     }

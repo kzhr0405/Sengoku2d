@@ -54,9 +54,12 @@ public class GameScene : MonoBehaviour {
     public bool pvpFlg;
     public PvPDataStore DataStore;
     public int pvpStageId = 1;
+    public int playerTotalHeiryoku = 0;
+    public int enemyTotalHeiryoku = 0;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
 
         //Sound
         BGMSESwitch bgm = new BGMSESwitch();
@@ -818,7 +821,10 @@ public class GameScene : MonoBehaviour {
             List<int> PvPSakuList = new List<int>();
             List<int> PvPSakuLvList = new List<int>();
             List<string> PvPKahouList = new List<string>();
+            List<int> PvPKanniList = new List<int>();
+            List<int> PvPJyosyuHeiList = new List<int>();
             int soudaisyo = 0;
+
             if (pvpStageId==1) {
                 PvPBusyoList = DataStore.PvP1BusyoList;
                 PvPLvList = DataStore.PvP1LvList;
@@ -827,6 +833,8 @@ public class GameScene : MonoBehaviour {
                 PvPSakuLvList = DataStore.PvP1SakuLvList;
                 PvPSakuList = DataStore.PvP1SakuList;
                 PvPKahouList = DataStore.PvP1KahouList;
+                PvPKanniList = DataStore.PvP1KanniList;
+                PvPJyosyuHeiList = DataStore.PvP1JyosyuHeiList;
                 soudaisyo = DataStore.soudaisyo1;
             }else if(pvpStageId==2) {
                 PvPBusyoList = DataStore.PvP2BusyoList;
@@ -836,6 +844,8 @@ public class GameScene : MonoBehaviour {
                 PvPSakuLvList = DataStore.PvP2SakuLvList;
                 PvPSakuList = DataStore.PvP2SakuList;
                 PvPKahouList = DataStore.PvP2KahouList;
+                PvPKanniList = DataStore.PvP2KanniList;
+                PvPJyosyuHeiList = DataStore.PvP2JyosyuHeiList;
                 soudaisyo = DataStore.soudaisyo2;
             }else if(pvpStageId==3) {
                 PvPBusyoList = DataStore.PvP3BusyoList;
@@ -845,6 +855,8 @@ public class GameScene : MonoBehaviour {
                 PvPSakuLvList = DataStore.PvP3SakuLvList;
                 PvPSakuList = DataStore.PvP3SakuList;
                 PvPKahouList = DataStore.PvP3KahouList;
+                PvPKanniList = DataStore.PvP3KanniList;
+                PvPJyosyuHeiList = DataStore.PvP3JyosyuHeiList;                
                 soudaisyo = DataStore.soudaisyo3;
             }
 
@@ -870,10 +882,14 @@ public class GameScene : MonoBehaviour {
                     int butaiQty = int.Parse(heilist[1]);
                     int butaiLv = int.Parse(heilist[2]);
                     float butaiStatus = float.Parse(heilist[3]);
-
+                    
                     int senpouLv = PvPSenpouLvList[counter];
                     int sakuLv = PvPSakuLvList[counter];
                     string kahouList = PvPKahouList[counter];
+
+                    int kanniId = PvPKanniList[counter];                    
+                    int jyosyuHei = PvPJyosyuHeiList[counter];
+
 
                     int sakuId = 1;
                     if (PvPSakuList.Count == 0) {
@@ -893,7 +909,7 @@ public class GameScene : MonoBehaviour {
                     }else if (minus2List.Contains(mapId)) {
                         mapId = mapId - 2;
                     }
-                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, kanniId, jyosyuHei);
                     counter = counter + 1;
                 }
             }
@@ -1113,7 +1129,7 @@ public class GameScene : MonoBehaviour {
 
         //View Object & pass status to it. 
         PlayerInstance inst = new PlayerInstance ();
-		inst.makeInstance (busyoId, mapId, hp, atk, dfc, spd, senpouArray, busyoName, soudaisyo, boubi);
+        playerTotalHeiryoku = playerTotalHeiryoku + inst.makeInstance (busyoId, mapId, hp, atk, dfc, spd, senpouArray, busyoName, soudaisyo, boubi);
 
 		return busyoId;
 	}
@@ -1241,11 +1257,11 @@ public class GameScene : MonoBehaviour {
             atk = atk + Mathf.FloorToInt(((float)atk * (float)addRatio) / 100);
             dfc = dfc + Mathf.FloorToInt(((float)dfc * (float)addRatio) / 100);
         }
-        
-        inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"");
+
+        inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"", 0, 0);
 	}
 
-    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio) {
+    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio, int kanniId, int jyosyuHei) {
 
         //Get Basic Info.
         StatusGet sts = new StatusGet();        
@@ -1332,7 +1348,14 @@ public class GameScene : MonoBehaviour {
         }
 
         //View Object & pass status to it.
-        inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList);
+        enemyTotalHeiryoku = enemyTotalHeiryoku + inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList, kanniId, jyosyuHei);
+        if(playerTotalHeiryoku!=0) {
+            DataStore.UpdateHeiryoku(true, DataStore.userId, playerTotalHeiryoku);            
+        }
+        if(enemyTotalHeiryoku!=0) {
+            DataStore.UpdateHeiryoku(false, DataStore.enemyUserId, enemyTotalHeiryoku);
+        }    
+         
     }
 
 

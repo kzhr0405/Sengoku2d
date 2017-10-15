@@ -144,16 +144,21 @@ public class RonkouKousyoMenu : MonoBehaviour {
 
 		} else if (name == "jyosyu") {
 			if (jyosyuKuniId == 0) {
-				//Available Kuni
+                //Available Kuni
 
-				string clearedKuniString = PlayerPrefs.GetString ("clearedKuni");
-				char[] delimiterChars = { ',' };
-				List<string> clearedKuniList = new List<string> ();
-				if (clearedKuniString.Contains (",")) {
-					clearedKuniList = new List<string> (clearedKuniString.Split (delimiterChars));
-				} else {
-					clearedKuniList.Add (clearedKuniString);
-				}
+                string seiryoku = PlayerPrefs.GetString("seiryoku");
+                List<string> seiryokuList = new List<string>();
+                List<string> clearedKuniList = new List<string>();
+                char[] delimiterChars = { ',' };
+                seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+                int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
+                for (int i = 0; i < seiryokuList.Count; i++) {
+                    int seiryokuId = int.Parse(seiryokuList[i]);
+                    if (seiryokuId == myDaimyoId) {
+                        int kuniId = i + 1;
+                        clearedKuniList.Add(kuniId.ToString());
+                    }
+                }
 
 				List<string> okKuniList = new List<string> ();
 				for (int i = 0; i < clearedKuniList.Count; i++) {

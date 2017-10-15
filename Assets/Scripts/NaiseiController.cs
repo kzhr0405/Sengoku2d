@@ -75,31 +75,32 @@ public class NaiseiController : MonoBehaviour {
 		if (PlayerPrefs.HasKey (jyosyuTemp) && tutorialDoneFlg) {
 			//Jyosyu Exist
 			jyosyuId = PlayerPrefs.GetInt (jyosyuTemp);
-			string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
-			GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
-			busyo.name = jyosyuId.ToString ();
-			busyo.transform.SetParent (GameObject.Find ("JyosyuImage").transform);
-			busyo.transform.localScale = new Vector2 (4, 4);
-			busyo.GetComponent<DragHandler>().enabled = false;
-			RectTransform busyo_transform = busyo.GetComponent<RectTransform>();
-			busyo_transform.anchoredPosition3D = new Vector3(40,40,0);
-			busyo_transform.sizeDelta = new Vector2( 23, 23);
+            if(jyosyuId!=0) {
+			    string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
+			    GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
+			    busyo.name = jyosyuId.ToString ();
+			    busyo.transform.SetParent (GameObject.Find ("JyosyuImage").transform);
+			    busyo.transform.localScale = new Vector2 (4, 4);
+			    busyo.GetComponent<DragHandler>().enabled = false;
+			    RectTransform busyo_transform = busyo.GetComponent<RectTransform>();
+			    busyo_transform.anchoredPosition3D = new Vector3(40,40,0);
+			    busyo_transform.sizeDelta = new Vector2( 23, 23);
 
-			foreach(Transform n in busyo.transform){
-				GameObject.Destroy(n.gameObject);
-			}
+			    foreach(Transform n in busyo.transform){
+				    GameObject.Destroy(n.gameObject);
+			    }
 
-			StatusGet sts = new StatusGet();
-			string jyosyuName = sts.getBusyoName(jyosyuId);
-			title = kuniName + "・" + jyosyuName;
+			    StatusGet sts = new StatusGet();
+			    string jyosyuName = sts.getBusyoName(jyosyuId);
+			    title = kuniName + "・" + jyosyuName;
 
-			//Ninmei Button
-			GameObject btn = GameObject.Find ("Ninmei").gameObject;
-			btn.GetComponent<Ninmei>().kaininFlg = true;
-			btn.transform.FindChild("NinmeiText").GetComponent<Text>().text = msg.getMessage(114);
-			btn.GetComponent<Ninmei>().jyosyuId = jyosyuId;
-			btn.GetComponent<Ninmei>().jyosyuName = jyosyuName;
-
+			    //Ninmei Button
+			    GameObject btn = GameObject.Find ("Ninmei").gameObject;
+			    btn.GetComponent<Ninmei>().kaininFlg = true;
+			    btn.transform.FindChild("NinmeiText").GetComponent<Text>().text = msg.getMessage(114);
+			    btn.GetComponent<Ninmei>().jyosyuId = jyosyuId;
+			    btn.GetComponent<Ninmei>().jyosyuName = jyosyuName;
+            }
 		} else {
             //Jyosyu Not Exist
             if (Application.systemLanguage != SystemLanguage.Japanese) {
@@ -335,7 +336,7 @@ public class NaiseiController : MonoBehaviour {
 
             //Status Handling
             //Status Jyosyu Modification
-            if (PlayerPrefs.HasKey (jyosyuTemp)) {
+            if (PlayerPrefs.HasKey (jyosyuTemp) && jyosyuId != 0) {
 				StatusGet sts = new StatusGet();
 				int lv = PlayerPrefs.GetInt (jyosyuId.ToString());
 				float naiseiSts = (float)sts.getDfc(jyosyuId,lv);

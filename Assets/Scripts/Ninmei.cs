@@ -41,14 +41,13 @@ public class Ninmei : MonoBehaviour {
 			//Reduce MyBusyo - CurrentJyosyu
 			myBusyoList.RemoveAll (jyosyuList.Contains);
 
-			//Reduce MyDaimyo
-			//int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
-			//Daimyo daimyo = new Daimyo();
-			//int myDaimyoBusyo = daimyo.getDaimyoBusyoId(myDaimyo);
-			//myBusyoList.Remove(myDaimyoBusyo.ToString());
-
-
-			if(myBusyoList.Count > 0){
+            //Reduce MyDaimyo
+            //int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+            //Daimyo daimyo = new Daimyo();
+            //int myDaimyoBusyo = daimyo.getDaimyoBusyoId(myDaimyo);
+            //myBusyoList.Remove(myDaimyoBusyo.ToString());
+            
+            if (myBusyoList.Count > 0){
 				audioSources [0].Play ();
 				BusyoStatusButton pop = new BusyoStatusButton ();
 				pop.commonPopup (19);
@@ -66,8 +65,28 @@ public class Ninmei : MonoBehaviour {
 				RectTransform scrollTransform = scroll.GetComponent<RectTransform> ();
 				scrollTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 
-				//Show Available List
-				foreach (string avl in myBusyoList) {
+                List<Busyo> baseBusyoList = new List<Busyo>();
+                BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+                StatusGet sts = new StatusGet();
+                foreach (string busyoIdString in myBusyoList) {
+                    int busyoId = int.Parse(busyoIdString);
+                    string busyoName = BusyoInfoGet.getName(busyoId);
+                    string rank = BusyoInfoGet.getRank(busyoId);
+                    int lv = PlayerPrefs.GetInt(busyoId.ToString());
+                    float dfcSts = (float)sts.getDfc(busyoId, lv);
+                    float hpSts = (float)sts.getHp(busyoId, lv);
+                    float atkSts = (float)sts.getAtk(busyoId, lv);
+                    baseBusyoList.Add(new Busyo(busyoId, busyoName, rank, "", 0, 0, lv, hpSts, atkSts, dfcSts, 0));
+                }
+                List<Busyo> myBusyoSortList = new List<Busyo>(baseBusyoList);
+                myBusyoSortList.Sort((a, b) => {
+                    float result = b.dfc - a.dfc;
+                    return (int)result;
+                });
+
+
+                //Show Available List
+                foreach (Busyo Busyo in myBusyoSortList) {
 					string slotPath = "Prefabs/Naisei/BusyoSlot";
 					GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
 					slot.transform.SetParent (scroll.transform.FindChild ("NaiseiContent").transform);
@@ -75,7 +94,7 @@ public class Ninmei : MonoBehaviour {
 
 					string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
 					GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
-					busyo.name = avl;
+					busyo.name = Busyo.busyoId.ToString();
 					busyo.transform.SetParent (slot.transform.FindChild ("Busyo").transform);
 					busyo.transform.localScale = new Vector2 (3.5f, 3.5f);
 					RectTransform busyo_transform = busyo.GetComponent<RectTransform> ();
@@ -93,15 +112,9 @@ public class Ninmei : MonoBehaviour {
 					RectTransform rank_transform = rank.GetComponent<RectTransform> ();
 					rank_transform.anchoredPosition3D = new Vector3 (30, -100, 0);
 
-					//Status
-					StatusGet sts = new StatusGet ();
-					int lv = PlayerPrefs.GetInt (avl);
-					float naiseiStsTemp = (float)sts.getDfc (int.Parse (avl), lv);
-					float naiseiSts = naiseiStsTemp / 2;
-
-					float hpSts = (float)sts.getHp (int.Parse (avl), lv);
-					float atkSts = (float)sts.getAtk (int.Parse (avl), lv);
-					float boubiStatusTemp = (hpSts + atkSts) / 2;
+					//Status					
+					float naiseiSts = Busyo.dfc / 2;
+					float boubiStatusTemp = (Busyo.hp + Busyo.atk) / 2;
 					float boubiStatus = boubiStatusTemp / 2;
 
 					slot.transform.FindChild ("Busyo").transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + naiseiSts.ToString ("f1") + "%";
@@ -111,17 +124,17 @@ public class Ninmei : MonoBehaviour {
 					string lvPath = "Prefabs/Naisei/Lv";
 					GameObject lvObj = Instantiate (Resources.Load (lvPath)) as GameObject;
 					lvObj.transform.SetParent (busyo.transform);
-					lvObj.GetComponent<Text> ().text = "Lv" + lv;
+					lvObj.GetComponent<Text> ().text = "Lv" + Busyo.lv;
 					lvObj.transform.localScale = new Vector2 (0.1f, 0.1f);
 					RectTransform lv_transform = lvObj.GetComponent<RectTransform> ();
 					lv_transform.anchoredPosition3D = new Vector3 (130, -70, 0);
 
 					//Button
-					slot.transform.FindChild ("Busyo").transform.FindChild ("NinmeiButton").GetComponent<DoNinmei> ().busyoId = avl;
-					
-
+					slot.transform.FindChild ("Busyo").transform.FindChild ("NinmeiButton").GetComponent<DoNinmei> ().busyoId = Busyo.busyoId.ToString();
 				}
-			}else{
+                GameObject contents = scroll.transform.FindChild("NaiseiContent").gameObject;
+                contents.transform.parent.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0.0f;
+            }else{
 				audioSources [4].Play ();
 				Message msg = new Message();
 				msg.makeMessage(msg.getMessage(119));

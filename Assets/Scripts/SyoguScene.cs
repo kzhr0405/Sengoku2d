@@ -148,8 +148,7 @@ public class SyoguScene : MonoBehaviour {
 			kanni.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
 		}
 
-		//Jyosyu
-		string jyosyuTmp = "jyosyuBusyo" + busyoId;
+        string jyosyuTmp = "jyosyuBusyo" + busyoId;
 
 		if (PlayerPrefs.HasKey (jyosyuTmp)) {
 			BusyoInfoGet busyoInfo = new BusyoInfoGet ();

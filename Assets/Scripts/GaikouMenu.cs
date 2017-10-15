@@ -357,12 +357,30 @@ public class GaikouMenu : MonoBehaviour {
 		string chiryakuPath = "Prefabs/Map/common/Chiryaku";
 		GameObject contents = scroll.transform.FindChild("Content").gameObject;
 
-		for (int i=0; i<myBusyoList.Count; i++) {
 
-			string myBusyoId = myBusyoList[i];
+        List<Busyo> baseBusyoList = new List<Busyo>();
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        StatusGet sts = new StatusGet();
+        foreach (string busyoIdString in myBusyoList) {
+            int busyoId = int.Parse(busyoIdString);
+            string busyoNameSort = BusyoInfoGet.getName(busyoId);
+            string rank = BusyoInfoGet.getRank(busyoId);           
+            int lv = 1;
+            float chiryakuSts = (float)sts.getDfc(int.Parse(busyoIdString), lv);
+            chiryakuSts = chiryakuSts * 10;
+            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, "", 0, 0, lv, 0, 0, chiryakuSts, 0));
+        }
+        List<Busyo> myBusyoSortList = new List<Busyo>(baseBusyoList);
+        myBusyoSortList.Sort((a, b) => {
+            float result = b.dfc - a.dfc;
+            return (int)result;
+        });
 
-			//Slot
-			GameObject prefab = Instantiate (Resources.Load (slotPath)) as GameObject;
+        bool firstFlg = false;
+        foreach(Busyo Busyo in myBusyoSortList) {
+
+            //Slot
+            GameObject prefab = Instantiate (Resources.Load (slotPath)) as GameObject;
 			prefab.transform.SetParent(contents.transform);
 			prefab.transform.localScale = new Vector3 (1, 1, 1);
 			prefab.GetComponent<GaikouBusyoSelect>().DoBtn = btnObj;
@@ -370,39 +388,32 @@ public class GaikouMenu : MonoBehaviour {
 			prefab.GetComponent<GaikouBusyoSelect>().kuniDiff = kuniDiff;
 			prefab.GetComponent<GaikouBusyoSelect>().daimyoBusyoAtk = daimyoBusyoAtk;
 			prefab.GetComponent<GaikouBusyoSelect>().daimyoBusyoDfc = daimyoBusyoDfc;
-			prefab.GetComponent<GaikouBusyoSelect>().busyoId = int.Parse(myBusyoId);
+            prefab.GetComponent<GaikouBusyoSelect>().busyoId = Busyo.busyoId;
 
-			//Busyo
-			string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
+            //Busyo
+            string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
 			GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
-			busyo.name = myBusyoId;
 			busyo.transform.SetParent(prefab.transform);
 			busyo.transform.localScale = new Vector3 (4, 5, 4);
-			busyo.name = myBusyoList [i].ToString ();
+			busyo.name = Busyo.busyoId.ToString();
 
-			RectTransform text_transform = busyo.transform.FindChild("Text").GetComponent<RectTransform>();
+            RectTransform text_transform = busyo.transform.FindChild("Text").GetComponent<RectTransform>();
 			text_transform.anchoredPosition = new Vector3(-32,12,0);
 			prefab.name = "Slot" + busyo.name;
 
-			//Get Chiryaku
-			StatusGet sts = new StatusGet();
-            int lv = 1;
-            float chiryakuSts = (float)sts.getDfc(int.Parse(myBusyoId),lv);
-			chiryakuSts = chiryakuSts *10;
-
 			GameObject chiryaku = Instantiate (Resources.Load (chiryakuPath)) as GameObject;
 			chiryaku.transform.SetParent(busyo.transform);
-			chiryaku.transform.FindChild("value").GetComponent<Text>().text = chiryakuSts.ToString();
+			chiryaku.transform.FindChild("value").GetComponent<Text>().text = Busyo.dfc.ToString();
 			chiryaku.transform.localScale = new Vector3 (1, 1, 1);
             chiryaku.transform.localPosition = new Vector3(0, 0, 0);
 
             busyo.GetComponent<DragHandler> ().enabled = false;
 
 			//Deffault Busyo Click
-			if(i == 0){
+			if(!firstFlg) {
 				prefab.GetComponent<GaikouBusyoSelect>().OnClick();
-			}
-
+                firstFlg = true;
+            }
 		}
         //Scroll Position
         contents.transform.parent.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0.0f;

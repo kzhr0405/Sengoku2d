@@ -8,7 +8,8 @@ using System;
 public class PlayerInstance : MonoBehaviour {
 
 
-	public void makeInstance(int busyoId, int mapId, int hp, int atk, int dfc,int spd, ArrayList senpouArray, string busyoName, int soudaisyo, int boubi){
+	public int makeInstance(int busyoId, int mapId, int hp, int atk, int dfc,int spd, ArrayList senpouArray, string busyoName, int soudaisyo, int boubi){
+        int totalHeiryoku = 0;
 
 		/*Parent Instantiate*/
 		string path = "Prefabs/Player/" + busyoId;
@@ -222,6 +223,7 @@ public class PlayerInstance : MonoBehaviour {
         GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
         minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerHP> ().life = adjHpWithKahou + addJyosyuHei;
+        totalHeiryoku = adjHpWithKahou + Mathf.FloorToInt(addJyosyuHei); ;
 
         //spd adjust
         float adjSpd = ((float)spd + float.Parse(KahouStatusArray[3]))/10;
@@ -240,11 +242,11 @@ public class PlayerInstance : MonoBehaviour {
 		}
 
 		prefab.GetComponent<PlayerHP>().dfc = adjDfc + int.Parse(KahouStatusArray[2]) + Mathf.FloorToInt (addDfcByKanni) + boubi;
+        
 
 
-
-		//Soudaisyo
-		if (busyoId == soudaisyo) {
+        //Soudaisyo
+        if (busyoId == soudaisyo) {
 			prefab.GetComponent<PlayerHP> ().taisyo = true;
 		}
         
@@ -282,7 +284,7 @@ public class PlayerInstance : MonoBehaviour {
 
         char[] delimiterChars = {':'};
 		string[] ch_list = chParam.Split(delimiterChars);
-
+        
         bool updateParam = false;
         //string ch_type = ch_list[0];
         string ch_type = heisyu;
@@ -414,9 +416,10 @@ public class PlayerInstance : MonoBehaviour {
 				//Child Unit HP
 				float addTotalHei = ch_status;
 				prefab.GetComponent<PlayerHP>().childHP = (int)addTotalHei;
-
-				//Attack
-				if (ch_type == "YM") {
+                totalHeiryoku = totalHeiryoku + (int)addTotalHei * ch_num;
+               
+                //Attack
+                if (ch_type == "YM") {
 					prefab.GetComponent<AttackLong> ().childAttack = atkDfc * 3;
 					prefab.GetComponent<Heisyu> ().atk = atkDfc * 3;
 				} else if (ch_type == "TP") {
@@ -436,11 +439,9 @@ public class PlayerInstance : MonoBehaviour {
 
 
 		}
-
-
-
-
-	}
+        
+        return totalHeiryoku;
+    }
 
 
 
@@ -881,17 +882,19 @@ public class PlayerInstance : MonoBehaviour {
         }
 
         if (shipId == 1) {
-            adjHpWithKahou = adjHpWithKahou * 2;
-            adjDfcWithKahou = adjDfcWithKahou * 2;
-            adjSpd = Mathf.FloorToInt((float)adjSpd * 0.5f);
+            adjAtkWithKahou = Mathf.FloorToInt((float)adjAtkWithKahou * 1.4f);
+            adjDfcWithKahou = Mathf.FloorToInt((float)adjDfcWithKahou * 1.4f);
+            adjSpd = Mathf.FloorToInt((float)adjSpd * 0.4f);
         }else if (shipId == 2) {
-            adjHpWithKahou = Mathf.FloorToInt((float)adjHpWithKahou * 1.5f);
-            adjDfcWithKahou = Mathf.FloorToInt((float)adjDfcWithKahou * 1.5f);
+            adjAtkWithKahou = Mathf.FloorToInt((float)adjAtkWithKahou * 1.2f);
+            adjDfcWithKahou = Mathf.FloorToInt((float)adjDfcWithKahou * 1.2f);
             adjSpd = Mathf.FloorToInt((float)adjSpd * 0.6f);
         }else if(shipId==3) {
+            adjAtkWithKahou = Mathf.FloorToInt((float)adjAtkWithKahou * 0.8f);
+            adjDfcWithKahou = Mathf.FloorToInt((float)adjDfcWithKahou * 0.8f);
             adjSpd = Mathf.FloorToInt((float)adjSpd * 0.8f);
         }
-        if(adjSpd<=0) {
+        if (adjSpd<=0) {
             adjSpd = 1;
         }
         GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;

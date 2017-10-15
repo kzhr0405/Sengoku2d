@@ -54,35 +54,30 @@ public class KousakuConfirm : MonoBehaviour {
 				}
 
                 //Sort by Rank
-                List<string> sList = new List<string>();
-                List<string> aList = new List<string>();
-                List<string> bList = new List<string>();
-                List<string> cList = new List<string>();
-                BusyoInfoGet busyoScript = new BusyoInfoGet();
+                List<Busyo> baseBusyoList = new List<Busyo>();
+                BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+                StatusGet sts = new StatusGet();
                 foreach (string busyoIdString in myBusyoList) {
-                    string rank = busyoScript.getRank(int.Parse(busyoIdString));
-                    if (rank == "S") {
-                        sList.Add(busyoIdString);
-                    }else if (rank == "A") {
-                        aList.Add(busyoIdString);
-                    }else if (rank == "B") {
-                        bList.Add(busyoIdString);
-                    }else {
-                        cList.Add(busyoIdString);
-                    }
+                    int busyoId = int.Parse(busyoIdString);
+                    string busyoName = BusyoInfoGet.getName(busyoId);
+                    string rank = BusyoInfoGet.getRank(busyoId);
+                    int lv = 1;
+                    float dfcSts = (float)sts.getDfc(busyoId, lv);
+                    float hpSts = (float)sts.getHp(busyoId, lv);
+                    float atkSts = (float)sts.getAtk(busyoId, lv);
+                    baseBusyoList.Add(new Busyo(busyoId, busyoName, rank, "", 0, 0, lv, hpSts, atkSts, dfcSts, 0));
                 }
-                myBusyoList = new List<string>();
-                myBusyoList.AddRange(sList);
-                myBusyoList.AddRange(aList);
-                myBusyoList.AddRange(bList);
-                myBusyoList.AddRange(cList);
-                
+                List<Busyo> myBusyoSortList = new List<Busyo>(baseBusyoList);
+                myBusyoSortList.Sort((a, b) => {
+                    float result = b.dfc - a.dfc;
+                    return (int)result;
+                });
+
 
                 string slotPath = "Prefabs/Map/kousaku/Slot";
 				string dfcPath = "Prefabs/Map/kousaku/TextObj";
-				for(int i=0; i<myBusyoList.Count; i++){
-
-					string busyoId = myBusyoList [i];
+                bool firstFlg = false;
+                foreach (Busyo Busyo in myBusyoSortList) {
 
 					//Slot
 					GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
@@ -92,10 +87,9 @@ public class KousakuConfirm : MonoBehaviour {
 					//Busyo
 					string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
 					GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
-					busyo.name = busyoId;
 					busyo.transform.SetParent(slot.transform);
 					busyo.transform.localScale = new Vector3 (4, 5, 0);
-					busyo.name = busyoId;
+					busyo.name = Busyo.busyoId.ToString();
 					slot.name = "Slot" + busyo.name;
 
 					busyo.GetComponent<DragHandler> ().enabled = false;			
@@ -106,27 +100,24 @@ public class KousakuConfirm : MonoBehaviour {
 					txtObj.transform.localScale = new Vector3 (1, 1, 0);
 					txtObj.transform.localPosition = new Vector3 (5, -12, 0);
 
-					StatusGet sts = new StatusGet();
-					int lv = 1;
-					float chiryakuSts = (float)sts.getDfc(int.Parse(busyoId),lv);
-					chiryakuSts = chiryakuSts *10;
-
+					float chiryakuSts = Busyo.dfc *10;
 					txtObj.transform.FindChild ("Value").GetComponent<Text> ().text = chiryakuSts.ToString ();
 
 					//Set Param
 					KousakuBusyoSelect script = slot.GetComponent<KousakuBusyoSelect>();
-					script.busyoId = int.Parse(busyoId);
+                    script.busyoId = Busyo.busyoId;
 					script.dfc = chiryakuSts;
 					script.doBtnObj = doBtnObj;
 					script.content = content;
 
 					//Initial Setting
-					if (i == 0) {
-						slot.GetComponent<KousakuBusyoSelect> ().OnClick ();
-					}
+                    if (!firstFlg) {
+                        slot.GetComponent<KousakuBusyoSelect>().OnClick();
+                        firstFlg = true;
+                    }
 
 
-				}
+                }
 
 				scrollObj.transform.FindChild ("Do").GetComponent<DoKousaku> ().cyouhouSnbRankId = cyouhouSnbRankId;
 				if (name == "CyouryakuButton") {

@@ -624,7 +624,7 @@ public class Timer : MonoBehaviour {
 				int mapId = 22;
 
                 if (Application.loadedLevelName != "kaisen") {
-                    inst.makeInstance(mapId, busyoId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray,"");
+                    inst.makeInstance(mapId, busyoId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray,"",0,0);
                 }else {
                     BusyoInfoGet busyoScript = new BusyoInfoGet();
                     int shipId = busyoScript.getShipId(busyoId);

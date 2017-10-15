@@ -26,6 +26,9 @@ public class DataJinkei : MonoBehaviour {
         List<int> sakuLvList = new List<int>();
         List<string> kahouList = new List<string>();
         List<int> sakuList = new List<int>(); //saku + gokui
+        List<int> jyosyuHeiList = new List<int>();
+        List<int> kanniList = new List<int>();
+            
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
 
         for (int i=1; i<26; i++) {
@@ -60,6 +63,14 @@ public class DataJinkei : MonoBehaviour {
                 string kahouTmp = "kahou" + jinkeiBusyoId.ToString();
                 string kahouString = PlayerPrefs.GetString(kahouTmp);
                 kahouList.Add(kahouString);
+
+                string jyosyuHeiTmp = "jyosyuHei" + jinkeiBusyoId.ToString();
+                int jyosyuHei = PlayerPrefs.GetInt(jyosyuHeiTmp);
+                jyosyuHeiList.Add(jyosyuHei);
+
+                string kanniTmp = "kanni" + jinkeiBusyoId.ToString();
+                int kanniId = PlayerPrefs.GetInt(kanniTmp);
+                kanniList.Add(kanniId);
             }
         }
         jinkeiClass["lvList"] = lvList;
@@ -68,6 +79,8 @@ public class DataJinkei : MonoBehaviour {
         jinkeiClass["sakuList"] = sakuList;
         jinkeiClass["sakuLvList"] = sakuLvList;
         jinkeiClass["kahouList"] = kahouList;
+        jinkeiClass["jyosyuHeiList"] = jyosyuHeiList;
+        jinkeiClass["kanniList"] = kanniList;
 
         jinkeiClass.SaveAsync();
         RegisteredFlg = true;
@@ -86,6 +99,8 @@ public class DataJinkei : MonoBehaviour {
         List<int> sakuLvList = new List<int>();
         List<string> kahouList = new List<string>();
         List<int> sakuList = new List<int>(); //saku + gokui
+        List<int> jyosyuHeiList = new List<int>();
+        List<int> kanniList = new List<int>();        
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
 
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -138,6 +153,15 @@ public class DataJinkei : MonoBehaviour {
                             string kahouTmp = "kahou" + jinkeiBusyoId.ToString();
                             string kahouString = PlayerPrefs.GetString(kahouTmp);
                             kahouList.Add(kahouString);
+
+                            string jyosyuHeiTmp = "jyosyuHei" + jinkeiBusyoId.ToString();
+                            int jyosyuHei = PlayerPrefs.GetInt(jyosyuHeiTmp);
+                            jyosyuHeiList.Add(jyosyuHei);
+
+                            string kanniTmp = "kanni" + jinkeiBusyoId.ToString();
+                            int kanniId = PlayerPrefs.GetInt(kanniTmp);
+                            kanniList.Add(kanniId);
+
                         }
 
                     }
@@ -147,6 +171,8 @@ public class DataJinkei : MonoBehaviour {
                     objList[0]["sakuList"] = sakuList;
                     objList[0]["sakuLvList"] = sakuLvList;
                     objList[0]["kahouList"] = kahouList;
+                    objList[0]["jyosyuHeiList"] = jyosyuHeiList;
+                    objList[0]["kanniList"] = kanniList;
 
                     objList[0].SaveAsync();
                     RegisteredFlg = true;

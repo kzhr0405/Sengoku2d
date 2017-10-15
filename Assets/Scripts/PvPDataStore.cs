@@ -47,6 +47,8 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> PvP1SakuList = new List<int>();
     public List<int> PvP1SakuLvList = new List<int>();
     public List<string> PvP1KahouList = new List<string>();
+    public List<int> PvP1JyosyuHeiList = new List<int>();
+    public List<int> PvP1KanniList = new List<int>();
     public int soudaisyo1;
 
     public List<int> PvP2BusyoList = new List<int>();
@@ -56,6 +58,8 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> PvP2SakuList = new List<int>();
     public List<int> PvP2SakuLvList = new List<int>();
     public List<string> PvP2KahouList = new List<string>();
+    public List<int> PvP2JyosyuHeiList = new List<int>();
+    public List<int> PvP2KanniList = new List<int>();
     public int soudaisyo2;
 
     public List<int> PvP3BusyoList = new List<int>();
@@ -65,6 +69,8 @@ public class PvPDataStore : MonoBehaviour {
     public List<int> PvP3SakuList = new List<int>();
     public List<int> PvP3SakuLvList = new List<int>();
     public List<string> PvP3KahouList = new List<string>();
+    public List<int> PvP3JyosyuHeiList = new List<int>();
+    public List<int> PvP3KanniList = new List<int>();
     public int soudaisyo3;
 
     //pvp tran
@@ -529,6 +535,17 @@ public class PvPDataStore : MonoBehaviour {
                             ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
                             foreach (object o in arraylist6) PvP1SakuList.Add(System.Convert.ToInt32(o));
                         }
+
+                        if (checkDataExist(ncbObject, "jyosyuHeiList")) {
+                            ArrayList arraylist7 = (ArrayList)ncbObject["jyosyuHeiList"];
+                            foreach (object o in arraylist7) PvP1JyosyuHeiList.Add(System.Convert.ToInt32(o));
+                        }
+
+                        if (checkDataExist(ncbObject, "kanniList")) {
+                            ArrayList arraylist8 = (ArrayList)ncbObject["kanniList"];
+                            foreach (object o in arraylist8) PvP1KanniList.Add(System.Convert.ToInt32(o));
+                        }
+
                         soudaisyo1 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
 
                     }else if(PvPId == 2) {
@@ -551,6 +568,18 @@ public class PvPDataStore : MonoBehaviour {
                             ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
                             foreach (object o in arraylist6) PvP2SakuList.Add(System.Convert.ToInt32(o));
                         }
+
+                        if (checkDataExist(ncbObject, "jyosyuHeiList")) {
+                            ArrayList arraylist7 = (ArrayList)ncbObject["jyosyuHeiList"];
+                            foreach (object o in arraylist7) PvP2JyosyuHeiList.Add(System.Convert.ToInt32(o));
+                        }
+
+                        if (checkDataExist(ncbObject, "kanniList")) {
+                            ArrayList arraylist8 = (ArrayList)ncbObject["kanniList"];
+                            foreach (object o in arraylist8) PvP2KanniList.Add(System.Convert.ToInt32(o));
+                        }
+
+
                         soudaisyo2 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
 
                     }else if (PvPId == 3) {
@@ -573,6 +602,17 @@ public class PvPDataStore : MonoBehaviour {
                             ArrayList arraylist6 = (ArrayList)ncbObject["sakuList"];
                             foreach (object o in arraylist6) PvP3SakuList.Add(System.Convert.ToInt32(o));
                         }
+
+                        if (checkDataExist(ncbObject, "jyosyuHeiList")) {
+                            ArrayList arraylist7 = (ArrayList)ncbObject["jyosyuHeiList"];
+                            foreach (object o in arraylist7) PvP3JyosyuHeiList.Add(System.Convert.ToInt32(o));
+                        }
+
+                        if (checkDataExist(ncbObject, "kanniList")) {
+                            ArrayList arraylist8 = (ArrayList)ncbObject["kanniList"];
+                            foreach (object o in arraylist8) PvP3KanniList.Add(System.Convert.ToInt32(o));
+                        }
+
 
                         soudaisyo3 = System.Convert.ToInt32(ncbObject["soudaisyo"]);
                     }
@@ -923,8 +963,36 @@ public class PvPDataStore : MonoBehaviour {
                 }
             }
         });        
+    }
+
+    public void UpdateHeiryoku(bool mineFlg, string userId, int heiryoku) { //true + : false - 
+
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpTmp");
+        query.WhereEqualTo("userId", userId);
+        query.WhereGreaterThanOrEqualTo("endDate", todayNCMB);
+        query.OrderByDescending("endDate");
+
+        query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
+            if (e == null) {
+                if (objList.Count != 0) {                    
+                    if (mineFlg) {
+                        objList[0]["jinkeiHeiryoku"] = heiryoku;
+                        objList[0].SaveAsync();
+                        PlayerPrefs.SetInt("jinkeiHeiryoku", heiryoku);
+                        PlayerPrefs.SetInt("pvpHeiryoku", heiryoku);
+                        PlayerPrefs.Flush();
+                    }else {
+                        objList[0]["jinkeiHeiryoku"] = heiryoku;
+                        objList[0].SaveAsync();
+                    }
+                }
+            }
+        });
 
     }
+
+
+
 
     private bool checkDataExist(NCMBObject obj, string key) {
         try {

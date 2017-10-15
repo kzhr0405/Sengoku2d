@@ -90,6 +90,7 @@ public class Senryoku : MonoBehaviour {
 		    totalBusyoHp = adjHp + int.Parse(KahouStatusArray[1]) + Mathf.FloorToInt (addHpByKanni) + addJyosyuHei;
 		    totalBusyoDfc = adjDfc + int.Parse(KahouStatusArray[2]) + Mathf.FloorToInt (addDfcByKanni);
             totalSpd = spd + int.Parse(KahouStatusArray[3]);
+            /*
             if (Application.loadedLevelName == "preKaisen") {
                 if (shipId == 1) {
                     totalBusyoHp = totalBusyoHp * 2;
@@ -98,7 +99,7 @@ public class Senryoku : MonoBehaviour {
                 }
             
             }
-
+            */
             //Child
             string heiId = "hei" + busyoId.ToString ();
 		    string chParam = PlayerPrefs.GetString (heiId,"0");

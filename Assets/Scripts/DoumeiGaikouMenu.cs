@@ -361,7 +361,16 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		string myKuni = PlayerPrefs.GetString ("clearedKuni"); 
 		List<int> myKuniList = new List<int>();
-		if (myKuni.Contains (",")) {
+        int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
+        for (int i = 0; i < seiryokuList.Count; i++) {
+            int seiryokuId = int.Parse(seiryokuList[i]);
+            if (seiryokuId == myDaimyoId) {
+                int kuniId = i + 1;
+                myKuniList.Add(kuniId);
+            }
+        }
+        
+        if (myKuni.Contains (",")) {
 			List<string> tempMyKuniList = new List<string> (myKuni.Split (delimiterChars));
 			myKuniList = tempMyKuniList.ConvertAll(x => int.Parse(x));
 		} else {
@@ -394,13 +403,16 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		string tempDoumei = "doumei" + targetDaimyo;
 		string doumei = PlayerPrefs.GetString (tempDoumei);
 		List<string> doumeiList = new List<string>();
-		if (doumei.Contains (",")) {
-			doumeiList = new List<string> (doumei.Split (delimiterChars));
-		} else {
-			doumeiList.Add(doumei);
-		}
+        Debug.Log(doumei);
+        if(doumei != "") {
+		    if (doumei.Contains (",")) {
+			    doumeiList = new List<string> (doumei.Split (delimiterChars));
+		    } else {
+			    doumeiList.Add(doumei);
+		    }
+        }
 
-		if (doumei != null && doumei != "") {
+        if (doumei != null && doumei != "") {
 			for(int t=0; t<doumeiOpenKuniMinusMyKuniList.Count; t++){
 				//foreach (int n in doumeiOpenKuniMinusMyKuniList) {
 				string checkDaimyoId = seiryokuList [doumeiOpenKuniMinusMyKuniList[t] - 1];
@@ -461,6 +473,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			// daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
             string daimyoName = daimyoScript.getName(daimyoId);
 
+            string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
+            prefab.transform.FindChild("Image").GetComponent<Image>().sprite =
+                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
 
             string theirYukouTemp = "";
 			if(int.Parse(targetDaimyo) < daimyoId){
@@ -633,7 +648,11 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			int srcDaimyoId = int.Parse(seiryokuList [srcKuniId - 1]);
             string srcDaimyoName = daimyoScript.getName(srcDaimyoId);
 
-			string theirYukouTemp = "";
+            string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
+            prefab.transform.FindChild("Image").GetComponent<Image>().sprite =
+                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+
+            string theirYukouTemp = "";
 			if(int.Parse(targetDaimyo) < daimyoId){
 				theirYukouTemp = targetDaimyo + "gaikou" + daimyoId.ToString();
 			}else{

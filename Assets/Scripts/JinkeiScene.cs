@@ -550,7 +550,7 @@ public class JinkeiScene : MonoBehaviour {
             int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
             if (daimyoId == 0) daimyoId = daimyoHst;
             int lv = PlayerPrefs.GetInt(busyoId.ToString());
-            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, heisyu, daimyoId, daimyoHst, lv));
+            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, heisyu, daimyoId, daimyoHst, lv,0,0,0,0));
         }
         List<Busyo> myBusyoDaimyoSortListTmp = new List<Busyo>(baseBusyoList);
         myBusyoDaimyoSortListTmp.Sort((a, b) => {

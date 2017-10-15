@@ -98,7 +98,7 @@ public class SakuCollider : MonoBehaviour {
 		if (sakuId == 1) {
             //Kobu
 
-            if (col.name != "hukuhei") {
+            if (col.name != "hukuhei" && col.name != "shiro") {
                 string targetTag = "";
                 if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
                     targetTag = "Player";
@@ -355,7 +355,8 @@ public class SakuCollider : MonoBehaviour {
 						//Ittouryu
 						float baseHP = col.GetComponent<EnemyHP> ().life;
 
-						int temp = (int)(baseHP * sakuEffect) / 100;
+                        int sakuEffectRandom = UnityEngine.Random.Range(5, sakuEffect + 1);
+                        int temp = (int)(baseHP * sakuEffectRandom) / 100;
 						col.gameObject.GetComponent<EnemyHP> ().DirectDamage (temp);
 
 						string damagePath = "Prefabs/PreKassen/ArialMessage";
@@ -392,14 +393,17 @@ public class SakuCollider : MonoBehaviour {
 					} else if (sakuId == 13) {
 						//kodachi
 						int count = 0;
-						foreach (Transform child in col.transform) {
+
+                        int sakuEffectRandom = UnityEngine.Random.Range(1, sakuEffect + 1);
+                        
+                        foreach (Transform child in col.transform) {
 							if (child.tag == "EnemyChild") {
 								child.transform.DetachChildren ();
 								Destroy (child.gameObject);
                                 col.GetComponent<EnemyHP>().childQty--;
 
                                 count = count + 1;
-								if (count >= sakuEffect) {
+								if (count >= sakuEffectRandom) {
 									break;
 								}
 							}
@@ -410,22 +414,23 @@ public class SakuCollider : MonoBehaviour {
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
                         if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            damageObj.GetComponent<TextMesh> ().text = "撃破" + sakuEffect + "部隊";
+                            damageObj.GetComponent<TextMesh> ().text = "撃破" + sakuEffectRandom + "部隊";
                         }else {
-                            damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffect + " unit";
+                            damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffectRandom + " unit";
                         }
 
 					} else if (sakuId == 15) {
 						//yagyu shingakeryu                        
 						int count = 0;
-						SenpouBetray betrayScript = new SenpouBetray ();
+                        int sakuEffectRandom = UnityEngine.Random.Range(1, sakuEffect + 1);
+                        SenpouBetray betrayScript = new SenpouBetray ();
 						foreach (Transform child in col.transform) {
 							if (child.tag == "EnemyChild") {
 								betrayScript.betrayEnemy(child.gameObject);
                                 col.GetComponent<EnemyHP>().childQty--;
 
                                 count = count + 1;
-								if (count >= sakuEffect) {
+								if (count >= sakuEffectRandom) {
 									break;
 								}
 							}
@@ -436,9 +441,9 @@ public class SakuCollider : MonoBehaviour {
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
                         if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            damageObj.GetComponent<TextMesh> ().text = "寝返" + sakuEffect + "部隊";
+                            damageObj.GetComponent<TextMesh> ().text = "寝返" + sakuEffectRandom + "部隊";
                         }else {
-                            damageObj.GetComponent<TextMesh>().text = sakuEffect + " unit betrayed";
+                            damageObj.GetComponent<TextMesh>().text = sakuEffectRandom + " unit betrayed";
                         }
 					}
 				}
