@@ -116,7 +116,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                 au.playMovieReward();
                 break;
         case AdfurikunMovieRewardUtility.ADF_MovieStatus.AdClose:
-                //Screen.orientation = ScreenOrientation.LandscapeLeft;
+                Screen.orientation = ScreenOrientation.LandscapeLeft;
                 Debug.Log("Sengoku2d : The ad was closed.");
                
                 //set count data
