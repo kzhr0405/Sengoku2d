@@ -55,6 +55,7 @@ public class tutorial_mst_importer : AssetPostprocessor
 					cell = row.GetCell(0); p.tutorialId = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(1); p.serihu = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(2); p.serihuEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(3); p.serihuChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

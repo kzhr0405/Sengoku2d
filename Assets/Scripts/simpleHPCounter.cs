@@ -91,7 +91,8 @@ public class simpleHPCounter : MonoBehaviour {
 
     public void viewChar(bool winFlg) {
         string path = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             path = "Prefabs/SimpleBattle/WinLoseTextEng";
         }else {
             path = "Prefabs/SimpleBattle/WinLoseText";
@@ -103,7 +104,7 @@ public class simpleHPCounter : MonoBehaviour {
         textObj.GetComponent<Fadein>().destroyBoard = board;
  
         if (!winFlg) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 textObj.GetComponent<TextMesh>().text = "Lose";
             } else {
                 textObj.GetComponent<TextMesh>().text = "敗北";
@@ -208,14 +209,15 @@ public class simpleHPCounter : MonoBehaviour {
         int itemQty = 1;
         string itemName = "";
         string MsgText = "";
+        int langId = PlayerPrefs.GetInt("langId");
 
         if (itemGrp == "item") {
             itemTyp = script.getRandomItemTyp(itemGrp);
 
-
+            
             if (itemTyp == "tech") {
                 itemId = script.getItemRank(30, 10);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     MsgText = "You got " + itemScript.getItemName(itemTyp + itemId.ToString()) + ".";
                 }else {
                     MsgText = itemScript.getItemName(itemTyp + itemId.ToString()) + "を手に入れましたぞ。";
@@ -230,7 +232,7 @@ public class simpleHPCounter : MonoBehaviour {
                 }else if (itemId == 1) {
                     itemQty = 5;
                 }
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     MsgText = "You got " + itemQty.ToString() + " stone.";
                 }else {
                     MsgText = "武将珠を" + itemQty.ToString() + "個手に入れましたぞ。";
@@ -239,7 +241,7 @@ public class simpleHPCounter : MonoBehaviour {
                 
             }else {
                 itemId = script.getItemRank(10, 1);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     MsgText = "You got " + itemScript.getItemName(itemTyp + itemId.ToString()) + ".";
                 }else {
                     MsgText = itemScript.getItemName(itemTyp + itemId.ToString()) + "を手に入れましたぞ。";
@@ -252,7 +254,7 @@ public class simpleHPCounter : MonoBehaviour {
             string kahouRank = getKahouRank();
             itemId = kahou.getRamdomKahouId(itemTyp, kahouRank);
             itemName = kahou.getKahouName(itemTyp, itemId);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 MsgText = "You got treasure, " + itemName + ".";
             }else {
                 MsgText = "家宝、" + itemName + "を手に入れましたぞ。";
@@ -262,7 +264,7 @@ public class simpleHPCounter : MonoBehaviour {
 
         }else if(itemGrp == "money") {
             itemQty = UnityEngine.Random.Range(100, 500);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 MsgText = "You got money " + itemQty.ToString() + ".";
             }else {
                 MsgText = "金" + itemQty.ToString() + "を手に入れましたぞ。";
@@ -278,7 +280,7 @@ public class simpleHPCounter : MonoBehaviour {
             GameObject.Find("MoneyValue").GetComponent<Text>().text = newMoney.ToString();
 
         }else {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+           if (langId == 2) {
                 MsgText = "No items";
             }else {
                 MsgText = "戦利品はありませんでした。";

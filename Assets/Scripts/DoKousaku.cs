@@ -143,7 +143,8 @@ public class DoKousaku : MonoBehaviour {
 							TrackLinkCutNo = TrackLinkCutNo + okCount;
 							PlayerPrefs.SetInt ("TrackLinkCutNo", TrackLinkCutNo);
 							PlayerPrefs.Flush ();
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            int langId = PlayerPrefs.GetInt("langId");
+                            if (langId == 2) {
                                 msg.makeUpperMessageOnBoard ("You cut " + okCount + " line. \n Enemy power keep be down in this season.");
                             }else {
                                 msg.makeUpperMessageOnBoard("連絡線を" + okCount + "本遮断しました。\n今季節中は敵戦力が減りますぞ。");
@@ -202,7 +203,8 @@ public class DoKousaku : MonoBehaviour {
 
 						MainStageController mainStage = new MainStageController ();
 						mainStage.questExtension ();
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             msg.makeUpperMessageOnBoard ("You are succeed to win over. \n Enemy " + cyouryakuHeiQty.ToString () + " unit will change to player unit in a battle.");
                         }else {
                             msg.makeUpperMessageOnBoard("調略に成功しましたぞ。\n合戦にて" + cyouryakuHeiQty.ToString() + "部隊が寝返ります。");

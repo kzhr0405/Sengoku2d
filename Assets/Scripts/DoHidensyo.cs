@@ -58,7 +58,8 @@ public class DoHidensyo : MonoBehaviour {
 			//Message
 			string busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 OKtext = "Gave skillbook to " + busyoName+".\n Passive skill Lv increased.";
             }else {
                 OKtext = busyoName + "に秘伝書を授与しました。\n戦法効果が上がります。";

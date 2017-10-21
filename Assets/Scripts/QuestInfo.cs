@@ -48,7 +48,8 @@ public class QuestInfo : MonoBehaviour {
 		RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 		popTextTransform.anchoredPosition = new Vector3 (0, 275, 0);
 		popText.name = "popText";
-		if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             popText.GetComponent<Text>().text = "Achievement";
         }else {
             popText.GetComponent<Text>().text = "達成目標";
@@ -218,7 +219,8 @@ public class QuestInfo : MonoBehaviour {
     public string getQuestTitle(int id){
 		Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
         string title = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             title = questMst.param[id].titleEng;
         }else { 
             title = questMst.param[id].title;
@@ -228,7 +230,8 @@ public class QuestInfo : MonoBehaviour {
 	public string getQuestExp(int id){
 		Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
         string exp = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             exp = questMst.param[id].expEng;
         }else {
             exp = questMst.param[id].exp;

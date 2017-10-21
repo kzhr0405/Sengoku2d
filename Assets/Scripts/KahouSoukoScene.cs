@@ -40,7 +40,8 @@ public class KahouSoukoScene : MonoBehaviour {
 		itemView.transform.FindChild ("KahouEffectValue").GetComponent<Text> ().text = "";
 		itemView.transform.FindChild ("KahouEffectLabel").GetComponent<Text> ().text = "";
 		GameObject.Find ("GetMoneyValue").GetComponent<Text> ().text = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             itemView.transform.FindChild ("ItemNameValue").GetComponent<Text> ().text = "Select Item";
         }else {
             itemView.transform.FindChild("ItemNameValue").GetComponent<Text>().text = "家宝選択";

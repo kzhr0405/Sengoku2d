@@ -114,9 +114,9 @@ public class KuniInfo : MonoBehaviour {
 		return y;
 	}
 
-	public string getKuniName(int kuniId){
+	public string getKuniName(int kuniId,int langId){
         string kuniName = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             kuniName = kuniMst.param[kuniId -1].kuniNameEng;
         }else {
             kuniName = kuniMst.param[kuniId - 1].kuniName;

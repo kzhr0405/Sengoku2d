@@ -12,8 +12,9 @@ public class clearOrGameOver : MonoBehaviour {
 	void Start () {
 
 		Resources.UnloadUnusedAssets ();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		bool gameOverFlg = PlayerPrefs.GetBool("gameOverFlg");
+        bool gameOverFlg = PlayerPrefs.GetBool("gameOverFlg");
 		if (gameOverFlg) {
             AudioSource[] seSources = GameObject.Find("SEController").GetComponents<AudioSource>();
             seSources[12].Stop();
@@ -22,7 +23,7 @@ public class clearOrGameOver : MonoBehaviour {
             /*Game Over*/
             /*--------------------*/
 
-            showSeiryoku();
+            showSeiryoku(langId);
 
 			GameObject panel = GameObject.Find("Panel").gameObject;
 
@@ -39,8 +40,8 @@ public class clearOrGameOver : MonoBehaviour {
             //Change Name
             string exp = "";// popObj.transform.FindChild("ExpValue").GetComponent<Text>().text;
             Daimyo daimyo = new Daimyo();
-            string clanName = daimyo.getClanName(myDaimyo);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            string clanName = daimyo.getClanName(myDaimyo,langId);            
+            if (langId == 2) {
                 exp = clanName + " clan was downfallen. " + myDaimyoName + " fell in battle and there is no one remember his name now.";
             }else {
                 exp = clanName + "の一族は滅亡した。武運尽きた"+ myDaimyoName + "は、戦場の露と消え、今や彼の者を覚えるものは無い。";
@@ -55,7 +56,7 @@ public class clearOrGameOver : MonoBehaviour {
 			int nowSeason = int.Parse (yearSeasonList [1]);
 			GameObject yearSeasonObj = popObj.transform.FindChild ("YearValue").gameObject;
 			yearSeasonObj.GetComponent<Text>().text = nowYear.ToString();
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 if (nowSeason == 1){
 				    yearSeasonObj.transform.FindChild ("SeasonValue").GetComponent<Text>().text  = "Spring";
 
@@ -100,7 +101,7 @@ public class clearOrGameOver : MonoBehaviour {
 			if(!gameClearItemGetFlg){
 				//Never Got Item
 
-				showSeiryoku();
+				showSeiryoku(langId);
 
 				bool gameClearFlg = true;//PlayerPrefs.GetBool ("gameClearFlg");		
 				if (gameClearFlg) {
@@ -131,7 +132,7 @@ public class clearOrGameOver : MonoBehaviour {
 
                     //Change Name
                     string exp = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         exp = "Finally " + myDaimyoName + " achieved the unification of the whole country. He will be able to create the time of peace as ruler.";
                     }else {
                         exp = "遂に" + myDaimyoName + "は、天下統一を果たした。これより天下人として、泰平の世を創っていくこととなる。";
@@ -146,7 +147,7 @@ public class clearOrGameOver : MonoBehaviour {
 					int nowSeason = int.Parse (yearSeasonList [1]);
 					GameObject yearSeasonObj = popObj.transform.FindChild ("YearValue").gameObject;
 					yearSeasonObj.GetComponent<Text>().text = nowYear.ToString();
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         if (nowSeason == 1) {
                             yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "Spring";
                         }else if (nowSeason == 2) {
@@ -245,7 +246,7 @@ public class clearOrGameOver : MonoBehaviour {
 		}
 	}
 
-	public void showSeiryoku(){
+	public void showSeiryoku(int langId){
 
 		/*--------------------*/
 		/*Show Daimyo Seiryoku*/
@@ -263,7 +264,7 @@ public class clearOrGameOver : MonoBehaviour {
 		GameObject KuniMap = GameObject.Find ("KuniMap");
 		myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		Daimyo daimyo = new Daimyo ();
-		myDaimyoName = daimyo.getName (myDaimyo);
+		myDaimyoName = daimyo.getName (myDaimyo,langId);
 
 		string gameClearDaimyo = PlayerPrefs.GetString ("gameClearDaimyo");
 		List<string> gameClearDaimyoList = new List<string> ();

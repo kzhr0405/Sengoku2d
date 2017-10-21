@@ -52,7 +52,8 @@ public class BusyoView : MonoBehaviour {
         int shipId = kaisenScript.getShipSprite(ShipObj, int.Parse(busyoId));
         ShipObj.transform.localPosition = new Vector3(-40,-40,0);
         ShipObj.transform.localScale = new Vector2(0.4f, 0.4f);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             if (shipId==1) {
                 ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
             }else if(shipId==2) {
@@ -131,7 +132,7 @@ public class BusyoView : MonoBehaviour {
 
 
             int diff = requiredExp - nowExp;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 GameObject.Find("ExpValue").GetComponent<Text>().text = "another " + diff.ToString();
             }else {
                 GameObject.Find("ExpValue").GetComponent<Text>().text = "あと" + diff.ToString();
@@ -168,14 +169,14 @@ public class BusyoView : MonoBehaviour {
 					    addDfcByKanni = ((float)adjDfc * (float)effect)/100;
 				    }
                 }else {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
                     }else {
                         GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
                     }
                 }
             } else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = "No Rank";
                 }else {
                     GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
@@ -187,14 +188,14 @@ public class BusyoView : MonoBehaviour {
 			if (PlayerPrefs.HasKey (jyosyuTmp)) {
 				int kuniId = PlayerPrefs.GetInt(jyosyuTmp);
 				KuniInfo kuni = new KuniInfo();
-				string kuniName = kuni.getKuniName(kuniId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+				string kuniName = kuni.getKuniName(kuniId,langId);
+                if (langId == 2) {
                     GameObject.Find ("StatusJyosyu").transform.FindChild ("Value").GetComponent<Text> ().text = kuniName + "\nLord";
                 }else {
                     GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\n城主";
                 }
 			} else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "No Feud";
                 }else {
                     GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "城無し";
@@ -330,23 +331,23 @@ public class BusyoView : MonoBehaviour {
 
 			//Parametor Setting
 			NowOnBusyoScript.OnBusyo = busyoId;
-			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId));
+			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId), langId);
 
 		} else if (GameObject.Find ("GameScene").GetComponent<NowOnButton> ().onButton == "Senpou") {
 			NowOnBusyoScript.OnBusyo = busyoId;
-			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId));
+			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId), langId);
 			SenpouScene scene = new SenpouScene ();
 			scene.createSenpouStatusView (busyoId);
 			scene.createSakuStatusView(busyoId);
 			
 		} else if (GameObject.Find ("GameScene").GetComponent<NowOnButton> ().onButton == "Kahou") {
 			NowOnBusyoScript.OnBusyo = busyoId;
-			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId));
+			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId), langId);
 			KahouScene kahou = new KahouScene();
 			kahou.createKahouStatusView(busyoId);
 		} else if (GameObject.Find ("GameScene").GetComponent<NowOnButton> ().onButton == "Syogu") {
 			NowOnBusyoScript.OnBusyo = busyoId;
-			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId));
+			NowOnBusyoScript.OnBusyoName = busyoInfoGetScript.getName (int.Parse(busyoId), langId);
 			SyoguScene syogu = new SyoguScene();
 			syogu.createSyoguView(busyoId);
 		}

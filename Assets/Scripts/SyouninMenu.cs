@@ -9,8 +9,8 @@ public class SyouninMenu : MonoBehaviour {
 	public void OnClick(){
 
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-
-		GameObject board = GameObject.Find ("SyouninBoard").gameObject;
+        int langId = PlayerPrefs.GetInt("langId");
+        GameObject board = GameObject.Find ("SyouninBoard").gameObject;
 		Message msg = new Message (); 
 		GameObject actionValue = GameObject.Find ("ActionValue").gameObject;
 		int actionRemainQty = int.Parse(actionValue.GetComponent<Text> ().text);
@@ -308,7 +308,7 @@ public class SyouninMenu : MonoBehaviour {
 				int daimyoBusyoId = PlayerPrefs.GetInt("myDaimyoBusyo");
 				int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
 				BusyoInfoGet busyoInfo = new BusyoInfoGet ();
-				string daimyoBusyoName = busyoInfo.getName (daimyoBusyoId);
+				string daimyoBusyoName = busyoInfo.getName (daimyoBusyoId,langId);
 
 				string tmp = "kahou" + daimyoBusyoId;
 				string kahouString = PlayerPrefs.GetString (tmp);
@@ -316,7 +316,7 @@ public class SyouninMenu : MonoBehaviour {
 				if (kahouList [4] == "0" && kahouList [5] == "0") {
 					audioSources [4].Play ();
                     string text = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         text = "Lord " + daimyoBusyoName + " don't have any teaware.";
                     }else {
                         text = daimyoBusyoName + "様は\n茶器をお持ちでないようですな。";
@@ -514,11 +514,12 @@ public class SyouninMenu : MonoBehaviour {
 		Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 		Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 		Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
-
-		if(rank=="1"){
+        int langId = PlayerPrefs.GetInt("langId");
+        if (rank=="1"){
 			obj.GetComponent<Image>().color = lowColor;
             if (obj.name == "CyouheiKB" || obj.name == "CyouheiTP" || obj.name == "CyouheiYR" || obj.name == "CyouheiYM") {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                
+                if (langId == 2) {
                     obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
                 }
                 else {
@@ -526,7 +527,7 @@ public class SyouninMenu : MonoBehaviour {
                 }
             }
             else if (obj.name == "Shinobi") {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
                 }
                 else {
@@ -536,13 +537,13 @@ public class SyouninMenu : MonoBehaviour {
         }else if(rank=="2"){
 			obj.GetComponent<Image>().color = midColor;
 			if(obj.name == "CyouheiKB" || obj.name == "CyouheiTP"|| obj.name == "CyouheiYR" || obj.name =="CyouheiYM"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
                 }else {
                     obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
                 }
 			}else if(obj.name == "Shinobi"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Mid";
                 }else {
                     obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
@@ -552,13 +553,13 @@ public class SyouninMenu : MonoBehaviour {
 		}else if(rank=="3"){
 			obj.GetComponent<Image>().color = highColor;
 			if(obj.name == "CyouheiKB" || obj.name == "CyouheiTP"|| obj.name == "CyouheiYR" || obj.name =="CyouheiYM"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
                 }else {
                     obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
                 }
 			}else if(obj.name == "Shinobi"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "High";
                 }else {
                     obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";

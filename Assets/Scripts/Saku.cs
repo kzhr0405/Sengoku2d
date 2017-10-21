@@ -21,7 +21,7 @@ public class Saku : MonoBehaviour {
     public bool selectFlg;
 
     private void Start() {
-        if(GameObject.Find("ScrollView")) {
+        if(GameObject.Find("Content")) {
             Content = GameObject.Find("ScrollView").transform.FindChild("Content").gameObject;
         }
     }
@@ -136,7 +136,8 @@ public class Saku : MonoBehaviour {
         FieldInfo f = t.GetField(param);
 		int sakuStatus =(int)f.GetValue(sakulst);
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId==2) {
             effection = sakuMst.param [sakuId - 1].effectionEng;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
@@ -163,14 +164,14 @@ public class Saku : MonoBehaviour {
 				}
 			}
 		}
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", sakuStatus.ToString());
         }else {
             effection = effection.Replace("A", sakuStatus.ToString());
         }
 		//sakuList.Add(
 		sakuList.Add (sakuId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type		    
         }else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
@@ -205,7 +206,8 @@ public class Saku : MonoBehaviour {
 		int sakuStatus =(int)f.GetValue(sakulst);
 		float addStatus = 0;
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {           
             effection = sakuMst.param [sakuId - 1].effectionEng;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
@@ -231,7 +233,7 @@ public class Saku : MonoBehaviour {
 			}
 		}
 		string finalStatus = sakuStatus.ToString() + "<Color=#35D74BFF>(+" + (Mathf.CeilToInt(addStatus)).ToString() + ")</Color>";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", finalStatus);
         }else {
             effection = effection.Replace("A", finalStatus);
@@ -239,7 +241,7 @@ public class Saku : MonoBehaviour {
 
 		//sakuList.Add(
 		sakuList.Add (sakuId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type
         }else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
@@ -274,7 +276,8 @@ public class Saku : MonoBehaviour {
 		FieldInfo f = t.GetField(param);
 		int sakuStatus =(int)f.GetValue(sakulst);
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             effection = sakuMst.param [sakuId - 1].effectionEng;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
@@ -287,7 +290,7 @@ public class Saku : MonoBehaviour {
 		int diffStatus = nextSakuStatus - sakuStatus;
 		string diffStatusString = sakuStatus.ToString() + "<Color=#35D74BFF>(+" + (diffStatus).ToString() + ")</Color>";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", diffStatusString);
         }else {
             effection = effection.Replace("A", diffStatusString);
@@ -295,7 +298,7 @@ public class Saku : MonoBehaviour {
 
 		//sakuList.Add(
 		sakuList.Add (sakuId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type
         }else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
@@ -323,18 +326,19 @@ public class Saku : MonoBehaviour {
 		FieldInfo f = t.GetField(param);
 		int sakuStatus =(int)f.GetValue(sakulst);
 		string effection = sakuMst.param [sakuId - 1].effection;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {            
             effection = sakuMst.param[sakuId - 1].effectionEng;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
         }
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", sakuStatus.ToString());
         }else {
             effection = effection.Replace("A", sakuStatus.ToString());
         }
 		gokuiInfoList.Add (sakuId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             gokuiInfoList.Add (sakuMst.param [sakuId - 1].nameEng); //Name
         }else {
             gokuiInfoList.Add(sakuMst.param[sakuId - 1].name); //Name
@@ -366,7 +370,8 @@ public class Saku : MonoBehaviour {
 		int sakuStatus =(int)f.GetValue(sakulst);
 		float addStatus = 0;
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             effection = sakuMst.param [gokuiId - 1].effectionEng;
         }else {
             effection = sakuMst.param[gokuiId - 1].effection;
@@ -393,14 +398,14 @@ public class Saku : MonoBehaviour {
 		}
 		string finalStatus = sakuStatus.ToString() + "<Color=#35D74BFF>(+" + (Mathf.CeilToInt(addStatus)).ToString() + ")</Color>";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", finalStatus);
         }else {
             effection = effection.Replace("A", finalStatus);
         }
 		//sakuList.Add(
 		sakuList.Add (gokuiId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add (sakuMst.param [gokuiId - 1].nameEng); //Type
         }else {
             sakuList.Add(sakuMst.param[gokuiId - 1].name); //Type
@@ -433,7 +438,8 @@ public class Saku : MonoBehaviour {
 		FieldInfo f = t.GetField(param);
 		int sakuStatus =(int)f.GetValue(sakulst);
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {            
             effection = sakuMst.param [gokuiId - 1].effectionEng;
         }else {
             effection = sakuMst.param[gokuiId - 1].effection;
@@ -446,14 +452,14 @@ public class Saku : MonoBehaviour {
 		int diffStatus = nextSakuStatus - sakuStatus;
 		string diffStatusString = sakuStatus.ToString() + "<Color=#35D74BFF>(+" + (diffStatus).ToString() + ")</Color>";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", diffStatusString);
         }else {
             effection = effection.Replace("A", diffStatusString);
         }
 		//sakuList.Add(
 		sakuList.Add (gokuiId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add (sakuMst.param [gokuiId - 1].nameEng); //Type
         }else {
             sakuList.Add(sakuMst.param[gokuiId - 1].name); //Type
@@ -489,7 +495,8 @@ public class Saku : MonoBehaviour {
 		FieldInfo f = t.GetField(param);
 		int sakuStatus =(int)f.GetValue(sakulst);
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             effection = sakuMst.param [gokuiId - 1].effectionEng;
         }else {
             effection = sakuMst.param[gokuiId - 1].effection;
@@ -517,14 +524,14 @@ public class Saku : MonoBehaviour {
 				}
 			}
 		}
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             effection = effection.Replace("ABC", sakuStatus.ToString());
         }else {
             effection = effection.Replace("A", sakuStatus.ToString());
         }
 		//sakuList.Add(
 		sakuList.Add (gokuiId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add (sakuMst.param [gokuiId - 1].nameEng); //Type
         }else {
             sakuList.Add(sakuMst.param[gokuiId - 1].name); //Type
@@ -562,17 +569,17 @@ public class Saku : MonoBehaviour {
         FieldInfo f = t.GetField(param);
         int sakuStatus = (int)f.GetValue(sakulst);
         string effection = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             effection = sakuMst.param[sakuId - 1].effectionEng;
             effection = effection.Replace("ABC", sakuStatus.ToString());
-        }
-        else {
+        }else {
             effection = sakuMst.param[sakuId - 1].effection;
             effection = effection.Replace("A", sakuStatus.ToString());
         }
 
         sakuList.Add(sakuId.ToString());
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             sakuList.Add(sakuMst.param[sakuId - 1].nameEng); //Type		    
         }else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
@@ -589,7 +596,8 @@ public class Saku : MonoBehaviour {
         string sakuName = "";
         
         Entity_saku_mst sakuMst = Resources.Load("Data/saku_mst") as Entity_saku_mst;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             sakuName = sakuMst.param[sakuId - 1].nameEng;           
         }else {
             sakuName = sakuMst.param[sakuId - 1].name;

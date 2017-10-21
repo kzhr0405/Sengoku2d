@@ -35,7 +35,8 @@ public class TouyouSpecialController : MonoBehaviour {
             int busyoId = busyoMst.param[i].id;            
             string rank = busyoMst.param[i].rank;
             string busyoName = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 busyoName = busyoMst.param[i].nameEng;
             } else {
                 busyoName = busyoMst.param[i].name;
@@ -44,7 +45,7 @@ public class TouyouSpecialController : MonoBehaviour {
             int daimyoId = busyoMst.param[i].daimyoId;
             int daimyoHst = busyoMst.param[i].daimyoHst;
             //busyoListDic.Add(busyoId, new Busyo { busyoId = busyoId, busyoName= busyoName, rank = rank, heisyu = heisyu, daimyoId = daimyoId , daimyoHst = daimyoHst });
-            busyoListDic.Add(busyoId, new Busyo (busyoId, busyoName, rank, heisyu, daimyoId, daimyoHst,0 ,0,0,0,0));
+            busyoListDic.Add(busyoId, new Busyo (busyoId, busyoName, rank, 0,heisyu, daimyoId, daimyoHst,0 ,0,0,0,0,0,0));
         }
 
         //target

@@ -201,26 +201,33 @@ public class TextController : MonoBehaviour {
         }
         currentLine = 0;
         Entity_tutorial_mst tutorialMst = Resources.Load("Data/tutorial_mst") as Entity_tutorial_mst;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             for (int i = 0; i < tutorialMst.param.Count; i++) {
                 if (tutorialId == tutorialMst.param[i].tutorialId) {                    
                     scenarios.Add(tutorialMst.param[i].serihuEng);
                 }
             }
-        }else {
+        }else if(langId==1){
             for (int i = 0; i < tutorialMst.param.Count; i++) {
                 if (tutorialId == tutorialMst.param[i].tutorialId) {
                     scenarios.Add(tutorialMst.param[i].serihu);                    
                 }
             }
+        }else if (langId == 3) {
+            for (int i = 0; i < tutorialMst.param.Count; i++) {
+                if (tutorialId == tutorialMst.param[i].tutorialId) {
+                    scenarios.Add(tutorialMst.param[i].serihuChn);
+                }
+            }
         }
-        if(tutorialId==15) {
+        if (tutorialId==15) {
             bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
-            if (tutorialDoneFlg) {
-                if (Application.systemLanguage == SystemLanguage.Japanese) {
-                    scenarios[6] = "そうそう、山城国には朝廷が、摂津和泉や河内、筑前国には商人がおりますぞ。特別な紹介状が必要ですが様々なことが出来るようになります。";
-                }else {
+            if (tutorialDoneFlg) {                
+                if (langId == 2) {
                     scenarios[6] = "…Well, There is royal court in Yamashiro country and also merchant in Settsu Izumi, Kawachi, Chikuzen country. You can do several requests to them.";
+                }else {
+                    scenarios[6] = "そうそう、山城国には朝廷が、摂津和泉や河内、筑前国には商人がおりますぞ。特別な紹介状が必要ですが様々なことが出来るようになります。";
                 }
             }
         } 

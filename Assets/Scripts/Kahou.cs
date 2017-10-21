@@ -55,7 +55,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerBugu(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -104,7 +105,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerKabuto(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -152,7 +154,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerGusoku(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -200,7 +203,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerMeiba(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -246,7 +250,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerCyadougu(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -293,7 +298,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerHeihousyo(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -339,7 +345,8 @@ public class Kahou : MonoBehaviour {
 				int rdmId = UnityEngine.Random.Range(0,kahouList.Count);
 				kahouId = kahouList[rdmId];
 				registerChishikisyo(kahouId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
@@ -828,7 +835,8 @@ public class Kahou : MonoBehaviour {
 
     public string getKahouName(string kahouType, int kahouId) {
         string kahouName = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             if (kahouType == "cyadougu") {
                 Entity_kahou_cyadougu_mst Mst = Resources.Load("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
                 kahouName = Mst.param[kahouId - 1].kahouNameEng;

@@ -138,27 +138,29 @@ public class Doumei : MonoBehaviour {
 		string temp2 = "doumei" + otherDaimyo;
 		string doumei2 = PlayerPrefs.GetString (temp2);
 		List<string> doumeiList2 = new List<string>();
-		if(doumei2.Contains(",")){
-			doumeiList2 = new List<string> (doumei2.Split (delimiterChars));
-		}else{
-			doumeiList2.Add(doumei2);
-		}
-		doumeiList2.Remove(myDaimyo);
-		string newDoumei2 = "";
+        Debug.Log(doumei2);
+        if(doumei2 != "") {
+		    if(doumei2.Contains(",")){
+			    doumeiList2 = new List<string> (doumei2.Split (delimiterChars));
+		    }else{
+			    doumeiList2.Add(doumei2);
+		    }
+		    doumeiList2.Remove(myDaimyo);
+		    string newDoumei2 = "";
 		
-		for(int i=0; i<doumeiList2.Count; i++){
-			if(i==0){
-				newDoumei2 = doumeiList2[i];
-			}else{
-				newDoumei2 = newDoumei2 + "," + doumeiList2[i];
-			}
-		}
+		    for(int i=0; i<doumeiList2.Count; i++){
+			    if(i==0){
+				    newDoumei2 = doumeiList2[i];
+			    }else{
+				    newDoumei2 = newDoumei2 + "," + doumeiList2[i];
+			    }
+		    }
 
-		PlayerPrefs.SetString ("doumei",newDoumei1);
-		PlayerPrefs.SetString (temp2,newDoumei2);
-		PlayerPrefs.Flush ();
-	
-	}
+		    PlayerPrefs.SetString ("doumei",newDoumei1);
+		    PlayerPrefs.SetString (temp2,newDoumei2);
+		    PlayerPrefs.Flush ();
+        }
+    }
 
 	public void deleteDoumeiEnemyDaimyo(string daimyo1, string daimyo2){
 

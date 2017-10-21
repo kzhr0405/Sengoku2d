@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class PopInfo : MonoBehaviour {
 
@@ -58,7 +59,8 @@ public class PopInfo : MonoBehaviour {
         int shipId = kaisenScript.getShipSprite(ShipObj, busyoId);
         ShipObj.transform.localPosition = new Vector3(-10, -15, 0);
         ShipObj.transform.localScale = new Vector2(0.2f, 0.2f);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             if (shipId == 1) {
                 ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
             }else if (shipId == 2) {
@@ -105,7 +107,7 @@ public class PopInfo : MonoBehaviour {
 			
 		//Senpou
 		Entity_senpou_mst senpouMst  = Resources.Load ("Data/senpou_mst") as Entity_senpou_mst;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].nameEng;
         } else {
             GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].name;
@@ -115,13 +117,13 @@ public class PopInfo : MonoBehaviour {
 		int ratio = (int)senpouMst.param [senpouId - 1].ratio;
 		int term = (int)senpouMst.param [senpouId - 1].term;
         string senpouExp = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             senpouExp = senpouMst.param [senpouId - 1].effectionEng;
         }else {
             senpouExp = senpouMst.param[senpouId - 1].effection;
         }
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             senpouExp = senpouExp.Replace("ABC", senpouStatus.ToString());
             senpouExp = senpouExp.Replace("DEF", each.ToString());
             senpouExp = senpouExp.Replace("GHI", ratio.ToString());

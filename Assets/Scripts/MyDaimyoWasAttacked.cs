@@ -27,14 +27,15 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 			PlayerPrefs.SetInt ("activeItemId", 0);
 			PlayerPrefs.SetFloat ("activeItemRatio", 0);
 			PlayerPrefs.SetInt ("activeItemQty", 0);
-		
-			//Actual
-			PlayerPrefs.SetInt ("activeKuniId", dstKuni);
+
+            //Actual
+            int langId = PlayerPrefs.GetInt("langId");
+            PlayerPrefs.SetInt ("activeKuniId", dstKuni);
 			KuniInfo kuni = new KuniInfo ();
-			string kuniName = kuni.getKuniName (dstKuni);
+			string kuniName = kuni.getKuniName (dstKuni,langId);
             string kassenName = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                 kassenName = kuniName + " Defence";
+            if (langId == 2) {
+                kassenName = kuniName + " Defence";
             }else {
                  kassenName = kuniName + "防衛";
             }

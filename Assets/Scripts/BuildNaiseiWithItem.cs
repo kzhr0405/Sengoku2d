@@ -18,6 +18,7 @@ public class BuildNaiseiWithItem : MonoBehaviour {
 	public void OnClick(){
 
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        int langId = PlayerPrefs.GetInt("langId");
 
         //Item Check
         Message msg = new Message();
@@ -87,7 +88,7 @@ public class BuildNaiseiWithItem : MonoBehaviour {
 
                 //Message
                 string OKtext = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     OKtext = "You built " + naiseiName + ".\n The country is thriving.";
                 }else {
                     OKtext = naiseiName + "を建築しましたぞ。\n国が栄えますな。";

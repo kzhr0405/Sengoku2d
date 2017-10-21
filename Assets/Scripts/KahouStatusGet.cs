@@ -128,10 +128,10 @@ public class KahouStatusGet : MonoBehaviour {
 	public List<string> getKahouInfo(string kahouTyp, int kahouId){
 
 		List<string> kahouInfoList = new List<string> ();
-
-		if (kahouTyp == "bugu") {
-			Entity_kahou_bugu_mst buguKahouMst  = Resources.Load ("Data/kahou_bugu_mst") as Entity_kahou_bugu_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (kahouTyp == "bugu") {
+			Entity_kahou_bugu_mst buguKahouMst  = Resources.Load ("Data/kahou_bugu_mst") as Entity_kahou_bugu_mst;            
+            if (langId == 2) {
                 kahouInfoList.Add(buguKahouMst.param [kahouId-1].kahouNameEng);
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouTargetEng);
@@ -148,7 +148,7 @@ public class KahouStatusGet : MonoBehaviour {
 
 		}else if(kahouTyp == "kabuto"){
 			Entity_kahou_kabuto_mst kabutoKahouMst  = Resources.Load ("Data/kahou_kabuto_mst") as Entity_kahou_kabuto_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouTargetEng);
@@ -165,7 +165,7 @@ public class KahouStatusGet : MonoBehaviour {
 
 		}else if(kahouTyp == "gusoku"){
 			Entity_kahou_gusoku_mst gusokuKahouMst  = Resources.Load ("Data/kahou_gusoku_mst") as Entity_kahou_gusoku_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouTargetEng);
@@ -182,7 +182,7 @@ public class KahouStatusGet : MonoBehaviour {
 		
 		}else if(kahouTyp == "meiba"){
 			Entity_kahou_meiba_mst meibaKahouMst  = Resources.Load ("Data/kahou_meiba_mst") as Entity_kahou_meiba_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouTargetEng);
@@ -199,7 +199,7 @@ public class KahouStatusGet : MonoBehaviour {
 		
 		}else if(kahouTyp == "cyadougu"){
 			Entity_kahou_cyadougu_mst cyadouguKahouMst  = Resources.Load ("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouTargetEng);
@@ -216,7 +216,7 @@ public class KahouStatusGet : MonoBehaviour {
 		
 		}else if(kahouTyp == "heihousyo"){
 			Entity_kahou_heihousyo_mst heihousyoKahouMst  = Resources.Load ("Data/kahou_heihousyo_mst") as Entity_kahou_heihousyo_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouTargetEng);
@@ -233,7 +233,7 @@ public class KahouStatusGet : MonoBehaviour {
 
 		}else if(kahouTyp == "chishikisyo"){
 			Entity_kahou_chishikisyo_mst chishikisyoKahouMst  = Resources.Load ("Data/kahou_chishikisyo_mst") as Entity_kahou_chishikisyo_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouTargetEng);

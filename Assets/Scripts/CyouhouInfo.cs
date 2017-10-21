@@ -54,8 +54,9 @@ public class CyouhouInfo : MonoBehaviour {
 			RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 			popTextTransform.anchoredPosition = new Vector3 (0, 275, 0);
 			popText.name = "popText";
-			
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 popText.GetComponent<Text>().text = "Spy";
             }
             else {
@@ -118,35 +119,35 @@ public class CyouhouInfo : MonoBehaviour {
 				string slotValue = "";
 				//Kuni Name
 				int kuniId = int.Parse (cyouhouList [i]);
-				string kuniName = kuni.getKuniName (kuniId);
+				string kuniName = kuni.getKuniName (kuniId,langId);
 
 				//Daimyo
 				int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
-				string daimyoName = daimyo.getName (daimyoId);
+				string daimyoName = daimyo.getName (daimyoId,langId);
 
 				//Rank of Shinobi
 				string snbTmp = "cyouhou" + kuniId.ToString ();
 				string rankName = "";
 				int rank = PlayerPrefs.GetInt (snbTmp);
 				if (rank == 1) {
-                    if (Application.systemLanguage == SystemLanguage.Japanese) {
-                        rankName = "下忍";
-                    }else {
+                    if (langId == 2) {
                         rankName = "Ninja Low";
+                    }else {
+                        rankName = "下忍";
                     }
 				} else if (rank == 2) {
-                    if (Application.systemLanguage == SystemLanguage.Japanese) {
-                        rankName = "中忍";
-                    }else {
+                    if (langId == 2) {
                         rankName = "Ninja Mid";
+                    }else {
+                        rankName = "中忍";
                     }
 				} else if (rank == 3) {
-                    if (Application.systemLanguage == SystemLanguage.Japanese) {
-                        rankName = "上忍";
-                    }else {
+                    if (langId == 2) {
                         rankName = "Ninja High";
+                    }else {
+                        rankName = "上忍";
                     }
-				}
+                }
 
 				slotValue = kuniName + "\n" + daimyoName + "\n" + rankName;
 				slot.transform.FindChild ("Value").GetComponent<Text> ().text = slotValue;
@@ -179,7 +180,8 @@ public class CyouhouInfo : MonoBehaviour {
 
 			Message msg = new Message();
 			string txt = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 txt = "You don't have ninja spying in other country.\n Please get Ninja via trading or development your country.";
             }else {
                 txt = "他国に潜伏中の忍はおりませんぞ。\n忍は他国との交易か、内政開発にて取得できます。";

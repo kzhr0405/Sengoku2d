@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class GiveGokuiConfirm : MonoBehaviour {
 
@@ -37,7 +38,8 @@ public class GiveGokuiConfirm : MonoBehaviour {
 		msgTransform.name = "GokuiConfirm";
 
         //Message Text Mod
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             msg.transform.FindChild("Text").GetComponent<Text>().text= "My lord, Do you want to transmit " + sakuName + "?\n He won't be able to use current active skill anymore.";
         }else {
             msg.transform.FindChild("Text").GetComponent<Text>().text = "御屋形様、" + sakuName + "を伝授なさいますか？\n現在の策は使用出来なくなりますぞ。";

@@ -156,8 +156,8 @@ public class StaffRoll : MonoBehaviour {
 	}
 
 	public void FinMaker(GameObject panel){
-
-		string finPath = "Prefabs/clearOrGameOver/Fin";
+        int langId = PlayerPrefs.GetInt("langId");
+        string finPath = "Prefabs/clearOrGameOver/Fin";
 		GameObject finObj = Instantiate(Resources.Load (finPath)) as GameObject;
 		finObj.transform.SetParent(panel.transform);
 		finObj.transform.localScale = new Vector2(1,1);
@@ -202,7 +202,7 @@ public class StaffRoll : MonoBehaviour {
 		}
 		Gunji.transform.FindChild ("WinRatio").transform.FindChild ("Text").GetComponent<Text> ().text = winRatio.ToString() + "%";
 		Gunji.transform.FindChild ("Tettai").transform.FindChild ("Text").GetComponent<Text> ().text = TrackTettaiNo.ToString();
-		string daimyoName = daimyo.getName(TrackBiggestDaimyoId);
+		string daimyoName = daimyo.getName(TrackBiggestDaimyoId,langId);
 		Gunji.transform.FindChild ("BiggestEnemy").transform.FindChild ("Text").GetComponent<Text> ().text = daimyoName;
 		Gunji.transform.FindChild ("BiggestEnemyHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackBiggestDaimyoHei.ToString();
 		Gunji.transform.FindChild ("BiggestPlayerHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackMyBiggestHei.ToString();
@@ -239,14 +239,14 @@ public class StaffRoll : MonoBehaviour {
 		int TrackCyouteiNo = PlayerPrefs.GetInt("TrackCyouteiNo");
 		int TrackSyouninNo = PlayerPrefs.GetInt("TrackSyouninNo");
 		int syogunDaimyoId = PlayerPrefs.GetInt ("syogunDaimyoId");
-        string Bakuhu = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        string Bakuhu = "";        
+        if (langId == 2) {
             Bakuhu = "Not Yet";
         }else {
             Bakuhu = "未開闢";
         }
 		if(syogunDaimyoId == myDaimyo){
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 Bakuhu = "Done";
             }else {
                 Bakuhu = "開闢済";
@@ -254,14 +254,14 @@ public class StaffRoll : MonoBehaviour {
 		}
 		bool soubujireiFlg = PlayerPrefs.GetBool ("soubujireiFlg");
         string Soubujirei = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             Soubujirei = "Not Yet";
         }else {
             Soubujirei = "未施行";
         }
         if (soubujireiFlg){
-            if (Application.systemLanguage != SystemLanguage.Japanese) {           
-			    Soubujirei = "Done";
+            if (langId == 2) {
+                Soubujirei = "Done";
 		    }else {
                 Soubujirei = "施行済";
             }

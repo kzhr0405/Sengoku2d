@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class SenkouButton : MonoBehaviour {
 	
@@ -43,7 +44,8 @@ public class SenkouButton : MonoBehaviour {
 
 
             //Value Change
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 slot.transform.FindChild("Title").GetComponent<Text>().text = "No. " + juni;
             }else {
                 slot.transform.FindChild("Title").GetComponent<Text>().text = "戦功第" + juni + "位";

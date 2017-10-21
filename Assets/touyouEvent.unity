@@ -364,7 +364,7 @@ CanvasRenderer:
 --- !u!1 &146733825
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1505424976341662, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 1568761082825468, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -382,7 +382,7 @@ GameObject:
 --- !u!224 &146733826
 RectTransform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224103197041000582, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 224054351399387302, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 146733825}
@@ -401,7 +401,7 @@ RectTransform:
 --- !u!114 &146733827
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114608806183207390, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 114040351019778368, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 146733825}
@@ -429,7 +429,7 @@ MonoBehaviour:
 --- !u!222 &146733828
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222640420803674710, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 222139526952689298, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 146733825}
@@ -1048,6 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: You can hire 1 from S rank 10 samurais
+  chineseText: 
   englishFontSize: 50
   arialFg: 1
 --- !u!1 &346776445
@@ -1271,6 +1272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Draw
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!114 &370999769
@@ -1416,6 +1418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Fixed Clan Gacya
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!1 &442612468
@@ -1469,6 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Draw
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!114 &442612471
@@ -1515,7 +1519,7 @@ CanvasRenderer:
 --- !u!1 &455871006
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1517706900216834, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 1535419938451874, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -1531,7 +1535,7 @@ GameObject:
 --- !u!224 &455871007
 RectTransform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224885009024558284, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 224222346501567952, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 455871006}
@@ -1542,6 +1546,7 @@ RectTransform:
   - {fileID: 905035119}
   - {fileID: 1365315988}
   - {fileID: 146733826}
+  - {fileID: 475957830}
   m_Father: {fileID: 818802356}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1550,6 +1555,148 @@ RectTransform:
   m_AnchoredPosition: {x: -80, y: 310}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &475957829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1774789003035036, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 475957830}
+  - component: {fileID: 475957834}
+  - component: {fileID: 475957833}
+  - component: {fileID: 475957832}
+  - component: {fileID: 475957831}
+  m_Layer: 5
+  m_Name: AddBusyoDama
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &475957830
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224281780534775606, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 475957829}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999808, y: 0.9999808, z: 1}
+  m_Children:
+  - {fileID: 774854479}
+  m_Father: {fileID: 455871007}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 300.9, y: 0.000099182}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &475957831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114359923793577552, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 475957829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4edeeff4f002a5c4abddc0f83f95032a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromSceneName: touyouEvent
+  toSceneName: purchase
+--- !u!114 &475957832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114022207028389952, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 475957829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 475957833}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 475957831}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &475957833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114407061109840522, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 475957829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9191176, g: 0.9191176, b: 0.9191176, a: 0.785}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &475957834
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222559810557568606, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 475957829}
 --- !u!1 &532424939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: 10 Times Gacya
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!1 &569650762
@@ -1981,6 +2129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: You can hire 10 from 30 samurais with same unit type
+  chineseText: 
   englishFontSize: 50
   arialFg: 1
 --- !u!1 &676253205
@@ -2638,6 +2787,78 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 750232755}
+--- !u!1 &774854478
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1949976822676650, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 774854479}
+  - component: {fileID: 774854481}
+  - component: {fileID: 774854480}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &774854479
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224830595734329208, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 774854478}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 475957830}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.4, y: -0.3}
+  m_SizeDelta: {x: 37.9, y: 37.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &774854480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114500184949741296, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 774854478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.1102941, g: 0.1102941, b: 0.1102941, a: 0.672}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: a5ad0255fa0656743831220a2782088f, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &774854481
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222717210141911654, guid: 5916b535881cd304db6cb195f6aa9343,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 774854478}
 --- !u!1 &818802355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +2987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Draw
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!114 &854530525
@@ -2812,7 +3034,7 @@ CanvasRenderer:
 --- !u!1 &905035118
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1377456050013248, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 1999103477863104, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -2830,7 +3052,7 @@ GameObject:
 --- !u!224 &905035119
 RectTransform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224096091295196528, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 224912565578092258, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 905035118}
@@ -2849,7 +3071,7 @@ RectTransform:
 --- !u!114 &905035120
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114496344201633676, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 114024619143831878, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 905035118}
@@ -2877,7 +3099,7 @@ MonoBehaviour:
 --- !u!222 &905035121
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222774615144909040, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 222237591325726712, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 905035118}
@@ -3509,6 +3731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Draw
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!114 &1238672258
@@ -3910,7 +4133,7 @@ CanvasRenderer:
 --- !u!1 &1365315987
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1697282686248688, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 1233166969738108, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
@@ -3928,7 +4151,7 @@ GameObject:
 --- !u!224 &1365315988
 RectTransform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224766009536414120, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 224605019233396310, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365315987}
@@ -3941,13 +4164,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0.000048161}
-  m_SizeDelta: {x: 256, y: 80}
+  m_AnchoredPosition: {x: 141.4, y: 0.000048161}
+  m_SizeDelta: {x: 238.8, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365315989
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114186999243010288, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 114757497336576352, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365315987}
@@ -3981,7 +4204,7 @@ MonoBehaviour:
 --- !u!222 &1365315990
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222188869498708486, guid: ca34ab8ec8712a54cb94668807f8423c,
+  m_PrefabParentObject: {fileID: 222851859501355360, guid: 5916b535881cd304db6cb195f6aa9343,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365315987}
@@ -4478,6 +4701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: You can hire 10 from 30 samurais
+  chineseText: 
   englishFontSize: 50
   arialFg: 1
 --- !u!1 &1723222524
@@ -4582,6 +4806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: You can hire 10 from 30 samurais who belong to same clan
+  chineseText: 
   englishFontSize: 50
   arialFg: 1
 --- !u!1 &1756640313
@@ -4635,6 +4860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Normal
+  chineseText: 
   englishFontSize: 30
   arialFg: 1
 --- !u!114 &1756640316
@@ -4848,6 +5074,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Fixed Unit Type Gacya
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!1 &1815325489
@@ -4985,6 +5212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Special
+  chineseText: 
   englishFontSize: 30
   arialFg: 1
 --- !u!114 &1865807605
@@ -5634,6 +5862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Fixed S Rank Gacya
+  chineseText: 
   englishFontSize: 60
   arialFg: 1
 --- !u!1 &2134380323

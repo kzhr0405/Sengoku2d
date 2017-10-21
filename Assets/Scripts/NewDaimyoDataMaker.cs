@@ -19,7 +19,8 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 		PlayerPrefs.DeleteKey("kuniClearedFlg");
         PlayerPrefs.DeleteKey("rengouFlg");
         PlayerPrefs.DeleteKey("rengouDaimyo");
-        
+        PlayerPrefs.DeleteKey("kokuninReject");
+
         /*******************************/
         /*****   Delete History    *****/
         /*******************************/
@@ -84,6 +85,9 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 
             string linkuctTmp = "linkcut" + i.ToString();
             PlayerPrefs.DeleteKey(linkuctTmp);
+
+            string kokuninTmp = "kokunin" + i.ToString();
+            PlayerPrefs.DeleteKey(kokuninTmp);
             
             //Delete Enemy Gunzei
             deleteGunzeiScript.deleteEnemyGunzeiData(i);
@@ -430,15 +434,15 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 		PlayerPrefs.DeleteKey("shisya19");
 		PlayerPrefs.DeleteKey("shisya20");
 		PlayerPrefs.DeleteKey("shisya21");
+        PlayerPrefs.DeleteKey("shisya22");
 
 
 
-
-		/*******************************/
-		/*****       Doumei        *****/
-		/*******************************/
-		//Delete doumei history
-		Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
+        /*******************************/
+        /*****       Doumei        *****/
+        /*******************************/
+        //Delete doumei history
+        Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
 		for(int i=0; i<daimyoMst.param.Count; i++){
 			int daimyoId = daimyoMst.param[i].daimyoId;
 			string temp = "doumei" + daimyoId;

@@ -13,9 +13,10 @@ public class CyouteiMenu : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		GameObject board = GameObject.Find ("CyouteiBoard").gameObject;
-		Message msg = new Message (); 
+		Message msg = new Message ();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		GameObject actionValue = GameObject.Find ("ActionValue").gameObject;
+        GameObject actionValue = GameObject.Find ("ActionValue").gameObject;
 		int actionRemainQty = int.Parse(actionValue.GetComponent<Text> ().text);
 
 		if (actionRemainQty <= 0) {
@@ -114,7 +115,7 @@ public class CyouteiMenu : MonoBehaviour {
 					gunzei.GetComponent<Image> ().sprite = 
 						Resources.Load (imagePath, typeof(Sprite)) as Sprite;
                     string serihu = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         gunzei.transform.FindChild("Text").GetComponent<Text>().text = srcDaimyoName;
                         serihu = "Have you not been doing well with " + srcDaimyoName + "? We can stop the battle.";
                     }else { 
@@ -153,7 +154,7 @@ public class CyouteiMenu : MonoBehaviour {
 					GameObject.Find("ratioValue").GetComponent<Text>().text = ratio.ToString();
 					GameObject.Find("ReduceValue").GetComponent<Text>().text = reducePoint.ToString();
                     string serihu = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         serihu = "I'm glad of your loyalty.\n I can give you " + kanniName + ".";
                     } else {
                         serihu = "そなたの忠勤うれしく思う。\n今は" + kanniName + "の任が空いておるぞ。";
@@ -172,14 +173,14 @@ public class CyouteiMenu : MonoBehaviour {
 				int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
 				int myDaimyoId = PlayerPrefs.GetInt ("myDaimyo");
 				Daimyo daimyo = new Daimyo ();
-				string myDaimyoBusyoName = daimyo.getName (myDaimyoId);
+				string myDaimyoBusyoName = daimyo.getName (myDaimyoId,langId);
 
 				if (syogunDaimyoId == myDaimyoId) {
 					audioSources [4].Play ();
 					msg.makeMessage (msg.getMessage(26));
 
                     string serihu = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         serihu = "Lord " + myDaimyoBusyoName + ". You are syogun. What do you want anymore?";
                     }else {
                         serihu = myDaimyoBusyoName + "殿、そなた既に幕府を開いておろう。これ以上何を望むというのじゃ。";
@@ -198,17 +199,17 @@ public class CyouteiMenu : MonoBehaviour {
 						audioSources [4].Play ();
 
 						//Check the other Syougun Not Exist
-						string syogunBusyoName = daimyo.getName (syogunDaimyoId);
+						string syogunBusyoName = daimyo.getName (syogunDaimyoId,langId);
                         string Text = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
-                            Text = "Other family " + syogunBusyoName + " has been assigned as syogun.";
+                        if (langId == 2) {
+                            Text = "Other clan " + syogunBusyoName + " has been assigned as syogun.";
                         } else {
                             Text = "既に" + syogunBusyoName + "殿が征夷大将軍に任命されておりますぞ。";
                         }
 						msg.makeMessage (Text);
                         string serihu = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
-                            serihu = "Other family, loard " + syogunBusyoName + " has been assigned as syogun.";
+                        if (langId == 2) {
+                            serihu = "Other clan, loard " + syogunBusyoName + " has been assigned as syogun.";
                         } else {
                             serihu = "既に" + syogunBusyoName + "殿が幕府を開いておる。そなた世情にあまりにも疎いのう。";
                         }
@@ -225,7 +226,7 @@ public class CyouteiMenu : MonoBehaviour {
 							int kuniId = needKuni [i] - 1;
 							if(seiryokuList[kuniId] != myDaimyoId.ToString()){
 								kuniCheckOKFlg = false;
-								NGKuniName = kuni.getKuniName (kuniId+1);
+								NGKuniName = kuni.getKuniName (kuniId+1,langId);
 							}
 						}
 
@@ -235,7 +236,7 @@ public class CyouteiMenu : MonoBehaviour {
 
 							msg.makeMessage (msg.getMessage(27));
                             string serihu = "";
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 serihu = "You don't have country " + NGKuniName + ". It's too early for you to assign syogun.";
                             }else {
                                 serihu = NGKuniName + "をまだ治めていないようじゃのう。残念だが征夷大将軍の任命は時期尚早じゃ。";
@@ -295,7 +296,7 @@ public class CyouteiMenu : MonoBehaviour {
 
                                     string serihu = "";
 
-                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    if (langId == 2) {
                                         serihu = "I want to assign you but " + maxDaimyoName + " disagreed.\n I can't ignore due to his influence.";
                                     } else {
                                         serihu = "そちを任命したいのだが、\n" + maxDaimyoName + "が五月蝿うてのう。\n宮中にも影響力があるゆえ無視は出来ぬ。";
@@ -336,10 +337,10 @@ public class CyouteiMenu : MonoBehaviour {
 					//Aleady Exsit
 					audioSources [4].Play ();
 
-					string daimyoName = daimyo.getName (cyoutekiDaimyo);
+					string daimyoName = daimyo.getName (cyoutekiDaimyo,langId);
 
                     string Text = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         Text = daimyoName + " was declared as enemy of imperial court.";
                     }else {
                         Text = "既に" + daimyoName + "が朝敵に指定されているようですぞ。";
@@ -366,7 +367,7 @@ public class CyouteiMenu : MonoBehaviour {
 						menu.name = "MenuCyouteki";
 
 						cyoutekiDaimyo = CloseLayerScript.cyoutekiDaimyo;
-						string daimyoName = daimyo.getName (cyoutekiDaimyo);
+						string daimyoName = daimyo.getName (cyoutekiDaimyo,langId);
 
 						menu.transform.FindChild ("CyoutekiDaimyo").GetComponent<Text> ().text = daimyoName;
 
@@ -375,7 +376,7 @@ public class CyouteiMenu : MonoBehaviour {
 
 						CloseLayerScript.cyoutekiDaimyoName = daimyoName;
                         string serihu = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             serihu = "Please attack " + daimyoName + ", enemy of imperial court.";
                         }else {
                             serihu = "朝廷に弓引く、逆賊" + daimyoName + "を討ってくれ。";

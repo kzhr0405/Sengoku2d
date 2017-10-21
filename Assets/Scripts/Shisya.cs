@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class Shisya : MonoBehaviour {
 
@@ -7,7 +8,8 @@ public class Shisya : MonoBehaviour {
 
 	public string getName(int id){
 		string value = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = Mst.param [id - 1].nameEng;
         }else {
             value = Mst.param[id - 1].name;
@@ -23,7 +25,8 @@ public class Shisya : MonoBehaviour {
 
 	public string getSerihu1(int id){
 		string value = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = Mst.param [id - 1].Serihu1Eng;
         }else {
             value = Mst.param[id - 1].Serihu1;
@@ -33,7 +36,8 @@ public class Shisya : MonoBehaviour {
 
 	public string getSerihu2(int id){
 		string value = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = Mst.param [id - 1].Serihu2Eng;
         }else {
             value = Mst.param[id - 1].Serihu2;
@@ -43,7 +47,8 @@ public class Shisya : MonoBehaviour {
 
 	public string getSerihu3(int id){
 		string value = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = Mst.param [id - 1].Serihu3Eng;
         }else {
             value = Mst.param[id - 1].Serihu3;
@@ -71,7 +76,8 @@ public class Shisya : MonoBehaviour {
 
 	public string getOKSerihu(int id){
 		string value = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = Mst.param [id - 1].OKSerihuEng;
         }else {
             value = Mst.param[id - 1].OKSerihu;
@@ -81,7 +87,8 @@ public class Shisya : MonoBehaviour {
 
 	public string getNGSerihu(int id){
 		string value = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = Mst.param [id - 1].NGSerihuEng;
         }else {
             value = Mst.param[id - 1].NGSerihu;

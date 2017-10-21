@@ -118,7 +118,8 @@ public class DoDoumeiHaki : MonoBehaviour {
 
                 //Message
                 string OKtext = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     OKtext = "Renounced alliance with " + daimyoName + ".\n Friendship decreased " + reduceYukoudo + " point";
                 }else {
                     OKtext = daimyoName + "殿との同盟を破棄致しました。\n友好度が" + reduceYukoudo + "下がりまする。";

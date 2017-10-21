@@ -106,8 +106,9 @@ public class Kanni : MonoBehaviour {
 
 	public string getKanniName(int kanniId){
 		string totalName = "";
-		
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             totalName = kanniMst.param[kanniId - 1].IkaiEng;
         }else {
             string ikai = kanniMst.param[kanniId - 1].Ikai;
@@ -126,7 +127,8 @@ public class Kanni : MonoBehaviour {
 
 	public string getIkai(int kanniId){
         string ikai = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             ikai = kanniMst.param[kanniId - 1].IkaiEng;
         }else {
             ikai = kanniMst.param[kanniId - 1].Ikai;
@@ -136,7 +138,8 @@ public class Kanni : MonoBehaviour {
 
 	public string getEffectLabel(int kanniId){
 		string effectLabel = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             effectLabel = kanniMst.param[kanniId - 1].EffectLabelEng;
         }else {
             effectLabel = kanniMst.param[kanniId - 1].EffectLabel;

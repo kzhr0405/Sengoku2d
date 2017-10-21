@@ -69,7 +69,8 @@ public class RewardController : MonoBehaviour {
                     }
                     else if (grp == "syokaijyo") {
                         string rankTmp = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             if (rank=="S") {
                                 rankTmp = "High";
                             }else if(rank=="A") {

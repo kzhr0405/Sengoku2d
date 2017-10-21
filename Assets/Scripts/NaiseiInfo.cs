@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class NaiseiInfo : MonoBehaviour {
 
@@ -34,7 +35,8 @@ public class NaiseiInfo : MonoBehaviour {
         string value = "";
         Entity_naisei_mst naiseiMst = Resources.Load("Data/naisei_mst") as Entity_naisei_mst;
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = naiseiMst.param[id].nameEng;
         }else {
             value = naiseiMst.param[id].name;
@@ -47,7 +49,8 @@ public class NaiseiInfo : MonoBehaviour {
         string value = "";
         Entity_naisei_mst naiseiMst = Resources.Load("Data/naisei_mst") as Entity_naisei_mst;
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             value = naiseiMst.param[id].expEng;
         }
         else {

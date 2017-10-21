@@ -161,7 +161,8 @@ public class DoKanjyo : MonoBehaviour {
 			PlayerPrefs.Flush();
 
             string kanjyoText = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 kanjyoText = "You gave certificate to " + busyoName + ".";
             }else {
                 kanjyoText = busyoName + "に感状を与えました。";

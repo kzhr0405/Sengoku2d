@@ -72,6 +72,7 @@ public class RonkouScene : MonoBehaviour {
 
 	public string createScrollView(List<string> myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
         //Scroll View
+        int langId = PlayerPrefs.GetInt("langId");
         string myBusyoString = "";       
         BusyoInfoGet busyoScript = new BusyoInfoGet();
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
@@ -148,14 +149,14 @@ public class RonkouScene : MonoBehaviour {
             BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
             foreach (string busyoIdString in jinkeiFalseBusyoList) {
                 int busyoId = int.Parse(busyoIdString);
-                string busyoNameSort = BusyoInfoGet.getName(busyoId);
+                string busyoNameSort = BusyoInfoGet.getName(busyoId,langId);
                 string rank = BusyoInfoGet.getRank(busyoId);
                 string heisyu = BusyoInfoGet.getHeisyu(busyoId);
                 int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
                 int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
                 if (daimyoId == 0) daimyoId = daimyoHst;
                 int lv = PlayerPrefs.GetInt(busyoId.ToString());
-                baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, heisyu, daimyoId, daimyoHst, lv,0,0,0,0));                
+                baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank,0, heisyu, daimyoId, daimyoHst, lv,0,0,0,0,0,0));                
             }
             List<Busyo> myBusyoDaimyoSortListTmp = new List<Busyo>(baseBusyoList);
             myBusyoDaimyoSortListTmp.Sort((a, b) => {
@@ -256,7 +257,7 @@ public class RonkouScene : MonoBehaviour {
 
         minBusyoId = myBusyoList[0].ToString();
 		mainController.GetComponent<NowOnBusyo>().OnBusyo = myBusyoList[0].ToString();
-        string busyoName = busyoScript.getName(int.Parse(minBusyoId));
+        string busyoName = busyoScript.getName(int.Parse(minBusyoId),langId);
         mainController.GetComponent<NowOnBusyo>().OnBusyoName = busyoName;
 
         //Busyo Qty Limit
@@ -277,8 +278,8 @@ public class RonkouScene : MonoBehaviour {
 		string path = "Prefabs/Player/Unit/BusyoUnit";
 		GameObject Busyo = Instantiate (Resources.Load (path)) as GameObject;
 		Busyo.name = busyoId;
-
-		Busyo.transform.SetParent (GameObject.Find ("BusyoView").transform);
+        int langId = PlayerPrefs.GetInt("langId");
+        Busyo.transform.SetParent (GameObject.Find ("BusyoView").transform);
 		Busyo.transform.localScale = new Vector2 (4, 4);
 		
 		RectTransform rect_transform = Busyo.GetComponent<RectTransform>();
@@ -294,8 +295,8 @@ public class RonkouScene : MonoBehaviour {
         preKaisen kaisenScript = new preKaisen();
         int shipId = kaisenScript.getShipSprite(ShipObj, int.Parse(busyoId));
         ShipObj.transform.localPosition = new Vector3(-40, -40, 0);
-        ShipObj.transform.localScale = new Vector2(0.4f, 0.4f);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        ShipObj.transform.localScale = new Vector2(0.4f, 0.4f);        
+        if (langId == 2) {
             if (shipId == 1) {
                 ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
             }else if (shipId == 2) {
@@ -322,7 +323,7 @@ public class RonkouScene : MonoBehaviour {
 
         //Keep busyo name
         BusyoInfoGet busyoScript = new BusyoInfoGet();
-        string busyoName = busyoScript.getName(int.Parse(busyoId));
+        string busyoName = busyoScript.getName(int.Parse(busyoId),langId);
         GameObject.Find("GameScene").GetComponent<NowOnBusyo>().OnBusyoName = busyoName;
 
         //Rank Text Modification
@@ -385,7 +386,8 @@ public class RonkouScene : MonoBehaviour {
 		}
 
         int diff = requiredExp - nowExp;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             GameObject.Find ("ExpValue").GetComponent<Text> ().text = "another " + diff.ToString();
         }else {
             GameObject.Find("ExpValue").GetComponent<Text>().text = "あと" + diff.ToString();
@@ -427,14 +429,14 @@ public class RonkouScene : MonoBehaviour {
 				        addDfcByKanni = ((float)adjDfc * (float)effect)/100;
 			        }
                 }else {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
                     }else {
                         GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
                     }
                 }
             } else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
                 }else {
                     GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
@@ -446,9 +448,9 @@ public class RonkouScene : MonoBehaviour {
 		    if (PlayerPrefs.HasKey (jyosyuTmp)) {
 			    int kuniId = PlayerPrefs.GetInt(jyosyuTmp);
 			    KuniInfo kuni = new KuniInfo();
-			    string kuniName = kuni.getKuniName(kuniId);
+			    string kuniName = kuni.getKuniName(kuniId,langId);
 
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\nLord";
                 }
                 else {
@@ -456,7 +458,7 @@ public class RonkouScene : MonoBehaviour {
                 }
 
             } else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "No Feud";
                 }
                 else {
@@ -477,14 +479,13 @@ public class RonkouScene : MonoBehaviour {
 		    GameObject.Find ("KahouSpdValue").GetComponent<Text>().text = "+" + finalSpd.ToString();
         }else {
 
-
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
             }else {
                 GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
             }
-            
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+            if (langId == 2) {
                 GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "No Feud";
             }else {
                 GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "城無し";

@@ -7,10 +7,10 @@ public class BusyoInfoGet : MonoBehaviour {
 
 	Entity_busyo_mst busyoMst  = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
 
-	public string getName(int busyoId){
+	public string getName(int busyoId, int langId) {
         string name = "";
-
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        
+        if (langId == 2) {
             name = busyoMst.param[busyoId - 1].nameEng;
         }else {
             name = busyoMst.param[busyoId - 1].name;
@@ -38,7 +38,7 @@ public class BusyoInfoGet : MonoBehaviour {
 		return rank;
 	}
 
-	public string getDaimyoBusyoQtyHeisyu(int daimyoId){	//return busyo qty,the largest heisyu
+	public string getDaimyoBusyoQtyHeisyu(int daimyoId, int langId) {	//return busyo qty,the largest heisyu
 		string qtyAndHeisyu = "";
 		int qty = 0;
 		int yrQty = 0;
@@ -80,7 +80,7 @@ public class BusyoInfoGet : MonoBehaviour {
 		}
 
         //Make return value
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             if (yrQty >= kbQty && yrQty >= tpQty && yrQty >= ymQty) {
 			    qtyAndHeisyu = qty.ToString () + ",Spear";
 		    } else if (ymQty >= yrQty && ymQty >= kbQty && ymQty >= tpQty) {

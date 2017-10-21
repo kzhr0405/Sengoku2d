@@ -26,7 +26,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					audioSources [0].Play ();
 
 					bsb.commonPopup (24);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         GameObject.Find ("popText").GetComponent<Text> ().text = "Royal Court Rank";
                     }else {
                         GameObject.Find("popText").GetComponent<Text>().text = "官位授与";
@@ -126,9 +127,10 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				remove.transform.localPosition = new Vector3 (0, 0, 0);
 				remove.name = "KanniRemoveConfirm";
 				BusyoInfoGet busyo = new BusyoInfoGet ();
-				string busyoName = busyo.getName (int.Parse (busyoId));
-				remove.transform.FindChild ("YesButton").GetComponent<DoRemoveKanni> ().busyoId = busyoId;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                string busyoName = busyo.getName (int.Parse (busyoId),langId);
+				remove.transform.FindChild ("YesButton").GetComponent<DoRemoveKanni> ().busyoId = busyoId;                
+                if (langId == 2) {
                     remove.transform.FindChild ("RemoveText").GetComponent<Text> ().text = "Are you sure you want to remove the rank of " + busyoName + "?";
                 }else {
                     remove.transform.FindChild("RemoveText").GetComponent<Text>().text = busyoName + "殿の官位を\n罷免なさるのですか？";
@@ -178,7 +180,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				if (okKuniList.Count != 0) {
 					audioSources [0].Play ();
 					bsb.commonPopup (19);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         GameObject.Find ("popText").GetComponent<Text> ().text = "Assign Lord";
                     }else {
                         GameObject.Find("popText").GetComponent<Text>().text = "城主任命";
@@ -201,7 +204,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						slot.transform.localScale = new Vector2 (1, 1);
 						
 						int kuniId = int.Parse (okKuniList [i]);
-						string kuniName = kuni.getKuniName (kuniId);
+						string kuniName = kuni.getKuniName (kuniId,langId);
 
 						slot.transform.FindChild ("Name").GetComponent<Text> ().text = kuniName;
 
@@ -285,7 +288,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				GameObject msgObj = msg.transform.FindChild ("KaininText").gameObject;
 				int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
                 string msgText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     if (myDaimyoBusyo == int.Parse (busyoId)) {
 					    msgText = "My lord, do you want to resign the lord of this country?";
 				    } else {
@@ -316,7 +320,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
             if (sakuLv < 20) {
 				audioSources [0].Play ();
 				bsb.commonPopup (23);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     GameObject.Find ("popText").GetComponent<Text> ().text = "Samurai Training";
                 }else {
                     GameObject.Find("popText").GetComponent<Text>().text = "武者修行";
@@ -390,7 +395,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text> ().text = "Ono";
                     }else {
                         rank.GetComponent<Text>().text = "小野善鬼";
@@ -419,7 +424,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-					if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Kawasaki";
                     }else {
                         rank.GetComponent<Text>().text = "川崎時盛";
@@ -448,7 +453,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-					if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Hayashizaki";
                     }else {
                         rank.GetComponent<Text>().text = "林崎重信";
@@ -478,8 +483,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
-					rank.transform.localPosition = new Vector2 (0,0);					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					rank.transform.localPosition = new Vector2 (0,0);
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Morooka";
                     }else {
                         rank.GetComponent<Text>().text = "師岡一羽";
@@ -509,7 +514,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Okuyama";
                     }else {
                         rank.GetComponent<Text>().text = "奥山公重";
@@ -538,8 +543,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
-					rank.transform.localPosition = new Vector2 (0,0);					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					rank.transform.localPosition = new Vector2 (0,0);
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Jingo";
                     }else {
                         rank.GetComponent<Text>().text = "神後宗治";
@@ -570,7 +575,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Kanemaki";
                     }else {
                         rank.GetComponent<Text>().text = "鐘捲自斎";
@@ -600,7 +605,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Hozoin";
                     }else {
                         rank.GetComponent<Text>().text = "宝蔵院胤栄";
@@ -629,8 +634,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
-					rank.transform.localPosition = new Vector2 (0,0);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					rank.transform.localPosition = new Vector2 (0,0);                    
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Aisu";
                     }else {
                         rank.GetComponent<Text>().text = "愛州元香斎";
@@ -660,7 +665,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					rank.transform.SetParent (item.transform);
 					rank.transform.localScale = new Vector2 (0.12f,0.12f);
 					rank.transform.localPosition = new Vector2 (0,0);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         rank.GetComponent<Text>().text = "Hikita";
                     }else {
                         rank.GetComponent<Text>().text = "疋田景兼";
@@ -1004,7 +1009,8 @@ public class RonkouKousyoMenu : MonoBehaviour {
 
 				//Show
 				bsb.commonPopup (25);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     GameObject.Find ("popText").GetComponent<Text> ().text = "Master Secrets";
                 }else {
                     GameObject.Find("popText").GetComponent<Text>().text = "極意一覧";
@@ -1027,7 +1033,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						GameObject slot = Instantiate (Resources.Load (pathSlot)) as GameObject;
 						slot.transform.SetParent (content.transform);
 						slot.transform.localScale = new Vector2 (1, 1);
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             slot.transform.FindChild ("Qty").GetComponent<Text> ().text = num + " remain";
                         }else {
                             slot.transform.FindChild("Qty").GetComponent<Text>().text = "残" +num + "個";

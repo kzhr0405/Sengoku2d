@@ -139,7 +139,8 @@ public class StatusGet : MonoBehaviour {
         //Contain in Array
         senpouArray.Add (senpouId);
 		senpouArray.Add (senpouMst.param[senpouId-1].typ);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             senpouArray.Add (senpouMst.param[senpouId-1].nameEng);
 		    senpouArray.Add (senpouMst.param[senpouId-1].effectionEng);
         }else {
@@ -197,7 +198,8 @@ public class StatusGet : MonoBehaviour {
         //Contain in Array
         senpouArray.Add (senpouId);
 		senpouArray.Add (senpouMst.param[senpouId-1].typ);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             senpouArray.Add (senpouMst.param[senpouId-1].nameEng);
 		    senpouArray.Add (senpouMst.param[senpouId-1].effectionEng);
         }else {
@@ -233,7 +235,8 @@ public class StatusGet : MonoBehaviour {
     public string getBusyoName(int busyoInt){
 		Entity_busyo_mst busyoMst  = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
         string busyoName = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             busyoName = busyoMst.param [busyoInt-1].nameEng;
         }else {
             busyoName = busyoMst.param[busyoInt - 1].name;
@@ -313,7 +316,8 @@ public class StatusGet : MonoBehaviour {
         //Contain in Array
         senpouArray.Add(senpouId);
         senpouArray.Add(senpouMst.param[senpouId - 1].typ);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             senpouArray.Add(senpouMst.param[senpouId - 1].nameEng);
             senpouArray.Add(senpouMst.param[senpouId - 1].effectionEng);
         }

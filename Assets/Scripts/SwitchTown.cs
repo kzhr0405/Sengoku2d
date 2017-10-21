@@ -45,10 +45,10 @@ public class SwitchTown : MonoBehaviour {
                 }
             }
             KuniInfo kuniScript = new KuniInfo();
-            nextKuniName = kuniScript.getKuniName(nextKuniId);
-
+            int langId = PlayerPrefs.GetInt("langId");
+            nextKuniName = kuniScript.getKuniName(nextKuniId,langId);
             
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 transform.FindChild("Text").GetComponent<Text>().text = "Next Town\n" + nextKuniName;
             }else {
                 transform.FindChild("Text").GetComponent<Text>().text = "次の国へ\n" + nextKuniName;

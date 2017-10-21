@@ -7,10 +7,10 @@ public class Daimyo : MonoBehaviour {
 
 	Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
 
-	public string getName (int daimyoId) {
+	public string getName (int daimyoId, int langId) {
 		string daimyoName = "";
-		if (daimyoId != 0) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+		if (daimyoId != 0) {            
+            if (langId == 2) {
                 daimyoName = daimyoMst.param[daimyoId - 1].daimyoNameEng;
             } else {
                 daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
@@ -84,10 +84,10 @@ public class Daimyo : MonoBehaviour {
 		return remain1DaimyoFlg;
 	}
 
-    public string getClanName(int daimyoId) {
+    public string getClanName(int daimyoId, int langId) {
         string clanName = "";
         if (daimyoId != 0) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 clanName = daimyoMst.param[daimyoId - 1].clanNameEng;
             }else {
                 clanName = daimyoMst.param[daimyoId - 1].clanName;

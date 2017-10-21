@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class Nanbansen : MonoBehaviour {
 
@@ -45,7 +46,8 @@ public class Nanbansen : MonoBehaviour {
         board.transform.FindChild("close").GetComponent<CloseBoard>().tabibitoNoticeBtnFlg = true;
 
         //Adjustment
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             board.transform.FindChild ("GrpValue").GetComponent<Text> ().text = "Western Ship";
 		    board.transform.FindChild ("Name").transform.FindChild ("NameValue").GetComponent<Text> ().text = "You can buy only 1 item.";
         }else {
@@ -68,7 +70,7 @@ public class Nanbansen : MonoBehaviour {
 
 		GameObject contact = scroll.transform.FindChild ("Content").gameObject;
 		GameObject BuyBtn = board.transform.FindChild ("GetButton").gameObject;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             BuyBtn.transform.FindChild ("Text").GetComponent<Text> ().text = "Buy";
         }else {
             BuyBtn.transform.FindChild("Text").GetComponent<Text>().text = "購入";
@@ -102,21 +104,21 @@ public class Nanbansen : MonoBehaviour {
 		Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 		Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
         if (itemTPId == 1) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 TPObj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
             }else {
                 TPObj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
             }
             TPObj.GetComponent<Image>().color = lowColor;
         } else if (itemTPId == 2) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 TPObj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
             }else {
                 TPObj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
             }
 			TPObj.GetComponent<Image>().color = midColor;
 		}else if(itemTPId == 3){
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 TPObj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
             }else {
                 TPObj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";

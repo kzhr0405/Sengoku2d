@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class TechPop : MonoBehaviour {
 
@@ -23,7 +24,8 @@ public class TechPop : MonoBehaviour {
 
 		if (avlNaiseiList.Contains ("tp") && avlNaiseiList.Contains ("kb") && avlNaiseiList.Contains ("snb")) {
 			Message msg = new Message();
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 msg.makeMessage("You have already transferred technology of Gun, Hourse, Ninja.");
             }else {
                 msg.makeMessage("この国に鉄砲、騎馬、忍技術は伝達済みです。");
@@ -33,7 +35,8 @@ public class TechPop : MonoBehaviour {
 		
 			BusyoStatusButton pop = new BusyoStatusButton ();
 			pop.commonPopup (26);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 GameObject.Find ("popText").GetComponent<Text> ().text = "Tech Transfer";
             }else {
                 GameObject.Find("popText").GetComponent<Text>().text = "技術伝達";

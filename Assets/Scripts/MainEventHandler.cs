@@ -51,20 +51,20 @@ public class MainEventHandler : MonoBehaviour {
 		seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
 		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		GameObject targetKuni = GameObject.Find ("KuniIconView");
+        int langId = PlayerPrefs.GetInt("langId");
+        /*Kassen*/
+        //1. Randome choice Kassen Qty between 0,1,2,3
+        //2. Ratio 50% check
+        //3. Random choice Kassen Souce Kuni 1-65
+        //4. Destination Check by Mapping
+        //		if Same Daimyo between Kassen Souce & Destination Kuni => Skip
+        //      else => Make guntai Instance
+        //        	 4-1. Destination == myDaimyo
+        //			 4-2. Destination == has own relation or master relation  
+        //
 
-		/*Kassen*/
-		//1. Randome choice Kassen Qty between 0,1,2,3
-		//2. Ratio 50% check
-		//3. Random choice Kassen Souce Kuni 1-65
-		//4. Destination Check by Mapping
-		//		if Same Daimyo between Kassen Souce & Destination Kuni => Skip
-		//      else => Make guntai Instance
-		//        	 4-1. Destination == myDaimyo
-		//			 4-2. Destination == has own relation or master relation  
-		//
-
-		//Message
-		List<string> messageList = new List<string> ();
+        //Message
+        List<string> messageList = new List<string> ();
 
 		//Count Kassen Qty
 		int kassenQty = CountEnemyKassenAction ();
@@ -263,11 +263,11 @@ public class MainEventHandler : MonoBehaviour {
 									Gunzei.GetComponent<Gunzei> ().key = key;
 									Gunzei.GetComponent<Gunzei> ().srcKuni = randomKuni;
 									Gunzei.GetComponent<Gunzei> ().srcDaimyoId = int.Parse (eDaimyo);
-									string srcDaimyoName = daimyo.getName (int.Parse (eDaimyo));
+									string srcDaimyoName = daimyo.getName (int.Parse (eDaimyo),langId);
 									Gunzei.GetComponent<Gunzei> ().srcDaimyoName = srcDaimyoName;
 									Gunzei.GetComponent<Gunzei> ().dstKuni = worstGaikouKuni;
 									Gunzei.GetComponent<Gunzei> ().dstDaimyoId = worstGaikouDaimyo;
-									string dstDaimyoName = daimyo.getName (worstGaikouDaimyo);
+									string dstDaimyoName = daimyo.getName (worstGaikouDaimyo,langId);
 									Gunzei.GetComponent<Gunzei> ().dstDaimyoName = dstDaimyoName;
 									int myHei = gunzei.heiryokuCalc (randomKuni);
 
@@ -333,7 +333,7 @@ public class MainEventHandler : MonoBehaviour {
 													}
 												} else {
 													//my daimyo engun
-													string doumeiDaimyoName = daimyo.getName(worstGaikouDaimyo);
+													string doumeiDaimyoName = daimyo.getName(worstGaikouDaimyo,langId);
 													messageList = MakeEngunShisya(3, key,worstGaikouDaimyo, doumeiDaimyoName, worstGaikouKuni, int.Parse (eDaimyo), messageList);
 
 												
@@ -361,7 +361,7 @@ public class MainEventHandler : MonoBehaviour {
 									PlayerPrefs.SetString ("keyHistory", keyHistory);
 
 									if (worstGaikouDaimyo == myDaimyo) {
-										string enemyDaimyoName = daimyo.getName (int.Parse(eDaimyo));
+										string enemyDaimyoName = daimyo.getName (int.Parse(eDaimyo),langId);
 										messageList = MakeKyouhakuShisya (8,key,int.Parse(eDaimyo),enemyDaimyoName,worstGaikouKuni,messageList);
 
                                         if(CheckMyDoumei(int.Parse(eDaimyo))) {
@@ -376,7 +376,7 @@ public class MainEventHandler : MonoBehaviour {
                                                 }
                                             }
                                             ClearMyDoumei(eDaimyo, myAttackedDoumeiList, myDaimyo);
-                                            messageList = messageList = MakeShisya(6, srcDaimyoName, messageList, int.Parse(eDaimyo));
+                                            messageList = MakeShisya(6, srcDaimyoName, messageList, int.Parse(eDaimyo), langId);
                                         }
 									}
 
@@ -384,16 +384,16 @@ public class MainEventHandler : MonoBehaviour {
 
 									string kassenText = "";
 									if(!dstEngunFlg){
-                                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                        if (langId==2) {
                                             kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " by " + myHei + " soldiers";
                                         }else { 
                                             kassenText = srcDaimyoName + "が" + dstDaimyoName + "討伐の兵" + myHei + "人を起こしました。";
                                         }
                                     }else{
-                                        if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                            kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " by " + myHei + " soldiers"+"\n" + "Defender's allianced country is coming to support by " + totalEngunHei + " soldiers"; ;
+                                        if (langId==2) {
+                                            kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " by " + myHei + " soldiers. Defender's allianced country is coming to support by " + totalEngunHei + " soldiers"; ;
                                         }else {
-                                            kassenText = srcDaimyoName + "が" + dstDaimyoName + "討伐の兵" + myHei + "人を起こしました。\n防衛側の同盟国が援軍" + totalEngunHei + "人を派兵しました。";
+                                            kassenText = srcDaimyoName + "が" + dstDaimyoName + "討伐の兵" + myHei + "人を起こしました。防衛側の同盟国が援軍" + totalEngunHei + "人を派兵しました。";
                                         }
                                     }
 									messageList.Add (kassenText);
@@ -447,7 +447,7 @@ public class MainEventHandler : MonoBehaviour {
 
 				int randomKuni = UnityEngine.Random.Range (1, 66);
 				int srcDaimyoId = int.Parse (seiryokuList [randomKuni - 1]);
-				string srcDaimyoName = daimyo.getName (srcDaimyoId);
+				string srcDaimyoName = daimyo.getName (srcDaimyoId,langId);
 
 				if (srcDaimyoId != myDaimyo) {	
 
@@ -602,19 +602,19 @@ public class MainEventHandler : MonoBehaviour {
 							//Choose Target Daimyo
 
 							if (bestGaikouDaimyo != 0) {
-								string dstDaimyoName = daimyo.getName (bestGaikouDaimyo);
+								string dstDaimyoName = daimyo.getName (bestGaikouDaimyo,langId);
 								Gaikou gaikou = new Gaikou ();
 								int yukoudo = 0;
 
 								if (bestGaikouDaimyo == myDaimyo) {
-									messageList = MakeShisya (7, srcDaimyoName, messageList, srcDaimyoId);
+									messageList = MakeShisya (7, srcDaimyoName, messageList, srcDaimyoId, langId);
 									yukoudo = gaikou.getMyGaikou (srcDaimyoId);
 
 								} else {
 									//In the case between other daimyos
 									int addYukoudo = UpYukouValueWithOther (srcDaimyoId, bestGaikouDaimyo);
                                     string yukouUpText = "";
-                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    if (langId == 2) {
                                         yukouUpText = srcDaimyoName + " gave gift to " + dstDaimyoName + ". Friendship increased " + addYukoudo + " point";
                                     }else {
                                         yukouUpText = srcDaimyoName + "が" + dstDaimyoName + "に貢物をしました。友好度が" + addYukoudo + "上がります。";
@@ -628,7 +628,7 @@ public class MainEventHandler : MonoBehaviour {
 
 								//Doumei Vonus
 								if (CheckByProbability (yukoudo / 10)) {
-									messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList);
+									messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList, langId);
 								}
 							}
 						}
@@ -647,9 +647,9 @@ public class MainEventHandler : MonoBehaviour {
 									//My Daimyo
 									string dstDaimyoName = "";
 									reduceYukoudo = DownYukouValueWithMyDaimyo (myDaimyo, srcDaimyoId);
-									dstDaimyoName = daimyo.getName (srcDaimyoId);
+									dstDaimyoName = daimyo.getName (srcDaimyoId,langId);
                                     string yukouDownText = "";
-                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    if (langId == 2) {
                                         yukouDownText = "Someone spread bad rumor between your country and " + dstDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
                                     }else {
                                         yukouDownText = "何者かが当家と" + dstDaimyoName + "間に流言を流し、友好度が" + reduceYukoudo + "下がりました。";
@@ -660,11 +660,11 @@ public class MainEventHandler : MonoBehaviour {
 
                                 } else {
 									reduceYukoudo = DownYukouValueWithOther (srcDaimyoId, bestGaikouDaimyo);
-									string dst1stDaimyoName = daimyo.getName (srcDaimyoId);
-									string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo);
+									string dst1stDaimyoName = daimyo.getName (srcDaimyoId,langId);
+									string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo,langId);
                                     string yukouDownText = "";
-                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                       yukouDownText = "Someone spread bad rumor between " + dst1stDaimyoName + " and " + dst2ndDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
+                                    if (langId == 2) {
+                                        yukouDownText = "Someone spread bad rumor between " + dst1stDaimyoName + " and " + dst2ndDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
                                     }else {
                                        yukouDownText = "何者かが" + dst1stDaimyoName + "と" + dst2ndDaimyoName + "間に流言を流し、友好度が" + reduceYukoudo + "下がりました。";
                                     }
@@ -682,19 +682,19 @@ public class MainEventHandler : MonoBehaviour {
 						bool doumeiFlg = CheckByProbability (yukoudo/2);
 
 						if (doumeiFlg == true) {
-							messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList);
+							messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList, langId);
 						}
 
 
 					} else if (gaikouAction == 4) {
 						//Doukatsu
-						messageList = MakeShisya(4, srcDaimyoName, messageList, srcDaimyoId);
+						messageList = MakeShisya(4, srcDaimyoName, messageList, srcDaimyoId, langId);
 					} else if (gaikouAction == 5) {
 						//Koueki
-						messageList = MakeShisya(5, srcDaimyoName, messageList, srcDaimyoId);
+						messageList = MakeShisya(5, srcDaimyoName, messageList, srcDaimyoId, langId);
 					} else if (gaikouAction == 6) {
 						//Oocyanoe
-						messageList = MakeShisya(9, srcDaimyoName, messageList, srcDaimyoId);
+						messageList = MakeShisya(9, srcDaimyoName, messageList, srcDaimyoId, langId);
 					}
 				}
 			}
@@ -708,7 +708,7 @@ public class MainEventHandler : MonoBehaviour {
         if (CheckByProbability (syogunShisyaRatio)){			
 			if (syogunDaimyoId != myDaimyo) {
 
-				string syogunDaimyoName = daimyo.getName (syogunDaimyoId);
+				string syogunDaimyoName = daimyo.getName (syogunDaimyoId,langId);
 				if (seiryokuList.Contains (syogunDaimyoId.ToString ())) {
 					if(CheckByProbability (20)){
 
@@ -717,7 +717,7 @@ public class MainEventHandler : MonoBehaviour {
 
 						if (percent <= 50) {
 							//Musin
-							messageList = MakeShisya(14, syogunDaimyoName, messageList,syogunDaimyoId);
+							messageList = MakeShisya(14, syogunDaimyoName, messageList,syogunDaimyoId, langId);
 						} else if (50 < percent && percent <= 80) {
 							//Cyusai
 							List<int> targetDaimyoList = new List<int>();
@@ -730,7 +730,7 @@ public class MainEventHandler : MonoBehaviour {
 							if (targetDaimyoList.Count != 0) {
 								int rdm = UnityEngine.Random.Range (0, targetDaimyoList.Count);
 								int randomDaimyoId = targetDaimyoList [rdm];
-								messageList = MakeShisya (10, syogunDaimyoName, messageList, randomDaimyoId);
+								messageList = MakeShisya (10, syogunDaimyoName, messageList, randomDaimyoId, langId);
 							}
 						} else if (80 < percent && percent <= 90) {
 							//Toubatus
@@ -756,7 +756,7 @@ public class MainEventHandler : MonoBehaviour {
 							}
 							if (checkedDaimyoList.Count != 1) { //not just my self
                                 if(targetDaimyoId != myDaimyo) {
-								    messageList = MakeShisya (11, syogunDaimyoName, messageList, targetDaimyoId);
+								    messageList = MakeShisya (11, syogunDaimyoName, messageList, targetDaimyoId,langId);
                                 }
                             }
 
@@ -841,9 +841,9 @@ public class MainEventHandler : MonoBehaviour {
 								//Syogun syunin
                                 if(maxDaimyoId != myDaimyo) {
 								    PlayerPrefs.SetInt("syogunDaimyoId",maxDaimyoId);
-								    string maxDaimyoName = daimyo.getName (maxDaimyoId);
+								    string maxDaimyoName = daimyo.getName (maxDaimyoId,langId);
                                     string yukouUpText = "";
-                                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                    if (langId == 2) {
                                         yukouUpText = maxDaimyoName + " was assigned to shogun. New shogunate has been opened.";
                                     }else {
                                         yukouUpText = maxDaimyoName + "殿が征夷大将軍に任命されました。新たな幕府が開かれます。";
@@ -852,7 +852,7 @@ public class MainEventHandler : MonoBehaviour {
 
                                 }else {
                                     if (CheckByProbability(50)) {
-                                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                        if (langId == 2) {
                                             messageList = MakeNonDaimyoShisya(13, "Royal Court Senior Messanger", messageList, 0);
                                         }else {
                                             messageList = MakeNonDaimyoShisya(13, "朝廷より重要な使者", messageList, 0);
@@ -879,14 +879,14 @@ public class MainEventHandler : MonoBehaviour {
 
 			if (percent <= 30) {
                 //Musin
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(15, "Nobleman", messageList, 0);
                 } else {
                     messageList = MakeNonDaimyoShisya(15, "貴族", messageList, 0);
                 }
                     
 			} else if (30 < percent && percent <= 70) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(16, "Royal Court Messanger", messageList, 0);
                 }else {
                     messageList = MakeNonDaimyoShisya(16, "朝廷より使者", messageList, 0);
@@ -903,8 +903,8 @@ public class MainEventHandler : MonoBehaviour {
 				if (targetDaimyoList.Count != 0) {
 					int rdm = UnityEngine.Random.Range (0, targetDaimyoList.Count);
 					int randomDaimyoId = targetDaimyoList [rdm];
-					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         messageList = MakeNonDaimyoShisya(17, "Royal Court Messanger", messageList, randomDaimyoId);
                     }else {
                         messageList = MakeNonDaimyoShisya(17, "朝廷より使者", messageList, randomDaimyoId);
@@ -925,28 +925,28 @@ public class MainEventHandler : MonoBehaviour {
 
 			if (percent <= 20) {
                 //Musin
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(18, "Merchant", messageList, 0);
                 }else {
                     messageList = MakeNonDaimyoShisya(18, "商人", messageList, 0);
                 }
                     
 			} else if (20 < percent && percent <= 40) {
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(18, "Westerner", messageList, 0);
                 }else {
                     messageList = MakeNonDaimyoShisya(19, "南蛮人", messageList, 0);
                 }
             } else if (40 < percent && percent <= 60) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(20, "Monk", messageList, 0);
                 }else {
                     messageList = MakeNonDaimyoShisya(20, "遊行中の僧侶", messageList, 0);
                 }
             } else if (60 < percent && percent <= 100) {
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(21, "Local samurai", messageList, 0);
                 }else {
                     messageList = MakeNonDaimyoShisya(21, "国人衆", messageList, 0);
@@ -954,6 +954,72 @@ public class MainEventHandler : MonoBehaviour {
             }
 		}
 
+        //kokunin ikki
+        int kokuninReject = PlayerPrefs.GetInt("kokuninReject");
+        //test
+        //kokuninReject = 10;
+
+        if (kokuninReject !=0) {
+            float ratio = kokuninReject * 10;
+            float percent = UnityEngine.Random.value;
+            percent = percent * 100;
+
+            Debug.Log(percent + "<=" + ratio);
+            if (percent <= ratio) {
+                /**ikki**/
+                //check my around enemy
+                int srcKuniId = 0;
+                int srcDaimyoId = 0;
+                int srcYukouValue = 100;
+                string srcDaimyoName = "";
+                GameObject KuniIconView = GameObject.Find("KuniIconView").gameObject;
+                foreach(Transform chld in KuniIconView.transform) {
+                    SendParam SendParam = chld.GetComponent<SendParam>();
+                    if (SendParam.daimyoId != myDaimyo) {
+                        if(SendParam.openFlg) {
+                            if(!SendParam.doumeiFlg) {
+                                bool ExistFlg = false;
+                                foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Gunzei")) {
+                                    int gunzeiSrcDaimyoId = obs.GetComponent<Gunzei>().srcDaimyoId;
+                                    if (SendParam.daimyoId == gunzeiSrcDaimyoId) {
+                                        ExistFlg = true;
+                                    }
+                                }
+                                if(!ExistFlg) {                                    
+                                    if (srcYukouValue >= SendParam.myYukouValue) {
+                                        srcKuniId = SendParam.kuniId;
+                                        srcDaimyoId = SendParam.daimyoId;
+                                        srcDaimyoName = SendParam.daimyoName;
+                                        srcYukouValue = SendParam.myYukouValue;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //dst check
+                if(srcKuniId!=0) {
+                    List<int> dstKuniList = new List<int>();
+                    KuniInfo KuniInfo = new KuniInfo();
+                    dstKuniList.AddRange(KuniInfo.getMappingKuni(srcKuniId));
+                    int dstKuniId = 0;
+                    foreach(int dstKuniIdTmp in dstKuniList) {
+                        if(int.Parse(seiryokuList[dstKuniIdTmp-1]) == myDaimyo) {
+                            dstKuniId = dstKuniIdTmp;
+                        }
+                    }
+                    
+                    if(srcKuniId !=0 && dstKuniId !=0) {
+                        //run
+                        string myDaimyoName = daimyo.getName(myDaimyo,langId);
+                        messageList.Add(createKokuninGunzei(srcKuniId, dstKuniId, srcDaimyoId, myDaimyo, srcDaimyoName, myDaimyoName, kokuninReject, langId));
+
+                        //set & reset
+                        PlayerPrefs.SetInt("kokuninReject",0);
+                    }
+                }
+            }
+        }
 
 
 		//Check Shinobi Cyouhou
@@ -1007,18 +1073,18 @@ public class MainEventHandler : MonoBehaviour {
 
 				//Message
 				KuniInfo kuni = new KuniInfo();
-				string kuniName = kuni.getKuniName(kuniId);
+				string kuniName = kuni.getKuniName(kuniId,langId);
 
 				int daimyoId = int.Parse(seiryokuList [kuniId - 1]);
 				Daimyo daimyo = new Daimyo ();
-				string daimyoName = daimyo.getName (daimyoId); 
+				string daimyoName = daimyo.getName (daimyoId,langId); 
 
 				int reduceYukoudo = DownYukouValueWithMyDaimyo (myDaimyo, daimyoId);
                 string cyouhouMissText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    cyouhouMissText = "Your ninja who had been hiding in " + kuniName + " was cought. \nFriendship with " + daimyoName + " decreased " + reduceYukoudo + " point";
+                if (langId == 2) {
+                    cyouhouMissText = "Your ninja who had been hiding in " + kuniName + " was cought. Friendship with " + daimyoName + " decreased " + reduceYukoudo + " point";
                 }else {
-                    cyouhouMissText = kuniName + "に潜伏中の忍が見つかりました。\n" + daimyoName + "との友好度が" + reduceYukoudo + "下がりました。";
+                    cyouhouMissText = kuniName + "に潜伏中の忍が見つかりました。" + daimyoName + "との友好度が" + reduceYukoudo + "下がりました。";
                 }
 
                 messageList.Add (cyouhouMissText);
@@ -1131,10 +1197,10 @@ public class MainEventHandler : MonoBehaviour {
 									PlayerPrefs.SetString(tgtTemp,newDoumei2);
 								}
 
-								string srcDaimyoName = daimyo.getName(int.Parse(activeDaimyoId));
-								string dstDaimyoName = daimyo.getName(int.Parse(targetDaimyoId));
+								string srcDaimyoName = daimyo.getName(int.Parse(activeDaimyoId),langId);
+								string dstDaimyoName = daimyo.getName(int.Parse(targetDaimyoId),langId);
                                 string doumeiClearText = "";
-                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                if (langId == 2) {
                                     doumeiClearText = "Alliance was renounced between " + srcDaimyoName + " and " + dstDaimyoName + " due to deterioration of relationship";
                                 }else {
                                     doumeiClearText = "友好度悪化により、" + srcDaimyoName + "と" + dstDaimyoName + "間の同盟が解消しました。";
@@ -1201,14 +1267,14 @@ public class MainEventHandler : MonoBehaviour {
                     string rengouDaimyo = "";
                     Daimyo daimyo = new Daimyo();
                     DoGaikou gaikoScript = new DoGaikou();
-                    string yourClanName = daimyo.getClanName(myDaimyo);
+                    string yourClanName = daimyo.getClanName(myDaimyo,langId);
                     foreach (string daimyoId in rengouDaimyoList) {
                         //reduce my gaikou to 0
                         string temp = "gaikou" + daimyoId.ToString();
                         PlayerPrefs.SetInt(temp, 0);
                         gaikoScript.downYukouOnIcon(int.Parse(daimyoId), 0);
 
-                        string clanName = daimyo.getClanName(int.Parse(daimyoId));
+                        string clanName = daimyo.getClanName(int.Parse(daimyoId), langId);
                         if(allClanName == "" || allClanName == null) {
                             allClanName = clanName;
                             rengouDaimyo = daimyoId;
@@ -1240,7 +1306,7 @@ public class MainEventHandler : MonoBehaviour {
                     }
                     //shisya
                     string messageText = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         messageText = allClanName + " became the allied powers.";
                     }else {
                         messageText = allClanName + "が連合を結成し、" + yourClanName +"包囲網を敷きました。";
@@ -1256,6 +1322,36 @@ public class MainEventHandler : MonoBehaviour {
                 }
             }
         }
+
+        /* surrender */
+        MainStageController MainStageController = GameObject.Find("GameController").GetComponent<MainStageController>();
+        if(MainStageController.myKuniQty >= 58) {
+            List<int> surrenderDaimyoList = new List<int>();
+            GameObject KuniIconView = GameObject.Find("KuniIconView").gameObject;
+            foreach(Transform chld in KuniIconView.transform) {
+                SendParam SendParam = chld.GetComponent<SendParam>();
+                if(SendParam.daimyoId != myDaimyo && !surrenderDaimyoList.Contains(SendParam.daimyoId)) {
+                    if(SendParam.kuniQty <= 3) {
+                        float percent = UnityEngine.Random.value;
+                        percent = percent * 100;
+                        float ratio = 100 / (SendParam.kuniQty * 2);
+                        if (percent <= ratio) {
+                            surrenderDaimyoList.Add(SendParam.daimyoId);
+                        }
+                    }
+                }
+            }
+            Daimyo daimyo = new Daimyo();
+            foreach(int surrenderDaimyoId in surrenderDaimyoList) {
+                string surrenderDaimyoName = daimyo.getName(surrenderDaimyoId, langId);
+                messageList = MakeShisya(22, surrenderDaimyoName, messageList, surrenderDaimyoId, langId);
+            }           
+        }
+
+
+
+
+
 
 
 
@@ -1515,6 +1611,21 @@ public class MainEventHandler : MonoBehaviour {
 		return engunSts;
 	}
 
+    public string getKokuninSts(int srcKuniId) {
+        string engunSts = "";//BusyoId-BusyoLv-ButaiQty-ButaiLv:
+
+        GameObject targetKuni = GameObject.Find("KuniIconView");
+        SendParam sendParam = targetKuni.transform.FindChild(srcKuniId.ToString()).GetComponent<SendParam>();
+
+        int busyoId = 35;
+        int busyoLv = sendParam.busyoLv;
+        int butaiQty = sendParam.butaiQty;
+        int butaiLv = sendParam.butaiLv;
+        
+        engunSts = busyoId.ToString() + "-" + busyoLv.ToString() + "-" + butaiQty.ToString() + "-" + butaiLv.ToString();
+        return engunSts;
+    }
+
 
     public int randomEngunBusyoWODuplication(int activeDaimyoId, List<int>doneBusyoList) {
         int engunBusyoId = 0;
@@ -1622,7 +1733,7 @@ public class MainEventHandler : MonoBehaviour {
 	}
 
 
-	public List<string> makeDoumei(int bestGaikouDaimyo, int myDaimyo, int srcDaimyoId, string srcDaimyoName, List<string> messageList){
+	public List<string> makeDoumei(int bestGaikouDaimyo, int myDaimyo, int srcDaimyoId, string srcDaimyoName, List<string> messageList,int langId){
 
         if(bestGaikouDaimyo != srcDaimyoId) {
 
@@ -1633,7 +1744,7 @@ public class MainEventHandler : MonoBehaviour {
 			    bool myDoumeiExistFlg =doumei.myDoumeiExistCheck (srcDaimyoId);
 			    if (!myDoumeiExistFlg) {
 				    //Shisya
-				    messageList = MakeShisya (1, srcDaimyoName, messageList, srcDaimyoId);
+				    messageList = MakeShisya (1, srcDaimyoName, messageList, srcDaimyoId,langId);
 			    }
 
 		    } else if(srcDaimyoId != myDaimyo) {
@@ -1673,11 +1784,10 @@ public class MainEventHandler : MonoBehaviour {
 				    PlayerPrefs.SetString (doumeiTmp2, newDoumei2);
 
 				    flush ();
-
-				    string dst1stDaimyoName = daimyo.getName (srcDaimyoId);
-				    string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo);
-                    string doumeiText = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    string dst1stDaimyoName = daimyo.getName (srcDaimyoId,langId);
+				    string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo,langId);
+                    string doumeiText = "";                    
+                    if (langId == 2) {
                         doumeiText = dst1stDaimyoName + " and " + dst2ndDaimyoName + " concluded an alliance";
                     }else {
                         doumeiText = dst1stDaimyoName + "と" + dst2ndDaimyoName + "間に同盟が成立しました。";
@@ -1690,7 +1800,7 @@ public class MainEventHandler : MonoBehaviour {
 		return messageList;
 	}
 
-	public List<string> MakeShisya(int shisyaId, string srcDaimyoName, List<string>messageList,int srcDaimyoId){
+	public List<string> MakeShisya(int shisyaId, string srcDaimyoName, List<string>messageList,int srcDaimyoId, int langId){
 		
 
 		//Check
@@ -1707,9 +1817,9 @@ public class MainEventHandler : MonoBehaviour {
 		}
 		if (!shisyaList.Contains (srcDaimyoId.ToString())) {
 
-            string yukouUpText = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                yukouUpText = srcDaimyoName + "'s message has come to see you";
+            string yukouUpText = "";            
+            if (langId == 2) {
+                yukouUpText = srcDaimyoName + "'s messenger has come to see you";
             }else {
                 yukouUpText = srcDaimyoName + "殿の使者が参っております。";
             }
@@ -1732,7 +1842,8 @@ public class MainEventHandler : MonoBehaviour {
 	public List<string> MakeEngunShisya(int shisyaId, string key, int doumeiDaimyoId, string doumeiDaimyoName, int targetKuniId, int attackDaimyoId, List<string>messageList){
 
         string yukouUpText = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             yukouUpText = doumeiDaimyoName + "'s messanger has come to see you";
         }else {
             yukouUpText = doumeiDaimyoName + "殿の使者が参っております。";
@@ -1755,7 +1866,8 @@ public class MainEventHandler : MonoBehaviour {
 
 	public List<string> MakeKyouhakuShisya (int shisyaId, string key,int enemyDaimyoId, string enemyDaimyoName, int targetKuniId, List<string>messageList){
         string yukouUpText = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             yukouUpText = enemyDaimyoName + "'s messanger has come to see you";
         }else {
             yukouUpText = enemyDaimyoName + "殿の使者が参っております。";
@@ -1779,7 +1891,8 @@ public class MainEventHandler : MonoBehaviour {
 
 	public List<string> MakeBoueiShisya (int shisyaId, string key, string syogunDaimyoName, int srcDaimyoId, int dstDaimyoId, int targetKuniId, List<string>messageList){
         string yukouUpText = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             yukouUpText = syogunDaimyoName + "'s messanger has come to see you";
         }
         else {
@@ -1804,7 +1917,8 @@ public class MainEventHandler : MonoBehaviour {
 	public List<string> MakeNonDaimyoShisya(int shisyaId, string name, List<string>messageList, int daimyoId){
 
         string yukouUpText = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             yukouUpText = name + " has come to see you";
         }else {
             yukouUpText = name + "が参っております。";
@@ -1891,5 +2005,168 @@ public class MainEventHandler : MonoBehaviour {
 
         PlayerPrefs.Flush();        
     }
+
+    public string createKokuninGunzei(int srcKuniId, int dstKuniId, int srcDaimyoId, int dstDaimyoId, string srcDaimyoName, string dstDaimyoName, int kokuninReject, int langId) {
+        string msg = "";
+
+        string path = "Prefabs/Map/Gunzei";
+        GameObject Gunzei = Instantiate(Resources.Load(path)) as GameObject;
+        Gunzei.transform.SetParent(GameObject.Find("GunzeiView").transform);
+        Gunzei.transform.localScale = new Vector2(1, 1);
+
+        //Location
+        KuniInfo kuni = new KuniInfo();
+        int srcX = kuni.getKuniLocationX(srcKuniId);
+        int srcY = kuni.getKuniLocationY(srcKuniId);
+        int dstX = kuni.getKuniLocationX(dstKuniId);
+        int dstY = kuni.getKuniLocationY(dstKuniId);
+        string dstKuniName = kuni.getKuniName(dstKuniId,langId);
+        string direction = "";
+        Gunzei gunzei = new Gunzei();
+
+        if (srcX < dstX) {
+            Gunzei.transform.localScale = new Vector2(1, 1);
+            direction = "right";
+        }else {
+            Gunzei.transform.localScale = new Vector2(-1, 1);
+            direction = "left";
+            Gunzei.GetComponent<Gunzei>().leftFlg = true;
+
+        }
+
+        int aveX = (srcX + dstX) / 2;
+        int aveY = (srcY + dstY) / 2;
+        RectTransform GunzeiTransform = Gunzei.GetComponent<RectTransform>();
+        GunzeiTransform.anchoredPosition = new Vector3(aveX, aveY, 0);
+
+        string key = srcKuniId.ToString() + "-" + dstKuniId.ToString();
+        Gunzei.GetComponent<Gunzei>().key = key;
+        Gunzei.GetComponent<Gunzei>().srcKuni = srcKuniId;
+        Gunzei.GetComponent<Gunzei>().srcDaimyoId = srcDaimyoId;
+        Gunzei.GetComponent<Gunzei>().srcDaimyoName = srcDaimyoName;
+        Gunzei.GetComponent<Gunzei>().dstKuni = dstKuniId;
+        Gunzei.GetComponent<Gunzei>().dstDaimyoId = dstDaimyoId;
+        Gunzei.GetComponent<Gunzei>().dstDaimyoName = dstDaimyoName;
+        int myHei = gunzei.heiryokuCalc(srcKuniId);
+
+        //random myHei from -50%-myHeis
+        List<float> randomPercent = new List<float> { 0.8f, 0.9f, 1.0f };
+        int rmd = UnityEngine.Random.Range(0, randomPercent.Count);
+        float per = randomPercent[rmd];
+        myHei = Mathf.CeilToInt(myHei * per);
+
+        Gunzei.GetComponent<Gunzei>().myHei = myHei;
+        Gunzei.name = key;
+
+        //Engun from Doumei
+        Doumei doumei = new Doumei();
+        List<string> doumeiDaimyoList = doumei.doumeiExistCheck(dstDaimyoId, srcDaimyoId.ToString());
+        bool dstEngunFlg = false;
+        string dstEngunDaimyoId = ""; //2:3:5 
+        string dstEngunHei = "";
+        string dstEngunSts = ""; //BusyoId-BusyoLv-ButaiQty-ButaiLv:
+        int totalEngunHei = 0;
+        string dstEngunDaimyoName = "";
+
+        string seiryoku = PlayerPrefs.GetString("seiryoku");
+        char[] delimiterChars = { ',' };
+        List<string> seiryokuList = new List<string>();
+        seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+
+
+        //Trace Check
+        List<string> okDaimyoList = new List<string>();
+        List<string> checkList = new List<string>();
+        okDaimyoList = doumei.traceNeighborDaimyo(dstKuniId, dstDaimyoId, doumeiDaimyoList, seiryokuList, checkList, okDaimyoList);
+
+        if (okDaimyoList.Count != 0) {
+            //Doumei & Neghbor Daimyo Exist
+
+            for (int k = 0; k < okDaimyoList.Count; k++) {
+                string engunDaimyo = okDaimyoList[k];
+                int yukoudo = gaikou.getExistGaikouValue(int.Parse(engunDaimyo), dstDaimyoId);
+
+                //engun check
+                MainEventHandler mainEvent = new MainEventHandler();
+                dstEngunFlg = mainEvent.CheckByProbability(yukoudo);
+
+                if (dstEngunFlg) {
+                    //Engun OK
+                    dstEngunFlg = true;
+                    if (dstEngunDaimyoId != null && dstEngunDaimyoId != "") {
+                        dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
+                        string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo);
+                        int tempEngunHei = mainEvent.getEngunHei(tempEngunSts);
+                        dstEngunHei = dstEngunHei + ":" + tempEngunHei.ToString();
+                        totalEngunHei = totalEngunHei + tempEngunHei;
+                        dstEngunSts = dstEngunSts + ":" + tempEngunSts;
+
+                    }else {
+                        dstEngunDaimyoId = engunDaimyo;
+                        string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo);
+                        int tempEngunHei = mainEvent.getEngunHei(tempEngunSts);
+                        dstEngunHei = tempEngunHei.ToString();
+                        totalEngunHei = tempEngunHei;
+                        dstEngunSts = tempEngunSts;
+
+                    }
+                }
+            }
+            Gunzei.GetComponent<Gunzei>().dstEngunFlg = dstEngunFlg;
+            Gunzei.GetComponent<Gunzei>().dstEngunDaimyoId = dstEngunDaimyoId;
+            Gunzei.GetComponent<Gunzei>().dstEngunHei = dstEngunHei;
+            Gunzei.GetComponent<Gunzei>().dstEngunSts = dstEngunSts;
+        }
+
+        //Set Value
+        string keyValue = "";
+        string createTime = System.DateTime.Now.ToString();
+        keyValue = createTime + "," + srcDaimyoId + "," + dstDaimyoId + "," + srcDaimyoName + "," + dstDaimyoName + "," + myHei + "," + aveX + "," + aveY + "," + direction + "," + dstEngunFlg + "," + dstEngunDaimyoId + "," + dstEngunHei + "," + dstEngunSts;
+        PlayerPrefs.SetString(key, keyValue);
+        string keyHistory = PlayerPrefs.GetString("keyHistory");
+        if (keyHistory == null || keyHistory == "") {
+            keyHistory = key;
+        }
+        else {
+            keyHistory = keyHistory + "," + key;
+        }
+        PlayerPrefs.SetString("keyHistory", keyHistory);
+        string kokuninTmp = "kokunin" + dstKuniId;
+        string kokuninValue = "";
+         
+        for(int i=0; i<kokuninReject; i++) {
+            string tempEngunSts = "0-" + getKokuninSts(srcKuniId);
+            if (kokuninValue != null && kokuninValue != "") {
+                kokuninValue = kokuninValue + ":" + tempEngunSts;
+            }else {
+                kokuninValue = tempEngunSts;
+            }
+        }
+        
+        PlayerPrefs.SetString(kokuninTmp, kokuninValue);        
+        PlayerPrefs.Flush();
+
+
+        //Msg
+        if (langId == 2) {
+            msg = "Local samurai raised rebellion against you in " + dstKuniName + " and " + srcDaimyoName + " sent " + myHei + " to support them.";
+        }else {
+            msg = dstKuniName + "で国人衆の一揆が発生。" + srcDaimyoName + "が便乗し" + myHei + "兵を起こしましたぞ。";
+        }
+
+        string AddText = "";
+        if (totalEngunHei != 0) {
+            if (langId == 2) {
+                AddText = " Your allianced clan has sent supporter.";
+            }else {
+                AddText =  "有難いことに同盟国より後詰めが来ております。";
+            }
+            msg = msg + AddText;
+        }
+        
+        return msg;
+    }
+
+
 
 }

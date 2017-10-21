@@ -40,7 +40,7 @@ public class AttackNaiseiView : MonoBehaviour {
 
 
     public void OnClick(){
-
+        int langId = PlayerPrefs.GetInt("langId");
         cyouhouSnbRankId = transform.parent.gameObject.transform.FindChild("close").GetComponent<CloseBoard>().cyouhouSnbRankId;
 
         //SE
@@ -140,8 +140,8 @@ public class AttackNaiseiView : MonoBehaviour {
             string stageName = "";
 			int locationX = stageMst.param [i].LocationX;
 			int locationY = stageMst.param [i].LocationY;
-			int powerType = stageMst.param [i].powerTyp;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+			int powerType = stageMst.param [i].powerTyp;            
+            if (langId == 2) {
                 stageName = stageMst.param[i].stageNameEng;
             }else {
                 stageName = stageMst.param[i].stageName;
@@ -315,8 +315,8 @@ public class AttackNaiseiView : MonoBehaviour {
 			naiseiBtn.GetComponent<StartNaisei> ().activeKuniName = kuniName;
 			naiseiBtn.GetComponent<StartNaisei> ().clearedFlg = clearedFlg;
 			naiseiBtn.transform.localScale = new Vector2 (0.4f, 0.4f);
-			naiseiBtn.transform.localPosition = new Vector2 (-490, -300);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+			naiseiBtn.transform.localPosition = new Vector2 (-490, -300);            
+            if (langId == 2) {
                 boardObj.transform.FindChild ("stageDtl").transform.FindChild ("BattleButton").transform.FindChild ("Text").GetComponent<Text> ().text = "Training";
             }else {
                 boardObj.transform.FindChild("stageDtl").transform.FindChild("BattleButton").transform.FindChild("Text").GetComponent<Text>().text = "訓練";
@@ -454,14 +454,14 @@ public class AttackNaiseiView : MonoBehaviour {
 		KassenEvent kEvent = new KassenEvent ();
 		kEvent.MakeEvent (clearFlg,kuniId,kuniMap,daimyoId);
 
-        viewKuniLink(board, kuniMap, seiryokuList);
+        viewKuniLink(board, kuniMap, seiryokuList,langId);
 
 
         /*Kassen Event Controller End*/
 
     }
 
-    public void viewKuniLink(GameObject board, GameObject kuniMap, List<string> seiryokuList){
+    public void viewKuniLink(GameObject board, GameObject kuniMap, List<string> seiryokuList, int langId){
         KuniInfo kuniScript = new KuniInfo();
         List<int>linkKuniList = kuniScript.getMappingKuni(kuniId);
         
@@ -482,7 +482,7 @@ public class AttackNaiseiView : MonoBehaviour {
             srcKuniNameObj.transform.SetParent(board.transform.FindChild("board").transform);
             srcKuniNameObj.transform.localScale = new Vector2(0.1f, 0.15f);
             srcKuniNameObj.transform.localPosition = new Vector2(XYList[0], XYList[1]);
-            srcKuniNameObj.GetComponent<Text>().text = kuniScript.getKuniName(srcKuniId);
+            srcKuniNameObj.GetComponent<Text>().text = kuniScript.getKuniName(srcKuniId,langId);
 
             string linkStage = kuniScript.getLinkStage(srcKuniId, kuniId);
             linkStage = linkStage.Replace("stage", "");
@@ -498,7 +498,7 @@ public class AttackNaiseiView : MonoBehaviour {
             arrowDaimyo.transform.FindChild("Effect").GetComponent<DamagePop>().attackBoardflg = true;
 
             int arrowDaimyoId = int.Parse(seiryokuList[srcKuniId-1]);
-            string daimyoName = daimyoScript.getName(arrowDaimyoId);
+            string daimyoName = daimyoScript.getName(arrowDaimyoId,langId);
             arrowDaimyo.transform.FindChild("Effect").GetComponent<Text>().text = daimyoName;
             arrowDaimyo.transform.FindChild("Effect").transform.localScale = new Vector2(0.12f,0.12f);
             string kamonPath = "Prefabs/Kamon/MyDaimyoKamon/" + arrowDaimyoId.ToString();

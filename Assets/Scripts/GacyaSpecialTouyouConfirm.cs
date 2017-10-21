@@ -54,10 +54,11 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             }
             List<string> messageList = new List<string>();
 
-
-            //5
+            int langId = PlayerPrefs.GetInt("langId");
+           
+                //5
             if (id5 != 0) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList.Add(id5 + " new samurai joined your clan.\n");
                 }else {
                     messageList.Add(id5 + "人の武将を新規に登用。\n");
@@ -65,7 +66,7 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             }
             //4
             if (id4 != 0) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList.Add(id4 + " samurai joined your clan again.\n");
                 }else {
                     messageList.Add(id4 + "人の武将を改めて登用。\n");
@@ -73,7 +74,7 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             }
             //3.
             if (id3 != 0) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList.Add(id3 + " samurai increased Lv.\n");
                 }else {
                     messageList.Add(id3 + "人の武将が1レベルアップ。\n");
@@ -84,7 +85,7 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
                 int gacyaSpecialBusyoDama = PlayerPrefs.GetInt("gacyaSpecialBusyoDama");
                 PlayerPrefs.DeleteKey("gacyaSpecialBusyoDama");
                 PlayerPrefs.Flush();
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList.Add(id2 + " samurai archived max lv.You got " + gacyaSpecialBusyoDama + " stone.\n");
                 }else {
                     messageList.Add(id2 + "人が最大レベルに到達し、武将珠を" + gacyaSpecialBusyoDama +"入手。\n");
@@ -93,7 +94,7 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             }
             //1.
             if (id1 !=0) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     messageList.Add(id1 + " samurai increased max Lv.\n");
                 }else {
                     messageList.Add(id1 + "人の武将の最大レベルが1上昇。\n");

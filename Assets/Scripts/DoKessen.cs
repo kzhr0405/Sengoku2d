@@ -42,8 +42,8 @@ public class DoKessen : MonoBehaviour {
 			PlayerPrefs.SetInt("activeStageId", 0);
             int activeStageMoney = busyoQty * busyoLv * 100;
             int activeStageExp = busyoQty * busyoLv * 10;
-            if (activeStageMoney > 30000) activeStageMoney = 30000;
-            if (activeStageExp > 3000) activeStageExp = 3000;
+            if (activeStageMoney > 20000) activeStageMoney = 20000;
+            if (activeStageExp > 2000) activeStageExp = 2000;
 
             PlayerPrefs.SetInt("activeStageMoney", activeStageMoney);
 			PlayerPrefs.SetInt("activeStageExp", activeStageExp);
@@ -56,7 +56,8 @@ public class DoKessen : MonoBehaviour {
 			//Actual
 			KuniInfo kuni = new KuniInfo ();
             string kassenName = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 kassenName = " Final Battle with " + daimyoName;
             }else {
                 kassenName = daimyoName + "決戦";

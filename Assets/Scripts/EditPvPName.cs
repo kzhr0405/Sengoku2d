@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class EditPvPName : MonoBehaviour {
 
@@ -42,7 +43,8 @@ public class EditPvPName : MonoBehaviour {
         //Adjust for 2nd Time
         board.transform.FindChild("YesButton").GetComponent<StartPvP>().secondTimeFlg = true;
         board.transform.FindChild("YesButton").GetComponent<StartPvP>().touchBackObj = back;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             board.transform.FindChild("YesButton").transform.FindChild("Text").GetComponent<Text>().text = "Edit";
         }else {
             board.transform.FindChild("YesButton").transform.FindChild("Text").GetComponent<Text>().text = "変更";

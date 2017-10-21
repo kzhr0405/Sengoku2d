@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Xml;
 using HtmlAgilityPack;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class VersionChecker : MonoBehaviour {
     string _storeUrl = "";
@@ -98,22 +99,21 @@ public class VersionChecker : MonoBehaviour {
         }
         _storeUrl = url;
 #if !UNITY_EDITOR
-        if (Application.systemLanguage == SystemLanguage.Japanese)
-        {
-            string title = "「合戦-戦国絵巻-」の最新バージョンがあります";
-            string message = "更新しますか？";
-            string yes = "はい";
-            string no = "いいえ";
-            MobileNativeDialog dialog = new MobileNativeDialog(title, message, yes, no);
-            dialog.OnComplete += OnPopUpClose;
-        }
-        else {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             string title = "There is an update of the application";
             string message = "Do you want to update the application?";
             string yes = "Yes";
             string no = "No";
             MobileNativeDialog dialog = new MobileNativeDialog(title, message, yes, no);
 
+            dialog.OnComplete += OnPopUpClose;   
+        }else {    
+            string title = "「合戦-戦国絵巻-」の最新バージョンがあります";
+            string message = "更新しますか？";
+            string yes = "はい";
+            string no = "いいえ";
+            MobileNativeDialog dialog = new MobileNativeDialog(title, message, yes, no);
             dialog.OnComplete += OnPopUpClose;
         }
 #endif

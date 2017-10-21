@@ -83,7 +83,8 @@ public class SenpouScene : MonoBehaviour {
 		}
 
         //Explanation Modification
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             senpouExp = senpouExp.Replace("ABC", adjSenpouStatus);
 		    senpouExp = senpouExp.Replace("DEF", senpouEach.ToString());
 		    senpouExp = senpouExp.Replace("GHI", senpouRatio.ToString());

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class ItemInfo : MonoBehaviour {
 	
@@ -141,7 +142,8 @@ public class ItemInfo : MonoBehaviour {
                 //Message Text Mod
                 GameObject msgObj = msg.transform.FindChild("text").gameObject;
                 string msgText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     msgText = "My lord, do you want to build " + itemName + " here?";
                 }else {
                     msgText = "御館様、" + itemName + "をこの地に築城なさいますか？";
@@ -166,7 +168,8 @@ public class ItemInfo : MonoBehaviour {
 			if(itemCode == MstItemCode ){
 
 				itemInfoList.Add (itemMst.param[i].itemCode);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     itemInfoList.Add (itemMst.param[i].itemNameEng);
                     itemInfoList.Add(itemMst.param[i].itemExpEng);
                 }else {
@@ -187,11 +190,11 @@ public class ItemInfo : MonoBehaviour {
 		string itemName = "";
 		
 		Entity_item_mst itemMst  = Resources.Load ("Data/item_mst") as Entity_item_mst;
-		
-		for(int i=0; i<itemMst.param.Count; i++){
+        int langId = PlayerPrefs.GetInt("langId");
+        for (int i=0; i<itemMst.param.Count; i++){
 			string MstItemCode = itemMst.param [i].itemCode;
-			if(itemCode == MstItemCode ){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+			if(itemCode == MstItemCode ){                
+                if (langId == 2) {
                     itemName =itemMst.param[i].itemNameEng;
                 }else {
                     itemName = itemMst.param[i].itemName;

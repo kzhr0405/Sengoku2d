@@ -28,7 +28,8 @@ public class SendParam : MonoBehaviour {
 	public string naiseiItem = "";
 	public bool aggressiveFlg = false;
 	public int cyouhouSnbRankId = 0;
-
+    public int senryoku = 0;
+    
 	//Initial Daimyo Select
 	public bool gameClearFlg = false;
 	public bool busyoHaveFlg = false;
@@ -44,9 +45,10 @@ public class SendParam : MonoBehaviour {
 
 		//SE
 		sound = GameObject.Find ("SEController").GetComponent<AudioSource> ();
-		sound.PlayOneShot (sound.clip); 
+		sound.PlayOneShot (sound.clip);
+        int langId = PlayerPrefs.GetInt("langId");
 
-		if (!bakuhuFlg) {
+        if (!bakuhuFlg) {
 
             /*Common Process*/
             if (Application.loadedLevelName != "tutorialMain") {
@@ -150,7 +152,7 @@ public class SendParam : MonoBehaviour {
 						naiseiIcon.transform.localScale = new Vector2 (1, 1);
 
 						string naiseiName = naiseiIconList [i];
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             if (naiseiName == "kb") {
 							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "H";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
@@ -233,7 +235,7 @@ public class SendParam : MonoBehaviour {
 
 				if (clearFlg == false) {
 
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         atkBtn.transform.FindChild("Text").GetComponent<Text>().text = "Attack";
                     }else {
                         atkBtn.transform.FindChild("Text").GetComponent<Text>().text = "侵略";
@@ -255,7 +257,7 @@ public class SendParam : MonoBehaviour {
 						if (cyouhouSnbRankId == 1) {
 							Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = lowColor;
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
                             }else {
                                 shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "下";
@@ -264,7 +266,7 @@ public class SendParam : MonoBehaviour {
                         }else if (cyouhouSnbRankId == 2) {
 							Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = midColor;
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "Mid";
                             }else {
                                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
@@ -272,7 +274,7 @@ public class SendParam : MonoBehaviour {
 						} else if (cyouhouSnbRankId == 3) {
 							Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = highColor;
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "High";
                             }else {
                                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
@@ -308,7 +310,7 @@ public class SendParam : MonoBehaviour {
 					bouryakuhouBtn.GetComponent<Button> ().enabled = false;
 					bouryakuhouBtn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
 
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         atkBtn.transform.FindChild ("Text").GetComponent<Text> ().text = "Develop";
                     }else {
                         atkBtn.transform.FindChild("Text").GetComponent<Text>().text = "内政";
@@ -419,7 +421,7 @@ public class SendParam : MonoBehaviour {
 					btn.GetComponent<SyouninPop> ().occupiedDaimyoName = daimyoName;
 					
 					if (kuniId == 38 || kuniId == 39) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             btn.transform.FindChild("Text").GetComponent<Text>().text = "Sakai";
                             btn.transform.FindChild("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
                             btn.transform.FindChild("Text").GetComponent<Text>().fontSize = 200;
@@ -428,8 +430,8 @@ public class SendParam : MonoBehaviour {
                         }
                         btn.GetComponent<SyouninPop> ().sakaiFlg = true;
 					} else if (kuniId == 58) {
-						
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                        if (langId == 2) {
                             btn.transform.FindChild("Text").GetComponent<Text>().text = "Hakata";
                             btn.transform.FindChild("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
                             btn.transform.FindChild("Text").GetComponent<Text>().fontSize = 200;
@@ -483,14 +485,14 @@ public class SendParam : MonoBehaviour {
 
 				//Once Cleared Flg
 				if (gameClearFlg) {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = " Cleared";
                     }else {
                         GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = "攻略済";
                     }
                         
 				}else {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = " Never Cleared";
                     }else {
                         GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = "未攻略";
@@ -531,7 +533,7 @@ public class SendParam : MonoBehaviour {
 				//Heisyu
 				string heisyu = sts.getHeisyu (daimyoBusyoId);
 				string heisyuKanji = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     if (heisyu == "YR") {
 					    heisyuKanji = "Spear";
 				    } else if (heisyu == "KB") {
@@ -580,7 +582,7 @@ public class SendParam : MonoBehaviour {
 						naiseiIcon.transform.localScale = new Vector2 (1, 1);
 						
 						string naiseiName = naiseiIconList [i];
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             if (naiseiName == "kb") {
                                 naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "H";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
@@ -680,7 +682,7 @@ public class SendParam : MonoBehaviour {
 			toubatsu.transform.FindChild("ToubatsuTarget").transform.FindChild("Daimyo").GetComponent<Image> ().sprite = 
 				Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 toubatsu.transform.FindChild ("Exp").GetComponent<Text> ().text = 
 				"Would you declare " + daimyoName+ " attack order to surrounding parties?";
             }else {

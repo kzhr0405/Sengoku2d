@@ -16,6 +16,7 @@ public class CyouteiPop : MonoBehaviour {
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
 
         if (name != "PassButton") {
 
@@ -276,7 +277,7 @@ public class CyouteiPop : MonoBehaviour {
 						MainStageController mainStage = new MainStageController();
 						mainStage.questExtension();
                         string serihu = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             serihu = "Your good rumor has arrived to the Imperial court. Please lend me your power for the world.\n I assigned you as " + firstKanniName + ".";
                         }else {
                             serihu = "天下静謐のため力を貸してくれ。\n" + firstKanniName + "に任ずるぞ。";
@@ -287,9 +288,9 @@ public class CyouteiPop : MonoBehaviour {
 						//2nd time
 
 						//Serihu
-						string daimyoName = daimyo.getName(myDaimyo);
+						string daimyoName = daimyo.getName(myDaimyo,langId);
                         string serihu = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             serihu = "Lord " + daimyoName + ".\n What do you want?";
                         }else {
                             serihu = "おお、" + daimyoName + "殿。\n此度は何用か。" ;
@@ -301,7 +302,7 @@ public class CyouteiPop : MonoBehaviour {
 
 				}else{
 					audioSources [4].Play ();
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         msg.makeMessage("My lord " + occupiedDaimyoName + " disturbed us to visit coart.");
                     } else {
                         msg.makeMessage("御屋形様、" + occupiedDaimyoName + "めに参内を邪魔されました。");

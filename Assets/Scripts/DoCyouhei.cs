@@ -85,8 +85,9 @@ public class DoCyouhei : MonoBehaviour {
 			//Message
 			string busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                OKtext=busyoName+" recruited new soldiers.";
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
+                OKtext =busyoName+" recruited new soldiers.";
             }else {
                 OKtext = busyoName + "隊にて徴兵を実施しました。";
             }

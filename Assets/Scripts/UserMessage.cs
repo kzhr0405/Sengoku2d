@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NCMB;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class UserMessage : MonoBehaviour {
 
@@ -61,7 +62,8 @@ public class UserMessage : MonoBehaviour {
                 RectTransform scrollTransform = scroll.GetComponent<RectTransform>();
                 scrollTransform.anchoredPosition = new Vector3(0, -40, 0);
 
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     board.transform.FindChild("popText").GetComponent<Text>().text = "Message";
                 }else {
                     board.transform.FindChild("popText").GetComponent<Text>().text = "御連絡";
@@ -100,7 +102,8 @@ public class UserMessage : MonoBehaviour {
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 messageCount = objList.Count;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     foreach (NCMBObject obj in objList) {
                         if(!System.Convert.ToBoolean(obj["stopFlg"])) {
                             messageList.Add(System.Convert.ToString(obj["messageEng"]));

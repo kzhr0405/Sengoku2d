@@ -91,7 +91,8 @@ public class SeiryokuInfo : MonoBehaviour {
 		RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 		popTextTransform.anchoredPosition = new Vector3 (0, 260, 0);
 		popText.name = "popText";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             popText.GetComponent<Text>().text = "Finance";
         }else { 
             popText.GetComponent<Text> ().text = "内政状況";
@@ -315,21 +316,22 @@ public class SeiryokuInfo : MonoBehaviour {
 
 					if (PlayerPrefs.HasKey (jyosyuTemp)) {
 						int jyosyuId = PlayerPrefs.GetInt (jyosyuTemp);
-						StatusGet sts = new StatusGet();
-						int lv = PlayerPrefs.GetInt (jyosyuId.ToString());
-						float naiseiSts = (float)sts.getDfc(jyosyuId,lv);
+                        if(jyosyuId!=0) {
+						    StatusGet sts = new StatusGet();
+						    int lv = PlayerPrefs.GetInt (jyosyuId.ToString());
+						    float naiseiSts = (float)sts.getDfc(jyosyuId,lv);
 						
-						float hpSts = (float)sts.getHp(jyosyuId,lv);
-						float atkSts = (float)sts.getAtk(jyosyuId,lv);
+						    float hpSts = (float)sts.getHp(jyosyuId,lv);
+						    float atkSts = (float)sts.getAtk(jyosyuId,lv);
 
-                        float tempKuniSyogyo = (float)kuniSyogyo;
-                        tempKuniSyogyo = tempKuniSyogyo + (tempKuniSyogyo * naiseiSts / 200);
-                        kuniSyogyo = (int)tempKuniSyogyo;
+                            float tempKuniSyogyo = (float)kuniSyogyo;
+                            tempKuniSyogyo = tempKuniSyogyo + (tempKuniSyogyo * naiseiSts / 200);
+                            kuniSyogyo = (int)tempKuniSyogyo;
 
-                        float tempKuniKozan = (float)kuniKozan;
-                        tempKuniKozan = tempKuniKozan + (tempKuniKozan * naiseiSts / 200);
-                        kuniKozan = (int)tempKuniKozan;
-
+                            float tempKuniKozan = (float)kuniKozan;
+                            tempKuniKozan = tempKuniKozan + (tempKuniKozan * naiseiSts / 200);
+                            kuniKozan = (int)tempKuniKozan;
+                        }
 
                     }
                 }
@@ -420,10 +422,10 @@ public class SeiryokuInfo : MonoBehaviour {
 		GameObject kamon = status.transform.FindChild ("Kamon").gameObject;
 		kamon.GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
-        if (Application.systemLanguage == SystemLanguage.Japanese) {
-            kamon.transform.FindChild ("Value").GetComponent<Text> ().text = GameObject.Find ("DaimyoValue").GetComponent<Text> ().text + "  国状況";
-        }else {
+        if (langId == 2) {
             kamon.transform.FindChild("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + " Status";
+        }else {
+            kamon.transform.FindChild("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + "  国状況";
         }
         //Kuni
         status.transform.FindChild("Shiro").transform.FindChild("No").GetComponent<Text>().text = mySeiryokuList.Count.ToString();
@@ -481,7 +483,8 @@ public class SeiryokuInfo : MonoBehaviour {
         
         string seasonName = "";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             if (seasonId == 1) {
                 seasonName = "Spring";
             }else if (seasonId == 2) {

@@ -93,8 +93,8 @@ public class ShowDaimyoSelect : MonoBehaviour {
 
 
 	public void makeDaimyoSeiryoku(){
-
-		Destroy (fin.gameObject);
+        int langId = PlayerPrefs.GetInt("langId");
+        Destroy (fin.gameObject);
 		
 		string kuniMapPath = "Prefabs/clearOrGameOver/KuniMap";
 		GameObject KuniMap = Instantiate (Resources.Load (kuniMapPath)) as GameObject;
@@ -160,13 +160,13 @@ public class ShowDaimyoSelect : MonoBehaviour {
 			kuni.transform.SetParent (kuniIconView.transform);
 			kuni.name = kuniId.ToString ();
 			kuni.GetComponent<SendParam> ().kuniId = kuniId;
-			kuni.GetComponent<SendParam> ().kuniName = kuniScript.getKuniName(kuniId);
+			kuni.GetComponent<SendParam> ().kuniName = kuniScript.getKuniName(kuniId,langId);
 			kuni.transform.localScale = new Vector2 (1, 1);
 			kuni.GetComponent<SendParam> ().naiseiItem = kuniMst.param [i].naisei;
 			
 			//Seiryoku Handling
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);			
-			string daimyoName = daimyoScript.getName(daimyoId);
+			string daimyoName = daimyoScript.getName(daimyoId,langId);
 			int daimyoBusyoIdTemp = daimyoMst.param [daimyoId - 1].busyoId;
 			kuni.GetComponent<SendParam> ().daimyoId = daimyoId;
 			kuni.GetComponent<SendParam> ().daimyoName = daimyoName;

@@ -168,7 +168,8 @@ public class EnemyEventHandler : MonoBehaviour {
         float toLocationY = kuniMap.transform.FindChild(toStageName).transform.localPosition.y;
 
         string commentPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             commentPath = "Prefabs/Map/stage/spriteEventCommentEng";
         }else {
             commentPath = "Prefabs/Map/stage/spriteEventComment";
@@ -179,7 +180,7 @@ public class EnemyEventHandler : MonoBehaviour {
         if(!newFlg) {
             int rdmId = UnityEngine.Random.Range(1, 4);
             string rdmTxt = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 if (rdmId==1) {
                     rdmTxt = "Sic 'em!";
                 }else if(rdmId==2) {

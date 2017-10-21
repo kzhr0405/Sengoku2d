@@ -20,8 +20,13 @@ public class Timer : MonoBehaviour {
 	public string playerEngunList = "";
 	public string enemyEngunList = "";
 
-	//Cyouryaku
-	public bool cyouryakuFlg;
+    //Kokunin
+    public bool kokuninFlg = false;
+    public float kokuninTime = 170.0f;
+    public string enemyKokuninList = "";
+
+    //Cyouryaku
+    public bool cyouryakuFlg;
 	public int cyouryakuHeiQty = 0;
 	public float cyouryakuTime = 0; //165-175
 	public string cyouryakuTmp = "";
@@ -67,13 +72,19 @@ public class Timer : MonoBehaviour {
 			playerEngunList = PlayerPrefs.GetString("tempKyoutouList");
 		}
 		if (playerEngunList != null && playerEngunList != "") {
-			playerEngunFlg = true;
+            if (Application.loadedLevelName != "tutorialKassen") {
+                engunTime = UnityEngine.Random.Range(150f, 175f);
+            }else {
+                engunTime = 170f;
+            }
+            playerEngunFlg = true;
 		}
-
+        
 		//Enemy Engun Check
 		enemyEngunList = PlayerPrefs.GetString("enemyEngunList");
 		if (enemyEngunList != null && enemyEngunList != "") {
-			enemyEngunFlg = true;
+            engunTime = UnityEngine.Random.Range(150f, 175f);
+            enemyEngunFlg = true;
 		}
 
 
@@ -89,6 +100,17 @@ public class Timer : MonoBehaviour {
 		}
         isAttackedFlg = PlayerPrefs.GetBool("isAttackedFlg");
 
+        //ikki Check
+        if (isAttackedFlg) {
+            string kokuninTmp = "kokunin" + activeKuniId;
+            enemyKokuninList = PlayerPrefs.GetString(kokuninTmp);
+            PlayerPrefs.DeleteKey(kokuninTmp);
+            if (enemyKokuninList != null && enemyKokuninList !=  "") {
+                kokuninFlg = true;
+                kokuninTime = UnityEngine.Random.Range(160f, 175f);
+            }
+        }
+        
         //Enemy Saku
         for (int i = 0; i < 12; i++) {
             EnemySakuTimerList.Add(UnityEngine.Random.Range(140, 175));
@@ -123,11 +145,21 @@ public class Timer : MonoBehaviour {
 						        playerEngunInstance(playerEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
 					        }
 					        if(enemyEngunFlg){
-						        enemyEngunInstance(enemyEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio);
+						        enemyEngunInstance(enemyEngunList,mntMinusRatio,seaMinusRatio,rainMinusRatio,snowMinusRatio, false);
 					        }
 				        }
 			        }
-
+                    //kokunin
+                    if(kokuninFlg) {
+                        if (timer < kokuninTime) {
+                            Debug.Log(enemyKokuninList);
+                            if(enemyKokuninList != "") {
+                                enemyEngunInstance(enemyKokuninList, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, true);
+                            }
+                            kokuninFlg = false;
+                        }
+                    }
+                    
 			        //cyouryaku
 			        if (!cyouryakuFlg) {
 				        if (timer < cyouryakuTime) {
@@ -182,7 +214,8 @@ public class Timer : MonoBehaviour {
 
 					        //Chane word
 					        Color color = Color.blue;
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            int langId = PlayerPrefs.GetInt("langId");
+                            if (langId == 2) {                               
                                 GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
                             }else {
                                 GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
@@ -257,7 +290,8 @@ public class Timer : MonoBehaviour {
 					            makimonoObj.transform.localScale = new Vector2(1,1);
 					            makimonoObj.transform.localPosition = new Vector2(0,-135);
 
-                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                int langId = PlayerPrefs.GetInt("langId");
+                                if (langId == 2) {
                                     GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
                                 }else {
                                     GameObject.Find("winlose").GetComponent<TextMesh>().text = "時勝切れ";
@@ -310,7 +344,7 @@ public class Timer : MonoBehaviour {
 					            bttnListObj.transform.localScale = new Vector2 (1, 1);		
 					            bttnListObj.transform.localPosition = new Vector2 (0,0);
 
-                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                if (langId == 2) {
                                     itemListObj.transform.FindChild ("stageName").transform.FindChild("stageNameValue").GetComponent<Text> ().text = stageName + " Succeed";
                                 }else {
                                     itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = stageName + "成功";
@@ -513,7 +547,7 @@ public class Timer : MonoBehaviour {
 	}
 
 
-	public void enemyEngunInstance(string enemyEngunList,float mntMinusRatio,float seaMinusRatio,float rainMinusRatio,float snowMinusRatio){
+	public void enemyEngunInstance(string enemyEngunList,float mntMinusRatio,float seaMinusRatio,float rainMinusRatio,float snowMinusRatio, bool kokuninFlg){
 		
 		List<string> daimyoEnguniList = new List<string> ();
 		char[] delimiterChars = {':'};
@@ -629,16 +663,17 @@ public class Timer : MonoBehaviour {
                     BusyoInfoGet busyoScript = new BusyoInfoGet();
                     int shipId = busyoScript.getShipId(busyoId);
                     inst.makeKaisenInstance(mapId, busyoId, shipId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray);
-                }
-
-                
+                }                
 			}
 		}
 		Message msg = new Message ();
-		msg.makeKassenMessage (msg.getMessage(131));
-		
-		
-	}
+        if(kokuninFlg) {
+            msg.makeKassenMessage(msg.getMessage(162));
+        }else { 
+    		msg.makeKassenMessage (msg.getMessage(131));
+        }
+
+    }
 
 
 	public void cyouryaku(int heiQty, string cyouryakuTmp){

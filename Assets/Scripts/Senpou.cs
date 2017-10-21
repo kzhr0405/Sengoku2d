@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class Senpou : MonoBehaviour {
 
     Entity_senpou_mst senpouMst = Resources.Load("Data/senpou_mst") as Entity_senpou_mst;
     public string getName (int senpouId) {
         string senpouName = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             senpouName = senpouMst.param[senpouId - 1].nameEng;
         }else {
             senpouName = senpouMst.param[senpouId - 1].name;
@@ -21,7 +23,8 @@ public class Senpou : MonoBehaviour {
         int ratio = (int)senpouMst.param[senpouId - 1].ratio;
         int term = (int)senpouMst.param[senpouId - 1].term;
         string senpouExp = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             senpouExp = senpouMst.param[senpouId - 1].effectionEng;
             senpouExp = senpouExp.Replace("ABC", senpouStatus.ToString());
             senpouExp = senpouExp.Replace("DEF", each.ToString());

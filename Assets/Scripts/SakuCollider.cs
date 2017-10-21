@@ -46,7 +46,8 @@ public class SakuCollider : MonoBehaviour {
                 ch_prefab.transform.position = new Vector2(vect.x, vect.y);
 
                 string dtlPath = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
                 }else {
                     dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
@@ -59,7 +60,7 @@ public class SakuCollider : MonoBehaviour {
 
                 //Name
                 GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     nameLabel.GetComponent<TextMesh>().text = "Western Ship";
                 }else {
                     nameLabel.GetComponent<TextMesh>().text = "南蛮船";
@@ -141,8 +142,9 @@ public class SakuCollider : MonoBehaviour {
                     }
 
                     //View
-                    string text = "";                                
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    string text = "";
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         text = "ATK " + sakuEffect + "% ⇡";
                     }else {
                         text = "武勇 " + sakuEffect + "% ⇡";
@@ -201,7 +203,8 @@ public class SakuCollider : MonoBehaviour {
 
                     //View
                     string text = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         text = "HP " + popup + " ⇡";
                     }else {
                         text = "兵力 " + popup + " ⇡";
@@ -249,7 +252,8 @@ public class SakuCollider : MonoBehaviour {
 
             //View
             string text = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 text = "HP " + temp + " ⇣";
             }else {
                 text = "兵力 " + temp + " ⇣";
@@ -291,7 +295,8 @@ public class SakuCollider : MonoBehaviour {
 			}
             //View       
             string text = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 text = "HP " + temp + " ⇣";
             }else {
                 text = "兵力 " + temp + " ⇣";
@@ -326,7 +331,8 @@ public class SakuCollider : MonoBehaviour {
 			    }
                 //View 
                 string text = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     text = "HP " + temp + " ⇣";
                 }else {
                     text = "兵力 " + temp + " ⇣";
@@ -375,19 +381,20 @@ public class SakuCollider : MonoBehaviour {
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
 
-                        if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            if (successFlg) {
-							    Destroy (col.gameObject);
-							    damageObj.GetComponent<TextMesh> ().text = "撃破";
-						    } else {
-							    damageObj.GetComponent<TextMesh> ().text = "失敗";
-						    }
-                        }else {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             if (successFlg) {
                                 Destroy(col.gameObject);
                                 damageObj.GetComponent<TextMesh>().text = "Destroied";
                             }else {
                                 damageObj.GetComponent<TextMesh>().text = "Failed";
+                            }
+                        }else {                            
+                            if (successFlg) {
+                                Destroy(col.gameObject);
+                                damageObj.GetComponent<TextMesh>().text = "撃破";
+                            }else {
+                                damageObj.GetComponent<TextMesh>().text = "失敗";
                             }
                         }
 					} else if (sakuId == 13) {
@@ -412,10 +419,11 @@ public class SakuCollider : MonoBehaviour {
 						damageObj.transform.SetParent (gameObject.transform);
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
-                        if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            damageObj.GetComponent<TextMesh> ().text = "撃破" + sakuEffectRandom + "部隊";
-                        }else {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffectRandom + " unit";
+                        }else {
+                            damageObj.GetComponent<TextMesh>().text = "撃破" + sakuEffectRandom + "部隊";
                         }
 
 					} else if (sakuId == 15) {
@@ -439,10 +447,11 @@ public class SakuCollider : MonoBehaviour {
 						damageObj.transform.SetParent (gameObject.transform);
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
-                        if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            damageObj.GetComponent<TextMesh> ().text = "寝返" + sakuEffectRandom + "部隊";
-                        }else {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             damageObj.GetComponent<TextMesh>().text = sakuEffectRandom + " unit betrayed";
+                        }else {
+                            damageObj.GetComponent<TextMesh>().text = "寝返" + sakuEffectRandom + "部隊";
                         }
 					}
 				}
@@ -454,7 +463,8 @@ public class SakuCollider : MonoBehaviour {
                         //Ittouryu
                         float baseHP = col.GetComponent<PlayerHP>().life;
 
-                        int temp = (int)(baseHP * sakuEffect) / 100;                        
+                        int sakuEffectRandom = UnityEngine.Random.Range(5, sakuEffect + 1);
+                        int temp = (int)(baseHP * sakuEffectRandom) / 100;
                         col.gameObject.GetComponent<PlayerHP>().DirectDamage(temp);
 
                         string damagePath = "Prefabs/PreKassen/ArialMessage";
@@ -474,25 +484,27 @@ public class SakuCollider : MonoBehaviour {
                         damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
                         damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
 
-                        if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            if (successFlg) {
-                                Destroy(col.gameObject);
-                                damageObj.GetComponent<TextMesh>().text = "撃破";
-                            }else {
-                                damageObj.GetComponent<TextMesh>().text = "失敗";
-                            }
-                        }else {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             if (successFlg) {
                                 Destroy(col.gameObject);
                                 damageObj.GetComponent<TextMesh>().text = "Destroied";
                             }else {
                                 damageObj.GetComponent<TextMesh>().text = "Failed";
                             }
+                        }else {
+                            if (successFlg) {
+                                Destroy(col.gameObject);
+                                damageObj.GetComponent<TextMesh>().text = "撃破";
+                            }else {
+                                damageObj.GetComponent<TextMesh>().text = "失敗";
+                            }
                         }
                     }
                     else if (sakuId == 13) {
                         //kodachi
                         int count = 0;
+                        int sakuEffectRandom = UnityEngine.Random.Range(1, sakuEffect + 1);
                         foreach (Transform child in col.transform) {
                             if (child.tag == "PlayerChild") {
                                 child.transform.DetachChildren();
@@ -500,7 +512,7 @@ public class SakuCollider : MonoBehaviour {
                                 col.GetComponent<PlayerHP>().childQty--;
 
                                 count = count + 1;
-                                if (count >= sakuEffect) {
+                                if (count >= sakuEffectRandom) {
                                     break;
                                 }
                             }
@@ -511,24 +523,25 @@ public class SakuCollider : MonoBehaviour {
                         damageObj.transform.SetParent(gameObject.transform);
                         damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
                         damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
-                        if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            damageObj.GetComponent<TextMesh>().text = "撃破" + sakuEffect + "部隊";
-                        }
-                        else {
-                            damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffect + " unit";
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
+                            damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffectRandom + " unit";
+                        }else {
+                            damageObj.GetComponent<TextMesh>().text = "撃破" + sakuEffectRandom + "部隊";
                         }
 
                     }else if (sakuId == 15) {
                         //yagyu shingakeryu                        
                         int count = 0;
                         SenpouBetray betrayScript = new SenpouBetray();
+                        int sakuEffectRandom = UnityEngine.Random.Range(1, sakuEffect + 1);
                         foreach (Transform child in col.transform) {
                             if (child.tag == "PlayerChild") {
                                 betrayScript.betrayPlayer(child.gameObject);
                                 col.GetComponent<PlayerHP>().childQty--;
 
                                 count = count + 1;
-                                if (count >= sakuEffect) {
+                                if (count >= sakuEffectRandom) {
                                     break;
                                 }
                             }
@@ -538,11 +551,11 @@ public class SakuCollider : MonoBehaviour {
                         damageObj.transform.SetParent(gameObject.transform);
                         damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
                         damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
-                        if (Application.systemLanguage == SystemLanguage.Japanese) {
-                            damageObj.GetComponent<TextMesh>().text = "寝返" + sakuEffect + "部隊";
-                        }
-                        else {
-                            damageObj.GetComponent<TextMesh>().text = sakuEffect + " unit betrayed";
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
+                            damageObj.GetComponent<TextMesh>().text = sakuEffectRandom + " unit betrayed";
+                        }else {
+                            damageObj.GetComponent<TextMesh>().text = "寝返" + sakuEffectRandom + "部隊";
                         }
                     }
                 }

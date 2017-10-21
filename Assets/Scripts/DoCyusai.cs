@@ -37,7 +37,8 @@ public class DoCyusai : MonoBehaviour {
 			GameObject.Find("bakuhuReturn").GetComponent<BakuhuMenuReturn>().OnClick();
 			Message msg = new Message ();
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 OKtext = "Friendship between " + daimyoName + " and " + daimyoName2 + " increased " + upYukoudo.ToString() + " point.";
             }else {
                 OKtext = daimyoName + "殿と" + daimyoName2 + "殿の友好関係が" + upYukoudo.ToString() + "上昇しましたぞ。";

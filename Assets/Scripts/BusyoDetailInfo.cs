@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class BusyoDetailInfo : MonoBehaviour {
 
@@ -20,6 +21,8 @@ public class BusyoDetailInfo : MonoBehaviour {
 
     public void OnClick() {
 
+        int langId = PlayerPrefs.GetInt("langId");
+
         if (Application.loadedLevelName != "tutorialHyojyo") {
             //Get Senryoku
             Senryoku Senryoku = null;
@@ -28,7 +31,7 @@ public class BusyoDetailInfo : MonoBehaviour {
                 busyoId = int.Parse(child.name);
             }
             BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-            busyoName = BusyoInfoGet.getName(busyoId);
+            busyoName = BusyoInfoGet.getName(busyoId, langId);
             hp = Senryoku.totalHp;
             atk = Senryoku.totalAtk;
             dfc = Senryoku.totalDfc;
@@ -81,7 +84,7 @@ public class BusyoDetailInfo : MonoBehaviour {
             int shipId = kaisenScript.getShipSprite(ShipObj, busyoId);
             ShipObj.transform.localPosition = new Vector3(-10, -15, 0);
             ShipObj.transform.localScale = new Vector2(0.2f, 0.2f);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 if (shipId == 1) {
                     ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
                 }
@@ -152,7 +155,7 @@ public class BusyoDetailInfo : MonoBehaviour {
                 }
             }
             //Explanation Modification
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 senpouExp = senpouExp.Replace("ABC", adjSenpouStatus);
                 senpouExp = senpouExp.Replace("DEF", senpouEach.ToString());
                 senpouExp = senpouExp.Replace("GHI", senpouRatio.ToString());

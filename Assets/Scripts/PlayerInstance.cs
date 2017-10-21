@@ -10,9 +10,10 @@ public class PlayerInstance : MonoBehaviour {
 
 	public int makeInstance(int busyoId, int mapId, int hp, int atk, int dfc,int spd, ArrayList senpouArray, string busyoName, int soudaisyo, int boubi){
         int totalHeiryoku = 0;
+        int langId = PlayerPrefs.GetInt("langId");
 
-		/*Parent Instantiate*/
-		string path = "Prefabs/Player/" + busyoId;
+        /*Parent Instantiate*/
+        string path = "Prefabs/Player/" + busyoId;
 		GameObject prefab = Instantiate(Resources.Load (path)) as GameObject;
 		prefab.name = busyoId.ToString();
 
@@ -33,7 +34,7 @@ public class PlayerInstance : MonoBehaviour {
             //Serihu
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;
             string serihu = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
@@ -88,8 +89,8 @@ public class PlayerInstance : MonoBehaviour {
 
 
         //Busyo Detail Info [Name & HP Bar]
-        string dtlPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        string dtlPath = "";        
+        if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
@@ -457,6 +458,7 @@ public class PlayerInstance : MonoBehaviour {
         //Senpou Script Parametor
         StatusGet senpouScript = new StatusGet();
         bool onlySeaFlg = senpouScript.getSenpouOnlySeaFlg((int)senpouArray[0]);
+        int langId = PlayerPrefs.GetInt("langId");
 
         if (!onlySeaFlg) {
             prefab.GetComponent<SenpouController>().senpouId = (int)senpouArray[0];
@@ -471,7 +473,8 @@ public class PlayerInstance : MonoBehaviour {
             //Serihu
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;
             string serihu = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            
+            if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
@@ -494,7 +497,7 @@ public class PlayerInstance : MonoBehaviour {
 
         //Busyo Detail Info [Name & HP Bar]
         string dtlPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
@@ -706,6 +709,7 @@ public class PlayerInstance : MonoBehaviour {
         string path = "Prefabs/Kaisen/" + shipId;
         GameObject prefab = Instantiate(Resources.Load(path)) as GameObject;
         prefab.name = busyoId.ToString();
+        int langId = PlayerPrefs.GetInt("langId");
 
         //Senpou Script Parametor
         StatusGet senpouScript = new StatusGet();
@@ -722,8 +726,8 @@ public class PlayerInstance : MonoBehaviour {
             prefab.GetComponent<SenpouController>().senpouLv = (int)senpouArray[8];
             //Serihu
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;
-            string serihu = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            string serihu = "";            
+            if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
@@ -781,7 +785,7 @@ public class PlayerInstance : MonoBehaviour {
 
         //Busyo Detail Info [Name & HP Bar]
         string dtlPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
@@ -794,7 +798,7 @@ public class PlayerInstance : MonoBehaviour {
         //Name
         GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
         nameLabel.GetComponent<TextMesh>().text = busyoName;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             nameLabel.GetComponent<TextMesh>().fontSize = 40;
         }
         //Location by map id

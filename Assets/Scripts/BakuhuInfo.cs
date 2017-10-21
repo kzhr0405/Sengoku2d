@@ -18,18 +18,21 @@ public class BakuhuInfo : MonoBehaviour {
 		back.transform.localScale = new Vector2 (1, 1);
 		RectTransform backTransform = back.GetComponent<RectTransform> ();
 		backTransform.anchoredPosition = new Vector3 (0, 0, 0);
+        back.transform.SetSiblingIndex(1);
 
-		//Popup Screen
-		string popupPath = "Prefabs/Bakuhu/board";
+        //Popup Screen
+        string popupPath = "Prefabs/Bakuhu/board";
 		GameObject popup = Instantiate (Resources.Load (popupPath)) as GameObject;
 		popup.transform.SetParent(mapObj.transform);
 		popup.transform.localScale = new Vector2 (1, 1);
 		RectTransform popupTransform = popup.GetComponent<RectTransform> ();
 		popupTransform.anchoredPosition = new Vector3 (0, 0, 0);
 		popup.name = "board";
+        popup.transform.SetSiblingIndex(2);
 
-		//Param
-		GameObject scrollObj = popup.transform.FindChild("ScrollView").gameObject;
+
+        //Param
+        GameObject scrollObj = popup.transform.FindChild("ScrollView").gameObject;
 		GameObject contentObj = scrollObj.transform.FindChild ("Content").gameObject;
 
 		foreach(Transform btnObj in contentObj.transform){
@@ -51,15 +54,16 @@ public class BakuhuInfo : MonoBehaviour {
 	}
 
 	public void updateAtkOrderBtnStatus(GameObject contentObj){
-		int daimyoId = PlayerPrefs.GetInt ("bakuhuTobatsuDaimyoId");
+        int langId = PlayerPrefs.GetInt("langId");
+        int daimyoId = PlayerPrefs.GetInt ("bakuhuTobatsuDaimyoId");
 		if (daimyoId != null && daimyoId != 0) {
 			GameObject atkBtn = contentObj.transform.FindChild ("AtkOrderBtn").gameObject;
 			atkBtn.GetComponent<Button> ().enabled = false;
 			atkBtn.GetComponent<Image> ().color = new Color (120f / 255f, 120f / 255f, 120f / 255f, 150f / 255f);
 			atkBtn.transform.FindChild ("HyourouIcon").gameObject.SetActive (false);
 			Daimyo daimyo = new Daimyo ();
-			string toubatsuDaiymoName = daimyo.getName (daimyoId);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+			string toubatsuDaiymoName = daimyo.getName (daimyoId,langId);
+            if (langId==2) {
                 atkBtn.transform.FindChild ("Exp").GetComponent<Text> ().text = "You've already issued attack order to " + toubatsuDaiymoName + " in this season.\n You can order for 1 time in a season.";
             }else {
                 atkBtn.transform.FindChild("Exp").GetComponent<Text>().text = "今季は既に" + toubatsuDaiymoName + "に討伐令が出ています。\n討伐令は季節に一回のみ実施可能です。";
@@ -69,8 +73,9 @@ public class BakuhuInfo : MonoBehaviour {
 
 
 	public void kessen(GameObject contentObj){
-		//disable
-		contentObj.transform.FindChild ("SobujiKessenBtn").gameObject.SetActive(false);
+        //disable
+        int langId = PlayerPrefs.GetInt("langId");
+        contentObj.transform.FindChild ("SobujiKessenBtn").gameObject.SetActive(false);
 		contentObj.transform.FindChild ("AtkOrderBtn").gameObject.SetActive(false);
 		contentObj.transform.FindChild ("DfcOrderBtn").gameObject.SetActive(false);
 		contentObj.transform.FindChild ("RelationshipBtn").gameObject.SetActive(false);
@@ -168,7 +173,7 @@ public class BakuhuInfo : MonoBehaviour {
                     if(openDaimyoList.Contains(daimyoId)) {
 
 					    checkedDaimyoId.Add (daimyoId);
-					    string daimyoName = daimyo.getName (daimyoId);
+					    string daimyoName = daimyo.getName (daimyoId,langId);
 					    int busyoId = daimyo.getDaimyoBusyoId (daimyoId);
 					    int kuniId = i + 1;
 
@@ -176,7 +181,7 @@ public class BakuhuInfo : MonoBehaviour {
 					    slotObj.transform.SetParent(contentObj.transform);
 					    slotObj.transform.localScale = new Vector2 (1,1);
 					    slotObj.name = "KessenBtn";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId==2) {
                             slotObj.transform.FindChild ("Title").GetComponent<Text> ().text = daimyoName + "\n Final War";
                         }else {
                             slotObj.transform.FindChild("Title").GetComponent<Text>().text = daimyoName + "\n決戦";

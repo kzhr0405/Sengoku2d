@@ -79,8 +79,9 @@ public class DoKunren : MonoBehaviour {
 			//Message
 			string busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                OKtext=busyoName+" trained their soldiers.";
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
+                OKtext =busyoName+" trained their soldiers.";
             }else {
                 OKtext = busyoName + "隊にて訓練を実施しました。";
             }

@@ -110,7 +110,8 @@ public class ShiroAttack : MonoBehaviour {
         GameObject commentObj = kassenEventScript.MakeCommentObj(enemyDaimyoId, kuniId);
         Stage stageScript = new Stage();
         string stageName = stageScript.getStageName(kuniId, toStageId);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             commentObj.transform.FindChild("SerihuText").GetComponent<Text>().text = "Hahaha, I got " + stageName + " castle！";
         }else {
             commentObj.transform.FindChild("SerihuText").GetComponent<Text>().text = "ははは、" + stageName + "を盗り返したぞ！";

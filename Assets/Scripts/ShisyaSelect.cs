@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class ShisyaSelect : MonoBehaviour {
 
@@ -48,6 +49,7 @@ public class ShisyaSelect : MonoBehaviour {
 		CyouteiSelectScrollView = GameObject.Find("CyouteiSelectScrollView").gameObject;
 		SyouninSelectScrollView = GameObject.Find("SyouninSelectScrollView").gameObject;
         RequestBuyItem = GameObject.Find("RequestBuyItem").gameObject;
+        
     }
 
 
@@ -97,23 +99,8 @@ public class ShisyaSelect : MonoBehaviour {
         }
         
 		//Yes/No Button
-		if (shisyaId != 6) {
-			Color OKbtnColor = new Color (255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
-			Color OKtxtColor = new Color (190f / 255f, 190f / 255f, 0f / 255f, 255f / 255f);
-			GameObject ysBtn = GameObject.Find ("YesButton").gameObject;
-			ysBtn.GetComponent<Button> ().enabled = true;
-			ysBtn.GetComponent<Image> ().color = OKbtnColor;
-			ysBtn.transform.FindChild ("Text").GetComponent<Text> ().color = OKtxtColor;
-
-			GameObject noBtn = GameObject.Find ("NoButton").gameObject;
-			noBtn.GetComponent<Button> ().enabled = true;
-			noBtn.GetComponent<Image> ().color = OKbtnColor;
-			noBtn.transform.FindChild ("Text").GetComponent<Text> ().color = OKtxtColor;
-
-			ysBtn.GetComponent<DoShisya> ().slot = gameObject;
-			noBtn.GetComponent<DoShisya> ().slot = gameObject;
-		} else {
-			//Doumei Haki
+        if(shisyaId==6 || shisyaId == 22) {
+            //Doumei Haki or Surrender
 			//disable button
 			Color OKbtnColor = new Color (255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
 			Color OKtxtColor = new Color (190f / 255f, 190f / 255f, 0f / 255f, 255f / 255f);
@@ -130,7 +117,23 @@ public class ShisyaSelect : MonoBehaviour {
 
 			ysBtn.GetComponent<DoShisya> ().slot = gameObject;
 			noBtn.GetComponent<DoShisya> ().slot = gameObject;
-		}
+		
+        } else {
+            Color OKbtnColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+            Color OKtxtColor = new Color(190f / 255f, 190f / 255f, 0f / 255f, 255f / 255f);
+            GameObject ysBtn = GameObject.Find("YesButton").gameObject;
+            ysBtn.GetComponent<Button>().enabled = true;
+            ysBtn.GetComponent<Image>().color = OKbtnColor;
+            ysBtn.transform.FindChild("Text").GetComponent<Text>().color = OKtxtColor;
+
+            GameObject noBtn = GameObject.Find("NoButton").gameObject;
+            noBtn.GetComponent<Button>().enabled = true;
+            noBtn.GetComponent<Image>().color = OKbtnColor;
+            noBtn.transform.FindChild("Text").GetComponent<Text>().color = OKtxtColor;
+
+            ysBtn.GetComponent<DoShisya>().slot = gameObject;
+            noBtn.GetComponent<DoShisya>().slot = gameObject;
+        }
 	}
 
 	public void reqruiedItemView(int shisyaId){
@@ -299,7 +302,5 @@ public class ShisyaSelect : MonoBehaviour {
 
 
 	}
-
-
-
+    
 }

@@ -60,8 +60,9 @@ public class DoSell : MonoBehaviour {
 			//Msg
 			Message msg = new Message();
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                OKtext= "Sold " + sellQty.ToString() + " " + kahouName + ".";
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
+                OKtext = "Sold " + sellQty.ToString() + " " + kahouName + ".";
             }else {
                 OKtext = kahouName + "を" + sellQty.ToString() + "個売却致しました。";
             }
@@ -417,7 +418,8 @@ public class DoSell : MonoBehaviour {
 			//Msg
 			Message msg = new Message();
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 OKtext = "Sold " + sellQty.ToString() + " " + kahouName  + ".";
             } else {
                 OKtext = kahouName + "を" + sellQty.ToString() + "個売却致しました。";

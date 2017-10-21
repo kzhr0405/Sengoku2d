@@ -16,6 +16,7 @@ public class EnemyInstance : MonoBehaviour {
         bool torideFlg = false;
         GameObject buildingObj = null;
         bool pvpFlg = GameObject.Find("GameScene").GetComponent<GameScene>().pvpFlg;
+        int langId = PlayerPrefs.GetInt("langId");
 
         if (!pvpFlg) {
             
@@ -128,7 +129,7 @@ public class EnemyInstance : MonoBehaviour {
             //Serihu
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;
             string serihu = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
@@ -139,8 +140,8 @@ public class EnemyInstance : MonoBehaviour {
         }
         
 		//Busyo Detail Info [Name & HP Bar]
-        string dtlPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        string dtlPath = "";        
+        if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
@@ -620,6 +621,7 @@ public class EnemyInstance : MonoBehaviour {
 	}
 
     public void makeKaisenInstance(int mapId, int busyoId, int shipId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc, int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray) {
+        int langId = PlayerPrefs.GetInt("langId");
 
         string path = "Prefabs/Kaisen/" + shipId;
         GameObject prefab = Instantiate(Resources.Load(path)) as GameObject;
@@ -646,7 +648,7 @@ public class EnemyInstance : MonoBehaviour {
             //Serihu
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;
             string serihu = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
@@ -664,8 +666,8 @@ public class EnemyInstance : MonoBehaviour {
 
 
         //Busyo Detail Info [Name & HP Bar]
-        string dtlPath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        string dtlPath = "";        
+        if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
@@ -679,7 +681,7 @@ public class EnemyInstance : MonoBehaviour {
         //Name
         GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
         nameLabel.GetComponent<TextMesh>().text = busyoName;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if(langId == 2) {
             nameLabel.GetComponent<TextMesh>().fontSize = 40;
         }
         //Location by map id

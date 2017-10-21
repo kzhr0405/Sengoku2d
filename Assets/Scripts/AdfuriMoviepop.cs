@@ -130,30 +130,31 @@ public class AdfuriMoviepop : MonoBehaviour {
                     string atariMsg = "";
                     float rankPercent = UnityEngine.Random.value;
                     rankPercent = rankPercent * 100;
+                    int langId = PlayerPrefs.GetInt("langId");
                     if (rankPercent <= 10) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             atariMsg = "My lord, Big Hit! \n";
                         }else {
                             atariMsg = "大当たりです。\n";
                         }
                         busyoDamaQty = UnityEngine.Random.Range(20, 51); //20-50
                     }else if (10 < rankPercent && rankPercent <= 40) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             atariMsg = "My lord, Mid Hit. \n";
                         }else {
                             atariMsg = "中当たりです。\n";
                         }
                         busyoDamaQty = UnityEngine.Random.Range(10, 21); //10-20
                     }else if (40 < rankPercent) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             atariMsg = "My lord, Low Hit. \n";
                         }else {
                             atariMsg = "小当たりです。\n";
                         }
                         busyoDamaQty = UnityEngine.Random.Range(5, 11); //5-10
                     }
-                
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         text = atariMsg + "You got " + busyoDamaQty + " stone.";
                     }else {
                         text = atariMsg + "武将珠を" + busyoDamaQty + "個手に入れましたぞ。";
@@ -171,8 +172,9 @@ public class AdfuriMoviepop : MonoBehaviour {
                     string atariMsg = "";
                     float rankPercent = UnityEngine.Random.value;
                     rankPercent = rankPercent * 100;
+                    int langId = PlayerPrefs.GetInt("langId");
                     if (rankPercent <= 10) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             atariMsg = "My lord, Big Hit! \n";
                         }
                         else {
@@ -181,7 +183,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                         hyourouQty = UnityEngine.Random.Range(30, 51); //30-50
                     }
                     else if (10 < rankPercent && rankPercent <= 40) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             atariMsg = "My lord, Mid Hit. \n";
                         }
                         else {
@@ -190,7 +192,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                         hyourouQty = UnityEngine.Random.Range(20, 31); //20-30
                     }
                     else if (40 < rankPercent) {
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             atariMsg = "My lord, Low Hit. \n";
                         }
                         else {
@@ -199,7 +201,7 @@ public class AdfuriMoviepop : MonoBehaviour {
                         hyourouQty = UnityEngine.Random.Range(10, 21); //10-20
                     }
 
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         text = atariMsg + "You got " + hyourouQty + " stamina.";
                     }else {
                         text = atariMsg + "兵糧を" + hyourouQty + "個手に入れましたぞ。";

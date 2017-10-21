@@ -46,7 +46,8 @@ public class ShowStageDtl : MonoBehaviour {
 
 		//Show Detail on Bottom
 		labelDataStage = GameObject.Find ("Data_stage").GetComponent<Text> ();
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             labelDataStage.text = stageName + "\n" + "Castle";
         }else {
             labelDataStage.text = stageName + "の戦い";

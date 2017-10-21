@@ -257,7 +257,8 @@ public class SakuMaker : MonoBehaviour {
 			kengou.name = "kengou";
 
             string dtlPath = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
             }else {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
@@ -345,7 +346,8 @@ public class SakuMaker : MonoBehaviour {
 			audioSources [7].Play ();
 
             //Hikita
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 bool kengouFlg1 = CheckByProbability(sakuEffect);
 			    if (kengouFlg1) {
 				    makeKengou(100, "Hikita");
@@ -431,14 +433,15 @@ public class SakuMaker : MonoBehaviour {
 		kengou.name = "kengou";
 
         string dtlPath = "";
-        if(playerFlg) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (playerFlg) {
+            if (langId == 2) {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
             }else {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
             }
         }else {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
             }else {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
@@ -497,8 +500,8 @@ public class SakuMaker : MonoBehaviour {
 		GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
 		damageObj.transform.SetParent (gameObject.transform);
 		damageObj.transform.position = new Vector3 (kengou.transform.position.x, kengou.transform.position.y, 0);
-		damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+		damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);        
+        if (langId == 2) {
             damageObj.GetComponent<TextMesh> ().text = kengouName + " here";
         }else {
             damageObj.GetComponent<TextMesh>().text = kengouName + "推参";

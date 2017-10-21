@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class KouekiMenu : MonoBehaviour {
 
@@ -127,7 +128,9 @@ public class KouekiMenu : MonoBehaviour {
 		Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 		
 		int rank = getItemRank(kuniQty);
-		for(int i=1;i<=rank;i++){
+        int langId = PlayerPrefs.GetInt("langId");
+        
+        for (int i=1;i<=rank;i++){
 			string slotPath = "Prefabs/Map/gaikou/KouekiSlot";
 			GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
 			slot.transform.SetParent (content.transform);
@@ -140,20 +143,20 @@ public class KouekiMenu : MonoBehaviour {
 			if(i==1){
 				item.GetComponent<Image>().color = lowColor;
                 if (itemCd == "CyouheiKB" || itemCd == "CyouheiTP" || itemCd == "CyouheiYR" || itemCd == "CyouheiYM") {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
                     }else {
                         item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
                     }
 
                 }else if (itemCd == "Shinobi") {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
                     }else {
                         item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
                     }
                 }else if (itemCd == "Hidensyo") {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "Low";
                     }else {
                         item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "下";
@@ -163,20 +166,20 @@ public class KouekiMenu : MonoBehaviour {
             else if(i==2){
 				item.GetComponent<Image>().color = midColor;
 				if(itemCd == "CyouheiKB" || itemCd == "CyouheiTP"|| itemCd == "CyouheiYR" || itemCd =="CyouheiYM"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
                     }else {
                         item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
                     }
                         
 				}else if(itemCd == "Shinobi"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Mid";
                     }else {
                         item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
                     }
 				}else if(itemCd == "Hidensyo"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "Mid";
                     }else { 
                         item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "中";
@@ -186,21 +189,21 @@ public class KouekiMenu : MonoBehaviour {
 			}else if(i==3){
 				item.GetComponent<Image>().color = highColor;
 				if(itemCd == "CyouheiKB" || itemCd == "CyouheiTP"|| itemCd == "CyouheiYR" || itemCd =="CyouheiYM"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
                     }else { 
                         item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
                     }
                 }
                 else if(itemCd == "Shinobi"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "High";
                     }else {
                         item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
                     }
                 }
                 else if(itemCd == "Hidensyo"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "High";
                     }else {
                         item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "上";

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class KahouInfo : MonoBehaviour {
 
@@ -108,10 +109,12 @@ public class KahouInfo : MonoBehaviour {
 			RectTransform popupTransform = popup.GetComponent<RectTransform> ();
 			popupTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 
-			//Get Kahou Data
-			if (kahouType == "bugu") {
+            //Get Kahou Data
+            int langId = PlayerPrefs.GetInt("langId");
+
+            if (kahouType == "bugu") {
 				Entity_kahou_bugu_mst Mst = Resources.Load ("Data/kahou_bugu_mst") as Entity_kahou_bugu_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 } else {
@@ -120,7 +123,7 @@ public class KahouInfo : MonoBehaviour {
                 }				
 				kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param [kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -128,7 +131,7 @@ public class KahouInfo : MonoBehaviour {
 
 			} else if (kahouType == "kabuto") {
 				Entity_kahou_kabuto_mst Mst = Resources.Load ("Data/kahou_kabuto_mst") as Entity_kahou_kabuto_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }
@@ -138,7 +141,7 @@ public class KahouInfo : MonoBehaviour {
                 }
                 kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -146,7 +149,7 @@ public class KahouInfo : MonoBehaviour {
 
             } else if (kahouType == "gusoku") {
 				Entity_kahou_gusoku_mst Mst = Resources.Load ("Data/kahou_gusoku_mst") as Entity_kahou_gusoku_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }
@@ -156,7 +159,7 @@ public class KahouInfo : MonoBehaviour {
                 }
                 kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -164,7 +167,7 @@ public class KahouInfo : MonoBehaviour {
 
             } else if (kahouType == "meiba") {
 				Entity_kahou_meiba_mst Mst = Resources.Load ("Data/kahou_meiba_mst") as Entity_kahou_meiba_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }else {
@@ -173,7 +176,7 @@ public class KahouInfo : MonoBehaviour {
                 }
                 kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -181,7 +184,7 @@ public class KahouInfo : MonoBehaviour {
 
             } else if (kahouType == "cyadougu") {
 				Entity_kahou_cyadougu_mst Mst = Resources.Load ("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }else {
@@ -190,7 +193,7 @@ public class KahouInfo : MonoBehaviour {
                 }
                 kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -198,7 +201,7 @@ public class KahouInfo : MonoBehaviour {
 
             } else if (kahouType == "heihousyo") {
 				Entity_kahou_heihousyo_mst Mst = Resources.Load ("Data/kahou_heihousyo_mst") as Entity_kahou_heihousyo_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }else {
@@ -207,7 +210,7 @@ public class KahouInfo : MonoBehaviour {
                 }
                 kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -215,7 +218,7 @@ public class KahouInfo : MonoBehaviour {
 
             } else if (kahouType == "chishikisyo") {
 				Entity_kahou_chishikisyo_mst Mst = Resources.Load ("Data/kahou_chishikisyo_mst") as Entity_kahou_chishikisyo_mst;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }else {
@@ -224,7 +227,7 @@ public class KahouInfo : MonoBehaviour {
                 }
                 kahouEffect = Mst.param [kahouId - 1].kahouEffect;	
 				kahouUnit = Mst.param [kahouId - 1].unit;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
                 }else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
@@ -288,7 +291,8 @@ public class KahouInfo : MonoBehaviour {
 
 			GameObject.Find("kahouNameValue").GetComponent<Text>().text = kahouInfoList[0];
 			string kahouTypeName = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 if (kahouType=="bugu"){
 				    kahouTypeName = "Arms";
 			    }else if(kahouType=="gusoku"){

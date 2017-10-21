@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class IconExp : MonoBehaviour {
 
@@ -20,7 +21,8 @@ public class IconExp : MonoBehaviour {
         string text = "";
         if(!serihuFlg) {
             Entity_icon_exp_mst iconExpMst = Resources.Load("Data/icon_exp_mst") as Entity_icon_exp_mst;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 text = iconExpMst.param[IconId - 1].expEng;
             } else {
                 text = iconExpMst.param[IconId - 1].exp;
@@ -31,13 +33,15 @@ public class IconExp : MonoBehaviour {
             string busyoId = GameObject.Find("GameScene").GetComponent<NowOnBusyo>().OnBusyo;
             int rdmId = UnityEngine.Random.Range(0, 2);
             if(rdmId ==0) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     text = serihuMst.param[int.Parse(busyoId) - 1].touyouMsgEng;
                 }else {
                     text = serihuMst.param[int.Parse(busyoId) - 1].touyouMsg;
                 }
             }else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     text = serihuMst.param[int.Parse(busyoId) - 1].senpouMsgEng;
                 }else {
                     text = serihuMst.param[int.Parse(busyoId) - 1].senpouMsg;

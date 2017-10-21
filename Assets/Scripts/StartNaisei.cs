@@ -31,7 +31,8 @@ public class StartNaisei : MonoBehaviour {
         } else {
 			Message msg = new Message(); 
 			string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 OKtext = "You can develop after conquered this country.";
             }else {
                 OKtext = "城を一つも陥とさない内は\n内政は出来ませぬぞ。";

@@ -53,6 +53,7 @@ public class RewardReceive : MonoBehaviour {
 
             //visual delete
             Destroy(slot);
+            int langId = PlayerPrefs.GetInt("langId");
 
             //item register
             if (grp == "money") {
@@ -64,7 +65,8 @@ public class RewardReceive : MonoBehaviour {
                     newMoney = int.MaxValue;
                 }
                 PlayerPrefs.SetInt("money", newMoney);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                
+                if (langId == 2) {
                     msg = "You got " + qty + " money.";
                 }else {
                     msg = "金を" + qty + "受領しました。";
@@ -77,7 +79,7 @@ public class RewardReceive : MonoBehaviour {
                 int busyoDama = PlayerPrefs.GetInt("busyoDama");
                 int newBusyoDama = busyoDama + qty;
                 PlayerPrefs.SetInt("busyoDama", newBusyoDama);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msg = "You got " + qty + " stone.";
                 }else {
                     msg = "武将珠を" + qty + "個受領しました。";
@@ -101,7 +103,7 @@ public class RewardReceive : MonoBehaviour {
                 string shiroName = shiro.getName(shiroId);
                 Message msgScript = new Message();
                 string msg = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msg = "You got " + shiroName + ". You can enhance your castle in town development.";
                 }else {
                     msg = "天下の要害、" + shiroName + "を築城できますぞ。内政で城を増強しましょう。";
@@ -121,7 +123,7 @@ public class RewardReceive : MonoBehaviour {
                 }
                 Message msgScript = new Message();
                 string msg = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msg = "You got an additional formation.";
                 }else {
                     msg = "追加陣形を受領しました。";
@@ -132,7 +134,7 @@ public class RewardReceive : MonoBehaviour {
                 PlayerPrefs.SetInt(grp, qty);
                 Message msgScript = new Message();
                 string msg = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msg = "You got " + qty.ToString() + " " + grp + ".";
                 }else {
                     msg = grp + "を" + qty + "入手しました。";
@@ -148,8 +150,9 @@ public class RewardReceive : MonoBehaviour {
         Message msgScript = new Message();
         Kahou kahou = new Kahou();
         string kahouMsg = "";
+        int langId = PlayerPrefs.GetInt("langId");
 
-        for(int i=0; i< kahoTypList.Count; i++) {
+        for (int i=0; i< kahoTypList.Count; i++) {
             string kahoTyp = kahoTypList[i];
             int kahoId = kahoIdList[i];
             string kahoName = kahoNameList[i];
@@ -185,7 +188,7 @@ public class RewardReceive : MonoBehaviour {
         }
 
         string msg = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             msg = "You got " + kahouMsg + ".";
         }else {
             msg = kahouMsg + "を受領しましたぞ。良い物を手に入れられましたな。";
@@ -198,6 +201,7 @@ public class RewardReceive : MonoBehaviour {
         Message msgScript = new Message();
         int cyouteiFlg = UnityEngine.Random.Range(0, 2);
         string msg = "";
+        int langId = PlayerPrefs.GetInt("langId");
         if (cyouteiFlg == 1) {
             //cyotei
             string nowQty = PlayerPrefs.GetString("cyoutei");
@@ -222,7 +226,7 @@ public class RewardReceive : MonoBehaviour {
             }
             PlayerPrefs.SetString("cyoutei", newQty);
 
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 msg = "You got letter of introduction for the imperial court.";
             }else {
                 msg = "朝廷への紹介状を入手しましたぞ。";
@@ -253,7 +257,7 @@ public class RewardReceive : MonoBehaviour {
             }
             PlayerPrefs.SetString("koueki", newQty);
 
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 msg = "You got letter of introduction for merchant.";
             }else {
                 msg = "豪商への紹介状を入手しましたぞ。";
@@ -268,8 +272,9 @@ public class RewardReceive : MonoBehaviour {
     public void receiveBusyo(int busyoId) {
 
         //Common
+        int langId = PlayerPrefs.GetInt("langId");
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-        string busyoName = BusyoInfoGet.getName(busyoId);
+        string busyoName = BusyoInfoGet.getName(busyoId,langId);
         string heisyu = BusyoInfoGet.getHeisyu(busyoId);
         string rank = BusyoInfoGet.getRank(busyoId);
         int myBusyoQty = PlayerPrefs.GetInt("myBusyoQty");
@@ -334,7 +339,7 @@ public class RewardReceive : MonoBehaviour {
                 MessageBusyo msg = new MessageBusyo();
                 string type = "touyou";
                 string msgText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msgText = "Max Lv of " + busyoName + " increased.";
                 }
                 else {
@@ -366,7 +371,7 @@ public class RewardReceive : MonoBehaviour {
                     int myBusyoDama = PlayerPrefs.GetInt("busyoDama");
                     myBusyoDama = myBusyoDama + busyoDama;
                     PlayerPrefs.SetInt("busyoDama", myBusyoDama);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         lvUpText = "You got " + busyoDama + " stone.";
                     }else {
                         lvUpText = "武将珠" + busyoDama + "個を贈呈します。";
@@ -406,7 +411,7 @@ public class RewardReceive : MonoBehaviour {
                 
                 MessageBusyo msg = new MessageBusyo();
                 string touyouuText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
                 }else {
                     touyouuText = busyoName + "を登用しました。";
@@ -450,7 +455,7 @@ public class RewardReceive : MonoBehaviour {
 
                 MessageBusyo msg = new MessageBusyo();
                 string touyouuText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
                 }
                 else {

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class QA : MonoBehaviour {
 
@@ -19,7 +20,8 @@ public class QA : MonoBehaviour {
 		//Get Info
 		Entity_qa_mst qaMst = Resources.Load ("Data/qa_mst") as Entity_qa_mst;
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             qaTitle = qaMst.param [qaId - 1].titleEng;
 		    qaExp = qaMst.param [qaId - 1].ExpEng;
         }else {

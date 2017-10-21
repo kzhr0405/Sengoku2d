@@ -31,7 +31,8 @@ public class DoTouyou : MonoBehaviour {
 			audioSources [4].Play ();
 			Message msg = new Message();
             string Text = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 Text = "You have hired max number " + stockLimit.ToString()+ " samurais. You can buy an additional samurai space.";
             }else {
                 Text = "現在の国力では登用出来る武将数は" + stockLimit.ToString()+ "人までですぞ。";
@@ -59,7 +60,8 @@ public class DoTouyou : MonoBehaviour {
 
                 MessageBusyo msg = new MessageBusyo();
                 string touyouuText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
                 }else {
                     touyouuText = busyoName + "を登用しました。";
@@ -179,7 +181,8 @@ public class DoTouyou : MonoBehaviour {
 
                 //View Message Box
                 string msgText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     msgText = "Max Lv of " + busyoName + " increased.";                    
                 }else {
                     msgText = busyoName + "の最大レベルが1上がりました。";
@@ -219,7 +222,8 @@ public class DoTouyou : MonoBehaviour {
                     int myBusyoDama = PlayerPrefs.GetInt("busyoDama");
                     myBusyoDama = myBusyoDama + busyoDama;
                     PlayerPrefs.SetInt("busyoDama", myBusyoDama);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         lvUpText = "You got " + busyoDama + " stone.";                        
                     }else {
                         lvUpText = "武将珠" + busyoDama + "個を贈呈します。";
@@ -239,7 +243,8 @@ public class DoTouyou : MonoBehaviour {
 
                 } else {
                     newLv = currentLv + 1;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         lvUpText = busyoName + " Lv was increased.";                        
                     }else {
                         lvUpText = busyoName + "をレベルアップしました。";
@@ -282,7 +287,8 @@ public class DoTouyou : MonoBehaviour {
                 PlayerPrefs.SetInt("myBusyoQty", myBusyoQty);
                 string touyouuText = "";
 
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
                 }else {
                     touyouuText = busyoName + "を登用しました。";
@@ -327,8 +333,9 @@ public class DoTouyou : MonoBehaviour {
                 myBusyoQty = myBusyoQty + 1;
                 PlayerPrefs.SetInt("myBusyoQty", myBusyoQty);
                 string touyouuText = "";
-                
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
                 }else {
                     touyouuText = busyoName + "を登用しました。";

@@ -239,7 +239,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 
                 string OKtext = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     OKtext = "Royal court declared " + targetDaimyoName + " is the enemy.\n friendship with surrounded families decreased.";
                 } else {
                     OKtext = targetDaimyoName + "討伐の勅令が出されました。\n周辺大名との関係が著しく悪化しますぞ。";
@@ -272,7 +273,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 				string season = GameObject.Find("SeasonValue").GetComponent<Text>().text;
 				string daimyoBusyoName = GameObject.Find("DaimyoValue").GetComponent<Text>().text;
                 string text = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     text = year + " " + season + "," + daimyoBusyoName + " was assigned syogun.\n You opened shogunate.";
                 }else {
                     text = year + "年" + season + "," + daimyoBusyoName + "は征夷大将軍に任じられました。\n幕府を開き、天下に号令をかけます。";
@@ -374,9 +376,10 @@ public class DoCyouteiMenu : MonoBehaviour {
 		MainEventHandler main = new MainEventHandler();
 		Daimyo daimyo = new Daimyo();
 		string cyouteiText = "";
-		for(int l=0; l<dstDaimyoList.Count;l++){
+        int langId = PlayerPrefs.GetInt("langId");
+        for (int l=0; l<dstDaimyoList.Count;l++){
 			int dstDaimyoId = dstDaimyoList[l];
-			string dstDaimyoName = daimyo.getName(dstDaimyoId);
+			string dstDaimyoName = daimyo.getName(dstDaimyoId,langId);
 
 			string tempGaikou = "gaikou" + dstDaimyoId;
 			int nowYukoudo = 0;
@@ -390,7 +393,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 				newYukoudo = 100;
 			}
 			PlayerPrefs.SetInt (tempGaikou, newYukoudo);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 cyouteiText = cyouteiText + "Friendship with " + dstDaimyoName + " increased " + addYukoudo + " point\n";
             }else {
                 cyouteiText = cyouteiText + dstDaimyoName + "との友好度が" + addYukoudo + "上がりました。\n";
@@ -402,7 +405,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 		//Message
 		Message msg = new Message ();
         string OKtext = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             OKtext = "Friendship with surrounded families increased.\n " + cyouteiText;
         }else {
             OKtext = "周辺大名との友好度が上がります。\n " + cyouteiText;
@@ -458,7 +461,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 			//Message
 			string daimyoName = gunzeiObj.GetComponent<Gunzei>().srcDaimyoName;
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 OKtext = "Royal Court successfully requested a ceasefire.\n " + daimyoName + "'s army was withdrawn.";
             }else {
                 OKtext = "朝廷が停戦要請に成功しました。\n " + daimyoName + "の軍勢が退却します。";
@@ -557,7 +561,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 
             //Message
             string OKtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 OKtext = "Congratulations.\n" + "My lord was assigned " + kanniName + ".";
             }else {
                 OKtext = "祝着至極に存じます。\n" + kanniName + "が叙位されましたぞ。";

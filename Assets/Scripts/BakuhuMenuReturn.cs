@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class BakuhuMenuReturn : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class BakuhuMenuReturn : MonoBehaviour {
 		audioSources [1].Play ();
 
 		Destroy (deleteObj);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             board.transform.FindChild("popText").GetComponent<Text>().text = "Shogunate";
         } else {
             board.transform.FindChild("popText").GetComponent<Text>().text = "幕府";

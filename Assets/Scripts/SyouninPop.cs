@@ -16,6 +16,7 @@ public class SyouninPop : MonoBehaviour {
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
 
         if (name != "PassButton") {
 			//Syoukaijyo Confirm Pop
@@ -94,13 +95,13 @@ public class SyouninPop : MonoBehaviour {
 				string imagePath = "Prefabs/Syounin/Sprite/syounin2";
 				pop.transform.FindChild ("Syounin").GetComponent<Image> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    pop.transform.FindChild("SyouninName").GetComponent<Text>().text = "Rikyu Sen";
+                if (langId == 2) {
+                    pop.transform.FindChild("SyouninName").GetComponent<Text>().text = "Sen no Rikyu";
                 }else { 
                     pop.transform.FindChild ("SyouninName").GetComponent<Text> ().text = "千利休";
                 }
             }else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     pop.transform.FindChild("SyouninName").GetComponent<Text>().text = "Sotan Kamiya";
                 }
             }
@@ -303,9 +304,9 @@ public class SyouninPop : MonoBehaviour {
 					int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 						
 					//Serihu
-					string daimyoName = daimyo.getName (myDaimyo);
+					string daimyoName = daimyo.getName (myDaimyo,langId);
                     string serihu = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         serihu = "Oh, lord " + daimyoName + ".\nCan I help you?";
                     }else {
                         serihu = "これは" + daimyoName + "様。\n私共めに何用で御座いましょうか。";
@@ -322,8 +323,8 @@ public class SyouninPop : MonoBehaviour {
 
 				} else {
 					audioSources [4].Play ();
-					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         msg.makeMessage("My lord " + occupiedDaimyoName + " disturbed our business.");
                     }
                     else {

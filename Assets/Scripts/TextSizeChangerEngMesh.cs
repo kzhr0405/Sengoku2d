@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class TextSizeChangerEngMesh : MonoBehaviour {
 
@@ -11,7 +12,8 @@ public class TextSizeChangerEngMesh : MonoBehaviour {
     // Use this for initialization
     void Start() {
         TextMesh text = GetComponent<TextMesh>();
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             if (englishFontSize != 0) {
                 text.fontSize = englishFontSize;
             }

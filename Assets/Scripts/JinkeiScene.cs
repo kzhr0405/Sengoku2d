@@ -478,6 +478,7 @@ public class JinkeiScene : MonoBehaviour {
 	public void UnitOnScrollView(List<string> jinkeiBusyo_list){
 
         //Clear Previous Unit
+        int langId = PlayerPrefs.GetInt("langId");
         GameObject Content = GameObject.Find("Content");
         foreach (Transform chd in Content.transform){
 			//Delete
@@ -543,14 +544,14 @@ public class JinkeiScene : MonoBehaviour {
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
         foreach (string busyoIdString in myBusyo_list) {
             int busyoId = int.Parse(busyoIdString);
-            string busyoNameSort = BusyoInfoGet.getName(busyoId);
+            string busyoNameSort = BusyoInfoGet.getName(busyoId,langId);
             string rank = BusyoInfoGet.getRank(busyoId);
             string heisyu = BusyoInfoGet.getHeisyu(busyoId);
             int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
             int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
             if (daimyoId == 0) daimyoId = daimyoHst;
             int lv = PlayerPrefs.GetInt(busyoId.ToString());
-            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, heisyu, daimyoId, daimyoHst, lv,0,0,0,0));
+            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, 0,heisyu, daimyoId, daimyoHst, lv,0,0,0,0,0,0));
         }
         List<Busyo> myBusyoDaimyoSortListTmp = new List<Busyo>(baseBusyoList);
         myBusyoDaimyoSortListTmp.Sort((a, b) => {

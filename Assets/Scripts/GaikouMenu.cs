@@ -34,16 +34,16 @@ public class GaikouMenu : MonoBehaviour {
 		}
 
 		Message msg = new Message ();
-
-
-		if (name == "Mitsugi") {
+        int langId = PlayerPrefs.GetInt("langId");
+        
+        if (name == "Mitsugi") {
 
 			bool isExistFlg = isExistActiveBusyo ();
 			if (isExistFlg) {
 				close.layer = close.layer + 1;
 
                 //Menu Handling
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find ("kuniName").GetComponent<Text> ().text = "Gift";
                 }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "貢物";
@@ -64,7 +64,7 @@ public class GaikouMenu : MonoBehaviour {
 				btn.name = "DoMitsugiBtn";
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Gift";
                 }else {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "貢物";
@@ -117,8 +117,8 @@ public class GaikouMenu : MonoBehaviour {
 			if (isExistFlg) {
 				close.layer = close.layer + 1;
 
-				//Menu Handling
-				if (Application.systemLanguage != SystemLanguage.Japanese) {
+                //Menu Handling
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Alliance";
                 }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "同盟";
@@ -139,8 +139,8 @@ public class GaikouMenu : MonoBehaviour {
 				btn.name = "DoDoumeiBtn";
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Alliance";
                 }else {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "同盟";
@@ -188,8 +188,8 @@ public class GaikouMenu : MonoBehaviour {
 			bool isExistFlg = isExistActiveBusyo ();
 			if (isExistFlg) {
 				close.layer = close.layer + 1;
-                
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Threat";
                 }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "恫喝";
@@ -209,8 +209,8 @@ public class GaikouMenu : MonoBehaviour {
 				btn.name = "DoDoukatsuBtn";
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Threat";
                 }
                 else {
@@ -244,7 +244,7 @@ public class GaikouMenu : MonoBehaviour {
 			if(yukoudo>=20){
                 close.layer = close.layer + 1;
 
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Trade";
                 }
                 else {
@@ -269,7 +269,7 @@ public class GaikouMenu : MonoBehaviour {
 				}
 
                 //SerihuChange
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     if (20<=yukoudo && yukoudo<30)GameObject.Find("SerihuText").GetComponent<Text>().text = "...What are you doing here?";
 				    if(30<=yukoudo && yukoudo<40)GameObject.Find("SerihuText").GetComponent<Text>().text = "Hi. What do you want?";
 				    if(40<=yukoudo && yukoudo<50)GameObject.Find("SerihuText").GetComponent<Text>().text = "Long time no see. We can trade depends on the condition.";
@@ -331,8 +331,8 @@ public class GaikouMenu : MonoBehaviour {
 
 
 	public void ScrollView(GameObject obj, GameObject btnObj){
-
-		string scrollPath = "Prefabs/Map/common/ScrollView";
+        int langId = PlayerPrefs.GetInt("langId");
+        string scrollPath = "Prefabs/Map/common/ScrollView";
 		GameObject scroll = Instantiate (Resources.Load (scrollPath)) as GameObject;
 		scroll.transform.SetParent(obj.transform);
 		scroll.transform.localScale = new Vector3 (1, 1, 1);
@@ -363,12 +363,12 @@ public class GaikouMenu : MonoBehaviour {
         StatusGet sts = new StatusGet();
         foreach (string busyoIdString in myBusyoList) {
             int busyoId = int.Parse(busyoIdString);
-            string busyoNameSort = BusyoInfoGet.getName(busyoId);
+            string busyoNameSort = BusyoInfoGet.getName(busyoId,langId);
             string rank = BusyoInfoGet.getRank(busyoId);           
             int lv = 1;
             float chiryakuSts = (float)sts.getDfc(int.Parse(busyoIdString), lv);
             chiryakuSts = chiryakuSts * 10;
-            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, "", 0, 0, lv, 0, 0, chiryakuSts, 0));
+            baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, 0, "", 0, 0, lv, 0, 0, chiryakuSts, 0,0,0));
         }
         List<Busyo> myBusyoSortList = new List<Busyo>(baseBusyoList);
         myBusyoSortList.Sort((a, b) => {

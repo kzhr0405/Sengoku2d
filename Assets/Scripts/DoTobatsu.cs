@@ -44,7 +44,8 @@ public class DoTobatsu : MonoBehaviour {
 		int newYukoudoWithTarget = gaikou.downMyGaikou(targetDaimyoId, myGaikouValueWithTarget, 50);
 		int reducedValueWithTarget = myGaikouValueWithTarget - newYukoudoWithTarget;
         string firstKassenText = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             firstKassenText = "Declared " + targetDaimyoName + " attack order. \n Friendship reduced " +reducedValueWithTarget+ " point.";
         }else {
             firstKassenText = targetDaimyoName + "討伐を宣言しました。\n当家との友好度が" + reducedValueWithTarget + "下がります。";
@@ -222,11 +223,11 @@ public class DoTobatsu : MonoBehaviour {
 						Gunzei.GetComponent<Gunzei> ().key = key;
 						Gunzei.GetComponent<Gunzei> ().srcKuni = srcKuniId;
 						Gunzei.GetComponent<Gunzei> ().srcDaimyoId = srcDaimyo;
-						string srcDaimyoName = daimyo.getName (srcDaimyo);
+						string srcDaimyoName = daimyo.getName (srcDaimyo,langId);
 						Gunzei.GetComponent<Gunzei> ().srcDaimyoName = srcDaimyoName;
 						Gunzei.GetComponent<Gunzei> ().dstKuni = dstKuniId;
 						Gunzei.GetComponent<Gunzei> ().dstDaimyoId = dstDaimyo;
-						string dstDaimyoName = daimyo.getName (dstDaimyo);
+						string dstDaimyoName = daimyo.getName (dstDaimyo,langId);
 						Gunzei.GetComponent<Gunzei> ().dstDaimyoName = dstDaimyoName;
 						int myHei = gunzei.heiryokuCalc (srcKuniId);
 
@@ -329,8 +330,8 @@ public class DoTobatsu : MonoBehaviour {
 						PlayerPrefs.SetInt ("bakuhuTobatsuDaimyoId",dstDaimyo);
 						PlayerPrefs.Flush ();
 
-						string kassenText = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+						string kassenText = "";                       
+                        if (langId == 2) {
                             if (!dstEngunFlg){
 							    kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " with " + myHei + " soldiers.";
 						    }else{
@@ -349,10 +350,10 @@ public class DoTobatsu : MonoBehaviour {
 					} else {
 						//NG
 						string kassenText = "";
-						string srcDaimyoName = daimyo.getName (srcDaimyo);
+						string srcDaimyoName = daimyo.getName (srcDaimyo,langId);
 						int newYukoudo = gaikou.downMyGaikou(srcDaimyo, myGaikouValue, 15);
 						int reducedValue = myGaikouValue - newYukoudo;
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             kassenText = srcDaimyoName + " rejected our attack order. Friendship reduced " +reducedValue+ " point.";
                         }else {
                             kassenText = srcDaimyoName + "が討伐令を黙殺しました。当家との友好度が" + reducedValue + "下がります。";
@@ -376,22 +377,22 @@ public class DoTobatsu : MonoBehaviour {
 		toubatsuSelect.transform.FindChild ("ToubatsuBtn").gameObject.SetActive (false);
 		if (toubatsuFlg) {
 			audioSources [3].Play ();
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "Declared " + targetDaimyoName + " attack order. Other family responded to it.";
+            if (langId == 2) {
+                toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "Declared " + targetDaimyoName + " attack order. Other clan responded to it.";
             }else {
                 toubatsuSelect.transform.FindChild("Exp").GetComponent<Text>().text = targetDaimyoName + "の討伐令を出しました。諸大名が呼応したようです。";
             }
 		} else {
 			audioSources [4].Play ();
 			if (srcDstKuniList.Count == 0) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "There is no family who can respond to " + targetDaimyoName + " attack order.";
+                if (langId == 2) {
+                    toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "There is no clan who can respond to " + targetDaimyoName + " attack order.";
                 }else {
                     toubatsuSelect.transform.FindChild("Exp").GetComponent<Text>().text = "現在" + targetDaimyoName + "の討伐に呼応可能な大名はおりません。";
                 }
             } else{
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
-                    toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "No family responded to our attack order because of fear for " + targetDaimyoName + ".";
+                if (langId == 2) {
+                    toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "No clan responded to our attack order because of fear for " + targetDaimyoName + ".";
 			    }else {
                     toubatsuSelect.transform.FindChild("Exp").GetComponent<Text>().text = targetDaimyoName + "を恐れてか、討伐令にどの大名も呼応しませんでした。";
                 }

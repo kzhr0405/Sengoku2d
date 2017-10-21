@@ -103,7 +103,8 @@ public class NaiseiController : MonoBehaviour {
             }
 		} else {
             //Jyosyu Not Exist
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 title = kuniName;
             }else {
                 title = kuniName + "・蔵入地";
@@ -263,7 +264,8 @@ public class NaiseiController : MonoBehaviour {
 
 					bldgObj.GetComponent<AreaButton>().moneyNextLv = naiseiEffectList[2];
 					bldgObj.GetComponent<AreaButton>().requiredHyourou =naiseiMst.param [int.Parse(naiseiContentList[0])].hyourou;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         bldgObj.GetComponent<AreaButton>().naiseiName =naiseiMst.param [int.Parse(naiseiContentList[0])].nameEng;
                     }else {
                         bldgObj.GetComponent<AreaButton>().naiseiName = naiseiMst.param[int.Parse(naiseiContentList[0])].name;
@@ -876,7 +878,8 @@ public class NaiseiController : MonoBehaviour {
 		shiro.GetComponent<AreaButton>().effectNextLv = naiseiEffectList[1];
 		shiro.GetComponent<AreaButton>().moneyNextLv = naiseiEffectList[2];
 		shiro.GetComponent<AreaButton>().requiredHyourou =naiseiMst.param [0].hyourou;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             shiro.GetComponent<AreaButton>().naiseiName =naiseiMst.param [0].nameEng;
         }else {
             shiro.GetComponent<AreaButton>().naiseiName = naiseiMst.param[0].name;
@@ -1132,13 +1135,14 @@ public class NaiseiController : MonoBehaviour {
 			}
 		}
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             btn.GetComponent<TabibitoNoticeBtn> ().targetGrp= tabibitoMst.param [targetTabibitoId - 1].GrpEng;
         }else {
             btn.GetComponent<TabibitoNoticeBtn>().targetGrp = tabibitoMst.param[targetTabibitoId - 1].Grp;
         }
 		btn.GetComponent<TabibitoNoticeBtn> ().targetGrpId= grpId;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             btn.GetComponent<TabibitoNoticeBtn> ().targetName = tabibitoMst.param [targetTabibitoId - 1].NameEng;
 		    btn.GetComponent<TabibitoNoticeBtn> ().targetExp = tabibitoMst.param [targetTabibitoId - 1].ExpEng;
         }else {

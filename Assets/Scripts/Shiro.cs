@@ -10,7 +10,8 @@ public class Shiro : MonoBehaviour {
     public string getName(int busyoId) {
         string name = "";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             name = shiroMst.param[busyoId - 1].NameEng;
         }else {
             name = shiroMst.param[busyoId - 1].Name;

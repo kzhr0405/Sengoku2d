@@ -144,13 +144,14 @@ public class QuestMenu : MonoBehaviour {
                 slot.transform.localScale = new Vector2(1, 1);
                 slot.name = "ActiveQuestCountSlot" + id.ToString();
                 string title = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     title = questCountMst.param[id].titleEng;
                 }else {
                     title = questCountMst.param[id].title;
                 }
                 string exp = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     exp = questCountMst.param[id].expEng;
                 }else {
                     exp = questCountMst.param[id].exp;

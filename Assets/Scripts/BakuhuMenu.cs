@@ -26,7 +26,9 @@ public class BakuhuMenu : MonoBehaviour {
 
 		int hyourou = PlayerPrefs.GetInt ("hyourou");
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-		if (name == "AtkOrderBtn") {
+        int langId = PlayerPrefs.GetInt("langId");
+
+        if (name == "AtkOrderBtn") {
 
 			if (hyourou >= 10) {
 				audioSources [0].Play ();
@@ -51,8 +53,8 @@ public class BakuhuMenu : MonoBehaviour {
 				baseObj.name = "BakuhuBase";
 				returnObj.GetComponent<BakuhuMenuReturn> ().deleteObj = baseObj;
 				returnObj.GetComponent<BakuhuMenuReturn> ().scrollView = scrollView;
-				returnObj.GetComponent<BakuhuMenuReturn> ().board = board;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+				returnObj.GetComponent<BakuhuMenuReturn> ().board = board;                
+                if (langId == 2) {
                     board.transform.FindChild ("popText").GetComponent<Text> ().text = "Attack Order";
                 }else {
                     board.transform.FindChild("popText").GetComponent<Text>().text = "討伐令";
@@ -162,7 +164,7 @@ public class BakuhuMenu : MonoBehaviour {
 					} else {
 
                         Daimyo daimyoScript = new Daimyo();
-                        string daimyoName = daimyoScript.getName(daimyoId);
+                        string daimyoName = daimyoScript.getName(daimyoId,langId);
                         kuni.GetComponent<SendParam> ().bakuhuFlg = true;
 						kuni.GetComponent<SendParam> ().kuniId = kuniId;
 						kuni.GetComponent<SendParam> ().daimyoId = daimyoId;
@@ -294,8 +296,8 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.transform.SetParent (board.transform);
 					returnObj.transform.localScale = new Vector2 (1, 1);
 					returnObj.transform.localPosition = new Vector2 (-560, 290);
-					returnObj.name = "bakuhuReturn";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					returnObj.name = "bakuhuReturn";                    
+                    if (langId == 2) {
                         board.transform.FindChild ("popText").GetComponent<Text> ().text = "Defence Order";
                     }else {
                         board.transform.FindChild("popText").GetComponent<Text>().text = "防衛令";
@@ -323,8 +325,8 @@ public class BakuhuMenu : MonoBehaviour {
 					string uniSlotPath = "Prefabs/Bakuhu/BoueiSlot";
 					string daimyoBusyoPath = "Prefabs/Player/Sprite/unit";
 					Daimyo daimyo = new Daimyo ();
-
-					for (int i = 0; i < okGunzeiList.Count; i++) {
+                    
+                    for (int i = 0; i < okGunzeiList.Count; i++) {
 						string tmp = okGunzeiList [i];
 						List<string> okGunzeiUnitList = new List<string> ();
 						okGunzeiUnitList = new List<string> (tmp.Split (delimiterChars2));
@@ -333,23 +335,23 @@ public class BakuhuMenu : MonoBehaviour {
 						GameObject gunzei = GameObject.Find (key).gameObject;
 						int dstDaimyoId = gunzei.GetComponent<Gunzei> ().dstDaimyoId;
 						int dstDaimyoBusyoId = daimyo.getDaimyoBusyoId (dstDaimyoId);
-						string dstDaimyoName = daimyo.getName (dstDaimyoId);
+						string dstDaimyoName = daimyo.getName (dstDaimyoId,langId);
 						int srcDaimyoId = gunzei.GetComponent<Gunzei> ().srcDaimyoId;
 						int srcDaimyoBusyoId = daimyo.getDaimyoBusyoId (srcDaimyoId);
-						string srcDaimyoName = daimyo.getName (srcDaimyoId);
+						string srcDaimyoName = daimyo.getName (srcDaimyoId,langId);
 						int dstKuniId = gunzei.GetComponent<Gunzei> ().dstKuni;
-						string kuniName = kuni.getKuniName (dstKuniId);
+						string kuniName = kuni.getKuniName (dstKuniId,langId);
 
 						for (int j = 1; j < okGunzeiUnitList.Count; j++) {
 							int engunKuniId = int.Parse (okGunzeiUnitList [j]);
 							int engunDaimyoId = int.Parse (seiryokuList [engunKuniId - 1]);
 							int engunDaimyoBusyoId = daimyo.getDaimyoBusyoId (engunDaimyoId);
-							string engunDaimyoName = daimyo.getName (engunDaimyoId);
+							string engunDaimyoName = daimyo.getName (engunDaimyoId,langId);
 
 							GameObject slot = Instantiate (Resources.Load (uniSlotPath)) as GameObject;
 							slot.transform.SetParent (content.transform);
-							slot.transform.localScale = new Vector2 (1, 1);
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+							slot.transform.localScale = new Vector2 (1, 1);                           
+                            if (langId == 2) {
                                 slot.transform.FindChild ("Kuni").GetComponent<Text> ().text = kuniName + " Defence";
                             }else {
                                 slot.transform.FindChild("Kuni").GetComponent<Text>().text = kuniName + "防衛";
@@ -367,7 +369,7 @@ public class BakuhuMenu : MonoBehaviour {
 							slot.transform.FindChild ("DfcName").GetComponent<Text> ().text = dstDaimyoName;
 							slot.transform.FindChild ("AtkName").GetComponent<Text> ().text = srcDaimyoName;
 							slot.transform.FindChild ("EgnName").GetComponent<Text> ().text = engunDaimyoName;
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 slot.transform.FindChild("Exp").GetComponent<Text>().text = "Request " + engunDaimyoName + " for reinforcement";
                             }else {
                                 slot.transform.FindChild("Exp").GetComponent<Text>().text = engunDaimyoName + "に援軍の出兵支持を出す。";
@@ -441,8 +443,8 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.transform.SetParent (board.transform);
 					returnObj.transform.localScale = new Vector2 (1, 1);
 					returnObj.transform.localPosition = new Vector2 (-560, 290);
-					returnObj.name = "bakuhuReturn";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					returnObj.name = "bakuhuReturn";                    
+                    if (langId == 2) {
                         board.transform.FindChild ("popText").GetComponent<Text> ().text = "Defence Order";
                     }else {
                         board.transform.FindChild("popText").GetComponent<Text>().text = "防衛令";
@@ -459,7 +461,7 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.GetComponent<BakuhuMenuReturn> ().deleteObj = baseObj;
 					returnObj.GetComponent<BakuhuMenuReturn> ().scrollView = scrollView;
 					returnObj.GetComponent<BakuhuMenuReturn> ().board = board;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         board.transform.FindChild ("popText").GetComponent<Text> ().text = "Mediation";
                     }else {
                         board.transform.FindChild("popText").GetComponent<Text>().text = "仲裁";
@@ -492,7 +494,7 @@ public class BakuhuMenu : MonoBehaviour {
 						uprSlot.GetComponent<CyusaiDaimyoSelect> ().btnContent = btnContent;
 
 						int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (daimyoId));
-						string daimyoName = daimyo.getName (int.Parse (daimyoId));
+						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId);
 						uprSlot.GetComponent<CyusaiDaimyoSelect> ().daimyoName = daimyoName;
 						string daimyoBusyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 						uprSlot.transform.FindChild ("Image").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
@@ -590,8 +592,8 @@ public class BakuhuMenu : MonoBehaviour {
 				msg.transform.localScale = new Vector2 (1, 1);
 				RectTransform msgTransform = msg.GetComponent<RectTransform> ();
 				msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
-				msgTransform.name = "KessenConfirm";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+				msgTransform.name = "KessenConfirm";                
+                if (langId == 2) {
                     msg.transform.FindChild("Text").GetComponent<Text>().text = "Operate final war with " + daimyoName + ".";
                 }else {
                     msg.transform.FindChild("Text").GetComponent<Text>().text = daimyoName + "に決戦を仕掛けます";

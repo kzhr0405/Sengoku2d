@@ -35,9 +35,10 @@ public class CyouhouSelect : MonoBehaviour {
 			List<int> targetKuniList = new List<int> ();
 			targetKuniList = kuni.getMappingKuni (kuniId);
 			char[] delimiterChars = { ',' };
+            int langId = PlayerPrefs.GetInt("langId");
 
-			//Kamon
-			GameObject daimyoNameObj = status.transform.FindChild ("DaimyoName").gameObject;
+            //Kamon
+            GameObject daimyoNameObj = status.transform.FindChild ("DaimyoName").gameObject;
 			string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString ();
 			daimyoNameObj.transform.FindChild ("Kamon").GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
@@ -62,12 +63,12 @@ public class CyouhouSelect : MonoBehaviour {
 			int targetKuniId = getKassenTargetKuni (kuniId, daimyoId, targetKuniList, kuniIconView, aggressiveFlg, seiryokuList, myDaimyoId);
 			int targetDaimyoId =0;
 			if (targetKuniId != 0) {
-				string targetKuniName = kuni.getKuniName (targetKuniId);
+				string targetKuniName = kuni.getKuniName (targetKuniId,langId);
 				targetDaimyoId = int.Parse (seiryokuList [targetKuniId - 1]);
-				string targetDaimyoName = daimyo.getClanName (targetDaimyoId);
+				string targetDaimyoName = daimyo.getClanName (targetDaimyoId, langId);
 				status.transform.FindChild ("Atk").transform.FindChild ("Value").GetComponent<Text> ().text = targetKuniName + "(" + targetDaimyoName + ")";
-			} else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+			} else {               
+                if (langId == 2) {
                     status.transform.FindChild("Atk").transform.FindChild("Value").GetComponent<Text>().text = "None";
                 }else {
                     status.transform.FindChild ("Atk").transform.FindChild ("Value").GetComponent<Text> ().text = "無し";
@@ -82,22 +83,22 @@ public class CyouhouSelect : MonoBehaviour {
 				//Gaikou
 				targetGaikouKuniId = getGaikouTargetKuni (kuniId, daimyoId, targetKuniList, kuniIconView, aggressiveFlg, seiryokuList, myDaimyoId);
 				if (targetGaikouKuniId != 0) {
-					string targetGaikouKuniName = kuni.getKuniName (targetGaikouKuniId);
+					string targetGaikouKuniName = kuni.getKuniName (targetGaikouKuniId,langId);
 					int targetGaikouDaimyoId = int.Parse (seiryokuList [targetGaikouKuniId - 1]);
-					string targetGaikouDaimyoName = daimyo.getClanName (targetGaikouDaimyoId);
+					string targetGaikouDaimyoName = daimyo.getClanName (targetGaikouDaimyoId,langId);
 
 					if (targetDaimyoId != targetGaikouDaimyoId) {
 						status.transform.FindChild ("Gaiko").transform.FindChild ("Value").GetComponent<Text> ().text = targetGaikouKuniName + "(" + targetGaikouDaimyoName + ")";
 					} else {
 						sameDaimyoFlg = true;
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             status.transform.FindChild("Gaiko").transform.FindChild("Value").GetComponent<Text>().text = "None";
                         } else {
                             status.transform.FindChild ("Gaiko").transform.FindChild ("Value").GetComponent<Text> ().text = "無し";
                         }
                     }
-				} else {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+				} else {                    
+                    if (langId == 2) {
                         status.transform.FindChild("Gaiko").transform.FindChild("Value").GetComponent<Text>().text = "None";
                     }
                     else {
@@ -128,8 +129,8 @@ public class CyouhouSelect : MonoBehaviour {
 						}
 					}
 				}
-                string doumeiNameList = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                string doumeiNameList = "";                
+                if (langId == 2) {
                     doumeiNameList = "None";
                 }else {
                     doumeiNameList = "無し";
@@ -137,9 +138,9 @@ public class CyouhouSelect : MonoBehaviour {
 
                 for (int j = 0; j < doumeiList.Count; j++) {
 					if (j == 0) {
-						doumeiNameList = daimyo.getClanName (int.Parse (doumeiList [j]));
+						doumeiNameList = daimyo.getClanName (int.Parse (doumeiList [j]),langId);
 					} else {
-						doumeiNameList = doumeiNameList + "," + daimyo.getClanName(int.Parse (doumeiList [j]));
+						doumeiNameList = doumeiNameList + "," + daimyo.getClanName(int.Parse (doumeiList [j]),langId);
 					}
 				}
 
@@ -156,7 +157,7 @@ public class CyouhouSelect : MonoBehaviour {
 			if (snbRank > 2) { //Jyo
 				BusyoInfoGet busyo = new BusyoInfoGet();
 
-				string qtyAndHeisyu = busyo.getDaimyoBusyoQtyHeisyu(daimyoId);
+				string qtyAndHeisyu = busyo.getDaimyoBusyoQtyHeisyu(daimyoId,langId);
 				List<string> qtyAndHeisyuiList = new List<string> ();
 				qtyAndHeisyuiList = new List<string> (qtyAndHeisyu.Split (delimiterChars));
 

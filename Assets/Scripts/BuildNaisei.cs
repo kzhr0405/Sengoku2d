@@ -86,7 +86,8 @@ public class BuildNaisei : MonoBehaviour {
 
                 //Message
                 string OKtext = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     OKtext = "You built " + naiseiName + ".\n The country is thriving.";
                 }else {
                     OKtext = naiseiName + "を建築しましたぞ。\n国が栄えますな。";

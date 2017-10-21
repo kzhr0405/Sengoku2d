@@ -42,8 +42,8 @@ public class SyoguScene : MonoBehaviour {
 	public void createSyoguView(string busyoId){
 
 		int lv = PlayerPrefs.GetInt (busyoId);
-
-		Color ngImageColor = new Color (40f / 255f, 40f / 255f, 40f / 255f, 180f / 255f);
+        int langId = PlayerPrefs.GetInt("langId");
+        Color ngImageColor = new Color (40f / 255f, 40f / 255f, 40f / 255f, 180f / 255f);
 		Color ngTextColor = new Color (90f / 255f, 90f / 255f, 90f / 255f, 90f / 255f);
 		Color okImageColor = new Color (255f / 255f, 255f / 255f, 255f / 255f, 150f / 255f);
 		Color okTextColor = new Color (40f / 255f, 40f / 255f, 0f / 255f, 255f / 255f);
@@ -152,7 +152,7 @@ public class SyoguScene : MonoBehaviour {
 
 		if (PlayerPrefs.HasKey (jyosyuTmp)) {
 			BusyoInfoGet busyoInfo = new BusyoInfoGet ();
-			string busyoName = busyoInfo.getName (int.Parse(busyoId));
+			string busyoName = busyoInfo.getName (int.Parse(busyoId),langId);
 			jyosyu.GetComponent<RonkouKousyoMenu>().jyosyuName = busyoName;
 
 			int kuniId = PlayerPrefs.GetInt(jyosyuTmp);
@@ -165,7 +165,7 @@ public class SyoguScene : MonoBehaviour {
 				}
 
 				KuniInfo kuni = new KuniInfo();
-				string kuniName = kuni.getKuniName(kuniId);
+				string kuniName = kuni.getKuniName(kuniId,langId);
 
 				string jyosyuHeiTmp = "jyosyuHei" + busyoId;
 				int jyosyuHei = PlayerPrefs.GetInt(jyosyuHeiTmp);

@@ -17,7 +17,8 @@ public class Mail : MonoBehaviour {
         string subject = "";
         string body = "";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             subject = "【The Samurai Wars】";
 		     body = "Body of the letter";
         }else {

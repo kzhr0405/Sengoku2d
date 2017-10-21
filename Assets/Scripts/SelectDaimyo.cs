@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class SelectDaimyo : MonoBehaviour {
 
@@ -37,7 +38,8 @@ public class SelectDaimyo : MonoBehaviour {
 		
 		//Message Text Mod
 		msgText = msgText.Replace ("A", daimyoName);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             msgText = "Would you start the samurai world with " + daimyoName + "?";
         }else {
             msgText = daimyoName + "で戦国の世を始めますか？";

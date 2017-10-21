@@ -20,7 +20,8 @@ public class TouyouView : MonoBehaviour {
 		//Pop View
 		BusyoStatusButton pop = new BusyoStatusButton ();
 		GameObject board = pop.commonPopup (27);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             GameObject.Find ("popText").GetComponent<Text> ().text = "Samurai Recruitment";
         }else {
             GameObject.Find("popText").GetComponent<Text>().text = "武将登用";
@@ -59,7 +60,7 @@ public class TouyouView : MonoBehaviour {
         int shipId = kaisenScript.getShipSprite(ShipObj, busyoId);
         ShipObj.transform.localPosition = new Vector3(-40, -40, 0);
         ShipObj.transform.localScale = new Vector2(0.5f, 0.5f);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             if (shipId == 1) {
             ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
             }
@@ -103,7 +104,7 @@ public class TouyouView : MonoBehaviour {
 
 		Entity_busyo_mst busyoMst  = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
 		Entity_senpou_mst senpouMst  = Resources.Load ("Data/senpou_mst") as Entity_senpou_mst;
-        string busyoName = busyoScript.getName(busyoId);
+        string busyoName = busyoScript.getName(busyoId,langId);
         GameObject.Find ("busyoNameValue").GetComponent<Text>().text = busyoName;
 		GameObject.Find ("TosotsuValue").GetComponent<Text>().text = busyoMst.param [busyoId-1].minHp.ToString() + "00";
 		GameObject.Find ("BuyuuValue").GetComponent<Text> ().text = busyoMst.param [busyoId - 1].minAtk.ToString () + "0";
@@ -126,7 +127,7 @@ public class TouyouView : MonoBehaviour {
 		GameObject.Find ("ChildNameValue").GetComponent<Text>().text = heisyu;
 
 		int senpouId = busyoMst.param [busyoId-1].senpou_id;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             GameObject.Find ("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId-1].nameEng;
         }else {
             GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].name;
@@ -136,12 +137,12 @@ public class TouyouView : MonoBehaviour {
 		int ratio = (int)senpouMst.param [senpouId - 1].ratio;
 		int term = (int)senpouMst.param [senpouId - 1].term;
         string senpouExp = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             senpouExp = senpouMst.param [senpouId - 1].effectionEng;
         }else {
             senpouExp = senpouMst.param[senpouId - 1].effection;
         }
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             senpouExp = senpouExp.Replace("ABC", senpouStatus.ToString());
             senpouExp = senpouExp.Replace("DEF", each.ToString());
             senpouExp = senpouExp.Replace("GHI", ratio.ToString());

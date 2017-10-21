@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class PlayerHP : MonoBehaviour {
 	public float initLife = 0;
@@ -36,7 +37,8 @@ public class PlayerHP : MonoBehaviour {
 				//Message
 				Message msg = new Message ();
                 string text = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     text = "Player leader was defeated！";
                 }else {
                     text = "お味方の大将、退却！";

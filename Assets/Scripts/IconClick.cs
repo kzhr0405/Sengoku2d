@@ -40,8 +40,9 @@ public class IconClick : MonoBehaviour {
         int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
 		int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
 		string kanniName = "";
-		if (syogunDaimyoId == myDaimyoId) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (syogunDaimyoId == myDaimyoId) {
+            if (langId == 2) {
                 kanniName = "Shogun";
             }else {
                 kanniName = "征夷大将軍";
@@ -54,7 +55,7 @@ public class IconClick : MonoBehaviour {
 				Kanni kanni = new Kanni ();
 				kanniName = kanni.getKanniName (kanniId);
 			} else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     kanniName = "No Royal Court Rank";
                 }else { 
                     kanniName = "官位なし";
@@ -66,7 +67,7 @@ public class IconClick : MonoBehaviour {
         //Daimyo Name
         Daimyo daimyoScript = new Daimyo();
         int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
-        string myDaimyoName = daimyoScript.getName(myDaimyo);
+        string myDaimyoName = daimyoScript.getName(myDaimyo,langId);
         kuni.transform.FindChild("DaimyoName").GetComponent<Text>().text = myDaimyoName;
 
         //Daimyo busyo image

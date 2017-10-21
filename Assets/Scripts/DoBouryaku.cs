@@ -23,8 +23,9 @@ public class DoBouryaku : MonoBehaviour {
 		int daimyoId = closeScript.daimyoId;
 		int kuniId = closeScript.kuniId;
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		if(nowHyourou >= 5){
+        if (nowHyourou >= 5){
 
 			//Track
 			int TrackBouryakuNo = PlayerPrefs.GetInt("TrackBouryakuNo",0);
@@ -111,7 +112,7 @@ public class DoBouryaku : MonoBehaviour {
 
 					string daimyoName = Gunzei.GetComponent<Gunzei>().srcDaimyoName;
                     string OKtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         OKtext = "My lord, misreport was successful. \n" + daimyoName + " army withdrawn.";
                     }else {
                         OKtext = "御屋形様、偽報に成功しましたぞ。\n" + daimyoName + "の軍勢が退却します。";
@@ -129,7 +130,7 @@ public class DoBouryaku : MonoBehaviour {
 
                     //Message
                     string NGtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         NGtext = "My lord, I'm sorry. failed misreport. \n Friendship decreased " + reduceYukoudo + " point";
                     }else {
                         NGtext = "申し訳御座りませぬ。偽報に失敗しましたぞ。\n友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -241,14 +242,14 @@ public class DoBouryaku : MonoBehaviour {
 					string ryugenText = "";
 					for(int l=0; l<dstDaimyoList.Count;l++){
 						int dstDaimyoId = dstDaimyoList[l];
-						string dstDaimyoName = daimyo.getName(dstDaimyoId);
+						string dstDaimyoName = daimyo.getName(dstDaimyoId,langId);
 						int reduceYukoudo = main.DownYukouValueWithOther(srcDaimyoId,dstDaimyoId);
 						reduceYukoudo = reduceYukoudo/2;
 						if(reduceYukoudo==0){
 							reduceYukoudo=1;
 						}
-						
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                        if (langId == 2) {
                             ryugenText = ryugenText + dstDaimyoName + " friendship decreased " + reduceYukoudo + " point \n";
                         }else {
                             ryugenText = ryugenText + dstDaimyoName + "との友好度が" + reduceYukoudo + "下がりました。\n";
@@ -263,7 +264,7 @@ public class DoBouryaku : MonoBehaviour {
 					mainStage.questExtension();
 
                     string OKtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         OKtext = "My lord, bad rumor was successful. \n" + ryugenText;
                     }else {
                         OKtext = "御屋形様、流言に成功しましたぞ。\n " + ryugenText;
@@ -283,7 +284,7 @@ public class DoBouryaku : MonoBehaviour {
 
                     //Message
                     string NGtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         NGtext = "My lord, I'm sorry. failed misreport. \n Friendship decreased " + reduceYukoudo + " point";
                     }else {
                         NGtext = "申し訳御座りませぬ。流言に失敗しましたぞ。\n友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -487,7 +488,7 @@ public class DoBouryaku : MonoBehaviour {
 					mainStage.questExtension();
 
                     string OKtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         OKtext = "My lord, successed to rob.\n";
                     }
                     else {
@@ -497,8 +498,8 @@ public class DoBouryaku : MonoBehaviour {
 
                     string addText = "";
 					if(moneyOrItem==0){
-						
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                        if (langId == 2) {
                             addText = "got " + getMoney + " money.";
                         }
                         else {
@@ -507,9 +508,9 @@ public class DoBouryaku : MonoBehaviour {
                     }
                     else{
 						if(kahouOrShizai==0){
-							//kahou
-							
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            //kahou
+
+                            if (langId == 2) {
                                 addText = " got treasure " + kahouName + ".";
                             }
                             else {
@@ -517,9 +518,9 @@ public class DoBouryaku : MonoBehaviour {
                             }
                         }
                         else{
-							//shizai＋
-							
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            //shizai＋
+
+                            if (langId == 2) {
                                 addText = " got " + addQty + " " + shigenName + ".";
                             }
                             else {
@@ -542,7 +543,7 @@ public class DoBouryaku : MonoBehaviour {
 
                     //Message
                     string NGtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         NGtext = "My lord, I'm sorry. failed to rob. \n Friendship decreased " + reduceYukoudo + " point";
                     }
                     else {
@@ -695,7 +696,7 @@ public class DoBouryaku : MonoBehaviour {
 
 
 					KuniInfo kuni = new KuniInfo();
-					string kuniName = kuni.getKuniName (kuniId);
+					string kuniName = kuni.getKuniName (kuniId,langId);
 					PlayerPrefs.SetBool ("questDailyFlg30",true);
 
 					MainStageController mainStage = new MainStageController();
@@ -703,7 +704,7 @@ public class DoBouryaku : MonoBehaviour {
 
 
                     string OKtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         OKtext = "Ninja hided in " + kuniName + " well. \n Please check spy report.";
                     }else {
                         OKtext = "忍が上手く" + kuniName + "に潜伏しましたぞ。\n諜報内容をご確認下され。";
@@ -719,7 +720,7 @@ public class DoBouryaku : MonoBehaviour {
 					int reduceYukoudo = nowYukoudo - newYukoudo;
 					GameObject.Find ("YukouValue").GetComponent<Text> ().text = newYukoudo.ToString ();
                     string NGtext = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         NGtext = "Ninja was caught. \n Friendship decreased " + reduceYukoudo + " point";
                     } else {
                         NGtext = "忍が捕まってしまったようです。\n友好度が" + reduceYukoudo + "下がりますぞ。";

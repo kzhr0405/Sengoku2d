@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class TabibitoNoticeBtn : MonoBehaviour {
 
@@ -16,7 +17,7 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 	public void OnClick(){
 
         onOffTabibitoMove(true);
-
+        int langId = PlayerPrefs.GetInt("langId");
 
         AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
@@ -78,7 +79,7 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 			Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 			if(itemId==1){
                 //Ge
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
                 }else {
                     item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
@@ -86,7 +87,7 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 				item.GetComponent<Image>().color = lowColor;
 			}else if(itemId==2){
                 //Cyu
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
                 }else {
                     item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
@@ -94,7 +95,7 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 				item.GetComponent<Image>().color = midColor;
 			}else if(itemId==3){
                 //Jyo
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
                 }else {
                     item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
@@ -109,21 +110,21 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 			if(itemCd == "cyoutei"){
 				if(targetRank == "S"){
 					itemId = 3;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "High";
                     }else {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "上";
                     }
 				}else if(targetRank == "A"){
 					itemId = 2;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "Mid";
                     }else {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "中";
                     }
 				}else if(targetRank == "B"){
 					itemId = 1;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "Low";
                     }else {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "下";
@@ -132,21 +133,21 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 			}else if(itemCd == "koueki"){
 				if(targetRank == "A"){
 					itemId = 3;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "High";
                     }else {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "上";
                     }
 				}else if(targetRank == "B"){
 					itemId = 2;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "Mid";
                     }else {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "中";
                     }
 				}else if(targetRank == "C"){
 					itemId = 1;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "Low";
                     }else {
                         item.transform.FindChild("Rank").GetComponent<Text>().text = "下";
@@ -158,19 +159,19 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 		//Kengou
 		if (itemCd == "kengou") {
 			if(targetRank=="A"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     item.transform.FindChild("Rank").GetComponent<Text>().text = "High";
                 }else {
                     item.transform.FindChild("Rank").GetComponent<Text>().text = "上";
                 }
 			}else if(targetRank=="B"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     item.transform.FindChild("Rank").GetComponent<Text>().text = "Mid";
                 }else {
                     item.transform.FindChild("Rank").GetComponent<Text>().text = "中";
                 }
 			}else if(targetRank=="C"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     item.transform.FindChild("Rank").GetComponent<Text>().text = "Low";
                 }else {
                     item.transform.FindChild("Rank").GetComponent<Text>().text = "下";

@@ -2399,7 +2399,6 @@ MonoBehaviour:
   lastLoginDateString: 
   addJinkeiNo: 0
   minusBusyoQty: 0
-  minustPercent: 50
   hardFlg: 0
   seasonChangedFlg: 0
   nowSeason: 0
@@ -2417,6 +2416,7 @@ MonoBehaviour:
   reward: {fileID: 0}
   daimyoKuniQtyList: 
   daimyoList: 
+  MessageStaminaObject: {fileID: 0}
 --- !u!4 &346508865
 Transform:
   m_ObjectHideFlags: 0
@@ -13684,7 +13684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a48b957b0a96734ea15bf08690516e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishText: Rikyu Sen
+  englishText: Sen no Rikyu
   englishFontSize: 200
   arialFg: 1
 --- !u!1 &1951602809
@@ -14991,15 +14991,15 @@ RectTransform:
   m_GameObject: {fileID: 2126248358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.065, y: 0.12, z: 1}
+  m_LocalScale: {x: 0.06, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1096538203}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.2, y: -0.0000025544}
-  m_SizeDelta: {x: 1464.9, y: 658.33}
+  m_AnchoredPosition: {x: 0.1, y: 0.2}
+  m_SizeDelta: {x: 1594.5, y: 718.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2126248360
 MonoBehaviour:
@@ -15023,8 +15023,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4bcc494b677048c45b85789520890e33, type: 3}
-    m_FontSize: 90
-    m_FontStyle: 1
+    m_FontSize: 100
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300

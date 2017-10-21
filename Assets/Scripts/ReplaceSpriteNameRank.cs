@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class ReplaceSpriteNameRank : MonoBehaviour {
 
 	void Start () {
-		BusyoInfoGet busyoInfoScript = new BusyoInfoGet ();
-		string busyoName = busyoInfoScript.getName (int.Parse(name));
+        int langId = PlayerPrefs.GetInt("langId");
+        BusyoInfoGet busyoInfoScript = new BusyoInfoGet ();
+		string busyoName = busyoInfoScript.getName (int.Parse(name), langId);
 		string busyoRank = busyoInfoScript.getRank (int.Parse(name));
 
 		transform.FindChild ("Text").GetComponent<Text> ().text = busyoName;

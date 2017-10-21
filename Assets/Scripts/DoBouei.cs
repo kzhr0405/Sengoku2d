@@ -16,9 +16,10 @@ public class DoBouei : MonoBehaviour {
 
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		//Check
-		if (GameObject.Find (key)) {
+        //Check
+        if (GameObject.Find (key)) {
 			//OK
 
 			int hyourou = PlayerPrefs.GetInt ("hyourou");
@@ -103,7 +104,8 @@ public class DoBouei : MonoBehaviour {
 				GameObject.Find("bakuhuReturn").GetComponent<BakuhuMenuReturn>().OnClick();
 				Message msg = new Message ();
                 string OKtext = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                
+                if (langId == 2) {
                     OKtext = engunDaimyoName + " sent " + engunHei.ToString() + " soldiers to \n" + kuniName + " to support.";
                 }else {
                     OKtext = engunDaimyoName + "殿が" + engunHei.ToString() + "の兵を\n" + kuniName + "救援に差し向けましたぞ。";
@@ -121,7 +123,7 @@ public class DoBouei : MonoBehaviour {
 				int reducedValue = myGaikouValue - newYukoudo;
 				Message msg = new Message ();
                 string NGtext = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     NGtext = engunDaimyoName + " declined our defence order. \n Friendship decreased " + reducedValue + " point.";
                 } else {
                     NGtext = "援軍の儀、" + engunDaimyoName + "殿に断られ申した。\n当家との友好度が" + reducedValue + "下がります。";
@@ -137,7 +139,7 @@ public class DoBouei : MonoBehaviour {
 			GameObject.Find("bakuhuReturn").GetComponent<BakuhuMenuReturn>().OnClick();
 			Message msg = new Message ();
             string NGtext = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 NGtext = "My lord, it was too late. Battle already finished.";
             }else {
                 NGtext = "御屋形様、既に勝敗は決してしまったようですぞ。";

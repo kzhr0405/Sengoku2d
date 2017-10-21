@@ -33,6 +33,7 @@ public class preKaisen : MonoBehaviour {
 
         //message
         string kassenMsg = "Prefabs/Common/KassenMessage";
+        int langId = PlayerPrefs.GetInt("langId");
         if (isAttackedFlg || isKessenFlg) {
             GameObject msgObj = Instantiate(Resources.Load(kassenMsg)) as GameObject;
             msgObj.transform.SetParent(GameObject.Find("Panel").transform);
@@ -44,20 +45,20 @@ public class preKaisen : MonoBehaviour {
             string msgTxt = "";
             int daimyoId = PlayerPrefs.GetInt("activeDaimyoId");
             Daimyo daimyo = new Daimyo();
-            string daimyoName = daimyo.getName(daimyoId);
-
+            string daimyoName = daimyo.getName(daimyoId,langId);
+            
             if (isAttackedFlg) {
                 int activeKuniId = PlayerPrefs.GetInt("activeKuniId");
                 KuniInfo kuni = new KuniInfo();
-                string kuniName = kuni.getKuniName(activeKuniId);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                string kuniName = kuni.getKuniName(activeKuniId,langId);
+                if (langId == 2) {
                     msgTxt = daimyoName + " is attacking " + kuniName + ". \n Let's defend this country.";
                 }else {
                     msgTxt = daimyoName + "が" + kuniName + "に侵攻していますぞ。\n守り抜きましょうぞ。";
                 }
             }
             else if (isKessenFlg) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msgTxt = "It's a time to have a showdown with " + daimyoName + ".";
                 }else {
                     msgTxt = daimyoName + "と雌雄を決する時です。\n腕が鳴りますな。";
@@ -69,7 +70,7 @@ public class preKaisen : MonoBehaviour {
         //Stage Name
         string stageName = PlayerPrefs.GetString("activeStageName");
         if (!isKessenFlg) {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 GameObject.Find("KassenNameValue").GetComponent<Text>().text = "Battle of " + stageName;
             }else {
                 GameObject.Find("KassenNameValue").GetComponent<Text>().text = stageName + "の戦い";
@@ -110,7 +111,7 @@ public class preKaisen : MonoBehaviour {
             GameObject slot4 = Instantiate(Resources.Load(txtPath)) as GameObject;
             slot4.transform.SetParent(content.transform);
             GameObject text4 = slot4.transform.FindChild("Text1").gameObject;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 text4.GetComponent<Text>().text = "All Unit Speed";
             }else {
                 text4.GetComponent<Text>().text = "気象効果 全隊 迅速";
@@ -130,7 +131,7 @@ public class preKaisen : MonoBehaviour {
             GameObject slot = Instantiate(Resources.Load(txtPath)) as GameObject;
             slot.transform.SetParent(content.transform);
             GameObject text = slot.transform.FindChild("Text1").gameObject;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 text.GetComponent<Text>().text = "Player Unit Defence";
             }else {
                 text.GetComponent<Text>().text = "防備効果 味方 守備";
@@ -264,7 +265,7 @@ public class preKaisen : MonoBehaviour {
     //Busyo + Mob
     public int powerType1(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId) {
         int totalHei = 0;
-
+        int langId = PlayerPrefs.GetInt("langId");
         int activeBusyoQty = PlayerPrefs.GetInt("activeBusyoQty");
         int activeBusyoLv = PlayerPrefs.GetInt("activeBusyoLv");
         int activeButaiQty = PlayerPrefs.GetInt("activeButaiQty");
@@ -356,7 +357,7 @@ public class preKaisen : MonoBehaviour {
 
 
 
-        string TaisyoBusyoName = info.getName(taisyoBusyoId);
+        string TaisyoBusyoName = info.getName(taisyoBusyoId,langId);
         string TaisyoType = info.getHeisyu(taisyoBusyoId);
 
         int chldHp = activeButaiQty * enemyIns.getChildStatus(activeButaiLv, TaisyoType, linkNo);
@@ -441,7 +442,7 @@ public class preKaisen : MonoBehaviour {
                     busyoHp = Mathf.FloorToInt((float)busyoHp * 1.5f);
                 }
 
-                string busyoName = info.getName(35);
+                string busyoName = info.getName(35, langId);
                 string[] texts = new string[] { "YR", "KB" };
                 string busyoType = texts[UnityEngine.Random.Range(0, texts.Length - 1)];
 
@@ -496,7 +497,7 @@ public class preKaisen : MonoBehaviour {
     //Busyo + Busyo
     public int powerType2(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId) {
         int totalHei = 0;
-
+        int langId = PlayerPrefs.GetInt("langId");
         int activeBusyoQty = PlayerPrefs.GetInt("activeBusyoQty");
         int activeBusyoLv = PlayerPrefs.GetInt("activeBusyoLv");
         int activeButaiQty = PlayerPrefs.GetInt("activeButaiQty");
@@ -585,7 +586,7 @@ public class preKaisen : MonoBehaviour {
         }
 
 
-        string TaisyoBusyoName = info.getName(taisyoBusyoId);
+        string TaisyoBusyoName = info.getName(taisyoBusyoId,langId);
         string TaisyoType = info.getHeisyu(taisyoBusyoId);
 
         int chldHp = activeButaiQty * enemyIns.getChildStatus(activeButaiLv, TaisyoType, linkNo);
@@ -672,7 +673,7 @@ public class preKaisen : MonoBehaviour {
                         busyoHp = Mathf.FloorToInt((float)busyoHp * 1.5f);
                     }
                     
-                    string busyoName = info.getName(randomBusyoId);
+                    string busyoName = info.getName(randomBusyoId,langId);
                     string busyoType = info.getHeisyu(randomBusyoId);
 
                     int chldHp2 = activeButaiQty * enemyIns.getChildStatus(activeButaiLv, busyoType, linkNo);
@@ -736,7 +737,7 @@ public class preKaisen : MonoBehaviour {
                 }
 
 
-                string busyoName = info.getName(35);
+                string busyoName = info.getName(35,langId);
                 string[] texts = new string[] { "YR", "KB" };
                 string busyoType = texts[UnityEngine.Random.Range(0, texts.Length - 1)];
 
@@ -786,7 +787,7 @@ public class preKaisen : MonoBehaviour {
     //Daimyo + Busyo
     public int powerType3(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId) {
         int totalHei = 0;
-
+        int langId = PlayerPrefs.GetInt("langId");
         int activeBusyoQty = PlayerPrefs.GetInt("activeBusyoQty");
         int activeBusyoLv = PlayerPrefs.GetInt("activeBusyoLv");
         int activeButaiQty = PlayerPrefs.GetInt("activeButaiQty");
@@ -824,7 +825,7 @@ public class preKaisen : MonoBehaviour {
             hp = Mathf.FloorToInt((float)hp * 1.5f);
         }
 
-        string daimyoBusyoName = info.getName(daimyoBusyoId);
+        string daimyoBusyoName = info.getName(daimyoBusyoId,langId);
         string daimyoType = info.getHeisyu(daimyoBusyoId);
 
         int chldHp = activeButaiQty * enemyIns.getChildStatus(activeButaiLv, daimyoType, linkNo);
@@ -956,7 +957,7 @@ public class preKaisen : MonoBehaviour {
                         }
 
 
-                        string busyoName = info.getName(randomBusyoId);
+                        string busyoName = info.getName(randomBusyoId,langId);
                         string busyoType = info.getHeisyu(randomBusyoId);
 
                         int chldHp2 = activeButaiQty * enemyIns.getChildStatus(activeButaiLv, busyoType, linkNo);
@@ -1017,7 +1018,7 @@ public class preKaisen : MonoBehaviour {
                     }
 
 
-                    string busyoName = info.getName(35);
+                    string busyoName = info.getName(35,langId);
                     string[] texts = new string[] { "YR", "KB" };
                     string busyoType = texts[UnityEngine.Random.Range(0, texts.Length - 1)];
 

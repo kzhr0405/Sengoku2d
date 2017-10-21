@@ -51,7 +51,8 @@ public class GacyaSpecial : MonoBehaviour {
                 audioSources[4].Play();
                 Message msg = new Message();
                 string Text = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     Text = "You need " + stockReq.ToString() + " samurai space for special gacya. Now you have just " + (stockLimit - myBusyoQty).ToString() + " space.";
                 }else {
                     Text = "特別ガチャには" + stockReq.ToString() + "人分の武将の空きが必要ですぞ。今は" +(stockLimit-myBusyoQty).ToString() + "人分しか空きがありませぬ。";
@@ -63,6 +64,7 @@ public class GacyaSpecial : MonoBehaviour {
                 audioSources[8].Play();
                 int newBusyoDama = busyoDama - requiredStone;
                 PlayerPrefs.SetInt("busyoDama",newBusyoDama);
+                PlayerPrefs.Flush();
                 GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = newBusyoDama.ToString();
 
                 TouyouSpecialController TouyouSpecialController = GameObject.Find("Controller").GetComponent<TouyouSpecialController>();

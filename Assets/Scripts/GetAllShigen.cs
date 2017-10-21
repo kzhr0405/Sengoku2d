@@ -31,8 +31,8 @@ public class GetAllShigen : MonoBehaviour {
 	public void OnClick () {
 
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-
-		if (!doneCyosyuFlg) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (!doneCyosyuFlg) {
 			audioSources [3].Play ();
             doneCyosyuFlg = true;
             MainStageController main = new MainStageController();
@@ -84,7 +84,7 @@ public class GetAllShigen : MonoBehaviour {
                     resultMoney = int.MaxValue;
                 }
                 PlayerPrefs.SetInt("money",resultMoney);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     targetName = "Money";
                 }else {
                     targetName = "金";
@@ -103,7 +103,7 @@ public class GetAllShigen : MonoBehaviour {
 				if(resultHyourou > maxHyourou) resultHyourou = maxHyourou;
 				PlayerPrefs.SetInt("hyourou",resultHyourou);
 				GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = resultHyourou.ToString();
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     targetName = "Stamina";
                 }else {
                     targetName = "兵糧";
@@ -119,7 +119,7 @@ public class GetAllShigen : MonoBehaviour {
                         resultMoney = int.MaxValue;
                     }
                     PlayerPrefs.SetInt("money",resultMoney);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         targetName = targetName + " and Gold";
                     }else {
                         targetName = targetName + "と鉱山収入";
@@ -133,7 +133,7 @@ public class GetAllShigen : MonoBehaviour {
 				}
 
 			}else if(cyosyuTarget == "gunjyu"){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     targetName = "Weapon";
                 }else {
                     targetName = "軍需物資";
@@ -238,7 +238,7 @@ public class GetAllShigen : MonoBehaviour {
                         resultMoney = int.MaxValue;
                     }
                     PlayerPrefs.SetInt("money",resultMoney);
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         targetName = targetName + " and Gold";
                     }else {
                         targetName = targetName + "と鉱山収入";
@@ -262,7 +262,7 @@ public class GetAllShigen : MonoBehaviour {
 			//Message
 			Message msg = new Message();
             string text = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 text = "My lord, you earned " + targetName + ".\nPlease enrich the country more by development.";
             }else {
                 text = targetName + "を徴収しましたぞ。\n内政でより国を富ませましょう。";
@@ -297,7 +297,7 @@ public class GetAllShigen : MonoBehaviour {
 
 			Message msg = new Message();
             string text = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 text = "Season hasn't changed.\nPlease wait a moment for collecting taxes.";
             }else {
                 text = "まだ季節は変わっておりませぬぞ。\n徴収は今しばらくお待ち下さいませ。";

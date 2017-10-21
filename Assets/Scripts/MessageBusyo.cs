@@ -41,20 +41,22 @@ public class MessageBusyo : MonoBehaviour {
 		RectTransform Serihu_transform = Serihu.GetComponent<RectTransform>();
 		Serihu_transform.anchoredPosition3D = new Vector3(100,0,0);
 		Serihu.name = "Serihu";
+        int langId = PlayerPrefs.GetInt("langId");
 
-		string serihu = "";
+        string serihu = "";
 		int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
 		if (myDaimyoBusyo == busyoId) {
 
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;
             if (type == "tsuihou") {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                
+                if (langId == 2) {
                     serihu = serihuMst.param[busyoId - 1].tsuihouMsgEng;
                 }else {
                     serihu = serihuMst.param[busyoId - 1].tsuihouMsg;
                 }
             }else if (type == "touyou") {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     serihu = serihuMst.param[busyoId - 1].touyouMsgEng;
                 }else {
                     serihu = serihuMst.param[busyoId - 1].touyouMsg;
@@ -69,13 +71,13 @@ public class MessageBusyo : MonoBehaviour {
 			Entity_serihu_mst serihuMst = Resources.Load ("Data/serihu_mst") as Entity_serihu_mst;
 
 			if (type == "tsuihou") {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     serihu = serihuMst.param [busyoId - 1].tsuihouMsgEng;
                 }else {
                     serihu = serihuMst.param[busyoId - 1].tsuihouMsg;
                 }
 			} else if (type == "touyou") {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     serihu = serihuMst.param [busyoId - 1].touyouMsgEng;
                 }else {
                     serihu = serihuMst.param[busyoId - 1].touyouMsg;

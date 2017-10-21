@@ -21,7 +21,19 @@ public class DataRegister : MonoBehaviour {
                 initData.makeInitData();
             }
         }
-        
+
+        int langId = PlayerPrefs.GetInt("langId");
+        if(langId == 0) {
+            if (Application.systemLanguage == SystemLanguage.Japanese) {
+                PlayerPrefs.SetInt("langId",1);
+            } else if(Application.systemLanguage == SystemLanguage.English) {
+                PlayerPrefs.SetInt("langId", 2);
+            }else if(Application.systemLanguage == SystemLanguage.Chinese) {
+                PlayerPrefs.SetInt("langId", 3);
+            }
+            PlayerPrefs.Flush();
+        }
+
         //User Data Update
         DataUserId DataUserId = GetComponent<DataUserId>();        
         DataJinkei DataJinkei = GetComponent<DataJinkei>();

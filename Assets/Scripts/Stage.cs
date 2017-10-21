@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class Stage : MonoBehaviour {
 
@@ -18,7 +19,8 @@ public class Stage : MonoBehaviour {
 		string stageName = "";
 		int targetline = ((kuniId - 1) * 10) + stageId - 1;
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             stageName = Mst.param [targetline].stageNameEng;
         }else {
             stageName = Mst.param[targetline].stageName;

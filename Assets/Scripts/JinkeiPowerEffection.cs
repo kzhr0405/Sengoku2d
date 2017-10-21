@@ -119,7 +119,8 @@ public class JinkeiPowerEffection : MonoBehaviour {
 		flag.transform.SetParent(busyoObj.transform);
 		flag.transform.localScale = new Vector3 (0.5f, 0.5f, 0);
 		flag.transform.localPosition = new Vector3(0, 0, 0);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             flag.transform.FindChild ("Effect").GetComponent<Text> ().text = "ATK+" + addAtk + "\n" + "DFC+" + addDfc;
         }else {
             flag.transform.FindChild("Effect").GetComponent<Text>().text = "武勇+" + addAtk + "\n" + "守備+" + addDfc;
@@ -134,7 +135,8 @@ public class JinkeiPowerEffection : MonoBehaviour {
 		msgObj.transform.SetParent(panel.transform);
 		msgObj.transform.localScale = new Vector3 (1, 1, 0);
 		msgObj.transform.localPosition = new Vector3(0, 0, 0);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             msgObj.transform.FindChild ("Text").GetComponent<Text> ().text = "Total ATK+" + totalAddAtk + "\n" + "Total DFC+" + totalAddDfc;
         }else {
             msgObj.transform.FindChild("Text").GetComponent<Text>().text = "総武勇+" + totalAddAtk + "\n" + "総守備+" + totalAddDfc;

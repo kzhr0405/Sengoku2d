@@ -64,11 +64,15 @@ public class MainStageController : MonoBehaviour {
     //movie
     public GameObject MessageStaminaObject;
 
+    //surrender
+    
+
     public void Start () {
 
         //Common
         Resources.UnloadUnusedAssets();
         Time.timeScale = 1;
+        int langId = PlayerPrefs.GetInt("langId");
 
         //Set Object
         HyourouCurrentValue = currentHyourou.GetComponent<Text>();
@@ -152,7 +156,7 @@ public class MainStageController : MonoBehaviour {
                 }else {
                     myDaimyo = 1;
                 }
-				string myDaimyoName = daimyo.getName (myDaimyo);
+				string myDaimyoName = daimyo.getName (myDaimyo,langId);
 				GameObject.Find ("DaimyoValue").GetComponent<Text> ().text = myDaimyoName;
 
                 int syogunDaimyoId = 0;
@@ -177,7 +181,7 @@ public class MainStageController : MonoBehaviour {
                     hardFlg = PlayerPrefs.GetBool("hardFlg");
                 }
                 string modeString = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     if (hardFlg) {
                         modeString = "Hard";
                     }else {
@@ -308,7 +312,9 @@ public class MainStageController : MonoBehaviour {
 
 				string kuniPath = "Prefabs/Map/Kuni/";
                 KuniInfo kuniScript = new KuniInfo();
-                kuniScript.updateOpenKuni(myDaimyo,seiryoku);
+                if (Application.loadedLevelName != "tutorialMain") {                    
+                    kuniScript.updateOpenKuni(myDaimyo,seiryoku);
+                }
 
                 for (int i=0; i<kuniMst.param.Count; i++) {
 					int kuniId = kuniMst.param [i].kunId;
@@ -322,14 +328,14 @@ public class MainStageController : MonoBehaviour {
 					kuni.transform.SetParent (kuniIconView.transform);
 					kuni.name = kuniId.ToString ();
 					kuni.GetComponent<SendParam> ().kuniId = kuniId;
-					kuni.GetComponent<SendParam> ().kuniName = kuniScript.getKuniName(kuniId);
+					kuni.GetComponent<SendParam> ().kuniName = kuniScript.getKuniName(kuniId,langId);
 					kuni.transform.localScale = new Vector2 (1, 1);
 					kuni.GetComponent<SendParam> ().naiseiItem = kuniMst.param [i].naisei;
 					kuni.GetComponent<SendParam> ().soubujireiFlg = soubujireiFlg;
 
 					//Seiryoku Handling
 					int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
-					string daimyoName = daimyo.getName (daimyoId);
+					string daimyoName = daimyo.getName (daimyoId,langId);
 
 					kuni.GetComponent<SendParam> ().daimyoId = daimyoId;
 					kuni.GetComponent<SendParam> ().daimyoName = daimyoName;
@@ -385,10 +391,10 @@ public class MainStageController : MonoBehaviour {
 					kuni.GetComponent<SendParam> ().butaiQty = butaiQty;
 					kuni.GetComponent<SendParam> ().butaiLv = butaiLv;
 					kuni.GetComponent<SendParam> ().kuniQty = enemyKuniQty;
-				
+                    kuni.GetComponent<SendParam>().senryoku = senryokuRatio;
 
-					//Color Handling
-					float colorR = (float)daimyo.getColorR(daimyoId);
+                    //Color Handling
+                    float colorR = (float)daimyo.getColorR(daimyoId);
 					float colorG = (float)daimyo.getColorG(daimyoId);
 					float colorB = (float)daimyo.getColorB(daimyoId);
 					Color kuniColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
@@ -542,13 +548,13 @@ public class MainStageController : MonoBehaviour {
 						msgOnFlg = true;
 						KuniInfo kuni = new KuniInfo ();
 						int activekuniId = PlayerPrefs.GetInt ("activeKuniId");
-						string kuniName = kuni.getKuniName (activekuniId);
+						string kuniName = kuni.getKuniName (activekuniId,langId);
 
                         string stageString = "kuni" + activekuniId.ToString();
                         string addComment = "";
                         if (!PlayerPrefs.HasKey(stageString)) {
                             
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId==2) {
                                 addComment = "I took away all the castles！";
                             }else {
                                 addComment = "全ての城を奪ってやったぞ！";
@@ -566,14 +572,14 @@ public class MainStageController : MonoBehaviour {
                             }
                             int stageQty = 10 - clearedStageList.Count;
                             
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 addComment = "I took " + stageQty.ToString() + " castles!";
                             }else {
                                 addComment = stageQty.ToString() + "つの城を奪ってやったぞ！";
                             }
                         }
                         
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             comment = "hehehe, I can imagine " + myDaimyoName + " is regreting by lost " + kuniName + "\n" + addComment;
                         }else {
                             comment = "ふふふ、" + myDaimyoName + "め。" + kuniName + "を盗られて悔しがってる姿が目に浮かぶわ。\n" + addComment;
@@ -583,9 +589,9 @@ public class MainStageController : MonoBehaviour {
 						msgOnFlg = true;
 						KuniInfo kuni = new KuniInfo ();
 						int activekuniId = PlayerPrefs.GetInt ("activeKuniId");
-						string kuniName = kuni.getKuniName (activekuniId);
+						string kuniName = kuni.getKuniName (activekuniId,langId);
 						
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             comment = "Darn! I didn't get "+ kuniName + " staked everything I had";
                         }else {
                             comment = "ぬう、乾坤一擲の力を以ってしても" + kuniName + "を落とせぬとは。";
@@ -594,7 +600,7 @@ public class MainStageController : MonoBehaviour {
                     } else if (isKessenFlg && winValue == 1) {
 						msgOnFlg = true;
 
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             comment = "I lost the final battle. My glory only last for a time. How will my name remain in history.";
                         }else {
                             comment = "決戦に負けてしもうた。儚い世であったわ。我が名は後世にどう残るのかのう。";
@@ -603,9 +609,9 @@ public class MainStageController : MonoBehaviour {
 
                     } else if (isKessenFlg && winValue == 2) {
 						msgOnFlg = true;
-						string daimyoName = daimyo.getName (activeDaimyoId);
+						string daimyoName = daimyo.getName (activeDaimyoId,langId);
 						
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             comment = "Hehe, I defeated " + myDaimyoName + " in the final battle.";
                         }else {
                             comment = "ははは、決戦に勝ったぞ。" + myDaimyoName + "如きに敗れる" + daimyoName + "ではないわ。";
@@ -614,7 +620,7 @@ public class MainStageController : MonoBehaviour {
 
                     } else if (isKessenFlg && winValue == 0) {
 						msgOnFlg = true;
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        if (langId == 2) {
                             comment = "Hahaha, he ran away. I will take you on anytime.";
                         }else {
                             comment = "ははは､無様じゃのう。逃げ出しおったわ。いつでも相手して進ぜよう。";
@@ -718,7 +724,8 @@ public class MainStageController : MonoBehaviour {
                                 doneCyosyuFlg = false;
                                 PlayerPrefs.SetBool("doneCyosyuFlg", false);
                                 PlayerPrefs.Flush();
-                                SeasonChange();                        
+                                int langId = PlayerPrefs.GetInt("langId");
+                                SeasonChange(langId);                        
                                 yearTimer = cyosyuMstTime;
                             }
                         }
@@ -803,7 +810,8 @@ public class MainStageController : MonoBehaviour {
 
 	public void SetSeason(int seasonId){
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             if (seasonId == 1) {
                 GameObject.Find("SeasonValue").GetComponent<Text>().text = "Spring";
 
@@ -966,8 +974,8 @@ public class MainStageController : MonoBehaviour {
 	}
 
 	public void changerableByTime(List<string> seiryokuList) {
-        
-		Daimyo daimyo = new Daimyo ();
+        int langId = PlayerPrefs.GetInt("langId");
+        Daimyo daimyo = new Daimyo ();
 		char[] delimiterChars = { ',' };
 
 		/*Timer Handling*/
@@ -1073,7 +1081,7 @@ public class MainStageController : MonoBehaviour {
                 doneCyosyuFlg = false;
                 PlayerPrefs.SetBool("doneCyosyuFlg", false);
                 PlayerPrefs.Flush();
-                SeasonChange();
+                SeasonChange(langId);
                 yearTimer = cyosyuMstTime;
             }
         }else {
@@ -1231,7 +1239,7 @@ public class MainStageController : MonoBehaviour {
 				    } else {
 
 					    //Delete History
-					    deleteKeyHistory(keyTemp	);
+					    deleteKeyHistory(keyTemp);
 
 				    }
 			    }
@@ -1282,10 +1290,10 @@ public class MainStageController : MonoBehaviour {
 				    slot.transform.SetParent (contents.transform);
 				    List<string> metsubouTextList = new List<string> ();
 				    metsubouTextList = new List<string> (text.Split (delimiterChars2));
-				    string srcDaimyoName = daimyo.getName (int.Parse (metsubouTextList [0]));
-				    string dstDaimyoName = daimyo.getName (int.Parse (metsubouTextList [1]));
+				    string srcDaimyoName = daimyo.getName (int.Parse (metsubouTextList [0]),langId);
+				    string dstDaimyoName = daimyo.getName (int.Parse (metsubouTextList [1]),langId);
                     string metsubouText = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         metsubouText = dstDaimyoName + " was was destroyed completly by " + srcDaimyoName + ".";
                     }else {
                         metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
@@ -1350,7 +1358,7 @@ public class MainStageController : MonoBehaviour {
 			PlayerPrefs.Flush(true);//専用のFlushを行い、現在の状態を一時ファイルへ書き出す
 		}
 	}
-
+    
 	public bool CheckByProbability (int ratio) {
 		bool checkFlg = false;
 
@@ -1363,7 +1371,7 @@ public class MainStageController : MonoBehaviour {
 		return checkFlg;
 	}
 
-    public void SeasonChange() {
+    public void SeasonChange(int langId) {
 
         //Common
         eventStopFlg = true;
@@ -1401,7 +1409,7 @@ public class MainStageController : MonoBehaviour {
             nowSeason = nowSeason + 1;
         }
 
-        string seasonText = GetSeasonText(nowSeason);
+        string seasonText = GetSeasonText(nowSeason,langId);
         seasonChangeBoard.transform.FindChild("textBoard").transform.FindChild("Text").GetComponent<TextReader>().scenarios.Add(seasonText);
         back.GetComponent<CloseOneBoard>().deleteObj = seasonChangeBoard;
         
@@ -1571,22 +1579,24 @@ public class MainStageController : MonoBehaviour {
 
                     if (PlayerPrefs.HasKey(jyosyuTemp)) {
                         int jyosyuId = PlayerPrefs.GetInt(jyosyuTemp);
-                        StatusGet sts = new StatusGet();
-                        int lv = PlayerPrefs.GetInt(jyosyuId.ToString());
-                        float naiseiSts = (float)sts.getDfc(jyosyuId, lv);
+                       
+                        if(jyosyuId !=0) {
+                            StatusGet sts = new StatusGet();
+                            int lv = PlayerPrefs.GetInt(jyosyuId.ToString());
+                            float naiseiSts = (float)sts.getDfc(jyosyuId, lv);
 
-                        float hpSts = (float)sts.getHp(jyosyuId, lv);
-                        float atkSts = (float)sts.getAtk(jyosyuId, lv);
+                            float hpSts = (float)sts.getHp(jyosyuId, lv);
+                            float atkSts = (float)sts.getAtk(jyosyuId, lv);
 
-                        float tempKuniSyogyo = (float)kuniSyogyo;
-                        tempKuniSyogyo = tempKuniSyogyo + (tempKuniSyogyo * naiseiSts / 200);
-                        kuniSyogyo = (int)tempKuniSyogyo;
+                            float tempKuniSyogyo = (float)kuniSyogyo;
+                            tempKuniSyogyo = tempKuniSyogyo + (tempKuniSyogyo * naiseiSts / 200);
+                            kuniSyogyo = (int)tempKuniSyogyo;
 
-                        float tempKuniKozan = (float)kuniKozan;
-                        tempKuniKozan = tempKuniKozan + (tempKuniKozan * naiseiSts / 200);
-                        kuniKozan = (int)tempKuniKozan;
+                            float tempKuniKozan = (float)kuniKozan;
+                            tempKuniKozan = tempKuniKozan + (tempKuniKozan * naiseiSts / 200);
+                            kuniKozan = (int)tempKuniKozan;
 
-
+                        }
                     }
                 }
             }
@@ -1816,11 +1826,11 @@ public class MainStageController : MonoBehaviour {
 
 
 
-    public string GetSeasonText(int seasonId) {
+    public string GetSeasonText(int seasonId, int langId) {
 
         string seasonText = "";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             if (seasonId == 1) {
                 seasonText = "Spring has come. You have levied money in this season. My lord, please develop your town, store or mine to increase income.";
             }else if (seasonId == 2) {

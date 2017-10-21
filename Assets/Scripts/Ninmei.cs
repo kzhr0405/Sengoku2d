@@ -14,9 +14,9 @@ public class Ninmei : MonoBehaviour {
 	public void OnClick(){
 		
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-
-		//Ninmei
-		if (kaininFlg == false) {
+        int langId = PlayerPrefs.GetInt("langId");
+        //Ninmei
+        if (kaininFlg == false) {
 
 			//Make Jyosyu List
 			string openKuniString = PlayerPrefs.GetString ("openKuni");
@@ -51,7 +51,7 @@ public class Ninmei : MonoBehaviour {
 				audioSources [0].Play ();
 				BusyoStatusButton pop = new BusyoStatusButton ();
 				pop.commonPopup (19);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId==2) {
                     GameObject.Find ("popText").GetComponent<Text> ().text = "Feudatory";
                 }else {
                     GameObject.Find("popText").GetComponent<Text>().text = "城主任命";
@@ -70,13 +70,13 @@ public class Ninmei : MonoBehaviour {
                 StatusGet sts = new StatusGet();
                 foreach (string busyoIdString in myBusyoList) {
                     int busyoId = int.Parse(busyoIdString);
-                    string busyoName = BusyoInfoGet.getName(busyoId);
+                    string busyoName = BusyoInfoGet.getName(busyoId, langId);
                     string rank = BusyoInfoGet.getRank(busyoId);
                     int lv = PlayerPrefs.GetInt(busyoId.ToString());
                     float dfcSts = (float)sts.getDfc(busyoId, lv);
                     float hpSts = (float)sts.getHp(busyoId, lv);
                     float atkSts = (float)sts.getAtk(busyoId, lv);
-                    baseBusyoList.Add(new Busyo(busyoId, busyoName, rank, "", 0, 0, lv, hpSts, atkSts, dfcSts, 0));
+                    baseBusyoList.Add(new Busyo(busyoId, busyoName, rank,0, "", 0, 0, lv, hpSts, atkSts, dfcSts, 0,0,0));
                 }
                 List<Busyo> myBusyoSortList = new List<Busyo>(baseBusyoList);
                 myBusyoSortList.Sort((a, b) => {
@@ -166,14 +166,14 @@ public class Ninmei : MonoBehaviour {
 			int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
             string msgText = "";
 			if (myDaimyoBusyo == jyosyuId) {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msgText = "My lord, do you want to resign the lord of this country?";
                 }
                 else {
                     msgText = "御館様、自らを城主から解任なさいますか？";
                 }
             } else {
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     msgText = "My lord, do you want to remove " + jyosyuName + " from the lord of this country?";
                 }
                 else {

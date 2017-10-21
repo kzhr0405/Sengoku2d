@@ -208,7 +208,8 @@ public class DoTsuihou : MonoBehaviour {
 
 				MessageBusyo msg = new MessageBusyo();
                 string tsuihouText = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     tsuihouText = "Banished "+ busyoName + ".";
                 }else {
                     tsuihouText = busyoName + "を追放しました。";

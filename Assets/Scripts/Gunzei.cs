@@ -103,10 +103,11 @@ public class Gunzei : MonoBehaviour {
 
 				MainEventHandler kassenEvent = new MainEventHandler ();
 				bool winFlg = kassenEvent.CheckByProbability (ratio);
+                int langId = PlayerPrefs.GetInt("langId");
 
                 //Entity_kuni_mst kuniMst = Resources.Load ("Data/kuni_mst") as Entity_kuni_mst;
                 KuniInfo kuniScript = new KuniInfo();
-                string dstKuniName = kuniScript.getKuniName(dstKuni);
+                string dstKuniName = kuniScript.getKuniName(dstKuni,langId);
 
 				//Gaikou
 				Gaikou gaikou = new Gaikou();
@@ -114,8 +115,8 @@ public class Gunzei : MonoBehaviour {
 
 				if (winFlg) {
 					bool noGunzeiFlg = false;
-                    string syouhai = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    string syouhai = "";                   
+                    if (langId == 2) {
                         syouhai = srcDaimyoName + "\n" + "Conquered " + dstKuniName;
                     }else {
                         syouhai = srcDaimyoName + "\n" + dstKuniName + "を攻略";
@@ -130,7 +131,7 @@ public class Gunzei : MonoBehaviour {
 
                 } else {
                     string syouhai = "";
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         syouhai = dstDaimyoName + "\n" + "Defended " + dstKuniName;
                     }else {
                         syouhai = dstDaimyoName + "\n" + dstKuniName + "を防衛";
@@ -152,7 +153,8 @@ public class Gunzei : MonoBehaviour {
 		} else {
 			audioSources [1].Play ();
             string syouhai = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 syouhai = srcDaimyoName + " withdrawed";
             }else {
                 syouhai = srcDaimyoName + "撤退";
@@ -196,8 +198,8 @@ public class Gunzei : MonoBehaviour {
 
 
 	public void win(string tKey, int tSrcDaimyoId, int tDstDaimyoId, bool noGunzeiFlg, int dstKuni) {
-
-		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
+        int langId = PlayerPrefs.GetInt("langId");
+        int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 
 		//Kuni Change
 		string seiryoku = PlayerPrefs.GetString ("seiryoku");
@@ -280,11 +282,11 @@ public class Gunzei : MonoBehaviour {
 				GameObject slot = Instantiate (Resources.Load (pathOfSlot)) as GameObject;
 				slot.transform.SetParent (contents.transform);
                 Daimyo daimyoScript = new Daimyo();
-                string srcDaimyoName = daimyoScript.getName(tSrcDaimyoId);
-                string dstDaimyoName = daimyoScript.getName(tDstDaimyoId);
+                string srcDaimyoName = daimyoScript.getName(tSrcDaimyoId,langId);
+                string dstDaimyoName = daimyoScript.getName(tDstDaimyoId,langId);
                 string metsubouText = "";
-
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                
+                if (langId == 2) {
                     metsubouText = dstDaimyoName + " was destroyed completly by " + srcDaimyoName + ".";
                 }else {
                     metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
@@ -358,9 +360,9 @@ public class Gunzei : MonoBehaviour {
 	}
 
 	public void changeKuniIconAndParam(int srcKuni, int dstKuni, int srcDaimyoId, int dstDaimyoId){
-
-		//Change Icon
-		string imagePath = "Prefabs/Kamon/" + srcDaimyoId.ToString ();
+        int langId = PlayerPrefs.GetInt("langId");
+        //Change Icon
+        string imagePath = "Prefabs/Kamon/" + srcDaimyoId.ToString ();
 		GameObject kuniIconView = GameObject.Find ("KuniIconView");
 		GameObject targetKuni = kuniIconView.transform.FindChild(dstKuni.ToString()).gameObject;
 
@@ -414,7 +416,7 @@ public class Gunzei : MonoBehaviour {
 
 				//Change Name of target Kuni by daimyo info
 				targetKuni.GetComponent<SendParam> ().daimyoId = srcDaimyoId;
-                targetKuni.GetComponent<SendParam>().daimyoName = daimyoScript.getName(srcDaimyoId);//daimyoMst.param [srcDaimyoId - 1].daimyoName;
+                targetKuni.GetComponent<SendParam>().daimyoName = daimyoScript.getName(srcDaimyoId,langId);//daimyoMst.param [srcDaimyoId - 1].daimyoName;
                 targetKuni.GetComponent<SendParam>().daimyoBusyoId = daimyoScript.getDaimyoBusyoId(srcDaimyoId);//daimyoMst.param [srcDaimyoId - 1].busyoId;
 
                 SendParam winnerParam = kuniIconView.transform.FindChild (tmpKuniId.ToString ()).GetComponent<SendParam> ();

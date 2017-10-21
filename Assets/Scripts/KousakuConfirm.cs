@@ -11,10 +11,10 @@ public class KousakuConfirm : MonoBehaviour {
 
 
 	public void OnClick(){
-
-
-		//Common
-		Message msg = new Message();
+        
+        //Common
+        int langId = PlayerPrefs.GetInt("langId");
+        Message msg = new Message();
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		//Check Shinobi
@@ -59,13 +59,13 @@ public class KousakuConfirm : MonoBehaviour {
                 StatusGet sts = new StatusGet();
                 foreach (string busyoIdString in myBusyoList) {
                     int busyoId = int.Parse(busyoIdString);
-                    string busyoName = BusyoInfoGet.getName(busyoId);
+                    string busyoName = BusyoInfoGet.getName(busyoId,langId);
                     string rank = BusyoInfoGet.getRank(busyoId);
                     int lv = 1;
                     float dfcSts = (float)sts.getDfc(busyoId, lv);
                     float hpSts = (float)sts.getHp(busyoId, lv);
                     float atkSts = (float)sts.getAtk(busyoId, lv);
-                    baseBusyoList.Add(new Busyo(busyoId, busyoName, rank, "", 0, 0, lv, hpSts, atkSts, dfcSts, 0));
+                    baseBusyoList.Add(new Busyo(busyoId, busyoName, rank,0, "", 0, 0, lv, hpSts, atkSts, dfcSts, 0,0,0));
                 }
                 List<Busyo> myBusyoSortList = new List<Busyo>(baseBusyoList);
                 myBusyoSortList.Sort((a, b) => {
@@ -119,26 +119,25 @@ public class KousakuConfirm : MonoBehaviour {
 
                 }
 
-				scrollObj.transform.FindChild ("Do").GetComponent<DoKousaku> ().cyouhouSnbRankId = cyouhouSnbRankId;
+                scrollObj.transform.FindChild ("Do").GetComponent<DoKousaku> ().cyouhouSnbRankId = cyouhouSnbRankId;
 				if (name == "CyouryakuButton") {
-                    scrollObj.transform.FindChild("Question").GetComponent<QA>().qaId = 31;
-                    if (Application.systemLanguage == SystemLanguage.Japanese) {
-                        scrollObj.transform.FindChild ("Text").GetComponent<Text> ().text = "調略";
-					    scrollObj.transform.FindChild ("Do").transform.FindChild ("Text").GetComponent<Text> ().text = "調略";					    
-                    }else {
+                    scrollObj.transform.FindChild("Question").GetComponent<QA>().qaId = 31;                    
+                    if (langId == 2) {
                         scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "Win Over";
                         scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "Win Over";
+                    }else {
+                        scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "調略";
+                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "調略";
                     }
                     doBtnObj.GetComponent<DoKousaku>().linkCutFlg = false;
                 } else {
                     scrollObj.transform.FindChild("Question").GetComponent<QA>().qaId = 30;
-
-                    if (Application.systemLanguage == SystemLanguage.Japanese) {
-                        scrollObj.transform.FindChild ("Text").GetComponent<Text> ().text = "連絡線遮断";
-                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "遮断";
-                    } else{
+                    if (langId == 2) {
                         scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "Link Cut";
                         scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "Cut";
+                    }else {
+                        scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "連絡線遮断";
+                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "遮断";
                     }
 					doBtnObj.GetComponent<DoKousaku> ().linkCutFlg = true;
 				}

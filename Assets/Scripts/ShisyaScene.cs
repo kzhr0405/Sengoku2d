@@ -23,8 +23,9 @@ public class ShisyaScene : MonoBehaviour {
 		Shisya shisya = new Shisya();
 		Daimyo daimyo = new Daimyo ();
 		bool ClickFlg = false;
+        int langId = PlayerPrefs.GetInt("langId");
 
-		for (int i = 1; i < 22; i++) {
+        for (int i = 1; i < 23; i++) {
 			string tmp = "shisya" + i.ToString ();
 			if (PlayerPrefs.HasKey (tmp)) {
 				//Exist
@@ -77,15 +78,20 @@ public class ShisyaScene : MonoBehaviour {
 							Resources.Load (busyoImagePath, typeof(Sprite)) as Sprite;
 
 						BusyoInfoGet busyo = new BusyoInfoGet ();
-						string busyoName = busyo.getName (busyoId);
-						string daimyoName = daimyo.getName (int.Parse (daimyoId));
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {                            
+						string busyoName = busyo.getName (busyoId,langId);
+						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId);
+                        if (langId == 2) {
                             script.shisyaName = daimyoName + "'s retainer :" + busyoName;
                         }else {
                             script.shisyaName = daimyoName + "配下 " + busyoName;
                         }
 
-					} else if (slotName == "SyogunSlot") {
+                        //Run
+                        if (i == 22) {
+                            surrender(int.Parse(daimyoId));
+                        }
+
+                    }else if (slotName == "SyogunSlot") {
 						int syogunId = PlayerPrefs.GetInt ("syogunDaimyoId");
 						string seiryoku = PlayerPrefs.GetString ("seiryoku");
 						List<string> seiryokuList = new List<string> ();
@@ -95,9 +101,9 @@ public class ShisyaScene : MonoBehaviour {
 							slotObj.transform.FindChild ("Back").GetComponent<Image> ().sprite = 
 							Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
-							string daimyoName = daimyo.getName (syogunId);
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                                script.shisyaName = " Syogun " + daimyoName + "'s retainer";
+							string daimyoName = daimyo.getName (syogunId,langId);
+                            if (langId == 2) {
+                                script.shisyaName = " Shogun " + daimyoName + "'s retainer";
                             } else {
                                 script.shisyaName = "将軍" + daimyoName + "配下";
                             }
@@ -106,31 +112,31 @@ public class ShisyaScene : MonoBehaviour {
 						}
 					} else {
 						if (i == 13 || i == 15 || i == 16 || i == 17) {
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 script.shisyaName = "Nobleman";
                             }else {
                                 script.shisyaName = "貴族";
                             }
 						} else if(i == 18){
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 script.shisyaName = "Merchant";
                             }else {
                                 script.shisyaName = "商人";
                             }
 						} else if(i == 19){
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 script.shisyaName = "Westerner";
                             }else {
                                 script.shisyaName = "南蛮人";
                             }
 						}else if(i == 20){
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 script.shisyaName = "Monk";
                             }else {
                                 script.shisyaName = "僧";
                             }
 						}else if(i == 21){
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 script.shisyaName = "Local Samurai";
                             }else {
                                 script.shisyaName = "国人衆";
@@ -166,6 +172,7 @@ public class ShisyaScene : MonoBehaviour {
 					serihu = serihuChanger(i, serihu, shisyaParamList,slotObj);
 					script.serihu = serihu;
 
+                    
 
 					if (!ClickFlg) {
 						ClickFlg = true;
@@ -190,10 +197,10 @@ public class ShisyaScene : MonoBehaviour {
 		string finalSerihu = "";
 		Daimyo daimyo = new Daimyo ();
 		KuniInfo kuni = new KuniInfo ();
-
-		if (shisyaId == 1 || shisyaId == 4 || shisyaId == 5 || shisyaId == 6 || shisyaId == 7 ||  shisyaId == 17) {
-			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]));
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (shisyaId == 1 || shisyaId == 4 || shisyaId == 5 || shisyaId == 6 || shisyaId == 7 ||  shisyaId == 17 || shisyaId == 22) {
+			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);           
+            if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", daimyoName);
             }else {
                 finalSerihu = originalSerihu.Replace("A", daimyoName);
@@ -203,7 +210,7 @@ public class ShisyaScene : MonoBehaviour {
 
 			if (shisyaId == 5) {
 				string itemName = slotObj.GetComponent<ShisyaSelect> ().itemName;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     finalSerihu = finalSerihu.Replace ("DEF", itemName);
                 }else {
                     finalSerihu = finalSerihu.Replace("B", itemName);
@@ -214,18 +221,30 @@ public class ShisyaScene : MonoBehaviour {
 				randomMoney = randomMoney * 1000;
 
 				slotObj.GetComponent<ShisyaSelect> ().moneyNo = randomMoney;
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     finalSerihu = finalSerihu.Replace ("DEF", randomMoney.ToString());
                 }else {
                     finalSerihu = finalSerihu.Replace("B", randomMoney.ToString());
                 }
 			}
+            if (shisyaId == 22) {
+                string clanName = daimyo.getClanName(int.Parse(shisyaParamList[0]), langId);
+                int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+                string myClanName = daimyo.getClanName(myDaimyo, langId);
+                if (langId == 2) {
+                    finalSerihu = originalSerihu.Replace("ABC", clanName);
+                    finalSerihu = finalSerihu.Replace("DEF", myClanName);
+                }else {
+                    finalSerihu = originalSerihu.Replace("A", clanName);
+                    finalSerihu = finalSerihu.Replace("B", myClanName);
+                }
+            }
 
-		} else if (shisyaId == 8) {
-			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]));
-			string kuniName = kuni.getKuniName (int.Parse (shisyaParamList [1]));
+        } else if (shisyaId == 8) {
+			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);
+			string kuniName = kuni.getKuniName (int.Parse (shisyaParamList [1]),langId);
 
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", daimyoName);
 			    finalSerihu = finalSerihu.Replace ("DEF", kuniName);
             }else {
@@ -241,10 +260,10 @@ public class ShisyaScene : MonoBehaviour {
 
 
 		} else if (shisyaId == 9) {
-			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]));
+			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);
 			int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
-			string myDaimyoName = daimyo.getName (myDaimyo);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+			string myDaimyoName = daimyo.getName (myDaimyo,langId);
+            if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", daimyoName);
 			    finalSerihu = finalSerihu.Replace ("DEF", myDaimyoName);
             }else {
@@ -256,11 +275,11 @@ public class ShisyaScene : MonoBehaviour {
 			slotObj.GetComponent<ShisyaSelect> ().srcDaimyoName = daimyoName;
 
 		} else if (shisyaId == 3) {
-            string srcDaimyoName = daimyo.getName(int.Parse(shisyaParamList[0]));
-            string daimyoName = daimyo.getName (int.Parse (shisyaParamList [1]));
-			string kuniName = kuni.getKuniName (int.Parse (shisyaParamList [2]));
+            string srcDaimyoName = daimyo.getName(int.Parse(shisyaParamList[0]),langId);
+            string daimyoName = daimyo.getName (int.Parse (shisyaParamList [1]),langId);
+			string kuniName = kuni.getKuniName (int.Parse (shisyaParamList [2]),langId);
 
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", daimyoName);
 			    finalSerihu = finalSerihu.Replace ("DEF", kuniName);
             }else {
@@ -279,8 +298,8 @@ public class ShisyaScene : MonoBehaviour {
 		} else if (shisyaId == 10 || shisyaId == 11 || shisyaId == 12 || shisyaId == 14) {
 			//Syogun
 			int syogunId = PlayerPrefs.GetInt ("syogunDaimyoId");
-			string syogunName = daimyo.getName (syogunId);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+			string syogunName = daimyo.getName (syogunId,langId);
+            if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", syogunName);
             }else {
                 finalSerihu = originalSerihu.Replace("A", syogunName);
@@ -289,9 +308,9 @@ public class ShisyaScene : MonoBehaviour {
 			slotObj.GetComponent<ShisyaSelect> ().syogunDaimyoName = syogunName;
 
 			if (shisyaId == 10 || shisyaId == 11 || shisyaId == 12) {
-				string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]));
+				string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);
 
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     finalSerihu = finalSerihu.Replace ("DEF", daimyoName);
                 }else {
                     finalSerihu = finalSerihu.Replace("B", daimyoName);
@@ -301,15 +320,15 @@ public class ShisyaScene : MonoBehaviour {
 
 				if (shisyaId == 12) {
 					//Bouei
-					string dstDaimyoName = daimyo.getName (int.Parse (shisyaParamList [1]));
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					string dstDaimyoName = daimyo.getName (int.Parse (shisyaParamList [1]),langId);
+                    if (langId == 2) {
                         finalSerihu = finalSerihu.Replace ("GHI", dstDaimyoName);
                     }else {
                         finalSerihu = finalSerihu.Replace("C", dstDaimyoName);
                     }
 
-					string dstKuniName = kuni.getKuniName (int.Parse (shisyaParamList [2]));
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+					string dstKuniName = kuni.getKuniName (int.Parse (shisyaParamList [2]),langId);
+                    if (langId == 2) {
                         finalSerihu = finalSerihu.Replace ("JKL", dstKuniName);
                     }else {
                         finalSerihu = finalSerihu.Replace("D", dstKuniName);
@@ -327,7 +346,7 @@ public class ShisyaScene : MonoBehaviour {
 
 		} else if (shisyaId == 19) {
 			string itemName = slotObj.GetComponent<ShisyaSelect> ().itemName;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", itemName);
             }else {
                 finalSerihu = originalSerihu.Replace("A", itemName);
@@ -491,5 +510,138 @@ public class ShisyaScene : MonoBehaviour {
 
 		
 	}
+
+    public void surrender(int daimyoId) {
+
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        string seiryoku = PlayerPrefs.GetString("seiryoku");
+        List<string> seiryokuList = new List<string>();
+        char[] delimiterChars = { ',' };
+        seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+        List<string> newSeiryokuList = new List<string>(seiryokuList);
+        string clearedKuni = PlayerPrefs.GetString("clearedKuni");
+        KuniInfo kuni = new KuniInfo();
+
+        //Win        
+        for (int i = 0; i < seiryokuList.Count; i++) {
+            int tmpDaimyoId = int.Parse(seiryokuList[i]);
+            if (tmpDaimyoId == daimyoId) {
+                //Change
+                int kuniId = i + 1;
+
+                //1.update seiryoku
+                newSeiryokuList[kuniId - 1] = myDaimyo.ToString();
+
+                //2.update cleaered kuni & kuni1,2,3
+                clearedKuni = clearedKuni + "," + kuniId.ToString();
+                string tmpKuni = "kuni" + kuniId.ToString();
+                PlayerPrefs.SetString(tmpKuni, "1,2,3,4,5,6,7,8,9,10");
+
+                //3.update openkuni
+                kuni.registerOpenKuni(kuniId);
+
+                //4.cyouhou delete
+                string cyouhouTmp = "cyouhou" + kuniId;
+                if (PlayerPrefs.HasKey(cyouhouTmp)) {
+                    PlayerPrefs.DeleteKey(cyouhouTmp);
+                    string cyouhou = PlayerPrefs.GetString("cyouhou");
+                    List<string> cyouhouList = new List<string>();
+                    if (cyouhou != null && cyouhou != "") {
+                        if (cyouhou.Contains(",")) {
+                            cyouhouList = new List<string>(cyouhou.Split(delimiterChars));
+                        }
+                        else {
+                            cyouhouList.Add(cyouhou);
+                        }
+                    }
+                    cyouhouList.Remove(kuniId.ToString());
+                    string newCyouhou = "";
+                    for (int a = 0; a < cyouhouList.Count; a++) {
+                        if (a == 0) {
+                            newCyouhou = cyouhouList[a];
+                        }
+                        else {
+                            newCyouhou = newCyouhou + "," + cyouhouList[a];
+                        }
+                    }
+                    PlayerPrefs.SetString("cyouhou", newCyouhou);
+                }
+            }
+        }
+
+        PlayerPrefs.SetString("clearedKuni", clearedKuni);
+
+        //Create New Seiryoku
+        string newSeiryoku = "";
+        bool gameClearFlg = true;
+        for (int l = 0; l < newSeiryokuList.Count; l++) {
+            if (l == 0) {
+                newSeiryoku = newSeiryokuList[l];
+            }else {
+                newSeiryoku = newSeiryoku + "," + newSeiryokuList[l];
+            }
+            if (gameClearFlg) {
+                if (newSeiryokuList[l] != myDaimyo.ToString()) {
+                    gameClearFlg = false;
+                }
+            }
+        }
+        PlayerPrefs.SetBool("gameClearFlg", gameClearFlg);
+        PlayerPrefs.SetString("seiryoku", newSeiryoku);
+        kuni.updateOpenKuni(myDaimyo, newSeiryoku);
+
+        //Delete Gunzei
+        string keyHistory = PlayerPrefs.GetString("keyHistory");
+        List<string> keyHistoryList = new List<string>();
+        if (keyHistory != null && keyHistory != "") {
+            if (keyHistory.Contains(",")) {
+                keyHistoryList = new List<string>(keyHistory.Split(delimiterChars));
+            }else {
+                keyHistoryList.Add(keyHistory);
+            }
+        }
+        MainStageController MainStageController = new MainStageController();
+        for (int n = 0; n < keyHistoryList.Count; n++) {
+            string keyTemp = keyHistoryList[n];            
+            string keyValue = PlayerPrefs.GetString(keyTemp);
+            Debug.Log(keyValue);
+            if (keyValue != null) {
+                List<string> keyValueList = new List<string>();
+                keyValueList = new List<string>(keyValue.Split(delimiterChars));
+                int srcDaimyoId = int.Parse(keyValueList[1]);
+                Debug.Log(srcDaimyoId + "=" + daimyoId);
+                if (srcDaimyoId == daimyoId) {
+                    //delete
+                    MainStageController.deleteKeyHistory(keyTemp);
+                }                     
+            }
+        }
+        
+        //Delete Key
+        string tmp = "shisya22";
+        string shisyaString = PlayerPrefs.GetString(tmp);
+        List<string> shisyaList = new List<string>();
+        if (shisyaString != null && shisyaString != "") {
+            if (shisyaString.Contains(",")) {
+                shisyaList = new List<string>(shisyaString.Split(delimiterChars));
+            }
+            else {
+                shisyaList.Add(shisyaString);
+            }
+        }
+        shisyaList.Remove(daimyoId.ToString());
+        string newValue = "";
+        for (int i = 0; i < shisyaList.Count; i++) {
+            if (i == 0) {
+                newValue = shisyaList[i];
+            }
+            else {
+                newValue = newValue + "," + shisyaList[i];
+            }
+        }
+        PlayerPrefs.SetString(tmp, newValue);
+        PlayerPrefs.Flush();
+
+    }
 
 }

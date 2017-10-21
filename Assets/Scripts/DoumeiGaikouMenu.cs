@@ -31,16 +31,15 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		GaikouMenu actBusyoScript = new GaikouMenu ();
 		bool isExistFlg = actBusyoScript.isExistActiveBusyo ();
 		Message msg = new Message();
-
-		if (name == "Mitsugi") {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (name == "Mitsugi") {
 
 			if (isExistFlg) {
 
-				//Menu Handling
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                //Menu Handling                
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Gift";
-                }
-                else {
+                }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "貢物";
                 }
                 OffGaikouMenu ();
@@ -59,7 +58,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				btn.name = "DoMitsugiBtn";
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Gift";
                 }else {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "貢物";
@@ -110,8 +109,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		} else if (name == "Kyoutou") {
 
 			if (isExistFlg) {
-				//Menu Handling
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                //Menu Handling
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Joint Battle";
                 }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "共闘";
@@ -131,8 +130,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				btn.name = "DoKyoutouBtn";
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Do";
                 }else {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "共闘";
@@ -178,7 +177,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			int daimyoId = GameObject.Find ("close").GetComponent<CloseBoard> ().daimyoId;
 			msgObj.transform.FindChild ("YesButton").GetComponent<DoDoumeiHaki> ().daimyoId = daimyoId;
 			Daimyo daimyo = new Daimyo ();
-			string daimyoName = daimyo.getName (daimyoId);
+			string daimyoName = daimyo.getName (daimyoId,langId);
 			msgObj.transform.FindChild ("YesButton").GetComponent<DoDoumeiHaki> ().daimyoName = daimyoName;
 
 			close.layer = close.layer - 1;
@@ -189,9 +188,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			string myDaimyoName = GameObject.Find ("DaimyoValue").GetComponent<Text> ().text;
 
 			if (yukoudo >= 20) {
-				
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Trade";
                 }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "交易";
@@ -215,7 +214,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				}
 
                 //SerihuChange
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     if (20 <= yukoudo && yukoudo < 30)
                         GameObject.Find("SerihuText").GetComponent<Text>().text = myDaimyoName + "... Why are coming here?";
                     if (30 <= yukoudo && yukoudo < 40)
@@ -291,8 +290,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 					msg.makeMessage (msg.getMessage(10));
 				} else {
 
-					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         GameObject.Find("kuniName").GetComponent<Text>().text = "Battle Request";
                     }
                     else {
@@ -313,8 +312,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 					btn.name = "DoSyuppeiBtn";
 					RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 					btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         btn.transform.FindChild("Text").GetComponent<Text>().text = "Request";
                     }
                     else {
@@ -351,8 +350,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 	public void kuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn){
 
 		GameObject content = baseObj.transform.FindChild("scroll").transform.FindChild("Content").gameObject;
+        int langId = PlayerPrefs.GetInt("langId");
 
-		string seiryoku = PlayerPrefs.GetString ("seiryoku");
+        string seiryoku = PlayerPrefs.GetString ("seiryoku");
 		char[] delimiterChars = {','};
 		List<string> seiryokuList = new List<string>();
 		seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
@@ -471,7 +471,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			int kuniId = sameTargetKuniList[i];
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
 			// daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
-            string daimyoName = daimyoScript.getName(daimyoId);
+            string daimyoName = daimyoScript.getName(daimyoId,langId);
 
             string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
             prefab.transform.FindChild("Image").GetComponent<Image>().sprite =
@@ -486,7 +486,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 			int theirYukoudo = PlayerPrefs.GetInt(theirYukouTemp);
 
-			string kuniName = kuni.getKuniName(kuniId);
+			string kuniName = kuni.getKuniName(kuniId,langId);
 			prefab.transform.FindChild("KuniValue").GetComponent<Text>().text = kuniName;
 			prefab.transform.FindChild("DaimyoValue").GetComponent<Text>().text = daimyoName;
 			prefab.GetComponent<GaikouKuniSelect>().Content = content;
@@ -532,9 +532,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 	}
 
 	public void SyuppeiKuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn){
-		//View kuni which have openkuni
-
-		GameObject content = baseObj.transform.FindChild("scroll").transform.FindChild("Content").gameObject;
+        //View kuni which have openkuni
+        int langId = PlayerPrefs.GetInt("langId");
+        GameObject content = baseObj.transform.FindChild("scroll").transform.FindChild("Content").gameObject;
 
 		string seiryoku = PlayerPrefs.GetString ("seiryoku");
 		char[] delimiterChars = {','};
@@ -643,10 +643,10 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 			int kuniId = finalKuniList[i];
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
-            string daimyoName = daimyoScript.getName(daimyoId);
+            string daimyoName = daimyoScript.getName(daimyoId,langId);
 			int srcKuniId = srcKuniList [i];
 			int srcDaimyoId = int.Parse(seiryokuList [srcKuniId - 1]);
-            string srcDaimyoName = daimyoScript.getName(srcDaimyoId);
+            string srcDaimyoName = daimyoScript.getName(srcDaimyoId,langId);
 
             string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
             prefab.transform.FindChild("Image").GetComponent<Image>().sprite =
@@ -661,7 +661,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 			int theirYukoudo = PlayerPrefs.GetInt(theirYukouTemp);
 
-			string kuniName = kuni.getKuniName(kuniId);
+			string kuniName = kuni.getKuniName(kuniId,langId);
 			prefab.transform.FindChild("KuniValue").GetComponent<Text>().text = kuniName;
 			prefab.transform.FindChild("DaimyoValue").GetComponent<Text>().text = daimyoName;
 			prefab.GetComponent<GaikouKuniSelect>().Content = content;
@@ -692,7 +692,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
             msg.transform.localScale = new Vector3(0.17f, 0.2f, 1);
             RectTransform msgTransform = msg.GetComponent<RectTransform>();
             msgTransform.anchoredPosition = new Vector3(-260, -115, 0);
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 msg.GetComponent<Text>().text = "There is no available country.\nWe are surranded by allianced party.";
             }else {
                 msg.GetComponent<Text>().text = "出兵可能な国はありませぬ\n周辺国は同盟大名しかおりませぬぞ";

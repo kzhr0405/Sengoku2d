@@ -49,7 +49,8 @@ public class GiveGokui : MonoBehaviour {
 
 			Message msg = new Message();
             string Text = "";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 Text = sakuName + " was transmitted. \n I hope to see his active skill asap.";
             }else {
                 Text = sakuName + "を伝授致しました。\n次の合戦が楽しみですな。";

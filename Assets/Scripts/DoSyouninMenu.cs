@@ -324,7 +324,8 @@ public class DoSyouninMenu : MonoBehaviour {
 				PlayerPrefs.Flush ();
 				GameObject.Find ("MoneyValue").GetComponent<Text> ().text = newMoney.ToString ();
                 string yasenTxt = "";
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                int langId = PlayerPrefs.GetInt("langId");
+                if (langId == 2) {
                     yasenTxt = "We levied money " + price + " on merchants.";
                 }else {
                     yasenTxt = price + "貫の矢銭を供出させましたぞ。";
@@ -435,13 +436,15 @@ public class DoSyouninMenu : MonoBehaviour {
 
                 string finalTxt = "";
 				if (!doneCyadouguFlg) {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         finalTxt = "It was good tea party.\n You got " + targetKuniQty + " reputation item. \n Traveller will visit your country.";
                     }else {
                         finalTxt = "茶会は大盛況でした。\n名声を" + targetKuniQty + "個取得しました。\n旅人が来訪いたしますぞ。";
                     }
 				} else {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    int langId = PlayerPrefs.GetInt("langId");
+                    if (langId == 2) {
                         finalTxt = "You have already shown your tea item so it didn't get lively. \n You got " + targetKuniQty + " reputation item.";
 				    }else {
                         finalTxt = "以前お披露目した茶道具を使用したせいか、盛り上がりは今ひとつでしたな。\n名声を" + targetKuniQty + "個取得しました。";

@@ -18,15 +18,15 @@ public class AreaButton : MonoBehaviour {
 
 	public void OnClick(){
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-       
-		if (blank) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (blank) {
             audioSources[0].Play();
             BusyoStatusButton pop = new BusyoStatusButton();
             pop.commonPopup(20);
-
+            
             //New
             //Label
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 GameObject.Find ("popText").GetComponent<Text> ().text = "Development";
             }else {
                 GameObject.Find("popText").GetComponent<Text>().text = "内政開発";
@@ -106,7 +106,7 @@ public class AreaButton : MonoBehaviour {
 					naiseiName.transform.FindChild ("NaiseiExp").GetComponent<Text> ().text = naiseExpText;
                     string target = naiseiMst.param [i].target;
 					int effect1 = naiseiMst.param [i].effect1;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         if (target == "money") {
 						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
 					    } else if (target == "hyourou") {
@@ -231,7 +231,7 @@ public class AreaButton : MonoBehaviour {
 					int effect1 = naiseiMst.param [i].effect1;
 
 					int techId = 0;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         if (target == "KB") {
 						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
 						    techId = 2;
@@ -315,7 +315,7 @@ public class AreaButton : MonoBehaviour {
                 audioSources[0].Play();
 
                 //Update
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     GameObject.Find ("popText").GetComponent<Text> ().text = "Development";
                 }else {
                     GameObject.Find("popText").GetComponent<Text>().text = "内政強化";
@@ -375,7 +375,7 @@ public class AreaButton : MonoBehaviour {
                 string nowRank = "";
                 string nxtRank = "";
                 if(type == "yr" || type == "kb" || type == "tp" || type == "ym" || type == "kb" || type == "snb") {
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         if (int.Parse(lv) < 11) {
                             nowRank = "Low";
                         }else if (int.Parse(lv) < 16) {
@@ -392,7 +392,7 @@ public class AreaButton : MonoBehaviour {
                             nowRank = "上";
                         }
                     }
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         if ((int.Parse(lv) + 1) < 11) {
                             nxtRank = "Low";
                         }else if((int.Parse(lv) + 1) < 16){
@@ -418,13 +418,13 @@ public class AreaButton : MonoBehaviour {
 
 
 			    if(type=="shiro"){
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
                     }else {
                         baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
                     }
 				    baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Castle";
                     }else {
                         baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "城";
@@ -497,7 +497,7 @@ public class AreaButton : MonoBehaviour {
 				    baseObj.transform.FindChild ("arrow2").GetComponent<Image> ().enabled = false;
 				    baseObj.transform.FindChild ("NextNaiseiEffectValue2").GetComponent<Text> ().enabled = false;
 
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    if (langId == 2) {
                         if (type == "shop") {
 					        baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
 					        baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Store";

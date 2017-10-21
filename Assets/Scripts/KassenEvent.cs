@@ -16,15 +16,16 @@ public class KassenEvent : MonoBehaviour {
 		//make comment object
 		GameObject commentObj = MakeCommentObj(enemyDaimyoId,kuniId);
 
-		//Comment
-		List<string> kassenWinLoseFleeList = new List<string> ();
+        //Comment
+        int langId = PlayerPrefs.GetInt("langId");
+        List<string> kassenWinLoseFleeList = new List<string> ();
 		kassenWinLoseFleeList = new List<string> (kassenWinLoseFlee.Split (delimiterChars));
 		int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
-		string myDiamyoName = busyo.getName (myDaimyoBusyo);
+		string myDiamyoName = busyo.getName (myDaimyoBusyo, langId);
 
         //Comment Select
-        string finalComment = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        string finalComment = "";        
+        if (langId == 2) {
             if (kassenWinLoseFleeList [1] == "2") {
                 //Player Win
                 string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
@@ -56,12 +57,12 @@ public class KassenEvent : MonoBehaviour {
 		    } else if (kassenWinLoseFleeList [1] == "3") {
 			    //Kuni
 			    KuniInfo kuni = new KuniInfo ();
-			    string kuniName = kuni.getKuniName (kuniId);
+			    string kuniName = kuni.getKuniName (kuniId,langId);
 			    finalComment = "We lost " + kuniName + " castle... Damn it " + myDiamyoName + ". Let's bury our resentment deep in our hearts！";
 
 		    } else if (kassenWinLoseFleeList [1] == "4") {
 			    //Metsubou
-			    finalComment = "It's a fall of our family...It was short-lived. How earn my place in history?";
+			    finalComment = "It's a fall of our clan...It was short-lived. How earn my place in history?";
 
 		    }
         }else {
@@ -103,7 +104,7 @@ public class KassenEvent : MonoBehaviour {
             else if (kassenWinLoseFleeList[1] == "3") {
                 //Kuni
                 KuniInfo kuni = new KuniInfo();
-                string kuniName = kuni.getKuniName(kuniId);
+                string kuniName = kuni.getKuniName(kuniId,langId);
                 finalComment = "我が" + kuniName + "を盗られてしまった…。おのれ、" + myDiamyoName + "め。この雪辱、必ず晴らしてくれようぞ！";
 
             }
@@ -147,8 +148,9 @@ public class KassenEvent : MonoBehaviour {
 
 	public void MakeEvent(bool clearFlg, int kuniId, GameObject kuniMap, int enemyDaimyoId){
 
-		//Check No Commnet
-		bool fromKassenFlg = PlayerPrefs.GetBool ("fromKassenFlg");
+        //Check No Commnet
+        int langId = PlayerPrefs.GetInt("langId");
+        bool fromKassenFlg = PlayerPrefs.GetBool ("fromKassenFlg");
 		if (!fromKassenFlg) {
 			if (clearFlg) {
 				//cleared
@@ -212,11 +214,11 @@ public class KassenEvent : MonoBehaviour {
 								int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
 								int myDaimyoId = PlayerPrefs.GetInt ("myDaimyo");
 								BusyoInfoGet busyo = new BusyoInfoGet ();
-								string myDiamyoName = busyo.getName (myDaimyoBusyo);
+								string myDiamyoName = busyo.getName (myDaimyoBusyo, langId);
 								string stageName = stage.getStageName (kuniId, betlayStageId);
 								string finalComment = "";
 
-                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                if (langId == 2) {
                                     finalComment = "What? Isolated " + stageName + " castle betrayed " + myDiamyoName + ".";
                                 } else {
                                     finalComment = "うぬう、何とした事だ。孤立した" + stageName + "が、" + myDiamyoName + "に寝返りおったわ。";

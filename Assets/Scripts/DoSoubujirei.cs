@@ -17,6 +17,7 @@ public class DoSoubujirei : MonoBehaviour {
 
 	public void OnClick(){
         Daimyo daimyo = new Daimyo();
+        int langId = PlayerPrefs.GetInt("langId");
         audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (name == "YesButton") {
@@ -115,7 +116,7 @@ public class DoSoubujirei : MonoBehaviour {
 
 			for (int k = 0; k < daimyoIdList.Count; k++) {
 				int daimyoId = daimyoIdList [k];
-				string daimyoName = daimyo.getName (daimyoId);
+				string daimyoName = daimyo.getName (daimyoId,langId);
 				int kuniQty = 0;
 				kuniQty = kuniQtyByDaimyoId [daimyoId - 1];
 
@@ -183,7 +184,7 @@ public class DoSoubujirei : MonoBehaviour {
                             }
 
                             //Icon Change
-                            IconMapValueUpdate (kuniId, myDaimyo, kuniIconView, kuniMap, myKuniQty);
+                            IconMapValueUpdate (kuniId, myDaimyo, kuniIconView, kuniMap, myKuniQty,langId);
 						}
 					}
 					//Gunzei Check
@@ -285,7 +286,7 @@ public class DoSoubujirei : MonoBehaviour {
 	}
 
 
-	public void IconMapValueUpdate(int kuniId, int changeDaimyoId, GameObject kuniIconView, GameObject kuniMap, int myKuniQty){
+	public void IconMapValueUpdate(int kuniId, int changeDaimyoId, GameObject kuniIconView, GameObject kuniMap, int myKuniQty, int langId){
         Daimyo daimyo = new Daimyo();
         GameObject targetKuniIcon = kuniIconView.transform.FindChild (kuniId.ToString ()).gameObject;
 		targetKuniIcon.gameObject.AddComponent<IconFadeChange> ();
@@ -302,7 +303,7 @@ public class DoSoubujirei : MonoBehaviour {
 		//Change Name of target Kuni by daimyo info
 		SendParam script = targetKuniIcon.GetComponent<SendParam> ();
 		script.daimyoId = changeDaimyoId;
-		string daimyoName = daimyo.getName (changeDaimyoId);
+		string daimyoName = daimyo.getName (changeDaimyoId,langId);
 		script.daimyoName = daimyoName;
 		int daimyoBusyoId = daimyo.getDaimyoBusyoId (changeDaimyoId);
 		script.daimyoBusyoId = daimyoBusyoId;

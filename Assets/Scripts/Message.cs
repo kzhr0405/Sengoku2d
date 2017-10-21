@@ -119,7 +119,8 @@ public class Message : MonoBehaviour {
 
     public void makeMeshMessage(string Text) {
         string Path = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId==2) {
             Path = "Prefabs/Common/MessageTextMeshEng";
         }else {
             Path = "Prefabs/Common/MessageTextMesh";
@@ -168,8 +169,9 @@ public class Message : MonoBehaviour {
     public string getMessage(int id) {
 
         string message = "";
+        int langId = PlayerPrefs.GetInt("langId");
         Entity_message_mst msgMst = Resources.Load("Data/message_mst") as Entity_message_mst;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId==2) {
             message = msgMst.param[id - 1].messageEng;
         }else {
             message = msgMst.param[id - 1].message;
@@ -195,24 +197,7 @@ public class Message : MonoBehaviour {
             canvas.GetComponent<Canvas>().sortingLayerName = "UI";
         }
         MessageStaminaObject.SetActive(true);
-        /*
-        string Path = "Prefabs/Common/MessageStaminaObject";
-        GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
-        messageObj.transform.SetParent(panel.transform);
-        messageObj.name = "MessageStaminaObject";
-        CloseMessageStamina CloseMessageStamina = messageObj.transform.FindChild("Close").GetComponent<CloseMessageStamina>();
-        CloseMessageStamina.board = messageObj;
-        CloseMessageStamina.panel = panel;
-        CloseMessageStamina CloseMessageStamina2 = messageObj.GetComponent<CloseMessageStamina>();
-        CloseMessageStamina2.board = messageObj;
-        CloseMessageStamina2.panel = panel;
-        AdfuriMoviepop AdfuriMoviepop = messageObj.transform.FindChild("Video").GetComponent<AdfuriMoviepop>();
-        AdfuriMoviepop.board = messageObj;
-        AdfuriMoviepop.panel = panel;
-
-        messageObj.transform.localScale = new Vector2(1, 1);
-        messageObj.transform.localPosition = new Vector3(0, 0, 0);
-        */
+        
     }
 
     public void makeSpaceBuyBoard(string text) {

@@ -210,17 +210,21 @@ public class DataRecoveryConfirm : MonoBehaviour {
                         //jyosyuHei
                         string jyosyuHeiTmp = "jyosyuHei" + busyoId.ToString();
                         if (RecoveryDataStore.jyosyuHeiList.Count != 0) {
-                            int jyosyuHei = RecoveryDataStore.jyosyuHeiList[count];
-                            if (jyosyuHei != 0) {
-                                PlayerPrefs.SetInt(jyosyuHeiTmp, jyosyuHei);
+                            if(RecoveryDataStore.jyosyuHeiList.Count > count) {
+                               int jyosyuHei = RecoveryDataStore.jyosyuHeiList[count];
+                               if (jyosyuHei != 0) {
+                                    PlayerPrefs.SetInt(jyosyuHeiTmp, jyosyuHei);
+                               }
                             }
                         }
                         //jyosyuBusyo
                         string jyosyuBusyoTmp = "jyosyuBusyo" + busyoId.ToString();
                         if(RecoveryDataStore.jyosyuBusyoList.Count !=0) {
-                            int jyosyuBusyo = RecoveryDataStore.jyosyuBusyoList[count];
-                            if (jyosyuBusyo != 0) {
-                                PlayerPrefs.SetInt(jyosyuBusyoTmp, jyosyuBusyo);
+                            if (RecoveryDataStore.jyosyuBusyoList.Count > count) {
+                                int jyosyuBusyo = RecoveryDataStore.jyosyuBusyoList[count];
+                                if (jyosyuBusyo != 0) {
+                                    PlayerPrefs.SetInt(jyosyuBusyoTmp, jyosyuBusyo);
+                                }
                             }
                         }
                         count = count + 1;
@@ -310,8 +314,10 @@ public class DataRecoveryConfirm : MonoBehaviour {
                     }
                     if (RecoveryDataStore.jyosyuList.Count != 0) {
                         if (RecoveryDataStore.jyosyuList[i] != 0) {
-                            string jyosyuTmp = "jyosyu" + kuniId.ToString();
-                            PlayerPrefs.SetInt(jyosyuTmp, RecoveryDataStore.jyosyuList[i]);
+                            if (RecoveryDataStore.jyosyuList.Count > i) {
+                                string jyosyuTmp = "jyosyu" + kuniId.ToString();
+                                PlayerPrefs.SetInt(jyosyuTmp, RecoveryDataStore.jyosyuList[i]);
+                            }
                         }
                     }
                 }

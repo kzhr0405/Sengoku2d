@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class BusyoSort : MonoBehaviour {
 
@@ -13,7 +14,8 @@ public class BusyoSort : MonoBehaviour {
 
     private void Start() {
         //label
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             Dropdown Dropdown = GetComponent<Dropdown>();
             Dropdown.options[0].text = "Rank";
             Dropdown.options[1].text = "Clan";

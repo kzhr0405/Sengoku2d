@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class PvPTimer : MonoBehaviour {
 
@@ -34,7 +35,8 @@ public class PvPTimer : MonoBehaviour {
         Init();
 
         timerTxt = GameObject.Find("Timer").GetComponent<Text>();
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (langId == 2) {
             engFlg = true;
         }
     }

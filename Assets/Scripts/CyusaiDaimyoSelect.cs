@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class CyusaiDaimyoSelect : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 	public bool bottomFlg;
 
 	public void OnClick(){
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        int langId = PlayerPrefs.GetInt("langId");
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [2].Play ();
 
 		//Upper
@@ -43,7 +45,7 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 					btmSlot.transform.localScale = new Vector2 (1, 1);
 
 					int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (dstDaimyoId));
-					string daimyoName2 = daimyo.getName (int.Parse (dstDaimyoId));
+					string daimyoName2 = daimyo.getName (int.Parse (dstDaimyoId),langId);
 
 					string daimyoBusyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 					btmSlot.transform.FindChild ("Image").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
@@ -86,7 +88,7 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 			RectTransform msgTransform = msg.GetComponent<RectTransform> ();
 			msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 			msgTransform.name = "CyusaiConfirm";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 msg.transform.FindChild ("Text").GetComponent<Text> ().text = "Do you want to mediate between " + daimyoName + " and " + daimyoName2 + "? \n Friendship will increase.";
             }else {
                 msg.transform.FindChild("Text").GetComponent<Text>().text = daimyoName + "と" + daimyoName2 + "を仲裁しますか？\n二大名間の友好度が上がります。";

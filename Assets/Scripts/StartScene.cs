@@ -27,16 +27,6 @@ public class StartScene : MonoBehaviour {
             }
         } else if (name == "PvP") {
             
-            /*
-            Message msg = new Message();
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
-                msg.makeMessage("PvP is Under Preparation");
-            }else {
-                msg.makeMessage("PvP準備中");
-            }
-            */
-            
-            
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
@@ -200,7 +190,14 @@ public class StartScene : MonoBehaviour {
                 onObj.GetComponent<Image>().color = onBtnColor;
                 onObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
                 onObj.GetComponent<Button>().enabled = false;
-            }            
+            }
+
+            //Lang
+            GameObject Lang = board.transform.FindChild("Lang").gameObject;
+            int langId = PlayerPrefs.GetInt("langId");
+            LangSetting LangSetting = new LangSetting();
+            LangSetting.ChangeButtonColorByConfig(langId, Lang);
+
         }
         else if (name == "Reward") {
             if (Application.internetReachability == NetworkReachability.NotReachable) {

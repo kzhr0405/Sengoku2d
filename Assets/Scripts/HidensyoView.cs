@@ -19,7 +19,9 @@ public class HidensyoView : MonoBehaviour {
 
 		BusyoStatusButton pop = new BusyoStatusButton ();
 		pop.commonPopup(22);
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        int langId = PlayerPrefs.GetInt("langId");
+
+        if (langId == 2) {
             GameObject.Find ("popText").GetComponent<Text> ().text ="Give Skillbook";
         }else {
             GameObject.Find("popText").GetComponent<Text>().text = "秘伝書授与";
@@ -82,7 +84,7 @@ public class HidensyoView : MonoBehaviour {
 		int diff = int.Parse (senpouList [0]) - senpouStatus;
 		string adjSenpouStatus = senpouStatus.ToString() + "<color=#35d74bFF>" + "(+" + diff + ")" + "</color>";
 
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             senpouExp = senpouExp.Replace("ABC", adjSenpouStatus);
             senpouExp = senpouExp.Replace("DEF", senpouEach.ToString());
             senpouExp = senpouExp.Replace("GHI", senpouRatio.ToString());
@@ -111,7 +113,7 @@ public class HidensyoView : MonoBehaviour {
 		if(senpouType=="low"){
 			Color lowColor = new Color (86f / 255f, 87f / 255f, 255f / 255f, 255f / 255f);
 			hImage.color = lowColor;
-			if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 hRank.text = "Low";
             }else {
                 hRank.text = "下";
@@ -126,7 +128,7 @@ public class HidensyoView : MonoBehaviour {
 		}else if(senpouType=="middle"){
 			Color midColor = new Color (236f / 255f, 93f / 255f, 93f / 255f, 255f / 255f);
 			hImage.color = midColor;
-			if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 hRank.text = "Mid";
             }else {
                 hRank.text = "中";
@@ -140,7 +142,7 @@ public class HidensyoView : MonoBehaviour {
 		}else if(senpouType=="high"){
 			Color hightColor = new Color (207f / 255f, 232f / 255f, 95f / 255f, 255f / 255f);
 			hImage.color = hightColor;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 hRank.text = "High";
             }else {
                 hRank.text = "上";

@@ -136,7 +136,8 @@ public class GameScene : MonoBehaviour {
 
 			    //Shiro & Toride Setting
 			    makeShiroTorideObject();
-    		}
+
+            }
             
             if (activeStageId != 0) {
                 //Active
@@ -886,9 +887,10 @@ public class GameScene : MonoBehaviour {
                     int senpouLv = PvPSenpouLvList[counter];
                     int sakuLv = PvPSakuLvList[counter];
                     string kahouList = PvPKahouList[counter];
-                    int kanniId = PvPKanniList[counter];                    
-                    int jyosyuHei = PvPJyosyuHeiList[counter];
-
+                    int kanniId = 0;
+                    int jyosyuHei = 0;
+                    if (PvPKanniList.Count !=0) kanniId = PvPKanniList[counter];
+                    if (PvPJyosyuHeiList.Count != 0) jyosyuHei = PvPJyosyuHeiList[counter];
                     int sakuId = 1;
                     if (PvPSakuList.Count == 0) {
                         sakuId = info.getSakuId(busyoId);

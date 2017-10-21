@@ -102,7 +102,14 @@ public class BackMain : MonoBehaviour {
             audioSources[1].Play();
 
             //check
-            if (GameObject.Find("Shisya").transform.FindChild("Panel").transform.FindChild("ScrollView").transform.FindChild("Content").transform.childCount > 0) {
+            bool shiayExistFlg = false;
+            GameObject Content = GameObject.Find("Shisya").transform.FindChild("Panel").transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+            foreach (Transform chld in Content.transform) {
+                int shisyaId = chld.GetComponent<ShisyaSelect>().shisyaId;
+                if (shisyaId != 22 && shisyaId != 6) shiayExistFlg = true;
+            }
+            
+            if (shiayExistFlg) {
                 string backPath = "Prefabs/Common/TouchBack";
                 GameObject back = Instantiate(Resources.Load(backPath)) as GameObject;
                 back.transform.SetParent(GameObject.Find("Panel").transform);

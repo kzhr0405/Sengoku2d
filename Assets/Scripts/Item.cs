@@ -16,32 +16,32 @@ public class Item : MonoBehaviour {
 
 		List<string> itemList = new List<string> ();
 		char[] delimiterChars = {','};
-
-		string temp = "";
+        int langId = PlayerPrefs.GetInt("langId");
+        string temp = "";
 		if (shigenType == 1) {
 			temp = "cyouheiKB";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shigenName = "Cavalry";
             }else {
                 shigenName = "馬素材";
             }
 		}else if (shigenType == 2) {
 			temp = "cyouheiYR";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shigenName = "Spear";
             }else {
                 shigenName = "槍素材";
             }
 		}else if (shigenType == 3) {
 			temp = "cyouheiTP";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shigenName = "Gun";
             }else {
                 shigenName = "鉄砲素材";
             }
 		}else if (shigenType == 4) {
 			temp = "cyouheiYM";
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shigenName = "Bow";
             }else {
                 shigenName = "弓素材";
@@ -56,7 +56,7 @@ public class Item : MonoBehaviour {
 			int itemQty = int.Parse(itemList[0]);
 			itemQty = itemQty + addQty;
 			newItemString = itemQty + "," + itemList[1] + "," + itemList[2];
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 rankName = "Low ";
             }else {
                 rankName = "下級";
@@ -66,7 +66,7 @@ public class Item : MonoBehaviour {
 			int itemQty = int.Parse(itemList[1]);
 			itemQty = itemQty + addQty;
 			newItemString =  itemList[0] + "," + itemQty + "," + itemList[2];
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 rankName = "Mid ";
             }else {
                 rankName = "中級";
@@ -75,7 +75,7 @@ public class Item : MonoBehaviour {
 			int itemQty = int.Parse(itemList[2]);
 			itemQty = itemQty + addQty;
 			newItemString = itemList[0] +  "," + itemList[1] + "," + itemQty;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 rankName = "High ";
             }else {
                 rankName = "上級";
@@ -121,12 +121,13 @@ public class Item : MonoBehaviour {
 
 	public string getExplanation (string itemCode) {
 		string exp="";
-		
-		for(int i=0; i<Mst.param.Count; i++){
+
+        int langId = PlayerPrefs.GetInt("langId");
+        for (int i=0; i<Mst.param.Count; i++){
 			string itemCodeOnMst = Mst.param[i].itemCode;
 			
 			if(itemCodeOnMst==itemCode){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     exp = Mst.param [i].itemExpEng;
                 }else {
                     exp = Mst.param[i].itemExp;
@@ -140,11 +141,11 @@ public class Item : MonoBehaviour {
 	public string getItemName(string itemCode){
 		string itemName = "";
 
-		
-		for(int i=0; i<Mst.param.Count; i++){
+        int langId = PlayerPrefs.GetInt("langId");
+        for (int i=0; i<Mst.param.Count; i++){
 			string MstItemCode = Mst.param [i].itemCode;
 			if(itemCode == MstItemCode ){
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                if (langId == 2) {
                     itemName =Mst.param[i].itemNameEng;
                 }else {
                     itemName = Mst.param[i].itemName;

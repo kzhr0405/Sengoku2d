@@ -36,11 +36,11 @@ public class BouryakuMenu : MonoBehaviour {
 			bool hyourouOKflg = false;
 
 			int daimyoId = GameObject.Find ("close").GetComponent<CloseBoard>().daimyoId;
+            int langId = PlayerPrefs.GetInt("langId");
 
-
-			if (name == "Cyouhou") {
-				audioSources [0].Play ();
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (name == "Cyouhou") {
+				audioSources [0].Play ();                
+                if (langId == 2) {
                     GameObject.Find ("kuniName").GetComponent<Text> ().text = "Spy";
                 }else {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "諜報";
@@ -53,8 +53,8 @@ public class BouryakuMenu : MonoBehaviour {
 				obj.transform.localScale = new Vector3 (1, 1, 1);
 				GameObject btn = obj.transform.FindChild("DoBouryakuBtn").gameObject;
 				btn.name = "DoCyouhouBtn";
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Spy";
                 }
                 else {
@@ -78,8 +78,8 @@ public class BouryakuMenu : MonoBehaviour {
                 } else {
 					audioSources [0].Play ();
 
-					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         GameObject.Find("kuniName").GetComponent<Text>().text = "Bad Rumor";
                     }else {
                         GameObject.Find("kuniName").GetComponent<Text>().text = "流言";
@@ -92,8 +92,8 @@ public class BouryakuMenu : MonoBehaviour {
 					obj.transform.localScale = new Vector3 (1, 1, 1);
 					GameObject btn = obj.transform.FindChild ("DoBouryakuBtn").gameObject;
 					btn.name = "DoRyugenBtn";
-					
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                    if (langId == 2) {
                         btn.transform.FindChild("Text").GetComponent<Text>().text = "Bad Rumor";
                     }
                     else {
@@ -106,8 +106,8 @@ public class BouryakuMenu : MonoBehaviour {
 			} else if (name == "Goudatsu") {
 				audioSources [0].Play ();
 
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     GameObject.Find("kuniName").GetComponent<Text>().text = "Theft";
                 }
                 else {
@@ -121,8 +121,8 @@ public class BouryakuMenu : MonoBehaviour {
 				obj.transform.localScale = new Vector3 (1, 1, 1);
 				GameObject btn = obj.transform.FindChild("DoBouryakuBtn").gameObject;
 				btn.name = "DoGoudatsuBtn";
-				
-                if (Application.systemLanguage != SystemLanguage.Japanese) {
+
+                if (langId == 2) {
                     btn.transform.FindChild("Text").GetComponent<Text>().text = "Theft";
                 }
                 else {
@@ -147,8 +147,8 @@ public class BouryakuMenu : MonoBehaviour {
 				if(gunzeiFlg){
 					audioSources [0].Play ();
 
-					//Menu Handling
-                    if (Application.systemLanguage != SystemLanguage.Japanese) {
+                    //Menu Handling
+                    if (langId == 2) {
                         GameObject.Find("kuniName").GetComponent<Text>().text = "Misreport";
                     }
                     else {
@@ -165,7 +165,8 @@ public class BouryakuMenu : MonoBehaviour {
 					int dstKuni = targetGunzei.GetComponent<Gunzei>().dstKuni;
 					int hei = targetGunzei.GetComponent<Gunzei>().myHei;
 					KuniInfo kuni = new KuniInfo();
-					string kuniName = kuni.getKuniName(dstKuni); if (Application.systemLanguage != SystemLanguage.Japanese) {
+					string kuniName = kuni.getKuniName(dstKuni,langId);
+                    if (langId == 2) {
                         obj.transform.FindChild("GunzeiInfo").transform.FindChild("DaimyoNameValue").GetComponent<Text>().text = "To "+ kuniName;
                     }else {
                         obj.transform.FindChild("GunzeiInfo").transform.FindChild("DaimyoNameValue").GetComponent<Text>().text = kuniName + "に進軍中";
@@ -200,7 +201,8 @@ public class BouryakuMenu : MonoBehaviour {
 		btn.name = btnName;
 
 		if (btnName == "DoRyugenBtn") {
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            int langId = PlayerPrefs.GetInt("langId");
+            if (langId == 2) {
                 btn.transform.FindChild ("Text").GetComponent<Text> ().text = "Misreport";
             }else {
                 btn.transform.FindChild("Text").GetComponent<Text>().text = "流言";
@@ -215,8 +217,8 @@ public class BouryakuMenu : MonoBehaviour {
 		
 		GameObject content = obj.transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
 		bool clickFlg = false;
-
-		if(shinobiGe!=0){
+        int langId = PlayerPrefs.GetInt("langId");
+        if (shinobiGe!=0){
 			GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;			
 			slot.transform.SetParent (content.transform);
 			slot.transform.localScale = new Vector3 (1, 1, 1);
@@ -228,7 +230,7 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = lowColor;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
             } else {
                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
@@ -263,7 +265,7 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = midColor;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Mid";
             }
             else {
@@ -300,7 +302,7 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = highColor;
-            if (Application.systemLanguage != SystemLanguage.Japanese) {
+            if (langId == 2) {
                 shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "High";
             }
             else {

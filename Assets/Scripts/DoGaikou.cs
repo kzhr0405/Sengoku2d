@@ -1,4 +1,4 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
@@ -100,8 +100,9 @@ public class DoGaikou : MonoBehaviour {
 						closeScript.yukoudo = newYukoudo;
 
                         //Message
-                        string OKtext = ""; 
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        string OKtext = "";
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             OKtext = "Gave money "+ paiedMoney + " to " + daimyoName + ".\n Friendship increased " + addYukoudo + " point";
                         }else {
                             OKtext = daimyoName + "に金" + paiedMoney + "の貢物をしました。\n友好度が" + addYukoudo + "上がりますぞ。";
@@ -125,7 +126,8 @@ public class DoGaikou : MonoBehaviour {
 
                         //Message
                         string NGtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             NGtext = daimyoName + " declined our money.\n He doesn't want to build a good relationship with us";
                         }else {
                             NGtext = daimyoName + "に貢物を体よく断られ申した。\n当家と関係を修復する気はないようですな。";
@@ -201,7 +203,8 @@ public class DoGaikou : MonoBehaviour {
 
                         //Msg
                         string OKtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             OKtext = "Congratulations.\n" + "We concluded an alliance with" + daimyoName + ".\n" + "we got some of strategic options.";
                         }else {
                             OKtext = "教悦至極にございます。" + daimyoName + "と同盟を結びましたぞ。\n" + "戦略の幅が広がりますな。";
@@ -234,7 +237,8 @@ public class DoGaikou : MonoBehaviour {
 
 						GameObject.Find ("YukouValue").GetComponent<Text> ().text = newYukoudo.ToString ();
                         string NGtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
                         }else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -274,7 +278,8 @@ public class DoGaikou : MonoBehaviour {
 
                         //Msg
                         string OKtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             OKtext = "Good. " + daimyoName + "will support our party in " + kuniName + " attack";
                         }else {
                             OKtext = daimyoName + "殿が" + kuniName + "攻めに\n加勢してくれますぞ。百人力ですな。";
@@ -295,7 +300,8 @@ public class DoGaikou : MonoBehaviour {
 						closeScript.yukoudo = newYukoudo;
 
                         string NGtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
                         }else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -469,14 +475,15 @@ public class DoGaikou : MonoBehaviour {
 						MainStageController main = new MainStageController ();
 						main.questExtension ();
                         string OKtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             OKtext = "My lord, successed to threat " + daimyoName;
                         }else {
                             OKtext = "御屋形様、恫喝に成功しましたぞ。\n" + daimyoName + "が";
                         }
 						string addText = "";
 						if (moneyOrItem == 0) {
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 addText = " gave money " + getMoney + "to us.\n";
                             }else {
                                 addText = "金" + getMoney + "を送って参りました。\n";
@@ -484,7 +491,7 @@ public class DoGaikou : MonoBehaviour {
 						} else {
 							if (kahouOrShizai == 0) {
                                 //kahou
-                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                if (langId == 2) {
                                     addText = " gave treasure " + kahouName + "to us.\n";
                                 }else {
                                     addText = "家宝、" + kahouName + "を送って参りました。\n";
@@ -492,7 +499,7 @@ public class DoGaikou : MonoBehaviour {
 
                             }else {
                                 //shizai＋
-                                if (Application.systemLanguage != SystemLanguage.Japanese) {
+                                if (langId == 2) {
                                     addText = " gave " + addQty  + " " + shigenName + " to us.\n";
                                 }else {
                                     addText = shigenName + "を" + addQty + "個送って参りました。\n";
@@ -508,7 +515,7 @@ public class DoGaikou : MonoBehaviour {
 						GameObject.Find ("YukouValue").GetComponent<Text> ().text = newYukoudo.ToString ();
 						closeScript.yukoudo = newYukoudo;
                         string reducceText = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {   
+                        if (langId == 2) {
                             reducceText = "Friendship decreased " + reduceYukoudo + " point";
                         }else {
                             reducceText = "友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -534,7 +541,8 @@ public class DoGaikou : MonoBehaviour {
 
                         //Message
                         string NGtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
                         }else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -573,7 +581,7 @@ public class DoGaikou : MonoBehaviour {
 						//Process
 						string path = "Prefabs/Map/Gunzei";
 						GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
-						Gunzei.transform.SetParent (GameObject.Find ("Panel").transform);
+						Gunzei.transform.SetParent (GameObject.Find("GunzeiView").transform);
 						Gunzei.transform.localScale = new Vector2 (1, 1);
 
 						//Location
@@ -695,7 +703,8 @@ public class DoGaikou : MonoBehaviour {
 
                         //Msg
                         string OKtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             OKtext = "Lord " + daimyoName + " is sending " + myHei + " soldiers to " + kuniName;
                         }else {
                             OKtext = daimyoName + "殿が" + kuniName + "攻めのため、\n" + myHei + "人の兵を起こしましたぞ。";
@@ -703,7 +712,7 @@ public class DoGaikou : MonoBehaviour {
 
                             string AddText = "";
                         if(totalEngunHei !=0) {
-                            if (Application.systemLanguage != SystemLanguage.Japanese) {
+                            if (langId == 2) {
                                 AddText = targetDaimyoName + " has a support army " + totalEngunHei + " soldiers";
                             }else {
                                 AddText = targetDaimyoName + "に" + totalEngunHei + "の援軍がいるようです。";
@@ -726,7 +735,8 @@ public class DoGaikou : MonoBehaviour {
 						closeScript.yukoudo = newYukoudo;
 
                         string NGtext = "";
-                        if (Application.systemLanguage != SystemLanguage.Japanese) {
+                        int langId = PlayerPrefs.GetInt("langId");
+                        if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
                         }else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";

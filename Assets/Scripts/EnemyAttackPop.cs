@@ -13,10 +13,11 @@ public class EnemyAttackPop : MonoBehaviour {
     public void OnClick(){
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[0].Play();
+        int langId = PlayerPrefs.GetInt("langId");
 
         //Common
         string simpaleBattlePath = "";
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             simpaleBattlePath = "Prefabs/SimpleBattle/BattleBoardEng";
         } else {
             simpaleBattlePath = "Prefabs/SimpleBattle/BattleBoard";
@@ -128,10 +129,10 @@ public class EnemyAttackPop : MonoBehaviour {
         //View
         Daimyo daimyScript = new Daimyo();
         int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
-        string myDaimyoName = daimyScript.getName(myDaimyoId);
-        string enemyDaimyoName = daimyScript.getName(enemyDaimyoId);
+        string myDaimyoName = daimyScript.getName(myDaimyoId,langId);
+        string enemyDaimyoName = daimyScript.getName(enemyDaimyoId,langId);
         GameObject baseObj = boardObj.transform.FindChild("Base").gameObject;
-        if (Application.systemLanguage != SystemLanguage.Japanese) {
+        if (langId == 2) {
             baseObj.transform.FindChild("Player").transform.FindChild("Name").GetComponent<TextMesh>().text = myDaimyoName;
             baseObj.transform.FindChild("Enemy").transform.FindChild("Name").GetComponent<TextMesh>().text = enemyDaimyoName;
         }else {
