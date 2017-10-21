@@ -24,6 +24,7 @@ public class AdfurikunMovieRewardPostProcess {
 	private static bool use_Vungle = true; //Vungleを有効にしたい場合はtrue
 	private static bool use_SmaadVideo = true; //SMAAD Videoを有効にしたい場合はtrue
 	private static bool use_Five = true; //Fiveを有効にしたい場合はtrue
+	private static bool use_Nend = true; //nendを有効にしたい場合はtrue
 
 	// ビルド時に実行される
 	[PostProcessBuild]
@@ -176,6 +177,20 @@ public class AdfurikunMovieRewardPostProcess {
 				proj.AddFrameworkToProject(target, "CoreMedia.framework", false);
 				proj.AddFrameworkToProject(target, "CoreTelephony.framework", false);
 				proj.AddFrameworkToProject(target, "SystemConfiguration.framework", false);
+			}
+
+			//nend
+			if (use_Nend) {
+				proj.AddFrameworkToProject(target, "AdSupport.framework", false);
+				proj.AddFrameworkToProject(target, "Security.framework", false);
+				proj.AddFrameworkToProject(target, "ImageIO.framework", false);
+				proj.AddFrameworkToProject(target, "AVFoundation.framework", false);
+				proj.AddFrameworkToProject(target, "CoreMedia.framework", false);
+				proj.AddFrameworkToProject(target, "SystemConfiguration.framework", false);
+				proj.AddFrameworkToProject(target, "WebKit.framework", true);  //Optional
+				proj.AddFrameworkToProject(target, "CoreLocation.framework", false);
+				proj.AddFrameworkToProject(target, "CoreMotion.framework", false);
+				proj.AddFrameworkToProject(target, "CoreTelephony.framework", false);
 			}
 
 			// フレームワーク検索パスの設定

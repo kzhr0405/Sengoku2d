@@ -16,6 +16,7 @@
 @property (nonatomic, assign)BOOL test_flg;
 @property (nonatomic, strong)NSString* placement_id;
 @property (nonatomic, strong)TJPlacement* p;
+@property (nonatomic) BOOL isNeedStartAd;
 
 @end
 
@@ -27,6 +28,7 @@
     if (self) {
         [Tapjoy startSession];
         _p = nil;
+        _isNeedStartAd = NO;
     }
     return self;
 }
@@ -35,6 +37,7 @@
     MovieReward6005 *newSelf = [super copyWithZone:zone];
     if (newSelf) {
         newSelf.p = self.p;
+        newSelf.isNeedStartAd = self.isNeedStartAd;
     }
     return newSelf;
 }
@@ -53,12 +56,8 @@
     BOOL testFlg = [[data objectForKey:@"test_flg"] boolValue];
     [Tapjoy setDebugEnabled:testFlg];
 
-    //The Tapjoy connect call
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *sdkKey = [data objectForKey:@"sdk_key"];
-        [self connect:sdkKey];
-    });
+    NSString *sdkKey = [data objectForKey:@"sdk_key"];
+    [self connect:sdkKey];
 }
 
 - (void)connect:(NSString *)sdkKey {
@@ -72,7 +71,12 @@
                                              selector:@selector(tjcConnectFail:)
                                                  name:TJC_CONNECT_FAILED
                                                object:nil];
-    [Tapjoy connect:sdkKey];
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //The Tapjoy connect call
+        [Tapjoy connect:sdkKey];
+    });
     NSLog(@"%@ connectSetting end", ADAPTER_CLASS_NAME);
 }
 
@@ -85,6 +89,10 @@
     if (!self.viewController) {
         return;
     }
+    if (![Tapjoy isConnected]) {
+        self.isNeedStartAd = YES;
+        return;
+    }
 
     MovieDelegate6005 *delegate = [MovieDelegate6005 sharedInstance];
     [delegate setMovieReward:self inZone:self.placement_id];
@@ -94,7 +102,6 @@
     _p.videoDelegate = delegate;
     _p.adapterVersion = @"1.0.1";
     [_p requestContent];
-
 }
 
 -(BOOL)isPrepared{
@@ -113,14 +120,26 @@
 -(void)showAd
 {
     NSLog(@"%@ showAd", ADAPTER_CLASS_NAME);
-    if(_p.isContentAvailable && self.viewController){
+    if (_p.isContentAvailable && self.viewController) {
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            [_p showContentWithViewController:self.viewController.presentingViewController];
+            if (self.viewController.presentingViewController) {
+                [_p showContentWithViewController:self.viewController.presentingViewController];
+            } else {
+                if (self.viewController.presentedViewController) {
+                    [_p showContentWithViewController:self.viewController.presentedViewController];
+                } else {
+                    [_p showContentWithViewController:self.viewController];
+                }
+            }
         } else {
             if (self.viewController.navigationController) {
                 [_p showContentWithViewController:self.viewController.navigationController];
             } else {
-                [_p showContentWithViewController:self.viewController];
+                if (self.viewController.presentedViewController) {
+                    [_p showContentWithViewController:self.viewController.presentedViewController];
+                } else {
+                    [_p showContentWithViewController:self.viewController];
+                }
             }
         }
     }
@@ -168,10 +187,8 @@
 -(void)tjcConnectSuccess:(NSNotification*)notifyObj
 {
     NSLog(@"%@ Tapjoy connect Succeeded", ADAPTER_CLASS_NAME);
-    if(self.delegate){
-        if([self.delegate respondsToSelector:@selector(AdsDidConnect:)]){
-            [self.delegate AdsDidConnect:self];
-        }
+    if (self.isNeedStartAd) {
+        [self startAd];
     }
 }
 

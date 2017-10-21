@@ -92,8 +92,8 @@ static const char* UTILITY_FUNC_NAME = "MovieNativeAdViewCallback";
     if(adapter != nil){
         UIView* unityView = UnityGetGLView();
         ADFmyMovieNativeAdView *nativeAdView = [adapter getMovieNativeAdView];
-        [unityView addSubview:nativeAdView.adView];
-        nativeAdView.adView.frame = CGRectMake(x, y, width, height);
+        [unityView addSubview:[nativeAdView getAdView]];
+        [nativeAdView getAdView].frame = CGRectMake(x, y, width, height);
     }
 }
 
@@ -102,7 +102,7 @@ static const char* UTILITY_FUNC_NAME = "MovieNativeAdViewCallback";
     ADFMovieNativeAdViewUnityAdapter* adapter = [ADFMovieNativeAdViewManager getAdapter:appId];
     if (adapter) {
         ADFmyMovieNativeAdView *native = [adapter getMovieNativeAdView];
-        native.adView.frame = CGRectMake(x, y, w, h);
+        [native getAdView].frame = CGRectMake(x, y, w, h);
     }
 }
 
@@ -130,7 +130,7 @@ static const char* UTILITY_FUNC_NAME = "MovieNativeAdViewCallback";
     if(adapter != nil){
         ADFmyMovieNativeAdView *nativeAdView = [adapter getMovieNativeAdView];
         [nativeAdView pauseVideo];
-        [nativeAdView.adView removeFromSuperview];
+        [[nativeAdView getAdView] removeFromSuperview];
     }
 }
 

@@ -17,22 +17,15 @@
  - ADFMovieNativeAdLayoutPattern_Default: デフォルトのレイアウト
  */
 typedef NS_ENUM(NSInteger, ADFMovieNativeAdLayoutPattern) {
-    ADFMovieNativeAdLayoutPattern_Default = 0,
+    ADFMovieNativeAdLayoutPattern_Default = 1,
 };
 
-@protocol ADFMovieNativeAdLayoutProtocol;
 @protocol ADFmyMovieNativeAdViewDelegate;
 /**
  動画ネイティブView広告API
  */
 @interface ADFmyMovieNativeAdView : NSObject
 - (instancetype)init __unavailable;
-
-/**
- 動画ネイティブ広告の広告View
- このViewを自身のViewに追加して広告を表示してください
- */
-@property (nonatomic, readonly) UIView<ADFMovieNativeAdLayoutProtocol> *adView;
 
 /**
  広告の自動切り替えを管理するフラグ
@@ -70,6 +63,14 @@ typedef NS_ENUM(NSInteger, ADFMovieNativeAdLayoutPattern) {
  @param delegate ADFmyMovieNativeAdViewDelegateに準拠したデリゲート
  */
 - (void)loadAndNotifyTo:(NSObject<ADFmyMovieNativeAdViewDelegate> *)delegate;
+
+/**
+ 動画ネイティブ広告のViewを取得
+ このViewを自身のViewに追加して広告を表示してください
+
+ @return 動画ネイティブ広告の広告View
+ */
+- (UIView *)getAdView;
 
 /**
  動画広告の再生

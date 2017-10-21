@@ -80,8 +80,31 @@
     
     VungleSDK* sdk = [VungleSDK sharedSDK];
     NSError* error;
-    [sdk playAd:_viewController error:&error];
-    
+
+    if (sdk.isAdPlayable && self.viewController) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            if (self.viewController.presentingViewController) {
+                [sdk playAd:self.viewController.presentingViewController error:&error];
+            } else {
+                if (self.viewController.presentedViewController) {
+                    [sdk playAd:self.viewController.presentedViewController error:&error];
+                } else {
+                    [sdk playAd:self.viewController error:&error];
+                }
+            }
+        } else {
+            if (self.viewController.navigationController) {
+                [sdk playAd:self.viewController.navigationController error:&error];
+            } else {
+                if (self.viewController.presentedViewController) {
+                    [sdk playAd:self.viewController.presentedViewController error:&error];
+                } else {
+                    [sdk playAd:self.viewController error:&error];
+                }
+            }
+        }
+    }
+
     if(error){
         NSLog(@"Error encountered playing ad : %@",error);
     }
