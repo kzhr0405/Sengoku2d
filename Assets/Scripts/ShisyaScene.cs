@@ -62,8 +62,9 @@ public class ShisyaScene : MonoBehaviour {
 					string title = shisya.getName(i);
 					slotObj.transform.FindChild ("Title").GetComponent<Text> ().text = title;
 					ShisyaSelect script = slotObj.GetComponent<ShisyaSelect> ();
+                    slotObj.name = "DaimyoSlot";
 
-					if (slotName == "DaimyoSlot") {
+                    if (slotName == "DaimyoSlot") {
 						string daimyoId = shisyaParamList [0];
 						string imagePath = "Prefabs/Kamon/" + daimyoId.ToString ();
 						slotObj.transform.FindChild ("Back").GetComponent<Image> ().sprite = 
@@ -89,6 +90,15 @@ public class ShisyaScene : MonoBehaviour {
                         //Run
                         if (i == 22) {
                             surrender(int.Parse(daimyoId));
+                            foreach(Transform chld in content.transform) {
+                                if(chld.name == "DaimyoSlot") {
+                                    if(chld.GetComponent<ShisyaSelect>()) {
+                                        if(chld.GetComponent<ShisyaSelect>().srcDaimyoId == int.Parse(daimyoId)) {
+                                            Destroy(chld.gameObject);
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                     }else if (slotName == "SyogunSlot") {

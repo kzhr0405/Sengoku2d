@@ -59,10 +59,12 @@ public class LangSetting : MonoBehaviour {
             offObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
             offObj.GetComponent<Button>().enabled = false;
 
+            /*
             GameObject onObj = parentObj.transform.FindChild("CHN").gameObject;
             onObj.GetComponent<Image>().color = offBtnColor;
             onObj.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
             onObj.GetComponent<Button>().enabled = true;
+            */
 
             GameObject onObj2 = parentObj.transform.FindChild("ENG").gameObject;
             onObj2.GetComponent<Image>().color = offBtnColor;
@@ -75,10 +77,12 @@ public class LangSetting : MonoBehaviour {
             offObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
             offObj.GetComponent<Button>().enabled = false;
 
+            /*
             GameObject onObj = parentObj.transform.FindChild("CHN").gameObject;
             onObj.GetComponent<Image>().color = offBtnColor;
             onObj.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
             onObj.GetComponent<Button>().enabled = true;
+            */
 
             GameObject onObj2 = parentObj.transform.FindChild("JPN").gameObject;
             onObj2.GetComponent<Image>().color = offBtnColor;

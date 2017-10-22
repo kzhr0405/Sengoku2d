@@ -288,7 +288,13 @@ public class MainStageController : MonoBehaviour {
 						myKuniQty = myKuniQty + 1;
 					}
                 }
-
+                if(myKuniQty==65) {
+                    //clear
+                    PlayerPrefs.SetBool("gameClearFlg",true);
+                    PlayerPrefs.Flush();
+                    Application.LoadLevel("mainStage");
+                }
+                
                 //count enemy kuni qty
                 Dictionary<string, int> dic = new Dictionary<string, int>();
                 foreach (string key in seiryokuList) {

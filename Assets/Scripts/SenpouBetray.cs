@@ -37,7 +37,8 @@ public class SenpouBetray : MonoBehaviour {
 	}
 
 	public void betrayEnemy(GameObject obs){
-		
+		// Enemy to Player
+
 		EnemyHP enemyHpScript = obs.transform.parent.GetComponent<EnemyHP> ();
 		Heisyu enemyAtkDfcScript = obs.transform.parent.GetComponent<Heisyu> ();
 		float child_hp = enemyHpScript.childHP;
@@ -214,7 +215,11 @@ public class SenpouBetray : MonoBehaviour {
         if (playerAtkDfcScript.heisyu == "YR" || playerAtkDfcScript.heisyu == "KB" || playerAtkDfcScript.heisyu == "SHP") {
             ch_prefab.AddComponent<EnemyAttack>();
         }else {
-            ch_prefab.GetComponent<AttackLong>().bullet = Resources.Load("Prefabs/Enemy/EnemyBullet") as GameObject;
+            if(playerAtkDfcScript.heisyu == "TP") {
+                ch_prefab.GetComponent<AttackLong>().bullet = Resources.Load("Prefabs/Enemy/EnemyBullet") as GameObject;
+            }else if(playerAtkDfcScript.heisyu == "YM") {
+                ch_prefab.GetComponent<AttackLong>().bullet = Resources.Load("Prefabs/Enemy/EnemyArrow") as GameObject;
+            }
         }
         Destroy(ch_prefab.GetComponent<PlayerHP>());
         ch_prefab.tag = "Enemy";
