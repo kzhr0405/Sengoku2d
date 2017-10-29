@@ -10,7 +10,7 @@ public class TestDataMaker : MonoBehaviour {
         //PlayerPrefs.SetInt("8", 199);
         //PlayerPrefs.SetInt("addlv8", 100);
 
-        PlayerPrefs.SetInt("money", 200000000);
+        PlayerPrefs.SetInt("money", 0);
         PlayerPrefs.SetInt("busyoDama", 99999);
         PlayerPrefs.SetString("cyoutei", "100,100,100");
         PlayerPrefs.SetString("koueki", "100,100,100");

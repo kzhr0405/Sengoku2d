@@ -190,7 +190,7 @@ public class TabibitoItemGetter : MonoBehaviour {
                     kahou.registerHeihousyo(itemId);
                 }
 
-            Text = msg.getMessage(124);
+                Text = msg.getMessage(124);
 			}else{
 				audioSources [4].Play ();
                 Text = msg.getMessage(125);

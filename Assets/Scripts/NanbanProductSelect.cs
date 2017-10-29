@@ -46,11 +46,11 @@ public class NanbanProductSelect : MonoBehaviour {
 		bool moneyCheckFlg = false;
 		if (moeny >= price) {
 			moneyCheckFlg = true;
-			BuyBtn.GetComponent<TabibitoItemGetter> ().moneyCheckFlg = moneyCheckFlg;
-			BuyBtn.GetComponent<TabibitoItemGetter> ().isNanbansenFlg = true;
+			BuyBtn.GetComponent<TabibitoItemGetter> ().moneyCheckFlg = moneyCheckFlg;			
 		} else {
 			BuyBtn.GetComponent<TabibitoItemGetter> ().moneyCheckFlg = moneyCheckFlg;
 		}
+        BuyBtn.GetComponent<TabibitoItemGetter>().isNanbansenFlg = true;
 
         //View
         if (itemTPCd != "") {
