@@ -165,6 +165,8 @@ public class EnemyAttackPop : MonoBehaviour {
             prefab.transform.localPosition = new Vector2(3 - xAdjust2, 1.8f);
         }
         prefab.GetComponent<Rigidbody2D>().gravityScale = 1;
+        prefab.layer = LayerMask.NameToLayer("PlayerNoColl");
+
 
         //Set Scirpt
         Destroy(prefab.GetComponent<PlayerHP>());
@@ -293,7 +295,7 @@ public class EnemyAttackPop : MonoBehaviour {
 
         /**Player to Enemy**/ 
         prefab.tag = "Enemy";
-        prefab.layer = LayerMask.NameToLayer("Enemy");
+        prefab.layer = LayerMask.NameToLayer("EnemyNoColl");
         /**Player to Enemy End**/
 
         float xAdjust2 = (float)xAdjust / 5;

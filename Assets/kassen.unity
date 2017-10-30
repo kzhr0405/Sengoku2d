@@ -1096,6 +1096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Withdraw
+  chineseText: 
   englishFontSize: 200
   arialFg: 1
 --- !u!1 &979353295
@@ -1458,6 +1459,9 @@ MonoBehaviour:
   enemyEngunFlg: 0
   playerEngunList: 
   enemyEngunList: 
+  kokuninFlg: 0
+  kokuninTime: 170
+  enemyKokuninList: 
   cyouryakuFlg: 0
   cyouryakuHeiQty: 0
   cyouryakuTime: 0
@@ -2140,6 +2144,8 @@ MonoBehaviour:
   pvpFlg: 0
   DataStore: {fileID: 0}
   pvpStageId: 1
+  playerTotalHeiryoku: 0
+  enemyTotalHeiryoku: 0
 --- !u!4 &1636556274
 Transform:
   m_ObjectHideFlags: 0

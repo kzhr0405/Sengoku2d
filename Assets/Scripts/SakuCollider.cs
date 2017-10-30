@@ -99,7 +99,7 @@ public class SakuCollider : MonoBehaviour {
 		if (sakuId == 1) {
             //Kobu
 
-            if (col.name != "hukuhei" && col.name != "shiro") {
+            if (col.name != "hukuhei" && col.name != "shiro" && col.name != "toride") {
                 string targetTag = "";
                 if (LayerMask.LayerToName(gameObject.layer) == "PlayerSaku") {
                     targetTag = "Player";
@@ -355,7 +355,7 @@ public class SakuCollider : MonoBehaviour {
             }
 
             if (playerFlg && col.tag == "Enemy") {
-				if (col.name != "shiro" && col.name != "hukuhei") {
+				if (col.name != "shiro" && col.name != "hukuhei" && col.name != "toride") {
 					//Gokui
 					if (sakuId == 11) {
 						//Ittouryu
@@ -456,7 +456,7 @@ public class SakuCollider : MonoBehaviour {
 					}
 				}
 			}else if (!playerFlg && col.tag == "Player"){
-                if (col.name != "shiro" && col.name != "hukuhei") {
+                if (col.name != "shiro" && col.name != "hukuhei" && col.name != "toride") {
                     
                     //Gokui
                     if (sakuId == 11) {

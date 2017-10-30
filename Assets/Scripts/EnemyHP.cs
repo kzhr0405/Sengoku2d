@@ -144,10 +144,12 @@ public class EnemyHP : MonoBehaviour {
 
 				//dead child
 				foreach (Transform child in transform){
-					if(child.tag == "EnemyChild" ){						
-						child.transform.DetachChildren();
-						Destroy(child.gameObject);
-						break;						
+					if(child.tag == "EnemyChild" ){
+                        if (child.name == "Child" + childQty.ToString()) {
+                            child.transform.DetachChildren();
+						    Destroy(child.gameObject);
+						    break;
+                        }
 					}
 				}
 

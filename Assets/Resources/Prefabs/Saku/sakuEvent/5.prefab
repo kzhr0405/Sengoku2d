@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4997715463491930}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: BusyoDtlPlayer
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 222326930538344814}
   - component: {fileID: 212070413193639804}
   - component: {fileID: 114306630200374040}
-  m_Layer: 19
+  m_Layer: 23
   m_Name: sakuImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114013397408790748}
   - component: {fileID: 114891649047343054}
   - component: {fileID: 212019807893372412}
-  m_Layer: 8
+  m_Layer: 23
   m_Name: 5
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 102523203252126006}
   - component: {fileID: 114985497412262250}
   - component: {fileID: 114203105492912456}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: NameLabel
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 212266563426029462}
   - component: {fileID: 95009876393280722}
   - component: {fileID: 114369399655298696}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: spd_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 212367802541920188}
   - component: {fileID: 95280430152719636}
   - component: {fileID: 114982787549837216}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: hp_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 212418370800821366}
   - component: {fileID: 95997435127098004}
   - component: {fileID: 114365130386480226}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: dfc_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 114620194569032046}
   - component: {fileID: 114629657380070140}
   - component: {fileID: 212850854136953660}
-  m_Layer: 19
+  m_Layer: 23
   m_Name: Anim
   m_TagString: Saku
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 114192069802269472}
   - component: {fileID: 114529524275765366}
   - component: {fileID: 114063028698756318}
-  m_Layer: 19
+  m_Layer: 23
   m_Name: sakuName
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4624620434638540}
   - component: {fileID: 212164809718380310}
   - component: {fileID: 114332396346283872}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: MinHpBar
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 114873022879606872}
   - component: {fileID: 102593969674436434}
   - component: {fileID: 114250077025811918}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: Value
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 212571871334711706}
   - component: {fileID: 95896890823529530}
   - component: {fileID: 114961469284278508}
-  m_Layer: 14
+  m_Layer: 23
   m_Name: atk_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,6 +1274,7 @@ MonoBehaviour:
   heisyu: saku
   atk: 0
   dfc: 0
+  senpouId: 0
 --- !u!114 &114063028698756318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1423,9 +1424,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sakuId: 0
   sakuEffect: 0
-  sakuTempEffect: 0
   vect: {x: 0, y: 0}
   upColor: {r: 0.19607843, g: 0.74509805, b: 0.13725491, a: 1}
+  targetTag: 
 --- !u!114 &114629657380070140
 MonoBehaviour:
   m_ObjectHideFlags: 1

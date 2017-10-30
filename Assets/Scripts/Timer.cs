@@ -849,7 +849,7 @@ public class Timer : MonoBehaviour {
         Vector2 worldPos = new Vector3(0, 0, 0);//Camera.main.ScreenToWorldPoint(TouchPosition);
         if(runPlace==0) {
             foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy")) {
-                if (obs.name != "hukuhei" && obs.name != "shiro") {
+                if (obs.name != "hukuhei" && obs.name != "shiro" && obs.name != "toride") {
                     worldPos = obs.transform.localPosition;
                     break;
                 }
@@ -858,7 +858,7 @@ public class Timer : MonoBehaviour {
 
             List<GameObject> objList = new List<GameObject>();
             foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Player")) {
-                if(obs.name != "hukuhei" && obs.name != "shiro") {
+                if(obs.name != "hukuhei" && obs.name != "shiro" && obs.name != "toride") {
                     worldPos = obs.transform.localPosition;
                     break;
                 }
@@ -913,7 +913,7 @@ public class Timer : MonoBehaviour {
                 saku.AddComponent<EnemyHP>().life = EnemySaku.status;
                 saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = EnemySaku.status;
                 saku.tag = "Enemy";
-                saku.layer = LayerMask.NameToLayer("Enemy");
+                saku.layer = LayerMask.NameToLayer("EnemyNoColl");
                 string barPath = "Prefabs/PostKassen/Sprite/minHpBar3";
                 saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<SpriteRenderer>().sprite =                    
                     Resources.Load(barPath, typeof(Sprite)) as Sprite;

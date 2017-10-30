@@ -38,15 +38,15 @@ public class DoBuy : MonoBehaviour {
 				char[] delimiterChars = {','};
 				int buyQty = int.Parse(GameObject.Find("BuyMenu").transform.FindChild("Qty").GetComponent<Text>().text);
 
-				if(item.Contains("Cyouhei")==true){
-					if(item.Contains("YR")==true){
+				if(item.Contains("Cyouhei")){
+					if(item.Contains("YR")){
 						string cyouheiYRString = PlayerPrefs.GetString("cyouheiYR");
 						string[] cyouheiYR_list = cyouheiYRString.Split (delimiterChars);
 						string newCyouheiYRString = "";
 
 						if(item == "CyouheiYR1"){
 							int newQty = 0;
-							newQty = int.Parse(cyouheiYR_list[0]) + buyQty;
+							newQty = int.Parse(cyouheiYR_list[0]) + buyQty;                            
 							newCyouheiYRString = newQty.ToString() + "," + cyouheiYR_list[1] + "," + cyouheiYR_list[2];
 
 						}else if(item == "CyouheiYR2"){
@@ -63,7 +63,7 @@ public class DoBuy : MonoBehaviour {
                         if (newCyouheiYRString != "") {
                             PlayerPrefs.SetString ("cyouheiYR",newCyouheiYRString);
                         }
-					}else if(item.Contains("KB")==true){
+					}else if(item.Contains("KB")){
 						string cyouheiKBString = PlayerPrefs.GetString("cyouheiKB");
 						string[] cyouheiKB_list = cyouheiKBString.Split (delimiterChars);
 						string newCyouheiKBString = "";
@@ -88,7 +88,7 @@ public class DoBuy : MonoBehaviour {
                         if (newCyouheiKBString != "") {
                             PlayerPrefs.SetString ("cyouheiKB",newCyouheiKBString);
                         }
-					}else if(item.Contains("TP")==true){
+					}else if(item.Contains("TP")){
 						string cyouheiTPString = PlayerPrefs.GetString("cyouheiTP");
 						string[] cyouheiTP_list = cyouheiTPString.Split (delimiterChars);
 						string newCyouheiTPString = "";
@@ -113,7 +113,7 @@ public class DoBuy : MonoBehaviour {
                         if (newCyouheiTPString != "") {
                             PlayerPrefs.SetString ("cyouheiTP",newCyouheiTPString);
                         }
-					}else if(item.Contains("YM")==true){
+					}else if(item.Contains("YM")){
 						string cyouheiYMString = PlayerPrefs.GetString("cyouheiYM");
 						string[] cyouheiYM_list = cyouheiYMString.Split (delimiterChars);
 						string newCyouheiYMString = "";
@@ -141,7 +141,7 @@ public class DoBuy : MonoBehaviour {
 					}
 					
 				
-				} else if(item.Contains("Hidensyo")==true){
+				} else if(item.Contains("Hidensyo")){
 					if(item == "Hidensyo1"){
 						int newQty = 0;
 						int HidensyoQty = PlayerPrefs.GetInt("hidensyoGe");
@@ -158,10 +158,9 @@ public class DoBuy : MonoBehaviour {
 						int newQty = 0;
 						int HidensyoQty = PlayerPrefs.GetInt("hidensyoJyo");
 						newQty = HidensyoQty + buyQty;
-						PlayerPrefs.SetInt ("hidensyoJyo",newQty);
-						
-					}
-				}else if(item.Contains("Shinobi")==true){
+						PlayerPrefs.SetInt ("hidensyoJyo",newQty);                        
+                    }
+				}else if(item.Contains("Shinobi")){
 					if(item == "Shinobi1"){
 						int newQty = 0;
 						int shinobiQty = PlayerPrefs.GetInt("shinobiGe");
@@ -182,7 +181,7 @@ public class DoBuy : MonoBehaviour {
 						
 					}
 
-				} else if(item.Contains("Kanjyo")==true){
+				} else if(item.Contains("Kanjyo")){
 					string kanjyoString = PlayerPrefs.GetString("kanjyo");
 					string[] kanjyo_list = kanjyoString.Split (delimiterChars);
 					string newKanjyoString = "";

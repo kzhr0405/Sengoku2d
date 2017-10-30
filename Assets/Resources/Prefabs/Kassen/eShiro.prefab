@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114711970550838324}
   - component: {fileID: 102075129183058546}
   - component: {fileID: 114666613375623572}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: Value
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4861637779783030}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: BusyoDtlEnemy
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 212341699288978324}
   - component: {fileID: 95468685041222836}
   - component: {fileID: 114035691191398348}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: hp_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 212287100095018790}
   - component: {fileID: 95398410861238588}
   - component: {fileID: 114914399383092762}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: dfc_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 212614671156904622}
   - component: {fileID: 95628392935698932}
   - component: {fileID: 114310874958678894}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: atk_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 23406900907754242}
   - component: {fileID: 102472780132934160}
   - component: {fileID: 114912486038885898}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: NameLabel
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 114381558606834502}
   - component: {fileID: 114024798582771462}
   - component: {fileID: 61871321740313400}
-  m_Layer: 9
+  m_Layer: 24
   m_Name: eShiro
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 212975738338944402}
   - component: {fileID: 95171770937836760}
   - component: {fileID: 114373100514412062}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: spd_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 4680471949917802}
   - component: {fileID: 212918696944445968}
   - component: {fileID: 114524479579075144}
-  m_Layer: 14
+  m_Layer: 24
   m_Name: MinHpBar
   m_TagString: Senpou
   m_Icon: {fileID: 0}
@@ -571,6 +571,7 @@ MonoBehaviour:
   heisyu: saku
   atk: 0
   dfc: 0
+  senpouId: 0
 --- !u!114 &114666613375623572
 MonoBehaviour:
   m_ObjectHideFlags: 1
