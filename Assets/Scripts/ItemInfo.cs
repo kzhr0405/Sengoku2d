@@ -172,6 +172,9 @@ public class ItemInfo : MonoBehaviour {
                 if (langId == 2) {
                     itemInfoList.Add (itemMst.param[i].itemNameEng);
                     itemInfoList.Add(itemMst.param[i].itemExpEng);
+                }else if(langId == 3) {
+                    itemInfoList.Add(itemMst.param[i].itemNameSChn);
+                    itemInfoList.Add(itemMst.param[i].itemExpSChn);
                 }else {
                     itemInfoList.Add(itemMst.param[i].itemName);
                     itemInfoList.Add(itemMst.param[i].itemExp);
@@ -196,7 +199,9 @@ public class ItemInfo : MonoBehaviour {
 			if(itemCode == MstItemCode ){                
                 if (langId == 2) {
                     itemName =itemMst.param[i].itemNameEng;
-                }else {
+                } else if(langId == 3) {
+                    itemName = itemMst.param[i].itemNameSChn;
+                } else {
                     itemName = itemMst.param[i].itemName;
                 }
 			}

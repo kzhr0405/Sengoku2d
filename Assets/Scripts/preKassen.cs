@@ -56,15 +56,15 @@ public class preKassen : MonoBehaviour {
 				string kuniName = kuni.getKuniName (activeKuniId,langId);
                 
                 if (langId == 2) {
-                    msgTxt = daimyoName + " is attacking "+kuniName+". \n Let's defend this country.";
+                    msgTxt = daimyoName + " is attacking "+kuniName+". Let's defend this country.";
                 }else {
-                    msgTxt = daimyoName + "が" + kuniName + "に侵攻していますぞ。\n守り抜きましょうぞ。";
+                    msgTxt = daimyoName + "が" + kuniName + "に侵攻しています。守り抜きましょうぞ。";
                 }
 			} else if (isKessenFlg) {
                 if (langId == 2) {
                     msgTxt = "It's a time to have a showdown with " + daimyoName + ".";
                 }else { 
-                    msgTxt = daimyoName + "と雌雄を決する時です。\n腕が鳴りますな。";
+                    msgTxt = daimyoName + "と雌雄を決する時です。腕が鳴りますな。";
                 }
             }
 			msgObj.transform.FindChild ("MessageText").GetComponent<Text> ().text = msgTxt;

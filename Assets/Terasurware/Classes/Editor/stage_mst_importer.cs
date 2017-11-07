@@ -60,8 +60,11 @@ public class stage_mst_importer : AssetPostprocessor
 					cell = row.GetCell(5); p.LocationX = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(6); p.LocationY = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(7); p.stageMap = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(8); p.kuniNameEng = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(9); p.stageNameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(8); p.mapSpecial = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(9); p.kuniNameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(10); p.stageNameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(11); p.kuniNameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(12); p.stageNameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

@@ -28,7 +28,7 @@ public class KassenEvent : MonoBehaviour {
         if (langId == 2) {
             if (kassenWinLoseFleeList [1] == "2") {
                 //Player Win
-                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
                 int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
                 if (powerTyp == 1) {
 				    finalComment = "Aw, hell! We lost " + stageNmae + " castle and face.";
@@ -39,12 +39,12 @@ public class KassenEvent : MonoBehaviour {
 			    }
 		    } else if (kassenWinLoseFleeList [1] == "1") {
                 //Flee
-                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
                 int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
                 finalComment = "Hahaha, " + myDiamyoName + ". He ran away due to well-fortified " + stageNmae + " castle.";
 		    } else if (kassenWinLoseFleeList [1] == "0") {
                 //Player Lose
-                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
                 int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
                 if (powerTyp == 1) {
 				    finalComment = "Haha, We have a good soldiers! We defeated " + myDiamyoName + ".";
@@ -68,7 +68,7 @@ public class KassenEvent : MonoBehaviour {
         }else {
             if (kassenWinLoseFleeList[1] == "2") {
                 //Player Win
-                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
                 int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
                 if (powerTyp == 1) {
                     finalComment = "うぬ、" + stageNmae + "を落とされたか。このままでは主家の面目が立たぬわ。";
@@ -82,13 +82,13 @@ public class KassenEvent : MonoBehaviour {
             }
             else if (kassenWinLoseFleeList[1] == "1") {
                 //Flee
-                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
                 int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
                 finalComment = "ははは、" + myDiamyoName + "め、あまりの" + stageNmae + "の堅固さに、戦わずに逃げ帰りおったぞ！";
             }
             else if (kassenWinLoseFleeList[1] == "0") {
                 //Player Lose
-                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
                 int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
                 if (powerTyp == 1) {
                     finalComment = "ははは、者共、見事な槍働きじゃ！" + myDiamyoName + "めを叩き潰したぞ。";
@@ -215,7 +215,7 @@ public class KassenEvent : MonoBehaviour {
 								int myDaimyoId = PlayerPrefs.GetInt ("myDaimyo");
 								BusyoInfoGet busyo = new BusyoInfoGet ();
 								string myDiamyoName = busyo.getName (myDaimyoBusyo, langId);
-								string stageName = stage.getStageName (kuniId, betlayStageId);
+								string stageName = stage.getStageName (kuniId, betlayStageId, langId);
 								string finalComment = "";
 
                                 if (langId == 2) {

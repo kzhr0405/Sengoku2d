@@ -76,6 +76,7 @@ public class busyo_mst_importer : AssetPostprocessor
 					cell = row.GetCell(21); p.ship = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(22); p.nameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(23); p.heisyuEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(24); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

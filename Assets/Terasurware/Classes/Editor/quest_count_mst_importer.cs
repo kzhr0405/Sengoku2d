@@ -62,6 +62,8 @@ public class quest_count_mst_importer : AssetPostprocessor
 					cell = row.GetCell(7); p.amnt = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(8); p.titleEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(9); p.expEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(10); p.titleSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(11); p.expSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

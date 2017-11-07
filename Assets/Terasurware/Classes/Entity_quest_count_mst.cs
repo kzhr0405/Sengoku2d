@@ -20,5 +20,7 @@ public class Entity_quest_count_mst : ScriptableObject
 		public int amnt;
 		public string titleEng;
 		public string expEng;
+		public string titleSChn;
+		public string expSChn;
 	}
 }

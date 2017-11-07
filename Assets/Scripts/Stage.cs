@@ -14,14 +14,22 @@ public class Stage : MonoBehaviour {
         return stageMapId;
 	}
 
-	public string getStageName(int kuniId , int stageId){
+    public int getMapSpecial(int kuniId, int stageId) {
+        int mapSpecial = 0;
+        int targetline = ((kuniId - 1) * 10) + stageId - 1;
+
+        mapSpecial = Mst.param[targetline].mapSpecial;
+        return mapSpecial;
+    }
+
+    public string getStageName(int kuniId , int stageId, int langId){
 		
 		string stageName = "";
 		int targetline = ((kuniId - 1) * 10) + stageId - 1;
-
-        int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             stageName = Mst.param [targetline].stageNameEng;
+        }else if(langId == 3) {
+            stageName = Mst.param[targetline].stageNameSChn;
         }else {
             stageName = Mst.param[targetline].stageName;
         }

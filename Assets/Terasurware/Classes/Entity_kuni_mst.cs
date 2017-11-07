@@ -20,5 +20,6 @@ public class Entity_kuni_mst : ScriptableObject
 		public string kassenStage;
 		public bool isSnowFlg;
 		public string kuniNameEng;
+		public string kuniNameSChn;
 	}
 }

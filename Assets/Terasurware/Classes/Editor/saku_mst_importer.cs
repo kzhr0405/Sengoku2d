@@ -80,6 +80,8 @@ public class saku_mst_importer : AssetPostprocessor
 					cell = row.GetCell(25); p.shipFlg = (cell == null ? false : cell.BooleanCellValue);
 					cell = row.GetCell(26); p.nameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(27); p.effectionEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(28); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(29); p.effectionSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

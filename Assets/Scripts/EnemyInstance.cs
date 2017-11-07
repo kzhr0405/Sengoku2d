@@ -143,7 +143,9 @@ public class EnemyInstance : MonoBehaviour {
         string dtlPath = "";        
         if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
-        }else {
+        }else if (langId == 3) {
+            dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemySChn";
+        } else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
         }
         GameObject dtl = Instantiate(Resources.Load (dtlPath)) as GameObject;

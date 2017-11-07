@@ -22,5 +22,7 @@ public class Entity_item_mst : ScriptableObject
 		public int itemRatio;
 		public string itemNameEng;
 		public string itemExpEng;
+		public string itemNameSChn;
+		public string itemExpSChn;
 	}
 }

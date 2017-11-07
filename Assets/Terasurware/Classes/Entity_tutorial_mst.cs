@@ -13,6 +13,6 @@ public class Entity_tutorial_mst : ScriptableObject
 		public int tutorialId;
 		public string serihu;
 		public string serihuEng;
-		public string serihuChn;
+		public string serihuSChn;
 	}
 }

@@ -109,8 +109,8 @@ public class ShiroAttack : MonoBehaviour {
         KassenEvent kassenEventScript = new KassenEvent();
         GameObject commentObj = kassenEventScript.MakeCommentObj(enemyDaimyoId, kuniId);
         Stage stageScript = new Stage();
-        string stageName = stageScript.getStageName(kuniId, toStageId);
         int langId = PlayerPrefs.GetInt("langId");
+        string stageName = stageScript.getStageName(kuniId, toStageId, langId);
         if (langId == 2) {
             commentObj.transform.FindChild("SerihuText").GetComponent<Text>().text = "Hahaha, I got " + stageName + " castle！";
         }else {

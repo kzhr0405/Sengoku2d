@@ -142,8 +142,9 @@ public class GameScene : MonoBehaviour {
             if (activeStageId != 0) {
                 //Active
 			    int stageMapId = stage.getStageMap (activeKuniId, activeStageId);
+                int mapSpecial = stage.getMapSpecial(activeKuniId, activeStageId);
 
-			    string mapPath = "";
+                string mapPath = "";
 			    string mapFrontPath = "";
 			    GameObject wall = Instantiate (wallPrefab);
 			    wall.name = "wall";
@@ -153,9 +154,9 @@ public class GameScene : MonoBehaviour {
 					    //mountain
 					    mapPath = "Prefabs/PreKassen/map2";
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
-
 					    mapFrontPath = "Prefabs/PreKassen/mapFront2";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
+                        setMapFrontWithRandomPosition(mapFront, mapSpecial);
 
 					    weatherHandling(stageMapId, map, mapFront);
 
@@ -163,11 +164,11 @@ public class GameScene : MonoBehaviour {
 					    //sea
 					    mapPath = "Prefabs/PreKassen/map3";
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
-
 					    mapFrontPath = "Prefabs/PreKassen/mapFront3";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
+                        setMapFrontWithRandomPosition(mapFront, mapSpecial);
 
-					    weatherHandling(stageMapId, map, mapFront);
+                        weatherHandling(stageMapId, map, mapFront);
 				    }
 			    } else {
 				
@@ -181,8 +182,10 @@ public class GameScene : MonoBehaviour {
 
 		    } else {
 			    //Passive
-			    int stageMapId = stage.getStageMap (activeKuniId, 10); 
-                if(stageMapId == 4) {
+			    int stageMapId = stage.getStageMap (activeKuniId, 10);
+                int mapSpecial = stage.getMapSpecial(activeKuniId, activeStageId);
+
+                if (stageMapId == 4) {
                     stageMapId = 1;
                 }
 
@@ -197,14 +200,18 @@ public class GameScene : MonoBehaviour {
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
 					    mapFrontPath = "Prefabs/PreKassen/mapFront2";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
-					    weatherHandling(stageMapId, map, mapFront);
+                        setMapFrontWithRandomPosition(mapFront, mapSpecial);
+
+                        weatherHandling(stageMapId, map, mapFront);
 				    } else if (stageMapId == 3) {
 					    //sea
 					    mapPath = "Prefabs/PreKassen/map3";
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
 					    mapFrontPath = "Prefabs/PreKassen/mapFront3";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
-					    weatherHandling(stageMapId, map, mapFront);
+                        setMapFrontWithRandomPosition(mapFront, mapSpecial);
+
+                        weatherHandling(stageMapId, map, mapFront);
 				    }
 			    } else {
 				    Instantiate (mapPrefab);
@@ -249,6 +256,8 @@ public class GameScene : MonoBehaviour {
                     GameObject map = Instantiate(Resources.Load(mapPath)) as GameObject;
                     mapFrontPath = "Prefabs/PreKassen/mapFront2";
                     GameObject mapFront = Instantiate(Resources.Load(mapFrontPath)) as GameObject;
+                    setMapFrontWithRandomPosition(mapFront, 0);
+
                     weatherHandling(pvpStageId, map, mapFront);
 
                     List<int> idList = new List<int>() { 10, 20, 30 };
@@ -261,6 +270,8 @@ public class GameScene : MonoBehaviour {
                     GameObject map = Instantiate(Resources.Load(mapPath)) as GameObject;
                     mapFrontPath = "Prefabs/PreKassen/mapFront3";
                     GameObject mapFront = Instantiate(Resources.Load(mapFrontPath)) as GameObject;
+                    setMapFrontWithRandomPosition(mapFront, 0);
+
                     weatherHandling(pvpStageId, map, mapFront);
 
                     List<int> idList = new List<int>() { 10, 20, 30 };
@@ -1426,8 +1437,13 @@ public class GameScene : MonoBehaviour {
 					n.GetComponent<SpriteRenderer> ().color = rainSnowColor;
 				}
 
-				foreach ( Transform n in mapFront.transform ){
+				foreach ( Transform n in mapFront.transform ){                    
 					n.GetComponent<SpriteRenderer> ().color = rainSnowColor;
+                    if(n.transform.childCount > 0) {
+                        foreach(Transform nChld in n.transform) {
+                            nChld.GetComponent<SpriteRenderer>().color = rainSnowColor;
+                        }
+                    }
 				}
 
 			}
@@ -1668,6 +1684,45 @@ public class GameScene : MonoBehaviour {
         return weatherId;
     }
 
+    public void setMapFrontWithRandomPosition(GameObject mapFront, int mapSpecial) {
 
+        //scale
+        bool minusFlg = getRandomBool();
+        if(minusFlg) {
+            mapFront.transform.localScale = new Vector2(-1 * mapFront.transform.localScale.x, mapFront.transform.localScale.y);
+        }
+
+        //position
+        List<int> xList = new List<int> {-5,-4,-3,-2,-1,0,1,2,3,4,5};
+        int tempId = UnityEngine.Random.Range(0, xList.Count);
+        int x = xList[tempId];
+        mapFront.transform.localPosition = new Vector2(x, mapFront.transform.localScale.y);
+
+        //Map Special
+       if(mapSpecial !=0) {
+            if(mapSpecial==1) {
+                int weatherId = PlayerPrefs.GetInt("weather");
+                if(weatherId==1) { //sunny
+                    //summer
+                    string yearSeason = PlayerPrefs.GetString("yearSeason");
+                    char[] delimiterChars = { ',' };
+                    string[] yearSeasonList = yearSeason.Split(delimiterChars);
+                    int nowSeason = int.Parse(yearSeasonList[1]);
+                    if(nowSeason==2) {
+                        mapSpecial = 2;
+                    }
+                }
+            }
+            
+            string mapSpecialPath = "Prefabs/PreKassen/map/Special/" + mapSpecial;
+            GameObject mapSpecialObj = Instantiate(Resources.Load(mapSpecialPath)) as GameObject;
+            mapSpecialObj.transform.SetParent(mapFront.transform,false);
+        }
+
+    }
+
+    public static bool getRandomBool() {
+        return UnityEngine.Random.Range(0, 2) == 0;
+    }
 
 }

@@ -238,7 +238,9 @@ public class StatusGet : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             busyoName = busyoMst.param [busyoInt-1].nameEng;
-        }else {
+        } else if(langId==3) {
+            busyoName = busyoMst.param[busyoInt - 1].nameSChn;
+        } else {
             busyoName = busyoMst.param[busyoInt - 1].name;
         }
 		return busyoName;

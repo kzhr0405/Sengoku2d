@@ -129,7 +129,9 @@ public class Item : MonoBehaviour {
 			if(itemCodeOnMst==itemCode){
                 if (langId == 2) {
                     exp = Mst.param [i].itemExpEng;
-                }else {
+                }else if (langId == 3) {
+                    exp = Mst.param[i].itemExpSChn;
+                } else {
                     exp = Mst.param[i].itemExp;
                 }
 				break;
@@ -147,6 +149,8 @@ public class Item : MonoBehaviour {
 			if(itemCode == MstItemCode ){
                 if (langId == 2) {
                     itemName =Mst.param[i].itemNameEng;
+                }else if (langId == 3) {
+                    itemName = Mst.param[i].itemNameSChn;
                 }else {
                     itemName = Mst.param[i].itemName;
                 }

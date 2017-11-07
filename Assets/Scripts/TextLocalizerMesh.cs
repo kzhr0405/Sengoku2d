@@ -5,6 +5,7 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 public class TextLocalizerMesh : MonoBehaviour {
     [Multiline]
     public string englishText;
+    public string chineseText;
     public int englishFontSize;
     public bool arialFg = false;
 
@@ -18,6 +19,11 @@ public class TextLocalizerMesh : MonoBehaviour {
             }
             if (arialFg) {
                 text.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            }
+        }else if (langId == 3) {
+            text.text = chineseText;
+            if (arialFg) {
+                text.font = (Font)Resources.Load("Fonts/simplifiedChinese");
             }
         }
     }

@@ -92,6 +92,8 @@ public class PlayerInstance : MonoBehaviour {
         string dtlPath = "";        
         if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
+        }else if (langId == 3) {
+            dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
         }

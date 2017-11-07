@@ -285,10 +285,12 @@ public class EnemyHP : MonoBehaviour {
 			if (attackObj != null) {
 				if (attackObj.GetComponent<PlayerAttack> ()) {
 					attackObj.GetComponent<PlayerAttack> ().anim.SetBool ("IsAttack", false);
-				} 
-				AudioSource[] audioSources = attackObj.GetComponents<AudioSource> ();
-				audioSources [1].Stop ();
-			}
+				}
+                AudioSource[] audioSources = attackObj.GetComponents<AudioSource>();
+                if (audioSources.Length > 0) {                    
+				    audioSources [1].Stop ();
+                }
+            }
 
 			//Delete Effect
 			foreach (Transform child in transform) {

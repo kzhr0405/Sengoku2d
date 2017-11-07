@@ -34,5 +34,6 @@ public class Entity_busyo_mst : ScriptableObject
 		public int ship;
 		public string nameEng;
 		public string heisyuEng;
+		public string nameSChn;
 	}
 }

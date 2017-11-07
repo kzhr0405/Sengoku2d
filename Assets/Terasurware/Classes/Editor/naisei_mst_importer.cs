@@ -101,6 +101,8 @@ public class naisei_mst_importer : AssetPostprocessor
 					cell = row.GetCell(46); p.hyourou = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(47); p.nameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(48); p.expEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(49); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(50); p.expSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

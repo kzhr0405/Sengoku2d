@@ -24,6 +24,8 @@ public class IconExp : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 text = iconExpMst.param[IconId - 1].expEng;
+            } else if(langId ==3){
+                text = iconExpMst.param[IconId - 1].expSChn;
             } else {
                 text = iconExpMst.param[IconId - 1].exp;
             }

@@ -13,5 +13,6 @@ public class Entity_shiro_mst : ScriptableObject
 		public int id;
 		public string Name;
 		public string NameEng;
+		public string NameSChn;
 	}
 }

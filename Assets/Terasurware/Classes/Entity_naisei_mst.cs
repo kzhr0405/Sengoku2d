@@ -59,5 +59,7 @@ public class Entity_naisei_mst : ScriptableObject
 		public int hyourou;
 		public string nameEng;
 		public string expEng;
+		public string nameSChn;
+		public string expSChn;
 	}
 }

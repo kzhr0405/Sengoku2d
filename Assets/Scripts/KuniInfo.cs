@@ -118,6 +118,8 @@ public class KuniInfo : MonoBehaviour {
         string kuniName = "";
         if (langId == 2) {
             kuniName = kuniMst.param[kuniId -1].kuniNameEng;
+        }else if (langId == 3) {
+            kuniName = kuniMst.param[kuniId - 1].kuniNameSChn;
         }else {
             kuniName = kuniMst.param[kuniId - 1].kuniName;
         }

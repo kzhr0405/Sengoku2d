@@ -12,6 +12,8 @@ public class Daimyo : MonoBehaviour {
 		if (daimyoId != 0) {            
             if (langId == 2) {
                 daimyoName = daimyoMst.param[daimyoId - 1].daimyoNameEng;
+            }else if (langId == 3) {
+                daimyoName = daimyoMst.param[daimyoId - 1].daimyoNameSChn;
             } else {
                 daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
             }
@@ -89,7 +91,9 @@ public class Daimyo : MonoBehaviour {
         if (daimyoId != 0) {
             if (langId == 2) {
                 clanName = daimyoMst.param[daimyoId - 1].clanNameEng;
-            }else {
+            } else if(langId==3) {
+                clanName = daimyoMst.param[daimyoId - 1].clanNameSChn;
+            } else {
                 clanName = daimyoMst.param[daimyoId - 1].clanName;
             }
         }

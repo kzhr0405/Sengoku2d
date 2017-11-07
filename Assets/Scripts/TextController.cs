@@ -217,7 +217,7 @@ public class TextController : MonoBehaviour {
         }else if (langId == 3) {
             for (int i = 0; i < tutorialMst.param.Count; i++) {
                 if (tutorialId == tutorialMst.param[i].tutorialId) {
-                    scenarios.Add(tutorialMst.param[i].serihuChn);
+                    scenarios.Add(tutorialMst.param[i].serihuSChn);
                 }
             }
         }

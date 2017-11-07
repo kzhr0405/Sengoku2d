@@ -104,7 +104,7 @@ public class NaiseiController : MonoBehaviour {
 		} else {
             //Jyosyu Not Exist
             int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
+            if (langId == 2 || langId == 3) {
                 title = kuniName;
             }else {
                 title = kuniName + "・蔵入地";
@@ -267,6 +267,8 @@ public class NaiseiController : MonoBehaviour {
                     int langId = PlayerPrefs.GetInt("langId");
                     if (langId == 2) {
                         bldgObj.GetComponent<AreaButton>().naiseiName =naiseiMst.param [int.Parse(naiseiContentList[0])].nameEng;
+                    }else if(langId == 3) {
+                        bldgObj.GetComponent<AreaButton>().naiseiName = naiseiMst.param[int.Parse(naiseiContentList[0])].nameSChn;
                     }else {
                         bldgObj.GetComponent<AreaButton>().naiseiName = naiseiMst.param[int.Parse(naiseiContentList[0])].name;
                     }
@@ -881,6 +883,8 @@ public class NaiseiController : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             shiro.GetComponent<AreaButton>().naiseiName =naiseiMst.param [0].nameEng;
+        }else if(langId == 3) {
+            shiro.GetComponent<AreaButton>().naiseiName = naiseiMst.param[0].nameSChn;
         }else {
             shiro.GetComponent<AreaButton>().naiseiName = naiseiMst.param[0].name;
         }

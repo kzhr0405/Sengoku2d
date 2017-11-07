@@ -147,12 +147,16 @@ public class QuestMenu : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     title = questCountMst.param[id].titleEng;
+                }else if (langId == 3) {
+                    title = questCountMst.param[id].titleSChn;
                 }else {
                     title = questCountMst.param[id].title;
                 }
                 string exp = "";
                 if (langId == 2) {
                     exp = questCountMst.param[id].expEng;
+                }else if (langId == 3) {
+                    exp = questCountMst.param[id].expSChn;
                 }else {
                     exp = questCountMst.param[id].exp;
                 }

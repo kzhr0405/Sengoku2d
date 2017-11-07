@@ -24,7 +24,7 @@ public class TextLocalizer : MonoBehaviour {
         }else if(langId==3) {
             text.text = chineseText;            
             if (arialFg) {
-                text.font = Resources.Load("font/simplifiedChinese.ttf") as Font;
+                text.font = (Font)Resources.Load("Fonts/simplifiedChinese");
             }
         }
     }

@@ -13,5 +13,6 @@ public class Entity_icon_exp_mst : ScriptableObject
 		public int id;
 		public string exp;
 		public string expEng;
+		public string expSChn;
 	}
 }

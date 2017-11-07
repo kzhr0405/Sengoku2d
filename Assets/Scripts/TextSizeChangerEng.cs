@@ -12,13 +12,17 @@ public class TextSizeChangerEng : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Text text = GetComponent<Text>();
-        int langId = PlayerPrefs.GetInt("langId");
+        int langId = PlayerPrefs.GetInt("langId");        
         if (langId == 2) {
             if (englishFontSize != 0) {
                 text.fontSize = englishFontSize;
             }
             if (arialFg) {
                 text.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            }
+        }else if(langId==3) {            
+            if (arialFg) {
+               text.font = (Font)Resources.Load("Fonts/simplifiedChinese");
             }
         }
     }

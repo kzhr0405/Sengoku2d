@@ -30,9 +30,10 @@ public class Bullet : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 
 		int Damage =0;
-		string hitHeisyu = col.gameObject.GetComponent<Heisyu>().heisyu;
 
-		if(col.gameObject.tag == "Enemy"){
+        if (col.gameObject.tag == "Enemy") {
+            string hitHeisyu = col.gameObject.GetComponent<Heisyu>().heisyu;
+            
 			Damage = (int)attack;
 
 			//Damage Adjustment
@@ -63,10 +64,11 @@ public class Bullet : MonoBehaviour {
 			if (parent != null) {
 				col.gameObject.GetComponent<EnemyHP> ().attackObj = parent.gameObject;
 			}
-			Destroy (gameObject);
+			
 
 
 		}else if(col.gameObject.tag == "Player"){
+            string hitHeisyu = col.gameObject.GetComponent<Heisyu>().heisyu;
 			Damage = (int)attack;
 
 			//Damage Adjustment
@@ -86,8 +88,7 @@ public class Bullet : MonoBehaviour {
 			if (parent != null) {
 				col.gameObject.GetComponent<PlayerHP> ().attackObj = parent.gameObject;
 			}
-			Destroy (gameObject);
-
 		}
-	}
+        Destroy(gameObject);
+    }
 }

@@ -55,6 +55,7 @@ public class shiro_mst_importer : AssetPostprocessor
 					cell = row.GetCell(0); p.id = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(1); p.Name = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(2); p.NameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(3); p.NameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

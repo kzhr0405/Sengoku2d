@@ -691,8 +691,9 @@ public class ZukanMenu : MonoBehaviour {
                 nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
                 if (langId == 2) {
                     nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameEng;
-                }
-                else {
+                }else if(langId ==3) {
+                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameSChn;
+                }else {
                     nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoName;
                 }
                 nameObj.transform.localPosition = new Vector2(0, 60);
@@ -705,8 +706,9 @@ public class ZukanMenu : MonoBehaviour {
                 nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
                 if (langId == 2) {
                     nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameEng;
-                }
-                else {
+                }else if(langId ==3) {
+                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameSChn;
+                }else {
                     nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoName;
                 }
                 nameObj.transform.localPosition = new Vector2(0, 60);

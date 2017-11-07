@@ -38,5 +38,7 @@ public class Entity_saku_mst : ScriptableObject
 		public bool shipFlg;
 		public string nameEng;
 		public string effectionEng;
+		public string nameSChn;
+		public string effectionSChn;
 	}
 }

@@ -12,7 +12,9 @@ public class BusyoInfoGet : MonoBehaviour {
         
         if (langId == 2) {
             name = busyoMst.param[busyoId - 1].nameEng;
-        }else {
+        } else if(langId==3) {
+            name = busyoMst.param[busyoId - 1].nameSChn;
+        } else {
             name = busyoMst.param[busyoId - 1].name;
         }
 		return name;

@@ -62,6 +62,8 @@ public class daimyo_mst_importer : AssetPostprocessor
 					cell = row.GetCell(7); p.daimyoNameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(8); p.clanName = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(9); p.clanNameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(10); p.daimyoNameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(11); p.clanNameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

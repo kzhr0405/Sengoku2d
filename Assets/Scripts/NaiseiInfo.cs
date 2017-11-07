@@ -38,6 +38,8 @@ public class NaiseiInfo : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = naiseiMst.param[id].nameEng;
+        }else if (langId == 3) {
+            value = naiseiMst.param[id].nameSChn;
         }else {
             value = naiseiMst.param[id].name;
         }
@@ -52,8 +54,9 @@ public class NaiseiInfo : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = naiseiMst.param[id].expEng;
-        }
-        else {
+        }else if (langId == 3) {
+            value = naiseiMst.param[id].expSChn;
+        } else {
             value = naiseiMst.param[id].exp;
         }
 

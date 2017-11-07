@@ -139,6 +139,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId==2) {
             effection = sakuMst.param [sakuId - 1].effectionEng;
+        }else if(langId ==3) {
+            effection = sakuMst.param[sakuId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
         }
@@ -172,8 +174,10 @@ public class Saku : MonoBehaviour {
 		//sakuList.Add(
 		sakuList.Add (sakuId.ToString());
         if (langId == 2) {
-            sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type		    
-        }else {
+            sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type		
+        }else if (langId == 3) {
+            sakuList.Add(sakuMst.param[sakuId - 1].nameSChn); //Type	
+        } else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
         }
         sakuList.Add(effection);
@@ -209,6 +213,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {           
             effection = sakuMst.param [sakuId - 1].effectionEng;
+        }else if(langId ==3){
+            effection = sakuMst.param[sakuId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
         }
@@ -243,7 +249,9 @@ public class Saku : MonoBehaviour {
 		sakuList.Add (sakuId.ToString());
         if (langId == 2) {
             sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type
-        }else {
+        }else if (langId == 3) {
+            sakuList.Add(sakuMst.param[sakuId - 1].nameSChn); //Type
+        } else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
         }
 		sakuList.Add (effection);
@@ -279,6 +287,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             effection = sakuMst.param [sakuId - 1].effectionEng;
+        }else if (langId == 3) {
+            effection = sakuMst.param[sakuId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
         }
@@ -300,6 +310,8 @@ public class Saku : MonoBehaviour {
 		sakuList.Add (sakuId.ToString());
         if (langId == 2) {
             sakuList.Add (sakuMst.param [sakuId - 1].nameEng); //Type
+        }else if(langId==3){
+            sakuList.Add(sakuMst.param[sakuId - 1].nameSChn); //Type
         }else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
         }
@@ -329,6 +341,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {            
             effection = sakuMst.param[sakuId - 1].effectionEng;
+        }else if (langId == 3) {
+            effection = sakuMst.param[sakuId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
         }
@@ -340,6 +354,8 @@ public class Saku : MonoBehaviour {
 		gokuiInfoList.Add (sakuId.ToString());
         if (langId == 2) {
             gokuiInfoList.Add (sakuMst.param [sakuId - 1].nameEng); //Name
+        }else if (langId == 3) {
+            gokuiInfoList.Add(sakuMst.param[sakuId - 1].nameSChn); //Name
         }else {
             gokuiInfoList.Add(sakuMst.param[sakuId - 1].name); //Name
         }
@@ -373,6 +389,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             effection = sakuMst.param [gokuiId - 1].effectionEng;
+        }else if(langId == 3) {
+            effection = sakuMst.param[gokuiId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[gokuiId - 1].effection;
         }
@@ -407,6 +425,8 @@ public class Saku : MonoBehaviour {
 		sakuList.Add (gokuiId.ToString());
         if (langId == 2) {
             sakuList.Add (sakuMst.param [gokuiId - 1].nameEng); //Type
+        }else if(langId == 3) {
+            sakuList.Add(sakuMst.param[gokuiId - 1].nameSChn); //Type
         }else {
             sakuList.Add(sakuMst.param[gokuiId - 1].name); //Type
         }
@@ -441,6 +461,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {            
             effection = sakuMst.param [gokuiId - 1].effectionEng;
+        }else if (langId == 3) {
+            effection = sakuMst.param[gokuiId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[gokuiId - 1].effection;
         }
@@ -461,6 +483,8 @@ public class Saku : MonoBehaviour {
 		sakuList.Add (gokuiId.ToString());
         if (langId == 2) {
             sakuList.Add (sakuMst.param [gokuiId - 1].nameEng); //Type
+        }else if (langId == 3) {
+            sakuList.Add(sakuMst.param[gokuiId - 1].nameSChn); //Type
         }else {
             sakuList.Add(sakuMst.param[gokuiId - 1].name); //Type
         }
@@ -498,6 +522,8 @@ public class Saku : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             effection = sakuMst.param [gokuiId - 1].effectionEng;
+        }else if (langId == 3) {
+            effection = sakuMst.param[gokuiId - 1].effectionSChn;
         }else {
             effection = sakuMst.param[gokuiId - 1].effection;
         }
@@ -533,6 +559,8 @@ public class Saku : MonoBehaviour {
 		sakuList.Add (gokuiId.ToString());
         if (langId == 2) {
             sakuList.Add (sakuMst.param [gokuiId - 1].nameEng); //Type
+        }else if (langId == 3) {
+            sakuList.Add(sakuMst.param[gokuiId - 1].nameSChn); //Type
         }else {
             sakuList.Add(sakuMst.param[gokuiId - 1].name); //Type
         }
@@ -573,6 +601,9 @@ public class Saku : MonoBehaviour {
         if (langId == 2) {
             effection = sakuMst.param[sakuId - 1].effectionEng;
             effection = effection.Replace("ABC", sakuStatus.ToString());
+        }else if (langId == 3) {
+            effection = sakuMst.param[sakuId - 1].effectionSChn;
+            effection = effection.Replace("A", sakuStatus.ToString());
         }else {
             effection = sakuMst.param[sakuId - 1].effection;
             effection = effection.Replace("A", sakuStatus.ToString());
@@ -580,7 +611,9 @@ public class Saku : MonoBehaviour {
 
         sakuList.Add(sakuId.ToString());
         if (langId == 2) {
-            sakuList.Add(sakuMst.param[sakuId - 1].nameEng); //Type		    
+            sakuList.Add(sakuMst.param[sakuId - 1].nameEng); //Type		 
+        }else if (langId == 3) {
+            sakuList.Add(sakuMst.param[sakuId - 1].nameSChn); //Type		    
         }else {
             sakuList.Add(sakuMst.param[sakuId - 1].name); //Type
         }
@@ -598,7 +631,9 @@ public class Saku : MonoBehaviour {
         Entity_saku_mst sakuMst = Resources.Load("Data/saku_mst") as Entity_saku_mst;
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            sakuName = sakuMst.param[sakuId - 1].nameEng;           
+            sakuName = sakuMst.param[sakuId - 1].nameEng;
+        }else if (langId == 3) {
+            sakuName = sakuMst.param[sakuId - 1].nameSChn;
         }else {
             sakuName = sakuMst.param[sakuId - 1].name;
         }

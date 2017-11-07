@@ -64,6 +64,8 @@ public class item_mst_importer : AssetPostprocessor
 					cell = row.GetCell(9); p.itemRatio = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(10); p.itemNameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(11); p.itemExpEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(12); p.itemNameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(13); p.itemExpSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

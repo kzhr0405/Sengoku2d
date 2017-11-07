@@ -20,5 +20,7 @@ public class Entity_daimyo_mst : ScriptableObject
 		public string daimyoNameEng;
 		public string clanName;
 		public string clanNameEng;
+		public string daimyoNameSChn;
+		public string clanNameSChn;
 	}
 }

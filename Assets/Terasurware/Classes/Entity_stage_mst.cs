@@ -18,7 +18,10 @@ public class Entity_stage_mst : ScriptableObject
 		public int LocationX;
 		public int LocationY;
 		public int stageMap;
+		public int mapSpecial;
 		public string kuniNameEng;
 		public string stageNameEng;
+		public string kuniNameSChn;
+		public string stageNameSChn;
 	}
 }

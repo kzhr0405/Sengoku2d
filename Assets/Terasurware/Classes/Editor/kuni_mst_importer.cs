@@ -62,6 +62,7 @@ public class kuni_mst_importer : AssetPostprocessor
 					cell = row.GetCell(7); p.kassenStage = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(8); p.isSnowFlg = (cell == null ? false : cell.BooleanCellValue);
 					cell = row.GetCell(9); p.kuniNameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(10); p.kuniNameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }
