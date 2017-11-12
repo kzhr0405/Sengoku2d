@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class CloseGacyaSpecialConfirm : MonoBehaviour {
 
@@ -12,6 +13,9 @@ public class CloseGacyaSpecialConfirm : MonoBehaviour {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         if (name == "Yes") {
             Destroy(Gacya.gameObject);
+            PlayerPrefs.DeleteKey("specialBusyoHst");
+            PlayerPrefs.Flush();
+
             audioSources[0].Play();
         }else {
             audioSources[1].Play();

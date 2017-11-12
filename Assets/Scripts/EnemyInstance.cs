@@ -8,7 +8,7 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 public class EnemyInstance : MonoBehaviour {
 
 
-	public int makeInstance(int mapId, int busyoId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc,int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray, string kahouList, int kanniId, int jyosyuHei) {
+	public int makeInstance(int mapId, int busyoId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc,int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray, string kahouList, int kanniId, int jyosyuHei, int AIType) {
         int totalHeiryoku = 0;
 
         /*Roujyo Start*/
@@ -302,8 +302,9 @@ public class EnemyInstance : MonoBehaviour {
 			}
 			prefab.GetComponent<Homing> ().speed = adjSpd;
 			prefab.GetComponent<Homing>().leftFlg = true;
+            prefab.GetComponent<Homing>().AIType = AIType;
 
-		} else {
+        } else {
 			if(ch_type == "YM"){
 				atk = atk * 3;
 			}else if(ch_type == "TP"){
@@ -320,7 +321,8 @@ public class EnemyInstance : MonoBehaviour {
 			}
 			prefab.GetComponent<HomingLong> ().speed = adjSpd;
 			prefab.GetComponent<HomingLong>().leftFlg = true;
-		}
+            prefab.GetComponent<HomingLong>().AIType = AIType;
+        }
 		prefab.GetComponent<EnemyHP> ().dfc = dfc + Mathf.FloorToInt(addDfcByKanni);
 
         if (taisyo) {
@@ -477,7 +479,7 @@ public class EnemyInstance : MonoBehaviour {
 			//Choose AI Type
 			int baseAtk = sts.getBaseAtk (busyoId);
 			int baseDfc = sts.getBaseDfc (busyoId);
-			int AIType = getAIType(baseAtk,baseDfc, taisyo);
+			AIType = getAIType(baseAtk,baseDfc, taisyo);
 
 			buildingObj.GetComponent<ShiroSearch> ().busyoObjList.Add(prefab);
 			if (ch_type == "YM" || ch_type == "TP") {
@@ -622,7 +624,7 @@ public class EnemyInstance : MonoBehaviour {
 		}
 	}
 
-    public void makeKaisenInstance(int mapId, int busyoId, int shipId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc, int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray) {
+    public void makeKaisenInstance(int mapId, int busyoId, int shipId, int lv, string ch_type, int ch_num, int hp, int atk, int dfc, int spd, string busyoName, int linkNo, bool taisyo, ArrayList senpouArray, int AIType) {
         int langId = PlayerPrefs.GetInt("langId");
 
         string path = "Prefabs/Kaisen/" + shipId;
@@ -663,9 +665,7 @@ public class EnemyInstance : MonoBehaviour {
         //Script Adjust
         Destroy(prefab.GetComponent<UnitMover>());
         prefab.AddComponent<Homing>();
-
-
-
+        prefab.GetComponent<Homing>().AIType = AIType;
 
         //Busyo Detail Info [Name & HP Bar]
         string dtlPath = "";        

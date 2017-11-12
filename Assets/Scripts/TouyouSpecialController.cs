@@ -31,11 +31,11 @@ public class TouyouSpecialController : MonoBehaviour {
         //gacya busyo set
         Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
         busyoListDic = new Dictionary<int, Busyo>();
+        int langId = PlayerPrefs.GetInt("langId");
         for (int i = 0; i < busyoMst.param.Count; i++) {
             int busyoId = busyoMst.param[i].id;            
             string rank = busyoMst.param[i].rank;
-            string busyoName = "";
-            int langId = PlayerPrefs.GetInt("langId");
+            string busyoName = "";           
             if (langId == 2) {
                 busyoName = busyoMst.param[i].nameEng;
             } else {
@@ -131,13 +131,20 @@ public class TouyouSpecialController : MonoBehaviour {
         string busyoPath2 = "Prefabs/Player/Sprite/unit" + busyoId2.ToString();
         daimyo.transform.FindChild("2").GetComponent<Image>().sprite =
             Resources.Load(busyoPath2, typeof(Sprite)) as Sprite;
-        
 
+        //Initial Display
+        string specialBusyoHst = PlayerPrefs.GetString("specialBusyoHst");
+        string specialGacyaNameHst = PlayerPrefs.GetString("specialGacyaNameHst");
+        if (specialBusyoHst != "" && specialBusyoHst != null) {
+            GameObject GacyaObj = initialSet();
+            Destroy(GacyaObj.transform.FindChild("Anim").gameObject);            
+            setSpecialBusyoHst(specialBusyoHst, langId, GacyaObj, specialGacyaNameHst);            
+        }
     }
 
-    public void doGacyaSpecial(string typ,int gacyaCount, int hireCount, Dictionary<int, Busyo> tmpBusyoListDic, string gacyaName) {
+    public GameObject initialSet() {
         GameObject GacyaObj = Instantiate(Gacya);
-        GacyaObj.transform.SetParent(Panel.transform,false);
+        GacyaObj.transform.SetParent(Panel.transform, false);
         Gacya.SetActive(true);
 
         //delete chld
@@ -145,6 +152,14 @@ public class TouyouSpecialController : MonoBehaviour {
         foreach (Transform n in Content.transform) {
             Destroy(n.gameObject);
         }
+
+        return GacyaObj;
+    }
+
+
+    public void doGacyaSpecial(string typ,int gacyaCount, int hireCount, Dictionary<int, Busyo> tmpBusyoListDic, string gacyaName) {
+
+        GameObject GacyaObj = initialSet();
 
         //set parametor  
         List<Busyo> resultS = new List<Busyo>();
@@ -240,6 +255,17 @@ public class TouyouSpecialController : MonoBehaviour {
                 }
             }
         }
+        string specialBusyoHst = "";
+        foreach (Busyo busyo in hitBusyo) {
+            if (specialBusyoHst == "") {
+                specialBusyoHst = busyo.busyoId.ToString();
+            }else {
+                specialBusyoHst = specialBusyoHst + "," + busyo.busyoId.ToString();
+            }
+        }
+        PlayerPrefs.SetString("specialBusyoHst", specialBusyoHst);
+        PlayerPrefs.SetString("specialGacyaNameHst", gacyaName);
+
         Text countDown = GacyaObj.transform.FindChild("Anim").transform.FindChild("Text").GetComponent<Text>();
         GameObject Anim = GacyaObj.transform.FindChild("Anim").gameObject;
         GameObject Busyo = GacyaObj.transform.FindChild("Busyo").gameObject;
@@ -262,7 +288,7 @@ public class TouyouSpecialController : MonoBehaviour {
         Busyo.transform.FindChild("Title").GetComponent<Text>().text = gacyaName;        
         Button.GetComponent<GacyaSpecialTouyou>().hireCount = hireCount;
         Button.transform.FindChild("b").GetComponent<Text>().text = "/" + hireCount;
-
+        
     }
 
     private IEnumerator loop(List<Busyo> hitBusyo, Text countDown,GameObject Anim, GameObject Button, GameObject Detail, List<string> myZukanList) {
@@ -321,9 +347,6 @@ public class TouyouSpecialController : MonoBehaviour {
                     Anim.transform.FindChild("Right").GetComponent<MoveBoard>().runFlg = true;
                     yield break;
                 }
-
-
-
         }
     }
 
@@ -376,6 +399,83 @@ public class TouyouSpecialController : MonoBehaviour {
             }
         }
         return SrankHeisyuList;
+    }
+
+    public void setSpecialBusyoHst(string specialBusyoHst, int langId, GameObject GacyaObj, string specialGacyaNameHst) {
+
+        char[] delimiter = { ',' };
+        List<string> specialBusyoHstList = new List<string>(specialBusyoHst.Split(delimiter));
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        Text countDown = GacyaObj.transform.FindChild("Anim").transform.FindChild("Text").GetComponent<Text>();
+        GameObject Anim = GacyaObj.transform.FindChild("Anim").gameObject;
+        GameObject Busyo = GacyaObj.transform.FindChild("Busyo").gameObject;
+        GameObject Button = GacyaObj.transform.FindChild("Busyo").transform.FindChild("Button").gameObject;
+        GameObject Detail = GacyaObj.transform.FindChild("Busyo").transform.FindChild("Detail").gameObject;
+        //Zukan Check
+        string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
+        List<string> myZukanList = new List<string>();
+        if (zukanBusyoHst != null && zukanBusyoHst != "") {
+            char[] delimiterChars = { ',' };
+            if (zukanBusyoHst.Contains(",")) {
+                myZukanList = new List<string>(zukanBusyoHst.Split(delimiterChars));
+            }else {
+                myZukanList.Add(zukanBusyoHst);
+            }
+        }
+
+        foreach (string specialBusyo in specialBusyoHstList) {
+
+            int busyoId = int.Parse(specialBusyo);
+            string rank = BusyoInfoGet.getRank(busyoId);
+            string busyoName = BusyoInfoGet.getName(busyoId, langId);
+            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
+            if (daimyoId == 0) daimyoId = BusyoInfoGet.getDaimyoHst(busyoId);
+            string heisyu = BusyoInfoGet.getHeisyu(busyoId);            
+            audioSources[0].Play();
+
+            //Set Busyo
+            GameObject SlotObj = Instantiate(Slot);
+            SlotObj.transform.SetParent(Content.transform, false);
+            SlotObj.transform.FindChild("Name").GetComponent<Text>().text = busyoName;
+            SlotObj.transform.FindChild("Rank").GetComponent<Text>().text = rank;
+            string myDaimyoPath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
+            SlotObj.transform.FindChild("Kamon").GetComponent<Image>().sprite =
+                Resources.Load(myDaimyoPath, typeof(Sprite)) as Sprite;
+            string myBusyoPath = "Prefabs/Player/Sprite/unit" + busyoId.ToString();
+            SlotObj.transform.FindChild("Image").GetComponent<Image>().sprite =
+                Resources.Load(myBusyoPath, typeof(Sprite)) as Sprite;
+            SlotObj.GetComponent<GacyaSpecialSelect>().busyoId = busyoId;
+            SlotObj.GetComponent<GacyaSpecialSelect>().Button = Button;
+            SlotObj.GetComponent<GacyaSpecialSelect>().Detail = Detail;
+            if (myZukanList.Contains(busyoId.ToString())) SlotObj.GetComponent<GacyaSpecialSelect>().zukanExistFlg = true;
+            
+            if (rank == "S") {
+                GameObject gacyaEffectSObj = Instantiate(gacyaEffectS);
+                gacyaEffectSObj.transform.SetParent(SlotObj.transform, false);
+                gacyaEffectSObj.transform.localScale = new Vector3(100, 40, 0);
+                gacyaEffectSObj.transform.localPosition = new Vector3(0, 15, 0);
+            }
+            else if (rank == "A") {
+                GameObject gacyaEffectAObj = Instantiate(gacyaEffectA);
+                gacyaEffectAObj.transform.SetParent(SlotObj.transform, false);
+                gacyaEffectAObj.transform.localScale = new Vector3(100, 40, 0);
+                gacyaEffectAObj.transform.localPosition = new Vector3(0, 15, 0);
+            }
+            
+
+        }
+
+        int hireCount = 0;
+        if(specialBusyoHstList.Count == 30) {
+            hireCount = 10;
+        }else {
+            hireCount = 1;
+        }
+
+        Busyo.transform.FindChild("Title").GetComponent<Text>().text = specialGacyaNameHst;
+        Button.GetComponent<GacyaSpecialTouyou>().hireCount = hireCount;
+        Button.transform.FindChild("b").GetComponent<Text>().text = "/" + hireCount;
+
     }
 
 }

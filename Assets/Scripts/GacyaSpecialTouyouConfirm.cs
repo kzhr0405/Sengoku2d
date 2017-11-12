@@ -33,6 +33,10 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
                 int myBusyoQty = PlayerPrefs.GetInt("myBusyoQty");
                 messageIdList.Add(DoTouyou.doTouyou(myBusyoQty, busyoId, BusyoInfoGet.getRank(busyoId)));
             }
+
+            PlayerPrefs.DeleteKey("specialBusyoHst");
+            PlayerPrefs.Flush();
+
             int id1 = 0;
             int id2 = 0;
             int id3 = 0;

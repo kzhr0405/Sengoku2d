@@ -715,111 +715,115 @@ public class GameScene : MonoBehaviour {
 
 
         /*エネミー配置*/
+        //ai
+        int AIType = 1;
+        if (getRandomBool()) AIType = 4;
+        
         if (!pvpFlg) {
 
             int linkNo = PlayerPrefs.GetInt("activeLink",0);
 		    enemySoudaisyo = PlayerPrefs.GetInt("enemySoudaisyo");
+                        
 
-
-		    if(PlayerPrefs.HasKey("emap1")){
+            if (PlayerPrefs.HasKey("emap1")){
 			    int mapId = 1;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap2")){
 			    int mapId = 2;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap3")){
 			    int mapId = 3;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap4")){
 			    int mapId = 4;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap5")){
 			    int mapId = 5;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap6")){
 			    int mapId = 6;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap7")){
 			    int mapId = 7;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap8")){
 			    int mapId = 8;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap9")){
 			    int mapId = 9;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap10")){
 			    int mapId = 10;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap11")){
 			    int mapId = 11;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap12")){
 			    int mapId = 12;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap13")){
 			    int mapId = 13;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap14")){
 			    int mapId = 14;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap15")){
 			    int mapId = 15;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap16")){
 			    int mapId = 16;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap17")){
 			    int mapId = 17;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap18")){
 			    int mapId = 18;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap19")){
 			    int mapId = 19;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap20")){
 			    int mapId = 20;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap21")){
 			    int mapId = 21;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap22")){
 			    int mapId = 22;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap23")){
 			    int mapId = 23;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap24")){
 			    int mapId = 24;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 		    if(PlayerPrefs.HasKey("emap25")){
 			    int mapId = 25;
-			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio);
+			    getEnemyStsAndMakeInstance(linkNo,mapId, mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, AIType);
 		    }
 
             GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
@@ -920,7 +924,7 @@ public class GameScene : MonoBehaviour {
                     }else if (minus2List.Contains(mapId)) {
                         mapId = mapId - 2;
                     }
-                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, kanniId, jyosyuHei);
+                    getPvPStsAndMakeInstance(mapId, busyoId, busyoLv, butaiQty, butaiLv, butaiStatus, senpouLv, sakuId, sakuLv, kahouList, soudaisyo,mntMinusRatio, seaMinusRatio, rainMinusRatio, snowMinusRatio, kanniId, jyosyuHei, AIType);
                     counter = counter + 1;
                 }
             }
@@ -1146,7 +1150,7 @@ public class GameScene : MonoBehaviour {
 	}
 
 
-	public void getEnemyStsAndMakeInstance(int linkNo, int mapId, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio){
+	public void getEnemyStsAndMakeInstance(int linkNo, int mapId, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio,int AIType){
 		
 		String map = "emap" + mapId;
 		int busyoId = PlayerPrefs.GetInt(map);
@@ -1268,11 +1272,11 @@ public class GameScene : MonoBehaviour {
             atk = atk + Mathf.FloorToInt(((float)atk * (float)addRatio) / 100);
             dfc = dfc + Mathf.FloorToInt(((float)dfc * (float)addRatio) / 100);
         }
-
-        inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"", 0, 0);
+        
+        inst.makeInstance(mapId, busyoId, activeButaiLv, heisyu, activeButaiQty, hp, atk, dfc, spd, busyoName,linkNo,enemyTaisyoFlg,senpouArray,"", 0, 0, AIType);
 	}
 
-    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio, int kanniId, int jyosyuHei) {
+    public void getPvPStsAndMakeInstance(int mapId, int busyoId, int busyoLv, int butaiQty, int butaiLv, float butaiStatus, int senpouLv, int sakuId, int sakuLv, string kahouList, int soudaisyo, float mntMinusRatio, float seaMinusRatio, float rainMinusRatio, float snowMinusRatio, int kanniId, int jyosyuHei, int AIType) {
 
         //Get Basic Info.
         StatusGet sts = new StatusGet();        
@@ -1359,7 +1363,7 @@ public class GameScene : MonoBehaviour {
         }
 
         //View Object & pass status to it.
-        enemyTotalHeiryoku = enemyTotalHeiryoku + inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList, kanniId, jyosyuHei);
+        enemyTotalHeiryoku = enemyTotalHeiryoku + inst.makeInstance(mapId, busyoId, butaiLv, heisyu, butaiQty, hp, atk, dfc, spd, busyoName, 0, enemyTaisyoFlg, senpouArray, kahouList, kanniId, jyosyuHei, AIType);
         if(playerTotalHeiryoku!=0) {
             DataStore.UpdateHeiryoku(true, DataStore.userId, playerTotalHeiryoku);            
         }

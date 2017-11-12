@@ -97,6 +97,14 @@ public class EnemyHP : MonoBehaviour {
 			callHelpFlg = false;
 		}
 
+        if(attackObj!=null) {
+            if(GetComponent<Homing>()) {
+                GetComponent<Homing>().nearObj = attackObj;
+            }else if(GetComponent<HomingLong>()) {
+                GetComponent<HomingLong>().nearObj = attackObj;
+            }
+        }
+
 		if (!callHelpFlg) {
 			if (taisyo || name == "shiro") {
 				//Call My help

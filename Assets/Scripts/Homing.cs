@@ -14,15 +14,18 @@ public class Homing : MonoBehaviour {
 	Animator anim;
 	public bool leftFlg = false; //左を向いているか
     public bool KBFlg = false;
+    public GameObject playerTaisyoObj;
 
 	void Start(){
 
+
 		if (tag == "Player") {
 			targetTag = "Enemy";
-		} else {
+        } else {
 			targetTag = "Player";
-		}
-		anim = this.GetComponent ("Animator") as Animator;
+            //AIType = 4;//test
+        }
+        anim = this.GetComponent ("Animator") as Animator;
 		nearObj = serchTagOnLine (gameObject, targetTag);
 
         if (GetComponent<Heisyu>().heisyu == "KB") KBFlg = true;
@@ -152,7 +155,7 @@ public class Homing : MonoBehaviour {
 		float tmpDis = 0;           //距離用一時変数
 		float nearDis = 0;          //最も近いオブジェクトの距離
 		GameObject targetObj = null; //オブジェクト
-		
+		        
 		//タグ指定されたオブジェクトを配列で取得する
 		foreach (GameObject obs in  GameObject.FindGameObjectsWithTag(targetTag)){
 			
@@ -167,7 +170,16 @@ public class Homing : MonoBehaviour {
 			}
 		}
 
-		//最も近かったオブジェクトを返す
-		return targetObj;
+        if (AIType == 4) {
+            //Find Taisyo
+            foreach (GameObject obs in GameObject.FindGameObjectsWithTag(targetTag)) {
+                if(obs.GetComponent<PlayerHP>().taisyo) {
+                    targetObj = obs;
+                }
+            }
+        }
+
+        //最も近かったオブジェクトを返す
+        return targetObj;
 	}
 }

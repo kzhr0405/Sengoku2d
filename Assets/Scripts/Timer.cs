@@ -656,13 +656,16 @@ public class Timer : MonoBehaviour {
 				BusyoInfoGet info = new BusyoInfoGet ();
 				string ch_type = info.getHeisyu (busyoId);
 				int mapId = 22;
+                int AIType = 1;
+                if (getRandomBool()) AIType = 4;
+
 
                 if (Application.loadedLevelName != "kaisen") {
-                    inst.makeInstance(mapId, busyoId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray,"",0,0);
+                    inst.makeInstance(mapId, busyoId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray,"",0,0, AIType);
                 }else {
                     BusyoInfoGet busyoScript = new BusyoInfoGet();
                     int shipId = busyoScript.getShipId(busyoId);
-                    inst.makeKaisenInstance(mapId, busyoId, shipId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray);
+                    inst.makeKaisenInstance(mapId, busyoId, shipId, butaiLv, ch_type, butaiQty, hp, atk, dfc, spd, busyoName, 0, false, senpouArray, AIType);
                 }                
 			}
 		}
@@ -920,6 +923,10 @@ public class Timer : MonoBehaviour {
             }
 
         }
+    }
+
+    public static bool getRandomBool() {
+        return UnityEngine.Random.Range(0, 2) == 0;
     }
 
 }
