@@ -171,9 +171,6 @@ public class EnemyHP : MonoBehaviour {
                 if(GetComponent<EnemyAttack>()) {
                     float prntAtk = GetComponent<EnemyAttack>().attack;
                     GetComponent<EnemyAttack>().attack = prntAtk - chldAtk;
-                }else if(GetComponent<AttackLong>()){
-                    float prntAtk = GetComponent<AttackLong>().attack;
-                    GetComponent<AttackLong>().attack = prntAtk - chldAtk;
                 }
             }
 		}

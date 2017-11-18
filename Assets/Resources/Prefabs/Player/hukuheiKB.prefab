@@ -5,18 +5,18 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 478122}
-  - 212: {fileID: 21271544}
-  - 95: {fileID: 9565468}
-  - 50: {fileID: 5030440}
-  - 60: {fileID: 6096960}
-  - 114: {fileID: 11469338}
-  - 114: {fileID: 11488714}
-  - 114: {fileID: 11475148}
-  - 114: {fileID: 11419138}
-  m_Layer: 8
+  - component: {fileID: 478122}
+  - component: {fileID: 21271544}
+  - component: {fileID: 9565468}
+  - component: {fileID: 5030440}
+  - component: {fileID: 6096960}
+  - component: {fileID: 11469338}
+  - component: {fileID: 11488714}
+  - component: {fileID: 11475148}
+  - component: {fileID: 11419138}
+  m_Layer: 23
   m_Name: hukuheiKB
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -35,19 +35,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &5030440
 Rigidbody2D:
-  serializedVersion: 2
+  serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 139004}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_IsKinematic: 0
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -144,6 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heisyu: KB
+  atk: 0
+  dfc: 0
+  senpouId: 0
 --- !u!114 &11469338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,10 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ddf3badee929141b67cd6e65f3e797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AIType: 1
+  backShiroFlg: 0
+  backShiroObj: {fileID: 0}
+  helpTaisyoShiroFlg: 0
   nearObj: {fileID: 0}
   speed: 2
   targetTag: 
   leftFlg: 0
+  KBFlg: 0
+  playerTaisyoObj: {fileID: 0}
 --- !u!114 &11475148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,12 +183,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e55956dc6f5b14ea445382f9306fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initLife: 0
   life: 100
   dfc: 10
   taisyo: 0
+  attackObj: {fileID: 0}
   childQty: 0
   childHP: 0
   childHPTmp: 0
+  dmgOpt: 0
 --- !u!114 &11488714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   attack: 20
+  atkSEOnFlg: 0
+  audioSources: []
 --- !u!212 &21271544
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -198,17 +216,22 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

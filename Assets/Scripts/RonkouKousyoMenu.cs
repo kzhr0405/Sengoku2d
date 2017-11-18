@@ -167,11 +167,12 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					int kuniId = int.Parse (clearedKuniList [i]);
 					string temp = "kuni" + kuniId.ToString ();
 					string clearedKuni = PlayerPrefs.GetString (temp);
-					//Shiro Qty
-					if (clearedKuni != null && clearedKuni != "") {
+
+                    //Shiro Qty
+                    if (clearedKuni != null && clearedKuni != "") {
 						//Jyosyu Exist Check
-						string jyosyuTmp = "jyosyu" + kuniId.ToString ();
-						if (!PlayerPrefs.HasKey (jyosyuTmp)) {
+						string jyosyuTmp = "jyosyu" + kuniId.ToString ();                        
+                        if (PlayerPrefs.GetInt(jyosyuTmp) == 0) {
 							okKuniList.Add (kuniId.ToString ());
 						}
 					}

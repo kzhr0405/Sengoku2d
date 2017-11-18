@@ -174,6 +174,8 @@ MonoBehaviour:
   speed: 9
   targetTag: 
   leftFlg: 0
+  KBFlg: 0
+  playerTaisyoObj: {fileID: 0}
 --- !u!114 &11421404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,9 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3765ae512814a3c42b2009bdc5a44002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heisyu: KB
+  heisyu: YR
   atk: 0
   dfc: 0
+  senpouId: 0
 --- !u!114 &11427896
 MonoBehaviour:
   m_ObjectHideFlags: 1

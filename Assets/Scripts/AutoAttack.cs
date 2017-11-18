@@ -85,29 +85,30 @@ public class AutoAttack : MonoBehaviour {
         //search
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Player")) {
             
-            if (obs.GetComponent<Homing>()) {
-                
-                float spd = obs.GetComponent<Homing>().speed;
-                bool leftFlg = obs.GetComponent<Homing>().leftFlg;
-                Destroy(obs.GetComponent<Homing>());
-                obs.AddComponent<UnitMover>();
-                obs.GetComponent<UnitMover>().speed = spd;
-                obs.GetComponent<UnitMover>().heisyu = obs.GetComponent<Heisyu>().heisyu;
-                obs.GetComponent<UnitMover>().leftFlg = leftFlg;
+            if(obs.name != "hukuhei") {
+                if (obs.GetComponent<Homing>()) {
+                    
+                    float spd = obs.GetComponent<Homing>().speed;
+                    bool leftFlg = obs.GetComponent<Homing>().leftFlg;
+                    Destroy(obs.GetComponent<Homing>());
+                    obs.AddComponent<UnitMover>();
+                    obs.GetComponent<UnitMover>().speed = spd;
+                    obs.GetComponent<UnitMover>().heisyu = obs.GetComponent<Heisyu>().heisyu;
+                    obs.GetComponent<UnitMover>().leftFlg = leftFlg;
 
-                //switchBarDirect(obs);
-            }
-            else if(obs.GetComponent<HomingLong>()) {
+                    //switchBarDirect(obs);
+                }else if(obs.GetComponent<HomingLong>()) {
                 
-                float spd = obs.GetComponent<HomingLong>().speed;
-                bool leftFlg = obs.GetComponent<HomingLong>().leftFlg;
-                Destroy(obs.GetComponent<HomingLong>());
-                obs.AddComponent<UnitMover>();
-                obs.GetComponent<UnitMover>().speed = spd;
-                obs.GetComponent<UnitMover>().heisyu = obs.GetComponent<Heisyu>().heisyu;
-                obs.GetComponent<UnitMover>().leftFlg = leftFlg;
+                    float spd = obs.GetComponent<HomingLong>().speed;
+                    bool leftFlg = obs.GetComponent<HomingLong>().leftFlg;
+                    Destroy(obs.GetComponent<HomingLong>());
+                    obs.AddComponent<UnitMover>();
+                    obs.GetComponent<UnitMover>().speed = spd;
+                    obs.GetComponent<UnitMover>().heisyu = obs.GetComponent<Heisyu>().heisyu;
+                    obs.GetComponent<UnitMover>().leftFlg = leftFlg;
 
-                //switchBarDirect(obs);
+                    //switchBarDirect(obs);
+                }
             }
         }
     }

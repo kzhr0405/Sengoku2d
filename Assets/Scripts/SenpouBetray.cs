@@ -62,7 +62,7 @@ public class SenpouBetray : MonoBehaviour {
 			obs.transform.parent.GetComponent<EnemyHP> ().dfc = obs.transform.parent.GetComponent<EnemyHP> ().dfc - child_dfc;
 
 		} else {
-			obs.transform.parent.GetComponent<AttackLong> ().childAttack = obs.transform.parent.GetComponent<AttackLong> ().childAttack - child_atk;
+			//obs.transform.parent.GetComponent<AttackLong> ().childAttack = obs.transform.parent.GetComponent<AttackLong> ().childAttack - child_atk;
 			obs.transform.parent.GetComponent<EnemyHP> ().dfc = obs.transform.parent.GetComponent<EnemyHP> ().dfc - child_dfc;
 		}
 
@@ -163,7 +163,7 @@ public class SenpouBetray : MonoBehaviour {
             obs.transform.parent.GetComponent<PlayerHP>().dfc = obs.transform.parent.GetComponent<PlayerHP>().dfc - child_dfc;
 
         }else {
-            obs.transform.parent.GetComponent<AttackLong>().childAttack = obs.transform.parent.GetComponent<AttackLong>().childAttack - child_atk;
+            //obs.transform.parent.GetComponent<AttackLong>().childAttack = obs.transform.parent.GetComponent<AttackLong>().childAttack - child_atk;
             obs.transform.parent.GetComponent<PlayerHP>().dfc = obs.transform.parent.GetComponent<PlayerHP>().dfc - child_dfc;
         }
 
@@ -223,7 +223,7 @@ public class SenpouBetray : MonoBehaviour {
         }
         Destroy(ch_prefab.GetComponent<PlayerHP>());
         ch_prefab.tag = "Enemy";
-        ch_prefab.layer = LayerMask.NameToLayer("Enemy");
+        ch_prefab.layer = LayerMask.NameToLayer("EnemyNoColl");
 
 
         //Set Param
