@@ -4,7 +4,7 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class AudioController : MonoBehaviour {
 
-	public void addComponentMoveAttack(GameObject obj, string heisyu){
+	public static void addComponentMoveAttack(GameObject obj, string heisyu){
 
 		//SE
 		AudioSource moveSE = obj.AddComponent<AudioSource>();

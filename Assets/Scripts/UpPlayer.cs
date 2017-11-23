@@ -4,7 +4,7 @@ using System.Collections;
 public class UpPlayer : MonoBehaviour {
 
 
-	public GameObject doSenpou(GameObject obj,  int senpouId, int senpouStatus, float initCoolTime, float initDisTarget){
+	public static GameObject doSenpou(GameObject obj,  int senpouId, int senpouStatus, float initCoolTime, float initDisTarget){
 
 		string path = "Prefabs/Effect/" + senpouId;
 		GameObject effect = Instantiate(Resources.Load (path)) as GameObject;

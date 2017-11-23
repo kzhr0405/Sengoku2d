@@ -12,12 +12,12 @@ TextureImporter:
     21300010: dfc_up 1_5
     21300012: dfc_up 1_6
     21300014: dfc_up 1_7
-  serializedVersion: 2
+  serializedVersion: 4
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
@@ -29,10 +29,8 @@ TextureImporter:
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 256
@@ -43,9 +41,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -53,12 +49,52 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 256
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 256
+    textureFormat: 33
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 256
+    textureFormat: 47
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: dfc_up 1_0
+    - serializedVersion: 2
+      name: dfc_up 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -68,15 +104,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -4, y: 11}
-        - {x: -10, y: 11}
-        - {x: -10, y: -2}
-        - {x: -8, y: -8}
-        - {x: 3, y: -8}
-        - {x: 5, y: -4}
-        - {x: 5, y: 7}
-    - name: dfc_up 1_1
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_1
       rect:
         serializedVersion: 2
         x: 240
@@ -86,17 +117,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 2, y: 10}
-        - {x: -10, y: 10}
-        - {x: -10, y: 1}
-        - {x: -3, y: -9}
-        - {x: 2, y: -9}
-        - {x: 7, y: -7}
-        - {x: 10, y: -1}
-        - {x: 10, y: 6}
-        - {x: 9, y: 9}
-    - name: dfc_up 1_2
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_2
       rect:
         serializedVersion: 2
         x: 480
@@ -106,16 +130,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 8, y: 10}
-        - {x: -10, y: 10}
-        - {x: -10, y: -3}
-        - {x: -2, y: -9}
-        - {x: 5, y: -9}
-        - {x: 9, y: -4}
-        - {x: 10, y: -1}
-        - {x: 10, y: 5}
-    - name: dfc_up 1_3
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_3
       rect:
         serializedVersion: 2
         x: 720
@@ -125,17 +143,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 9.000008, y: 8}
-        - {x: 3.0000076, y: 9}
-        - {x: -8.999992, y: 9}
-        - {x: -9.999992, y: 7}
-        - {x: -9.999992, y: 0}
-        - {x: -2.9999924, y: -10}
-        - {x: 5.0000076, y: -10}
-        - {x: 10.000008, y: -2}
-        - {x: 10.000008, y: 5}
-    - name: dfc_up 1_4
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_4
       rect:
         serializedVersion: 2
         x: 960
@@ -145,17 +156,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10, y: 0}
-        - {x: -6, y: -12}
-        - {x: 5, y: -12}
-        - {x: 10, y: -5}
-        - {x: 10, y: 6}
-        - {x: 9, y: 8}
-        - {x: -1, y: 9}
-        - {x: -8, y: 9}
-        - {x: -10, y: 8}
-    - name: dfc_up 1_5
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_5
       rect:
         serializedVersion: 2
         x: 1200
@@ -165,15 +169,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10.499985, y: 7}
-        - {x: -10.499985, y: -3}
-        - {x: -3.4999847, y: -12}
-        - {x: -0.49998474, y: -14}
-        - {x: 4.5000153, y: -14}
-        - {x: 9.500015, y: -12}
-        - {x: 9.500015, y: 7}
-    - name: dfc_up 1_6
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_6
       rect:
         serializedVersion: 2
         x: 1440
@@ -183,18 +182,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -10.499985, y: -5}
-        - {x: -7.4999847, y: -14}
-        - {x: -4.4999847, y: -16}
-        - {x: 4.5000153, y: -16}
-        - {x: 9.500015, y: -10}
-        - {x: 9.500015, y: 2}
-        - {x: 7.5000153, y: 4}
-        - {x: -3.4999847, y: 7}
-        - {x: -8.499985, y: 7}
-        - {x: -10.499985, y: 6}
-    - name: dfc_up 1_7
+      outline: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: dfc_up 1_7
       rect:
         serializedVersion: 2
         x: 1680
@@ -204,18 +195,10 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -1.9999847, y: 6}
-        - {x: -8.999985, y: 6}
-        - {x: -9.999985, y: 4}
-        - {x: -9.999985, y: -6}
-        - {x: -1.9999847, y: -16}
-        - {x: 6.0000153, y: -16}
-        - {x: 10.000015, y: -10}
-        - {x: 10.000015, y: -2}
-        - {x: 8.000015, y: 3}
+      outline: []
+      tessellationDetail: -1
     outline: []
-  spritePackingTag: 
+  spritePackingTag: Effect
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -207,8 +207,8 @@ public class SakuMaker : MonoBehaviour {
                 }
 
 				//SE
-				AudioController audio = new AudioController ();
-				audio.addComponentMoveAttack (ch_prefab, sakuHeisyu);
+//				AudioController audio = new AudioController ();
+				AudioController.addComponentMoveAttack (ch_prefab, sakuHeisyu);
 
 			}
 
@@ -282,8 +282,8 @@ public class SakuMaker : MonoBehaviour {
 			kengou.GetComponent<PlayerHP> ().dfc = kengouDfc;
 
 			//SE
-			AudioController audio = new AudioController ();
-			audio.addComponentMoveAttack (kengou, "YR");
+//			AudioController audio = new AudioController ();
+			AudioController.addComponentMoveAttack (kengou, "YR");
 
 
 		} else if (sakuId == 10) {
@@ -336,8 +336,8 @@ public class SakuMaker : MonoBehaviour {
 				tp_prefab.GetComponent<PlayerHP> ().dfc = sakuHeiSts;
 				tp_prefab.GetComponent<HomingLong> ().speed = sakuBusyoSpeed;
 				
-				AudioController audio = new AudioController ();
-				audio.addComponentMoveAttack (tp_prefab, "TP");
+//				AudioController audio = new AudioController ();
+				AudioController.addComponentMoveAttack (tp_prefab, "TP");
 			}
 		} else if (sakuId == 14) {
 			//Gokui
@@ -492,8 +492,8 @@ public class SakuMaker : MonoBehaviour {
         }
 
 		//SE
-		AudioController audio = new AudioController ();
-		audio.addComponentMoveAttack (kengou, "YR");
+//		AudioController audio = new AudioController ();
+		AudioController.addComponentMoveAttack (kengou, "YR");
 
 
 		string damagePath = "Prefabs/PreKassen/SakuMessage";
