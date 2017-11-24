@@ -199,6 +199,7 @@ public class Gunzei : MonoBehaviour {
 
 	public void win(string tKey, int tSrcDaimyoId, int tDstDaimyoId, bool noGunzeiFlg, int dstKuni) {
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 
 		//Kuni Change
@@ -282,8 +283,8 @@ public class Gunzei : MonoBehaviour {
 				GameObject slot = Instantiate (Resources.Load (pathOfSlot)) as GameObject;
 				slot.transform.SetParent (contents.transform);
                 Daimyo daimyoScript = new Daimyo();
-                string srcDaimyoName = daimyoScript.getName(tSrcDaimyoId,langId);
-                string dstDaimyoName = daimyoScript.getName(tDstDaimyoId,langId);
+                string srcDaimyoName = daimyoScript.getName(tSrcDaimyoId,langId,senarioId);
+                string dstDaimyoName = daimyoScript.getName(tDstDaimyoId,langId,senarioId);
                 string metsubouText = "";
                 
                 if (langId == 2) {
@@ -361,6 +362,7 @@ public class Gunzei : MonoBehaviour {
 
 	public void changeKuniIconAndParam(int srcKuni, int dstKuni, int srcDaimyoId, int dstDaimyoId){
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         //Change Icon
         string imagePath = "Prefabs/Kamon/" + srcDaimyoId.ToString ();
 		GameObject kuniIconView = GameObject.Find ("KuniIconView");
@@ -416,8 +418,8 @@ public class Gunzei : MonoBehaviour {
 
 				//Change Name of target Kuni by daimyo info
 				targetKuni.GetComponent<SendParam> ().daimyoId = srcDaimyoId;
-                targetKuni.GetComponent<SendParam>().daimyoName = daimyoScript.getName(srcDaimyoId,langId);//daimyoMst.param [srcDaimyoId - 1].daimyoName;
-                targetKuni.GetComponent<SendParam>().daimyoBusyoId = daimyoScript.getDaimyoBusyoId(srcDaimyoId);//daimyoMst.param [srcDaimyoId - 1].busyoId;
+                targetKuni.GetComponent<SendParam>().daimyoName = daimyoScript.getName(srcDaimyoId,langId,senarioId);//daimyoMst.param [srcDaimyoId - 1].daimyoName;
+                targetKuni.GetComponent<SendParam>().daimyoBusyoId = daimyoScript.getDaimyoBusyoId(srcDaimyoId,senarioId);//daimyoMst.param [srcDaimyoId - 1].busyoId;
 
                 SendParam winnerParam = kuniIconView.transform.FindChild (tmpKuniId.ToString ()).GetComponent<SendParam> ();
 				winnerParam.busyoQty = busyoQty;

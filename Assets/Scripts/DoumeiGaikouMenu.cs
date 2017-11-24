@@ -32,6 +32,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		bool isExistFlg = actBusyoScript.isExistActiveBusyo ();
 		Message msg = new Message();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+
         if (name == "Mitsugi") {
 
 			if (isExistFlg) {
@@ -149,7 +151,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				btn.GetComponent<DoGaikou> ().hyourouOKflg = hyourouOKflg;
 
 				int daimyoId = GameObject.Find ("close").GetComponent<CloseBoard> ().daimyoId;
-				kuniScrollView (obj, daimyoId.ToString (), btn);
+				kuniScrollView (obj, daimyoId.ToString (), btn, langId, senarioId);
 
 				//Set Obj
 				GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
@@ -177,7 +179,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			int daimyoId = GameObject.Find ("close").GetComponent<CloseBoard> ().daimyoId;
 			msgObj.transform.FindChild ("YesButton").GetComponent<DoDoumeiHaki> ().daimyoId = daimyoId;
 			Daimyo daimyo = new Daimyo ();
-			string daimyoName = daimyo.getName (daimyoId,langId);
+			string daimyoName = daimyo.getName (daimyoId,langId,senarioId);
 			msgObj.transform.FindChild ("YesButton").GetComponent<DoDoumeiHaki> ().daimyoName = daimyoName;
 
 			close.layer = close.layer - 1;
@@ -331,7 +333,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 					hyourouOKflg = gaikou.HyourouCheck (nowHyourou);
 					btn.GetComponent<DoGaikou> ().hyourouOKflg = hyourouOKflg;
 
-					SyuppeiKuniScrollView (obj, daimyoId.ToString (), btn);
+					SyuppeiKuniScrollView (obj, daimyoId.ToString (), btn, langId, senarioId);
 
 					//Set Obj
 					GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
@@ -347,10 +349,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 	}
 
-	public void kuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn){
+	public void kuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn, int langId, int senarioId){
 
 		GameObject content = baseObj.transform.FindChild("scroll").transform.FindChild("Content").gameObject;
-        int langId = PlayerPrefs.GetInt("langId");
 
         string seiryoku = PlayerPrefs.GetString ("seiryoku");
 		char[] delimiterChars = {','};
@@ -471,7 +472,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			int kuniId = sameTargetKuniList[i];
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
 			// daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
-            string daimyoName = daimyoScript.getName(daimyoId,langId);
+            string daimyoName = daimyoScript.getName(daimyoId,langId,senarioId);
 
             string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
             prefab.transform.FindChild("Image").GetComponent<Image>().sprite =
@@ -531,9 +532,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 	}
 
-	public void SyuppeiKuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn){
+	public void SyuppeiKuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn, int langId, int senarioId){
         //View kuni which have openkuni
-        int langId = PlayerPrefs.GetInt("langId");
         GameObject content = baseObj.transform.FindChild("scroll").transform.FindChild("Content").gameObject;
 
 		string seiryoku = PlayerPrefs.GetString ("seiryoku");
@@ -630,7 +630,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
         //Get Chiryaku
         //Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
         Daimyo daimyoScript = new Daimyo();
-        int myDaimyoBusyoId = daimyoScript.getDaimyoBusyoId(myDaimyo);
+        int myDaimyoBusyoId = daimyoScript.getDaimyoBusyoId(myDaimyo,senarioId);
 		BusyoInfoGet busyo = new BusyoInfoGet ();
 		int chiryaku = busyo.getMaxDfc (myDaimyoBusyoId);
 
@@ -643,10 +643,10 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 			int kuniId = finalKuniList[i];
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
-            string daimyoName = daimyoScript.getName(daimyoId,langId);
+            string daimyoName = daimyoScript.getName(daimyoId,langId,senarioId);
 			int srcKuniId = srcKuniList [i];
 			int srcDaimyoId = int.Parse(seiryokuList [srcKuniId - 1]);
-            string srcDaimyoName = daimyoScript.getName(srcDaimyoId,langId);
+            string srcDaimyoName = daimyoScript.getName(srcDaimyoId,langId,senarioId);
 
             string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
             prefab.transform.FindChild("Image").GetComponent<Image>().sprite =

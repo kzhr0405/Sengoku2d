@@ -284,4 +284,18 @@ public class KuniInfo : MonoBehaviour {
 		return kuniId;
 	}
 
+    public int getDaimyoId(int kuniId, int senarioId) {
+        int daimyoId = 0;
+        if (senarioId == 1) {
+            daimyoId = kuniMst.param[kuniId - 1].daimyoId1;
+        }else if (senarioId == 2) {
+            daimyoId = kuniMst.param[kuniId - 1].daimyoId2;
+        }else if (senarioId == 3) {
+            daimyoId = kuniMst.param[kuniId - 1].daimyoId3;
+        }else {
+            daimyoId = kuniMst.param[kuniId - 1].daimyoId;
+        }
+        return daimyoId;
+    }
+
 }

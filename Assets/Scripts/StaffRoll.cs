@@ -17,9 +17,10 @@ public class StaffRoll : MonoBehaviour {
 		/*Receive Item*/
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [3].Play ();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
-		//Item1
-		string gameClearDaimyo = PlayerPrefs.GetString ("gameClearDaimyo");
+        //Item1
+        string gameClearDaimyo = PlayerPrefs.GetString ("gameClearDaimyo");
         bool hardFlg = PlayerPrefs.GetBool("hardFlg");
         List<string> gameClearDaimyoList = new List<string> ();
 		char[] delimiterChars = {','};
@@ -97,7 +98,7 @@ public class StaffRoll : MonoBehaviour {
         //Get Daimyo Busyo
         Daimyo daimyoScript = new Daimyo();
         int daimyoId = PlayerPrefs.GetInt("myDaimyo");
-        int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(daimyoId);
+        int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(daimyoId,senarioId);
 
         string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
         List<string> zukanBusyoHstList = new List<string>();
@@ -157,6 +158,7 @@ public class StaffRoll : MonoBehaviour {
 
 	public void FinMaker(GameObject panel){
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         string finPath = "Prefabs/clearOrGameOver/Fin";
 		GameObject finObj = Instantiate(Resources.Load (finPath)) as GameObject;
 		finObj.transform.SetParent(panel.transform);
@@ -167,7 +169,7 @@ public class StaffRoll : MonoBehaviour {
 
 		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		Daimyo daimyo = new Daimyo ();
-		int busyoId = daimyo.getDaimyoBusyoId (myDaimyo);
+		int busyoId = daimyo.getDaimyoBusyoId (myDaimyo,senarioId);
 		string path = "Prefabs/Player/" + busyoId;
 		GameObject prefab = Instantiate(Resources.Load (path)) as GameObject;
 		prefab.transform.SetParent (finObj.transform);
@@ -202,7 +204,7 @@ public class StaffRoll : MonoBehaviour {
 		}
 		Gunji.transform.FindChild ("WinRatio").transform.FindChild ("Text").GetComponent<Text> ().text = winRatio.ToString() + "%";
 		Gunji.transform.FindChild ("Tettai").transform.FindChild ("Text").GetComponent<Text> ().text = TrackTettaiNo.ToString();
-		string daimyoName = daimyo.getName(TrackBiggestDaimyoId,langId);
+		string daimyoName = daimyo.getName(TrackBiggestDaimyoId,langId,senarioId);
 		Gunji.transform.FindChild ("BiggestEnemy").transform.FindChild ("Text").GetComponent<Text> ().text = daimyoName;
 		Gunji.transform.FindChild ("BiggestEnemyHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackBiggestDaimyoHei.ToString();
 		Gunji.transform.FindChild ("BiggestPlayerHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackMyBiggestHei.ToString();

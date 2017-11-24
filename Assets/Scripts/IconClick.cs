@@ -41,6 +41,7 @@ public class IconClick : MonoBehaviour {
 		int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
 		string kanniName = "";
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         if (syogunDaimyoId == myDaimyoId) {
             if (langId == 2) {
                 kanniName = "Shogun";
@@ -67,11 +68,11 @@ public class IconClick : MonoBehaviour {
         //Daimyo Name
         Daimyo daimyoScript = new Daimyo();
         int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
-        string myDaimyoName = daimyoScript.getName(myDaimyo,langId);
+        string myDaimyoName = daimyoScript.getName(myDaimyo,langId,senarioId);
         kuni.transform.FindChild("DaimyoName").GetComponent<Text>().text = myDaimyoName;
 
         //Daimyo busyo image
-        int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(myDaimyo);
+        int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(myDaimyo,senarioId);
         string daimyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString();
         kuni.transform.FindChild("Mask").transform.FindChild("BusyoImage").GetComponent<Image>().sprite =
             Resources.Load(daimyoPath, typeof(Sprite)) as Sprite;

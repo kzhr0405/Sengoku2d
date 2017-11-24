@@ -41,6 +41,7 @@ public class AttackNaiseiView : MonoBehaviour {
 
     public void OnClick(){
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         cyouhouSnbRankId = transform.parent.gameObject.transform.FindChild("close").GetComponent<CloseBoard>().cyouhouSnbRankId;
 
         //SE
@@ -452,16 +453,16 @@ public class AttackNaiseiView : MonoBehaviour {
         
 		/*Kassen Event Controller Start*/
 		KassenEvent kEvent = new KassenEvent ();
-		kEvent.MakeEvent (clearFlg,kuniId,kuniMap,daimyoId);
+		kEvent.MakeEvent (clearFlg,kuniId,kuniMap,daimyoId,senarioId);
 
-        viewKuniLink(board, kuniMap, seiryokuList,langId);
+        viewKuniLink(board, kuniMap, seiryokuList,langId, senarioId);
 
 
         /*Kassen Event Controller End*/
 
     }
 
-    public void viewKuniLink(GameObject board, GameObject kuniMap, List<string> seiryokuList, int langId){
+    public void viewKuniLink(GameObject board, GameObject kuniMap, List<string> seiryokuList, int langId, int senarioId) {
         KuniInfo kuniScript = new KuniInfo();
         List<int>linkKuniList = kuniScript.getMappingKuni(kuniId);
         
@@ -498,7 +499,7 @@ public class AttackNaiseiView : MonoBehaviour {
             arrowDaimyo.transform.FindChild("Effect").GetComponent<DamagePop>().attackBoardflg = true;
 
             int arrowDaimyoId = int.Parse(seiryokuList[srcKuniId-1]);
-            string daimyoName = daimyoScript.getName(arrowDaimyoId,langId);
+            string daimyoName = daimyoScript.getName(arrowDaimyoId,langId, senarioId);
             arrowDaimyo.transform.FindChild("Effect").GetComponent<Text>().text = daimyoName;
             arrowDaimyo.transform.FindChild("Effect").transform.localScale = new Vector2(0.12f,0.12f);
             string kamonPath = "Prefabs/Kamon/MyDaimyoKamon/" + arrowDaimyoId.ToString();

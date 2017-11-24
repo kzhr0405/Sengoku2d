@@ -24,6 +24,7 @@ public class DoBouryaku : MonoBehaviour {
 		int kuniId = closeScript.kuniId;
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (nowHyourou >= 5){
 
@@ -242,7 +243,7 @@ public class DoBouryaku : MonoBehaviour {
 					string ryugenText = "";
 					for(int l=0; l<dstDaimyoList.Count;l++){
 						int dstDaimyoId = dstDaimyoList[l];
-						string dstDaimyoName = daimyo.getName(dstDaimyoId,langId);
+						string dstDaimyoName = daimyo.getName(dstDaimyoId,langId,senarioId);
 						int reduceYukoudo = main.DownYukouValueWithOther(srcDaimyoId,dstDaimyoId);
 						reduceYukoudo = reduceYukoudo/2;
 						if(reduceYukoudo==0){

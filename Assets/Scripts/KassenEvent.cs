@@ -11,10 +11,10 @@ public class KassenEvent : MonoBehaviour {
 	BusyoInfoGet busyo = new BusyoInfoGet ();
 
 
-	public void MakeKassenComment(string kassenWinLoseFlee, int enemyDaimyoId, int kuniId){
+	public void MakeKassenComment(string kassenWinLoseFlee, int enemyDaimyoId, int kuniId, int senarioId){
 
 		//make comment object
-		GameObject commentObj = MakeCommentObj(enemyDaimyoId,kuniId);
+		GameObject commentObj = MakeCommentObj(enemyDaimyoId,kuniId, senarioId);
 
         //Comment
         int langId = PlayerPrefs.GetInt("langId");
@@ -121,7 +121,7 @@ public class KassenEvent : MonoBehaviour {
 
 	}
 
-	public GameObject MakeCommentObj(int enemyDaimyoId, int kuniId){
+	public GameObject MakeCommentObj(int enemyDaimyoId, int kuniId, int senarioId){
 
 		//Popup
 		string cmntPath = "Prefabs/Map/stage/EventComment";
@@ -136,7 +136,7 @@ public class KassenEvent : MonoBehaviour {
 		//Busyo Image
 		GameObject busyoImage = commentObj.transform.FindChild ("Mask").transform.FindChild ("BusyoImage").gameObject;
 		Daimyo daimyo = new Daimyo ();
-		int daimyoBusyoId = daimyo.getDaimyoBusyoId (enemyDaimyoId);
+		int daimyoBusyoId = daimyo.getDaimyoBusyoId (enemyDaimyoId,senarioId);
 		string imagePath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 		busyoImage.GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
@@ -146,7 +146,7 @@ public class KassenEvent : MonoBehaviour {
 
 
 
-	public void MakeEvent(bool clearFlg, int kuniId, GameObject kuniMap, int enemyDaimyoId){
+	public void MakeEvent(bool clearFlg, int kuniId, GameObject kuniMap, int enemyDaimyoId, int senarioId) {
 
         //Check No Commnet
         int langId = PlayerPrefs.GetInt("langId");
@@ -210,7 +210,7 @@ public class KassenEvent : MonoBehaviour {
 								AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 								audioSources [7].Play ();
 
-								GameObject commentObj = MakeCommentObj (enemyDaimyoId, kuniId);
+								GameObject commentObj = MakeCommentObj (enemyDaimyoId, kuniId,senarioId);
 								int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
 								int myDaimyoId = PlayerPrefs.GetInt ("myDaimyo");
 								BusyoInfoGet busyo = new BusyoInfoGet ();

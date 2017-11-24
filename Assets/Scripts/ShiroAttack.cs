@@ -57,6 +57,7 @@ public class ShiroAttack : MonoBehaviour {
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[7].Play();
         audioSources[6].Play();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         //Change Cleared Data
         string clearedStage = "kuni" + kuniId;
@@ -107,7 +108,7 @@ public class ShiroAttack : MonoBehaviour {
         destroyObj.transform.localPosition = new Vector2(toStageObj.transform.localPosition.x, toStageObj.transform.localPosition.y + 14);
 
         KassenEvent kassenEventScript = new KassenEvent();
-        GameObject commentObj = kassenEventScript.MakeCommentObj(enemyDaimyoId, kuniId);
+        GameObject commentObj = kassenEventScript.MakeCommentObj(enemyDaimyoId, kuniId,senarioId);
         Stage stageScript = new Stage();
         int langId = PlayerPrefs.GetInt("langId");
         string stageName = stageScript.getStageName(kuniId, toStageId, langId);

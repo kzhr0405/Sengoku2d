@@ -143,11 +143,11 @@ public class JinkeiPowerEffection : MonoBehaviour {
         }
 	}
 
-    public void EnemySameDaimyoNum(int daimyoId) {
+    public void EnemySameDaimyoNum(int daimyoId, int senarioId) {
 
         Daimyo daimyo = new Daimyo();
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-        int daimyoBusyoId = daimyo.getDaimyoBusyoId(daimyoId);
+        int daimyoBusyoId = daimyo.getDaimyoBusyoId(daimyoId, senarioId);
         bool daimyoBusyoFlg = false;
         List<int> daimyoIdList = new List<int>() { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag("EnemySlot")) {

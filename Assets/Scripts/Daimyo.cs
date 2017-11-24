@@ -7,23 +7,39 @@ public class Daimyo : MonoBehaviour {
 
 	Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
 
-	public string getName (int daimyoId, int langId) {
+    public string getName (int daimyoId, int langId, int senarioId ) {
 		string daimyoName = "";
-		if (daimyoId != 0) {            
-            if (langId == 2) {
-                daimyoName = daimyoMst.param[daimyoId - 1].daimyoNameEng;
-            }else if (langId == 3) {
-                daimyoName = daimyoMst.param[daimyoId - 1].daimyoNameSChn;
-            } else {
-                daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
+		if (daimyoId != 0) {
+            int busyoId = 0;         
+            if (senarioId == 1) {
+                busyoId = daimyoMst.param[daimyoId - 1].busyoId1;
+            }else if (senarioId == 2) {
+                busyoId = daimyoMst.param[daimyoId - 1].busyoId2;
+            } else if(senarioId == 3) {
+                busyoId = daimyoMst.param [daimyoId - 1].busyoId3;
+            }else {
+                busyoId = daimyoMst.param[daimyoId - 1].busyoId;
             }
+            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+            //Debug.Log(senarioId + "," + daimyoId + "," + busyoId);
+            daimyoName = BusyoInfoGet.getName(busyoId, langId);
+
         }
 		return daimyoName;
 	}
 
-	public int getDaimyoBusyoId (int daimyoId) {
-		int busyoId = daimyoMst.param[daimyoId-1].busyoId;
-		return busyoId;
+	public int getDaimyoBusyoId (int daimyoId, int senarioId) {
+        int busyoId = 0;
+        if (senarioId == 1) {
+            busyoId = daimyoMst.param[daimyoId - 1].busyoId1;
+        }else if (senarioId == 2) {
+            busyoId = daimyoMst.param[daimyoId - 1].busyoId2;
+        }else if (senarioId == 3) {
+            busyoId = daimyoMst.param[daimyoId - 1].busyoId3;
+        }else {
+            busyoId = daimyoMst.param[daimyoId - 1].busyoId;
+        }
+        return busyoId;
 	}
 
 	public int getSenryoku (int daimyoId) {

@@ -10,8 +10,8 @@ public class JinkeiFormButton : MonoBehaviour {
 
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
-
-		Resources.UnloadUnusedAssets ();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        Resources.UnloadUnusedAssets ();
 		ButtonColorChanger(name);
 
         if (Application.loadedLevelName == "preKassen") {
@@ -35,7 +35,7 @@ public class JinkeiFormButton : MonoBehaviour {
             int weatherId = preKassenScript.weatherId;
             bool isAttackedFlg = preKassenScript.isAttackedFlg;
 
-            preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,true, false);
+            preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg,true, false,senarioId);
             GameObject.Find("BusyoScrollMenu").GetComponent<PopScrollSlider>().onceSlideInFlg = false;
 
         }
@@ -60,7 +60,7 @@ public class JinkeiFormButton : MonoBehaviour {
             int weatherId = preKassenScript.weatherId;
             bool isAttackedFlg = preKassenScript.isAttackedFlg;
 
-            preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, true);
+            preKassenScript.prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, true,senarioId);
             GameObject.Find("BusyoScrollMenu").GetComponent<PopScrollSlider>().onceSlideInFlg = false;
 
         }

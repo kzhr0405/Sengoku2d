@@ -27,6 +27,7 @@ public class BakuhuMenu : MonoBehaviour {
 		int hyourou = PlayerPrefs.GetInt ("hyourou");
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (name == "AtkOrderBtn") {
 
@@ -164,7 +165,7 @@ public class BakuhuMenu : MonoBehaviour {
 					} else {
 
                         Daimyo daimyoScript = new Daimyo();
-                        string daimyoName = daimyoScript.getName(daimyoId,langId);
+                        string daimyoName = daimyoScript.getName(daimyoId,langId,senarioId);
                         kuni.GetComponent<SendParam> ().bakuhuFlg = true;
 						kuni.GetComponent<SendParam> ().kuniId = kuniId;
 						kuni.GetComponent<SendParam> ().daimyoId = daimyoId;
@@ -334,19 +335,19 @@ public class BakuhuMenu : MonoBehaviour {
 						string key = okGunzeiUnitList [0];
 						GameObject gunzei = GameObject.Find (key).gameObject;
 						int dstDaimyoId = gunzei.GetComponent<Gunzei> ().dstDaimyoId;
-						int dstDaimyoBusyoId = daimyo.getDaimyoBusyoId (dstDaimyoId);
-						string dstDaimyoName = daimyo.getName (dstDaimyoId,langId);
+						int dstDaimyoBusyoId = daimyo.getDaimyoBusyoId (dstDaimyoId, senarioId);
+						string dstDaimyoName = daimyo.getName (dstDaimyoId,langId, senarioId);
 						int srcDaimyoId = gunzei.GetComponent<Gunzei> ().srcDaimyoId;
-						int srcDaimyoBusyoId = daimyo.getDaimyoBusyoId (srcDaimyoId);
-						string srcDaimyoName = daimyo.getName (srcDaimyoId,langId);
+						int srcDaimyoBusyoId = daimyo.getDaimyoBusyoId (srcDaimyoId, senarioId);
+						string srcDaimyoName = daimyo.getName (srcDaimyoId,langId, senarioId);
 						int dstKuniId = gunzei.GetComponent<Gunzei> ().dstKuni;
 						string kuniName = kuni.getKuniName (dstKuniId,langId);
 
 						for (int j = 1; j < okGunzeiUnitList.Count; j++) {
 							int engunKuniId = int.Parse (okGunzeiUnitList [j]);
 							int engunDaimyoId = int.Parse (seiryokuList [engunKuniId - 1]);
-							int engunDaimyoBusyoId = daimyo.getDaimyoBusyoId (engunDaimyoId);
-							string engunDaimyoName = daimyo.getName (engunDaimyoId,langId);
+							int engunDaimyoBusyoId = daimyo.getDaimyoBusyoId (engunDaimyoId,senarioId);
+							string engunDaimyoName = daimyo.getName (engunDaimyoId,langId, senarioId);
 
 							GameObject slot = Instantiate (Resources.Load (uniSlotPath)) as GameObject;
 							slot.transform.SetParent (content.transform);
@@ -493,8 +494,8 @@ public class BakuhuMenu : MonoBehaviour {
 						uprSlot.GetComponent<CyusaiDaimyoSelect> ().uprContent = uprContent;
 						uprSlot.GetComponent<CyusaiDaimyoSelect> ().btnContent = btnContent;
 
-						int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (daimyoId));
-						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId);
+						int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (daimyoId), senarioId);
+						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId,senarioId);
 						uprSlot.GetComponent<CyusaiDaimyoSelect> ().daimyoName = daimyoName;
 						string daimyoBusyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 						uprSlot.transform.FindChild ("Image").transform.FindChild ("Image").GetComponent<Image> ().sprite = 

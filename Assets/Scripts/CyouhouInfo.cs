@@ -56,6 +56,7 @@ public class CyouhouInfo : MonoBehaviour {
 			popText.name = "popText";
 
             int langId = PlayerPrefs.GetInt("langId");
+            int senarioId = PlayerPrefs.GetInt("senarioId");
             if (langId == 2) {
                 popText.GetComponent<Text>().text = "Spy";
             }
@@ -123,7 +124,7 @@ public class CyouhouInfo : MonoBehaviour {
 
 				//Daimyo
 				int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
-				string daimyoName = daimyo.getName (daimyoId,langId);
+				string daimyoName = daimyo.getName (daimyoId,langId,senarioId);
 
 				//Rank of Shinobi
 				string snbTmp = "cyouhou" + kuniId.ToString ();

@@ -23,6 +23,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
     public void OnClick() {
 
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (name == "YesButton") {
             audioSources[0].Play();
@@ -232,7 +233,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 }
                 PlayerPrefs.SetInt("myDaimyo", RecoveryDataStore.myDaimyo);
                 Daimyo daimyoScript = new Daimyo();
-                PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo));
+                PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo, senarioId));
                 PlayerPrefs.SetString("myBusyo", myBusyo);
                 PlayerPrefs.SetString("myKanni", RecoveryDataStore.myKanni);
                 PlayerPrefs.SetString("availableBugu", RecoveryDataStore.availableBugu);
@@ -335,7 +336,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetInt("kuniExp", totalExp);
                 PlayerPrefs.SetInt("myDaimyo", RecoveryDataStore.myDaimyo);
                 Daimyo daimyoScript = new Daimyo();
-                PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo));
+                PlayerPrefs.SetInt("myDaimyoBusyo", daimyoScript.getDaimyoBusyoId(RecoveryDataStore.myDaimyo,senarioId));
 
                 //pvp jinkei
                 string myBusyoString = PlayerPrefs.GetString("myBusyo");

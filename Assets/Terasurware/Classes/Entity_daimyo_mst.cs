@@ -11,16 +11,16 @@ public class Entity_daimyo_mst : ScriptableObject
 	{
 		
 		public int daimyoId;
-		public string daimyoName;
+		public string clanName;
 		public int colorR;
 		public int colorG;
 		public int colorB;
 		public int busyoId;
+		public int busyoId1;
+		public int busyoId2;
+		public int busyoId3;
 		public int senryoku;
-		public string daimyoNameEng;
-		public string clanName;
 		public string clanNameEng;
-		public string daimyoNameSChn;
 		public string clanNameSChn;
 	}
 }

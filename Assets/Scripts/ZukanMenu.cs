@@ -21,6 +21,7 @@ public class ZukanMenu : MonoBehaviour {
     public void OnClick() {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[0].Play();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         //Not Pushed Tab Color						
         if (!pushedFlg) {
@@ -41,7 +42,7 @@ public class ZukanMenu : MonoBehaviour {
                     Content1.SetActive(true);
                 }else {
                     Content1.SetActive(true);
-                    showBusyoZukan(Content1);
+                    showBusyoZukan(Content1, senarioId);
                 }
             }
             else if (name == "Kahou") {
@@ -101,7 +102,7 @@ public class ZukanMenu : MonoBehaviour {
 
 
 
-    public void showBusyoZukan(GameObject Content) {
+    public void showBusyoZukan(GameObject Content, int senarioId) {
         int langId = PlayerPrefs.GetInt("langId");
         //Prepare Master & History				
         Entity_busyo_mst tempBusyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
@@ -139,7 +140,7 @@ public class ZukanMenu : MonoBehaviour {
         //add temporary daimyo busyo						
         int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
         Daimyo daimyo = new Daimyo();
-        int myDaimyoBusyoId = daimyo.getDaimyoBusyoId(myDaimyo);
+        int myDaimyoBusyoId = daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
         if (!zukanBusyoHstList.Contains(myDaimyoBusyoId.ToString())) {
             zukanBusyoHstList.Add(myDaimyoBusyoId.ToString());
         }
@@ -630,6 +631,7 @@ public class ZukanMenu : MonoBehaviour {
 
     public void showTenkahubuZukan(GameObject Content) {
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
         Color backColor = new Color(95f / 255f, 95f / 255f, 95f / 255f, 210f / 255f); //Black				
         Color kamonColor = new Color(105f / 255f, 105f / 255f, 105f / 255f, 135f / 255f); //Black				
@@ -660,6 +662,7 @@ public class ZukanMenu : MonoBehaviour {
         string tenkahubuPath = "Prefabs/Item/Tenkahubu/tenkahubu";
         string nameWhitePath = "Prefabs/Zukan/NameWhite";
         string nameBlackPath = "Prefabs/Zukan/NameBlack";
+        Daimyo Daimyo = new Daimyo();
         for (int i = 0; i < daimyoMst.param.Count; i++) {
             int daimyoId = daimyoMst.param[i].daimyoId;
             GameObject tenkahubuIcon = Instantiate(Resources.Load(tenkahubuPath)) as GameObject;
@@ -689,13 +692,9 @@ public class ZukanMenu : MonoBehaviour {
                 GameObject nameObj = Instantiate(Resources.Load(nameWhitePath)) as GameObject;
                 nameObj.transform.SetParent(tenkahubuIcon.transform);
                 nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
-                if (langId == 2) {
-                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameEng;
-                }else if(langId ==3) {
-                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameSChn;
-                }else {
-                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoName;
-                }
+                
+                nameObj.GetComponent<Text>().text = Daimyo.getName(i, langId, senarioId);
+                
                 nameObj.transform.localPosition = new Vector2(0, 60);
                 Destroy(tenkahubuIcon.transform.FindChild("Hard").gameObject);
 
@@ -704,13 +703,7 @@ public class ZukanMenu : MonoBehaviour {
                 GameObject nameObj = Instantiate(Resources.Load(nameBlackPath)) as GameObject;
                 nameObj.transform.SetParent(tenkahubuIcon.transform);
                 nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
-                if (langId == 2) {
-                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameEng;
-                }else if(langId ==3) {
-                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoNameSChn;
-                }else {
-                    nameObj.GetComponent<Text>().text = daimyoMst.param[i].daimyoName;
-                }
+                nameObj.GetComponent<Text>().text = Daimyo.getName(i, langId, senarioId);
                 nameObj.transform.localPosition = new Vector2(0, 60);
 
 

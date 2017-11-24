@@ -15,6 +15,7 @@ public class CyouteiMenu : MonoBehaviour {
 		GameObject board = GameObject.Find ("CyouteiBoard").gameObject;
 		Message msg = new Message ();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         GameObject actionValue = GameObject.Find ("ActionValue").gameObject;
 		int actionRemainQty = int.Parse(actionValue.GetComponent<Text> ().text);
@@ -173,7 +174,7 @@ public class CyouteiMenu : MonoBehaviour {
 				int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
 				int myDaimyoId = PlayerPrefs.GetInt ("myDaimyo");
 				Daimyo daimyo = new Daimyo ();
-				string myDaimyoBusyoName = daimyo.getName (myDaimyoId,langId);
+				string myDaimyoBusyoName = daimyo.getName (myDaimyoId,langId,senarioId);
 
 				if (syogunDaimyoId == myDaimyoId) {
 					audioSources [4].Play ();
@@ -199,7 +200,7 @@ public class CyouteiMenu : MonoBehaviour {
 						audioSources [4].Play ();
 
 						//Check the other Syougun Not Exist
-						string syogunBusyoName = daimyo.getName (syogunDaimyoId,langId);
+						string syogunBusyoName = daimyo.getName (syogunDaimyoId,langId, senarioId);
                         string Text = "";
                         if (langId == 2) {
                             Text = "Other clan " + syogunBusyoName + " has been assigned as syogun.";
@@ -337,7 +338,7 @@ public class CyouteiMenu : MonoBehaviour {
 					//Aleady Exsit
 					audioSources [4].Play ();
 
-					string daimyoName = daimyo.getName (cyoutekiDaimyo,langId);
+					string daimyoName = daimyo.getName (cyoutekiDaimyo,langId, senarioId);
 
                     string Text = "";
                     if (langId == 2) {
@@ -367,7 +368,7 @@ public class CyouteiMenu : MonoBehaviour {
 						menu.name = "MenuCyouteki";
 
 						cyoutekiDaimyo = CloseLayerScript.cyoutekiDaimyo;
-						string daimyoName = daimyo.getName (cyoutekiDaimyo,langId);
+						string daimyoName = daimyo.getName (cyoutekiDaimyo,langId, senarioId);
 
 						menu.transform.FindChild ("CyoutekiDaimyo").GetComponent<Text> ().text = daimyoName;
 

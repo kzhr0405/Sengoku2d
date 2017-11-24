@@ -17,6 +17,7 @@ public class SyouninPop : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (name != "PassButton") {
 			//Syoukaijyo Confirm Pop
@@ -304,7 +305,7 @@ public class SyouninPop : MonoBehaviour {
 					int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 						
 					//Serihu
-					string daimyoName = daimyo.getName (myDaimyo,langId);
+					string daimyoName = daimyo.getName (myDaimyo,langId,senarioId);
                     string serihu = "";
                     if (langId == 2) {
                         serihu = "Oh, lord " + daimyoName + ".\nCan I help you?";

@@ -45,6 +45,7 @@ public class DoTobatsu : MonoBehaviour {
 		int reducedValueWithTarget = myGaikouValueWithTarget - newYukoudoWithTarget;
         string firstKassenText = "";
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         if (langId == 2) {
             firstKassenText = "Declared " + targetDaimyoName + " attack order. \n Friendship reduced " +reducedValueWithTarget+ " point.";
         }else {
@@ -186,7 +187,7 @@ public class DoTobatsu : MonoBehaviour {
 
 						GameObject minGunzei = Instantiate (Resources.Load (visualizePath)) as GameObject;		
 						minGunzei.transform.SetParent (BakuhuKuniIconView.transform);
-						int daimyoBusyoId = daimyo.getDaimyoBusyoId (srcDaimyo);
+						int daimyoBusyoId = daimyo.getDaimyoBusyoId (srcDaimyo,senarioId);
 						string daimyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 						minGunzei.GetComponent<SpriteRenderer> ().sprite = 
 							Resources.Load (daimyoPath, typeof(Sprite)) as Sprite;
@@ -223,11 +224,11 @@ public class DoTobatsu : MonoBehaviour {
 						Gunzei.GetComponent<Gunzei> ().key = key;
 						Gunzei.GetComponent<Gunzei> ().srcKuni = srcKuniId;
 						Gunzei.GetComponent<Gunzei> ().srcDaimyoId = srcDaimyo;
-						string srcDaimyoName = daimyo.getName (srcDaimyo,langId);
+						string srcDaimyoName = daimyo.getName (srcDaimyo,langId,senarioId);
 						Gunzei.GetComponent<Gunzei> ().srcDaimyoName = srcDaimyoName;
 						Gunzei.GetComponent<Gunzei> ().dstKuni = dstKuniId;
 						Gunzei.GetComponent<Gunzei> ().dstDaimyoId = dstDaimyo;
-						string dstDaimyoName = daimyo.getName (dstDaimyo,langId);
+						string dstDaimyoName = daimyo.getName (dstDaimyo,langId,senarioId);
 						Gunzei.GetComponent<Gunzei> ().dstDaimyoName = dstDaimyoName;
 						int myHei = gunzei.heiryokuCalc (srcKuniId);
 
@@ -350,7 +351,7 @@ public class DoTobatsu : MonoBehaviour {
 					} else {
 						//NG
 						string kassenText = "";
-						string srcDaimyoName = daimyo.getName (srcDaimyo,langId);
+						string srcDaimyoName = daimyo.getName (srcDaimyo,langId,senarioId);
 						int newYukoudo = gaikou.downMyGaikou(srcDaimyo, myGaikouValue, 15);
 						int reducedValue = myGaikouValue - newYukoudo;
                         if (langId == 2) {

@@ -55,6 +55,7 @@ public class BakuhuInfo : MonoBehaviour {
 
 	public void updateAtkOrderBtnStatus(GameObject contentObj){
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         int daimyoId = PlayerPrefs.GetInt ("bakuhuTobatsuDaimyoId");
 		if (daimyoId != null && daimyoId != 0) {
 			GameObject atkBtn = contentObj.transform.FindChild ("AtkOrderBtn").gameObject;
@@ -62,7 +63,7 @@ public class BakuhuInfo : MonoBehaviour {
 			atkBtn.GetComponent<Image> ().color = new Color (120f / 255f, 120f / 255f, 120f / 255f, 150f / 255f);
 			atkBtn.transform.FindChild ("HyourouIcon").gameObject.SetActive (false);
 			Daimyo daimyo = new Daimyo ();
-			string toubatsuDaiymoName = daimyo.getName (daimyoId,langId);
+			string toubatsuDaiymoName = daimyo.getName (daimyoId,langId, senarioId);
             if (langId==2) {
                 atkBtn.transform.FindChild ("Exp").GetComponent<Text> ().text = "You've already issued attack order to " + toubatsuDaiymoName + " in this season.\n You can order for 1 time in a season.";
             }else {
@@ -75,6 +76,7 @@ public class BakuhuInfo : MonoBehaviour {
 	public void kessen(GameObject contentObj){
         //disable
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         contentObj.transform.FindChild ("SobujiKessenBtn").gameObject.SetActive(false);
 		contentObj.transform.FindChild ("AtkOrderBtn").gameObject.SetActive(false);
 		contentObj.transform.FindChild ("DfcOrderBtn").gameObject.SetActive(false);
@@ -173,8 +175,8 @@ public class BakuhuInfo : MonoBehaviour {
                     if(openDaimyoList.Contains(daimyoId)) {
 
 					    checkedDaimyoId.Add (daimyoId);
-					    string daimyoName = daimyo.getName (daimyoId,langId);
-					    int busyoId = daimyo.getDaimyoBusyoId (daimyoId);
+					    string daimyoName = daimyo.getName (daimyoId,langId, senarioId);
+					    int busyoId = daimyo.getDaimyoBusyoId (daimyoId, senarioId);
 					    int kuniId = i + 1;
 
 					    GameObject slotObj = Instantiate(Resources.Load (kessenBtnPath)) as GameObject;

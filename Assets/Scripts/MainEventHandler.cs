@@ -52,6 +52,8 @@ public class MainEventHandler : MonoBehaviour {
 		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		GameObject targetKuni = GameObject.Find ("KuniIconView");
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+
         /*Kassen*/
         //1. Randome choice Kassen Qty between 0,1,2,3
         //2. Ratio 50% check
@@ -263,11 +265,11 @@ public class MainEventHandler : MonoBehaviour {
 									Gunzei.GetComponent<Gunzei> ().key = key;
 									Gunzei.GetComponent<Gunzei> ().srcKuni = randomKuni;
 									Gunzei.GetComponent<Gunzei> ().srcDaimyoId = int.Parse (eDaimyo);
-									string srcDaimyoName = daimyo.getName (int.Parse (eDaimyo),langId);
+									string srcDaimyoName = daimyo.getName (int.Parse (eDaimyo),langId, senarioId);
 									Gunzei.GetComponent<Gunzei> ().srcDaimyoName = srcDaimyoName;
 									Gunzei.GetComponent<Gunzei> ().dstKuni = worstGaikouKuni;
 									Gunzei.GetComponent<Gunzei> ().dstDaimyoId = worstGaikouDaimyo;
-									string dstDaimyoName = daimyo.getName (worstGaikouDaimyo,langId);
+									string dstDaimyoName = daimyo.getName (worstGaikouDaimyo,langId, senarioId);
 									Gunzei.GetComponent<Gunzei> ().dstDaimyoName = dstDaimyoName;
 									int myHei = gunzei.heiryokuCalc (randomKuni);
 
@@ -333,7 +335,7 @@ public class MainEventHandler : MonoBehaviour {
 													}
 												} else {
 													//my daimyo engun
-													string doumeiDaimyoName = daimyo.getName(worstGaikouDaimyo,langId);
+													string doumeiDaimyoName = daimyo.getName(worstGaikouDaimyo,langId, senarioId);
 													messageList = MakeEngunShisya(3, key,worstGaikouDaimyo, doumeiDaimyoName, worstGaikouKuni, int.Parse (eDaimyo), messageList);
 
 												
@@ -361,7 +363,7 @@ public class MainEventHandler : MonoBehaviour {
 									PlayerPrefs.SetString ("keyHistory", keyHistory);
 
 									if (worstGaikouDaimyo == myDaimyo) {
-										string enemyDaimyoName = daimyo.getName (int.Parse(eDaimyo),langId);
+										string enemyDaimyoName = daimyo.getName (int.Parse(eDaimyo),langId,senarioId);
 										messageList = MakeKyouhakuShisya (8,key,int.Parse(eDaimyo),enemyDaimyoName,worstGaikouKuni,messageList);
 
                                         if(CheckMyDoumei(int.Parse(eDaimyo))) {
@@ -447,7 +449,7 @@ public class MainEventHandler : MonoBehaviour {
 
 				int randomKuni = UnityEngine.Random.Range (1, 66);
 				int srcDaimyoId = int.Parse (seiryokuList [randomKuni - 1]);
-				string srcDaimyoName = daimyo.getName (srcDaimyoId,langId);
+				string srcDaimyoName = daimyo.getName (srcDaimyoId,langId, senarioId);
 
 				if (srcDaimyoId != myDaimyo) {	
 
@@ -602,7 +604,7 @@ public class MainEventHandler : MonoBehaviour {
 							//Choose Target Daimyo
 
 							if (bestGaikouDaimyo != 0) {
-								string dstDaimyoName = daimyo.getName (bestGaikouDaimyo,langId);
+								string dstDaimyoName = daimyo.getName (bestGaikouDaimyo,langId, senarioId);
 								Gaikou gaikou = new Gaikou ();
 								int yukoudo = 0;
 
@@ -628,7 +630,7 @@ public class MainEventHandler : MonoBehaviour {
 
 								//Doumei Vonus
 								if (CheckByProbability (yukoudo / 10)) {
-									messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList, langId);
+									messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList, langId, senarioId);
 								}
 							}
 						}
@@ -647,7 +649,7 @@ public class MainEventHandler : MonoBehaviour {
 									//My Daimyo
 									string dstDaimyoName = "";
 									reduceYukoudo = DownYukouValueWithMyDaimyo (myDaimyo, srcDaimyoId);
-									dstDaimyoName = daimyo.getName (srcDaimyoId,langId);
+									dstDaimyoName = daimyo.getName (srcDaimyoId,langId, senarioId);
                                     string yukouDownText = "";
                                     if (langId == 2) {
                                         yukouDownText = "Someone spread bad rumor between your country and " + dstDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
@@ -660,8 +662,8 @@ public class MainEventHandler : MonoBehaviour {
 
                                 } else {
 									reduceYukoudo = DownYukouValueWithOther (srcDaimyoId, bestGaikouDaimyo);
-									string dst1stDaimyoName = daimyo.getName (srcDaimyoId,langId);
-									string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo,langId);
+									string dst1stDaimyoName = daimyo.getName (srcDaimyoId,langId, senarioId);
+									string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo,langId, senarioId);
                                     string yukouDownText = "";
                                     if (langId == 2) {
                                         yukouDownText = "Someone spread bad rumor between " + dst1stDaimyoName + " and " + dst2ndDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
@@ -682,7 +684,7 @@ public class MainEventHandler : MonoBehaviour {
 						bool doumeiFlg = CheckByProbability (yukoudo/2);
 
 						if (doumeiFlg == true) {
-							messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList, langId);
+							messageList = makeDoumei (bestGaikouDaimyo, myDaimyo, srcDaimyoId, srcDaimyoName, messageList, langId, senarioId);
 						}
 
 
@@ -708,7 +710,7 @@ public class MainEventHandler : MonoBehaviour {
         if (CheckByProbability (syogunShisyaRatio)){			
 			if (syogunDaimyoId != myDaimyo) {
 
-				string syogunDaimyoName = daimyo.getName (syogunDaimyoId,langId);
+				string syogunDaimyoName = daimyo.getName (syogunDaimyoId,langId, senarioId);
 				if (seiryokuList.Contains (syogunDaimyoId.ToString ())) {
 					if(CheckByProbability (20)){
 
@@ -841,7 +843,7 @@ public class MainEventHandler : MonoBehaviour {
 								//Syogun syunin
                                 if(maxDaimyoId != myDaimyo) {
 								    PlayerPrefs.SetInt("syogunDaimyoId",maxDaimyoId);
-								    string maxDaimyoName = daimyo.getName (maxDaimyoId,langId);
+								    string maxDaimyoName = daimyo.getName (maxDaimyoId,langId, senarioId);
                                     string yukouUpText = "";
                                     if (langId == 2) {
                                         yukouUpText = maxDaimyoName + " was assigned to shogun. New shogunate has been opened.";
@@ -1011,7 +1013,7 @@ public class MainEventHandler : MonoBehaviour {
                     
                     if(srcKuniId !=0 && dstKuniId !=0) {
                         //run
-                        string myDaimyoName = daimyo.getName(myDaimyo,langId);
+                        string myDaimyoName = daimyo.getName(myDaimyo,langId, senarioId);
                         messageList.Add(createKokuninGunzei(srcKuniId, dstKuniId, srcDaimyoId, myDaimyo, srcDaimyoName, myDaimyoName, kokuninReject, langId));
 
                         //set & reset
@@ -1077,7 +1079,7 @@ public class MainEventHandler : MonoBehaviour {
 
 				int daimyoId = int.Parse(seiryokuList [kuniId - 1]);
 				Daimyo daimyo = new Daimyo ();
-				string daimyoName = daimyo.getName (daimyoId,langId); 
+				string daimyoName = daimyo.getName (daimyoId,langId, senarioId); 
 
 				int reduceYukoudo = DownYukouValueWithMyDaimyo (myDaimyo, daimyoId);
                 string cyouhouMissText = "";
@@ -1197,8 +1199,8 @@ public class MainEventHandler : MonoBehaviour {
 									PlayerPrefs.SetString(tgtTemp,newDoumei2);
 								}
 
-								string srcDaimyoName = daimyo.getName(int.Parse(activeDaimyoId),langId);
-								string dstDaimyoName = daimyo.getName(int.Parse(targetDaimyoId),langId);
+								string srcDaimyoName = daimyo.getName(int.Parse(activeDaimyoId),langId, senarioId);
+								string dstDaimyoName = daimyo.getName(int.Parse(targetDaimyoId),langId,senarioId);
                                 string doumeiClearText = "";
                                 if (langId == 2) {
                                     doumeiClearText = "Alliance was renounced between " + srcDaimyoName + " and " + dstDaimyoName + " due to deterioration of relationship";
@@ -1343,7 +1345,7 @@ public class MainEventHandler : MonoBehaviour {
             }
             Daimyo daimyo = new Daimyo();
             foreach(int surrenderDaimyoId in surrenderDaimyoList) {
-                string surrenderDaimyoName = daimyo.getName(surrenderDaimyoId, langId);
+                string surrenderDaimyoName = daimyo.getName(surrenderDaimyoId, langId, senarioId);
                 messageList = MakeShisya(22, surrenderDaimyoName, messageList, surrenderDaimyoId, langId);
             }           
         }
@@ -1733,7 +1735,7 @@ public class MainEventHandler : MonoBehaviour {
 	}
 
 
-	public List<string> makeDoumei(int bestGaikouDaimyo, int myDaimyo, int srcDaimyoId, string srcDaimyoName, List<string> messageList,int langId){
+	public List<string> makeDoumei(int bestGaikouDaimyo, int myDaimyo, int srcDaimyoId, string srcDaimyoName, List<string> messageList,int langId, int senarioId){
 
         if(bestGaikouDaimyo != srcDaimyoId) {
 
@@ -1784,8 +1786,8 @@ public class MainEventHandler : MonoBehaviour {
 				    PlayerPrefs.SetString (doumeiTmp2, newDoumei2);
 
 				    flush ();
-                    string dst1stDaimyoName = daimyo.getName (srcDaimyoId,langId);
-				    string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo,langId);
+                    string dst1stDaimyoName = daimyo.getName (srcDaimyoId,langId, senarioId);
+				    string dst2ndDaimyoName = daimyo.getName (bestGaikouDaimyo,langId, senarioId);
                     string doumeiText = "";                    
                     if (langId == 2) {
                         doumeiText = dst1stDaimyoName + " and " + dst2ndDaimyoName + " concluded an alliance";

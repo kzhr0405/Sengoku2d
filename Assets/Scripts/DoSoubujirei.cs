@@ -18,6 +18,7 @@ public class DoSoubujirei : MonoBehaviour {
 	public void OnClick(){
         Daimyo daimyo = new Daimyo();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (name == "YesButton") {
@@ -116,7 +117,7 @@ public class DoSoubujirei : MonoBehaviour {
 
 			for (int k = 0; k < daimyoIdList.Count; k++) {
 				int daimyoId = daimyoIdList [k];
-				string daimyoName = daimyo.getName (daimyoId,langId);
+				string daimyoName = daimyo.getName (daimyoId,langId,senarioId);
 				int kuniQty = 0;
 				kuniQty = kuniQtyByDaimyoId [daimyoId - 1];
 
@@ -184,7 +185,7 @@ public class DoSoubujirei : MonoBehaviour {
                             }
 
                             //Icon Change
-                            IconMapValueUpdate (kuniId, myDaimyo, kuniIconView, kuniMap, myKuniQty,langId);
+                            IconMapValueUpdate (kuniId, myDaimyo, kuniIconView, kuniMap, myKuniQty,langId,senarioId);
 						}
 					}
 					//Gunzei Check
@@ -286,7 +287,7 @@ public class DoSoubujirei : MonoBehaviour {
 	}
 
 
-	public void IconMapValueUpdate(int kuniId, int changeDaimyoId, GameObject kuniIconView, GameObject kuniMap, int myKuniQty, int langId){
+	public void IconMapValueUpdate(int kuniId, int changeDaimyoId, GameObject kuniIconView, GameObject kuniMap, int myKuniQty, int langId, int senarioId){
         Daimyo daimyo = new Daimyo();
         GameObject targetKuniIcon = kuniIconView.transform.FindChild (kuniId.ToString ()).gameObject;
 		targetKuniIcon.gameObject.AddComponent<IconFadeChange> ();
@@ -303,9 +304,9 @@ public class DoSoubujirei : MonoBehaviour {
 		//Change Name of target Kuni by daimyo info
 		SendParam script = targetKuniIcon.GetComponent<SendParam> ();
 		script.daimyoId = changeDaimyoId;
-		string daimyoName = daimyo.getName (changeDaimyoId,langId);
+		string daimyoName = daimyo.getName (changeDaimyoId,langId,senarioId);
 		script.daimyoName = daimyoName;
-		int daimyoBusyoId = daimyo.getDaimyoBusyoId (changeDaimyoId);
+		int daimyoBusyoId = daimyo.getDaimyoBusyoId (changeDaimyoId, senarioId);
 		script.daimyoBusyoId = daimyoBusyoId;
 		myKuniQty = myKuniQty + 1;
 		script.kuniQty = myKuniQty;

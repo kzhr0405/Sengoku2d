@@ -17,6 +17,7 @@ public class CyouteiPop : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (name != "PassButton") {
 
@@ -288,7 +289,7 @@ public class CyouteiPop : MonoBehaviour {
 						//2nd time
 
 						//Serihu
-						string daimyoName = daimyo.getName(myDaimyo,langId);
+						string daimyoName = daimyo.getName(myDaimyo,langId,senarioId);
                         string serihu = "";
                         if (langId == 2) {
                             serihu = "Lord " + daimyoName + ".\n What do you want?";

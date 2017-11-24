@@ -15,6 +15,9 @@ public class Entity_kuni_mst : ScriptableObject
 		public int locationX;
 		public int locationY;
 		public int daimyoId;
+		public int daimyoId1;
+		public int daimyoId2;
+		public int daimyoId3;
 		public string naisei;
 		public bool isSeaFlg;
 		public string kassenStage;

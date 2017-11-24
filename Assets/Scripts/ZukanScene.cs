@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class ZukanScene : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class ZukanScene : MonoBehaviour {
 		ZukanMenu zkn = new ZukanMenu ();
 		GameObject Content = GameObject.Find ("Content1");
 		zkn.changeTabColor("Busyo");
-		zkn.showBusyoZukan (Content);
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        zkn.showBusyoZukan (Content,senarioId);
 	}
 }

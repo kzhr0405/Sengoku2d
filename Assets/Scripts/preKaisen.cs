@@ -34,6 +34,7 @@ public class preKaisen : MonoBehaviour {
         //message
         string kassenMsg = "Prefabs/Common/KassenMessage";
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         if (isAttackedFlg || isKessenFlg) {
             GameObject msgObj = Instantiate(Resources.Load(kassenMsg)) as GameObject;
             msgObj.transform.SetParent(GameObject.Find("Panel").transform);
@@ -45,7 +46,7 @@ public class preKaisen : MonoBehaviour {
             string msgTxt = "";
             int daimyoId = PlayerPrefs.GetInt("activeDaimyoId");
             Daimyo daimyo = new Daimyo();
-            string daimyoName = daimyo.getName(daimyoId,langId);
+            string daimyoName = daimyo.getName(daimyoId,langId,senarioId);
             
             if (isAttackedFlg) {
                 int activeKuniId = PlayerPrefs.GetInt("activeKuniId");
@@ -145,9 +146,9 @@ public class preKaisen : MonoBehaviour {
 
         PlayerPrefs.Flush();
 
-        jinkei = PlayerPrefs.GetInt("jinkei");
+        jinkei = PlayerPrefs.GetInt("jinkei");  
         changeFormButtonColor(jinkei);
-        prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, false);
+        prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, false, senarioId);
 
     }
 
@@ -1164,7 +1165,7 @@ public class preKaisen : MonoBehaviour {
         return shipId;
     }
 
-    public void prekassenPlayerJinkei(int jinkeiId, int weatherId, bool isAttackedFlg, bool onlyPlayerFlg) {
+    public void prekassenPlayerJinkei(int jinkeiId, int weatherId, bool isAttackedFlg, bool onlyPlayerFlg, int senarioId) {
         /*Plyaer Jinkei*/
 
         //reset disabled slot
@@ -1570,7 +1571,7 @@ public class preKaisen : MonoBehaviour {
                 enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
             }
             JinkeiPowerEffection JinkeiPowerEffection = new JinkeiPowerEffection();
-            JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId);
+            JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId,senarioId);
             Text enemyHeiText = GameObject.Find("EnemyHei").transform.FindChild("HeiValue").GetComponent<Text>();
             enemyHeiText.text = enemyHei.ToString();
 

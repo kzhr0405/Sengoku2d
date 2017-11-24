@@ -22,10 +22,11 @@ public class DoSelectDaimyo : MonoBehaviour {
             audioSources [5].Play ();
 
             //init data
-            AudioSource[] bgmSources = GameObject.Find("BGMController").GetComponents<AudioSource>();
-            bgmSources[1].Stop();
-            bgmSources[0].Play();
-
+            if(GameObject.Find("BGMController")) {
+                AudioSource[] bgmSources = GameObject.Find("BGMController").GetComponents<AudioSource>();
+                bgmSources[1].Stop();
+                bgmSources[0].Play();
+            }
             //same daimyo or not
             NewDaimyoDataMaker data = new NewDaimyoDataMaker();
 
@@ -42,7 +43,7 @@ public class DoSelectDaimyo : MonoBehaviour {
 
 			//Back
 			Destroy(GameObject.Find("DaimyoSelectConfirm"));
-			Destroy(GameObject.Find("Back(Clone)"));
+			Destroy(GameObject.Find("Back"));
 		}
 	}
 }

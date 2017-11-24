@@ -24,6 +24,7 @@ public class ShisyaScene : MonoBehaviour {
 		Daimyo daimyo = new Daimyo ();
 		bool ClickFlg = false;
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         for (int i = 1; i < 23; i++) {
 			string tmp = "shisya" + i.ToString ();
@@ -71,7 +72,7 @@ public class ShisyaScene : MonoBehaviour {
 							Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
 						//Choose Buka
-						int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (daimyoId));
+						int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (daimyoId), senarioId);
 						int busyoId = getRandomBusyo (int.Parse (daimyoId), daimyoBusyoId);
 
 						string busyoImagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();
@@ -80,7 +81,7 @@ public class ShisyaScene : MonoBehaviour {
 
 						BusyoInfoGet busyo = new BusyoInfoGet ();
 						string busyoName = busyo.getName (busyoId,langId);
-						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId);
+						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId,senarioId);
                         if (langId == 2) {
                             script.shisyaName = daimyoName + "'s retainer :" + busyoName;
                         }else {
@@ -111,7 +112,7 @@ public class ShisyaScene : MonoBehaviour {
 							slotObj.transform.FindChild ("Back").GetComponent<Image> ().sprite = 
 							Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
-							string daimyoName = daimyo.getName (syogunId,langId);
+							string daimyoName = daimyo.getName (syogunId,langId, senarioId);
                             if (langId == 2) {
                                 script.shisyaName = " Shogun " + daimyoName + "'s retainer";
                             } else {
@@ -208,8 +209,9 @@ public class ShisyaScene : MonoBehaviour {
 		Daimyo daimyo = new Daimyo ();
 		KuniInfo kuni = new KuniInfo ();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         if (shisyaId == 1 || shisyaId == 4 || shisyaId == 5 || shisyaId == 6 || shisyaId == 7 ||  shisyaId == 17 || shisyaId == 22) {
-			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);           
+			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId,senarioId);           
             if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", daimyoName);
             }else {
@@ -251,7 +253,7 @@ public class ShisyaScene : MonoBehaviour {
             }
 
         } else if (shisyaId == 8) {
-			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);
+			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId,senarioId);
 			string kuniName = kuni.getKuniName (int.Parse (shisyaParamList [1]),langId);
 
             if (langId == 2) {
@@ -270,9 +272,9 @@ public class ShisyaScene : MonoBehaviour {
 
 
 		} else if (shisyaId == 9) {
-			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);
+			string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId,senarioId);
 			int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
-			string myDaimyoName = daimyo.getName (myDaimyo,langId);
+			string myDaimyoName = daimyo.getName (myDaimyo,langId,senarioId);
             if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", daimyoName);
 			    finalSerihu = finalSerihu.Replace ("DEF", myDaimyoName);
@@ -285,8 +287,8 @@ public class ShisyaScene : MonoBehaviour {
 			slotObj.GetComponent<ShisyaSelect> ().srcDaimyoName = daimyoName;
 
 		} else if (shisyaId == 3) {
-            string srcDaimyoName = daimyo.getName(int.Parse(shisyaParamList[0]),langId);
-            string daimyoName = daimyo.getName (int.Parse (shisyaParamList [1]),langId);
+            string srcDaimyoName = daimyo.getName(int.Parse(shisyaParamList[0]),langId, senarioId);
+            string daimyoName = daimyo.getName (int.Parse (shisyaParamList [1]),langId, senarioId);
 			string kuniName = kuni.getKuniName (int.Parse (shisyaParamList [2]),langId);
 
             if (langId == 2) {
@@ -308,7 +310,7 @@ public class ShisyaScene : MonoBehaviour {
 		} else if (shisyaId == 10 || shisyaId == 11 || shisyaId == 12 || shisyaId == 14) {
 			//Syogun
 			int syogunId = PlayerPrefs.GetInt ("syogunDaimyoId");
-			string syogunName = daimyo.getName (syogunId,langId);
+			string syogunName = daimyo.getName (syogunId,langId,senarioId);
             if (langId == 2) {
                 finalSerihu = originalSerihu.Replace ("ABC", syogunName);
             }else {
@@ -318,7 +320,7 @@ public class ShisyaScene : MonoBehaviour {
 			slotObj.GetComponent<ShisyaSelect> ().syogunDaimyoName = syogunName;
 
 			if (shisyaId == 10 || shisyaId == 11 || shisyaId == 12) {
-				string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId);
+				string daimyoName = daimyo.getName (int.Parse (shisyaParamList [0]),langId, senarioId);
 
                 if (langId == 2) {
                     finalSerihu = finalSerihu.Replace ("DEF", daimyoName);
@@ -330,7 +332,7 @@ public class ShisyaScene : MonoBehaviour {
 
 				if (shisyaId == 12) {
 					//Bouei
-					string dstDaimyoName = daimyo.getName (int.Parse (shisyaParamList [1]),langId);
+					string dstDaimyoName = daimyo.getName (int.Parse (shisyaParamList [1]),langId, senarioId);
                     if (langId == 2) {
                         finalSerihu = finalSerihu.Replace ("GHI", dstDaimyoName);
                     }else {

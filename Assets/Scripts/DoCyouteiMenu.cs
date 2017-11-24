@@ -377,9 +377,11 @@ public class DoCyouteiMenu : MonoBehaviour {
 		Daimyo daimyo = new Daimyo();
 		string cyouteiText = "";
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+
         for (int l=0; l<dstDaimyoList.Count;l++){
 			int dstDaimyoId = dstDaimyoList[l];
-			string dstDaimyoName = daimyo.getName(dstDaimyoId,langId);
+			string dstDaimyoName = daimyo.getName(dstDaimyoId,langId,senarioId);
 
 			string tempGaikou = "gaikou" + dstDaimyoId;
 			int nowYukoudo = 0;

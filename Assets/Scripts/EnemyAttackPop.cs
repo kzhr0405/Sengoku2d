@@ -14,6 +14,7 @@ public class EnemyAttackPop : MonoBehaviour {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[0].Play();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         //Common
         string simpaleBattlePath = "";
@@ -129,8 +130,8 @@ public class EnemyAttackPop : MonoBehaviour {
         //View
         Daimyo daimyScript = new Daimyo();
         int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
-        string myDaimyoName = daimyScript.getName(myDaimyoId,langId);
-        string enemyDaimyoName = daimyScript.getName(enemyDaimyoId,langId);
+        string myDaimyoName = daimyScript.getName(myDaimyoId,langId, senarioId);
+        string enemyDaimyoName = daimyScript.getName(enemyDaimyoId,langId,senarioId);
         GameObject baseObj = boardObj.transform.FindChild("Base").gameObject;
         if (langId == 2) {
             baseObj.transform.FindChild("Player").transform.FindChild("Name").GetComponent<TextMesh>().text = myDaimyoName;

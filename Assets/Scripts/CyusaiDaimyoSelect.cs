@@ -17,6 +17,8 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 
 	public void OnClick(){
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+
         AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [2].Play ();
 
@@ -44,8 +46,8 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 					btmSlot.transform.SetParent (btnContent.transform);
 					btmSlot.transform.localScale = new Vector2 (1, 1);
 
-					int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (dstDaimyoId));
-					string daimyoName2 = daimyo.getName (int.Parse (dstDaimyoId),langId);
+					int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (dstDaimyoId), senarioId);
+					string daimyoName2 = daimyo.getName (int.Parse (dstDaimyoId),langId,senarioId);
 
 					string daimyoBusyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 					btmSlot.transform.FindChild ("Image").transform.FindChild ("Image").GetComponent<Image> ().sprite = 

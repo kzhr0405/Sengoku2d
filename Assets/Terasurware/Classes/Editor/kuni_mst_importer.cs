@@ -57,12 +57,15 @@ public class kuni_mst_importer : AssetPostprocessor
 					cell = row.GetCell(2); p.locationX = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(3); p.locationY = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(4); p.daimyoId = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(5); p.naisei = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(6); p.isSeaFlg = (cell == null ? false : cell.BooleanCellValue);
-					cell = row.GetCell(7); p.kassenStage = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(8); p.isSnowFlg = (cell == null ? false : cell.BooleanCellValue);
-					cell = row.GetCell(9); p.kuniNameEng = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(10); p.kuniNameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(5); p.daimyoId1 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(6); p.daimyoId2 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(7); p.daimyoId3 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p.naisei = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(9); p.isSeaFlg = (cell == null ? false : cell.BooleanCellValue);
+					cell = row.GetCell(10); p.kassenStage = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(11); p.isSnowFlg = (cell == null ? false : cell.BooleanCellValue);
+					cell = row.GetCell(12); p.kuniNameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(13); p.kuniNameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

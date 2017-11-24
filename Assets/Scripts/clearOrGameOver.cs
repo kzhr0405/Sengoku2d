@@ -13,6 +13,7 @@ public class clearOrGameOver : MonoBehaviour {
 
 		Resources.UnloadUnusedAssets ();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         bool gameOverFlg = PlayerPrefs.GetBool("gameOverFlg");
 		if (gameOverFlg) {
@@ -23,16 +24,17 @@ public class clearOrGameOver : MonoBehaviour {
             /*Game Over*/
             /*--------------------*/
 
-            showSeiryoku(langId);
+            showSeiryoku(langId,senarioId);
 
 			GameObject panel = GameObject.Find("Panel").gameObject;
 
 			string backPath = "Prefabs/clearOrGameOver/Back";
 			GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
 			backObj.transform.SetParent(panel.transform);
-			backObj.transform.localScale = new Vector2(1,1);	
-			
-			string popPath = "Prefabs/clearOrGameOver/KakejikuMetsubouPop";
+			backObj.transform.localScale = new Vector2(1,1);
+            backObj.name = "Back";
+
+            string popPath = "Prefabs/clearOrGameOver/KakejikuMetsubouPop";
 			GameObject popObj = Instantiate(Resources.Load (popPath)) as GameObject;
 			popObj.transform.SetParent(panel.transform);
 			popObj.transform.localScale = new Vector2(1,1);
@@ -101,7 +103,7 @@ public class clearOrGameOver : MonoBehaviour {
 			if(!gameClearItemGetFlg){
 				//Never Got Item
 
-				showSeiryoku(langId);
+				showSeiryoku(langId,senarioId);
 
 				bool gameClearFlg = true;//PlayerPrefs.GetBool ("gameClearFlg");		
 				if (gameClearFlg) {
@@ -246,7 +248,7 @@ public class clearOrGameOver : MonoBehaviour {
 		}
 	}
 
-	public void showSeiryoku(int langId){
+	public void showSeiryoku(int langId, int senarioId){
 
 		/*--------------------*/
 		/*Show Daimyo Seiryoku*/
@@ -264,7 +266,7 @@ public class clearOrGameOver : MonoBehaviour {
 		GameObject KuniMap = GameObject.Find ("KuniMap");
 		myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		Daimyo daimyo = new Daimyo ();
-		myDaimyoName = daimyo.getName (myDaimyo,langId);
+		myDaimyoName = daimyo.getName (myDaimyo,langId,senarioId);
 
 		string gameClearDaimyo = PlayerPrefs.GetString ("gameClearDaimyo");
 		List<string> gameClearDaimyoList = new List<string> ();
@@ -275,7 +277,9 @@ public class clearOrGameOver : MonoBehaviour {
 				gameClearDaimyoList.Add(gameClearDaimyo);
 			}
 		}
-		for (int i=0; i<kuniMst.param.Count; i++) {
+        Daimyo Daimyo = new Daimyo();
+
+        for (int i=0; i<kuniMst.param.Count; i++) {
 			int kuniId = kuniMst.param [i].kunId;
 			
 			string newKuniPath = kuniPath + kuniId.ToString ();
@@ -291,7 +295,7 @@ public class clearOrGameOver : MonoBehaviour {
 			
 			//Seiryoku Handling
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);			
-			string daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
+			string daimyoName = Daimyo.getName(daimyoId, langId, senarioId);
 			int daimyoBusyoIdTemp = daimyoMst.param [daimyoId - 1].busyoId;
 			
 			//Color Handling

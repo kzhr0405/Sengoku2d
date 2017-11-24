@@ -73,6 +73,7 @@ public class MainStageController : MonoBehaviour {
         Resources.UnloadUnusedAssets();
         Time.timeScale = 1;
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         //Set Object
         HyourouCurrentValue = currentHyourou.GetComponent<Text>();
@@ -156,7 +157,7 @@ public class MainStageController : MonoBehaviour {
                 }else {
                     myDaimyo = 1;
                 }
-				string myDaimyoName = daimyo.getName (myDaimyo,langId);
+				string myDaimyoName = daimyo.getName (myDaimyo,langId, senarioId);
 				GameObject.Find ("DaimyoValue").GetComponent<Text> ().text = myDaimyoName;
 
                 int syogunDaimyoId = 0;
@@ -341,11 +342,11 @@ public class MainStageController : MonoBehaviour {
 
 					//Seiryoku Handling
 					int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
-					string daimyoName = daimyo.getName (daimyoId,langId);
+					string daimyoName = daimyo.getName (daimyoId,langId, senarioId);
 
 					kuni.GetComponent<SendParam> ().daimyoId = daimyoId;
 					kuni.GetComponent<SendParam> ().daimyoName = daimyoName;
-					int daimyoBusyoIdTemp = daimyo.getDaimyoBusyoId (daimyoId);
+					int daimyoBusyoIdTemp = daimyo.getDaimyoBusyoId (daimyoId,senarioId);
 
 					kuni.GetComponent<SendParam> ().daimyoBusyoId = daimyoBusyoIdTemp;
 					BusyoInfoGet busyo = new BusyoInfoGet ();
@@ -519,7 +520,7 @@ public class MainStageController : MonoBehaviour {
 								enemyDaimyoId = int.Parse (seiryokuList [activeKuniId - 1]);
 							}
 							KassenEvent kEvent = new KassenEvent ();
-							kEvent.MakeKassenComment (kassenWinLoseFlee, enemyDaimyoId, activeKuniId);
+							kEvent.MakeKassenComment (kassenWinLoseFlee, enemyDaimyoId, activeKuniId,senarioId);
 						}
 
 						PlayerPrefs.SetBool ("fromNaiseiFlg", false);
@@ -615,7 +616,7 @@ public class MainStageController : MonoBehaviour {
 
                     } else if (isKessenFlg && winValue == 2) {
 						msgOnFlg = true;
-						string daimyoName = daimyo.getName (activeDaimyoId,langId);
+						string daimyoName = daimyo.getName (activeDaimyoId,langId, senarioId);
 						
                         if (langId == 2) {
                             comment = "Hehe, I defeated " + myDaimyoName + " in the final battle.";
@@ -656,14 +657,14 @@ public class MainStageController : MonoBehaviour {
 						commentObj.name = "EventCommentOnMap";
 						commentObj.transform.FindChild ("SerihuText").GetComponent<Text> ().text = comment;
 
-						int daimyoBusyoId = daimyo.getDaimyoBusyoId (activeDaimyoId);
+						int daimyoBusyoId = daimyo.getDaimyoBusyoId (activeDaimyoId,senarioId);
 						string daimyoImagePath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
 						commentObj.transform.FindChild ("Mask").transform.FindChild ("BusyoImage").GetComponent<Image> ().sprite =
 							Resources.Load (daimyoImagePath, typeof(Sprite)) as Sprite;
 					}
 				}
 
-                changerableByTime (seiryokuList);                
+                changerableByTime (seiryokuList,langId, senarioId);                
 			}
 		}
 	}	
@@ -979,8 +980,7 @@ public class MainStageController : MonoBehaviour {
 		}
 	}
 
-	public void changerableByTime(List<string> seiryokuList) {
-        int langId = PlayerPrefs.GetInt("langId");
+	public void changerableByTime(List<string> seiryokuList, int langId, int senarioId) {
         Daimyo daimyo = new Daimyo ();
 		char[] delimiterChars = { ',' };
 
@@ -1296,8 +1296,8 @@ public class MainStageController : MonoBehaviour {
 				    slot.transform.SetParent (contents.transform);
 				    List<string> metsubouTextList = new List<string> ();
 				    metsubouTextList = new List<string> (text.Split (delimiterChars2));
-				    string srcDaimyoName = daimyo.getName (int.Parse (metsubouTextList [0]),langId);
-				    string dstDaimyoName = daimyo.getName (int.Parse (metsubouTextList [1]),langId);
+				    string srcDaimyoName = daimyo.getName (int.Parse (metsubouTextList [0]),langId,senarioId);
+				    string dstDaimyoName = daimyo.getName (int.Parse (metsubouTextList [1]),langId, senarioId);
                     string metsubouText = "";
                     if (langId == 2) {
                         metsubouText = dstDaimyoName + " was was destroyed completly by " + srcDaimyoName + ".";

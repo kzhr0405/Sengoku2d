@@ -53,16 +53,16 @@ public class daimyo_mst_importer : AssetPostprocessor
                         var p = new Entity_daimyo_mst.Param();
 			
 					cell = row.GetCell(0); p.daimyoId = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(1); p.daimyoName = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(1); p.clanName = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(2); p.colorR = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(3); p.colorG = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(4); p.colorB = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p.busyoId = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(6); p.senryoku = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(7); p.daimyoNameEng = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(8); p.clanName = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(9); p.clanNameEng = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(10); p.daimyoNameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(6); p.busyoId1 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(7); p.busyoId2 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(8); p.busyoId3 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(9); p.senryoku = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(10); p.clanNameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(11); p.clanNameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);

@@ -509,7 +509,6 @@ public class SeiryokuInfo : MonoBehaviour {
         return seasonName;
     }
 
-
-
+    ScenarioSelect ScenarioSelect = new ScenarioSelect();
 
 }

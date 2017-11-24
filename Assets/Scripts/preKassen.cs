@@ -28,6 +28,7 @@ public class preKassen : MonoBehaviour {
 		bgm.StopSEVolume ();
 		bgm.StopBGMVolume ();
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         //Flag
         isAttackedFlg = PlayerPrefs.GetBool ("isAttackedFlg");
@@ -48,7 +49,7 @@ public class preKassen : MonoBehaviour {
 			string msgTxt = "";
 			int daimyoId = PlayerPrefs.GetInt("activeDaimyoId");
 			Daimyo daimyo = new Daimyo ();
-			string daimyoName = daimyo.getName (daimyoId,langId);
+			string daimyoName = daimyo.getName (daimyoId,langId,senarioId);
 
 			if (isAttackedFlg) {
 				activeKuniId = PlayerPrefs.GetInt ("activeKuniId");
@@ -422,7 +423,7 @@ public class preKassen : MonoBehaviour {
         strongFlg = PlayerPrefs.GetBool("lastOneFlg");
         PlayerPrefs.DeleteKey("lastOneFlg");
         System.Diagnostics.Stopwatch sw5 = new System.Diagnostics.Stopwatch();
-        prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, false, strongFlg);
+        prekassenPlayerJinkei(jinkei, weatherId, isAttackedFlg, false, strongFlg, senarioId);
 
     }
 
@@ -1635,7 +1636,7 @@ public class preKassen : MonoBehaviour {
 
 	}
 
-    public void prekassenPlayerJinkei(int jinkeiId, int weatherId, bool isAttackedFlg, bool onlyPlayerFlg, bool strongFlg) {
+    public void prekassenPlayerJinkei(int jinkeiId, int weatherId, bool isAttackedFlg, bool onlyPlayerFlg, bool strongFlg, int senarioId) {
 
         //reset disabled slot
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Slot")) {
@@ -2124,7 +2125,7 @@ public class preKassen : MonoBehaviour {
                 enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, strongFlg);
             }
             JinkeiPowerEffection JinkeiPowerEffection = new JinkeiPowerEffection();
-            JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId);
+            JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId,senarioId);
             Text enemyHeiText = GameObject.Find("EnemyHei").transform.FindChild("HeiValue").GetComponent<Text>();
             enemyHeiText.text = enemyHei.ToString();
             startScript.enemySoudaisyo = tempEnemySoudaisyo;

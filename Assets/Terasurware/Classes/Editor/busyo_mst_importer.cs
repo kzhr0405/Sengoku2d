@@ -67,16 +67,21 @@ public class busyo_mst_importer : AssetPostprocessor
 					cell = row.GetCell(12); p.minAtk = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(13); p.minDfc = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(14); p.minSpd = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(15); p.senpou_id = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(16); p.saku_id = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(17); p.GacyaFree = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(18); p.GacyaTama = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(19); p.daimyoId = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(20); p.daimyoHst = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(21); p.ship = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(22); p.nameEng = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(23); p.heisyuEng = (cell == null ? "" : cell.StringCellValue);
-					cell = row.GetCell(24); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(15); p.ship = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(16); p.senpou_id = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(17); p.saku_id = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(18); p.GacyaFree = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(19); p.GacyaTama = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(20); p.daimyoId = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(21); p.daimyoHst = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(22); p.daimyoId1 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(23); p.daimyoHst1 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(24); p.daimyoId2 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(25); p.daimyoHst2 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(26); p.daimyoId3 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(27); p.daimyoHst3 = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(28); p.nameEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(29); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

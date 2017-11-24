@@ -25,15 +25,20 @@ public class Entity_busyo_mst : ScriptableObject
 		public int minAtk;
 		public int minDfc;
 		public int minSpd;
+		public int ship;
 		public int senpou_id;
 		public int saku_id;
 		public int GacyaFree;
 		public int GacyaTama;
 		public int daimyoId;
 		public int daimyoHst;
-		public int ship;
+		public int daimyoId1;
+		public int daimyoHst1;
+		public int daimyoId2;
+		public int daimyoHst2;
+		public int daimyoId3;
+		public int daimyoHst3;
 		public string nameEng;
-		public string heisyuEng;
 		public string nameSChn;
 	}
 }
