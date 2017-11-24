@@ -1405,6 +1405,9 @@ public class GameScene : MonoBehaviour {
 
 
 	public void weatherHandling(int stageMapId, GameObject map, GameObject mapFront){
+		if(PlayerInstance.isDebugDisableWeatherHandling){
+			return;
+		}
 		Color rainSnowColor = new Color (140f / 255f, 140f / 255f, 140f / 255f, 255f / 255f);
 
 		//Dinamic Weather

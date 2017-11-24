@@ -90,7 +90,7 @@ public class AttackLong : MonoBehaviour {
 				// 弾をプレイヤーと同じ位置/角度で作成,
 				//Get leftFlg
 				string heisyu = GetComponent<Heisyu> ().heisyu;
-				Bullet b = new Bullet ();
+				Bullet b = null;//new Bullet ();
 				if (heisyu == "YM") {
 					if (!leftFlg) {
 						GameObject bull = Instantiate (bullet, transform.position, transform.rotation) as GameObject;
@@ -107,24 +107,27 @@ public class AttackLong : MonoBehaviour {
 					b = bull.GetComponent<Bullet> ();
 				}
 
-				//Add Attack
-				b.attack = attack;
-				b.tag = this.tag;
-				b.myHeisyu = heisyu;
+				if(b != null){
+					//Add Attack
+					b.attack = attack;
+					b.tag = this.tag;
+					b.myHeisyu = heisyu;
 
-				//Set Parent for Senkou Count
-				b.parent = gameObject.transform;
+					//Set Parent for Senkou Count
+					b.parent = gameObject.transform;
 
-				//Set Aim
-				b.aim = aim;
+					//Set Aim
+					b.aim = aim;
 
-				//SE
-				AudioSource[] audioSources = GetComponents<AudioSource> ();
-				if (audioSources.Length != 0) {
-					audioSourceBattle = audioSources [1];
-					audioSourceBattle.Play ();
+					//SE
+					AudioSource[] audioSources = GetComponents<AudioSource> ();
+					if (audioSources.Length != 0) {
+						audioSourceBattle = audioSources [1];
+						audioSourceBattle.Play ();
+					}
+					ChildAttack (bullet, aim, heisyu, leftFlg);
 				}
-				ChildAttack (bullet, aim, heisyu, leftFlg);
+
 			}
 
 			//Wait Cool Time

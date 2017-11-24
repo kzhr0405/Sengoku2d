@@ -330,8 +330,8 @@ public class EnemyInstance : MonoBehaviour {
 		}
         
 		//SE
-		AudioController audio = new AudioController();
-		audio.addComponentMoveAttack (prefab,ch_type);
+//		AudioController audio = new AudioController();
+		AudioController.addComponentMoveAttack (prefab,ch_type);
 
 
 		//Child Instantiate
@@ -509,6 +509,16 @@ public class EnemyInstance : MonoBehaviour {
 			buildingObj.transform.FindChild("BusyoDtlEnemy").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = (float)hp * randomValue;
 			buildingObj.GetComponent<EnemyHP>().life = (float)hp*randomValue;
             
+		}
+
+
+		if(PlayerInstance.isDebugEnableReplaceCollider){
+			//重そうなPolygonCollider2Dを削除してみる
+			PolygonCollider2D obj =  prefab.GetComponent<PolygonCollider2D>();
+			Destroy(obj);
+			//代わりに軽そうなCircleCollider2Dを追加してみる
+			CircleCollider2D cc = prefab.AddComponent<CircleCollider2D>();
+			cc.radius = PlayerInstance.replaceCircleColliderRadius;
 		}
 
         return totalHeiryoku;
@@ -790,8 +800,8 @@ public class EnemyInstance : MonoBehaviour {
         }
 
         //SE
-        AudioController audio = new AudioController();
-        audio.addComponentMoveAttack(prefab, "SHP");
+//        AudioController audio = new AudioController();
+		AudioController.addComponentMoveAttack(prefab, "SHP");
 
         //Child Instantiate
         //set child object

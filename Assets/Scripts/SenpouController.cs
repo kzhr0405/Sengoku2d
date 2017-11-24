@@ -45,16 +45,16 @@ public class SenpouController : MonoBehaviour {
 				 if(percent <= senpouRatio){
 					//Do Senpou
 					if (senpouTyp == "DownEnemy") {
-						DownEnemy dn = new DownEnemy ();
+//						DownEnemy dn = new DownEnemy ();
 						makeSenpouMessage (int.Parse (name));
 
-						effectObj = dn.doSenpou (gameObject, senpouId, senpouName, senpouStatus, senpouLv);
+						effectObj = DownEnemy.doSenpou (gameObject, senpouId, senpouName, senpouStatus, senpouLv);
 
 					}else if(senpouTyp == "UpPlayer"){
-						UpPlayer up = new UpPlayer ();
+//						UpPlayer up = new UpPlayer ();
 						makeSenpouMessage (int.Parse (name));
 						
-						effectObj = up.doSenpou (gameObject, senpouId, senpouStatus, initCoolTime, initDisTarget);
+						effectObj = UpPlayer.doSenpou (gameObject, senpouId, senpouStatus, initCoolTime, initDisTarget);
                         if (8 <= senpouId && senpouId <= 13) {
                             needStatusRecoveryFlg = true;
                         }

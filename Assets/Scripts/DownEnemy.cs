@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DownEnemy : MonoBehaviour {
 
-	public GameObject doSenpou(GameObject obj,  int senpouId, string senpouName, int senpouStatus, int senpouLv){
+	public static GameObject doSenpou(GameObject obj,  int senpouId, string senpouName, int senpouStatus, int senpouLv){
 
 		string path = "Prefabs/Effect/" + senpouId;
 		GameObject effect = Instantiate(Resources.Load (path)) as GameObject;

@@ -319,11 +319,27 @@ public class HomingLong : MonoBehaviour {
 	}
 
 	//指定されたタグの中で最も近いものを取得
+	private float intervalSearch;
+	private float intervalSearchMax = 0.5f;
 	GameObject serchTagOnLine(GameObject nowObj,string targetTag){
 		float tmpDis = 0;           //距離用一時変数
 		float nearDis = 0;          //最も近いオブジェクトの距離
 		GameObject targetObj = null; //オブジェクト
-		
+
+		if(PlayerInstance.isDebugEnableOptimizeHoming){
+			//一定のインターバルでのみ、近いオブジェクトのサーチを行う
+			intervalSearch += Time.deltaTime;
+			if(intervalSearch >= intervalSearchMax){
+				intervalSearch -= intervalSearchMax;
+				//このまま近いオブジェクトの検出処理に移行
+			}else{
+				if(nearObj != null){
+					//既に近いオブジェクトを取得済みならそれを返す
+					return nearObj;
+				}
+			}
+		}
+
 		//タグ指定されたオブジェクトを配列で取得する
 		foreach (GameObject obs in  GameObject.FindGameObjectsWithTag(targetTag)){
 

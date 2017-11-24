@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using System;
 
 public class PlayerInstance : MonoBehaviour {
+	public static bool isDebugDisableWeatherHandling = true;//TODO test 天候エフェクトOFF
+	public static bool isDebugEnableReplaceCollider = true;//TODO test 武将Collider置換
+	public static float replaceCircleColliderRadius = 1.0f;//置換Colliderの大きさ
+	public static bool isDebugEnableOptimizeHoming = true;//TODO test Homing簡略化
 
 
 	public int makeInstance(int busyoId, int mapId, int hp, int atk, int dfc,int spd, ArrayList senpouArray, string busyoName, int soudaisyo, int boubi){
@@ -254,8 +258,8 @@ public class PlayerInstance : MonoBehaviour {
 		}
         
         //SE
-        AudioController audio = new AudioController();
-		audio.addComponentMoveAttack (prefab,heisyu);
+//        AudioController audio = new AudioController();
+		AudioController.addComponentMoveAttack (prefab,heisyu);
 
 
         /*Child Instantiate*/
@@ -442,6 +446,16 @@ public class PlayerInstance : MonoBehaviour {
 
 
 		}
+
+		//TODO test
+		if(isDebugEnableReplaceCollider){
+			//重そうなPolygonCollider2Dを削除してみる
+			PolygonCollider2D obj =  prefab.GetComponent<PolygonCollider2D>();
+			Destroy(obj);
+			//代わりに軽そうなCircleCollider2Dを追加してみる
+			CircleCollider2D cc = prefab.AddComponent<CircleCollider2D>();
+			cc.radius = PlayerInstance.replaceCircleColliderRadius;
+		}
         
         return totalHeiryoku;
     }
@@ -548,8 +562,8 @@ public class PlayerInstance : MonoBehaviour {
 
         
         //SE
-        AudioController audio = new AudioController();
-		audio.addComponentMoveAttack (prefab,ch_type);
+//        AudioController audio = new AudioController();
+		AudioController.addComponentMoveAttack (prefab,ch_type);
 
 
 
@@ -920,8 +934,8 @@ public class PlayerInstance : MonoBehaviour {
         }
 
         //SE
-        AudioController audio = new AudioController();
-        audio.addComponentMoveAttack(prefab, "SHP");
+//        AudioController audio = new AudioController();
+		AudioController.addComponentMoveAttack(prefab, "SHP");
 
 
         /*Child Instantiate*/

@@ -778,8 +778,8 @@ public class Timer : MonoBehaviour {
             }
 
 			//SE
-			AudioController audio = new AudioController();
-			audio.addComponentMoveAttack (ch_prefab,heisyu);
+//			AudioController audio = new AudioController();
+			AudioController.addComponentMoveAttack (ch_prefab,heisyu);
 
 			//Effect
 			string effect_path = "Prefabs/Effect/betray";
