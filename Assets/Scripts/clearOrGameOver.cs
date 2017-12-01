@@ -8,6 +8,8 @@ public class clearOrGameOver : MonoBehaviour {
 
 	public string myDaimyoName = "";
 	public int myDaimyo = 0;
+    public GameObject SenarioSelct;
+    public int senarioId = 0;
 
 	void Start () {
 
@@ -113,9 +115,10 @@ public class clearOrGameOver : MonoBehaviour {
 					string backPath = "Prefabs/clearOrGameOver/Back";
 					GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
 					backObj.transform.SetParent(panel.transform);
-					backObj.transform.localScale = new Vector2(1,1);	
+					backObj.transform.localScale = new Vector2(1,1);
+                    backObj.name = "Back";
 
-					string popPath = "Prefabs/clearOrGameOver/KakejikuPop";
+                    string popPath = "Prefabs/clearOrGameOver/KakejikuPop";
 					GameObject popObj = Instantiate(Resources.Load (popPath)) as GameObject;
 					popObj.transform.SetParent(panel.transform);
 					popObj.transform.localScale = new Vector2(1,1);	

@@ -16,15 +16,16 @@ public class SelectDaimyo : MonoBehaviour {
 		audioSources [0].Play ();
 
 		//Confirm Button
-		string backPath = "Prefabs/Busyo/back";
+		string backPath = "Prefabs/Busyo/Back";
 		GameObject back = Instantiate (Resources.Load (backPath)) as GameObject;
 		back.transform.SetParent(GameObject.Find ("Panel").transform);
 		back.transform.localScale = new Vector2 (1, 1);
 		RectTransform backTransform = back.GetComponent<RectTransform> ();
 		backTransform.anchoredPosition = new Vector3 (0, 0, 0);
-		
-		//Message Box
-		string msgPath = "Prefabs/clearOrGameOver/DaimyoSelectConfirm";
+        back.name = "Back";
+
+        //Message Box
+        string msgPath = "Prefabs/clearOrGameOver/DaimyoSelectConfirm";
 		GameObject msg = Instantiate (Resources.Load (msgPath)) as GameObject;
 		msg.transform.SetParent(GameObject.Find ("Panel").transform);
 		msg.transform.localScale = new Vector2 (0.8f, 1.0f);

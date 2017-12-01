@@ -183,7 +183,7 @@ public class GameScene : MonoBehaviour {
 		    } else {
 			    //Passive
 			    int stageMapId = stage.getStageMap (activeKuniId, 10);
-                int mapSpecial = stage.getMapSpecial(activeKuniId, activeStageId);
+                int mapSpecial = stage.getMapSpecial(activeKuniId, 10);
 
                 if (stageMapId == 4) {
                     stageMapId = 1;

@@ -13,7 +13,10 @@ public class DoSelectDaimyo : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (name == "YesButton" || name == "YesButtonHard") {
-            if(name == "YesButtonHard") {
+            int senarioId = GameObject.Find("GameController").GetComponent<clearOrGameOver>().senarioId;
+            PlayerPrefs.SetInt("senarioId", senarioId);
+
+            if (name == "YesButtonHard") {
                 PlayerPrefs.SetBool("hardFlg",true);                
             }else {
                 PlayerPrefs.SetBool("hardFlg", false);

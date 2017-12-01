@@ -19,6 +19,9 @@ public class ScenarioSelect : MonoBehaviour {
         Destroy(GameObject.Find("Back"));
         Message Message = new Message();
         FixedMessage.transform.FindChild("MessageText").GetComponent<Text>().text = Message.getMessage(163);
+        clearOrGameOver clearOrGameOver = GameObject.Find("GameController").GetComponent<clearOrGameOver>();
+        clearOrGameOver.SenarioSelct.SetActive(true);
+        clearOrGameOver.senarioId = int.Parse(name);
     }
 
     public void showSeiryoku(int senarioId) {
@@ -113,7 +116,7 @@ public class ScenarioSelect : MonoBehaviour {
             KuniMap.transform.FindChild(kuni.name).GetComponent<Image>().color = kuniColor;
 
             //Daimyo Kamon Image
-            string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
+            string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
             kuni.GetComponent<Image>().sprite =
                 Resources.Load(imagePath, typeof(Sprite)) as Sprite;
             RectTransform kuniTransform = kuni.GetComponent<RectTransform>();

@@ -29,12 +29,12 @@ public class ShowDaimyoSelect : MonoBehaviour {
 			string gameClearDaimyo = PlayerPrefs.GetString ("gameClearDaimyo");
 			if(gameClearDaimyo!=null && gameClearDaimyo !=""){
 				//Once Cleared >> Can Choose Daimyo
-				GameObject kuniMap = GameObject.Find("KuniMap").gameObject;
-				GameObject KuniIconView = GameObject.Find("KuniIconView").gameObject;
-				Destroy(kuniMap.gameObject);
-				Destroy(KuniIconView.gameObject);
+                if(GameObject.Find("KuniMap")) Destroy(GameObject.Find("KuniMap").gameObject);
+                if(GameObject.Find("KuniIconView")) Destroy(GameObject.Find("KuniIconView").gameObject);
+                if (GameObject.Find("FixedMessage")) Destroy(GameObject.Find("FixedMessage").gameObject);
+                if (GameObject.Find("ScrollView")) Destroy(GameObject.Find("ScrollView").gameObject);
 
-				makeDaimyoSeiryoku();
+                makeDaimyoSeiryoku();
 
                 /*
 				//Daimyo Busyo Data Clear in the case there is no gacya history
@@ -95,22 +95,26 @@ public class ShowDaimyoSelect : MonoBehaviour {
 	public void makeDaimyoSeiryoku(){
 
         Destroy (fin.gameObject);
-		
+        if (name == "SenarioSelect") gameObject.SetActive(false);
+
 		string kuniMapPath = "Prefabs/clearOrGameOver/KuniMap";
 		GameObject KuniMap = Instantiate (Resources.Load (kuniMapPath)) as GameObject;
 		KuniMap.transform.SetParent (panel.transform);
 		KuniMap.transform.localScale = new Vector2 (1, 1);
-		
-		string kuniIconViewPath = "Prefabs/clearOrGameOver/KuniIconView";
+        KuniMap.name = "KuniMap";
+
+        string kuniIconViewPath = "Prefabs/clearOrGameOver/KuniIconView";
 		GameObject kuniIconView = Instantiate (Resources.Load (kuniIconViewPath)) as GameObject;
 		kuniIconView.transform.SetParent (panel.transform);
 		kuniIconView.transform.localScale = new Vector2 (1, 1);
-		
-		string messagePath = "Prefabs/clearOrGameOver/FixedMessage";
+        kuniIconView.name = "KuniIconView";
+
+        string messagePath = "Prefabs/clearOrGameOver/FixedMessage";
 		GameObject msg = Instantiate (Resources.Load (messagePath)) as GameObject;
 		msg.transform.SetParent (panel.transform);
 		msg.transform.localScale = new Vector2 (1, 1);
 		msg.transform.localPosition = new Vector2 (0, 380);
+        msg.name = "FixedMessage";
 
         //Back
         //string backPath = "Prefabs/clearOrGameOver/Back";
@@ -123,8 +127,9 @@ public class ShowDaimyoSelect : MonoBehaviour {
         ScrollView.transform.SetParent(panel.transform);
         ScrollView.transform.localScale = new Vector2(1, 1.2f);
         ScrollView.transform.localPosition = new Vector2(0, 0);
+        ScrollView.name = "ScrollView";
 
-        foreach(Transform chld in ScrollView.transform.FindChild("Content").transform) {
+        foreach (Transform chld in ScrollView.transform.FindChild("Content").transform) {
             chld.GetComponent<ScenarioSelect>().kuniIconView = kuniIconView;
             chld.GetComponent<ScenarioSelect>().KuniMap = KuniMap;
             chld.GetComponent<ScenarioSelect>().ScrollView = ScrollView;

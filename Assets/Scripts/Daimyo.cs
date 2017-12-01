@@ -21,7 +21,7 @@ public class Daimyo : MonoBehaviour {
                 busyoId = daimyoMst.param[daimyoId - 1].busyoId;
             }
             BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-            //Debug.Log(senarioId + "," + daimyoId + "," + busyoId);
+            Debug.Log(senarioId + "," + daimyoId + "," + busyoId);
             daimyoName = BusyoInfoGet.getName(busyoId, langId);
 
         }

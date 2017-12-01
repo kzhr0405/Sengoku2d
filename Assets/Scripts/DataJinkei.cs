@@ -142,6 +142,7 @@ public class DataJinkei : MonoBehaviour {
                             if (gokuiId != 0) {
                                 sakuList.Add(gokuiId);
                             }else {
+                                Debug.Log(jinkeiBusyoId);
                                 sakuList.Add(BusyoInfoGet.getSakuId(jinkeiBusyoId));
                             }
 
