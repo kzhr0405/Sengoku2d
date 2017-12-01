@@ -8,7 +8,7 @@ public class StaminaVideo : MonoBehaviour {
 
 	public void OnClick() {
         if (SceneManager.GetActiveScene().name == "mainStage") {
-            GameObject.Find("Panel").transform.FindChild("Video").GetComponent<AdfuriMoviepop>().PushAdsense();
+            GameObject.Find("Panel").transform.Find("Video").GetComponent<AdfuriMoviepop>().PushAdsense();
         }
     }
 }

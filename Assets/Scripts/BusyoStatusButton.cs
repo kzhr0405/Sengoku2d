@@ -54,7 +54,7 @@ public class BusyoStatusButton : MonoBehaviour {
 			busyo_transform.sizeDelta = new Vector2( 100, 100);
 
 			//Text Modification
-			GameObject text = Busyo.transform.FindChild ("Text").gameObject;
+			GameObject text = Busyo.transform.Find ("Text").gameObject;
 			text.GetComponent<Text> ().color = new Color(255,255,255,255);
 			RectTransform text_transform = text.GetComponent<RectTransform>();
 			text_transform.anchoredPosition3D = new Vector3 (-70,30,0);
@@ -62,7 +62,7 @@ public class BusyoStatusButton : MonoBehaviour {
 			text.transform.localScale = new Vector2 (0.2f,0.2f);
 
 			//Rank Text Modification
-			GameObject rank = Busyo.transform.FindChild ("Rank").gameObject;
+			GameObject rank = Busyo.transform.Find ("Rank").gameObject;
 			RectTransform rank_transform = rank.GetComponent<RectTransform>();
 			rank_transform.anchoredPosition3D = new Vector3 (20,-50,0);
 			rank_transform.sizeDelta = new Vector2( 200, 200);
@@ -106,16 +106,16 @@ public class BusyoStatusButton : MonoBehaviour {
 			RectTransform lowKanjyoTransform = lowKanjyoItem.GetComponent<RectTransform> ();
 			lowKanjyoTransform.anchoredPosition3D = new Vector3 (-210, 125, 0);
 			lowKanjyoTransform.sizeDelta = new Vector2 (100, 100);
-			RectTransform lowKanjyoRank = lowKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<RectTransform>();
+			RectTransform lowKanjyoRank = lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<RectTransform>();
 			lowKanjyoRank.anchoredPosition3D = new Vector3(-30,30,0);
-			RectTransform lowKanjyoRect = lowKanjyoItem.transform.FindChild("Kanjyo").GetComponent<RectTransform>();
+			RectTransform lowKanjyoRect = lowKanjyoItem.transform.Find("Kanjyo").GetComponent<RectTransform>();
 			lowKanjyoRect.sizeDelta = new Vector2 (100, 100);
 			Color lowColor = new Color (86f / 255f, 87f / 255f, 255f / 255f, 255f / 255f);
 			lowKanjyoItem.GetComponent<Image>().color = lowColor;
             if (langId == 2) {
-                lowKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<Text>().text = "Low";
+                lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "Low";
             }else {
-                lowKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<Text>().text = "下";
+                lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "下";
             }
 			lowKanjyoItem.name = "Kanjyo1";
 
@@ -130,16 +130,16 @@ public class BusyoStatusButton : MonoBehaviour {
 			RectTransform midKanjyoTransform = midKanjyoItem.GetComponent<RectTransform> ();
 			midKanjyoTransform.anchoredPosition3D = new Vector3 (-210, 125, 0);
 			midKanjyoTransform.sizeDelta = new Vector2 (100, 100);
-			RectTransform midKanjyoRank = midKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<RectTransform>();
+			RectTransform midKanjyoRank = midKanjyoItem.transform.Find("KanjyoRank").GetComponent<RectTransform>();
 			midKanjyoRank.anchoredPosition3D = new Vector3(-30,30,0);
-			RectTransform midKanjyoRect = midKanjyoItem.transform.FindChild("Kanjyo").GetComponent<RectTransform>();
+			RectTransform midKanjyoRect = midKanjyoItem.transform.Find("Kanjyo").GetComponent<RectTransform>();
 			midKanjyoRect.sizeDelta = new Vector2 (100, 100);
 			Color midColor = new Color (236f / 255f, 93f / 255f, 93f / 255f, 255f / 255f);
 			midKanjyoItem.GetComponent<Image>().color = midColor;
             if (langId == 2) {
-                midKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<Text>().text = "Mid";
+                midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "Mid";
             }else {
-                midKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<Text>().text = "中";
+                midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "中";
             }
 			midKanjyoItem.name = "Kanjyo2";
 
@@ -155,16 +155,16 @@ public class BusyoStatusButton : MonoBehaviour {
 			RectTransform hightKanjyoTransform = highKanjyoItem.GetComponent<RectTransform> ();
 			hightKanjyoTransform.anchoredPosition3D = new Vector3 (-210, 125, 0);
 			hightKanjyoTransform.sizeDelta = new Vector2 (100, 100);
-			RectTransform highKanjyoRank = highKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<RectTransform>();
+			RectTransform highKanjyoRank = highKanjyoItem.transform.Find("KanjyoRank").GetComponent<RectTransform>();
 			highKanjyoRank.anchoredPosition3D = new Vector3(-30,30,0);
-			RectTransform highKanjyoRect = highKanjyoItem.transform.FindChild("Kanjyo").GetComponent<RectTransform>();
+			RectTransform highKanjyoRect = highKanjyoItem.transform.Find("Kanjyo").GetComponent<RectTransform>();
 			highKanjyoRect.sizeDelta = new Vector2 (100, 100);
 			Color hightColor = new Color (207f / 255f, 232f / 255f, 95f / 255f, 255f / 255f);
 			highKanjyoItem.GetComponent<Image>().color = hightColor;
             if (langId == 2) {
-                highKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<Text>().text = "High";
+                highKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "High";
             }else {
-                highKanjyoItem.transform.FindChild("KanjyoRank").GetComponent<Text>().text = "上";
+                highKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "上";
             }
 			highKanjyoItem.name = "Kanjyo3";
 
@@ -414,7 +414,7 @@ public class BusyoStatusButton : MonoBehaviour {
 
         //tutorial
         if (Application.loadedLevelName == "tutorialBusyo") {
-            Destroy(popup.transform.FindChild("close").gameObject);                     
+            Destroy(popup.transform.Find("close").gameObject);                     
         }
 
 
@@ -465,7 +465,7 @@ public class BusyoStatusButton : MonoBehaviour {
             itemQty = Mst.param [ch_num].requiredItemQty;
 		    money = Mst.param [ch_num].requiredMoney;
         }else {
-            Destroy(transform.FindChild("point_up").gameObject);
+            Destroy(transform.Find("point_up").gameObject);
             TutorialController tutorialScript = new TutorialController();
             Vector2 vect = new Vector2(0, 50);
             GameObject btn = GameObject.Find("DoCyouheiButton").gameObject;
@@ -514,10 +514,10 @@ public class BusyoStatusButton : MonoBehaviour {
 			Color activeColor = new Color (86f / 255f, 87f / 255f, 255f / 255f, 255f / 255f);
 			item.GetComponent<Image>().color = activeColor;
             if (langId == 2) {
-                item.transform.FindChild ("CyouheiRank").GetComponent<Text>().text = "Low";              
+                item.transform.Find ("CyouheiRank").GetComponent<Text>().text = "Low";              
             }
             else {
-                item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
+                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
             }
             if (Application.loadedLevelName == "tutorialBusyo") {
                 GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = 0.ToString();
@@ -536,9 +536,9 @@ public class BusyoStatusButton : MonoBehaviour {
 			Color activeColor = new Color (236f / 255f, 93f / 255f, 93f / 255f, 255f / 255f);
 			item.GetComponent<Image>().color = activeColor;
             if (langId == 2) {
-                item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
+                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
             }else {
-                item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
+                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
             }
 			GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = itemList[1];
 			DoCyouhei.GetComponent<DoCyouhei>().nowItem = int.Parse(itemList[1]);
@@ -554,9 +554,9 @@ public class BusyoStatusButton : MonoBehaviour {
 			Color activeColor = new Color (207f / 255f, 232f / 255f, 95f / 255f, 255f / 255f);
 			item.GetComponent<Image>().color = activeColor;
             if (langId == 2) {
-                item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
+                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
             }else {
-                item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
+                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
             }
 			GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = itemList[2];
 			DoCyouhei.GetComponent<DoCyouhei>().nowItem = int.Parse(itemList[2]);

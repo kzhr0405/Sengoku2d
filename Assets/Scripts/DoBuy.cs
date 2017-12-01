@@ -36,7 +36,7 @@ public class DoBuy : MonoBehaviour {
 
 				//Add Item
 				char[] delimiterChars = {','};
-				int buyQty = int.Parse(GameObject.Find("BuyMenu").transform.FindChild("Qty").GetComponent<Text>().text);
+				int buyQty = int.Parse(GameObject.Find("BuyMenu").transform.Find("Qty").GetComponent<Text>().text);
 
 				if(item.Contains("Cyouhei")){
 					if(item.Contains("YR")){

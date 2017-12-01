@@ -11,8 +11,8 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 
 		//For Dramatic Enemy Creation
 		GameObject kuniView = GameObject.Find("KuniIconView");
-		if (kuniView.transform.FindChild (srcKuni.ToString ())) {
-			SendParam param = kuniView.transform.FindChild (srcKuni.ToString ()).GetComponent<SendParam> ();
+		if (kuniView.transform.Find (srcKuni.ToString ())) {
+			SendParam param = kuniView.transform.Find (srcKuni.ToString ()).GetComponent<SendParam> ();
             Gaikou gaikou = new Gaikou();
             int busyoQty = param.busyoQty;
 			int busyoLv = param.busyoLv;

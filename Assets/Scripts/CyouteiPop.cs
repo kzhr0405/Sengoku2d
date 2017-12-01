@@ -40,8 +40,8 @@ public class CyouteiPop : MonoBehaviour {
 			pop.name = "SelectSyoukaijyoBoard";
 			back.GetComponent<CloseLayer> ().closeTargetObj = pop;
 			back.GetComponent<CloseLayer> ().closeTargetBack = back;
-			pop.transform.FindChild ("CloseBtn").GetComponent<CloseLayer> ().closeTargetObj = pop;
-			pop.transform.FindChild ("CloseBtn").GetComponent<CloseLayer> ().closeTargetBack = back;
+			pop.transform.Find ("CloseBtn").GetComponent<CloseLayer> ().closeTargetObj = pop;
+			pop.transform.Find ("CloseBtn").GetComponent<CloseLayer> ().closeTargetBack = back;
 
 			//Check Syoukaijyo
 			string nowQty = PlayerPrefs.GetString ("cyoutei");
@@ -50,48 +50,48 @@ public class CyouteiPop : MonoBehaviour {
 			char[] delimiterChars = {','};
 			nowQtyList = new List<string> (nowQty.Split (delimiterChars));
 
-			GameObject scrollView = pop.transform.FindChild ("ScrollView").gameObject;
-			GameObject content = scrollView.transform.FindChild ("Content").gameObject;
+			GameObject scrollView = pop.transform.Find ("ScrollView").gameObject;
+			GameObject content = scrollView.transform.Find ("Content").gameObject;
 			bool notZeroflg = false;
 			//Jyo
 			if (nowQtyList [2] == "0") {
-				content.transform.FindChild ("Jyo").gameObject.SetActive (false);
+				content.transform.Find ("Jyo").gameObject.SetActive (false);
 			} else {
 				notZeroflg = true;
-				content.transform.FindChild ("Jyo").transform.FindChild ("cyoutei").transform.FindChild ("Qty").GetComponent<Text> ().text = nowQtyList [2];
-				content.transform.FindChild ("Jyo").GetComponent<SyoukaijyoSelect>().OnClick();
+				content.transform.Find ("Jyo").transform.Find ("cyoutei").transform.Find ("Qty").GetComponent<Text> ().text = nowQtyList [2];
+				content.transform.Find ("Jyo").GetComponent<SyoukaijyoSelect>().OnClick();
 			}
 
 			//Cyu
 			if (nowQtyList [1] == "0") {
-				content.transform.FindChild ("Cyu").gameObject.SetActive (false);
+				content.transform.Find ("Cyu").gameObject.SetActive (false);
 			} else {
 				notZeroflg = true;
-				content.transform.FindChild ("Cyu").transform.FindChild ("cyoutei").transform.FindChild ("Qty").GetComponent<Text> ().text = nowQtyList [1];
-				content.transform.FindChild ("Cyu").GetComponent<SyoukaijyoSelect>().OnClick();
+				content.transform.Find ("Cyu").transform.Find ("cyoutei").transform.Find ("Qty").GetComponent<Text> ().text = nowQtyList [1];
+				content.transform.Find ("Cyu").GetComponent<SyoukaijyoSelect>().OnClick();
 			}
 
 			//Ge
 			if (nowQtyList [0] == "0") {
-				content.transform.FindChild ("Ge").gameObject.SetActive (false);
+				content.transform.Find ("Ge").gameObject.SetActive (false);
 			} else {
 				notZeroflg = true;
-				content.transform.FindChild ("Ge").transform.FindChild ("cyoutei").transform.FindChild ("Qty").GetComponent<Text> ().text = nowQtyList [0];
-				content.transform.FindChild ("Ge").GetComponent<SyoukaijyoSelect>().OnClick();
+				content.transform.Find ("Ge").transform.Find ("cyoutei").transform.Find ("Qty").GetComponent<Text> ().text = nowQtyList [0];
+				content.transform.Find ("Ge").GetComponent<SyoukaijyoSelect>().OnClick();
 			}
 
 
 			if (!notZeroflg) {
-				scrollView.transform.FindChild ("NoSyoukaijyo").GetComponent<Text> ().enabled = true;
-				pop.transform.FindChild ("Serihu").transform.FindChild ("Text").GetComponent<Text> ().text = msg.getMessage(16);
-				pop.transform.FindChild ("PassButton").gameObject.SetActive (false);
+				scrollView.transform.Find ("NoSyoukaijyo").GetComponent<Text> ().enabled = true;
+				pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(16);
+				pop.transform.Find ("PassButton").gameObject.SetActive (false);
 			}
 
-			pop.transform.FindChild("PassButton").GetComponent<CyouteiPop>().SelectSyoukaijyoBoard = pop;
-			pop.transform.FindChild("PassButton").GetComponent<CyouteiPop>().myDaimyoFlg = myDaimyoFlg;
-			pop.transform.FindChild("PassButton").GetComponent<CyouteiPop>().occupiedDaimyoId = occupiedDaimyoId;
-			pop.transform.FindChild("PassButton").GetComponent<CyouteiPop>().occupiedDaimyoName = occupiedDaimyoName;
-			pop.transform.FindChild("PassButton").GetComponent<CyouteiPop>().yukoudo = yukoudo;
+			pop.transform.Find("PassButton").GetComponent<CyouteiPop>().SelectSyoukaijyoBoard = pop;
+			pop.transform.Find("PassButton").GetComponent<CyouteiPop>().myDaimyoFlg = myDaimyoFlg;
+			pop.transform.Find("PassButton").GetComponent<CyouteiPop>().occupiedDaimyoId = occupiedDaimyoId;
+			pop.transform.Find("PassButton").GetComponent<CyouteiPop>().occupiedDaimyoName = occupiedDaimyoName;
+			pop.transform.Find("PassButton").GetComponent<CyouteiPop>().yukoudo = yukoudo;
 
 		} else {
 			//Cyoutei Main Pop
@@ -118,7 +118,7 @@ public class CyouteiPop : MonoBehaviour {
                     GameObject.Find("GameController").GetComponent<MainStageController>().eventStopFlg = true;
 
                     audioSources [3].Play ();
-					SelectSyoukaijyoBoard.transform.FindChild("CloseBtn").GetComponent<CloseLayer>().OnClick();
+					SelectSyoukaijyoBoard.transform.Find("CloseBtn").GetComponent<CloseLayer>().OnClick();
 
 					string pathOfBack = "Prefabs/Cyoutei/CyouteiBack";
 					GameObject back = Instantiate (Resources.Load (pathOfBack)) as GameObject;
@@ -133,7 +133,7 @@ public class CyouteiPop : MonoBehaviour {
 					pop.transform.localPosition = new Vector2 (0, 0);
 					pop.name = "CyouteiBoard";
 
-					CloseLayer CloseLayerScript =  pop.transform.FindChild("CloseSyoukaijyo").GetComponent<CloseLayer>();
+					CloseLayer CloseLayerScript =  pop.transform.Find("CloseSyoukaijyo").GetComponent<CloseLayer>();
 					CloseLayerScript.closeTargetBack = back;
 					CloseLayerScript.closeTargetObj = pop;
 					CloseLayerScript.syoukaijyoRank = syoukaijyoRank;
@@ -154,7 +154,7 @@ public class CyouteiPop : MonoBehaviour {
 					int cyoutekiReducePoint = Random.Range(80, 100);
 
 					//Change Menu by syoukaijyo rank
-					GameObject action = pop.transform.FindChild("Action").gameObject;
+					GameObject action = pop.transform.Find("Action").gameObject;
 					if(syoukaijyoRank == "Ge"){
 						List<string> btnNameList = new List<string> (){"Bakuhu","Cyouteki"};
 						enableButton(pop,btnNameList);
@@ -162,8 +162,8 @@ public class CyouteiPop : MonoBehaviour {
 						stopBattleRatio = Random.Range(10, 30);
 						kanniRatio = Random.Range(20, 60);
 						syoukaijyoRankId = 1;
-						action.transform.FindChild("ActionValue").GetComponent<Text>().text = "1";
-						action.transform.FindChild("ActionMaxValue").GetComponent<Text>().text = "1";
+						action.transform.Find("ActionValue").GetComponent<Text>().text = "1";
+						action.transform.Find("ActionMaxValue").GetComponent<Text>().text = "1";
 
 					}else if(syoukaijyoRank == "Cyu"){
 						List<string> btnNameList = new List<string> (){"Bakuhu","Cyouteki"};
@@ -172,8 +172,8 @@ public class CyouteiPop : MonoBehaviour {
 						stopBattleRatio = Random.Range(30, 80);
 						kanniRatio = Random.Range(40, 80);
 						syoukaijyoRankId = 2;
-						action.transform.FindChild("ActionValue").GetComponent<Text>().text = "2";
-						action.transform.FindChild("ActionMaxValue").GetComponent<Text>().text = "2";
+						action.transform.Find("ActionValue").GetComponent<Text>().text = "2";
+						action.transform.Find("ActionMaxValue").GetComponent<Text>().text = "2";
 
 
 					}else if(syoukaijyoRank == "Jyo"){
@@ -181,8 +181,8 @@ public class CyouteiPop : MonoBehaviour {
 						stopBattleRatio = 100;
 						kanniRatio = Random.Range(60, 100);
 						syoukaijyoRankId = 3;
-						action.transform.FindChild("ActionValue").GetComponent<Text>().text = "3";
-						action.transform.FindChild("ActionMaxValue").GetComponent<Text>().text = "3";
+						action.transform.Find("ActionValue").GetComponent<Text>().text = "3";
+						action.transform.Find("ActionMaxValue").GetComponent<Text>().text = "3";
 
 					}
 
@@ -249,7 +249,7 @@ public class CyouteiPop : MonoBehaviour {
 
 					//Cyoutei Point
 					int cyouteiPoint = PlayerPrefs.GetInt("cyouteiPoint");
-					pop.transform.FindChild("CyouteiPoint").transform.FindChild("CyouteiValue").GetComponent<Text>().text = cyouteiPoint.ToString() + "%";
+					pop.transform.Find("CyouteiPoint").transform.Find("CyouteiValue").GetComponent<Text>().text = cyouteiPoint.ToString() + "%";
 
 
 					bool doneFirstCyouteiFlg = PlayerPrefs.GetBool("doneFirstCyouteiFlg");
@@ -283,7 +283,7 @@ public class CyouteiPop : MonoBehaviour {
                         }else {
                             serihu = "天下静謐のため力を貸してくれ。\n" + firstKanniName + "に任ずるぞ。";
                         }
-                        pop.transform.FindChild("Serihu").transform.FindChild("Text").GetComponent<Text>().text = serihu;
+                        pop.transform.Find("Serihu").transform.Find("Text").GetComponent<Text>().text = serihu;
 
 					}else{
 						//2nd time
@@ -296,7 +296,7 @@ public class CyouteiPop : MonoBehaviour {
                         }else {
                             serihu = "おお、" + daimyoName + "殿。\n此度は何用か。" ;
                         }
-                        pop.transform.FindChild("Serihu").transform.FindChild("Text").GetComponent<Text>().text = serihu;
+                        pop.transform.Find("Serihu").transform.Find("Text").GetComponent<Text>().text = serihu;
 
 					}
 
@@ -326,10 +326,10 @@ public class CyouteiPop : MonoBehaviour {
 		Color enableTextColor = new Color (125f / 255f, 125f / 255f, 125f / 255f, 255f / 255f);
 
 		foreach(string n in btnNameList){
-			GameObject btn = pop.transform.FindChild (n).gameObject;
+			GameObject btn = pop.transform.Find (n).gameObject;
 			btn.GetComponent<Button>().enabled = false;
 			btn.GetComponent<Image> ().color = enableImageColor;
-			btn.transform.FindChild("Text").GetComponent<Text>().color = enableTextColor;
+			btn.transform.Find("Text").GetComponent<Text>().color = enableTextColor;
 		}
 	}
 

@@ -13,8 +13,8 @@ public class FadeOutTextImage : MonoBehaviour {
 	void Start () {
 		time = fadetime;
 		image = GetComponent<Image>();
-		mainText = image.transform.FindChild ("Message").GetComponent<Text>();
-		mainImage = image.transform.FindChild ("Image").GetComponent<Image> ();
+		mainText = image.transform.Find ("Message").GetComponent<Text>();
+		mainImage = image.transform.Find ("Image").GetComponent<Image> ();
 	}
 
 	void Update () {

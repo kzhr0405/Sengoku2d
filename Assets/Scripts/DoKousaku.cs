@@ -97,7 +97,7 @@ public class DoKousaku : MonoBehaviour {
 								//OK Cut
 								okMsgFlg = true;
 								string target = "link" + targetList [i];
-								GameObject targetObj = kuniMap.transform.FindChild (target).gameObject;
+								GameObject targetObj = kuniMap.transform.Find (target).gameObject;
 								Destroy (targetObj.gameObject);
 
 

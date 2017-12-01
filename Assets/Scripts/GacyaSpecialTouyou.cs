@@ -35,17 +35,17 @@ public class GacyaSpecialTouyou : MonoBehaviour {
             GameObject msgObj = Instantiate(Resources.Load(msgPath)) as GameObject;
             msgObj.transform.SetParent(GameObject.Find("Panel").transform, false);
             msgObj.transform.localScale = new Vector2(1, 1);
-            GacyaSpecialTouyouConfirm GacyaSpecialTouyouConfirmYes = msgObj.transform.FindChild("Yes").GetComponent<GacyaSpecialTouyouConfirm>();
-            GacyaSpecialTouyouConfirm GacyaSpecialTouyouConfirmNo = msgObj.transform.FindChild("No").GetComponent<GacyaSpecialTouyouConfirm>();
+            GacyaSpecialTouyouConfirm GacyaSpecialTouyouConfirmYes = msgObj.transform.Find("Yes").GetComponent<GacyaSpecialTouyouConfirm>();
+            GacyaSpecialTouyouConfirm GacyaSpecialTouyouConfirmNo = msgObj.transform.Find("No").GetComponent<GacyaSpecialTouyouConfirm>();
             GacyaSpecialTouyouConfirmYes.board = msgObj;
             GacyaSpecialTouyouConfirmYes.back = back;
             GacyaSpecialTouyouConfirmNo.board = msgObj;
             GacyaSpecialTouyouConfirmNo.back = back;
 
             if (hireCount > selectCount) {
-                msgObj.transform.FindChild("Text").GetComponent<Text>().text = msg.getMessage(158);
+                msgObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(158);
             }else {
-                msgObj.transform.FindChild("Text").GetComponent<Text>().text = msg.getMessage(159);
+                msgObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(159);
             }
             GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "unit";
         }
@@ -53,16 +53,16 @@ public class GacyaSpecialTouyou : MonoBehaviour {
 
     public void PlusCount() {
         selectCount++;
-        transform.FindChild("a").GetComponent<Text>().text = selectCount.ToString();
+        transform.Find("a").GetComponent<Text>().text = selectCount.ToString();
     }
     public void MinusCount() {
         selectCount--;
-        transform.FindChild("a").GetComponent<Text>().text = selectCount.ToString();
+        transform.Find("a").GetComponent<Text>().text = selectCount.ToString();
     }
 
     public void OnlyOneCount() {
         selectCount = 1;
-        transform.FindChild("a").GetComponent<Text>().text = "1";
+        transform.Find("a").GetComponent<Text>().text = "1";
     }
 
 }

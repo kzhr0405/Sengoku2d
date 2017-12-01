@@ -7,6 +7,6 @@ public class MaskButton : MonoBehaviour {
 	public void OnClick(){
 		//Get Naise
 		GameObject naisei = GameObject.Find ("NaiseiView");
-		naisei.transform.FindChild (name).GetComponent<AreaButton> ().OnClick();
+		naisei.transform.Find (name).GetComponent<AreaButton> ().OnClick();
 	}
 }

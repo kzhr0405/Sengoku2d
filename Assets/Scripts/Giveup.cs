@@ -23,8 +23,8 @@ public class Giveup : MonoBehaviour {
 		giveup.transform.localPosition = new Vector2 (0, 0);
 
 		back.GetComponent<CloseOneBoard> ().deleteObj = giveup;
-		giveup.transform.FindChild ("YesButton").GetComponent<DoGiveup> ().backBoard = back;
-		giveup.transform.FindChild ("NoButton").GetComponent<DoGiveup> ().backBoard = back;
+		giveup.transform.Find ("YesButton").GetComponent<DoGiveup> ().backBoard = back;
+		giveup.transform.Find ("NoButton").GetComponent<DoGiveup> ().backBoard = back;
 
 	}
 }

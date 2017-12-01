@@ -91,9 +91,9 @@ public class DragHandler : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDrag
 					JinkeiPowerEffection powerEffection = new JinkeiPowerEffection ();
 					powerEffection.UpdateSenryoku ();
 
-					if(gameObject.transform.FindChild("soudaisyo")!=null){
+					if(gameObject.transform.Find("soudaisyo")!=null){
 				
-						Destroy(gameObject.transform.FindChild("soudaisyo").gameObject);
+						Destroy(gameObject.transform.Find("soudaisyo").gameObject);
 
                         if (Application.loadedLevelName != "preKassen" && Application.loadedLevelName != "preKaisen") {
                             GameObject.Find ("KakuteiButton").GetComponent<JinkeiConfirmButton>().soudaisyo = 0;

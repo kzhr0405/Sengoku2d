@@ -38,8 +38,8 @@ public class NextSeason : MonoBehaviour {
 			qa.GetComponent<QA> ().qaId = 6;
 
 			back.GetComponent<CloseOneBoard> ().deleteObj = board;
-			board.transform.FindChild ("YesButton").GetComponent<DoNextSeason> ().touchBackObj = back;
-			board.transform.FindChild ("NoButton").GetComponent<DoNextSeason> ().touchBackObj = back;
+			board.transform.Find ("YesButton").GetComponent<DoNextSeason> ().touchBackObj = back;
+			board.transform.Find ("NoButton").GetComponent<DoNextSeason> ().touchBackObj = back;
 
 		} else {
 			audioSources [4].Play ();

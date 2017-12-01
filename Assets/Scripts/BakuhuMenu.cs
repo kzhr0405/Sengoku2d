@@ -56,9 +56,9 @@ public class BakuhuMenu : MonoBehaviour {
 				returnObj.GetComponent<BakuhuMenuReturn> ().scrollView = scrollView;
 				returnObj.GetComponent<BakuhuMenuReturn> ().board = board;                
                 if (langId == 2) {
-                    board.transform.FindChild ("popText").GetComponent<Text> ().text = "Attack Order";
+                    board.transform.Find ("popText").GetComponent<Text> ().text = "Attack Order";
                 }else {
-                    board.transform.FindChild("popText").GetComponent<Text>().text = "討伐令";
+                    board.transform.Find("popText").GetComponent<Text>().text = "討伐令";
                 }
 				string textPath = "Prefabs/Bakuhu/ToubatsuText";
 				GameObject textObj = Instantiate (Resources.Load (textPath)) as GameObject;
@@ -161,7 +161,7 @@ public class BakuhuMenu : MonoBehaviour {
 						float colorB = (float)daimyoMst.param [daimyoId - 1].colorB;
 						Color kuniColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
 
-						kuniMapView.transform.FindChild (kuni.name).GetComponent<Image> ().color = kuniColor;
+						kuniMapView.transform.Find (kuni.name).GetComponent<Image> ().color = kuniColor;
 					} else {
 
                         Daimyo daimyoScript = new Daimyo();
@@ -193,7 +193,7 @@ public class BakuhuMenu : MonoBehaviour {
 						float colorB = (float)daimyoMst.param [daimyoId - 1].colorB;
 						Color kuniColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
 
-						kuniMapView.transform.FindChild (kuni.name).GetComponent<Image> ().color = kuniColor;
+						kuniMapView.transform.Find (kuni.name).GetComponent<Image> ().color = kuniColor;
 
 						//Daimyo Kamon Image
 						string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString ();
@@ -299,9 +299,9 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.transform.localPosition = new Vector2 (-560, 290);
 					returnObj.name = "bakuhuReturn";                    
                     if (langId == 2) {
-                        board.transform.FindChild ("popText").GetComponent<Text> ().text = "Defence Order";
+                        board.transform.Find ("popText").GetComponent<Text> ().text = "Defence Order";
                     }else {
-                        board.transform.FindChild("popText").GetComponent<Text>().text = "防衛令";
+                        board.transform.Find("popText").GetComponent<Text>().text = "防衛令";
                     }
 					//Disabled
 					scrollView.SetActive (false);
@@ -321,7 +321,7 @@ public class BakuhuMenu : MonoBehaviour {
 					boueiScrollObj.transform.SetParent (baseObj.transform);
 					boueiScrollObj.transform.localScale = new Vector2 (1, 1);
                     boueiScrollObj.transform.localPosition = new Vector2(0, 0);
-                    GameObject content = boueiScrollObj.transform.FindChild ("Content").gameObject;
+                    GameObject content = boueiScrollObj.transform.Find ("Content").gameObject;
 
 					string uniSlotPath = "Prefabs/Bakuhu/BoueiSlot";
 					string daimyoBusyoPath = "Prefabs/Player/Sprite/unit";
@@ -353,30 +353,30 @@ public class BakuhuMenu : MonoBehaviour {
 							slot.transform.SetParent (content.transform);
 							slot.transform.localScale = new Vector2 (1, 1);                           
                             if (langId == 2) {
-                                slot.transform.FindChild ("Kuni").GetComponent<Text> ().text = kuniName + " Defence";
+                                slot.transform.Find ("Kuni").GetComponent<Text> ().text = kuniName + " Defence";
                             }else {
-                                slot.transform.FindChild("Kuni").GetComponent<Text>().text = kuniName + "防衛";
+                                slot.transform.Find("Kuni").GetComponent<Text>().text = kuniName + "防衛";
                             }
 							string dfcDaimyoPath = daimyoBusyoPath + dstDaimyoBusyoId.ToString ();
-							slot.transform.FindChild ("Dfc").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
+							slot.transform.Find ("Dfc").transform.Find ("Image").GetComponent<Image> ().sprite = 
 								Resources.Load (dfcDaimyoPath, typeof(Sprite)) as Sprite;
 							string atkDaimyoPath = daimyoBusyoPath + srcDaimyoBusyoId.ToString ();
-							slot.transform.FindChild ("Atk").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
+							slot.transform.Find ("Atk").transform.Find ("Image").GetComponent<Image> ().sprite = 
 								Resources.Load (atkDaimyoPath, typeof(Sprite)) as Sprite;
 							string engnDaimyoPath = daimyoBusyoPath + engunDaimyoBusyoId.ToString ();
-							slot.transform.FindChild ("Egn").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
+							slot.transform.Find ("Egn").transform.Find ("Image").GetComponent<Image> ().sprite = 
 								Resources.Load (engnDaimyoPath, typeof(Sprite)) as Sprite;
 
-							slot.transform.FindChild ("DfcName").GetComponent<Text> ().text = dstDaimyoName;
-							slot.transform.FindChild ("AtkName").GetComponent<Text> ().text = srcDaimyoName;
-							slot.transform.FindChild ("EgnName").GetComponent<Text> ().text = engunDaimyoName;
+							slot.transform.Find ("DfcName").GetComponent<Text> ().text = dstDaimyoName;
+							slot.transform.Find ("AtkName").GetComponent<Text> ().text = srcDaimyoName;
+							slot.transform.Find ("EgnName").GetComponent<Text> ().text = engunDaimyoName;
                             if (langId == 2) {
-                                slot.transform.FindChild("Exp").GetComponent<Text>().text = "Request " + engunDaimyoName + " for reinforcement";
+                                slot.transform.Find("Exp").GetComponent<Text>().text = "Request " + engunDaimyoName + " for reinforcement";
                             }else {
-                                slot.transform.FindChild("Exp").GetComponent<Text>().text = engunDaimyoName + "に援軍の出兵支持を出す。";
+                                slot.transform.Find("Exp").GetComponent<Text>().text = engunDaimyoName + "に援軍の出兵支持を出す。";
                             }
                             //Param
-                            GameObject btn = slot.transform.FindChild ("BoueiBtn").gameObject;
+                            GameObject btn = slot.transform.Find ("BoueiBtn").gameObject;
 							btn.GetComponent<DoBouei> ().key = key;
 							btn.GetComponent<DoBouei> ().engunDaimyoId = engunDaimyoId;
 							btn.GetComponent<DoBouei> ().engunKuniId = engunKuniId;
@@ -446,9 +446,9 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.transform.localPosition = new Vector2 (-560, 290);
 					returnObj.name = "bakuhuReturn";                    
                     if (langId == 2) {
-                        board.transform.FindChild ("popText").GetComponent<Text> ().text = "Defence Order";
+                        board.transform.Find ("popText").GetComponent<Text> ().text = "Defence Order";
                     }else {
-                        board.transform.FindChild("popText").GetComponent<Text>().text = "防衛令";
+                        board.transform.Find("popText").GetComponent<Text>().text = "防衛令";
                     }
 					//Disabled
 					scrollView.SetActive (false);
@@ -463,9 +463,9 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.GetComponent<BakuhuMenuReturn> ().scrollView = scrollView;
 					returnObj.GetComponent<BakuhuMenuReturn> ().board = board;
                     if (langId == 2) {
-                        board.transform.FindChild ("popText").GetComponent<Text> ().text = "Mediation";
+                        board.transform.Find ("popText").GetComponent<Text> ().text = "Mediation";
                     }else {
-                        board.transform.FindChild("popText").GetComponent<Text>().text = "仲裁";
+                        board.transform.Find("popText").GetComponent<Text>().text = "仲裁";
                     }
 					//Scroll
 					string scrollPath = "Prefabs/Bakuhu/CyusaiScrollView";
@@ -474,13 +474,13 @@ public class BakuhuMenu : MonoBehaviour {
 					uprScroll.transform.localPosition = new Vector2 (0, 95);
 					uprScroll.transform.localScale = new Vector2 (1, 1);
 					uprScroll.name = "CyusaiScrollViewUpper";
-					GameObject uprContent = uprScroll.transform.FindChild ("Content").gameObject;
+					GameObject uprContent = uprScroll.transform.Find ("Content").gameObject;
 					GameObject btnScroll = Instantiate (Resources.Load (scrollPath)) as GameObject;
 					btnScroll.transform.SetParent (baseObj.transform);
 					btnScroll.transform.localPosition = new Vector2 (0, -170);
 					btnScroll.transform.localScale = new Vector2 (1, 1);
 					btnScroll.name = "CyusaiScrollViewBottom";
-					GameObject btnContent = btnScroll.transform.FindChild ("Content").gameObject;
+					GameObject btnContent = btnScroll.transform.Find ("Content").gameObject;
 
 					//Upper Scroll
 					string slotPath = "Prefabs/Bakuhu/CyusaiSlot";
@@ -498,9 +498,9 @@ public class BakuhuMenu : MonoBehaviour {
 						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId,senarioId);
 						uprSlot.GetComponent<CyusaiDaimyoSelect> ().daimyoName = daimyoName;
 						string daimyoBusyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
-						uprSlot.transform.FindChild ("Image").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
+						uprSlot.transform.Find ("Image").transform.Find ("Image").GetComponent<Image> ().sprite = 
 							Resources.Load (daimyoBusyoPath, typeof(Sprite)) as Sprite;
-						uprSlot.transform.FindChild ("DaimyoName").GetComponent<Text> ().text = daimyoName;
+						uprSlot.transform.Find ("DaimyoName").GetComponent<Text> ().text = daimyoName;
 
 					}
 					string cyusaiTxtPath = "Prefabs/Bakuhu/CyusaiText";
@@ -550,8 +550,8 @@ public class BakuhuMenu : MonoBehaviour {
 					msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 					msgTransform.name = "SoubujireiConfirmObj";
 
-					GameObject YesBtn = soubujireiConfirmObj.transform.FindChild ("YesButton").gameObject;
-					GameObject NoBtn = soubujireiConfirmObj.transform.FindChild ("NoButton").gameObject;
+					GameObject YesBtn = soubujireiConfirmObj.transform.Find ("YesButton").gameObject;
+					GameObject NoBtn = soubujireiConfirmObj.transform.Find ("NoButton").gameObject;
 					YesBtn.GetComponent<DoSoubujirei> ().board = board;
 					YesBtn.GetComponent<DoSoubujirei> ().confirm = soubujireiConfirmObj;
 					YesBtn.GetComponent<DoSoubujirei> ().back = back;
@@ -595,12 +595,12 @@ public class BakuhuMenu : MonoBehaviour {
 				msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 				msgTransform.name = "KessenConfirm";                
                 if (langId == 2) {
-                    msg.transform.FindChild("Text").GetComponent<Text>().text = "Operate final war with " + daimyoName + ".";
+                    msg.transform.Find("Text").GetComponent<Text>().text = "Operate final war with " + daimyoName + ".";
                 }else {
-                    msg.transform.FindChild("Text").GetComponent<Text>().text = daimyoName + "に決戦を仕掛けます";
+                    msg.transform.Find("Text").GetComponent<Text>().text = daimyoName + "に決戦を仕掛けます";
                 }
-				GameObject YesBtn = msg.transform.FindChild ("YesButton").gameObject;
-				GameObject NoBtn = msg.transform.FindChild ("NoButton").gameObject;
+				GameObject YesBtn = msg.transform.Find ("YesButton").gameObject;
+				GameObject NoBtn = msg.transform.Find ("NoButton").gameObject;
 				YesBtn.GetComponent<DoKessen> ().daimyoId = daimyoId;
 				YesBtn.GetComponent<DoKessen> ().daimyoName = daimyoName;
 				YesBtn.GetComponent<DoKessen> ().kuniId = kuniId;
@@ -608,7 +608,7 @@ public class BakuhuMenu : MonoBehaviour {
 				NoBtn.GetComponent<DoKessen> ().confirm = msg;
 				NoBtn.GetComponent<DoKessen> ().back = back;
 
-				YesBtn.transform.FindChild ("hyourouIcon").transform.FindChild ("hyourouNoValue").GetComponent<Text> ().text = hyourouNo.ToString ();
+				YesBtn.transform.Find ("hyourouIcon").transform.Find ("hyourouNoValue").GetComponent<Text> ().text = hyourouNo.ToString ();
 
 
 			} else {

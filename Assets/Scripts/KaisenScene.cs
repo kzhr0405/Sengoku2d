@@ -62,7 +62,7 @@ public class KaisenScene : MonoBehaviour {
         //Auto button
         bool Auto2Flg = PlayerPrefs.GetBool("Auto2Flg");
         if (Auto2Flg) {
-            GameObject.Find("AutoBtn").transform.FindChild("Num").GetComponent<Text>().text = "2";
+            GameObject.Find("AutoBtn").transform.Find("Num").GetComponent<Text>().text = "2";
             GameObject.Find("AutoBtn").GetComponent<AutoAttack>().speed = 2;
         }
 
@@ -683,9 +683,9 @@ public class KaisenScene : MonoBehaviour {
                 snow.transform.localPosition = new Vector3(0, 220, 0);
             }
 
-            GameObject mapMid = map.transform.FindChild("map mid").gameObject;
-            GameObject mapRight = map.transform.FindChild("map right").gameObject;
-            GameObject mapLeft = map.transform.FindChild("map left").gameObject;
+            GameObject mapMid = map.transform.Find("map mid").gameObject;
+            GameObject mapRight = map.transform.Find("map right").gameObject;
+            GameObject mapLeft = map.transform.Find("map left").gameObject;
 
             foreach (Transform a in mapMid.transform) {
                 foreach (Transform b in a) {

@@ -110,10 +110,10 @@ public class BuildNaisei : MonoBehaviour {
 
                 if (Application.loadedLevelName == "tutorialNaisei") {
                     GameObject tBtnObj = GameObject.Find("tButton").gameObject;
-                    Destroy(tBtnObj.transform.FindChild("12").gameObject);
+                    Destroy(tBtnObj.transform.Find("12").gameObject);
 
                     GameObject NaiseiViewObj = GameObject.Find("NaiseiView").gameObject;
-                    GameObject builtObj = NaiseiViewObj.transform.FindChild("12").gameObject;
+                    GameObject builtObj = NaiseiViewObj.transform.Find("12").gameObject;
                     builtObj.transform.SetParent(tBtnObj.transform);
                     builtObj.GetComponent<Button>().enabled = false;
                 }

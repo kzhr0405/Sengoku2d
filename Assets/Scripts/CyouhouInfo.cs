@@ -33,7 +33,7 @@ public class CyouhouInfo : MonoBehaviour {
 			RectTransform popupTransform = popup.GetComponent<RectTransform> ();
 			popupTransform.anchoredPosition = new Vector3 (0, 0, 0);
 			popup.name = "board";
-			GameObject close = popup.transform.FindChild ("close").gameObject;
+			GameObject close = popup.transform.Find ("close").gameObject;
 
 			//qa
 			string qaPath = "Prefabs/Common/Question";
@@ -108,7 +108,7 @@ public class CyouhouInfo : MonoBehaviour {
 			seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
 
 			string slotPath = "Prefabs/Map/cyouhou/CyouhouSlot";
-			GameObject content = scroll.transform.FindChild ("Content").gameObject;
+			GameObject content = scroll.transform.Find ("Content").gameObject;
 			KuniInfo kuni = new KuniInfo ();
 			Daimyo daimyo = new Daimyo ();
 
@@ -151,9 +151,9 @@ public class CyouhouInfo : MonoBehaviour {
                 }
 
 				slotValue = kuniName + "\n" + daimyoName + "\n" + rankName;
-				slot.transform.FindChild ("Value").GetComponent<Text> ().text = slotValue;
+				slot.transform.Find ("Value").GetComponent<Text> ().text = slotValue;
 
-				GameObject kamon = slot.transform.FindChild ("Image").gameObject;
+				GameObject kamon = slot.transform.Find ("Image").gameObject;
 				string imagePath = "Prefabs/Kamon/" + daimyoId.ToString ();
 				kamon.GetComponent<Image> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;

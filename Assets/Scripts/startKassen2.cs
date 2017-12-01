@@ -31,7 +31,7 @@ public class startKassen2 : MonoBehaviour {
 
     public void Start() {
         JinkeiView = GameObject.Find("PlayerJinkeiView").gameObject;
-        playerHeiText = GameObject.Find("PlayerHei").transform.FindChild("HeiValue").GetComponent<Text>();
+        playerHeiText = GameObject.Find("PlayerHei").transform.Find("HeiValue").GetComponent<Text>();
     }
 
     public void OnClick() {
@@ -347,7 +347,7 @@ public class startKassen2 : MonoBehaviour {
                     int aveLv = totalLv / busyoQty;
                     int aveChLv = totalChLv / busyoQty;
                     int aveChQty = totalChQty / busyoQty;
-                    int heiryoku = int.Parse(GameObject.Find("PlayerHei").transform.FindChild("HeiValue").GetComponent<Text>().text);
+                    int heiryoku = int.Parse(GameObject.Find("PlayerHei").transform.Find("HeiValue").GetComponent<Text>().text);
                     PlayerPrefs.SetInt("jinkeiAveLv", aveLv);
                     PlayerPrefs.SetInt("jinkeiAveChLv", aveChLv);
                     PlayerPrefs.SetInt("jinkeiBusyoQty", busyoQty);

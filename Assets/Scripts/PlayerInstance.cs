@@ -108,7 +108,7 @@ public class PlayerInstance : MonoBehaviour {
         dtl.name = "BusyoDtlPlayer";
 
         //Name
-        GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
+        GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;
 		nameLabel.GetComponent<TextMesh> ().text = busyoName;
 		
 		
@@ -227,7 +227,7 @@ public class PlayerInstance : MonoBehaviour {
 
         //HP Status        
 		int adjHpWithKahou = adjHp + int.Parse(KahouStatusArray[1]) + Mathf.FloorToInt (addHpByKanni);
-        GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
+        GameObject minHpBar = dtl.transform.Find("MinHpBar").gameObject;
         minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerHP> ().life = adjHpWithKahou + addJyosyuHei;
         totalHeiryoku = adjHpWithKahou + Mathf.FloorToInt(addJyosyuHei); ;
@@ -524,11 +524,11 @@ public class PlayerInstance : MonoBehaviour {
 		dtl.transform.localScale = new Vector3 (1.3f,1.3f,0);
         dtl.name = "BusyoDtlPlayer";
 		//Name
-		GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
+		GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;
 		nameLabel.GetComponent<TextMesh> ().text = busyoName;
 		
 		//HP Bar
-		GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
+		GameObject minHpBar = dtl.transform.Find("MinHpBar").gameObject;
 		minHpBar.GetComponent<BusyoHPBar>().initLife = adjHp;
 		
 		//Location by map id
@@ -812,7 +812,7 @@ public class PlayerInstance : MonoBehaviour {
         dtl.transform.localScale = new Vector3(1, 1, 0);
         dtl.name = "BusyoDtlPlayer";
         //Name
-        GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
+        GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;
         nameLabel.GetComponent<TextMesh>().text = busyoName;
         if (langId == 2) {
             nameLabel.GetComponent<TextMesh>().fontSize = 40;
@@ -917,7 +917,7 @@ public class PlayerInstance : MonoBehaviour {
         if (adjSpd<=0) {
             adjSpd = 1;
         }
-        GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
+        GameObject minHpBar = dtl.transform.Find("MinHpBar").gameObject;
         minHpBar.GetComponent<BusyoHPBar>().initLife = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerHP>().life = adjHpWithKahou + addJyosyuHei;
         prefab.GetComponent<PlayerAttack>().attack = adjAtkWithKahou;

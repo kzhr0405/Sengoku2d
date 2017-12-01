@@ -122,13 +122,13 @@ public class QuestMenu : MonoBehaviour {
             Color normalTextColor = new Color(255f / 255f, 255f / 255f, 0f / 255f, 255f / 255f);
 
             GetComponent<Image>().color = pushedTabColor;
-            transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+            transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
             otherObj.GetComponent<Image>().color = normalTabColor;
-            otherObj.transform.FindChild("Text").GetComponent<Text>().color = normalTextColor;
+            otherObj.transform.Find("Text").GetComponent<Text>().color = normalTextColor;
             otherObj.GetComponent<QuestMenu>().clicked = false;
 
             //delete previous one
-            GameObject content = scrollObj.transform.FindChild("Content").gameObject;
+            GameObject content = scrollObj.transform.Find("Content").gameObject;
             foreach(Transform chld in content.transform) {
                 Destroy(chld.gameObject);
             }
@@ -213,10 +213,10 @@ public class QuestMenu : MonoBehaviour {
                     count = gameClearDaimyoList.Count + gameClearDaimyoHardList.Count;
                 }
                 
-                GameObject itemImage = slot.transform.FindChild("itemImage").gameObject;
-                GameObject itemQty = slot.transform.FindChild("itemQty").gameObject;
-                GameObject titleValue = slot.transform.FindChild("titleValue").gameObject;
-                GameObject expValue = slot.transform.FindChild("expValue").gameObject;
+                GameObject itemImage = slot.transform.Find("itemImage").gameObject;
+                GameObject itemQty = slot.transform.Find("itemQty").gameObject;
+                GameObject titleValue = slot.transform.Find("titleValue").gameObject;
+                GameObject expValue = slot.transform.Find("expValue").gameObject;
 
                 if (target == "busyoDama") {
                     string imagePath = "Prefabs/Common/Sprite/busyoDama";
@@ -232,8 +232,8 @@ public class QuestMenu : MonoBehaviour {
                 titleValue.GetComponent<Text>().text = title;
                 expValue.GetComponent<Text>().text = exp;
 
-                slot.transform.FindChild("ReceiveButton").transform.FindChild("count").GetComponent<Text>().text = count.ToString() + "/" + criteria.ToString();
-                QuestReceive btnScript = slot.transform.FindChild("ReceiveButton").GetComponent<QuestReceive>();
+                slot.transform.Find("ReceiveButton").transform.Find("count").GetComponent<Text>().text = count.ToString() + "/" + criteria.ToString();
+                QuestReceive btnScript = slot.transform.Find("ReceiveButton").GetComponent<QuestReceive>();
                 btnScript.criteria = criteria;
                 btnScript.count = count;
                 btnScript.id = id;
@@ -268,10 +268,10 @@ public class QuestMenu : MonoBehaviour {
                     key = "questSpecialReceivedFlg" + id.ToString();
                 }
 
-                GameObject itemImage = slot.transform.FindChild("itemImage").gameObject;
-                GameObject itemQty = slot.transform.FindChild("itemQty").gameObject;
-                GameObject titleValue = slot.transform.FindChild("titleValue").gameObject;
-                GameObject expValue = slot.transform.FindChild("expValue").gameObject;
+                GameObject itemImage = slot.transform.Find("itemImage").gameObject;
+                GameObject itemQty = slot.transform.Find("itemQty").gameObject;
+                GameObject titleValue = slot.transform.Find("titleValue").gameObject;
+                GameObject expValue = slot.transform.Find("expValue").gameObject;
 
                 if (target == "busyoDama") {
                     string imagePath = "Prefabs/Common/Sprite/busyoDama";
@@ -288,7 +288,7 @@ public class QuestMenu : MonoBehaviour {
                 titleValue.GetComponent<Text>().text = title;
                 expValue.GetComponent<Text>().text = exp;
 
-                QuestReceive btnScript = slot.transform.FindChild("ReceiveButton").GetComponent<QuestReceive>();
+                QuestReceive btnScript = slot.transform.Find("ReceiveButton").GetComponent<QuestReceive>();
                 btnScript.id = id;
                 btnScript.key = key;
                 btnScript.target = target;
@@ -312,10 +312,10 @@ public class QuestMenu : MonoBehaviour {
                 string target = questScript.getQuestTarget(id);
                 int amnt = questScript.getQuestAmnt(id);
 
-                GameObject itemImage = slot.transform.FindChild("itemImage").gameObject;
-                GameObject itemQty = slot.transform.FindChild("itemQty").gameObject;
-                GameObject titleValue = slot.transform.FindChild("titleValue").gameObject;
-                GameObject expValue = slot.transform.FindChild("expValue").gameObject;
+                GameObject itemImage = slot.transform.Find("itemImage").gameObject;
+                GameObject itemQty = slot.transform.Find("itemQty").gameObject;
+                GameObject titleValue = slot.transform.Find("titleValue").gameObject;
+                GameObject expValue = slot.transform.Find("expValue").gameObject;
 
                 if (target == "busyoDama") {
                     string imagePath = "Prefabs/Common/Sprite/busyoDama";

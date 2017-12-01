@@ -62,32 +62,32 @@ public class TouyouView : MonoBehaviour {
         ShipObj.transform.localScale = new Vector2(0.5f, 0.5f);
         if (langId == 2) {
             if (shipId == 1) {
-            ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
+            ShipObj.transform.Find("Text").GetComponent<Text>().text = "High";
             }
             else if (shipId == 2) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Mid";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Mid";
             }
             else if (shipId == 3) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Low";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Low";
             }
         }else {
             if (shipId == 1) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "上";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "上";
             }
             else if (shipId == 2) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "中";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "中";
             }
             else if (shipId == 3) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "下";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "下";
             }
         }
 
 
         //Text Modification
-        Busyo.transform.FindChild ("Text").gameObject.GetComponent<Text>().enabled = false;
+        Busyo.transform.Find ("Text").gameObject.GetComponent<Text>().enabled = false;
 
 		//Rank Text Modification
-		GameObject rank = Busyo.transform.FindChild ("Rank").gameObject;
+		GameObject rank = Busyo.transform.Find ("Rank").gameObject;
 		RectTransform rank_transform = rank.GetComponent<RectTransform>();
 		rank_transform.anchoredPosition = new Vector3 (0,-50,0);
 		rank_transform.sizeDelta = new Vector2( 200, 200);
@@ -164,7 +164,7 @@ public class TouyouView : MonoBehaviour {
 		//Icon
 		string sakuPath = "Prefabs/Saku/saku" + sakuList[0];
 		GameObject sakuIcon = Instantiate (Resources.Load (sakuPath)) as GameObject;
-		GameObject StatusSaku = status.transform.FindChild("StatusSaku").gameObject;
+		GameObject StatusSaku = status.transform.Find("StatusSaku").gameObject;
 		foreach ( Transform n in StatusSaku.transform ){
 			if(n.tag == "Saku"){
 				GameObject.Destroy(n.gameObject);
@@ -176,7 +176,7 @@ public class TouyouView : MonoBehaviour {
 		RectTransform sakuIcon_transform = sakuIcon.GetComponent<RectTransform>();
 		sakuIcon_transform.anchoredPosition = new Vector3(-235,0,0);
 		
-		StatusSaku.transform.FindChild("SakuExp").transform.FindChild("SakuExpValue").GetComponent<Text>().text = sakuList[2];
+		StatusSaku.transform.Find("SakuExp").transform.Find("SakuExpValue").GetComponent<Text>().text = sakuList[2];
 
 		/*daimyo busyo check*/
 		Daimyo daimyo = new Daimyo ();

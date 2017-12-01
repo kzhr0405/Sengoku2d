@@ -242,7 +242,7 @@ public class DoSoubujirei : MonoBehaviour {
 			kuni.updateOpenKuni (myDaimyo, newSeiryoku);
 
 			//Close
-			board.transform.FindChild ("close").GetComponent<CloseBoard> ().onClick ();
+			board.transform.Find ("close").GetComponent<CloseBoard> ().onClick ();
 			soubujiFlgOn (kuniIconView);
 
 			if (allClearedFlg) {
@@ -268,18 +268,18 @@ public class DoSoubujirei : MonoBehaviour {
             SoubujiOK.transform.SetParent(panel.transform);
             SoubujiOK.transform.localScale = new Vector2(2, 2);
 
-            Vector2 kuniIconPosition = kuniIconView.transform.FindChild(kuniId.ToString()).transform.localPosition;
+            Vector2 kuniIconPosition = kuniIconView.transform.Find(kuniId.ToString()).transform.localPosition;
             SoubujiOK.transform.localPosition = kuniIconPosition;
-            SoubujiOK.transform.FindChild("Name").GetComponent<Text>().text = daimyoName;
+            SoubujiOK.transform.Find("Name").GetComponent<Text>().text = daimyoName;
         }else {
 			audioSources [4].Play ();
             SoubujiNG = Instantiate(SoubujiNG) as GameObject;
             SoubujiNG.transform.SetParent(panel.transform);
             SoubujiNG.transform.localScale = new Vector2(2, 2);
 
-            Vector2 kuniIconPosition = kuniIconView.transform.FindChild(kuniId.ToString()).transform.localPosition;
+            Vector2 kuniIconPosition = kuniIconView.transform.Find(kuniId.ToString()).transform.localPosition;
             SoubujiNG.transform.localPosition = kuniIconPosition;
-            SoubujiNG.transform.FindChild("Name").GetComponent<Text>().text = daimyoName;
+            SoubujiNG.transform.Find("Name").GetComponent<Text>().text = daimyoName;
         }
 		
 		
@@ -289,7 +289,7 @@ public class DoSoubujirei : MonoBehaviour {
 
 	public void IconMapValueUpdate(int kuniId, int changeDaimyoId, GameObject kuniIconView, GameObject kuniMap, int myKuniQty, int langId, int senarioId){
         Daimyo daimyo = new Daimyo();
-        GameObject targetKuniIcon = kuniIconView.transform.FindChild (kuniId.ToString ()).gameObject;
+        GameObject targetKuniIcon = kuniIconView.transform.Find (kuniId.ToString ()).gameObject;
 		targetKuniIcon.gameObject.AddComponent<IconFadeChange> ();
 		targetKuniIcon.gameObject.AddComponent<IconFadeChange> ().toDaimyoId = changeDaimyoId;
 
@@ -298,7 +298,7 @@ public class DoSoubujirei : MonoBehaviour {
 		float colorB = daimyo.getColorB (changeDaimyoId);
 		Color newColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
 
-		GameObject kuniMapObj = kuniMap.transform.FindChild (kuniId.ToString ()).gameObject;
+		GameObject kuniMapObj = kuniMap.transform.Find (kuniId.ToString ()).gameObject;
 		kuniMapObj.GetComponent<Image> ().color = newColor;
 
 		//Change Name of target Kuni by daimyo info

@@ -18,14 +18,14 @@ public class BakuhuMenuReturn : MonoBehaviour {
 		Destroy (deleteObj);
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            board.transform.FindChild("popText").GetComponent<Text>().text = "Shogunate";
+            board.transform.Find("popText").GetComponent<Text>().text = "Shogunate";
         } else {
-            board.transform.FindChild("popText").GetComponent<Text>().text = "幕府";
+            board.transform.Find("popText").GetComponent<Text>().text = "幕府";
         }
 		scrollView.SetActive (true);
 
 		BakuhuInfo bakuhu = new BakuhuInfo ();
-		GameObject contentObj = scrollView.transform.FindChild ("Content").gameObject;
+		GameObject contentObj = scrollView.transform.Find ("Content").gameObject;
 		bakuhu.updateAtkOrderBtnStatus (contentObj);
 
 

@@ -12,7 +12,7 @@ public class FadeuGUI : MonoBehaviour {
 		void Start () {
 			time = fadetime;
 			image = GetComponent<Image>();
-			text = image.transform.FindChild ("MessageText").GetComponent<Text>();
+			text = image.transform.Find ("MessageText").GetComponent<Text>();
 		}
 		
 		void Update () {

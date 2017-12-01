@@ -27,24 +27,24 @@ public class KahouSoukoScene : MonoBehaviour {
 		kahou.GetComponent<Image> ().color = pushedTabColor;
 		dougu.GetComponent<Image> ().color = normalTabColor;
 
-		kahou.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
-		dougu.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
+		kahou.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
+		dougu.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
 
 		/*Initialize Kahou View*/
 		GameObject itemView = GameObject.Find ("ItemView");
-		itemView.transform.FindChild ("GetMoney").GetComponent<Image>().enabled = false;
+		itemView.transform.Find ("GetMoney").GetComponent<Image>().enabled = false;
 		GameObject sellBtn = GameObject.Find ("SellButton");
 		sellBtn.GetComponent<Image>().enabled = false;
 		sellBtn.GetComponent<Button>().enabled = false;
-		sellBtn.transform.FindChild("Text").GetComponent<Text>().enabled = false;
-		itemView.transform.FindChild ("KahouEffectValue").GetComponent<Text> ().text = "";
-		itemView.transform.FindChild ("KahouEffectLabel").GetComponent<Text> ().text = "";
+		sellBtn.transform.Find("Text").GetComponent<Text>().enabled = false;
+		itemView.transform.Find ("KahouEffectValue").GetComponent<Text> ().text = "";
+		itemView.transform.Find ("KahouEffectLabel").GetComponent<Text> ().text = "";
 		GameObject.Find ("GetMoneyValue").GetComponent<Text> ().text = "";
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            itemView.transform.FindChild ("ItemNameValue").GetComponent<Text> ().text = "Select Item";
+            itemView.transform.Find ("ItemNameValue").GetComponent<Text> ().text = "Select Item";
         }else {
-            itemView.transform.FindChild("ItemNameValue").GetComponent<Text>().text = "家宝選択";
+            itemView.transform.Find("ItemNameValue").GetComponent<Text>().text = "家宝選択";
         }
 
 		GameObject.Find ("Background").GetComponent<Image>().enabled = false;

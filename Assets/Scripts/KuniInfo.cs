@@ -223,8 +223,8 @@ public class KuniInfo : MonoBehaviour {
 			int seiryokuDaimyoId = int.Parse(seiryokuList[i]);
 			if(seiryokuDaimyoId == doumeiDaimyoId){
 				int KuniId = i+1; //Kuni Id
-				SendParam sp = kuniIconView.transform.FindChild (KuniId.ToString ()).GetComponent<SendParam> ();
-				Image image = kuniIconView.transform.FindChild (KuniId.ToString ()).GetComponent<Image> ();
+				SendParam sp = kuniIconView.transform.Find (KuniId.ToString ()).GetComponent<SendParam> ();
+				Image image = kuniIconView.transform.Find (KuniId.ToString ()).GetComponent<Image> ();
 
 				sp.doumeiFlg = false;
 				image.color = normalColor;
@@ -257,7 +257,7 @@ public class KuniInfo : MonoBehaviour {
 			string openKuniId = openKuniList [i];
 			
 			//Flg Change
-			GameObject targetOpenKuni = GameObject.Find ("KuniIconView").transform.FindChild (openKuniId).gameObject;
+			GameObject targetOpenKuni = GameObject.Find ("KuniIconView").transform.Find (openKuniId).gameObject;
 			targetOpenKuni.GetComponent<SendParam> ().openFlg = true;
 			bool doumeiFlg = targetOpenKuni.GetComponent<SendParam>().doumeiFlg;
 			

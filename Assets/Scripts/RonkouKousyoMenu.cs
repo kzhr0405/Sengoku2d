@@ -76,7 +76,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 
                     string pathSlot = "Prefabs/Busyo/KanniSlot";
 					Kanni kanni = new Kanni ();
-					GameObject content = scroll.transform.FindChild ("KanniContent").gameObject;
+					GameObject content = scroll.transform.Find ("KanniContent").gameObject;
 					for (int i = 0; i < myKanniIntList.Count; i++) {
 						GameObject slot = Instantiate (Resources.Load (pathSlot)) as GameObject;
 						slot.transform.SetParent (content.transform);
@@ -89,11 +89,11 @@ public class RonkouKousyoMenu : MonoBehaviour {
                         string getEffectTarget = kanni.getEffectTarget(kanniIdTmp);
                         int effect = kanni.getEffect (kanniIdTmp);
 
-						slot.transform.FindChild ("Name").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
-						slot.transform.FindChild ("EffectLabel").GetComponent<Text> ().text = EffectLabel;
-						slot.transform.FindChild ("EffectValue").GetComponent<Text> ().text = "+" + effect.ToString () + "%";
+						slot.transform.Find ("Name").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
+						slot.transform.Find ("EffectLabel").GetComponent<Text> ().text = EffectLabel;
+						slot.transform.Find ("EffectValue").GetComponent<Text> ().text = "+" + effect.ToString () + "%";
 
-						GameObject btn = slot.transform.FindChild ("GiveButton").gameObject;
+						GameObject btn = slot.transform.Find ("GiveButton").gameObject;
 						btn.GetComponent<GiveKanni> ().busyoId = busyoId;
 						btn.GetComponent<GiveKanni> ().kanniId = kanniIdTmp;
                         if(getEffectTarget=="hp") {
@@ -129,14 +129,14 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				BusyoInfoGet busyo = new BusyoInfoGet ();
                 int langId = PlayerPrefs.GetInt("langId");
                 string busyoName = busyo.getName (int.Parse (busyoId),langId);
-				remove.transform.FindChild ("YesButton").GetComponent<DoRemoveKanni> ().busyoId = busyoId;                
+				remove.transform.Find ("YesButton").GetComponent<DoRemoveKanni> ().busyoId = busyoId;                
                 if (langId == 2) {
-                    remove.transform.FindChild ("RemoveText").GetComponent<Text> ().text = "Are you sure you want to remove the rank of " + busyoName + "?";
+                    remove.transform.Find ("RemoveText").GetComponent<Text> ().text = "Are you sure you want to remove the rank of " + busyoName + "?";
                 }else {
-                    remove.transform.FindChild("RemoveText").GetComponent<Text>().text = busyoName + "殿の官位を\n罷免なさるのですか？";
+                    remove.transform.Find("RemoveText").GetComponent<Text>().text = busyoName + "殿の官位を\n罷免なさるのですか？";
                 }
-                remove.transform.FindChild("YesButton").GetComponent<DoRemoveKanni>().effect = kanniEffect;
-                remove.transform.FindChild("YesButton").GetComponent<DoRemoveKanni>().hpFlg = kanniHpFlg;
+                remove.transform.Find("YesButton").GetComponent<DoRemoveKanni>().effect = kanniEffect;
+                remove.transform.Find("YesButton").GetComponent<DoRemoveKanni>().hpFlg = kanniHpFlg;
 
 
 
@@ -196,7 +196,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					scrollTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 
 					string pathSlot = "Prefabs/Busyo/ShiroSlot";
-					GameObject content = scroll.transform.FindChild ("KanniContent").gameObject;
+					GameObject content = scroll.transform.Find ("KanniContent").gameObject;
 					KuniInfo kuni = new KuniInfo ();
 					for (int i = 0; i < okKuniList.Count; i++) {
 
@@ -207,7 +207,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						int kuniId = int.Parse (okKuniList [i]);
 						string kuniName = kuni.getKuniName (kuniId,langId);
 
-						slot.transform.FindChild ("Name").GetComponent<Text> ().text = kuniName;
+						slot.transform.Find ("Name").GetComponent<Text> ().text = kuniName;
 
 
 						//Status
@@ -244,9 +244,9 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						}
 
 
-						slot.transform.FindChild ("EffectValue").GetComponent<Text> ().text = "+" + jyosyuHei.ToString ();
+						slot.transform.Find ("EffectValue").GetComponent<Text> ().text = "+" + jyosyuHei.ToString ();
 						
-						GameObject btn = slot.transform.FindChild ("GiveButton").gameObject;
+						GameObject btn = slot.transform.Find ("GiveButton").gameObject;
 						btn.GetComponent<DoNinmei> ().busyoId = busyoId;
 						btn.GetComponent<DoNinmei> ().kuniId = kuniId;
 						btn.GetComponent<DoNinmei> ().jyosyuHei = jyosyuHei;
@@ -282,11 +282,11 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				RectTransform msgTransform = msg.GetComponent<RectTransform> ();
 				msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 				msgTransform.name = "kaininConfirm";
-				msg.transform.FindChild ("YesButton").GetComponent<DoKainin> ().kuniId = jyosyuKuniId;
+				msg.transform.Find ("YesButton").GetComponent<DoKainin> ().kuniId = jyosyuKuniId;
 
 
 				//Message Text Mod
-				GameObject msgObj = msg.transform.FindChild ("KaininText").gameObject;
+				GameObject msgObj = msg.transform.Find ("KaininText").gameObject;
 				int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
                 string msgText = "";
                 int langId = PlayerPrefs.GetInt("langId");
@@ -361,20 +361,20 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				syugyo.transform.localPosition = new Vector3 (0, 0, 0);
 
 				//busyo Icon
-				GameObject busyoImageObj = syugyo.transform.FindChild("BusyoImage").gameObject;
+				GameObject busyoImageObj = syugyo.transform.Find("BusyoImage").gameObject;
 				string busyoPath = "Prefabs/Player/Sprite/unit" + busyoId;
 				busyoImageObj.GetComponent<Image> ().sprite = 
 					Resources.Load (busyoPath, typeof(Sprite)) as Sprite;
 
 				//Info
-				GameObject popBack = syugyo.transform.FindChild("PopBack").gameObject;
-				popBack.transform.FindChild("LvFrom").GetComponent<Text>().text = sakuLv.ToString();
+				GameObject popBack = syugyo.transform.Find("PopBack").gameObject;
+				popBack.transform.Find("LvFrom").GetComponent<Text>().text = sakuLv.ToString();
 				int nextLv = sakuLv + 1;
-				popBack.transform.FindChild("LvTo").GetComponent<Text>().text = nextLv.ToString();
-				popBack.transform.FindChild("SakuNameValue").GetComponent<Text>().text = sakuList[1];
-				popBack.transform.FindChild("SakuExp").transform.FindChild("PopSakuExpValue").GetComponent<Text>().text = sakuList[2];
+				popBack.transform.Find("LvTo").GetComponent<Text>().text = nextLv.ToString();
+				popBack.transform.Find("SakuNameValue").GetComponent<Text>().text = sakuList[1];
+				popBack.transform.Find("SakuExp").transform.Find("PopSakuExpValue").GetComponent<Text>().text = sakuList[2];
 
-				GameObject btn = syugyo.transform.FindChild ("GiveSyugyo").gameObject;
+				GameObject btn = syugyo.transform.Find ("GiveSyugyo").gameObject;
 				btn.GetComponent<DoSyugyo> ().busyoId = int.Parse(busyoId);
 				btn.GetComponent<DoSyugyo> ().nextLv = nextLv;
 				Color shortageColor = new Color (203f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
@@ -401,7 +401,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "小野善鬼";
                     }
-					item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+					item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 3;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -409,7 +409,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 3) {
@@ -430,7 +430,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "川崎時盛";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 5;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -438,7 +438,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 4) {
@@ -459,7 +459,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "林崎重信";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 6;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -467,7 +467,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 
@@ -490,7 +490,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "師岡一羽";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 9;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -498,7 +498,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 				
 				} else if (nextLv == 6) {
@@ -520,7 +520,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "奥山公重";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 2;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -528,7 +528,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 7) {
@@ -550,7 +550,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "神後宗治";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 10;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -558,7 +558,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 
@@ -581,7 +581,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "鐘捲自斎";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 4;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -589,7 +589,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 9) {
@@ -611,7 +611,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "宝蔵院胤栄";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 8;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -619,7 +619,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 10) {
@@ -641,7 +641,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "愛州元香斎";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 1;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -649,7 +649,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 11) {
@@ -671,7 +671,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
                     }else {
                         rank.GetComponent<Text>().text = "疋田景兼";
                     }
-                    item.transform.FindChild ("Rank").GetComponent<Text> ().enabled = false;
+                    item.transform.Find ("Rank").GetComponent<Text> ().enabled = false;
 
 					int kengouId = 7;
 					btn.GetComponent<DoSyugyo> ().kengouFlg = true;
@@ -679,7 +679,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					bool kengouOKFlg = getKengouOKFlg(kengouId);
 					btn.GetComponent<DoSyugyo> ().itemOKFlg = kengouOKFlg;
 					if (kengouOKFlg == false) {
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 				
 					//Kengou End
@@ -711,7 +711,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 13) {
@@ -724,7 +724,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -742,7 +742,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 14) {
@@ -755,7 +755,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -773,7 +773,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 15) {
@@ -786,7 +786,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -804,7 +804,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 16) {
@@ -817,7 +817,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -835,7 +835,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				} else if (nextLv == 17) {
@@ -848,7 +848,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -866,7 +866,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 
@@ -880,7 +880,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -898,7 +898,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 
@@ -912,7 +912,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -930,7 +930,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 
@@ -944,7 +944,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					item.GetComponent<Button> ().enabled = false;
 
 					int itemQty = 1;
-					popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
+					popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().text = itemQty.ToString ();
 
 					string rankPath = "Prefabs/Busyo/RankForKahou";
 					GameObject rank = Instantiate (Resources.Load (rankPath)) as GameObject;
@@ -962,19 +962,19 @@ public class RonkouKousyoMenu : MonoBehaviour {
 					if (kahouId != 0) {
 						btn.GetComponent<DoSyugyo> ().itemOKFlg = true;
 					}else{
-						popBack.transform.FindChild ("RequiredItem").transform.FindChild ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
+						popBack.transform.Find ("RequiredItem").transform.Find ("RequiredItemValue").GetComponent<Text> ().color = shortageColor;
 					}
 
 				}
 
 				//Requried Money
 				int money = getRequiredMoney(nextLv);
-				popBack.transform.FindChild ("RequiredMoney").transform.FindChild ("RequiredMoneyValue").GetComponent<Text> ().text = money.ToString ();
+				popBack.transform.Find ("RequiredMoney").transform.Find ("RequiredMoneyValue").GetComponent<Text> ().text = money.ToString ();
 
 				int nowMoney = PlayerPrefs.GetInt ("money");
 				if (nowMoney < money) {
 					btn.GetComponent<DoSyugyo> ().moneyOKFlg = false;
-					popBack.transform.FindChild ("RequiredMoney").transform.FindChild ("RequiredMoneyValue").GetComponent<Text> ().color = shortageColor;
+					popBack.transform.Find ("RequiredMoney").transform.Find ("RequiredMoneyValue").GetComponent<Text> ().color = shortageColor;
 				} else {
 					btn.GetComponent<DoSyugyo> ().moneyOKFlg = true;
                     btn.GetComponent<DoSyugyo>().paiedMoney = money;
@@ -1025,7 +1025,7 @@ public class RonkouKousyoMenu : MonoBehaviour {
 				scrollTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 
 				string pathSlot = "Prefabs/Busyo/GokuiSlot";
-				GameObject content = scroll.transform.FindChild ("KanniContent").gameObject;
+				GameObject content = scroll.transform.Find ("KanniContent").gameObject;
 				Saku sakuScript = new Saku ();
 				for(int i=0; i<gokuiItemList.Count; i++){
 					string num = gokuiItemList [i];
@@ -1035,16 +1035,16 @@ public class RonkouKousyoMenu : MonoBehaviour {
 						slot.transform.SetParent (content.transform);
 						slot.transform.localScale = new Vector2 (1, 1);
                         if (langId == 2) {
-                            slot.transform.FindChild ("Qty").GetComponent<Text> ().text = num + " remain";
+                            slot.transform.Find ("Qty").GetComponent<Text> ().text = num + " remain";
                         }else {
-                            slot.transform.FindChild("Qty").GetComponent<Text>().text = "残" +num + "個";
+                            slot.transform.Find("Qty").GetComponent<Text>().text = "残" +num + "個";
                         }
 						int sakuId = i + 11;
 						List<string> gokuiInfoList = new List<string> ();
 						gokuiInfoList = sakuScript.getGokuiInfoByLv(sakuId, 20);
 
-						slot.transform.FindChild ("Name").GetComponent<Text> ().text = gokuiInfoList [1];
-						slot.transform.FindChild ("Effect").GetComponent<Text> ().text = gokuiInfoList [2];
+						slot.transform.Find ("Name").GetComponent<Text> ().text = gokuiInfoList [1];
+						slot.transform.Find ("Effect").GetComponent<Text> ().text = gokuiInfoList [2];
 
 						slot.GetComponent<GiveGokuiConfirm> ().sakuId = sakuId;
 						slot.GetComponent<GiveGokuiConfirm> ().sakuName = gokuiInfoList [1];

@@ -13,7 +13,7 @@ public class Message : MonoBehaviour {
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
         if(GameObject.Find("Panel")) {
 		    messageObj.transform.SetParent(GameObject.Find ("Panel").transform);
-		    messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
+		    messageObj.transform.Find ("MessageText").transform.GetComponent<Text> ().text = Text;
 		    messageObj.name = "MessageObject";
 
 		    messageObj.transform.localScale = new Vector2 (1, 1);
@@ -27,7 +27,7 @@ public class Message : MonoBehaviour {
         string Path = "Prefabs/Common/MessageMidObject";
         GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
         messageObj.transform.SetParent(GameObject.Find("Panel").transform);
-        messageObj.transform.FindChild("MessageText").transform.GetComponent<Text>().text = Text;
+        messageObj.transform.Find("MessageText").transform.GetComponent<Text>().text = Text;
         messageObj.name = "MessageObject";
 
         messageObj.transform.localScale = new Vector2(1, 1);
@@ -49,7 +49,7 @@ public class Message : MonoBehaviour {
             panel = GameObject.Find("Naisei").gameObject;
         }
         messageObj.transform.SetParent(panel.transform);
-		messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
+		messageObj.transform.Find ("MessageText").transform.GetComponent<Text> ().text = Text;
 		messageObj.name = "MessageObject";
 		
 		messageObj.transform.localScale = new Vector2 (1, 1);
@@ -62,7 +62,7 @@ public class Message : MonoBehaviour {
 		string Path = "Prefabs/Common/KassenMessage";
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
 		messageObj.transform.SetParent(GameObject.Find ("Canvas").transform);
-		messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
+		messageObj.transform.Find ("MessageText").transform.GetComponent<Text> ().text = Text;
 		messageObj.name = "KassenMessage";
 		
 		messageObj.transform.localScale = new Vector2 (1, 1);
@@ -76,7 +76,7 @@ public class Message : MonoBehaviour {
 		string Path = "Prefabs/Common/MessageUpperObject";
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
 		messageObj.transform.SetParent(GameObject.Find ("Map").transform);
-		messageObj.transform.FindChild ("MessageText").transform.GetComponent<Text> ().text = Text;
+		messageObj.transform.Find ("MessageText").transform.GetComponent<Text> ().text = Text;
 		messageObj.name = "MessageObject";
 
 		messageObj.transform.localScale = new Vector2 (1, 1);
@@ -88,7 +88,7 @@ public class Message : MonoBehaviour {
 		string Path = "Prefabs/Common/MessageWithImage";
 		GameObject messageObj = Instantiate (Resources.Load (Path)) as GameObject;
 		messageObj.transform.SetParent(GameObject.Find ("Panel").transform);
-		messageObj.transform.FindChild ("Message").transform.GetComponent<Text> ().text = Text;
+		messageObj.transform.Find ("Message").transform.GetComponent<Text> ().text = Text;
 		messageObj.name = "MessageObject";
 
 		messageObj.transform.localScale = new Vector2 (1, 1);
@@ -104,7 +104,7 @@ public class Message : MonoBehaviour {
 		messageBoardBase.transform.localScale = new Vector2 (1, 1);
 		messageBoardBase.transform.localPosition = new Vector3(0, 0, 0);
 
-		GameObject content = messageBoardBase.transform.FindChild ("ScrollView").transform.FindChild ("Content").gameObject;
+		GameObject content = messageBoardBase.transform.Find ("ScrollView").transform.Find ("Content").gameObject;
 
 		string unitPath = "Prefabs/Common/SlotMessage";
 		foreach(string message in MessageList){
@@ -112,7 +112,7 @@ public class Message : MonoBehaviour {
 			messageBoardBase.GetComponent<FadeOutSlotMessage> ().contentList.Add (slotMessage);
 			slotMessage.transform.SetParent (content.transform);
 			slotMessage.transform.localScale = new Vector2 (1, 0.8f);
-			slotMessage.transform.FindChild ("Text").GetComponent<Text> ().text = message;
+			slotMessage.transform.Find ("Text").GetComponent<Text> ().text = message;
 		}
 	
 	}
@@ -127,7 +127,7 @@ public class Message : MonoBehaviour {
         }
         GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
         messageObj.transform.SetParent(GameObject.Find("Map").transform);
-        messageObj.transform.FindChild("text").transform.GetComponent<TextMesh>().text = Text;
+        messageObj.transform.Find("text").transform.GetComponent<TextMesh>().text = Text;
         messageObj.name = "MessageTextObject";
 
         RectTransform messageTransform = messageObj.GetComponent<RectTransform>();
@@ -140,7 +140,7 @@ public class Message : MonoBehaviour {
         string Path = "Prefabs/Common/IconExpMessage";
         GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
         messageObj.transform.SetParent(canvasObj.transform);
-        messageObj.transform.FindChild("MessageText").transform.GetComponent<Text>().text = Text;
+        messageObj.transform.Find("MessageText").transform.GetComponent<Text>().text = Text;
         messageObj.name = "IconExpMessage";
 
         messageObj.transform.localScale = new Vector2(1, 1);
@@ -155,7 +155,7 @@ public class Message : MonoBehaviour {
         string Path = "Prefabs/Common/MessageObject";
         GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
         messageObj.transform.SetParent(obj.transform);
-        messageObj.transform.FindChild("MessageText").transform.GetComponent<Text>().text = Text;
+        messageObj.transform.Find("MessageText").transform.GetComponent<Text>().text = Text;
         messageObj.name = "MessageObject";
 
         messageObj.transform.localScale = new Vector2(1, 1);
@@ -215,11 +215,11 @@ public class Message : MonoBehaviour {
             string Path = "Prefabs/Common/SpaceBuyBoard";
             GameObject messageObj = Instantiate(Resources.Load(Path)) as GameObject;
             messageObj.transform.SetParent(Panel.transform,false);        
-            messageObj.transform.FindChild("Text").GetComponent<Text>().text = text;
+            messageObj.transform.Find("Text").GetComponent<Text>().text = text;
 
             //Slider
-            GameObject slider = messageObj.transform.FindChild("Space").transform.FindChild("BusyoDamaSlider").gameObject;
-            GameObject btn = messageObj.transform.FindChild("Space").transform.FindChild("DoBuy").gameObject;
+            GameObject slider = messageObj.transform.Find("Space").transform.Find("BusyoDamaSlider").gameObject;
+            GameObject btn = messageObj.transform.Find("Space").transform.Find("DoBuy").gameObject;
             Slider sliderScript = slider.GetComponent<Slider>();
             int maxValue = busyoDama / 100;
             

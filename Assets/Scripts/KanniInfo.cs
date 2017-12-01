@@ -96,7 +96,7 @@ public class KanniInfo : MonoBehaviour {
 
 			Entity_kanni_mst kanniMst = Resources.Load ("Data/kanni_mst") as Entity_kanni_mst;
 			string slotPath = "Prefabs/Map/kanni/KanniSlot";
-			GameObject content = scroll.transform.FindChild ("Content").gameObject;
+			GameObject content = scroll.transform.Find ("Content").gameObject;
 
 
 			for (int i = 0; i < myKanniList.Count; i++) {
@@ -113,13 +113,13 @@ public class KanniInfo : MonoBehaviour {
 				slot.transform.SetParent (content.transform);
 				slot.transform.localScale = new Vector2 (1, 1);
 
-				slot.transform.FindChild ("KanniNameValue").GetComponent<Text> ().text = kanniName;
-				GameObject effect = slot.transform.FindChild ("Effect").gameObject;
-				effect.transform.FindChild ("Label").GetComponent<Text> ().text = effectLabel;
-				effect.transform.FindChild ("Value").GetComponent<Text> ().text = effectValue;
-				GameObject kuni = slot.transform.FindChild ("KuniQty").gameObject;
-				kuni.transform.FindChild ("Value").GetComponent<Text> ().text = kuniQty.ToString ();
-				GameObject syoukaijyo = slot.transform.FindChild ("Syoukaijyo").gameObject;
+				slot.transform.Find ("KanniNameValue").GetComponent<Text> ().text = kanniName;
+				GameObject effect = slot.transform.Find ("Effect").gameObject;
+				effect.transform.Find ("Label").GetComponent<Text> ().text = effectLabel;
+				effect.transform.Find ("Value").GetComponent<Text> ().text = effectValue;
+				GameObject kuni = slot.transform.Find ("KuniQty").gameObject;
+				kuni.transform.Find ("Value").GetComponent<Text> ().text = kuniQty.ToString ();
+				GameObject syoukaijyo = slot.transform.Find ("Syoukaijyo").gameObject;
 				string syoukaisyaName = "";
 				if (syoukaijyoRank == 1) {
 					syoukaisyaName = " 上 中 下";
@@ -128,14 +128,14 @@ public class KanniInfo : MonoBehaviour {
 				} else if (syoukaijyoRank == 3) {
 					syoukaisyaName = " 上";
 				}
-				syoukaijyo.transform.FindChild ("Value").GetComponent<Text> ().text = syoukaisyaName;
+				syoukaijyo.transform.Find ("Value").GetComponent<Text> ().text = syoukaisyaName;
 
 
 			}
 
 			//Counter
-			counter.transform.FindChild ("NowValue").GetComponent<Text> ().text = myKanniList.Count.ToString ();
-			counter.transform.FindChild ("TotalValue").GetComponent<Text> ().text = kanniMst.param.Count.ToString ();
+			counter.transform.Find ("NowValue").GetComponent<Text> ().text = myKanniList.Count.ToString ();
+			counter.transform.Find ("TotalValue").GetComponent<Text> ().text = kanniMst.param.Count.ToString ();
 		}
 	}
 }

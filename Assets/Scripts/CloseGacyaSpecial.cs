@@ -9,7 +9,7 @@ public class CloseGacyaSpecial : MonoBehaviour {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[1].Play();
 
-        bool doneFlg = transform.parent.transform.FindChild("Button").GetComponent<GacyaSpecialTouyou>().doneFlg;
+        bool doneFlg = transform.parent.transform.Find("Button").GetComponent<GacyaSpecialTouyou>().doneFlg;
         if(doneFlg) {
             //close
             GameObject gacya = transform.parent.transform.parent.gameObject;
@@ -28,8 +28,8 @@ public class CloseGacyaSpecial : MonoBehaviour {
             GameObject msgObj = Instantiate(Resources.Load(msgPath)) as GameObject;
             msgObj.transform.SetParent(GameObject.Find("Panel").transform, false);
             msgObj.transform.localScale = new Vector2(1, 1);
-            CloseGacyaSpecialConfirm CloseGacyaSpecialConfirmYes = msgObj.transform.FindChild("Yes").GetComponent<CloseGacyaSpecialConfirm>();
-            CloseGacyaSpecialConfirm CloseGacyaSpecialConfirmNo = msgObj.transform.FindChild("No").GetComponent<CloseGacyaSpecialConfirm>();
+            CloseGacyaSpecialConfirm CloseGacyaSpecialConfirmYes = msgObj.transform.Find("Yes").GetComponent<CloseGacyaSpecialConfirm>();
+            CloseGacyaSpecialConfirm CloseGacyaSpecialConfirmNo = msgObj.transform.Find("No").GetComponent<CloseGacyaSpecialConfirm>();
             GameObject gacya = transform.parent.transform.parent.gameObject;
             CloseGacyaSpecialConfirmYes.Gacya = gacya;
             CloseGacyaSpecialConfirmYes.board = msgObj;

@@ -34,7 +34,7 @@ public class CloseBoard : MonoBehaviour {
 
 
         if (Application.loadedLevelName == "tutorialMain") {
-            TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+            TextController txtScript = GameObject.Find("TextBoard").transform.Find("Text").GetComponent<TextController>();
             txtScript.SetText(5);
             txtScript.SetNextLine();
             txtScript.tutorialId = 5;

@@ -22,7 +22,7 @@ public class Saku : MonoBehaviour {
 
     private void Start() {
         if(GameObject.Find("Content")) {
-            Content = GameObject.Find("ScrollView").transform.FindChild("Content").gameObject;
+            Content = GameObject.Find("ScrollView").transform.Find("Content").gameObject;
         }
     }
 

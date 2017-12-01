@@ -27,8 +27,8 @@ public class NaiseiDestroy : MonoBehaviour {
 		RectTransform msgTransform = msg.GetComponent<RectTransform> ();
 		msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 		msg.name = "DestroyConfirm";
-		msg.transform.FindChild ("YesButton").GetComponent<DoDestroy> ().areaId = areaId;
-		msg.transform.FindChild ("YesButton").GetComponent<DoDestroy> ().activeKuniId = activeKuniId;
+		msg.transform.Find ("YesButton").GetComponent<DoDestroy> ().areaId = areaId;
+		msg.transform.Find ("YesButton").GetComponent<DoDestroy> ().activeKuniId = activeKuniId;
 
 
 	}

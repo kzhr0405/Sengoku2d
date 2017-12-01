@@ -17,7 +17,7 @@ public class DataRegister : MonoBehaviour {
         initDataDoneFlg = PlayerPrefs.GetBool("initDataFlg");
         if (!initDataDoneFlg) {
             if(userId == "" || userId == null) {
-                InitDataMaker initData = transform.FindChild("InitDataMaker").GetComponent<InitDataMaker>();
+                InitDataMaker initData = transform.Find("InitDataMaker").GetComponent<InitDataMaker>();
                 initData.makeInitData();
             }
         }

@@ -14,10 +14,10 @@ public class FadeOutBusyo : MonoBehaviour {
 	void Start () {
 		time = fadetime;
 		image = GetComponent<Image>();
-		text = image.transform.FindChild ("MessageBusyo").GetComponent<Text>();
+		text = image.transform.Find ("MessageBusyo").GetComponent<Text>();
 		//busyoImage = image.transform.FindChild ("Busyo").GetComponent<Image> ();
-		serihuImage = busyoImage.transform.FindChild("Serihu").GetComponent<Image>();
-		serihuText = serihuImage.transform.FindChild ("BusyoSerihu").GetComponent<Text>();
+		serihuImage = busyoImage.transform.Find("Serihu").GetComponent<Image>();
+		serihuText = serihuImage.transform.Find ("BusyoSerihu").GetComponent<Text>();
 	}
 	
 	void Update () {

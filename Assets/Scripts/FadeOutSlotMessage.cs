@@ -11,7 +11,7 @@ public class FadeOutSlotMessage : MonoBehaviour {
 	private float currentRemainTime;
 
 	void Start () {
-		content = transform.FindChild ("ScrollView").transform.FindChild ("Content").gameObject;
+		content = transform.Find ("ScrollView").transform.Find ("Content").gameObject;
 		currentRemainTime = fadeTime;
 	}
 

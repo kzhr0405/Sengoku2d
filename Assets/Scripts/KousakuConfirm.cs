@@ -43,12 +43,12 @@ public class KousakuConfirm : MonoBehaviour {
 				audioSources [0].Play();
 
 				scrollObj.SetActive (true);
-				scrollObj.transform.FindChild ("Back").GetComponent<DoKousaku> ().scrollObj = scrollObj;
-				GameObject doBtnObj = scrollObj.transform.FindChild ("Do").gameObject;
+				scrollObj.transform.Find ("Back").GetComponent<DoKousaku> ().scrollObj = scrollObj;
+				GameObject doBtnObj = scrollObj.transform.Find ("Do").gameObject;
 				doBtnObj.GetComponent<DoKousaku> ().scrollObj = scrollObj;
 
 				//Make Scroll
-				GameObject content = scrollObj.transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+				GameObject content = scrollObj.transform.Find("ScrollView").transform.Find("Content").gameObject;
                 foreach (Transform obj in content.transform) {
 					Destroy (obj.gameObject);
 				}
@@ -101,7 +101,7 @@ public class KousakuConfirm : MonoBehaviour {
 					txtObj.transform.localPosition = new Vector3 (5, -12, 0);
 
 					float chiryakuSts = Busyo.dfc *10;
-					txtObj.transform.FindChild ("Value").GetComponent<Text> ().text = chiryakuSts.ToString ();
+					txtObj.transform.Find ("Value").GetComponent<Text> ().text = chiryakuSts.ToString ();
 
 					//Set Param
 					KousakuBusyoSelect script = slot.GetComponent<KousakuBusyoSelect>();
@@ -119,25 +119,25 @@ public class KousakuConfirm : MonoBehaviour {
 
                 }
 
-                scrollObj.transform.FindChild ("Do").GetComponent<DoKousaku> ().cyouhouSnbRankId = cyouhouSnbRankId;
+                scrollObj.transform.Find ("Do").GetComponent<DoKousaku> ().cyouhouSnbRankId = cyouhouSnbRankId;
 				if (name == "CyouryakuButton") {
-                    scrollObj.transform.FindChild("Question").GetComponent<QA>().qaId = 31;                    
+                    scrollObj.transform.Find("Question").GetComponent<QA>().qaId = 31;                    
                     if (langId == 2) {
-                        scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "Win Over";
-                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "Win Over";
+                        scrollObj.transform.Find("Text").GetComponent<Text>().text = "Win Over";
+                        scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "Win Over";
                     }else {
-                        scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "調略";
-                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "調略";
+                        scrollObj.transform.Find("Text").GetComponent<Text>().text = "調略";
+                        scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "調略";
                     }
                     doBtnObj.GetComponent<DoKousaku>().linkCutFlg = false;
                 } else {
-                    scrollObj.transform.FindChild("Question").GetComponent<QA>().qaId = 30;
+                    scrollObj.transform.Find("Question").GetComponent<QA>().qaId = 30;
                     if (langId == 2) {
-                        scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "Link Cut";
-                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "Cut";
+                        scrollObj.transform.Find("Text").GetComponent<Text>().text = "Link Cut";
+                        scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "Cut";
                     }else {
-                        scrollObj.transform.FindChild("Text").GetComponent<Text>().text = "連絡線遮断";
-                        scrollObj.transform.FindChild("Do").transform.FindChild("Text").GetComponent<Text>().text = "遮断";
+                        scrollObj.transform.Find("Text").GetComponent<Text>().text = "連絡線遮断";
+                        scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "遮断";
                     }
 					doBtnObj.GetComponent<DoKousaku> ().linkCutFlg = true;
 				}

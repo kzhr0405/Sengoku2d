@@ -133,21 +133,21 @@ public class Slot : MonoBehaviour,IDropHandler {
                                         copied.transform.localScale = new Vector2(1,1);
                                         copied.transform.localPosition = new Vector2(530, -10);
 
-                                        foreach(Transform chld in copied.transform.FindChild("JinkeiButton").transform) {
+                                        foreach(Transform chld in copied.transform.Find("JinkeiButton").transform) {
                                             chld.gameObject.SetActive(false);
                                         }
-                                        GameObject status = copied.transform.FindChild("Status").gameObject;
+                                        GameObject status = copied.transform.Find("Status").gameObject;
                                         status.GetComponent<Image>().enabled = false;
                                         foreach (Transform chld in status.transform) {
                                             chld.gameObject.SetActive(false);
                                         }
-                                        GameObject confirm = copied.transform.FindChild("KakuteiButton").gameObject;
+                                        GameObject confirm = copied.transform.Find("KakuteiButton").gameObject;
                                         Vector2 vect = new Vector2(0, 50);
                                         TutorialController tutorialScript = new TutorialController();
                                         GameObject btn = tutorialScript.SetPointer(confirm, vect);
                                         btn.transform.localScale = new Vector2(150, 150);
 
-                                        TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+                                        TextController txtScript = GameObject.Find("TextBoard").transform.Find("Text").GetComponent<TextController>();
                                         txtScript.SetText(13);
                                         txtScript.SetNextLine();
                                         txtScript.tutorialId = 13;

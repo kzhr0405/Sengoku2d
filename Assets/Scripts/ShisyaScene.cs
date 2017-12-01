@@ -61,14 +61,14 @@ public class ShisyaScene : MonoBehaviour {
 					slotObj.transform.localScale = new Vector2 (1,1);
 					slotObj.transform.localPosition = new Vector3 (0,0,0);
 					string title = shisya.getName(i);
-					slotObj.transform.FindChild ("Title").GetComponent<Text> ().text = title;
+					slotObj.transform.Find ("Title").GetComponent<Text> ().text = title;
 					ShisyaSelect script = slotObj.GetComponent<ShisyaSelect> ();
                     slotObj.name = "DaimyoSlot";
 
                     if (slotName == "DaimyoSlot") {
 						string daimyoId = shisyaParamList [0];
 						string imagePath = "Prefabs/Kamon/" + daimyoId.ToString ();
-						slotObj.transform.FindChild ("Back").GetComponent<Image> ().sprite = 
+						slotObj.transform.Find ("Back").GetComponent<Image> ().sprite = 
 							Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
 						//Choose Buka
@@ -76,7 +76,7 @@ public class ShisyaScene : MonoBehaviour {
 						int busyoId = getRandomBusyo (int.Parse (daimyoId), daimyoBusyoId);
 
 						string busyoImagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();
-						slotObj.transform.FindChild ("Image").GetComponent<Image> ().sprite = 
+						slotObj.transform.Find ("Image").GetComponent<Image> ().sprite = 
 							Resources.Load (busyoImagePath, typeof(Sprite)) as Sprite;
 
 						BusyoInfoGet busyo = new BusyoInfoGet ();
@@ -109,7 +109,7 @@ public class ShisyaScene : MonoBehaviour {
 						seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
 						if (seiryokuList.Contains (syogunId.ToString ())) {
 							string imagePath = "Prefabs/Kamon/" + syogunId.ToString ();
-							slotObj.transform.FindChild ("Back").GetComponent<Image> ().sprite = 
+							slotObj.transform.Find ("Back").GetComponent<Image> ().sprite = 
 							Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
 							string daimyoName = daimyo.getName (syogunId,langId, senarioId);
@@ -516,9 +516,9 @@ public class ShisyaScene : MonoBehaviour {
 		int hyourou = PlayerPrefs.GetInt ("hyourou");
 		int busyoDama = PlayerPrefs.GetInt ("busyoDama");
 
-		GameObject.Find ("Panel").transform.FindChild ("Money").transform.FindChild ("Value").GetComponent<Text> ().text = money.ToString();
-		GameObject.Find ("Panel").transform.FindChild ("Hyourou").transform.FindChild ("Value").GetComponent<Text> ().text = hyourou.ToString();
-		GameObject.Find ("Panel").transform.FindChild ("BusyoDama").transform.FindChild ("Value").GetComponent<Text> ().text = busyoDama.ToString();
+		GameObject.Find ("Panel").transform.Find ("Money").transform.Find ("Value").GetComponent<Text> ().text = money.ToString();
+		GameObject.Find ("Panel").transform.Find ("Hyourou").transform.Find ("Value").GetComponent<Text> ().text = hyourou.ToString();
+		GameObject.Find ("Panel").transform.Find ("BusyoDama").transform.Find ("Value").GetComponent<Text> ().text = busyoDama.ToString();
 
 		
 	}

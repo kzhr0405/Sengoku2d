@@ -110,8 +110,8 @@ public class UpdateNaisei : MonoBehaviour {
                 NaiseiController naisei = new NaiseiController();
 				naisei.Start ();
                 NaiseiController naiseiObjScript = GameObject.Find("NaiseiController").GetComponent<NaiseiController>();
-                naiseiObjScript.total = int.Parse(GameObject.Find("Tabibito").transform.FindChild("TabibitoMaxValue").GetComponent<Text>().text);
-                naiseiObjScript.remain = int.Parse(GameObject.Find("Tabibito").transform.FindChild("TabibitoCountDownValue").GetComponent<Text>().text);
+                naiseiObjScript.total = int.Parse(GameObject.Find("Tabibito").transform.Find("TabibitoMaxValue").GetComponent<Text>().text);
+                naiseiObjScript.remain = int.Parse(GameObject.Find("Tabibito").transform.Find("TabibitoCountDownValue").GetComponent<Text>().text);
 
 
             }

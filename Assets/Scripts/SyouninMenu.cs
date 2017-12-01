@@ -34,7 +34,7 @@ public class SyouninMenu : MonoBehaviour {
 				menu.transform.SetParent (board.transform);
 				menu.transform.localScale = new Vector2 (1, 1);
 				menu.transform.localPosition = new Vector2 (0, -150);
-				menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+				menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 				menu.name = "MenuKahou";
 
 				//Product Show
@@ -46,9 +46,9 @@ public class SyouninMenu : MonoBehaviour {
 				List<string> kahouIdList = new List<string> ();
 				kahouIdList = new List<string> (kahouIdString.Split (delimiterChars));
 
-				GameObject content = menu.transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
-				GameObject money = menu.transform.FindChild("MoneyValue").gameObject;
-				GameObject btn = menu.transform.FindChild("DoKahouButton").gameObject;
+				GameObject content = menu.transform.Find("ScrollView").transform.Find("Content").gameObject;
+				GameObject money = menu.transform.Find("MoneyValue").gameObject;
+				GameObject btn = menu.transform.Find("DoKahouButton").gameObject;
 
 				KahouStatusGet kahouSts = new KahouStatusGet();
 
@@ -60,7 +60,7 @@ public class SyouninMenu : MonoBehaviour {
 					string kahouPath = "Prefabs/Item/Kahou/" + kahouCdId;
 					int tmp = i + 1;
 					string slotName = "item" + tmp.ToString(); 
-					GameObject itemSlot = content.transform.FindChild(slotName).gameObject;
+					GameObject itemSlot = content.transform.Find(slotName).gameObject;
 					itemSlot.GetComponent<SyouninProductSelect>().Content = content;
 
 					//status
@@ -87,13 +87,13 @@ public class SyouninMenu : MonoBehaviour {
 					kahouObj.GetComponent<Button>().enabled = false;
 
 					//Adjust
-					RectTransform rect = kahouObj.transform.FindChild("Rank").GetComponent<RectTransform>();
+					RectTransform rect = kahouObj.transform.Find("Rank").GetComponent<RectTransform>();
 					rect.anchoredPosition3D = new Vector3(20,-30,0);
-					kahouObj.transform.FindChild("Rank").localScale = new Vector3(0.3f,0.3f,0);
+					kahouObj.transform.Find("Rank").localScale = new Vector3(0.3f,0.3f,0);
 				}
 
 				//Initial
-				content.transform.FindChild("item1").GetComponent<SyouninProductSelect>().OnClick();
+				content.transform.Find("item1").GetComponent<SyouninProductSelect>().OnClick();
 				serihuChanger (msg.getMessage(44));
 
 			}else if(name == "Busshi"){
@@ -104,10 +104,10 @@ public class SyouninMenu : MonoBehaviour {
 				menu.transform.SetParent (board.transform);
 				menu.transform.localScale = new Vector2 (1, 1);
 				menu.transform.localPosition = new Vector2 (0, -150);
-				menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+				menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 				menu.name = "MenuBusshi";
 
-				GameObject content = menu.transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+				GameObject content = menu.transform.Find("ScrollView").transform.Find("Content").gameObject;
 
 				//Prepared Value
 				string busshiQtyString = CloseLayerScript.busshiQtyString;
@@ -124,13 +124,13 @@ public class SyouninMenu : MonoBehaviour {
 				//YR
 				string YRpath = "Prefabs/Item/Cyouhei/CyouheiYR";
 				GameObject YRObj = Instantiate (Resources.Load (YRpath)) as GameObject;
-				GameObject item1 = content.transform.FindChild("item1").gameObject;
+				GameObject item1 = content.transform.Find("item1").gameObject;
 				YRObj.transform.SetParent (item1.transform);
 				YRObj.transform.localScale = new Vector2 (1, 1);
 				YRObj.GetComponent<Button>().enabled = false;
-				YRObj.transform.FindChild("Qty").GetComponent<Text>().text = busshiQtyList[0];
+				YRObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[0];
 				YRObj.name = "CyouheiYR";
-				RectTransform trn1 = YRObj.transform.FindChild("Qty").GetComponent<RectTransform>();
+				RectTransform trn1 = YRObj.transform.Find("Qty").GetComponent<RectTransform>();
 				trn1.anchoredPosition3D = new Vector3(-30,-40,0);
 				colorByRankChanger(YRObj, busshiRankList[0]);
 
@@ -145,13 +145,13 @@ public class SyouninMenu : MonoBehaviour {
 				//KB
 				string KBpath = "Prefabs/Item/Cyouhei/CyouheiKB";
 				GameObject KBObj = Instantiate (Resources.Load (KBpath)) as GameObject;
-				GameObject item2 = content.transform.FindChild("item2").gameObject;
+				GameObject item2 = content.transform.Find("item2").gameObject;
 				KBObj.transform.SetParent (item2.transform);
 				KBObj.transform.localScale = new Vector2 (1, 1);
 				KBObj.GetComponent<Button>().enabled = false;
-				KBObj.transform.FindChild("Qty").GetComponent<Text>().text = busshiQtyList[1];
+				KBObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[1];
 				KBObj.name = "CyouheiKB";
-				RectTransform trn2 = KBObj.transform.FindChild("Qty").GetComponent<RectTransform>();
+				RectTransform trn2 = KBObj.transform.Find("Qty").GetComponent<RectTransform>();
 				trn2.anchoredPosition3D = new Vector3(-30,-40,0);
 				colorByRankChanger(KBObj, busshiRankList[1]);
 
@@ -167,13 +167,13 @@ public class SyouninMenu : MonoBehaviour {
 				//TP
 				string TPpath = "Prefabs/Item/Cyouhei/CyouheiTP";
 				GameObject TPObj = Instantiate (Resources.Load (TPpath)) as GameObject;
-				GameObject item3 = content.transform.FindChild("item3").gameObject;
+				GameObject item3 = content.transform.Find("item3").gameObject;
 				TPObj.transform.SetParent (item3.transform);
 				TPObj.transform.localScale = new Vector2 (1, 1);
 				TPObj.GetComponent<Button>().enabled = false;
-				TPObj.transform.FindChild("Qty").GetComponent<Text>().text = busshiQtyList[2];
+				TPObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[2];
 				TPObj.name = "CyouheiTP";
-				RectTransform trn3 = TPObj.transform.FindChild("Qty").GetComponent<RectTransform>();
+				RectTransform trn3 = TPObj.transform.Find("Qty").GetComponent<RectTransform>();
 				trn3.anchoredPosition3D = new Vector3(-30,-40,0);
 				colorByRankChanger(TPObj, busshiRankList[2]);
 
@@ -189,13 +189,13 @@ public class SyouninMenu : MonoBehaviour {
 				//YM
 				string YMath = "Prefabs/Item/Cyouhei/CyouheiYM";
 				GameObject YMObj = Instantiate (Resources.Load (YMath)) as GameObject;
-				GameObject item4 = content.transform.FindChild("item4").gameObject;
+				GameObject item4 = content.transform.Find("item4").gameObject;
 				YMObj.transform.SetParent (item4.transform);
 				YMObj.transform.localScale = new Vector2 (1, 1);
 				YMObj.GetComponent<Button>().enabled = false;
-				YMObj.transform.FindChild("Qty").GetComponent<Text>().text = busshiQtyList[3];
+				YMObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[3];
 				YMObj.name = "CyouheiYM";
-				RectTransform trn4 = YMObj.transform.FindChild("Qty").GetComponent<RectTransform>();
+				RectTransform trn4 = YMObj.transform.Find("Qty").GetComponent<RectTransform>();
 				trn4.anchoredPosition3D = new Vector3(-30,-40,0);
 				colorByRankChanger(YMObj, busshiRankList[3]);
 
@@ -211,15 +211,15 @@ public class SyouninMenu : MonoBehaviour {
 				//SNB
 				string SNBpath = "Prefabs/Item/Shinobi/Shinobi";
 				GameObject SNBObj = Instantiate (Resources.Load (SNBpath)) as GameObject;
-				GameObject item5 = content.transform.FindChild("item5").gameObject;
+				GameObject item5 = content.transform.Find("item5").gameObject;
 				SNBObj.transform.SetParent (item5.transform);
 				SNBObj.transform.localScale = new Vector2 (1, 1);
 				SNBObj.GetComponent<Button>().enabled = false;
-				SNBObj.transform.FindChild("Qty").GetComponent<Text>().text = busshiQtyList[4];
+				SNBObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[4];
 				SNBObj.name = "Shinobi";
-				RectTransform trn5 = SNBObj.transform.FindChild("Qty").GetComponent<RectTransform>();
+				RectTransform trn5 = SNBObj.transform.Find("Qty").GetComponent<RectTransform>();
 				trn5.anchoredPosition3D = new Vector3(-30,-40,0);
-				RectTransform trnContent = SNBObj.transform.FindChild("Shinobi").GetComponent<RectTransform>();
+				RectTransform trnContent = SNBObj.transform.Find("Shinobi").GetComponent<RectTransform>();
 				trnContent.sizeDelta = new Vector3(95,120,0);
 				colorByRankChanger(SNBObj, busshiRankList[4]);
 
@@ -244,12 +244,12 @@ public class SyouninMenu : MonoBehaviour {
 				menu.transform.SetParent (board.transform);
 				menu.transform.localScale = new Vector2 (1, 1);
 				menu.transform.localPosition = new Vector2 (0, -150);
-				menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+				menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 				menu.name = "MenuYasen";
 
 				int yasenAmt = CloseLayerScript.yasenAmt;
-				menu.transform.FindChild("MoneyValue").GetComponent<Text>().text = yasenAmt.ToString();
-				GameObject btn = menu.transform.FindChild("DoYasenButton").gameObject;
+				menu.transform.Find("MoneyValue").GetComponent<Text>().text = yasenAmt.ToString();
+				GameObject btn = menu.transform.Find("DoYasenButton").gameObject;
 				btn.GetComponent<DoSyouninMenu>().price = yasenAmt;
 
 				serihuChanger (msg.getMessage(46));
@@ -262,13 +262,13 @@ public class SyouninMenu : MonoBehaviour {
 				menu.transform.SetParent (board.transform);
 				menu.transform.localScale = new Vector2 (1, 1);
 				menu.transform.localPosition = new Vector2 (0, -150);
-				menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+				menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 				menu.name = "MenuRounin";
 
 				//Preparation
 				float discount = CloseLayerScript.discount;
 				int rdmKengouId = CloseLayerScript.rdmKengouId;
-				GameObject btn = menu.transform.FindChild("DoRouninButton").gameObject;
+				GameObject btn = menu.transform.Find("DoRouninButton").gameObject;
 
 				string kengouPath = "Prefabs/Item/kengou";
 				GameObject kengou = Instantiate (Resources.Load (kengouPath)) as GameObject;
@@ -279,7 +279,7 @@ public class SyouninMenu : MonoBehaviour {
 				RectTransform kengouRect = kengou.GetComponent<RectTransform>();
 				kengouRect.anchoredPosition3D = new Vector3(-200,-30,0);
 
-				GameObject rank = kengou.transform.FindChild("Rank").gameObject;
+				GameObject rank = kengou.transform.Find("Rank").gameObject;
 				RectTransform kengouRankRect = rank.GetComponent<RectTransform>();
 				kengouRankRect.anchoredPosition3D = new Vector3(-50,20,0);
 				rank.transform.localScale = new Vector2(0.09f, 0.09f);
@@ -295,10 +295,10 @@ public class SyouninMenu : MonoBehaviour {
 				btn.GetComponent<DoSyouninMenu>().price = Mathf.CeilToInt(finalPrice);
 				btn.GetComponent<DoSyouninMenu>().kengouId = rdmKengouId;
 
-				GameObject info = menu.transform.FindChild("Info").gameObject;
-				info.transform.FindChild("Name").GetComponent<Text>().text = kengouName;
-				info.transform.FindChild("EffectLabel").GetComponent<Text>().text = exp;
-				menu.transform.FindChild("MoneyValue").GetComponent<Text>().text = Mathf.CeilToInt(finalPrice).ToString();
+				GameObject info = menu.transform.Find("Info").gameObject;
+				info.transform.Find("Name").GetComponent<Text>().text = kengouName;
+				info.transform.Find("EffectLabel").GetComponent<Text>().text = exp;
+				menu.transform.Find("MoneyValue").GetComponent<Text>().text = Mathf.CeilToInt(finalPrice).ToString();
 				serihuChanger (msg.getMessage(47));
 
 			}else if(name == "Cyakai"){
@@ -331,9 +331,9 @@ public class SyouninMenu : MonoBehaviour {
 					menu.transform.SetParent (board.transform);
 					menu.transform.localScale = new Vector2 (1, 1);
 					menu.transform.localPosition = new Vector2 (0, -150);
-					menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+					menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 					menu.name = "MenuCyakai";
-					GameObject btn = menu.transform.FindChild("DoCyakaiButton").gameObject;
+					GameObject btn = menu.transform.Find("DoCyakaiButton").gameObject;
 
 					//Cyadougu History
 					string cyakaiDouguHst = PlayerPrefs.GetString("cyakaiDouguHst");
@@ -436,7 +436,7 @@ public class SyouninMenu : MonoBehaviour {
 						targetKuniQty = 1;
 					}
 
-					menu.transform.FindChild("Tabibito").transform.FindChild("Text").GetComponent<Text>().text = " X "+targetKuniQty.ToString(); 
+					menu.transform.Find("Tabibito").transform.Find("Text").GetComponent<Text>().text = " X "+targetKuniQty.ToString(); 
 
 
 					//Set Button Value
@@ -462,9 +462,9 @@ public class SyouninMenu : MonoBehaviour {
 				menu.transform.SetParent (board.transform);
 				menu.transform.localScale = new Vector2 (1, 1);
 				menu.transform.localPosition = new Vector2 (0, -150);
-				menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+				menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 				menu.name = "MenuTech";
-				GameObject btn = menu.transform.FindChild("DoTechButton").gameObject;
+				GameObject btn = menu.transform.Find("DoTechButton").gameObject;
 
 				int techId = CloseLayerScript.techId;
 
@@ -477,7 +477,7 @@ public class SyouninMenu : MonoBehaviour {
 				}else if(techId == 3){
 					spritePath = "Prefabs/Item/Tech/Sprite/snb";
 				}
-				GameObject techImage = menu.transform.FindChild("Tech").gameObject;
+				GameObject techImage = menu.transform.Find("Tech").gameObject;
 				techImage.GetComponent<Image> ().sprite = 
 					Resources.Load (spritePath, typeof(Sprite)) as Sprite;
 
@@ -493,10 +493,10 @@ public class SyouninMenu : MonoBehaviour {
 				btn.GetComponent<DoSyouninMenu>().price = Mathf.CeilToInt(finalPrice);
 				btn.GetComponent<DoSyouninMenu>().techId = techId;
 				
-				GameObject info = menu.transform.FindChild("Info").gameObject;
-				info.transform.FindChild("Name").GetComponent<Text>().text = techName;
-				info.transform.FindChild("EffectLabel").GetComponent<Text>().text = exp;
-				menu.transform.FindChild("MoneyValue").GetComponent<Text>().text = Mathf.CeilToInt(finalPrice).ToString();
+				GameObject info = menu.transform.Find("Info").gameObject;
+				info.transform.Find("Name").GetComponent<Text>().text = techName;
+				info.transform.Find("EffectLabel").GetComponent<Text>().text = exp;
+				menu.transform.Find("MoneyValue").GetComponent<Text>().text = Mathf.CeilToInt(finalPrice).ToString();
 				serihuChanger (msg.getMessage(50));
 
 			}
@@ -506,7 +506,7 @@ public class SyouninMenu : MonoBehaviour {
 	}
 
 	public void serihuChanger(string serihu){
-		GameObject.Find("Serihu").transform.FindChild("Text").GetComponent<Text>().text = serihu;
+		GameObject.Find("Serihu").transform.Find("Text").GetComponent<Text>().text = serihu;
 	}
 
 	public void colorByRankChanger(GameObject obj, string rank){
@@ -520,33 +520,33 @@ public class SyouninMenu : MonoBehaviour {
             if (obj.name == "CyouheiKB" || obj.name == "CyouheiTP" || obj.name == "CyouheiYR" || obj.name == "CyouheiYM") {
                 
                 if (langId == 2) {
-                    obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
+                    obj.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
                 }
                 else {
-                    obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
+                    obj.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
                 }
             }
             else if (obj.name == "Shinobi") {
                 if (langId == 2) {
-                    obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
+                    obj.transform.Find("ShinobiRank").GetComponent<Text>().text = "Low";
                 }
                 else {
-                    obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
+                    obj.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
                 }
             }
         }else if(rank=="2"){
 			obj.GetComponent<Image>().color = midColor;
 			if(obj.name == "CyouheiKB" || obj.name == "CyouheiTP"|| obj.name == "CyouheiYR" || obj.name =="CyouheiYM"){
                 if (langId == 2) {
-                    obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
+                    obj.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
                 }else {
-                    obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
+                    obj.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
                 }
 			}else if(obj.name == "Shinobi"){
                 if (langId == 2) {
-                    obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Mid";
+                    obj.transform.Find("ShinobiRank").GetComponent<Text>().text = "Mid";
                 }else {
-                    obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
+                    obj.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
                 }
 			}
 			
@@ -554,15 +554,15 @@ public class SyouninMenu : MonoBehaviour {
 			obj.GetComponent<Image>().color = highColor;
 			if(obj.name == "CyouheiKB" || obj.name == "CyouheiTP"|| obj.name == "CyouheiYR" || obj.name =="CyouheiYM"){
                 if (langId == 2) {
-                    obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
+                    obj.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
                 }else {
-                    obj.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
+                    obj.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
                 }
 			}else if(obj.name == "Shinobi"){
                 if (langId == 2) {
-                    obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "High";
+                    obj.transform.Find("ShinobiRank").GetComponent<Text>().text = "High";
                 }else {
-                    obj.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
+                    obj.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
                 }
 			}
 		}

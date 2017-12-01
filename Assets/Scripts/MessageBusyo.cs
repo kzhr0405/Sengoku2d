@@ -12,7 +12,7 @@ public class MessageBusyo : MonoBehaviour {
 		string msgPath = "Prefabs/Common/MessageBusyo";
 		GameObject messageObj = Instantiate (Resources.Load (msgPath)) as GameObject;
 		messageObj.transform.SetParent(GameObject.Find ("Panel").transform);
-		messageObj.transform.FindChild ("MessageBusyo").transform.GetComponent<Text> ().text = Text;
+		messageObj.transform.Find ("MessageBusyo").transform.GetComponent<Text> ().text = Text;
 		messageObj.name = "MessageBusyo";	
 		messageObj.transform.localScale = new Vector2 (1, 1);
 		RectTransform messageTransform = messageObj.GetComponent<RectTransform> ();
@@ -86,6 +86,6 @@ public class MessageBusyo : MonoBehaviour {
 				serihu = msg.getMessage(90);
 			} 
 		}
-		Serihu.transform.FindChild("BusyoSerihu").GetComponent<Text>().text = serihu;
+		Serihu.transform.Find("BusyoSerihu").GetComponent<Text>().text = serihu;
 	}
 }

@@ -26,7 +26,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
             
             if(!tutorialDoneFlg) {
 
-                GameObject Slot13 = GameObject.Find("copiedJinkeiView").transform.FindChild("Slot13").gameObject;
+                GameObject Slot13 = GameObject.Find("copiedJinkeiView").transform.Find("Slot13").gameObject;
                 int chldBusyoId = 0;
                 foreach (Transform chld in Slot13.transform) {
                     chldBusyoId = int.Parse(chld.name);

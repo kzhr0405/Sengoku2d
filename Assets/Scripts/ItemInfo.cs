@@ -32,7 +32,7 @@ public class ItemInfo : MonoBehaviour {
 			GameObject sellBtn = GameObject.Find ("SellButton");
 			sellBtn.GetComponent<Image> ().enabled = true;
 			sellBtn.GetComponent<Button> ().enabled = true;
-			sellBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+			sellBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 
 			GameObject.Find ("Background").GetComponent<Image> ().enabled = true;
 			GameObject.Find ("Fill").GetComponent<Image> ().enabled = true;
@@ -83,7 +83,7 @@ public class ItemInfo : MonoBehaviour {
 			GameObject itemIconView = Object.Instantiate (gameObject, itemView.transform) as GameObject;
 			itemIconView.transform.localScale = new Vector2 (1, 1);
             itemIconView.transform.localPosition = new Vector3 (0, 120, 0);
-            itemIconView.transform.FindChild ("Qty").GetComponent<Text> ().text = "";
+            itemIconView.transform.Find ("Qty").GetComponent<Text> ().text = "";
 			itemIconView.GetComponent<Button> ().enabled = false;
             RectTransform rt = itemIconView.GetComponent(typeof(RectTransform)) as RectTransform;
             rt.sizeDelta = new Vector2(150, 150);
@@ -113,7 +113,7 @@ public class ItemInfo : MonoBehaviour {
 			buySlider.GetComponent<BuySlider> ().unitPrice = buyUnitPirce;
 			buySlider.GetComponent<Slider> ().value = 1;
 
-			GameObject.Find("BuyMenu").transform.FindChild("MoneyAmt").GetComponent<Text>().text = buyUnitPirce.ToString();
+			GameObject.Find("BuyMenu").transform.Find("MoneyAmt").GetComponent<Text>().text = buyUnitPirce.ToString();
 		
 			buyBtn.GetComponent<DoBuy>().item = name;
 
@@ -140,7 +140,7 @@ public class ItemInfo : MonoBehaviour {
                 msgTransform.name = "ShiroConfirm";
 
                 //Message Text Mod
-                GameObject msgObj = msg.transform.FindChild("text").gameObject;
+                GameObject msgObj = msg.transform.Find("text").gameObject;
                 string msgText = "";
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
@@ -151,9 +151,9 @@ public class ItemInfo : MonoBehaviour {
                 msgObj.GetComponent<Text>().text = msgText;
 
                 //Set value
-                msg.transform.FindChild("YesButton").GetComponent<BuildShiro>().item = gameObject;
-                msg.transform.FindChild("YesButton").GetComponent<BuildShiro>().touchBack = back;
-                msg.transform.FindChild("NoButton").GetComponent<BuildShiro>().touchBack = back;
+                msg.transform.Find("YesButton").GetComponent<BuildShiro>().item = gameObject;
+                msg.transform.Find("YesButton").GetComponent<BuildShiro>().touchBack = back;
+                msg.transform.Find("NoButton").GetComponent<BuildShiro>().touchBack = back;
             }
         }
     }

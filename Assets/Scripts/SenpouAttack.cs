@@ -102,7 +102,7 @@ public class SenpouAttack : MonoBehaviour {
 		float rdcDfc;
 
 		if (targetHPScript == "PlayerHP") {
-			dtl = col.transform.FindChild ("BusyoDtlPlayer").gameObject;
+			dtl = col.transform.Find ("BusyoDtlPlayer").gameObject;
 			baseDfc = col.GetComponent<PlayerHP> ().dfc;
 			float temp = baseDfc * percent;
 			rdcDfc = temp / 100;
@@ -110,7 +110,7 @@ public class SenpouAttack : MonoBehaviour {
 			col.GetComponent<PlayerHP> ().dfc = newDfc;
 
 		} else {
-			dtl = col.transform.FindChild ("BusyoDtlEnemy").gameObject;
+			dtl = col.transform.Find ("BusyoDtlEnemy").gameObject;
 			baseDfc = col.GetComponent<EnemyHP> ().dfc;
 			float temp = baseDfc * percent;
 			rdcDfc = temp / 100;
@@ -118,13 +118,13 @@ public class SenpouAttack : MonoBehaviour {
 			col.GetComponent<EnemyHP> ().dfc = newDfc;
 		}
 
-		GameObject effect = dtl.transform.FindChild ("dfc_up").gameObject;
+		GameObject effect = dtl.transform.Find ("dfc_up").gameObject;
 		effect.GetComponent<FadeoutOff> ().currentRemainTime = 5;
 		effect.GetComponent<SpriteRenderer> ().enabled = true;
 		effect.GetComponent<Animator> ().enabled = true;
 		effect.GetComponent<FadeoutOff> ().enabled = true;
 
-		GameObject value = dtl.transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
+		GameObject value = dtl.transform.Find ("MinHpBar").transform.Find ("Value").gameObject;
 		value.GetComponent<MeshRenderer> ().enabled = true;
 		value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
 		value.GetComponent<TextMesh> ().text = (Mathf.Ceil(rdcDfc)).ToString () + "⇣";
@@ -140,7 +140,7 @@ public class SenpouAttack : MonoBehaviour {
 		bool downFlg = false;
 
 		if (targetHPScript == "PlayerHP") {
-			dtl = col.transform.FindChild ("BusyoDtlPlayer").gameObject;
+			dtl = col.transform.Find ("BusyoDtlPlayer").gameObject;
 			if (col.GetComponent<UnitMover> ()) {
 				baseSpd = col.GetComponent<UnitMover> ().speed;
 				if (baseSpd > 1) {
@@ -167,7 +167,7 @@ public class SenpouAttack : MonoBehaviour {
             }
 
 		} else {
-			dtl = col.transform.FindChild ("BusyoDtlEnemy").gameObject;
+			dtl = col.transform.Find ("BusyoDtlEnemy").gameObject;
 			if (col.GetComponent<Homing> ()) {
 				baseSpd = col.GetComponent<Homing> ().speed;
 				if (baseSpd > 1) {
@@ -186,13 +186,13 @@ public class SenpouAttack : MonoBehaviour {
 		}
 
 		if (downFlg) {
-			GameObject effect = dtl.transform.FindChild ("spd_up").gameObject;
+			GameObject effect = dtl.transform.Find ("spd_up").gameObject;
 			effect.GetComponent<FadeoutOff> ().currentRemainTime = 5;
 			effect.GetComponent<SpriteRenderer> ().enabled = true;
 			effect.GetComponent<Animator> ().enabled = true;
 			effect.GetComponent<FadeoutOff> ().enabled = true;
 
-			GameObject value = dtl.transform.FindChild ("MinHpBar").transform.FindChild ("Value").gameObject;
+			GameObject value = dtl.transform.Find ("MinHpBar").transform.Find ("Value").gameObject;
 			value.GetComponent<MeshRenderer> ().enabled = true;
 			value.GetComponent<TextMeshFadeoutOff> ().enabled = true;
 			value.GetComponent<TextMesh> ().text = "1⇣";

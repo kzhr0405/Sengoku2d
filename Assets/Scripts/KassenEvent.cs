@@ -117,7 +117,7 @@ public class KassenEvent : MonoBehaviour {
 
         }
 
-		commentObj.transform.FindChild ("SerihuText").GetComponent<Text> ().text = finalComment;
+		commentObj.transform.Find ("SerihuText").GetComponent<Text> ().text = finalComment;
 
 	}
 
@@ -134,7 +134,7 @@ public class KassenEvent : MonoBehaviour {
 		commentObj.name = "EventComment";
 
 		//Busyo Image
-		GameObject busyoImage = commentObj.transform.FindChild ("Mask").transform.FindChild ("BusyoImage").gameObject;
+		GameObject busyoImage = commentObj.transform.Find ("Mask").transform.Find ("BusyoImage").gameObject;
 		Daimyo daimyo = new Daimyo ();
 		int daimyoBusyoId = daimyo.getDaimyoBusyoId (enemyDaimyoId,senarioId);
 		string imagePath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
@@ -188,7 +188,7 @@ public class KassenEvent : MonoBehaviour {
 						int rdmId = UnityEngine.Random.Range (0, noLinkStageList.Count);
 						int betlayStageId = noLinkStageList [rdmId];
 						string stageTmp = "stage" + betlayStageId.ToString ();
-						GameObject stageObj = kuniMap.transform.FindChild (stageTmp).gameObject;
+						GameObject stageObj = kuniMap.transform.Find (stageTmp).gameObject;
 						int powerType = stageObj.GetComponent<ShowStageDtl> ().powerType;
 
 						if (powerType == 1 || powerType == 2) {
@@ -223,7 +223,7 @@ public class KassenEvent : MonoBehaviour {
                                 } else {
                                     finalComment = "うぬう、何とした事だ。孤立した" + stageName + "が、" + myDiamyoName + "に寝返りおったわ。";
                                 }
-								commentObj.transform.FindChild ("SerihuText").GetComponent<Text> ().text = finalComment;
+								commentObj.transform.Find ("SerihuText").GetComponent<Text> ().text = finalComment;
 
 								//Data Change
 								clearedStageString = clearedStageString + "," + betlayStageId;

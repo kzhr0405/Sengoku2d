@@ -14,9 +14,9 @@ public class CloseMenu : MonoBehaviour {
         Message msg = new Message();
 
 		if (cyouteiFlg) {
-			GameObject.Find ("Serihu").transform.FindChild ("Text").GetComponent<Text> ().text = msg.getMessage(30);
+			GameObject.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(30);
 		} else {
-			GameObject.Find ("Serihu").transform.FindChild ("Text").GetComponent<Text> ().text = msg.getMessage(31);
+			GameObject.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(31);
         }
 	}
 }

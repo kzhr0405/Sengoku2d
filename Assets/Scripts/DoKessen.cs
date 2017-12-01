@@ -19,7 +19,7 @@ public class DoKessen : MonoBehaviour {
 			audioSources [0].Play ();
 
 			GameObject kuniView = GameObject.Find("KuniIconView");
-			SendParam param = kuniView.transform.FindChild(kuniId.ToString()).GetComponent<SendParam>();
+			SendParam param = kuniView.transform.Find(kuniId.ToString()).GetComponent<SendParam>();
 
             //adjust
             int busyoQty = param.busyoQty;

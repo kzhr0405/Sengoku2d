@@ -53,7 +53,7 @@ public class KahouInfo : MonoBehaviour {
 			GameObject sellBtn = GameObject.Find ("SellButton");
 			sellBtn.GetComponent<Image> ().enabled = true;
 			sellBtn.GetComponent<Button> ().enabled = true;
-			sellBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+			sellBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 
 			GameObject.Find ("ItemNameValue").GetComponent<Text> ().text = kahouName;
 			GameObject.Find ("KahouEffectLabel").GetComponent<Text> ().text = kahouTarget;

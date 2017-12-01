@@ -13,8 +13,8 @@ public class GunzeiFadeOut : MonoBehaviour {
 	void Start () {
 		time = fadetime;
 		gunzei = GetComponent<Image>();
-		back = gunzei.transform.FindChild ("MsgBack").GetComponent<Image>();
-		text = back.transform.FindChild ("MsgText").GetComponent<Text>();
+		back = gunzei.transform.Find ("MsgBack").GetComponent<Image>();
+		text = back.transform.Find ("MsgText").GetComponent<Text>();
 	}
 	
 	void Update () {

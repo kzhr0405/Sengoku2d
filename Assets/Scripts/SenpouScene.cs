@@ -101,14 +101,14 @@ public class SenpouScene : MonoBehaviour {
 		GameObject.Find ("SenpouExpValue").GetComponent<Text> ().text = senpouExp;
 
 
-		GameObject btn = GameObject.Find("SenpouStatus").transform.FindChild("ButtonHeihousyo").gameObject;
+		GameObject btn = GameObject.Find("SenpouStatus").transform.Find("ButtonHeihousyo").gameObject;
 		if (senpouLv < 20) {
 			btn.GetComponent<Image> ().color = OKClorBtn;
-			btn.transform.FindChild ("Text").GetComponent<Text> ().color = OKClorTxt;
+			btn.transform.Find ("Text").GetComponent<Text> ().color = OKClorTxt;
 			btn.GetComponent<Button>().enabled = true;
 		} else {
 			btn.GetComponent<Image> ().color = NGClorBtn;
-			btn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+			btn.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 			btn.GetComponent<Button>().enabled = false;
 		}
 	}
@@ -130,7 +130,7 @@ public class SenpouScene : MonoBehaviour {
 		//Icon
 		string sakuPath = "Prefabs/Saku/saku" + sakuList[0];
 		GameObject sakuIcon = Instantiate (Resources.Load (sakuPath)) as GameObject;
-		GameObject StatusSaku = GameObject.Find("SenpouStatus").transform.FindChild("StatusSaku").gameObject;
+		GameObject StatusSaku = GameObject.Find("SenpouStatus").transform.Find("StatusSaku").gameObject;
 		foreach ( Transform n in StatusSaku.transform ){
 			if(n.tag == "Saku"){
 				GameObject.Destroy(n.gameObject);
@@ -142,9 +142,9 @@ public class SenpouScene : MonoBehaviour {
 		RectTransform sakuIcon_transform = sakuIcon.GetComponent<RectTransform>();
 		sakuIcon_transform.anchoredPosition3D = new Vector3(-260,0,0);
 		
-		StatusSaku.transform.FindChild("SakuName").transform.FindChild("SakuNameValue").GetComponent<Text>().text = sakuList[1];
-		StatusSaku.transform.FindChild("SakuExp").transform.FindChild("SakuExpValue").GetComponent<Text>().text = sakuList[2];
-		StatusSaku.transform.FindChild("SakuLv").transform.FindChild("SakuLvValue").GetComponent<Text>().text = sakuList[3];
+		StatusSaku.transform.Find("SakuName").transform.Find("SakuNameValue").GetComponent<Text>().text = sakuList[1];
+		StatusSaku.transform.Find("SakuExp").transform.Find("SakuExpValue").GetComponent<Text>().text = sakuList[2];
+		StatusSaku.transform.Find("SakuLv").transform.Find("SakuLvValue").GetComponent<Text>().text = sakuList[3];
 		
 		
 	}

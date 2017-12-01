@@ -26,10 +26,10 @@ public class EnemyAttackPop : MonoBehaviour {
         GameObject boardObj = Instantiate(Resources.Load(simpaleBattlePath)) as GameObject;
         boardObj.transform.SetParent(GameObject.Find("Map").transform);
         boardObj.transform.localScale = new Vector2(45,55);
-        boardObj.transform.FindChild("No").GetComponent<CloseSimpleBattle>().boardObj = boardObj;
-        GameObject battleArea = boardObj.transform.FindChild("Base").transform.FindChild("BattleArea").gameObject;
-        GameObject YesBtn = boardObj.transform.FindChild("Yes").gameObject;
-        GameObject NoBtn = boardObj.transform.FindChild("No").gameObject;
+        boardObj.transform.Find("No").GetComponent<CloseSimpleBattle>().boardObj = boardObj;
+        GameObject battleArea = boardObj.transform.Find("Base").transform.Find("BattleArea").gameObject;
+        GameObject YesBtn = boardObj.transform.Find("Yes").gameObject;
+        GameObject NoBtn = boardObj.transform.Find("No").gameObject;
         GetComponent<Button>().enabled = false;
         NoBtn.GetComponent<CloseSimpleBattle>().katanaBtnObj = gameObject;
         boardObj.name = "BattleBoard";
@@ -132,16 +132,16 @@ public class EnemyAttackPop : MonoBehaviour {
         int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
         string myDaimyoName = daimyScript.getName(myDaimyoId,langId, senarioId);
         string enemyDaimyoName = daimyScript.getName(enemyDaimyoId,langId,senarioId);
-        GameObject baseObj = boardObj.transform.FindChild("Base").gameObject;
+        GameObject baseObj = boardObj.transform.Find("Base").gameObject;
         if (langId == 2) {
-            baseObj.transform.FindChild("Player").transform.FindChild("Name").GetComponent<TextMesh>().text = myDaimyoName;
-            baseObj.transform.FindChild("Enemy").transform.FindChild("Name").GetComponent<TextMesh>().text = enemyDaimyoName;
+            baseObj.transform.Find("Player").transform.Find("Name").GetComponent<TextMesh>().text = myDaimyoName;
+            baseObj.transform.Find("Enemy").transform.Find("Name").GetComponent<TextMesh>().text = enemyDaimyoName;
         }else {
-            baseObj.transform.FindChild("Player").transform.FindChild("Name").GetComponent<TextMesh>().text = myDaimyoName + "軍";
-            baseObj.transform.FindChild("Enemy").transform.FindChild("Name").GetComponent<TextMesh>().text = enemyDaimyoName + "軍";
+            baseObj.transform.Find("Player").transform.Find("Name").GetComponent<TextMesh>().text = myDaimyoName + "軍";
+            baseObj.transform.Find("Enemy").transform.Find("Name").GetComponent<TextMesh>().text = enemyDaimyoName + "軍";
         }
-        simpleHPCounter playerHPScript = baseObj.transform.FindChild("Player").transform.FindChild("Hei").GetComponent<simpleHPCounter>();
-        simpleHPCounter enemyHPScript = baseObj.transform.FindChild("Enemy").transform.FindChild("Hei").GetComponent<simpleHPCounter>();
+        simpleHPCounter playerHPScript = baseObj.transform.Find("Player").transform.Find("Hei").GetComponent<simpleHPCounter>();
+        simpleHPCounter enemyHPScript = baseObj.transform.Find("Enemy").transform.Find("Hei").GetComponent<simpleHPCounter>();
 
         playerHPScript.board = boardObj ;
         enemyHPScript.board = boardObj;

@@ -67,10 +67,10 @@ public class ShisyaSelect : MonoBehaviour {
 
 
 		baseObj = GameObject.Find ("Base").gameObject;
-		baseObj.transform.FindChild ("Title").GetComponent<Text> ().text = title;
-		baseObj.transform.FindChild ("Mask").transform.FindChild ("Image").GetComponent<Image> ().sprite = transform.FindChild ("Image").GetComponent<Image> ().sprite;
-		baseObj.transform.FindChild ("Comment").transform.FindChild ("Text").GetComponent<Text> ().text = serihu;
-		baseObj.transform.FindChild ("Name").GetComponent<Text> ().text = shisyaName;
+		baseObj.transform.Find ("Title").GetComponent<Text> ().text = title;
+		baseObj.transform.Find ("Mask").transform.Find ("Image").GetComponent<Image> ().sprite = transform.Find ("Image").GetComponent<Image> ().sprite;
+		baseObj.transform.Find ("Comment").transform.Find ("Text").GetComponent<Text> ().text = serihu;
+		baseObj.transform.Find ("Name").GetComponent<Text> ().text = shisyaName;
 
 		reqruiedItemView(shisyaId);
 
@@ -108,12 +108,12 @@ public class ShisyaSelect : MonoBehaviour {
 			GameObject ysBtn = GameObject.Find ("YesButton").gameObject;
 			ysBtn.GetComponent<Button> ().enabled = true;
 			ysBtn.GetComponent<Image> ().color = OKbtnColor;
-			ysBtn.transform.FindChild ("Text").GetComponent<Text> ().color = OKtxtColor;
+			ysBtn.transform.Find ("Text").GetComponent<Text> ().color = OKtxtColor;
 
 			GameObject noBtn = GameObject.Find ("NoButton").gameObject;
 			noBtn.GetComponent<Button>().enabled = false;
 			noBtn.GetComponent<Image> ().color = NGColor;
-			noBtn.transform.FindChild("Text").GetComponent<Text> ().color = NGColor;
+			noBtn.transform.Find("Text").GetComponent<Text> ().color = NGColor;
 
 			ysBtn.GetComponent<DoShisya> ().slot = gameObject;
 			noBtn.GetComponent<DoShisya> ().slot = gameObject;
@@ -124,12 +124,12 @@ public class ShisyaSelect : MonoBehaviour {
             GameObject ysBtn = GameObject.Find("YesButton").gameObject;
             ysBtn.GetComponent<Button>().enabled = true;
             ysBtn.GetComponent<Image>().color = OKbtnColor;
-            ysBtn.transform.FindChild("Text").GetComponent<Text>().color = OKtxtColor;
+            ysBtn.transform.Find("Text").GetComponent<Text>().color = OKtxtColor;
 
             GameObject noBtn = GameObject.Find("NoButton").gameObject;
             noBtn.GetComponent<Button>().enabled = true;
             noBtn.GetComponent<Image>().color = OKbtnColor;
-            noBtn.transform.FindChild("Text").GetComponent<Text>().color = OKtxtColor;
+            noBtn.transform.Find("Text").GetComponent<Text>().color = OKtxtColor;
 
             ysBtn.GetComponent<DoShisya>().slot = gameObject;
             noBtn.GetComponent<DoShisya>().slot = gameObject;
@@ -167,17 +167,17 @@ public class ShisyaSelect : MonoBehaviour {
 			//Item 1
 			string requried1 = shisya.getYesRequried1 (shisyaId);
 			if (requried1 == "no") {
-				baseObj.transform.FindChild ("Required1").gameObject.SetActive (false);
+				baseObj.transform.Find ("Required1").gameObject.SetActive (false);
 
 			} else if (requried1 == "random") {
-				baseObj.transform.FindChild ("Required1").gameObject.SetActive (true);
+				baseObj.transform.Find ("Required1").gameObject.SetActive (true);
 
 				if (moneyNo != 0) {
 					string item1Path = "Prefabs/Common/Sprite/money";
-					baseObj.transform.FindChild ("Required1").GetComponent<Image> ().sprite = 
+					baseObj.transform.Find ("Required1").GetComponent<Image> ().sprite = 
 						Resources.Load (item1Path, typeof(Sprite)) as Sprite;
 
-					baseObj.transform.FindChild ("Required1").transform.FindChild ("Value").GetComponent<Text> ().text = "x " + moneyNo.ToString ();
+					baseObj.transform.Find ("Required1").transform.Find ("Value").GetComponent<Text> ().text = "x " + moneyNo.ToString ();
 				} else {
 					Kahou kahou = new Kahou ();
 					string rank = kahou.getKahouRank(itemCd, int.Parse(itemId));
@@ -187,25 +187,25 @@ public class ShisyaSelect : MonoBehaviour {
 					} else {
 						kahouPath = "Prefabs/Kahou/" + itemCd + itemId;
 					}
-					baseObj.transform.FindChild ("Required1").GetComponent<Image> ().sprite = 
+					baseObj.transform.Find ("Required1").GetComponent<Image> ().sprite = 
 					Resources.Load (kahouPath, typeof(Sprite)) as Sprite;
 
-					baseObj.transform.FindChild ("Required1").transform.FindChild ("Value").GetComponent<Text> ().text = "x 1";
+					baseObj.transform.Find ("Required1").transform.Find ("Value").GetComponent<Text> ().text = "x 1";
 				}
 
 			} else if (requried1 == "randomKahou") {
-				baseObj.transform.FindChild ("Required1").gameObject.SetActive (true);
+				baseObj.transform.Find ("Required1").gameObject.SetActive (true);
 
 				//Kahou
 				string item1Path = "Prefabs/Common/Sprite/money";
-				baseObj.transform.FindChild ("Required1").GetComponent<Image> ().sprite = 
+				baseObj.transform.Find ("Required1").GetComponent<Image> ().sprite = 
 					Resources.Load (item1Path, typeof(Sprite)) as Sprite;
 				
-				baseObj.transform.FindChild ("Required1").transform.FindChild ("Value").GetComponent<Text> ().text = "x " + moneyNo.ToString();
+				baseObj.transform.Find ("Required1").transform.Find ("Value").GetComponent<Text> ().text = "x " + moneyNo.ToString();
 
 
 			} else {
-				baseObj.transform.FindChild ("Required1").gameObject.SetActive (true);
+				baseObj.transform.Find ("Required1").gameObject.SetActive (true);
 				List<string> requried1List = new List<string> ();
 
 				char[] delimiterChars = { ':' };
@@ -215,21 +215,21 @@ public class ShisyaSelect : MonoBehaviour {
 					requried1List.Add (requried1);
 				}
 				string item1Path = "Prefabs/Common/Sprite/" + requried1List [0];
-				baseObj.transform.FindChild ("Required1").GetComponent<Image> ().sprite = 
+				baseObj.transform.Find ("Required1").GetComponent<Image> ().sprite = 
 					Resources.Load (item1Path, typeof(Sprite)) as Sprite;
 
-				baseObj.transform.FindChild ("Required1").transform.FindChild("Value").GetComponent<Text>().text =  "x " + requried1List [1];
+				baseObj.transform.Find ("Required1").transform.Find("Value").GetComponent<Text>().text =  "x " + requried1List [1];
 			}
 
 
 			//Item 2
 			string requried2 = shisya.getYesRequried2 (shisyaId);
 			if (requried2 == "no") {
-				baseObj.transform.FindChild ("Required2").gameObject.SetActive (false);
+				baseObj.transform.Find ("Required2").gameObject.SetActive (false);
 
 			} else {
 
-				baseObj.transform.FindChild ("Required2").gameObject.SetActive (true);
+				baseObj.transform.Find ("Required2").gameObject.SetActive (true);
 				List<string> requried2List = new List<string> ();
 				char[] delimiterChars = { ':' };
 				if (requried2.Contains (":")) {
@@ -238,10 +238,10 @@ public class ShisyaSelect : MonoBehaviour {
 					requried2List.Add (requried2);
 				}
 				string item2Path = "Prefabs/Common/Sprite/" + requried2List [0];
-				baseObj.transform.FindChild ("Required2").GetComponent<Image> ().sprite = 
+				baseObj.transform.Find ("Required2").GetComponent<Image> ().sprite = 
 					Resources.Load (item2Path, typeof(Sprite)) as Sprite;
 
-				baseObj.transform.FindChild ("Required2").transform.FindChild("Value").GetComponent<Text>().text =  "x " + requried2List [1];
+				baseObj.transform.Find ("Required2").transform.Find("Value").GetComponent<Text>().text =  "x " + requried2List [1];
 			}
 
 
@@ -261,13 +261,13 @@ public class ShisyaSelect : MonoBehaviour {
 				if (GameObject.Find ("CyouteiSelectScrollView")) {
 					GameObject viewObj = GameObject.Find ("CyouteiSelectScrollView").gameObject;
 					viewObj.SetActive (true);
-					viewObj.transform.FindChild ("CyouteiContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
-					viewObj.transform.FindChild ("CyouteiContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
+					viewObj.transform.Find ("CyouteiContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
+					viewObj.transform.Find ("CyouteiContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
 					
 				} else {
 					CyouteiSelectScrollView.gameObject.SetActive (true);
-					CyouteiSelectScrollView.transform.FindChild ("CyouteiContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
-					CyouteiSelectScrollView.transform.FindChild ("CyouteiContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
+					CyouteiSelectScrollView.transform.Find ("CyouteiContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
+					CyouteiSelectScrollView.transform.Find ("CyouteiContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
 				}
 				if (GameObject.Find ("SyouninSelectScrollView")) {
 					GameObject.Find ("SyouninSelectScrollView").SetActive (false);
@@ -285,13 +285,13 @@ public class ShisyaSelect : MonoBehaviour {
 				if (GameObject.Find ("SyouninSelectScrollView")) {
 					GameObject viewObj = GameObject.Find ("SyouninSelectScrollView").gameObject;
 					viewObj.SetActive (true);
-					viewObj.transform.FindChild ("SyouninContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
-					viewObj.transform.FindChild ("SyouninContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
+					viewObj.transform.Find ("SyouninContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
+					viewObj.transform.Find ("SyouninContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
 
 				} else {
 					SyouninSelectScrollView.gameObject.SetActive (true);
-					SyouninSelectScrollView.transform.FindChild ("SyouninContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
-					SyouninSelectScrollView.transform.FindChild ("SyouninContent").transform.FindChild ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
+					SyouninSelectScrollView.transform.Find ("SyouninContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().Start ();
+					SyouninSelectScrollView.transform.Find ("SyouninContent").transform.Find ("Ge").GetComponent<ShisyaSyoukaijyoSelect> ().OnClick ();
 
 				}
 

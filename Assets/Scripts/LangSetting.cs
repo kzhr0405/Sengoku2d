@@ -37,11 +37,11 @@ public class LangSetting : MonoBehaviour {
         msgTransform.anchoredPosition = new Vector3(0, 0, 0);
         msgTransform.name = "LangSettingConfirm";
 
-        msg.transform.FindChild("YesButton").GetComponent<LangSettingConfirm>().back = back;
-        msg.transform.FindChild("YesButton").GetComponent<LangSettingConfirm>().langId = langId;
-        msg.transform.FindChild("YesButton").GetComponent<LangSettingConfirm>().confirm = msg;
-        msg.transform.FindChild("NoButton").GetComponent<LangSettingConfirm>().back = back;
-        msg.transform.FindChild("NoButton").GetComponent<LangSettingConfirm>().confirm = msg;
+        msg.transform.Find("YesButton").GetComponent<LangSettingConfirm>().back = back;
+        msg.transform.Find("YesButton").GetComponent<LangSettingConfirm>().langId = langId;
+        msg.transform.Find("YesButton").GetComponent<LangSettingConfirm>().confirm = msg;
+        msg.transform.Find("NoButton").GetComponent<LangSettingConfirm>().back = back;
+        msg.transform.Find("NoButton").GetComponent<LangSettingConfirm>().confirm = msg;
 
         
     }
@@ -54,9 +54,9 @@ public class LangSetting : MonoBehaviour {
         Color offTxtColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 175f / 255f);
 
         if (LangId == 1) {
-            GameObject offObj = parentObj.transform.FindChild("JPN").gameObject;
+            GameObject offObj = parentObj.transform.Find("JPN").gameObject;
             offObj.GetComponent<Image>().color = onBtnColor;
-            offObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+            offObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
             offObj.GetComponent<Button>().enabled = false;
 
             /*
@@ -66,15 +66,15 @@ public class LangSetting : MonoBehaviour {
             onObj.GetComponent<Button>().enabled = true;
             */
 
-            GameObject onObj2 = parentObj.transform.FindChild("ENG").gameObject;
+            GameObject onObj2 = parentObj.transform.Find("ENG").gameObject;
             onObj2.GetComponent<Image>().color = offBtnColor;
-            onObj2.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
+            onObj2.transform.Find("Text").GetComponent<Text>().color = offTxtColor;
             onObj2.GetComponent<Button>().enabled = true;
 
         }else if (LangId == 2) {
-            GameObject offObj = parentObj.transform.FindChild("ENG").gameObject;
+            GameObject offObj = parentObj.transform.Find("ENG").gameObject;
             offObj.GetComponent<Image>().color = onBtnColor;
-            offObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+            offObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
             offObj.GetComponent<Button>().enabled = false;
 
             /*
@@ -84,25 +84,25 @@ public class LangSetting : MonoBehaviour {
             onObj.GetComponent<Button>().enabled = true;
             */
 
-            GameObject onObj2 = parentObj.transform.FindChild("JPN").gameObject;
+            GameObject onObj2 = parentObj.transform.Find("JPN").gameObject;
             onObj2.GetComponent<Image>().color = offBtnColor;
-            onObj2.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
+            onObj2.transform.Find("Text").GetComponent<Text>().color = offTxtColor;
             onObj2.GetComponent<Button>().enabled = true;
 
         } else if (LangId == 3) {
-            GameObject offObj = parentObj.transform.FindChild("CHN").gameObject;
+            GameObject offObj = parentObj.transform.Find("CHN").gameObject;
             offObj.GetComponent<Image>().color = onBtnColor;
-            offObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+            offObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
             offObj.GetComponent<Button>().enabled = false;
 
-            GameObject onObj = parentObj.transform.FindChild("JPN").gameObject;
+            GameObject onObj = parentObj.transform.Find("JPN").gameObject;
             onObj.GetComponent<Image>().color = offBtnColor;
-            onObj.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
+            onObj.transform.Find("Text").GetComponent<Text>().color = offTxtColor;
             onObj.GetComponent<Button>().enabled = true;
 
-            GameObject onObj2 = parentObj.transform.FindChild("ENG").gameObject;
+            GameObject onObj2 = parentObj.transform.Find("ENG").gameObject;
             onObj2.GetComponent<Image>().color = offBtnColor;
-            onObj2.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
+            onObj2.transform.Find("Text").GetComponent<Text>().color = offTxtColor;
             onObj2.GetComponent<Button>().enabled = true;
 
         }

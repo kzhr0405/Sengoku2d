@@ -21,7 +21,7 @@ public class TabibitoSpdUp : MonoBehaviour {
                 if(GameObject.Find("SwithTown")) {
                     GameObject.Find("SwithTown").GetComponent<SwitchTown>().spdUpFlg = true;
                 }
-                GameObject.Find("Panel").transform.FindChild("Button").GetComponent<BackMain>().spdUpFlg = true;
+                GameObject.Find("Panel").transform.Find("Button").GetComponent<BackMain>().spdUpFlg = true;
 
                 audioSources[3].Play();
 

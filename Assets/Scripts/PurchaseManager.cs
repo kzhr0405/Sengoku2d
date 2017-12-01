@@ -212,12 +212,12 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 
 	void initUI (){
 
-		GameObject content = GameObject.Find ("ScrollView").transform.FindChild ("Content").gameObject;
+		GameObject content = GameObject.Find ("ScrollView").transform.Find ("Content").gameObject;
 		string path = "Prefabs/Purchase/Purchased";
 
 		if (PlayerPrefs.GetBool ("addJinkei1")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
-			GameObject btn = content.transform.FindChild ("addjinkei1").gameObject;
+			GameObject btn = content.transform.Find ("addjinkei1").gameObject;
 			icon.transform.SetParent(btn.transform);
 			icon.transform.localScale = new Vector2 (1, 1);
 			icon.transform.localPosition = new Vector3(0, 0, 0);
@@ -226,7 +226,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 		}
 		if (PlayerPrefs.GetBool("addJinkei2")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
-			GameObject btn = content.transform.FindChild ("addjinkei2").gameObject;
+			GameObject btn = content.transform.Find ("addjinkei2").gameObject;
 			icon.transform.SetParent(btn.transform);
 			icon.transform.localScale = new Vector2 (1, 1);
 			icon.transform.localPosition = new Vector3(0, 0, 0);
@@ -235,7 +235,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 		}
 		if (PlayerPrefs.GetBool("addJinkei3")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
-			GameObject btn = content.transform.FindChild ("addjinkei3").gameObject;
+			GameObject btn = content.transform.Find ("addjinkei3").gameObject;
 			icon.transform.SetParent(btn.transform);
 			icon.transform.SetParent(btn.transform);
 			icon.transform.localScale = new Vector2 (1, 1);
@@ -245,7 +245,7 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 		}
 		if (PlayerPrefs.GetBool("addJinkei4")) {
 			GameObject icon = Instantiate (Resources.Load (path)) as GameObject;
-			GameObject btn = content.transform.FindChild ("addjinkei4").gameObject;
+			GameObject btn = content.transform.Find ("addjinkei4").gameObject;
 			icon.transform.SetParent(btn.transform);
 			icon.transform.localScale = new Vector2 (1, 1);
 			icon.transform.localPosition = new Vector3(0, 0, 0);
@@ -256,10 +256,10 @@ public class PurchaseManager : MonoBehaviour, IStoreListener {
 		if (Application.platform != RuntimePlatform.IPhonePlayer &&
 		    Application.platform != RuntimePlatform.OSXPlayer &&
             Application.platform != RuntimePlatform.OSXEditor) {
-			GameObject btn = content.transform.FindChild ("restore").gameObject;
+			GameObject btn = content.transform.Find ("restore").gameObject;
 			btn.SetActive (false);
 		}else {
-            GameObject btn = content.transform.FindChild("restore").gameObject;
+            GameObject btn = content.transform.Find("restore").gameObject;
             btn.SetActive(true);
         }
 

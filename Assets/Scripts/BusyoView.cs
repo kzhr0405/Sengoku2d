@@ -55,23 +55,23 @@ public class BusyoView : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             if (shipId==1) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "High";
             }else if(shipId==2) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Mid";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Mid";
             }else if(shipId==3) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Low";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Low";
             }
         }else {
             if (shipId == 1) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "上";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "上";
             }else if (shipId == 2) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "中";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "中";
             }else if (shipId == 3) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "下";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "下";
             }
         }
         //Text Modification
-        GameObject text = Busyo.transform.FindChild ("Text").gameObject;
+        GameObject text = Busyo.transform.Find ("Text").gameObject;
 		text.GetComponent<Text> ().color = new Color(255,255,255,255);
 		RectTransform text_transform = text.GetComponent<RectTransform>();
 		text_transform.anchoredPosition3D = new Vector3 (-70,30,0);
@@ -79,7 +79,7 @@ public class BusyoView : MonoBehaviour {
 		text.transform.localScale = new Vector2 (0.2f,0.2f);
 
 		//Rank Text Modification
-		GameObject rank = Busyo.transform.FindChild ("Rank").gameObject;
+		GameObject rank = Busyo.transform.Find ("Rank").gameObject;
 		RectTransform rank_transform = rank.GetComponent<RectTransform>();
 		rank_transform.anchoredPosition3D = new Vector3 (20,-50,0);
 		rank_transform.sizeDelta = new Vector2( 200, 200);
@@ -156,7 +156,7 @@ public class BusyoView : MonoBehaviour {
                     Kanni kanni = new Kanni ();
 				    string kanniIkai = kanni.getIkai (kanniId);
 				    string kanniName = kanni.getKanni (kanniId);
-				    GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
+				    GameObject.Find ("StatusKanni").transform.Find ("Value").GetComponent<Text> ().text = kanniIkai + "\n" + kanniName;
 
 				    //Status
 				    string kanniTarget = kanni.getEffectTarget(kanniId);
@@ -170,16 +170,16 @@ public class BusyoView : MonoBehaviour {
 				    }
                 }else {
                     if (langId == 2) {
-                        GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "No Rank";
+                        GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "No Rank";
                     }else {
-                        GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
+                        GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
                     }
                 }
             } else {
                 if (langId == 2) {
-                    GameObject.Find ("StatusKanni").transform.FindChild ("Value").GetComponent<Text> ().text = "No Rank";
+                    GameObject.Find ("StatusKanni").transform.Find ("Value").GetComponent<Text> ().text = "No Rank";
                 }else {
-                    GameObject.Find("StatusKanni").transform.FindChild("Value").GetComponent<Text>().text = "官位無し";
+                    GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
                 }                
 			}
 
@@ -190,15 +190,15 @@ public class BusyoView : MonoBehaviour {
 				KuniInfo kuni = new KuniInfo();
 				string kuniName = kuni.getKuniName(kuniId,langId);
                 if (langId == 2) {
-                    GameObject.Find ("StatusJyosyu").transform.FindChild ("Value").GetComponent<Text> ().text = kuniName + "\nLord";
+                    GameObject.Find ("StatusJyosyu").transform.Find ("Value").GetComponent<Text> ().text = kuniName + "\nLord";
                 }else {
-                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = kuniName + "\n城主";
+                    GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = kuniName + "\n城主";
                 }
 			} else {
                 if (langId == 2) {
-                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "No Feud";
+                    GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "No Feud";
                 }else {
-                    GameObject.Find("StatusJyosyu").transform.FindChild("Value").GetComponent<Text>().text = "城無し";
+                    GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "城無し";
                 }
 			}
 
@@ -293,7 +293,7 @@ public class BusyoView : MonoBehaviour {
 			    GameObject chigyo = GameObject.Find ("ButtonCyouhei");
 			    if (ch_num < 20) {
 				    chigyo.GetComponent<Image> ().color = OKClorBtn;
-				    chigyo.transform.FindChild ("Text").GetComponent<Text> ().color = OKClorTxt;
+				    chigyo.transform.Find ("Text").GetComponent<Text> ().color = OKClorTxt;
 				    chigyo.GetComponent<Button>().enabled = true;
 
 				    chigyo.GetComponent<BusyoStatusButton> ().ch_type = ch_type;
@@ -305,13 +305,13 @@ public class BusyoView : MonoBehaviour {
 			    } else {
 				    //MAX
 				    chigyo.GetComponent<Image> ().color = NGClorBtn;
-				    chigyo.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+				    chigyo.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 				    chigyo.GetComponent<Button>().enabled = false;
 			    }
 			    GameObject kunren = GameObject.Find ("ButtonKunren");
 			    if (ch_lv < 100) {
 				    kunren.GetComponent<Image> ().color = OKClorBtn;
-				    kunren.transform.FindChild ("Text").GetComponent<Text> ().color = OKClorTxt;
+				    kunren.transform.Find ("Text").GetComponent<Text> ().color = OKClorTxt;
 				    kunren.GetComponent<Button>().enabled = true;
 
 				    kunren.GetComponent<BusyoStatusButton> ().ch_type = ch_type;
@@ -324,7 +324,7 @@ public class BusyoView : MonoBehaviour {
 			    } else {
 				    //MAX
 				    kunren.GetComponent<Image> ().color = NGClorBtn;
-				    kunren.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+				    kunren.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 				    kunren.GetComponent<Button>().enabled = false;
 			    }
             }

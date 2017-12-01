@@ -11,8 +11,8 @@ public class ReplaceSpriteNameRank : MonoBehaviour {
 		string busyoName = busyoInfoScript.getName (int.Parse(name), langId);
 		string busyoRank = busyoInfoScript.getRank (int.Parse(name));
 
-		transform.FindChild ("Text").GetComponent<Text> ().text = busyoName;
-		transform.FindChild ("Rank").GetComponent<Text> ().text = busyoRank;
+		transform.Find ("Text").GetComponent<Text> ().text = busyoName;
+		transform.Find ("Rank").GetComponent<Text> ().text = busyoRank;
 
         if (Application.loadedLevelName != "preKaisen") {
                 string imagePath = "Prefabs/Player/Sprite/unit" + name;
@@ -20,9 +20,9 @@ public class ReplaceSpriteNameRank : MonoBehaviour {
 			    Resources.Load (imagePath, typeof(Sprite)) as Sprite;
         }else {
 
-            transform.FindChild("Text").GetComponent<Text>().fontSize = 70;
+            transform.Find("Text").GetComponent<Text>().fontSize = 70;
             Color white = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f); //white
-            transform.FindChild("Text").GetComponent<Text>().color = white;
+            transform.Find("Text").GetComponent<Text>().color = white;
         }
 		
 	}

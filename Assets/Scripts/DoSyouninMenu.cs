@@ -71,12 +71,12 @@ public class DoSyouninMenu : MonoBehaviour {
 				msg.makeMessage (msg.getMessage(92));
 
 				//Close
-				GameObject.Find ("MenuKahou").transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+				GameObject.Find ("MenuKahou").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
-				GameObject btn = GameObject.Find ("SyouninBoard").transform.FindChild ("Kahou").gameObject;
+				GameObject btn = GameObject.Find ("SyouninBoard").transform.Find ("Kahou").gameObject;
 				btn.GetComponent<Button> ().enabled = false;
 				btn.GetComponent<Image> ().color = enableImageColor;
-				btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;
+				btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;
 
 
 			} else {
@@ -236,12 +236,12 @@ public class DoSyouninMenu : MonoBehaviour {
 				msg.makeMessage (msg.getMessage(93));
 				
 				//Close
-				GameObject.Find ("MenuBusshi").transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+				GameObject.Find ("MenuBusshi").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 				
-				GameObject btn = GameObject.Find ("SyouninBoard").transform.FindChild ("Busshi").gameObject;
+				GameObject btn = GameObject.Find ("SyouninBoard").transform.Find ("Busshi").gameObject;
 				btn.GetComponent<Button> ().enabled = false;
 				btn.GetComponent<Image> ().color = enableImageColor;
-				btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;
+				btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;
 				
 				
 			} else {
@@ -291,12 +291,12 @@ public class DoSyouninMenu : MonoBehaviour {
 				msg.makeMessage (msg.getMessage(94));
 				
 				//Close
-				GameObject.Find ("MenuRounin").transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+				GameObject.Find ("MenuRounin").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
-				GameObject btn = GameObject.Find ("SyouninBoard").transform.FindChild ("Youjinbou").gameObject;
+				GameObject btn = GameObject.Find ("SyouninBoard").transform.Find ("Youjinbou").gameObject;
 				btn.GetComponent<Button> ().enabled = false;
 				btn.GetComponent<Image> ().color = enableImageColor;
-				btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;
+				btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;
 			
 			} else {
 				audioSources [4].Play ();
@@ -338,12 +338,12 @@ public class DoSyouninMenu : MonoBehaviour {
 			}
 
 			//Close
-			GameObject.Find ("MenuYasen").transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			GameObject.Find ("MenuYasen").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
-			GameObject btn = GameObject.Find ("SyouninBoard").transform.FindChild ("Yasen").gameObject;
+			GameObject btn = GameObject.Find ("SyouninBoard").transform.Find ("Yasen").gameObject;
 			btn.GetComponent<Button> ().enabled = false;
 			btn.GetComponent<Image> ().color = enableImageColor;
-			btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;
+			btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;
 
 
 		
@@ -388,10 +388,10 @@ public class DoSyouninMenu : MonoBehaviour {
 
 				msg.makeMessage (txt);
 
-				GameObject btn = GameObject.Find ("SyouninBoard").transform.FindChild ("Gijyutsu").gameObject;
+				GameObject btn = GameObject.Find ("SyouninBoard").transform.Find ("Gijyutsu").gameObject;
 				btn.GetComponent<Button> ().enabled = false;
 				btn.GetComponent<Image> ().color = enableImageColor;
-				btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;
+				btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;
 
 			}else{
 				audioSources [4].Play ();
@@ -399,7 +399,7 @@ public class DoSyouninMenu : MonoBehaviour {
 			}
 
 			//Close
-			GameObject.Find ("MenuTech").transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			GameObject.Find ("MenuTech").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 			
 
 
@@ -453,10 +453,10 @@ public class DoSyouninMenu : MonoBehaviour {
 
 				msg.makeMessage (finalTxt);
 
-				GameObject btn = GameObject.Find ("SyouninBoard").transform.FindChild ("Cyakai").gameObject;
+				GameObject btn = GameObject.Find ("SyouninBoard").transform.Find ("Cyakai").gameObject;
 				btn.GetComponent<Button> ().enabled = false;
 				btn.GetComponent<Image> ().color = enableImageColor;
-				btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;
+				btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;
 
 			} else {
 				audioSources [4].Play ();
@@ -464,7 +464,7 @@ public class DoSyouninMenu : MonoBehaviour {
 			}
 
 			//Close
-			GameObject.Find ("MenuCyakai").transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			GameObject.Find ("MenuCyakai").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 		}
 
 	}

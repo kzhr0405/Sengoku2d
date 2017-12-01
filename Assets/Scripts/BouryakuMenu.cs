@@ -51,14 +51,14 @@ public class BouryakuMenu : MonoBehaviour {
 				GameObject obj= Instantiate (Resources.Load (path)) as GameObject;
 				obj.transform.SetParent (GameObject.Find ("smallBoard(Clone)").transform);
 				obj.transform.localScale = new Vector3 (1, 1, 1);
-				GameObject btn = obj.transform.FindChild("DoBouryakuBtn").gameObject;
+				GameObject btn = obj.transform.Find("DoBouryakuBtn").gameObject;
 				btn.name = "DoCyouhouBtn";
 
                 if (langId == 2) {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "Spy";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "Spy";
                 }
                 else {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "諜報";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "諜報";
                 }
                 shinobiScroll(obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
@@ -90,14 +90,14 @@ public class BouryakuMenu : MonoBehaviour {
 					GameObject obj = Instantiate (Resources.Load (path)) as GameObject;
 					obj.transform.SetParent (GameObject.Find ("smallBoard(Clone)").transform);
 					obj.transform.localScale = new Vector3 (1, 1, 1);
-					GameObject btn = obj.transform.FindChild ("DoBouryakuBtn").gameObject;
+					GameObject btn = obj.transform.Find ("DoBouryakuBtn").gameObject;
 					btn.name = "DoRyugenBtn";
 
                     if (langId == 2) {
-                        btn.transform.FindChild("Text").GetComponent<Text>().text = "Bad Rumor";
+                        btn.transform.Find("Text").GetComponent<Text>().text = "Bad Rumor";
                     }
                     else {
-                        btn.transform.FindChild("Text").GetComponent<Text>().text = "流言";
+                        btn.transform.Find("Text").GetComponent<Text>().text = "流言";
                     }
                     shinobiScroll (obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
@@ -119,14 +119,14 @@ public class BouryakuMenu : MonoBehaviour {
 				GameObject obj= Instantiate (Resources.Load (path)) as GameObject;
 				obj.transform.SetParent (GameObject.Find ("smallBoard(Clone)").transform);
 				obj.transform.localScale = new Vector3 (1, 1, 1);
-				GameObject btn = obj.transform.FindChild("DoBouryakuBtn").gameObject;
+				GameObject btn = obj.transform.Find("DoBouryakuBtn").gameObject;
 				btn.name = "DoGoudatsuBtn";
 
                 if (langId == 2) {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "Theft";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "Theft";
                 }
                 else {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "強奪";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "強奪";
                 }
                 shinobiScroll(obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
@@ -167,14 +167,14 @@ public class BouryakuMenu : MonoBehaviour {
 					KuniInfo kuni = new KuniInfo();
 					string kuniName = kuni.getKuniName(dstKuni,langId);
                     if (langId == 2) {
-                        obj.transform.FindChild("GunzeiInfo").transform.FindChild("DaimyoNameValue").GetComponent<Text>().text = "To "+ kuniName;
+                        obj.transform.Find("GunzeiInfo").transform.Find("DaimyoNameValue").GetComponent<Text>().text = "To "+ kuniName;
                     }else {
-                        obj.transform.FindChild("GunzeiInfo").transform.FindChild("DaimyoNameValue").GetComponent<Text>().text = kuniName + "に進軍中";
+                        obj.transform.Find("GunzeiInfo").transform.Find("DaimyoNameValue").GetComponent<Text>().text = kuniName + "に進軍中";
                     }
 
-                    obj.transform.FindChild("Heiryoku").transform.FindChild("HeiryokuValue").GetComponent<Text>().text = hei.ToString();
+                    obj.transform.Find("Heiryoku").transform.Find("HeiryokuValue").GetComponent<Text>().text = hei.ToString();
 
-					GameObject btn = obj.transform.FindChild("DoGihouBtn").gameObject;
+					GameObject btn = obj.transform.Find("DoGihouBtn").gameObject;
 
 					shinobiScroll(obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
@@ -197,15 +197,15 @@ public class BouryakuMenu : MonoBehaviour {
 		GameObject obj= Instantiate (Resources.Load (path)) as GameObject;
 		obj.transform.SetParent (GameObject.Find ("smallBoard(Clone)").transform);
 		obj.transform.localScale = new Vector3 (1, 1, 1);
-		GameObject btn = obj.transform.FindChild("DoBouryakuBtn").gameObject;
+		GameObject btn = obj.transform.Find("DoBouryakuBtn").gameObject;
 		btn.name = btnName;
 
 		if (btnName == "DoRyugenBtn") {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
-                btn.transform.FindChild ("Text").GetComponent<Text> ().text = "Misreport";
+                btn.transform.Find ("Text").GetComponent<Text> ().text = "Misreport";
             }else {
-                btn.transform.FindChild("Text").GetComponent<Text>().text = "流言";
+                btn.transform.Find("Text").GetComponent<Text>().text = "流言";
             }
 		}
 	}
@@ -215,7 +215,7 @@ public class BouryakuMenu : MonoBehaviour {
 		string slotPath = "Prefabs/Map/common/ShinobiSlot";
 		string shinobiItemPath = "Prefabs/Item/Shinobi/Shinobi";
 		
-		GameObject content = obj.transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+		GameObject content = obj.transform.Find("ScrollView").transform.Find("Content").gameObject;
 		bool clickFlg = false;
         int langId = PlayerPrefs.GetInt("langId");
         if (shinobiGe!=0){
@@ -231,16 +231,16 @@ public class BouryakuMenu : MonoBehaviour {
 			Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = lowColor;
             if (langId == 2) {
-                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
+                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Low";
             } else {
-                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
+                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
             }
-			shinobi.transform.FindChild("Qty").GetComponent<Text>().text = shinobiGe.ToString();
+			shinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiGe.ToString();
 
-            RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
+            RectTransform shinobiTransform = shinobi.transform.Find("Shinobi").GetComponent<RectTransform> ();
             shinobiTransform.sizeDelta = new Vector2( 155, 190);
 
-            GameObject Qty = shinobi.transform.FindChild("Qty").gameObject;
+            GameObject Qty = shinobi.transform.Find("Qty").gameObject;
             Qty.GetComponent<Text>().fontSize = 150;
             Qty.transform.localPosition = new Vector2(-40,-60);
 
@@ -266,16 +266,16 @@ public class BouryakuMenu : MonoBehaviour {
 			Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = midColor;
             if (langId == 2) {
-                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Mid";
+                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Mid";
             }
             else {
-                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
+                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
             }
-            shinobi.transform.FindChild("Qty").GetComponent<Text>().text = shinobiCyu.ToString();
+            shinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiCyu.ToString();
 			
-			RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
+			RectTransform shinobiTransform = shinobi.transform.Find("Shinobi").GetComponent<RectTransform> ();
 			shinobiTransform.sizeDelta = new Vector2( 155, 190);
-            GameObject Qty = shinobi.transform.FindChild("Qty").gameObject;
+            GameObject Qty = shinobi.transform.Find("Qty").gameObject;
             Qty.GetComponent<Text>().fontSize = 150;
             Qty.transform.localPosition = new Vector2(-40, -60);
 
@@ -303,16 +303,16 @@ public class BouryakuMenu : MonoBehaviour {
 			Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = highColor;
             if (langId == 2) {
-                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "High";
+                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "High";
             }
             else {
-                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
+                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
             }
-            shinobi.transform.FindChild("Qty").GetComponent<Text>().text = shinobiJyo.ToString();
+            shinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiJyo.ToString();
 			
-			RectTransform shinobiTransform = shinobi.transform.FindChild("Shinobi").GetComponent<RectTransform> ();
+			RectTransform shinobiTransform = shinobi.transform.Find("Shinobi").GetComponent<RectTransform> ();
 			shinobiTransform.sizeDelta = new Vector2( 155, 190);
-            GameObject Qty = shinobi.transform.FindChild("Qty").gameObject;
+            GameObject Qty = shinobi.transform.Find("Qty").gameObject;
             Qty.GetComponent<Text>().fontSize = 150;
             Qty.transform.localPosition = new Vector2(-40, -60);
 
@@ -347,7 +347,7 @@ public class BouryakuMenu : MonoBehaviour {
 		foreach (Transform n in kamon.transform) {
 			n.gameObject.GetComponent<Image>().enabled = false;
 			if(n.name == "Doumei"){
-				n.FindChild("Text").GetComponent<Text>().enabled = false;
+				n.Find("Text").GetComponent<Text>().enabled = false;
 			}
 		}
 		foreach (Transform n in daimyoName.transform) {
@@ -361,26 +361,26 @@ public class BouryakuMenu : MonoBehaviour {
 		}
 		
 		GameObject newMenu = GameObject.Find ("return").GetComponent<MenuReturn>().NewMenu;
-		GameObject CyouhouBtn = newMenu.transform.FindChild ("Cyouhou").gameObject;
-		GameObject RyugenBtn = newMenu.transform.FindChild ("Ryugen").gameObject;
-		GameObject GoudatsuBtn = newMenu.transform.FindChild ("Goudatsu").gameObject;
-		GameObject GihouBtn = newMenu.transform.FindChild ("Gihou").gameObject;
+		GameObject CyouhouBtn = newMenu.transform.Find ("Cyouhou").gameObject;
+		GameObject RyugenBtn = newMenu.transform.Find ("Ryugen").gameObject;
+		GameObject GoudatsuBtn = newMenu.transform.Find ("Goudatsu").gameObject;
+		GameObject GihouBtn = newMenu.transform.Find ("Gihou").gameObject;
 		
 		CyouhouBtn.GetComponent<Image> ().enabled = false;
 		CyouhouBtn.GetComponent<Button> ().enabled = false;
-		CyouhouBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		CyouhouBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		RyugenBtn.GetComponent<Image> ().enabled = false;
 		RyugenBtn.GetComponent<Button> ().enabled = false;
-		RyugenBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		RyugenBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		GoudatsuBtn.GetComponent<Image> ().enabled = false;
 		GoudatsuBtn.GetComponent<Button> ().enabled = false;
-		GoudatsuBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		GoudatsuBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		GihouBtn.GetComponent<Image> ().enabled = false;
 		GihouBtn.GetComponent<Button> ().enabled = false;
-		GihouBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		GihouBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 
 		
 	}
@@ -401,7 +401,7 @@ public class BouryakuMenu : MonoBehaviour {
 		foreach (Transform n in kamon.transform) {
 			n.gameObject.GetComponent<Image>().enabled = true;
 			if(n.name == "Doumei"){
-				n.FindChild("Text").GetComponent<Text>().enabled = true;
+				n.Find("Text").GetComponent<Text>().enabled = true;
 			}
 		}
 		foreach (Transform n in daimyoName.transform) {
@@ -415,26 +415,26 @@ public class BouryakuMenu : MonoBehaviour {
 		}
 		
 		GameObject newMenu = GameObject.Find ("return").GetComponent<MenuReturn>().NewMenu;
-		GameObject CyouhouBtn = newMenu.transform.FindChild ("Cyouhou").gameObject;
-		GameObject RyugenBtn = newMenu.transform.FindChild ("Ryugen").gameObject;
-		GameObject GoudatsuBtn = newMenu.transform.FindChild ("Goudatsu").gameObject;
-		GameObject GihouBtn = newMenu.transform.FindChild ("Gihou").gameObject;
+		GameObject CyouhouBtn = newMenu.transform.Find ("Cyouhou").gameObject;
+		GameObject RyugenBtn = newMenu.transform.Find ("Ryugen").gameObject;
+		GameObject GoudatsuBtn = newMenu.transform.Find ("Goudatsu").gameObject;
+		GameObject GihouBtn = newMenu.transform.Find ("Gihou").gameObject;
 		
 		CyouhouBtn.GetComponent<Image> ().enabled = true;
 		CyouhouBtn.GetComponent<Button> ().enabled = true;
-		CyouhouBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		CyouhouBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 		RyugenBtn.GetComponent<Image> ().enabled = true;
 		RyugenBtn.GetComponent<Button> ().enabled = true;
-		RyugenBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		RyugenBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 		GoudatsuBtn.GetComponent<Image> ().enabled = true;
 		GoudatsuBtn.GetComponent<Button> ().enabled = true;
-		GoudatsuBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true	;
+		GoudatsuBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true	;
 		
 		GihouBtn.GetComponent<Image> ().enabled = true;
 		GihouBtn.GetComponent<Button> ().enabled = true;
-		GihouBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		GihouBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 		
 		
@@ -443,26 +443,26 @@ public class BouryakuMenu : MonoBehaviour {
 	public void OffBouryakuMenuList(){
 
 		GameObject newMenu = GameObject.Find ("return").GetComponent<MenuReturn>().NewMenu;
-		GameObject CyouhouBtn = newMenu.transform.FindChild ("Cyouhou").gameObject;
-		GameObject RyugenBtn = newMenu.transform.FindChild ("Ryugen").gameObject;
-		GameObject GoudatsuBtn = newMenu.transform.FindChild ("Goudatsu").gameObject;
-		GameObject GihouBtn = newMenu.transform.FindChild ("Gihou").gameObject;
+		GameObject CyouhouBtn = newMenu.transform.Find ("Cyouhou").gameObject;
+		GameObject RyugenBtn = newMenu.transform.Find ("Ryugen").gameObject;
+		GameObject GoudatsuBtn = newMenu.transform.Find ("Goudatsu").gameObject;
+		GameObject GihouBtn = newMenu.transform.Find ("Gihou").gameObject;
 		
 		CyouhouBtn.GetComponent<Image> ().enabled = false;
 		CyouhouBtn.GetComponent<Button> ().enabled = false;
-		CyouhouBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		CyouhouBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		RyugenBtn.GetComponent<Image> ().enabled = false;
 		RyugenBtn.GetComponent<Button> ().enabled = false;
-		RyugenBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		RyugenBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		GoudatsuBtn.GetComponent<Image> ().enabled = false;
 		GoudatsuBtn.GetComponent<Button> ().enabled = false;
-		GoudatsuBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		GoudatsuBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		GihouBtn.GetComponent<Image> ().enabled = false;
 		GihouBtn.GetComponent<Button> ().enabled = false;
-		GihouBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		GihouBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		
 	}

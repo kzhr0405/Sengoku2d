@@ -54,8 +54,8 @@ public class NanbanProductSelect : MonoBehaviour {
 
         //View
         if (itemTPCd != "") {
-            Exp.transform.FindChild("NanbanExpValue").GetComponent<Text>().text = itemTPExp;
-            Money.transform.FindChild("moneyValue").GetComponent<Text>().text = price.ToString();
+            Exp.transform.Find("NanbanExpValue").GetComponent<Text>().text = itemTPExp;
+            Money.transform.Find("moneyValue").GetComponent<Text>().text = price.ToString();
             BuyBtn.GetComponent<TabibitoItemGetter>().itemCd = itemTPCd;
             BuyBtn.GetComponent<TabibitoItemGetter>().itemId = itemTPId;
             BuyBtn.GetComponent<TabibitoItemGetter>().itemQty = itemTPQty;
@@ -63,16 +63,16 @@ public class NanbanProductSelect : MonoBehaviour {
 
         }
         else if (itemSakuCd != "") {
-            Exp.transform.FindChild("NanbanExpValue").GetComponent<Text>().text = itemSakuExp;
-            Money.transform.FindChild("moneyValue").GetComponent<Text>().text = price.ToString();
+            Exp.transform.Find("NanbanExpValue").GetComponent<Text>().text = itemSakuExp;
+            Money.transform.Find("moneyValue").GetComponent<Text>().text = price.ToString();
             BuyBtn.GetComponent<TabibitoItemGetter>().itemCd = itemSakuCd;
             BuyBtn.GetComponent<TabibitoItemGetter>().itemId = itemSakuId;
             BuyBtn.GetComponent<TabibitoItemGetter>().paiedMoney = (int)price;
 
         }
         else if (itemKahouCd != "") {
-            Exp.transform.FindChild("NanbanExpValue").GetComponent<Text>().text = itemKahouExp;
-            Money.transform.FindChild("moneyValue").GetComponent<Text>().text = price.ToString();
+            Exp.transform.Find("NanbanExpValue").GetComponent<Text>().text = itemKahouExp;
+            Money.transform.Find("moneyValue").GetComponent<Text>().text = price.ToString();
             BuyBtn.GetComponent<TabibitoItemGetter>().itemCd = itemKahouCd;
             BuyBtn.GetComponent<TabibitoItemGetter>().itemId = itemKahouId;
             BuyBtn.GetComponent<TabibitoItemGetter>().paiedMoney = (int)price;

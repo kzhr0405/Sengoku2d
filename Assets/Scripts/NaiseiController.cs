@@ -97,7 +97,7 @@ public class NaiseiController : MonoBehaviour {
 			    //Ninmei Button
 			    GameObject btn = GameObject.Find ("Ninmei").gameObject;
 			    btn.GetComponent<Ninmei>().kaininFlg = true;
-			    btn.transform.FindChild("NinmeiText").GetComponent<Text>().text = msg.getMessage(114);
+			    btn.transform.Find("NinmeiText").GetComponent<Text>().text = msg.getMessage(114);
 			    btn.GetComponent<Ninmei>().jyosyuId = jyosyuId;
 			    btn.GetComponent<Ninmei>().jyosyuName = jyosyuName;
             }
@@ -113,7 +113,7 @@ public class NaiseiController : MonoBehaviour {
 			//Ninmei Button
 			GameObject btn = GameObject.Find ("Ninmei").gameObject;
 			btn.GetComponent<Ninmei>().kaininFlg = false;
-			btn.transform.FindChild("NinmeiText").GetComponent<Text>().text = msg.getMessage(115);
+			btn.transform.Find("NinmeiText").GetComponent<Text>().text = msg.getMessage(115);
 		}
 
 		GameObject.Find ("StageNameValue").GetComponent<Text> ().text = title;
@@ -152,13 +152,13 @@ public class NaiseiController : MonoBehaviour {
 		isSeaFlg = kuni.getKuniIsSeaFlg (activeKuniId);
 		GameObject otherObj = GameObject.Find ("Other").gameObject;
 		if (isSeaFlg) {
-			if(otherObj.transform.FindChild("treeUpper") != null){
-				otherObj.transform.FindChild("treeUpper").gameObject.SetActive(false);
+			if(otherObj.transform.Find("treeUpper") != null){
+				otherObj.transform.Find("treeUpper").gameObject.SetActive(false);
 			}
 		} else {
-			if(otherObj.transform.FindChild("sea1") != null){
-				otherObj.transform.FindChild("sea1").gameObject.SetActive(false);
-				otherObj.transform.FindChild("sea2").gameObject.SetActive(false);
+			if(otherObj.transform.Find("sea1") != null){
+				otherObj.transform.Find("sea1").gameObject.SetActive(false);
+				otherObj.transform.Find("sea2").gameObject.SetActive(false);
 			}
 		}
 
@@ -435,11 +435,11 @@ public class NaiseiController : MonoBehaviour {
 
 		total = (boubi + bukkyo + kirisuto + bunka)/10;
 		remain = total - counter;
-		tabibitoObj.transform.FindChild ("TabibitoMaxValue").GetComponent<Text> ().text = total.ToString ();
+		tabibitoObj.transform.Find ("TabibitoMaxValue").GetComponent<Text> ().text = total.ToString ();
         if(remain<0) {
             remain = 0;
         }
-		tabibitoObj.transform.FindChild ("TabibitoCountDownValue").GetComponent<Text> ().text = remain.ToString ();
+		tabibitoObj.transform.Find ("TabibitoCountDownValue").GetComponent<Text> ().text = remain.ToString ();
 
 
 
@@ -452,13 +452,13 @@ public class NaiseiController : MonoBehaviour {
         //Tutorial
         if (Application.loadedLevelName == "tutorialNaisei" && tutorialId == 3) {
             GameObject tBtnObj = GameObject.Find("tButton").gameObject;
-            Destroy(tBtnObj.transform.FindChild("12").gameObject);
+            Destroy(tBtnObj.transform.Find("12").gameObject);
 
             GameObject NaiseiViewObj = GameObject.Find("NaiseiView").gameObject;
-            NaiseiViewObj.transform.FindChild("12").transform.SetParent(tBtnObj.transform);
+            NaiseiViewObj.transform.Find("12").transform.SetParent(tBtnObj.transform);
 
             if(tutorialId==3) {
-                TextController txtScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+                TextController txtScript = GameObject.Find("TextBoard").transform.Find("Text").GetComponent<TextController>();
                 txtScript.SetText(3);
                 txtScript.SetNextLine();
                 txtScript.tutorialId = 3;
@@ -613,7 +613,7 @@ public class NaiseiController : MonoBehaviour {
 					
 					        //Change Label
 					        remain = remain -1;
-					        tabibitoObj.transform.FindChild ("TabibitoCountDownValue").GetComponent<Text> ().text = remain.ToString ();
+					        tabibitoObj.transform.Find ("TabibitoCountDownValue").GetComponent<Text> ().text = remain.ToString ();
 									
 					        //Reset Timer
 					        tabibitoSec = tabibitoSecMst;
@@ -1092,7 +1092,7 @@ public class NaiseiController : MonoBehaviour {
 		string startPoint = startPointList[rdmId2];
 
 		GameObject tabibitoView = GameObject.Find ("TabibitoView").gameObject;
-		GameObject startPointObj = tabibitoView.transform.FindChild(startPoint).gameObject;
+		GameObject startPointObj = tabibitoView.transform.Find(startPoint).gameObject;
 
 		//Instance
 		int grpId = 0;

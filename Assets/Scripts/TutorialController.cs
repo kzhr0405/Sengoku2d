@@ -20,8 +20,8 @@ public class TutorialController : MonoBehaviour {
             //###To Naisei###
             //1. Kamon & Kuni Focus
             GameObject tButtonObj = GameObject.Find("tButton").gameObject;
-            GameObject.Find("KuniMap").transform.FindChild("1").SetParent(tButtonObj.transform);
-            GameObject.Find("KuniIconView").transform.FindChild("1").SetParent(tButtonObj.transform);
+            GameObject.Find("KuniMap").transform.Find("1").SetParent(tButtonObj.transform);
+            GameObject.Find("KuniIconView").transform.Find("1").SetParent(tButtonObj.transform);
 
             Vector2 vect = new Vector2(20, 20);
             GameObject animObj = SetPointer(tButtonObj, vect);
@@ -29,13 +29,13 @@ public class TutorialController : MonoBehaviour {
         }else if(tutorialId ==2) {
             //2. Naise Shikichi Focus
             GameObject tButtonObj = GameObject.Find("tButton").gameObject;
-            GameObject.Find("NaiseiView").transform.FindChild("12").SetParent(tButtonObj.transform);
+            GameObject.Find("NaiseiView").transform.Find("12").SetParent(tButtonObj.transform);
             Vector2 vect = new Vector2(260, 150);
             GameObject animObj = SetPointer(tButtonObj, vect);
             animObj.transform.localScale = new Vector2(200,200);
         }else if (tutorialId == 3) {
             //3. Back to Main Focus
-            GameObject buttonObj = GameObject.Find("Naisei").transform.FindChild("Panel").transform.FindChild("Button").gameObject;
+            GameObject buttonObj = GameObject.Find("Naisei").transform.Find("Panel").transform.Find("Button").gameObject;
             buttonObj.transform.SetParent(GameObject.Find("tButton").transform);
             Vector2 vect = new Vector2(0, 100);
             GameObject animObj = SetPointer(buttonObj, vect);
@@ -69,7 +69,7 @@ public class TutorialController : MonoBehaviour {
             animObj.transform.localScale = new Vector2(200, 200);
         }else if (tutorialId == 8) {
             //8. Back to Main button
-            GameObject buttonObj = GameObject.Find("Panel").transform.FindChild("Button").gameObject;
+            GameObject buttonObj = GameObject.Find("Panel").transform.Find("Button").gameObject;
             buttonObj.transform.SetParent(GameObject.Find("tButton").transform);
             Vector2 vect = new Vector2(0, 100);
             GameObject animObj = SetPointer(buttonObj, vect);
@@ -92,8 +92,12 @@ public class TutorialController : MonoBehaviour {
         else if (tutorialId == 12) {
             //jinkei
             GameObject tBack = GameObject.Find("tBack").gameObject;
-            GameObject sourceObj = GameObject.Find("ScrollView").transform.FindChild("Content").transform.FindChild("Slot").gameObject;
+            GameObject sourceObj = GameObject.Find("ScrollView").gameObject;
+            Destroy(sourceObj.GetComponent<Slot>());
+            Color backColor = new Color(80f / 255f, 80f / 255f, 80f / 255f, 140f / 255f);
+            sourceObj.GetComponent<Image>().color = backColor;
             sourceObj.transform.SetParent(tBack.transform);
+            sourceObj.transform.SetSiblingIndex(0);
 
             GameObject jinkeiView = GameObject.Find("JinkeiView").gameObject;
             GameObject copied = Object.Instantiate(jinkeiView) as GameObject;
@@ -101,7 +105,7 @@ public class TutorialController : MonoBehaviour {
             copied.name = "copiedJinkeiView";
             foreach (Transform chld in copied.transform) {
                 if (chld.name == "Slot12") {
-                    Destroy(chld.transform.FindChild("19").gameObject);
+                    Destroy(chld.transform.Find("19").gameObject);
                 }
                 if (chld.name != "Slot13") {
                     chld.gameObject.SetActive(false);
@@ -111,7 +115,7 @@ public class TutorialController : MonoBehaviour {
             //Set Arrow
             string arrowPath = "Prefabs/PostKassen/Arrow";
             GameObject arrowObj = Instantiate(Resources.Load(arrowPath)) as GameObject;
-            arrowObj.transform.SetParent(sourceObj.transform);
+            arrowObj.transform.SetParent(sourceObj.transform.Find("Content").transform.Find("Slot").transform);
             arrowObj.transform.localPosition = new Vector2(120, 0);
             arrowObj.transform.localScale = new Vector2(100, 100);
             arrowObj.transform.Rotate(new Vector3(0f, 0f, -30f));
@@ -155,7 +159,7 @@ public class TutorialController : MonoBehaviour {
             }
 
             PlayerPrefs.SetInt("tutorialId", tutorialId);
-            TextController textScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+            TextController textScript = GameObject.Find("TextBoard").transform.Find("Text").GetComponent<TextController>();
             tutorialId = tutorialId + 1;
             textScript.tutorialId = tutorialId;
             textScript.actOnFlg = false;

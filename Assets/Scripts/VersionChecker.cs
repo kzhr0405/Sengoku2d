@@ -42,7 +42,7 @@ public class VersionChecker : MonoBehaviour {
     }
 
     IEnumerator VersionCheckIOS() {
-        var url = string.Format("https://itunes.apple.com/lookup?bundleId={0}", Application.bundleIdentifier);
+        var url = string.Format("https://itunes.apple.com/lookup?bundleId={0}", Application.identifier);
         WWW www = new WWW(url);
         yield return www;
 
@@ -58,7 +58,7 @@ public class VersionChecker : MonoBehaviour {
     }
 
     IEnumerator VersionCheckAndroid() {
-        var url = string.Format("https://play.google.com/store/apps/details?id={0}", Application.bundleIdentifier);
+        var url = string.Format("https://play.google.com/store/apps/details?id={0}", Application.identifier);
 
         WWW www = new WWW(url);
         yield return www;

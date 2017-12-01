@@ -86,34 +86,34 @@ public class TouyouSpecialController : MonoBehaviour {
         heisyuObj.transform.SetParent(heisyuBase.transform,false);
         heisyuObj.transform.localScale = new Vector3(0.35f,0.35f,0);
         heisyuObj.transform.localPosition = new Vector3(270, 110, 0);
-        Destroy(heisyuObj.transform.FindChild("CyouheiRank").gameObject);
+        Destroy(heisyuObj.transform.Find("CyouheiRank").gameObject);
         
         List<int> SrankHeisyuList = getSrankHeisyuList(targetHeisyu);
         int rdmHeisyuId1 = UnityEngine.Random.Range(0, SrankHeisyuList.Count);
         int heisyu1 = SrankHeisyuList[rdmHeisyuId1];
         if (SrankHeisyuList.Count > 1) SrankHeisyuList.Remove(heisyu1);
         string heisyuPath1 = "Prefabs/Player/Sprite/unit" + heisyu1.ToString();
-        heisyuBase.transform.FindChild("1").GetComponent<Image>().sprite =
+        heisyuBase.transform.Find("1").GetComponent<Image>().sprite =
             Resources.Load(heisyuPath1, typeof(Sprite)) as Sprite;
         int rdmHeisyuId2 = UnityEngine.Random.Range(0, SrankHeisyuList.Count);
         int heisyu2 = SrankHeisyuList[rdmHeisyuId2];
         string heisyuPath2 = "Prefabs/Player/Sprite/unit" + heisyu2.ToString();
-        heisyuBase.transform.FindChild("2").GetComponent<Image>().sprite =
+        heisyuBase.transform.Find("2").GetComponent<Image>().sprite =
             Resources.Load(heisyuPath2, typeof(Sprite)) as Sprite;
         
         //daimyo
         //1
         GameObject daimyo = GameObject.Find("daimyo").gameObject;
         string myDaimyoStatusPath1 = "Prefabs/Kamon/MyDaimyoKamon/" + targetDaimyoId1.ToString();        
-        daimyo.transform.FindChild("Kamon1").GetComponent<Image>().sprite =
+        daimyo.transform.Find("Kamon1").GetComponent<Image>().sprite =
             Resources.Load(myDaimyoStatusPath1, typeof(Sprite)) as Sprite;
         //2
         string myDaimyoStatusPath2 = "Prefabs/Kamon/MyDaimyoKamon/" + targetDaimyoId2.ToString();
-        daimyo.transform.FindChild("Kamon2").GetComponent<Image>().sprite =
+        daimyo.transform.Find("Kamon2").GetComponent<Image>().sprite =
             Resources.Load(myDaimyoStatusPath2, typeof(Sprite)) as Sprite;
         //3
         string myDaimyoStatusPath3 = "Prefabs/Kamon/MyDaimyoKamon/" + targetDaimyoId3.ToString();
-        daimyo.transform.FindChild("Kamon3").GetComponent<Image>().sprite =
+        daimyo.transform.Find("Kamon3").GetComponent<Image>().sprite =
             Resources.Load(myDaimyoStatusPath3, typeof(Sprite)) as Sprite;
 
 
@@ -123,13 +123,13 @@ public class TouyouSpecialController : MonoBehaviour {
         int busyoId1 = SrankBusyoList[rdmDaimyoId1];
         if (SrankBusyoList.Count > 1) SrankBusyoList.Remove(busyoId1);
         string busyoPath1 = "Prefabs/Player/Sprite/unit" + busyoId1.ToString();
-        daimyo.transform.FindChild("1").GetComponent<Image>().sprite =
+        daimyo.transform.Find("1").GetComponent<Image>().sprite =
             Resources.Load(busyoPath1, typeof(Sprite)) as Sprite;
 
         int rdmDaimyoId2 = UnityEngine.Random.Range(0, SrankBusyoList.Count);
         int busyoId2 = SrankBusyoList[rdmDaimyoId2];
         string busyoPath2 = "Prefabs/Player/Sprite/unit" + busyoId2.ToString();
-        daimyo.transform.FindChild("2").GetComponent<Image>().sprite =
+        daimyo.transform.Find("2").GetComponent<Image>().sprite =
             Resources.Load(busyoPath2, typeof(Sprite)) as Sprite;
 
         //Initial Display
@@ -137,7 +137,7 @@ public class TouyouSpecialController : MonoBehaviour {
         string specialGacyaNameHst = PlayerPrefs.GetString("specialGacyaNameHst");
         if (specialBusyoHst != "" && specialBusyoHst != null) {
             GameObject GacyaObj = initialSet();
-            Destroy(GacyaObj.transform.FindChild("Anim").gameObject);            
+            Destroy(GacyaObj.transform.Find("Anim").gameObject);            
             setSpecialBusyoHst(specialBusyoHst, langId, GacyaObj, specialGacyaNameHst);            
         }
     }
@@ -148,7 +148,7 @@ public class TouyouSpecialController : MonoBehaviour {
         Gacya.SetActive(true);
 
         //delete chld
-        Content = GacyaObj.transform.FindChild("Busyo").transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+        Content = GacyaObj.transform.Find("Busyo").transform.Find("ScrollView").transform.Find("Content").gameObject;
         foreach (Transform n in Content.transform) {
             Destroy(n.gameObject);
         }
@@ -266,11 +266,11 @@ public class TouyouSpecialController : MonoBehaviour {
         PlayerPrefs.SetString("specialBusyoHst", specialBusyoHst);
         PlayerPrefs.SetString("specialGacyaNameHst", gacyaName);
 
-        Text countDown = GacyaObj.transform.FindChild("Anim").transform.FindChild("Text").GetComponent<Text>();
-        GameObject Anim = GacyaObj.transform.FindChild("Anim").gameObject;
-        GameObject Busyo = GacyaObj.transform.FindChild("Busyo").gameObject;
-        GameObject Button = GacyaObj.transform.FindChild("Busyo").transform.FindChild("Button").gameObject;
-        GameObject Detail = GacyaObj.transform.FindChild("Busyo").transform.FindChild("Detail").gameObject;
+        Text countDown = GacyaObj.transform.Find("Anim").transform.Find("Text").GetComponent<Text>();
+        GameObject Anim = GacyaObj.transform.Find("Anim").gameObject;
+        GameObject Busyo = GacyaObj.transform.Find("Busyo").gameObject;
+        GameObject Button = GacyaObj.transform.Find("Busyo").transform.Find("Button").gameObject;
+        GameObject Detail = GacyaObj.transform.Find("Busyo").transform.Find("Detail").gameObject;
 
         //Zukan Check
         string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
@@ -285,9 +285,9 @@ public class TouyouSpecialController : MonoBehaviour {
         }
         
         StartCoroutine(loop(hitBusyo, countDown, Anim, Button, Detail, myZukanList));
-        Busyo.transform.FindChild("Title").GetComponent<Text>().text = gacyaName;        
+        Busyo.transform.Find("Title").GetComponent<Text>().text = gacyaName;        
         Button.GetComponent<GacyaSpecialTouyou>().hireCount = hireCount;
-        Button.transform.FindChild("b").GetComponent<Text>().text = "/" + hireCount;
+        Button.transform.Find("b").GetComponent<Text>().text = "/" + hireCount;
         
     }
 
@@ -307,13 +307,13 @@ public class TouyouSpecialController : MonoBehaviour {
             //Set Busyo
             GameObject SlotObj = Instantiate(Slot);
             SlotObj.transform.SetParent(Content.transform, false);
-            SlotObj.transform.FindChild("Name").GetComponent<Text>().text = busyoName;
-            SlotObj.transform.FindChild("Rank").GetComponent<Text>().text = rank;
+            SlotObj.transform.Find("Name").GetComponent<Text>().text = busyoName;
+            SlotObj.transform.Find("Rank").GetComponent<Text>().text = rank;
             string myDaimyoPath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
-            SlotObj.transform.FindChild("Kamon").GetComponent<Image>().sprite =
+            SlotObj.transform.Find("Kamon").GetComponent<Image>().sprite =
                 Resources.Load(myDaimyoPath, typeof(Sprite)) as Sprite;
             string myBusyoPath = "Prefabs/Player/Sprite/unit" + busyoId.ToString();
-            SlotObj.transform.FindChild("Image").GetComponent<Image>().sprite =
+            SlotObj.transform.Find("Image").GetComponent<Image>().sprite =
                 Resources.Load(myBusyoPath, typeof(Sprite)) as Sprite;
             SlotObj.GetComponent<GacyaSpecialSelect>().busyoId = busyoId;
             SlotObj.GetComponent<GacyaSpecialSelect>().Button = Button;
@@ -343,8 +343,8 @@ public class TouyouSpecialController : MonoBehaviour {
                     yield return new WaitForSeconds(0.1f);
                 } else {
                     countDown.text = "0";
-                    Anim.transform.FindChild("Left").GetComponent<MoveBoard>().runFlg = true;
-                    Anim.transform.FindChild("Right").GetComponent<MoveBoard>().runFlg = true;
+                    Anim.transform.Find("Left").GetComponent<MoveBoard>().runFlg = true;
+                    Anim.transform.Find("Right").GetComponent<MoveBoard>().runFlg = true;
                     yield break;
                 }
         }
@@ -406,11 +406,11 @@ public class TouyouSpecialController : MonoBehaviour {
         char[] delimiter = { ',' };
         List<string> specialBusyoHstList = new List<string>(specialBusyoHst.Split(delimiter));
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-        Text countDown = GacyaObj.transform.FindChild("Anim").transform.FindChild("Text").GetComponent<Text>();
-        GameObject Anim = GacyaObj.transform.FindChild("Anim").gameObject;
-        GameObject Busyo = GacyaObj.transform.FindChild("Busyo").gameObject;
-        GameObject Button = GacyaObj.transform.FindChild("Busyo").transform.FindChild("Button").gameObject;
-        GameObject Detail = GacyaObj.transform.FindChild("Busyo").transform.FindChild("Detail").gameObject;
+        Text countDown = GacyaObj.transform.Find("Anim").transform.Find("Text").GetComponent<Text>();
+        GameObject Anim = GacyaObj.transform.Find("Anim").gameObject;
+        GameObject Busyo = GacyaObj.transform.Find("Busyo").gameObject;
+        GameObject Button = GacyaObj.transform.Find("Busyo").transform.Find("Button").gameObject;
+        GameObject Detail = GacyaObj.transform.Find("Busyo").transform.Find("Detail").gameObject;
         //Zukan Check
         string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
         List<string> myZukanList = new List<string>();
@@ -436,13 +436,13 @@ public class TouyouSpecialController : MonoBehaviour {
             //Set Busyo
             GameObject SlotObj = Instantiate(Slot);
             SlotObj.transform.SetParent(Content.transform, false);
-            SlotObj.transform.FindChild("Name").GetComponent<Text>().text = busyoName;
-            SlotObj.transform.FindChild("Rank").GetComponent<Text>().text = rank;
+            SlotObj.transform.Find("Name").GetComponent<Text>().text = busyoName;
+            SlotObj.transform.Find("Rank").GetComponent<Text>().text = rank;
             string myDaimyoPath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
-            SlotObj.transform.FindChild("Kamon").GetComponent<Image>().sprite =
+            SlotObj.transform.Find("Kamon").GetComponent<Image>().sprite =
                 Resources.Load(myDaimyoPath, typeof(Sprite)) as Sprite;
             string myBusyoPath = "Prefabs/Player/Sprite/unit" + busyoId.ToString();
-            SlotObj.transform.FindChild("Image").GetComponent<Image>().sprite =
+            SlotObj.transform.Find("Image").GetComponent<Image>().sprite =
                 Resources.Load(myBusyoPath, typeof(Sprite)) as Sprite;
             SlotObj.GetComponent<GacyaSpecialSelect>().busyoId = busyoId;
             SlotObj.GetComponent<GacyaSpecialSelect>().Button = Button;
@@ -472,9 +472,9 @@ public class TouyouSpecialController : MonoBehaviour {
             hireCount = 1;
         }
 
-        Busyo.transform.FindChild("Title").GetComponent<Text>().text = specialGacyaNameHst;
+        Busyo.transform.Find("Title").GetComponent<Text>().text = specialGacyaNameHst;
         Button.GetComponent<GacyaSpecialTouyou>().hireCount = hireCount;
-        Button.transform.FindChild("b").GetComponent<Text>().text = "/" + hireCount;
+        Button.transform.Find("b").GetComponent<Text>().text = "/" + hireCount;
 
     }
 

@@ -150,7 +150,7 @@ public class DoKanjyo : MonoBehaviour {
 				Color ngTextColor = new Color (90f / 255f, 90f / 255f, 90f / 255f, 90f / 255f);
 				GameObject kanjyo = GameObject.Find("kanjyo").gameObject;
 				kanjyo.GetComponent<Image> ().color = ngImageColor; 
-				kanjyo.transform.FindChild ("Text").GetComponent<Text> ().color = ngTextColor; 
+				kanjyo.transform.Find ("Text").GetComponent<Text> ().color = ngTextColor; 
 				kanjyo.GetComponent<Button> ().enabled = false;
 			}
 

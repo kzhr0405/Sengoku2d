@@ -126,15 +126,15 @@ public class HomingLong : MonoBehaviour {
 									leftFlg = true;
 
                                     //Name Bar
-                                    if (transform.FindChild("BusyoDtlEnemy")) {
-                                        GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlEnemy").gameObject;
+                                    if (transform.Find("BusyoDtlEnemy")) {
+                                        GameObject BusyoDtlPlayer = transform.Find("BusyoDtlEnemy").gameObject;
                                         Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                         if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                             targetChldScale.x *= -1;
                                             BusyoDtlPlayer.transform.localScale = targetChldScale;
                                         }
-                                    }else if(transform.FindChild("BusyoDtlPlayer")) {
-                                        GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                                    }else if(transform.Find("BusyoDtlPlayer")) {
+                                        GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                                         Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                         if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                             targetChldScale.x *= -1;
@@ -150,16 +150,16 @@ public class HomingLong : MonoBehaviour {
 									transform.localScale = targetScale;
 									leftFlg = false;
 
-                                    if (transform.FindChild("BusyoDtlEnemy")) {
-                                        GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlEnemy").gameObject;
+                                    if (transform.Find("BusyoDtlEnemy")) {
+                                        GameObject BusyoDtlPlayer = transform.Find("BusyoDtlEnemy").gameObject;
                                         Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                         if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                             targetChldScale.x *= -1;
                                             BusyoDtlPlayer.transform.localScale = targetChldScale;
                                         }
                                     }
-                                    else if (transform.FindChild("BusyoDtlPlayer")) {
-                                        GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                                    else if (transform.Find("BusyoDtlPlayer")) {
+                                        GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                                         Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                         if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                             targetChldScale.x *= -1;
@@ -182,16 +182,16 @@ public class HomingLong : MonoBehaviour {
 								leftFlg = true;
 
                                 //Name Bar
-                                if (transform.FindChild("BusyoDtlEnemy")) {
-                                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlEnemy").gameObject;
+                                if (transform.Find("BusyoDtlEnemy")) {
+                                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlEnemy").gameObject;
                                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                         targetChldScale.x *= -1;
                                         BusyoDtlPlayer.transform.localScale = targetChldScale;
                                     }
                                 }
-                                else if (transform.FindChild("BusyoDtlPlayer")) {
-                                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                                else if (transform.Find("BusyoDtlPlayer")) {
+                                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                         targetChldScale.x *= -1;
@@ -208,16 +208,16 @@ public class HomingLong : MonoBehaviour {
 								leftFlg = false;
 
                                 //Name Bar
-                                if(transform.FindChild("BusyoDtlEnemy")) {
-                                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlEnemy").gameObject;
+                                if(transform.Find("BusyoDtlEnemy")) {
+                                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlEnemy").gameObject;
                                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                         targetChldScale.x *= -1;
                                         BusyoDtlPlayer.transform.localScale = targetChldScale;
                                     }
                                 }
-                                else if (transform.FindChild("BusyoDtlPlayer")) {
-                                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                                else if (transform.Find("BusyoDtlPlayer")) {
+                                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                                         targetChldScale.x *= -1;
@@ -272,16 +272,16 @@ public class HomingLong : MonoBehaviour {
 				leftFlg = true;
 
                 //Name Bar
-                if (transform.FindChild("BusyoDtlEnemy")) {
-                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlEnemy").gameObject;
+                if (transform.Find("BusyoDtlEnemy")) {
+                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlEnemy").gameObject;
                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                         targetChldScale.x *= -1;
                         BusyoDtlPlayer.transform.localScale = targetChldScale;
                     }
                 }
-                else if (transform.FindChild("BusyoDtlPlayer")) {
-                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                else if (transform.Find("BusyoDtlPlayer")) {
+                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                         targetChldScale.x *= -1;
@@ -298,16 +298,16 @@ public class HomingLong : MonoBehaviour {
 				leftFlg = false;
 
                 //Name Bar
-                if (transform.FindChild("BusyoDtlEnemy")) {
-                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlEnemy").gameObject;
+                if (transform.Find("BusyoDtlEnemy")) {
+                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlEnemy").gameObject;
                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                         targetChldScale.x *= -1;
                         BusyoDtlPlayer.transform.localScale = targetChldScale;
                     }
                 }
-                else if (transform.FindChild("BusyoDtlPlayer")) {
-                    GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                else if (transform.Find("BusyoDtlPlayer")) {
+                    GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                     Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                     if ((targetScale.x > 0 && targetChldScale.x < 0) || (targetScale.x < 0 && targetChldScale.x > 0)) {
                         targetChldScale.x *= -1;

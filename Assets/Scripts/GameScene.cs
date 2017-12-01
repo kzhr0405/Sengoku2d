@@ -89,7 +89,7 @@ public class GameScene : MonoBehaviour {
         //Auto button
         bool Auto2Flg = PlayerPrefs.GetBool("Auto2Flg");
         if(Auto2Flg) {
-            GameObject.Find("AutoBtn").transform.FindChild("Num").GetComponent<Text>().text = "2";
+            GameObject.Find("AutoBtn").transform.Find("Num").GetComponent<Text>().text = "2";
             GameObject.Find("AutoBtn").GetComponent<AutoAttack>().speed = 2;
         }
 
@@ -235,12 +235,12 @@ public class GameScene : MonoBehaviour {
 
             //timer
             GameObject.Find("timer").GetComponent<Timer>().PvPFlg = true;
-            GameObject.Find("timer").transform.FindChild("timerText").GetComponent<Text>().text = "∞";
+            GameObject.Find("timer").transform.Find("timerText").GetComponent<Text>().text = "∞";
 
             //Name
             GameObject PvPName = GameObject.Find("PvPName").gameObject;
-            PvPName.transform.FindChild("Player").GetComponent<Text>().text = DataStore.myUserName;
-            PvPName.transform.FindChild("Enemy").GetComponent<Text>().text = DataStore.enemyUserName;
+            PvPName.transform.Find("Player").GetComponent<Text>().text = DataStore.myUserName;
+            PvPName.transform.Find("Enemy").GetComponent<Text>().text = DataStore.enemyUserName;
 
             string mapPath = "";
             string mapFrontPath = "";
@@ -624,8 +624,8 @@ public class GameScene : MonoBehaviour {
 				    int temp = i + 1;
 				    string itemCd = "kengou" + temp.ToString();
 				    string kengouName = item.getItemName(itemCd);
-				    sakuIcon.transform.FindChild("sakuIconText").GetComponent<Text>().text = kengouName;
-				    sakuIcon.transform.FindChild("sakuIconText").transform.localScale = new Vector2 (0.35f,0.35f);
+				    sakuIcon.transform.Find("sakuIconText").GetComponent<Text>().text = kengouName;
+				    sakuIcon.transform.Find("sakuIconText").transform.localScale = new Vector2 (0.35f,0.35f);
 
 				    slot.GetComponent<Saku>().sakuId = 7;
 
@@ -1016,7 +1016,7 @@ public class GameScene : MonoBehaviour {
 							audioSources [5].Play ();
                             audioSources[6].Play();
                             saku.GetComponent<PlayerHP>().life = sakuEffect;
-							saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = sakuEffect;
+							saku.transform.Find("BusyoDtlPlayer").transform.Find("MinHpBar").GetComponent<BusyoHPBar>().initLife = sakuEffect;
 						}
 
 					}
@@ -1490,7 +1490,7 @@ public class GameScene : MonoBehaviour {
 		shiroObj.name = "shiro";
 
 		string stageName = PlayerPrefs.GetString ("activeStageName");
-		shiroObj.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("NameLabel").GetComponent<TextMesh> ().text = stageName;
+		shiroObj.transform.Find ("BusyoDtlPlayer").transform.Find ("NameLabel").GetComponent<TextMesh> ().text = stageName;
 
 		//Sprite
         string shiroTmp = "shiro" + activeKuniId;
@@ -1525,7 +1525,7 @@ public class GameScene : MonoBehaviour {
 		int shiroEffect = 2000 + tmpShiroEffect * 25;
 		shiroObj.GetComponent<PlayerHP> ().initLife = shiroEffect;
 		shiroObj.GetComponent<PlayerHP> ().life = shiroEffect;
-		shiroObj.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("MinHpBar").GetComponent<BusyoHPBar> ().initLife = shiroEffect;
+		shiroObj.transform.Find ("BusyoDtlPlayer").transform.Find ("MinHpBar").GetComponent<BusyoHPBar> ().initLife = shiroEffect;
 
 		//Toride
 		for (int i = 1; i < 26; i++) {
@@ -1558,7 +1558,7 @@ public class GameScene : MonoBehaviour {
 				int trdEffect = 1000 + tmpTrdEffect * 20;
 				torideObj.GetComponent<PlayerHP> ().initLife = trdEffect;
 				torideObj.GetComponent<PlayerHP> ().life = trdEffect;
-				torideObj.transform.FindChild ("BusyoDtlPlayer").transform.FindChild ("MinHpBar").GetComponent<BusyoHPBar> ().initLife = trdEffect;
+				torideObj.transform.Find ("BusyoDtlPlayer").transform.Find ("MinHpBar").GetComponent<BusyoHPBar> ().initLife = trdEffect;
 
 			}
 		}

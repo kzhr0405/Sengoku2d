@@ -84,7 +84,7 @@ public class AreaButton : MonoBehaviour {
 					//Slot
 					string slotPath = "Prefabs/Naisei/NaiseiSlot";
 					GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
-					slot.transform.SetParent (scroll.transform.FindChild ("NaiseiContent").transform);
+					slot.transform.SetParent (scroll.transform.Find ("NaiseiContent").transform);
 					slot.transform.localScale = new Vector2 (1, 1);
 
 					//Bldg
@@ -92,7 +92,7 @@ public class AreaButton : MonoBehaviour {
                     string naiseExpText = naiseiInfo.getNaiseiExp(i);
 
 
-                    GameObject naiseiName = slot.transform.FindChild ("NaiseiName").gameObject;
+                    GameObject naiseiName = slot.transform.Find ("NaiseiName").gameObject;
 					naiseiName.GetComponent<Text> ().text = naiseiNameText;
 					string bldgPath = "Prefabs/Naisei/Bldg/" + naiseiMst.param [i].code + "_s";
 					GameObject bldg = Instantiate (Resources.Load (bldgPath)) as GameObject;
@@ -103,81 +103,81 @@ public class AreaButton : MonoBehaviour {
 					bldg.GetComponent<Button>().enabled = false;
 
 					//Some Value
-					naiseiName.transform.FindChild ("NaiseiExp").GetComponent<Text> ().text = naiseExpText;
+					naiseiName.transform.Find ("NaiseiExp").GetComponent<Text> ().text = naiseExpText;
                     string target = naiseiMst.param [i].target;
 					int effect1 = naiseiMst.param [i].effect1;
                     if (langId == 2) {
                         if (target == "money") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
 					    } else if (target == "hyourou") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Stamina";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Stamina";
 					    } else if (target == "YR") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Spear Item";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Spear Item";
 					    }else if (target == "KB") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
 					    }else if (target == "TP") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Gun Item";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Gun Item";
 					    }else if (target == "YM") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Bow Item";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Bow Item";
 					    }else if (target == "nbn") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Christian";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Christian";
 					    }else if (target == "bnk") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Culture";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Culture";
 					    }else if (target == "snb") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Ninja";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Ninja";
 					    }else if (target == "bky") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Buddhism";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Buddhism";
 					    }else if (target == "child") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Additional Soldier";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Additional Soldier";
 					    }else if (target == "dfc") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
 					    }
                     }else {
                         if (target == "money") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "金";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "金";
                         }
                         else if (target == "hyourou") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "兵糧";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "兵糧";
                         }
                         else if (target == "YR") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "槍刀素材";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "槍刀素材";
                         }
                         else if (target == "KB") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "騎馬素材";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "騎馬素材";
                         }
                         else if (target == "TP") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "鉄砲素材";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "鉄砲素材";
                         }
                         else if (target == "YM") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "弓矢素材";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "弓矢素材";
                         }
                         else if (target == "nbn") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "基督教";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "基督教";
                         }
                         else if (target == "bnk") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "文化";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "文化";
                         }
                         else if (target == "snb") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "忍";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "忍";
                         }
                         else if (target == "bky") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "仏教";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "仏教";
                         }
                         else if (target == "child") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "足軽兵数";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "足軽兵数";
                         }
                         else if (target == "dfc") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
                         }
                     }
 					//Label & Effect Value Adjustment 
 					if(code != "kzn"){
 						if(code != "yr" &&code != "kb"&&code != "tp" &&code != "ym" && code != "snb"){
 							if(code != "nbn" && code != "kgy" && code != "bky" && code !="hsy" && code !="trd"){
-								naiseiName.transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
+								naiseiName.transform.Find ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
 							}else{
-								naiseiName.transform.FindChild ("NaiseiUnit").GetComponent<Text>().enabled = false;
-								naiseiName.transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
+								naiseiName.transform.Find ("NaiseiUnit").GetComponent<Text>().enabled = false;
+								naiseiName.transform.Find ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
 							}
 						}else{
 							effect1 = effect1 * 2;
@@ -185,18 +185,18 @@ public class AreaButton : MonoBehaviour {
                             //Rank
 
 
-                            naiseiName.transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
+                            naiseiName.transform.Find ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
                             
 
 						}
 					}else{
 						effect1 = effect1 * 4;
-						naiseiName.transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
+						naiseiName.transform.Find ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
 					}
 
-					naiseiName.transform.FindChild ("RequiredMoney").GetComponent<Text> ().text = naiseiMst.param [i].money1.ToString();
-					naiseiName.transform.FindChild ("RequiredHyourou").GetComponent<Text> ().text = naiseiMst.param [i].hyourou.ToString();
-					GameObject createButton = naiseiName.transform.FindChild("CreateButton").gameObject;
+					naiseiName.transform.Find ("RequiredMoney").GetComponent<Text> ().text = naiseiMst.param [i].money1.ToString();
+					naiseiName.transform.Find ("RequiredHyourou").GetComponent<Text> ().text = naiseiMst.param [i].hyourou.ToString();
+					GameObject createButton = naiseiName.transform.Find("CreateButton").gameObject;
 					createButton.GetComponent<BuildNaisei> ().panelId = int.Parse(name);
 					createButton.GetComponent<BuildNaisei> ().naiseiId = i;
                     createButton.GetComponent<BuildNaisei>().naiseiName = naiseiNameText;
@@ -211,11 +211,11 @@ public class AreaButton : MonoBehaviour {
                     //Slot
                     string slotPath = "Prefabs/Naisei/NaiseiSlotWithItem";
 					GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
-					slot.transform.SetParent (scroll.transform.FindChild ("NaiseiContent").transform);
+					slot.transform.SetParent (scroll.transform.Find ("NaiseiContent").transform);
 					slot.transform.localScale = new Vector2 (1, 1);
 					
 					//Bldg
-					GameObject naiseiName = slot.transform.FindChild ("NaiseiName").gameObject;
+					GameObject naiseiName = slot.transform.Find ("NaiseiName").gameObject;
                     naiseiName.GetComponent<Text>().text = naiseiNameText;
                     string bldgPath = "Prefabs/Naisei/Bldg/" + naiseiMst.param [i].code + "_s";
 					GameObject bldg = Instantiate (Resources.Load (bldgPath)) as GameObject;
@@ -226,42 +226,42 @@ public class AreaButton : MonoBehaviour {
 					bldg.GetComponent<Button>().enabled = false;
 
                     //Some Value
-                    naiseiName.transform.FindChild("NaiseiExp").GetComponent<Text>().text = naiseExpText;
+                    naiseiName.transform.Find("NaiseiExp").GetComponent<Text>().text = naiseExpText;
                     string target = naiseiMst.param [i].target;
 					int effect1 = naiseiMst.param [i].effect1;
 
 					int techId = 0;
                     if (langId == 2) {
                         if (target == "KB") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
 						    techId = 2;
 					    }else if (target == "TP") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Gun Item";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Gun Item";
 						    techId = 1;
 					    }else if (target == "snb") {
-						    naiseiName.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Ninja";
+						    naiseiName.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Ninja";
 						    techId = 3;
 					    }
                     }else {
                         if (target == "KB") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "騎馬素材";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "騎馬素材";
                             techId = 2;
                         }
                         else if (target == "TP") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "鉄砲素材";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "鉄砲素材";
                             techId = 1;
                         }
                         else if (target == "snb") {
-                            naiseiName.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "忍";
+                            naiseiName.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "忍";
                             techId = 3;
                         }
                     }
 					//Label & Effect Value Adjustment 
 					effect1 = effect1 * 2;
-					naiseiName.transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
+					naiseiName.transform.Find ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + effect1;
 
-					naiseiName.transform.FindChild ("RequiredHyourou").GetComponent<Text> ().text = naiseiMst.param [i].hyourou.ToString();
-					GameObject createButton = naiseiName.transform.FindChild("CreateButton").gameObject;
+					naiseiName.transform.Find ("RequiredHyourou").GetComponent<Text> ().text = naiseiMst.param [i].hyourou.ToString();
+					GameObject createButton = naiseiName.transform.Find("CreateButton").gameObject;
 					createButton.GetComponent<BuildNaiseiWithItem> ().techId = techId;
 					createButton.GetComponent<BuildNaiseiWithItem> ().panelId = int.Parse(name);
 					createButton.GetComponent<BuildNaiseiWithItem> ().naiseiId = i;
@@ -274,14 +274,14 @@ public class AreaButton : MonoBehaviour {
             //tutorial
             if (Application.loadedLevelName == "tutorialNaisei") {
 
-                GameObject.Find("board(Clone)").transform.FindChild("close").gameObject.SetActive(false);
+                GameObject.Find("board(Clone)").transform.Find("close").gameObject.SetActive(false);
                 
-                foreach (Transform child in scroll.transform.FindChild("NaiseiContent").transform) {
-                    if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaisei>()) {
-                        if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaisei>().naiseiId != 1) {
+                foreach (Transform child in scroll.transform.Find("NaiseiContent").transform) {
+                    if(child.transform.Find("NaiseiName").transform.Find("CreateButton").GetComponent<BuildNaisei>()) {
+                        if(child.transform.Find("NaiseiName").transform.Find("CreateButton").GetComponent<BuildNaisei>().naiseiId != 1) {
                             child.gameObject.SetActive(false);
                         }
-                    }else if(child.transform.FindChild("NaiseiName").transform.FindChild("CreateButton").GetComponent<BuildNaiseiWithItem>()) {
+                    }else if(child.transform.Find("NaiseiName").transform.Find("CreateButton").GetComponent<BuildNaiseiWithItem>()) {
                         child.gameObject.SetActive(false);
                     }
                 }
@@ -360,9 +360,9 @@ public class AreaButton : MonoBehaviour {
             }
 
             //Detail Info
-            GameObject baseObj = NaiseiUpdate.transform.FindChild("Base").gameObject;
-			baseObj.transform.FindChild("FromLv").GetComponent<Text>().text = "Lv" + lv;
-			baseObj.transform.FindChild("ToLv").GetComponent<Text>().text = nextLv.ToString();
+            GameObject baseObj = NaiseiUpdate.transform.Find("Base").gameObject;
+			baseObj.transform.Find("FromLv").GetComponent<Text>().text = "Lv" + lv;
+			baseObj.transform.Find("ToLv").GetComponent<Text>().text = nextLv.ToString();
 
             //Rank
             string nowRank = "";
@@ -404,30 +404,30 @@ public class AreaButton : MonoBehaviour {
                 }
             }
 
-            baseObj.transform.FindChild("NowNaiseiEffectValue").GetComponent<Text>().text = nowRank + " +" + effect.ToString();
-			baseObj.transform.FindChild("NextNaiseiEffectValue").GetComponent<Text>().text = nxtRank + " +" + effectNextLv.ToString();
-			baseObj.transform.FindChild("RequiredMoney").GetComponent<Text>().text = moneyNextLv.ToString();
-			baseObj.transform.FindChild("RequiredHyourou").GetComponent<Text>().text = requiredHyourou.ToString();
+            baseObj.transform.Find("NowNaiseiEffectValue").GetComponent<Text>().text = nowRank + " +" + effect.ToString();
+			baseObj.transform.Find("NextNaiseiEffectValue").GetComponent<Text>().text = nxtRank + " +" + effectNextLv.ToString();
+			baseObj.transform.Find("RequiredMoney").GetComponent<Text>().text = moneyNextLv.ToString();
+			baseObj.transform.Find("RequiredHyourou").GetComponent<Text>().text = requiredHyourou.ToString();
 
 
 			if(type=="shiro"){
                 if (langId == 2) {
-                    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
+                    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
                 }else {
-                    baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
+                    baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
                 }
-				baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
+				baseObj.transform.Find ("NaiseiUnit").GetComponent<Text> ().enabled = false;
                 if (langId == 2) {
-                    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Castle";
+                    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Castle";
                 }else {
-                    baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "城";
+                    baseObj.transform.Find("BldgName").GetComponent<Text>().text = "城";
                 }
-				baseObj.transform.FindChild ("NaiseiEffectLabel2").GetComponent<Text> ().enabled = true;
-				baseObj.transform.FindChild("NowNaiseiEffectValue2").GetComponent<Text>().enabled = true;
-				baseObj.transform.FindChild("NextNaiseiEffectValue2").GetComponent<Text>().enabled = true;
-				baseObj.transform.FindChild ("arrow2").GetComponent<Image> ().enabled = true;
-				baseObj.transform.FindChild("NowNaiseiEffectValue2").GetComponent<Text>().text = "+" + effect.ToString();
-				baseObj.transform.FindChild("NextNaiseiEffectValue2").GetComponent<Text>().text = "+" + effectNextLv.ToString();
+				baseObj.transform.Find ("NaiseiEffectLabel2").GetComponent<Text> ().enabled = true;
+				baseObj.transform.Find("NowNaiseiEffectValue2").GetComponent<Text>().enabled = true;
+				baseObj.transform.Find("NextNaiseiEffectValue2").GetComponent<Text>().enabled = true;
+				baseObj.transform.Find ("arrow2").GetComponent<Image> ().enabled = true;
+				baseObj.transform.Find("NowNaiseiEffectValue2").GetComponent<Text>().text = "+" + effect.ToString();
+				baseObj.transform.Find("NextNaiseiEffectValue2").GetComponent<Text>().text = "+" + effectNextLv.ToString();
 
                 //Special Castle Check
                 string nowQty = PlayerPrefs.GetString("shiro");
@@ -439,7 +439,7 @@ public class AreaButton : MonoBehaviour {
                     GameObject scroll = Instantiate(Resources.Load(scrollPath)) as GameObject;
                     scroll.transform.SetParent(board.transform);
                         
-                    GameObject content = scroll.transform.FindChild("Content").gameObject;
+                    GameObject content = scroll.transform.Find("Content").gameObject;
                     scroll.transform.localScale = new Vector2(0.8f, 0.8f);
                     scroll.transform.localPosition = new Vector2(-240, -240);
 
@@ -455,12 +455,12 @@ public class AreaButton : MonoBehaviour {
                             item.transform.SetParent(content.transform);
                             item.transform.localScale = new Vector2(1, 1);
                             item.transform.localPosition = new Vector3(0, 0, 0);
-                            item.transform.FindChild("Qty").GetComponent<Text>().text = qty.ToString();
+                            item.transform.Find("Qty").GetComponent<Text>().text = qty.ToString();
 
                             string name = shiro.getName(shiroId);
-                            item.transform.FindChild("name").GetComponent<Text>().text = name;
+                            item.transform.Find("name").GetComponent<Text>().text = name;
                             imagePath = imagePath + shiroId;
-                            item.transform.FindChild("image").GetComponent<Image>().sprite =
+                            item.transform.Find("image").GetComponent<Image>().sprite =
                                 Resources.Load(imagePath, typeof(Sprite)) as Sprite;
 
                             //value
@@ -485,144 +485,144 @@ public class AreaButton : MonoBehaviour {
 				dstryBtnObj.GetComponent<NaiseiDestroy> ().areaId = int.Parse(name);
 				dstryBtnObj.GetComponent<NaiseiDestroy> ().activeKuniId = GameObject.Find ("NaiseiController").GetComponent<NaiseiController> ().activeKuniId;
 
-				baseObj.transform.FindChild ("NaiseiEffectLabel2").GetComponent<Text> ().enabled = false;
-				baseObj.transform.FindChild ("NowNaiseiEffectValue2").GetComponent<Text> ().enabled = false;
-				baseObj.transform.FindChild ("arrow2").GetComponent<Image> ().enabled = false;
-				baseObj.transform.FindChild ("NextNaiseiEffectValue2").GetComponent<Text> ().enabled = false;
+				baseObj.transform.Find ("NaiseiEffectLabel2").GetComponent<Text> ().enabled = false;
+				baseObj.transform.Find ("NowNaiseiEffectValue2").GetComponent<Text> ().enabled = false;
+				baseObj.transform.Find ("arrow2").GetComponent<Image> ().enabled = false;
+				baseObj.transform.Find ("NextNaiseiEffectValue2").GetComponent<Text> ().enabled = false;
 
                 if (langId == 2) {
                     if (type == "shop") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Store";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Store";
 
 				    } else if (type == "ta") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Stamina";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Farm";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Stamina";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Farm";
 
 				    } else if (type == "yr") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Spear Item";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Sword Blacksmith";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Spear Item";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Sword Blacksmith";
 					
 				    } else if (type == "kb") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Stable";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Cavalry Item";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Stable";
 					
 				    } else if (type == "tp") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Gun Item";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Gun Blacksmith";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Gun Item";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Gun Blacksmith";
 					
 				    } else if (type == "ym") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Bow Item";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Archery House";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Bow Item";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Archery House";
 					
 				    }else if(type == "kzn"){
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Mine";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Money";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Mine";
 				
 				    }else if(type == "nbn"){
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Christian";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Church";
-					    baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Christian";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Church";
+					    baseObj.transform.Find ("NaiseiUnit").GetComponent<Text> ().enabled = false;
 				
 				    }else if(type == "kgy"){
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Culture";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Court Noble House";
-					    baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Culture";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Court Noble House";
+					    baseObj.transform.Find ("NaiseiUnit").GetComponent<Text> ().enabled = false;
 				
 				    }else if(type == "snb"){
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Ninja";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Ninja Town";
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Ninja";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Ninja Town";
 				
 				    }else if(type == "bky"){
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Buddhism";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Temple";
-					    baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Buddhism";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Temple";
+					    baseObj.transform.Find ("NaiseiUnit").GetComponent<Text> ().enabled = false;
 				
 				    }else if (type == "hsy") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Additional Soldier";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Barrack";
-					    baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Additional Soldier";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Barrack";
+					    baseObj.transform.Find ("NaiseiUnit").GetComponent<Text> ().enabled = false;
 				
 				    }else if (type == "trd") {
-					    baseObj.transform.FindChild ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
-					    baseObj.transform.FindChild ("BldgName").GetComponent<Text> ().text = "Fort";
-					    baseObj.transform.FindChild ("NaiseiUnit").GetComponent<Text> ().enabled = false;
+					    baseObj.transform.Find ("NaiseiEffectLabel").GetComponent<Text> ().text = "Defence";
+					    baseObj.transform.Find ("BldgName").GetComponent<Text> ().text = "Fort";
+					    baseObj.transform.Find ("NaiseiUnit").GetComponent<Text> ().enabled = false;
 				    }
                 }else {
                     if (type == "shop") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "金";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "商人町";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "金";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "商人町";
 
                     }
                     else if (type == "ta") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "兵糧";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "村落";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "兵糧";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "村落";
 
                     }
                     else if (type == "yr") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "槍刀素材";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "刀鍛冶屋";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "槍刀素材";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "刀鍛冶屋";
 
                     }
                     else if (type == "kb") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "騎馬素材";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "厩舎";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "騎馬素材";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "厩舎";
 
                     }
                     else if (type == "tp") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "鉄砲素材";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "鉄砲鍛冶屋";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "鉄砲素材";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "鉄砲鍛冶屋";
 
                     }
                     else if (type == "ym") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "弓矢素材";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "皮職人";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "弓矢素材";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "皮職人";
 
                     }
                     else if (type == "kzn") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "金";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "鉱山";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "金";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "鉱山";
 
                     }
                     else if (type == "nbn") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "基督教";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "南蛮寺";
-                        baseObj.transform.FindChild("NaiseiUnit").GetComponent<Text>().enabled = false;
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "基督教";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "南蛮寺";
+                        baseObj.transform.Find("NaiseiUnit").GetComponent<Text>().enabled = false;
 
                     }
                     else if (type == "kgy") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "文化";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "公家館";
-                        baseObj.transform.FindChild("NaiseiUnit").GetComponent<Text>().enabled = false;
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "文化";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "公家館";
+                        baseObj.transform.Find("NaiseiUnit").GetComponent<Text>().enabled = false;
 
                     }
                     else if (type == "snb") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "忍";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "忍の里";
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "忍";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "忍の里";
 
                     }
                     else if (type == "bky") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "仏教";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "寺";
-                        baseObj.transform.FindChild("NaiseiUnit").GetComponent<Text>().enabled = false;
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "仏教";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "寺";
+                        baseObj.transform.Find("NaiseiUnit").GetComponent<Text>().enabled = false;
 
                     }
                     else if (type == "hsy") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "足軽兵数";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "兵舎";
-                        baseObj.transform.FindChild("NaiseiUnit").GetComponent<Text>().enabled = false;
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "足軽兵数";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "兵舎";
+                        baseObj.transform.Find("NaiseiUnit").GetComponent<Text>().enabled = false;
 
                     }
                     else if (type == "trd") {
-                        baseObj.transform.FindChild("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
-                        baseObj.transform.FindChild("BldgName").GetComponent<Text>().text = "砦";
-                        baseObj.transform.FindChild("NaiseiUnit").GetComponent<Text>().enabled = false;
+                        baseObj.transform.Find("NaiseiEffectLabel").GetComponent<Text>().text = "防備";
+                        baseObj.transform.Find("BldgName").GetComponent<Text>().text = "砦";
+                        baseObj.transform.Find("NaiseiUnit").GetComponent<Text>().enabled = false;
                     }
                 }
 			}
 
 			//Button Setting
-			GameObject updateBtn = baseObj.transform.FindChild ("NaiseiUpdateButton").gameObject;
+			GameObject updateBtn = baseObj.transform.Find ("NaiseiUpdateButton").gameObject;
 			updateBtn.GetComponent<UpdateNaisei>().activeKuniId = GameObject.Find ("NaiseiController").GetComponent<NaiseiController>().activeKuniId;
 			updateBtn.GetComponent<UpdateNaisei>().requiredMoney = moneyNextLv;
 			updateBtn.GetComponent<UpdateNaisei>().requiredHyourou = requiredHyourou;
@@ -633,7 +633,7 @@ public class AreaButton : MonoBehaviour {
             
             if(int.Parse(lv)==20) {
 
-                GameObject Base = NaiseiUpdate.transform.FindChild("Base").gameObject;
+                GameObject Base = NaiseiUpdate.transform.Find("Base").gameObject;
                 foreach(Transform chld in Base.transform) {
                     if(chld.name == "arrow") {
                         Destroy(chld.gameObject);
@@ -643,17 +643,17 @@ public class AreaButton : MonoBehaviour {
                         Destroy(chld.gameObject);
                     }
                 }
-                Destroy(Base.transform.FindChild("ToLv").gameObject);
-                Destroy(Base.transform.FindChild("NextNaiseiEffectValue").gameObject);
-                Destroy(Base.transform.FindChild("NaiseiUnit").gameObject);
-                Base.transform.FindChild("RequiredMoney").GetComponent<Text>().text = "0";
-                Base.transform.FindChild("RequiredHyourou").GetComponent<Text>().text = "0";
-                Base.transform.FindChild("NaiseiUpdateButton").GetComponent<Button>().enabled = false;
+                Destroy(Base.transform.Find("ToLv").gameObject);
+                Destroy(Base.transform.Find("NextNaiseiEffectValue").gameObject);
+                Destroy(Base.transform.Find("NaiseiUnit").gameObject);
+                Base.transform.Find("RequiredMoney").GetComponent<Text>().text = "0";
+                Base.transform.Find("RequiredHyourou").GetComponent<Text>().text = "0";
+                Base.transform.Find("NaiseiUpdateButton").GetComponent<Button>().enabled = false;
 
                 Color NGClorBtn = new Color(133 / 255f, 133 / 255f, 80 / 255f, 255f / 255f);
                 Color NGClorTxt = new Color(90 / 255f, 90 / 255f, 40 / 255f, 255f / 255f);
-                Base.transform.FindChild("NaiseiUpdateButton").GetComponent<Image>().color = NGClorBtn;
-                Base.transform.FindChild("NaiseiUpdateButton").transform.FindChild("Text").GetComponent<Text>().color = NGClorTxt;
+                Base.transform.Find("NaiseiUpdateButton").GetComponent<Image>().color = NGClorBtn;
+                Base.transform.Find("NaiseiUpdateButton").transform.Find("Text").GetComponent<Text>().color = NGClorTxt;
             }
         }
 	}

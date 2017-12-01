@@ -118,7 +118,7 @@ public class Timer : MonoBehaviour {
         EnemySakuTimerList.Sort((x, y) => y.CompareTo(x));
         sakuTimer = EnemySakuTimerList[sakuTimerId];
 
-        timerTxt = gameObject.transform.FindChild("timerText").GetComponent<Text>();
+        timerTxt = gameObject.transform.Find("timerText").GetComponent<Text>();
 
     }
 	
@@ -190,8 +190,8 @@ public class Timer : MonoBehaviour {
 				        GameObject canvas = GameObject.Find ("Canvas").gameObject;
 
 				        //Player battle stop
-				        canvas.transform.FindChild ("playerHp").GetComponent<HPCounter> ().flag = true;
-				        canvas.transform.FindChild ("enemyHp").GetComponent<HPCounter> ().flag = true;
+				        canvas.transform.Find ("playerHp").GetComponent<HPCounter> ().flag = true;
+				        canvas.transform.Find ("enemyHp").GetComponent<HPCounter> ().flag = true;
 
 				        //Enable Button
                         if(GameObject.Find("ScrollView")) {
@@ -345,9 +345,9 @@ public class Timer : MonoBehaviour {
 					            bttnListObj.transform.localPosition = new Vector2 (0,0);
 
                                 if (langId == 2) {
-                                    itemListObj.transform.FindChild ("stageName").transform.FindChild("stageNameValue").GetComponent<Text> ().text = stageName + " Succeed";
+                                    itemListObj.transform.Find ("stageName").transform.Find("stageNameValue").GetComponent<Text> ().text = stageName + " Succeed";
                                 }else {
-                                    itemListObj.transform.FindChild("stageName").transform.FindChild("stageNameValue").GetComponent<Text>().text = stageName + "成功";
+                                    itemListObj.transform.Find("stageName").transform.Find("stageNameValue").GetComponent<Text>().text = stageName + "成功";
                                 }
 
 					            //Get Exp
@@ -914,11 +914,11 @@ public class Timer : MonoBehaviour {
                 audioSources[6].Play();
                 Destroy(saku.GetComponent<PlayerHP>());
                 saku.AddComponent<EnemyHP>().life = EnemySaku.status;
-                saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = EnemySaku.status;
+                saku.transform.Find("BusyoDtlPlayer").transform.Find("MinHpBar").GetComponent<BusyoHPBar>().initLife = EnemySaku.status;
                 saku.tag = "Enemy";
                 saku.layer = LayerMask.NameToLayer("EnemyNoColl");
                 string barPath = "Prefabs/PostKassen/Sprite/minHpBar3";
-                saku.transform.FindChild("BusyoDtlPlayer").transform.FindChild("MinHpBar").GetComponent<SpriteRenderer>().sprite =                    
+                saku.transform.Find("BusyoDtlPlayer").transform.Find("MinHpBar").GetComponent<SpriteRenderer>().sprite =                    
                     Resources.Load(barPath, typeof(Sprite)) as Sprite;
             }
 

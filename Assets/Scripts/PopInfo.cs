@@ -34,7 +34,7 @@ public class PopInfo : MonoBehaviour {
 		pop.transform.localPosition = new Vector2 (0, 0);
 
 		//Kamon
-		GameObject kamon = pop.transform.FindChild ("kamon").gameObject;
+		GameObject kamon = pop.transform.Find ("kamon").gameObject;
 		string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString ();
 		kamon.GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
@@ -49,7 +49,7 @@ public class PopInfo : MonoBehaviour {
 		RectTransform busyoRect = busyo.GetComponent<RectTransform>();
 		busyoRect.anchoredPosition3D = new Vector3(180,400,0);
 		busyoRect.sizeDelta = new Vector2(40,40);
-		busyo.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		busyo.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 
         //Ship Rank
         string shipPath = "Prefabs/Busyo/ShipSts";
@@ -62,21 +62,21 @@ public class PopInfo : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             if (shipId == 1) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "High";
             }else if (shipId == 2) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Mid";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Mid";
             }else if (shipId == 3) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Low";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Low";
             }
         }else {
             if (shipId == 1) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "上";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "上";
             }
             else if (shipId == 2) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "中";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "中";
             }
             else if (shipId == 3) {
-                ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "下";
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = "下";
             }
         }
         //Name
@@ -159,7 +159,7 @@ public class PopInfo : MonoBehaviour {
 		RectTransform sakuIcon_transform = sakuIcon.GetComponent<RectTransform>();
 		sakuIcon_transform.anchoredPosition = new Vector3(-360,0,0);
 		
-		StatusSaku.transform.FindChild("SakuExp").transform.FindChild("SakuExpValue").GetComponent<Text>().text = sakuList[2];
+		StatusSaku.transform.Find("SakuExp").transform.Find("SakuExpValue").GetComponent<Text>().text = sakuList[2];
 
 
 				

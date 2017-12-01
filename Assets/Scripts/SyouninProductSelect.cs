@@ -35,9 +35,9 @@ public class SyouninProductSelect : MonoBehaviour {
 
 		if (menuName == "Kahou") {
 			GameObject Info = GameObject.Find ("Info").gameObject;
-			Info.transform.FindChild ("Name").GetComponent<Text> ().text = kahouName;
-			Info.transform.FindChild ("EffectLabel").GetComponent<Text> ().text = kahouEffectLabel;
-			Info.transform.FindChild ("EffectValue").GetComponent<Text> ().text = "+" + kahouEffectValue + "%";
+			Info.transform.Find ("Name").GetComponent<Text> ().text = kahouName;
+			Info.transform.Find ("EffectLabel").GetComponent<Text> ().text = kahouEffectLabel;
+			Info.transform.Find ("EffectValue").GetComponent<Text> ().text = "+" + kahouEffectValue + "%";
 
 			Money.GetComponent<Text> ().text = price.ToString ();
 

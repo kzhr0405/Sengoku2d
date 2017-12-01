@@ -34,7 +34,7 @@ public class IconClick : MonoBehaviour {
         kakejiku.transform.SetParent(GameObject.Find("Panel").transform);
         kakejiku.transform.localScale = new Vector2 (1, 1);
         kakejiku.name = "Kakejiku";
-        GameObject kuni = kakejiku.transform.FindChild("Kakejiku").transform.FindChild("KuniInfo").gameObject;
+        GameObject kuni = kakejiku.transform.Find("Kakejiku").transform.Find("KuniInfo").gameObject;
 
         //Kanni
         int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
@@ -63,18 +63,18 @@ public class IconClick : MonoBehaviour {
                 }
             }
 		}
-		kuni.transform.FindChild ("KaniValue").GetComponent<Text> ().text = kanniName;
+		kuni.transform.Find ("KaniValue").GetComponent<Text> ().text = kanniName;
 
         //Daimyo Name
         Daimyo daimyoScript = new Daimyo();
         int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
         string myDaimyoName = daimyoScript.getName(myDaimyo,langId,senarioId);
-        kuni.transform.FindChild("DaimyoName").GetComponent<Text>().text = myDaimyoName;
+        kuni.transform.Find("DaimyoName").GetComponent<Text>().text = myDaimyoName;
 
         //Daimyo busyo image
         int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(myDaimyo,senarioId);
         string daimyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString();
-        kuni.transform.FindChild("Mask").transform.FindChild("BusyoImage").GetComponent<Image>().sprite =
+        kuni.transform.Find("Mask").transform.Find("BusyoImage").GetComponent<Image>().sprite =
             Resources.Load(daimyoPath, typeof(Sprite)) as Sprite;
 
 
@@ -85,16 +85,16 @@ public class IconClick : MonoBehaviour {
 
         //Now Lv
         int nowLv = PlayerPrefs.GetInt("kuniLv");
-        kuni.transform.FindChild("PopStatusLv").transform.FindChild("PopLvValue").GetComponent<Text>().text = nowLv.ToString();
+        kuni.transform.Find("PopStatusLv").transform.Find("PopLvValue").GetComponent<Text>().text = nowLv.ToString();
         
         //Exp for Next Lv
         Exp exp = new Exp ();
 		int totalExp = exp.getKuniExpforNextLv (nowLv);
 		int diff = totalExp - kuniExp;
-        kuni.transform.FindChild("PopStatusLv").transform.FindChild("ExpValue").GetComponent<Text> ().text = diff.ToString ();
+        kuni.transform.Find("PopStatusLv").transform.Find("ExpValue").GetComponent<Text> ().text = diff.ToString ();
 
         //Slider
-        Slider sliderScript = kuni.transform.FindChild("PopStatusLv").transform.FindChild("ExpSlider").GetComponent<Slider>();
+        Slider sliderScript = kuni.transform.Find("PopStatusLv").transform.Find("ExpSlider").GetComponent<Slider>();
         sliderScript.maxValue = totalExp;
         int totalExpOfNowLv = 0;
         if(nowLv != 1) {
@@ -110,13 +110,13 @@ public class IconClick : MonoBehaviour {
 			if (clearedKuni.Contains (",")) {
 				char[] delimiterChars = {','};
 				string[] clearedKuniList = clearedKuni.Split (delimiterChars);
-				kuni.transform.FindChild ("ShiroQtyValue").GetComponent<Text> ().text = clearedKuniList.Length.ToString ();
+				kuni.transform.Find ("ShiroQtyValue").GetComponent<Text> ().text = clearedKuniList.Length.ToString ();
 
 			} else {
-				kuni.transform.FindChild ("ShiroQtyValue").GetComponent<Text> ().text = "1";
+				kuni.transform.Find ("ShiroQtyValue").GetComponent<Text> ().text = "1";
 			}
 		} else {
-			kuni.transform.FindChild ("ShiroQtyValue").GetComponent<Text> ().text = "0";
+			kuni.transform.Find ("ShiroQtyValue").GetComponent<Text> ().text = "0";
 		}
 
 		//Syutujin Limit
@@ -139,43 +139,43 @@ public class IconClick : MonoBehaviour {
 		if (addJinkei4Flg) {
 			addNo = addNo + 1;
 		}
-		kuni.transform.FindChild ("SyutsujinQtyValue").GetComponent<Text> ().text = jinkeiLimit.ToString () + "<Color=#35D74BFF>+" + addNo + "</Color>";
+		kuni.transform.Find ("SyutsujinQtyValue").GetComponent<Text> ().text = jinkeiLimit.ToString () + "<Color=#35D74BFF>+" + addNo + "</Color>";
 
 		//Stock Limit
 		int stockLimit = PlayerPrefs.GetInt ("stockLimit");
         int addSpace = PlayerPrefs.GetInt("space");
         int myBusyoQty = PlayerPrefs.GetInt ("myBusyoQty");
 		string value = myBusyoQty.ToString () + "/" + stockLimit.ToString () + "<Color=#35D74BFF>+" + addSpace + "</Color>";
-        kuni.transform.FindChild ("TouyouQtyValue").GetComponent<Text> ().text = value;
+        kuni.transform.Find ("TouyouQtyValue").GetComponent<Text> ().text = value;
 
 
         //SyutsujinQtyUpLvValue
-        kuni.transform.FindChild("SyutsujinQtyUpLvValue").GetComponent<Text>().text = nextAvailableSamuraiUpLv(nowLv).ToString();
+        kuni.transform.Find("SyutsujinQtyUpLvValue").GetComponent<Text>().text = nextAvailableSamuraiUpLv(nowLv).ToString();
         
         //SyutsujinQtyValue
         int TrackTotalKassenNo = PlayerPrefs.GetInt("TrackTotalKassenNo");
         int TrackWinNo = PlayerPrefs.GetInt("TrackWinNo");
-        kuni.transform.FindChild("BattleNoValue").GetComponent<Text>().text = TrackTotalKassenNo.ToString();
+        kuni.transform.Find("BattleNoValue").GetComponent<Text>().text = TrackTotalKassenNo.ToString();
 
         //WinRatioValue        
         int winRatio = Mathf.CeilToInt((float)TrackWinNo / (float)TrackTotalKassenNo * 100);
         if (TrackWinNo == 0) {
             winRatio = 0;
         }
-        kuni.transform.FindChild("WinRatioValue").GetComponent<Text>().text = winRatio.ToString();
+        kuni.transform.Find("WinRatioValue").GetComponent<Text>().text = winRatio.ToString();
 
         //DevNo
         int HstNanbansen = PlayerPrefs.GetInt("HstNanbansen");
-        kuni.transform.FindChild("ShipNo").GetComponent<Text>().text = HstNanbansen.ToString();
+        kuni.transform.Find("ShipNo").GetComponent<Text>().text = HstNanbansen.ToString();
         //VisitorNo
         int TrackTabibitoNo = PlayerPrefs.GetInt("TrackTabibitoNo");
-        kuni.transform.FindChild("VisitorNo").GetComponent<Text>().text = TrackTabibitoNo.ToString();
+        kuni.transform.Find("VisitorNo").GetComponent<Text>().text = TrackTabibitoNo.ToString();
         //BouryakuNo
         int TrackBouryakuNo = PlayerPrefs.GetInt("TrackBouryakuNo");
-        kuni.transform.FindChild("BouryakuNo").GetComponent<Text>().text = TrackBouryakuNo.ToString();
+        kuni.transform.Find("BouryakuNo").GetComponent<Text>().text = TrackBouryakuNo.ToString();
         //GaikoNo
         int TrackGaikouNo = PlayerPrefs.GetInt("TrackGaikouNo");
-        kuni.transform.FindChild("GaikoNo").GetComponent<Text>().text = TrackGaikouNo.ToString();
+        kuni.transform.Find("GaikoNo").GetComponent<Text>().text = TrackGaikouNo.ToString();
     }
 
 

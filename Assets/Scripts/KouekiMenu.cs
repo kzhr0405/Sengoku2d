@@ -32,9 +32,9 @@ public class KouekiMenu : MonoBehaviour {
 		//Color offImageColor = new Color (255f / 255f, 255f / 255f, 255f / 255f, 150f / 255f);
 		//Color offTextColor = new Color (50f / 255f, 50f / 255f, 50f / 255f, 255f / 255f);
 
-		GameObject buyMenu = kouekiObj.transform.FindChild ("Buy").gameObject;
+		GameObject buyMenu = kouekiObj.transform.Find ("Buy").gameObject;
 		buyMenu.GetComponent<Image> ().color = onImageColor;
-		buyMenu.transform.FindChild ("Text").GetComponent<Text> ().color = onTextColor;
+		buyMenu.transform.Find ("Text").GetComponent<Text> ().color = onTextColor;
 
 		//GameObject changeMenu = kouekiObj.transform.FindChild ("Change").gameObject;
 		//changeMenu.GetComponent<Image> ().color = offImageColor;
@@ -51,10 +51,10 @@ public class KouekiMenu : MonoBehaviour {
 		//Set Now Obj
 		buyMenu.GetComponent<KouekiMenu> ().nowMenuObj = buyObj;
 		//changeMenu.GetComponent<KouekiMenu> ().nowMenuObj = buyObj;
-		GameObject slider = buyObj.transform.FindChild("Slider").gameObject;
-		slider.GetComponent<BuySlider> ().buyQtyValue = buyObj.transform.FindChild("Qty").gameObject;
-		slider.GetComponent<BuySlider> ().PayMoneyValue = buyObj.transform.FindChild("MoneyAmt").gameObject;
-		GameObject buyBtn = buyObj.transform.FindChild ("DoButton").gameObject;
+		GameObject slider = buyObj.transform.Find("Slider").gameObject;
+		slider.GetComponent<BuySlider> ().buyQtyValue = buyObj.transform.Find("Qty").gameObject;
+		slider.GetComponent<BuySlider> ().PayMoneyValue = buyObj.transform.Find("MoneyAmt").gameObject;
+		GameObject buyBtn = buyObj.transform.Find ("DoButton").gameObject;
 
 		//Product List
 		CloseBoard close = GameObject.Find ("close").GetComponent<CloseBoard> ();
@@ -72,7 +72,7 @@ public class KouekiMenu : MonoBehaviour {
 			}
 		}
 		
-		GameObject content = kouekiObj.transform.FindChild("BuyMenu").transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+		GameObject content = kouekiObj.transform.Find("BuyMenu").transform.Find("ScrollView").transform.Find("Content").gameObject;
 		int kuniQty = close.kuniQty;
 
 		if(naiseiItemList.Count != 0){
@@ -144,22 +144,22 @@ public class KouekiMenu : MonoBehaviour {
 				item.GetComponent<Image>().color = lowColor;
                 if (itemCd == "CyouheiKB" || itemCd == "CyouheiTP" || itemCd == "CyouheiYR" || itemCd == "CyouheiYM") {
                     if (langId == 2) {
-                        item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
+                        item.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
                     }else {
-                        item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
+                        item.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
                     }
 
                 }else if (itemCd == "Shinobi") {
                     if (langId == 2) {
-                        item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
+                        item.transform.Find("ShinobiRank").GetComponent<Text>().text = "Low";
                     }else {
-                        item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
+                        item.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
                     }
                 }else if (itemCd == "Hidensyo") {
                     if (langId == 2) {
-                        item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "Low";
+                        item.transform.Find("HidensyoRank").GetComponent<Text>().text = "Low";
                     }else {
-                        item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "下";
+                        item.transform.Find("HidensyoRank").GetComponent<Text>().text = "下";
                     }
                 }
             }
@@ -167,22 +167,22 @@ public class KouekiMenu : MonoBehaviour {
 				item.GetComponent<Image>().color = midColor;
 				if(itemCd == "CyouheiKB" || itemCd == "CyouheiTP"|| itemCd == "CyouheiYR" || itemCd =="CyouheiYM"){
                     if (langId == 2) {
-                        item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
+                        item.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
                     }else {
-                        item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
+                        item.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
                     }
                         
 				}else if(itemCd == "Shinobi"){
                     if (langId == 2) {
-                        item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Mid";
+                        item.transform.Find("ShinobiRank").GetComponent<Text>().text = "Mid";
                     }else {
-                        item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
+                        item.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
                     }
 				}else if(itemCd == "Hidensyo"){
                     if (langId == 2) {
-                        item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "Mid";
+                        item.transform.Find("HidensyoRank").GetComponent<Text>().text = "Mid";
                     }else { 
-                        item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "中";
+                        item.transform.Find("HidensyoRank").GetComponent<Text>().text = "中";
                     }
                 }
 				
@@ -190,23 +190,23 @@ public class KouekiMenu : MonoBehaviour {
 				item.GetComponent<Image>().color = highColor;
 				if(itemCd == "CyouheiKB" || itemCd == "CyouheiTP"|| itemCd == "CyouheiYR" || itemCd =="CyouheiYM"){
                     if (langId == 2) {
-                        item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
+                        item.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
                     }else { 
-                        item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
+                        item.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
                     }
                 }
                 else if(itemCd == "Shinobi"){
                     if (langId == 2) {
-                        item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "High";
+                        item.transform.Find("ShinobiRank").GetComponent<Text>().text = "High";
                     }else {
-                        item.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
+                        item.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
                     }
                 }
                 else if(itemCd == "Hidensyo"){
                     if (langId == 2) {
-                        item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "High";
+                        item.transform.Find("HidensyoRank").GetComponent<Text>().text = "High";
                     }else {
-                        item.transform.FindChild("HidensyoRank").GetComponent<Text>().text = "上";
+                        item.transform.Find("HidensyoRank").GetComponent<Text>().text = "上";
                     }
                 }
 			}
@@ -232,7 +232,7 @@ public class KouekiMenu : MonoBehaviour {
 
 			//Size Adjustment
 			if(itemCd == "Shinobi"){
-				RectTransform rect = item.transform.FindChild("Shinobi").GetComponent<RectTransform>();
+				RectTransform rect = item.transform.Find("Shinobi").GetComponent<RectTransform>();
 				rect.sizeDelta = new Vector2(100,120);
 			}
 			

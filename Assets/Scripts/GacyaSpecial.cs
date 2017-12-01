@@ -70,7 +70,7 @@ public class GacyaSpecial : MonoBehaviour {
                 TouyouSpecialController TouyouSpecialController = GameObject.Find("Controller").GetComponent<TouyouSpecialController>();
                 Dictionary<int, Busyo> tmpBusyoListDic = new Dictionary<int, Busyo>();
                 tmpBusyoListDic = TouyouSpecialController.busyoListDic;
-                string gacyaName = transform.parent.transform.FindChild("Text").GetComponent<Text>().text;
+                string gacyaName = transform.parent.transform.Find("Text").GetComponent<Text>().text;
                 TouyouSpecialController.doGacyaSpecial(transform.parent.name, gacyaCount, hireCount, tmpBusyoListDic, gacyaName);
 
                 GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "unit";

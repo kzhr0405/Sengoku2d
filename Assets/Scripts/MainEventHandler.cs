@@ -96,11 +96,11 @@ public class MainEventHandler : MonoBehaviour {
 						int worstGaikouKuni = 0;
 						int worstHeiryokuValue = 100000000;
 
-						SendParam srcSendParam = targetKuni.transform.FindChild (randomKuni.ToString ()).GetComponent<SendParam> ();
+						SendParam srcSendParam = targetKuni.transform.Find (randomKuni.ToString ()).GetComponent<SendParam> ();
 						bool aggressiveFlg = srcSendParam.aggressiveFlg;
 
 						for (int k=0; k<targetKuniList.Count; k++) {						
-							SendParam sendParam = targetKuni.transform.FindChild (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
+							SendParam sendParam = targetKuni.transform.Find (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
 
 							if (aggressiveFlg) {
 								//Find worst gaikou daimyo
@@ -235,7 +235,7 @@ public class MainEventHandler : MonoBehaviour {
 								if(!ExistFlg){
 									string path = "Prefabs/Map/Gunzei";
 									GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
-									Gunzei.transform.SetParent (GameObject.Find ("Panel").transform.FindChild("GunzeiView").transform);
+									Gunzei.transform.SetParent (GameObject.Find ("Panel").transform.Find("GunzeiView").transform);
 									Gunzei.transform.localScale = new Vector2 (1, 1);
 
 									//Location
@@ -251,7 +251,7 @@ public class MainEventHandler : MonoBehaviour {
 										direction = "right";
 									}else{
 										Gunzei.transform.localScale = new Vector2 (-1, 1);
-                                        Gunzei.transform.FindChild("MsgBack").localScale = new Vector2(-1, 1);
+                                        Gunzei.transform.Find("MsgBack").localScale = new Vector2(-1, 1);
                                         direction = "left";
 										Gunzei.GetComponent<Gunzei> ().leftFlg = true;
 
@@ -463,12 +463,12 @@ public class MainEventHandler : MonoBehaviour {
 					int bestGaikouKuni = 0;
 					int bestHeiryokuValue = 0;
 
-					SendParam sendParamSrc = targetKuni.transform.FindChild (randomKuni.ToString ()).GetComponent<SendParam> ();
+					SendParam sendParamSrc = targetKuni.transform.Find (randomKuni.ToString ()).GetComponent<SendParam> ();
 					bool aggressiveFlg = sendParamSrc.aggressiveFlg;
 
 					for (int k=0; k<targetKuniList.Count; k++) {
 
-						SendParam sendParam = targetKuni.transform.FindChild (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
+						SendParam sendParam = targetKuni.transform.Find (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
 						if (aggressiveFlg) {
 							//Find best gaikou daimyo
 
@@ -1070,7 +1070,7 @@ public class MainEventHandler : MonoBehaviour {
 
 
 				//Reset Chouhou Id
-				targetKuni.transform.FindChild(kuniId.ToString()).GetComponent<SendParam>().cyouhouSnbRankId = 0;
+				targetKuni.transform.Find(kuniId.ToString()).GetComponent<SendParam>().cyouhouSnbRankId = 0;
 
 
 				//Message
@@ -1378,8 +1378,8 @@ public class MainEventHandler : MonoBehaviour {
 
             back.GetComponent<CloseEventBoard> ().deleteObj = board;
 			back.GetComponent<CloseEventBoard> ().deleteObj2 = back;
-			board.transform.FindChild("close").GetComponent<CloseEventBoard> ().deleteObj = board;
-			board.transform.FindChild("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
+			board.transform.Find("close").GetComponent<CloseEventBoard> ().deleteObj = board;
+			board.transform.Find("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
 
 			string pathOfScroll = "Prefabs/Event/EventScrollView";
 			GameObject scroll = Instantiate(Resources.Load (pathOfScroll)) as GameObject;
@@ -1391,13 +1391,13 @@ public class MainEventHandler : MonoBehaviour {
 			string pathOfSlot = "Prefabs/Event/EventSlot";
 			foreach (string text in messageList) {
 				GameObject slot = Instantiate(Resources.Load (pathOfSlot)) as GameObject;
-				slot.transform.SetParent(scroll.transform.FindChild("Content").transform);
-				slot.transform.FindChild("EventText").GetComponent<Text>().text = text;
+				slot.transform.SetParent(scroll.transform.Find("Content").transform);
+				slot.transform.Find("EventText").GetComponent<Text>().text = text;
 				slot.transform.localScale = new Vector2 (1,1);
 			}
 
-			board.transform.FindChild("close").GetComponent<CloseEventBoard> ().shisyaSceneFlg = shisyaSceneFlg;	
-			board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj2.GetComponent<CloseEventBoard> ().shisyaSceneFlg = shisyaSceneFlg;
+			board.transform.Find("close").GetComponent<CloseEventBoard> ().shisyaSceneFlg = shisyaSceneFlg;	
+			board.transform.Find ("close").GetComponent<CloseEventBoard> ().deleteObj2.GetComponent<CloseEventBoard> ().shisyaSceneFlg = shisyaSceneFlg;
 
             //Pointer
             back.GetComponent<CloseEventBoard>().activityUpdateFlg = true;
@@ -1407,12 +1407,12 @@ public class MainEventHandler : MonoBehaviour {
             back.GetComponent<CloseEventBoard>().upDaimyo2List = upDaimyo2List;
             back.GetComponent<CloseEventBoard>().kassenDaimyoList = kassenDaimyoList;
 
-            board.transform.FindChild("close").GetComponent<CloseEventBoard>().activityUpdateFlg = true;
-            board.transform.FindChild("close").GetComponent<CloseEventBoard>().downDaimyo1List = downDaimyo1List;
-            board.transform.FindChild("close").GetComponent<CloseEventBoard>().downDaimyo2List = downDaimyo2List;
-            board.transform.FindChild("close").GetComponent<CloseEventBoard>().upDaimyo1List = upDaimyo1List;
-            board.transform.FindChild("close").GetComponent<CloseEventBoard>().upDaimyo2List = upDaimyo2List;
-            board.transform.FindChild("close").GetComponent<CloseEventBoard>().kassenDaimyoList = kassenDaimyoList;
+            board.transform.Find("close").GetComponent<CloseEventBoard>().activityUpdateFlg = true;
+            board.transform.Find("close").GetComponent<CloseEventBoard>().downDaimyo1List = downDaimyo1List;
+            board.transform.Find("close").GetComponent<CloseEventBoard>().downDaimyo2List = downDaimyo2List;
+            board.transform.Find("close").GetComponent<CloseEventBoard>().upDaimyo1List = upDaimyo1List;
+            board.transform.Find("close").GetComponent<CloseEventBoard>().upDaimyo2List = upDaimyo2List;
+            board.transform.Find("close").GetComponent<CloseEventBoard>().kassenDaimyoList = kassenDaimyoList;
         }
 
 
@@ -1600,7 +1600,7 @@ public class MainEventHandler : MonoBehaviour {
 		}
 		
 		GameObject targetKuni = GameObject.Find ("KuniIconView");
-		SendParam sendParam = targetKuni.transform.FindChild (kuniId.ToString ()).GetComponent<SendParam> ();
+		SendParam sendParam = targetKuni.transform.Find (kuniId.ToString ()).GetComponent<SendParam> ();
 
 		int busyoId = randomEngunBusyo(int.Parse(engunDaimyoId));
 		int busyoLv = sendParam.busyoLv;
@@ -1617,7 +1617,7 @@ public class MainEventHandler : MonoBehaviour {
         string engunSts = "";//BusyoId-BusyoLv-ButaiQty-ButaiLv:
 
         GameObject targetKuni = GameObject.Find("KuniIconView");
-        SendParam sendParam = targetKuni.transform.FindChild(srcKuniId.ToString()).GetComponent<SendParam>();
+        SendParam sendParam = targetKuni.transform.Find(srcKuniId.ToString()).GetComponent<SendParam>();
 
         int busyoId = 35;
         int busyoLv = sendParam.busyoLv;
@@ -1688,7 +1688,7 @@ public class MainEventHandler : MonoBehaviour {
         }
 
         GameObject targetKuni = GameObject.Find("KuniIconView");
-        SendParam sendParam = targetKuni.transform.FindChild(kuniId.ToString()).GetComponent<SendParam>();
+        SendParam sendParam = targetKuni.transform.Find(kuniId.ToString()).GetComponent<SendParam>();
 
         int busyoId = randomEngunBusyoWODuplication(int.Parse(engunDaimyoId), doneBusyoList);
         int busyoLv = sendParam.busyoLv;

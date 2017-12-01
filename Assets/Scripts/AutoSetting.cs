@@ -31,26 +31,26 @@ public class AutoSetting : MonoBehaviour {
         Color offTxtColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 175f / 255f);
 
         if (OffFlg) {
-            GameObject offObj = parentObj.transform.FindChild("4").gameObject;
+            GameObject offObj = parentObj.transform.Find("4").gameObject;
             offObj.GetComponent<Image>().color = onBtnColor;
-            offObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+            offObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
             offObj.GetComponent<Button>().enabled = false;
 
-            GameObject onObj = parentObj.transform.FindChild("2").gameObject;
+            GameObject onObj = parentObj.transform.Find("2").gameObject;
             onObj.GetComponent<Image>().color = offBtnColor;
-            onObj.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
+            onObj.transform.Find("Text").GetComponent<Text>().color = offTxtColor;
             onObj.GetComponent<Button>().enabled = true;
 
         }
         else {
-            GameObject onObj = parentObj.transform.FindChild("2").gameObject;
+            GameObject onObj = parentObj.transform.Find("2").gameObject;
             onObj.GetComponent<Image>().color = onBtnColor;
-            onObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+            onObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
             onObj.GetComponent<Button>().enabled = false;
 
-            GameObject offObj = parentObj.transform.FindChild("4").gameObject;
+            GameObject offObj = parentObj.transform.Find("4").gameObject;
             offObj.GetComponent<Image>().color = offBtnColor;
-            offObj.transform.FindChild("Text").GetComponent<Text>().color = offTxtColor;
+            offObj.transform.Find("Text").GetComponent<Text>().color = offTxtColor;
             offObj.GetComponent<Button>().enabled = true;
 
         }

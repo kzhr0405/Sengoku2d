@@ -34,13 +34,13 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 		board.transform.localScale = new Vector2 (1,1);
 		board.transform.localPosition = new Vector3 (0,0,0);
 
-		board.transform.FindChild ("GrpValue").GetComponent<Text> ().text = targetGrp;
-		board.transform.FindChild ("Name").transform.FindChild ("NameValue").GetComponent<Text> ().text = targetName;
-		board.transform.FindChild ("Rank").transform.FindChild ("RankValue").GetComponent<Text> ().text = targetRank;
-		board.transform.FindChild ("Serihu").transform.FindChild ("SerihuValue").GetComponent<Text> ().text = targetExp;
+		board.transform.Find ("GrpValue").GetComponent<Text> ().text = targetGrp;
+		board.transform.Find ("Name").transform.Find ("NameValue").GetComponent<Text> ().text = targetName;
+		board.transform.Find ("Rank").transform.Find ("RankValue").GetComponent<Text> ().text = targetRank;
+		board.transform.Find ("Serihu").transform.Find ("SerihuValue").GetComponent<Text> ().text = targetExp;
 	
-		board.transform.FindChild ("Image").GetComponent<Image> ().sprite = gameObject.transform.parent.gameObject.GetComponent<Image> ().sprite;
-        board.transform.FindChild("close").GetComponent<CloseBoard>().tabibitoNoticeBtnFlg = true;
+		board.transform.Find ("Image").GetComponent<Image> ().sprite = gameObject.transform.parent.gameObject.GetComponent<Image> ().sprite;
+        board.transform.Find("close").GetComponent<CloseBoard>().tabibitoNoticeBtnFlg = true;
         GameObject.Find("NaiseiController").GetComponent<NaiseiController>().stopFlg = true;
 
 
@@ -69,7 +69,7 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 		}
 		item.transform.localPosition = new Vector3 (-60,-100,0);
 
-		board.transform.FindChild ("Qty").GetComponent<Text> ().text = "x "+itemQty.ToString();
+		board.transform.Find ("Qty").GetComponent<Text> ().text = "x "+itemQty.ToString();
 
 
 		/*Adjustment*/
@@ -80,77 +80,77 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 			if(itemId==1){
                 //Ge
                 if (langId == 2) {
-                    item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Low";
+                    item.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
                 }else {
-                    item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "下";
+                    item.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
                 }
 				item.GetComponent<Image>().color = lowColor;
 			}else if(itemId==2){
                 //Cyu
                 if (langId == 2) {
-                    item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "Mid";
+                    item.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
                 }else {
-                    item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "中";
+                    item.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
                 }
 				item.GetComponent<Image>().color = midColor;
 			}else if(itemId==3){
                 //Jyo
                 if (langId == 2) {
-                    item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "High";
+                    item.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
                 }else {
-                    item.transform.FindChild("CyouheiRank").GetComponent<Text>().text = "上";
+                    item.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
                 }
 				item.GetComponent<Image>().color = highColor;
 			}
 		}
 		//Syoukaijyo
 		if (itemCd == "cyoutei" || itemCd == "koueki") {
-			item.transform.FindChild("Name").GetComponent<Text>().text = targetName;
+			item.transform.Find("Name").GetComponent<Text>().text = targetName;
 
 			if(itemCd == "cyoutei"){
 				if(targetRank == "S"){
 					itemId = 3;
                     if (langId == 2) {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "High";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "High";
                     }else {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "上";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "上";
                     }
 				}else if(targetRank == "A"){
 					itemId = 2;
                     if (langId == 2) {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "Mid";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "Mid";
                     }else {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "中";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "中";
                     }
 				}else if(targetRank == "B"){
 					itemId = 1;
                     if (langId == 2) {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "Low";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "Low";
                     }else {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "下";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "下";
                     }
 				}
 			}else if(itemCd == "koueki"){
 				if(targetRank == "A"){
 					itemId = 3;
                     if (langId == 2) {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "High";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "High";
                     }else {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "上";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "上";
                     }
 				}else if(targetRank == "B"){
 					itemId = 2;
                     if (langId == 2) {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "Mid";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "Mid";
                     }else {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "中";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "中";
                     }
 				}else if(targetRank == "C"){
 					itemId = 1;
                     if (langId == 2) {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "Low";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "Low";
                     }else {
-                        item.transform.FindChild("Rank").GetComponent<Text>().text = "下";
+                        item.transform.Find("Rank").GetComponent<Text>().text = "下";
                     }
 				}
 			}
@@ -160,28 +160,28 @@ public class TabibitoNoticeBtn : MonoBehaviour {
 		if (itemCd == "kengou") {
 			if(targetRank=="A"){
                 if (langId == 2) {
-                    item.transform.FindChild("Rank").GetComponent<Text>().text = "High";
+                    item.transform.Find("Rank").GetComponent<Text>().text = "High";
                 }else {
-                    item.transform.FindChild("Rank").GetComponent<Text>().text = "上";
+                    item.transform.Find("Rank").GetComponent<Text>().text = "上";
                 }
 			}else if(targetRank=="B"){
                 if (langId == 2) {
-                    item.transform.FindChild("Rank").GetComponent<Text>().text = "Mid";
+                    item.transform.Find("Rank").GetComponent<Text>().text = "Mid";
                 }else {
-                    item.transform.FindChild("Rank").GetComponent<Text>().text = "中";
+                    item.transform.Find("Rank").GetComponent<Text>().text = "中";
                 }
 			}else if(targetRank=="C"){
                 if (langId == 2) {
-                    item.transform.FindChild("Rank").GetComponent<Text>().text = "Low";
+                    item.transform.Find("Rank").GetComponent<Text>().text = "Low";
                 }else {
-                    item.transform.FindChild("Rank").GetComponent<Text>().text = "下";
+                    item.transform.Find("Rank").GetComponent<Text>().text = "下";
                 }
 			}
 		}
 
 
 		//Btn Parametor Setting
-		TabibitoItemGetter script = board.transform.FindChild ("GetButton").GetComponent<TabibitoItemGetter> ();
+		TabibitoItemGetter script = board.transform.Find ("GetButton").GetComponent<TabibitoItemGetter> ();
 		script.itemCd = itemCd;
 		script.itemId = itemId;
 		script.itemQty = itemQty;

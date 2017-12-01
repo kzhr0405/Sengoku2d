@@ -67,7 +67,7 @@ public class SendParam : MonoBehaviour {
 				board.transform.localScale = new Vector2 (1, 1);
 
                 if (Application.loadedLevelName == "tutorialMain") {
-                    board.transform.FindChild("close").gameObject.SetActive(false);
+                    board.transform.Find("close").gameObject.SetActive(false);
                 }
 
                 /*Value Setting*/
@@ -154,67 +154,67 @@ public class SendParam : MonoBehaviour {
 						string naiseiName = naiseiIconList [i];
                         if (langId == 2) {
                             if (naiseiName == "kb") {
-							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "H";
+							    naiseiIcon.transform.Find ("Text").GetComponent<Text> ().text = "H";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
 
                             } else if (naiseiName == "tp") {
-							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "G";
+							    naiseiIcon.transform.Find ("Text").GetComponent<Text> ().text = "G";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 6;
 
                             }
                             else if (naiseiName == "kzn") {
-							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "M";
+							    naiseiIcon.transform.Find ("Text").GetComponent<Text> ().text = "M";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 7;
 
                             }
                             else if (naiseiName == "snb") {
-							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "N";
+							    naiseiIcon.transform.Find ("Text").GetComponent<Text> ().text = "N";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 8;
 
                             }
                             else if (naiseiName == "nbn") {
-							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "W";
+							    naiseiIcon.transform.Find ("Text").GetComponent<Text> ().text = "W";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 9;
 
                             }
                             else if (naiseiName == "mkd") {
-							    naiseiIcon.transform.FindChild ("Text").GetComponent<Text> ().text = "E";
+							    naiseiIcon.transform.Find ("Text").GetComponent<Text> ().text = "E";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 10;
 
                             }
                             else if(naiseiName == "syn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "T";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "T";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 11;
 
                             }
                         }
                         else {
                             if (naiseiName == "kb") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "馬";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "馬";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
                             }
                             else if (naiseiName == "tp") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "砲";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "砲";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 6;
                             }
                             else if (naiseiName == "kzn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "鉱";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "鉱";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 7;
                             }
                             else if (naiseiName == "snb") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "忍";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "忍";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 8;
                             }
                             else if (naiseiName == "nbn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "南";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "南";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 9;
                             }
                             else if (naiseiName == "mkd") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "帝";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "帝";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 10;
                             }
                             else if (naiseiName == "syn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "商";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "商";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 11;
 
                             }
@@ -236,9 +236,9 @@ public class SendParam : MonoBehaviour {
 				if (clearFlg == false) {
 
                     if (langId == 2) {
-                        atkBtn.transform.FindChild("Text").GetComponent<Text>().text = "Attack";
+                        atkBtn.transform.Find("Text").GetComponent<Text>().text = "Attack";
                     }else {
-                        atkBtn.transform.FindChild("Text").GetComponent<Text>().text = "侵略";
+                        atkBtn.transform.Find("Text").GetComponent<Text>().text = "侵略";
                     }
 
                     if (cyouhouSnbRankId != 0) {
@@ -258,26 +258,26 @@ public class SendParam : MonoBehaviour {
 							Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = lowColor;
                             if (langId == 2) {
-                                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "Low";
+                                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Low";
                             }else {
-                                shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "下";
+                                shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "下";
                             }
 
                         }else if (cyouhouSnbRankId == 2) {
 							Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = midColor;
                             if (langId == 2) {
-                                shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "Mid";
+                                shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "Mid";
                             }else {
-                                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
+                                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
                             }
 						} else if (cyouhouSnbRankId == 3) {
 							Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = highColor;
                             if (langId == 2) {
-                                shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "High";
+                                shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "High";
                             }else {
-                                shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
+                                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
                             }
 						}
 
@@ -303,17 +303,17 @@ public class SendParam : MonoBehaviour {
 					//Enable Gaiko & Cyouhou
 					gaikouBtn.GetComponent<Image> ().color = NGClorBtn;
 					gaikouBtn.GetComponent<Button> ().enabled = false;
-					gaikouBtn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+					gaikouBtn.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 
 
 					bouryakuhouBtn.GetComponent<Image> ().color = NGClorBtn;
 					bouryakuhouBtn.GetComponent<Button> ().enabled = false;
-					bouryakuhouBtn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+					bouryakuhouBtn.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 
                     if (langId == 2) {
-                        atkBtn.transform.FindChild ("Text").GetComponent<Text> ().text = "Develop";
+                        atkBtn.transform.Find ("Text").GetComponent<Text> ().text = "Develop";
                     }else {
-                        atkBtn.transform.FindChild("Text").GetComponent<Text>().text = "内政";
+                        atkBtn.transform.Find("Text").GetComponent<Text>().text = "内政";
                     }
                     if (Application.loadedLevelName == "tutorialMain") {
                         TutorialController tutorialScript = new TutorialController();
@@ -328,14 +328,14 @@ public class SendParam : MonoBehaviour {
 					atkBtn.GetComponent<Image> ().color = NGClorBtn;
 					//test
 					atkBtn.GetComponent<Button> ().enabled = false;
-					atkBtn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+					atkBtn.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 
 				}
 				//Enable Gaikou
 				if (soubujireiFlg) {
 					gaikouBtn.GetComponent<Image> ().color = NGClorBtn;
 					gaikouBtn.GetComponent<Button> ().enabled = false;
-					gaikouBtn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+					gaikouBtn.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 
 				}
 
@@ -346,7 +346,7 @@ public class SendParam : MonoBehaviour {
 
 					atkBtn.GetComponent<Image> ().color = NGClorBtn;
 					atkBtn.GetComponent<Button> ().enabled = false;
-					atkBtn.transform.FindChild ("Text").GetComponent<Text> ().color = NGClorTxt;
+					atkBtn.transform.Find ("Text").GetComponent<Text> ().color = NGClorTxt;
 				}
 
                 //Set Hidden Value
@@ -422,21 +422,21 @@ public class SendParam : MonoBehaviour {
 					
 					if (kuniId == 38 || kuniId == 39) {
                         if (langId == 2) {
-                            btn.transform.FindChild("Text").GetComponent<Text>().text = "Sakai";
-                            btn.transform.FindChild("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
-                            btn.transform.FindChild("Text").GetComponent<Text>().fontSize = 200;
+                            btn.transform.Find("Text").GetComponent<Text>().text = "Sakai";
+                            btn.transform.Find("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+                            btn.transform.Find("Text").GetComponent<Text>().fontSize = 200;
                         } else {
-                            btn.transform.FindChild("Text").GetComponent<Text>().text = "堺";
+                            btn.transform.Find("Text").GetComponent<Text>().text = "堺";
                         }
                         btn.GetComponent<SyouninPop> ().sakaiFlg = true;
 					} else if (kuniId == 58) {
 
                         if (langId == 2) {
-                            btn.transform.FindChild("Text").GetComponent<Text>().text = "Hakata";
-                            btn.transform.FindChild("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
-                            btn.transform.FindChild("Text").GetComponent<Text>().fontSize = 200;
+                            btn.transform.Find("Text").GetComponent<Text>().text = "Hakata";
+                            btn.transform.Find("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+                            btn.transform.Find("Text").GetComponent<Text>().fontSize = 200;
                         }else {
-                            btn.transform.FindChild("Text").GetComponent<Text>().text = "博多";
+                            btn.transform.Find("Text").GetComponent<Text>().text = "博多";
                         }
                     }
 				}
@@ -450,7 +450,7 @@ public class SendParam : MonoBehaviour {
 				GameObject board = Instantiate (Resources.Load (pathOfBoard)) as GameObject;
 				board.transform.SetParent(GameObject.Find ("Panel").transform);
 				board.transform.localScale = new Vector2 (1, 1);
-				GameObject selectBtn = board.transform.FindChild ("SelectButton").gameObject;
+				GameObject selectBtn = board.transform.Find ("SelectButton").gameObject;
 
 				//Kuni Name
 				GameObject.Find ("kuniName").GetComponent<Text> ().text = kuniName;
@@ -486,16 +486,16 @@ public class SendParam : MonoBehaviour {
 				//Once Cleared Flg
 				if (gameClearFlg) {
                     if (langId == 2) {
-                        GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = " Cleared";
+                        GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = " Cleared";
                     }else {
-                        GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = "攻略済";
+                        GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = "攻略済";
                     }
                         
 				}else {
                     if (langId == 2) {
-                        GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = " Never Cleared";
+                        GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = " Never Cleared";
                     }else {
-                        GameObject.Find("KouryakuFlg").transform.FindChild("Label").GetComponent<Text>().text = "未攻略";
+                        GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = "未攻略";
                     }
                 }
 
@@ -584,62 +584,62 @@ public class SendParam : MonoBehaviour {
 						string naiseiName = naiseiIconList [i];
                         if (langId == 2) {
                             if (naiseiName == "kb") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "H";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "H";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
                             }
                             else if (naiseiName == "tp") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "G";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "G";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 6;
                             }
                             else if (naiseiName == "kzn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "M";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "M";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 7;
                             }
                             else if (naiseiName == "snb") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "N";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "N";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 8;
                             }
                             else if (naiseiName == "nbn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "W";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "W";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 9;
                             }
                             else if (naiseiName == "mkd") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "E";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "E";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 10;
                             }
                             else if (naiseiName == "syn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "T";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "T";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 11;
 
                             }
                         }
                         else {
                             if (naiseiName == "kb") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "馬";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "馬";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
                             }
                             else if (naiseiName == "tp") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "砲";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "砲";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 6;
                             }
                             else if (naiseiName == "kzn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "鉱";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "鉱";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 7;
                             }
                             else if (naiseiName == "snb") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "忍";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "忍";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 8;
                             }
                             else if (naiseiName == "nbn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "南";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "南";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 9;
                             }
                             else if (naiseiName == "mkd") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "帝";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "帝";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 10;
                             }
                             else if (naiseiName == "syn") {
-                                naiseiIcon.transform.FindChild("Text").GetComponent<Text>().text = "商";
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "商";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 11;
 
                             }
@@ -660,38 +660,38 @@ public class SendParam : MonoBehaviour {
 			//Bakuhu Menu
 			GameObject BakuhuBase = GameObject.Find("BakuhuBase").gameObject;
 
-			if (BakuhuBase.transform.FindChild ("ToubatsuText") != null) {
-				Destroy (BakuhuBase.transform.FindChild ("ToubatsuText").gameObject);	
+			if (BakuhuBase.transform.Find ("ToubatsuText") != null) {
+				Destroy (BakuhuBase.transform.Find ("ToubatsuText").gameObject);	
 			}
 
-			if (BakuhuBase.transform.FindChild ("ToubatsuSelect") == null) {
+			if (BakuhuBase.transform.Find ("ToubatsuSelect") == null) {
 				string toubatsuPath = "Prefabs/Bakuhu/ToubatsuSelect";
 				toubatsu = Instantiate (Resources.Load (toubatsuPath)) as GameObject;
 				toubatsu.transform.SetParent (BakuhuBase.transform);
 				toubatsu.transform.localScale = new Vector2 (1,1);
 				toubatsu.name = "ToubatsuSelect";
 			} else {
-				toubatsu = BakuhuBase.transform.FindChild ("ToubatsuSelect").gameObject;
+				toubatsu = BakuhuBase.transform.Find ("ToubatsuSelect").gameObject;
 			}
 
 			string kamonImagePath = "Prefabs/Kamon/" + daimyoId.ToString ();
-			toubatsu.transform.FindChild("ToubatsuTarget").transform.FindChild("Kamon").GetComponent<Image> ().sprite = 
+			toubatsu.transform.Find("ToubatsuTarget").transform.Find("Kamon").GetComponent<Image> ().sprite = 
 				Resources.Load (kamonImagePath, typeof(Sprite)) as Sprite;
 
 			string imagePath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
-			toubatsu.transform.FindChild("ToubatsuTarget").transform.FindChild("Daimyo").GetComponent<Image> ().sprite = 
+			toubatsu.transform.Find("ToubatsuTarget").transform.Find("Daimyo").GetComponent<Image> ().sprite = 
 				Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
             if (langId == 2) {
-                toubatsu.transform.FindChild ("Exp").GetComponent<Text> ().text = 
+                toubatsu.transform.Find ("Exp").GetComponent<Text> ().text = 
 				"Would you declare " + daimyoName+ " attack order to surrounding parties?";
             }else {
-                toubatsu.transform.FindChild("Exp").GetComponent<Text>().text =
+                toubatsu.transform.Find("Exp").GetComponent<Text>().text =
                 daimyoName + "の討伐令を周辺大名に出しますか？";
             }
 			
 			//Blinker
-			GameObject BakuhuKuniIconView = BakuhuBase.transform.FindChild("BakuhuKuniIconView").gameObject;
+			GameObject BakuhuKuniIconView = BakuhuBase.transform.Find("BakuhuKuniIconView").gameObject;
 			foreach(Transform obj in BakuhuKuniIconView.transform){
 				SendParam script = obj.GetComponent<SendParam> ();
 				if (script.daimyoId != daimyoId) {
@@ -707,9 +707,9 @@ public class SendParam : MonoBehaviour {
 			}
 
 			//Set Param to Button
-			toubatsu.transform.FindChild("ToubatsuBtn").GetComponent<DoTobatsu>().targetDaimyoId = daimyoId;
-			toubatsu.transform.FindChild("ToubatsuBtn").GetComponent<DoTobatsu>().targetDaimyoName = daimyoName;
-			toubatsu.transform.FindChild ("ToubatsuBtn").GetComponent<DoTobatsu> ().kuniQty = kuniQty;
+			toubatsu.transform.Find("ToubatsuBtn").GetComponent<DoTobatsu>().targetDaimyoId = daimyoId;
+			toubatsu.transform.Find("ToubatsuBtn").GetComponent<DoTobatsu>().targetDaimyoName = daimyoName;
+			toubatsu.transform.Find ("ToubatsuBtn").GetComponent<DoTobatsu> ().kuniQty = kuniQty;
 
 
 

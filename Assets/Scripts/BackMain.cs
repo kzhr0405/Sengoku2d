@@ -103,7 +103,7 @@ public class BackMain : MonoBehaviour {
 
             //check
             bool shiayExistFlg = false;
-            GameObject Content = GameObject.Find("Shisya").transform.FindChild("Panel").transform.FindChild("ScrollView").transform.FindChild("Content").gameObject;
+            GameObject Content = GameObject.Find("Shisya").transform.Find("Panel").transform.Find("ScrollView").transform.Find("Content").gameObject;
             foreach (Transform chld in Content.transform) {
                 int shisyaId = chld.GetComponent<ShisyaSelect>().shisyaId;
                 if (shisyaId != 22 && shisyaId != 6) shiayExistFlg = true;
@@ -126,7 +126,7 @@ public class BackMain : MonoBehaviour {
                 RectTransform msgTransform = msg.GetComponent<RectTransform>();
                 msgTransform.anchoredPosition3D = new Vector3(0, 0, 0);
                 msg.name = "ShisyaBackConfirm";
-                msg.transform.FindChild("NoButton").GetComponent<DoShisyaBack>().back = back;
+                msg.transform.Find("NoButton").GetComponent<DoShisyaBack>().back = back;
             }else {
                 PlayerPrefs.SetBool("fromShisyaFlg", true);
                 PlayerPrefs.Flush();

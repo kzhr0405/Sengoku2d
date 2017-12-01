@@ -49,9 +49,9 @@ public class SwitchTown : MonoBehaviour {
             nextKuniName = kuniScript.getKuniName(nextKuniId,langId);
             
             if (langId == 2) {
-                transform.FindChild("Text").GetComponent<Text>().text = "Next Town\n" + nextKuniName;
+                transform.Find("Text").GetComponent<Text>().text = "Next Town\n" + nextKuniName;
             }else {
-                transform.FindChild("Text").GetComponent<Text>().text = "次の国へ\n" + nextKuniName;
+                transform.Find("Text").GetComponent<Text>().text = "次の国へ\n" + nextKuniName;
             }
 
 
@@ -92,7 +92,7 @@ public class SwitchTown : MonoBehaviour {
                 msgTransform.name = "LeaveSpdUpConfirm";
 
                 //flg
-                msg.transform.FindChild("YesButton").GetComponent<LeaveSpdUp>().nextFlg = true;
+                msg.transform.Find("YesButton").GetComponent<LeaveSpdUp>().nextFlg = true;
             }
         }else {
             Debug.Log("error");

@@ -43,8 +43,8 @@ public class AddMoneyConfirm : MonoBehaviour {
 			qa.GetComponent<QA> ().qaId = 13;
 
 			back.GetComponent<CloseOneBoard> ().deleteObj = board;
-			board.transform.FindChild ("YesButton").GetComponent<AddMoney> ().touchBackObj = back;
-			board.transform.FindChild ("NoButton").GetComponent<AddMoney> ().touchBackObj = back;
+			board.transform.Find ("YesButton").GetComponent<AddMoney> ().touchBackObj = back;
+			board.transform.Find ("NoButton").GetComponent<AddMoney> ().touchBackObj = back;
 		
 		}else {
 			audioSources [4].Play ();

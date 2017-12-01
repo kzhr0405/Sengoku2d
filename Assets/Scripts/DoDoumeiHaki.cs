@@ -105,7 +105,7 @@ public class DoDoumeiHaki : MonoBehaviour {
 
 					if(tempDaimyoId == daimyoId){
 						int kuniId = i + 1;
-						GameObject kuniIcon = KuniIconView.transform.FindChild(kuniId.ToString()).gameObject;
+						GameObject kuniIcon = KuniIconView.transform.Find(kuniId.ToString()).gameObject;
 						if (openKuniList.Contains (kuniId.ToString ())) {
 							kuniIcon.GetComponent<Image> ().color = openKuniColor;
 						} else {

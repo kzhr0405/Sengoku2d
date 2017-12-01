@@ -47,14 +47,14 @@ public class SenpouStatusUp : MonoBehaviour {
                 }
                 targetObj.GetComponent<PlayerHP>().life = finalHP;
 
-                GameObject dtl = targetObj.transform.FindChild("BusyoDtlPlayer").gameObject;
-                GameObject effect = dtl.transform.FindChild("hp_up").gameObject;
+                GameObject dtl = targetObj.transform.Find("BusyoDtlPlayer").gameObject;
+                GameObject effect = dtl.transform.Find("hp_up").gameObject;
                 effect.GetComponent<FadeoutOff>().currentRemainTime = 5;
                 effect.GetComponent<SpriteRenderer>().enabled = true;
                 effect.GetComponent<Animator>().enabled = true;
                 effect.GetComponent<FadeoutOff>().enabled = true;
 
-                GameObject value = dtl.transform.FindChild("MinHpBar").transform.FindChild("Value").gameObject;
+                GameObject value = dtl.transform.Find("MinHpBar").transform.Find("Value").gameObject;
                 value.GetComponent<MeshRenderer>().enabled = true;
                 value.GetComponent<TextMeshFadeoutOff>().enabled = true;
                 value.GetComponent<TextMesh>().text = recoverTmpHP.ToString() + "⇡";
@@ -74,14 +74,14 @@ public class SenpouStatusUp : MonoBehaviour {
                 }
                 targetObj.GetComponent<EnemyHP>().life = finalHP;
 
-                GameObject dtl = targetObj.transform.FindChild("BusyoDtlEnemy").gameObject;
-                GameObject effect = dtl.transform.FindChild("hp_up").gameObject;
+                GameObject dtl = targetObj.transform.Find("BusyoDtlEnemy").gameObject;
+                GameObject effect = dtl.transform.Find("hp_up").gameObject;
                 effect.GetComponent<FadeoutOff>().currentRemainTime = 5;
                 effect.GetComponent<SpriteRenderer>().enabled = true;
                 effect.GetComponent<Animator>().enabled = true;
                 effect.GetComponent<FadeoutOff>().enabled = true;
 
-                GameObject value = dtl.transform.FindChild("MinHpBar").transform.FindChild("Value").gameObject;
+                GameObject value = dtl.transform.Find("MinHpBar").transform.Find("Value").gameObject;
                 value.GetComponent<MeshRenderer>().enabled = true;
                 value.GetComponent<TextMeshFadeoutOff>().enabled = true;
                 value.GetComponent<TextMesh>().text = recoverTmpHP.ToString() + "⇡";
@@ -111,14 +111,14 @@ public class SenpouStatusUp : MonoBehaviour {
                     }
                 }
 
-                GameObject dtl = targetObj.transform.FindChild("BusyoDtlPlayer").gameObject;
-                GameObject effect = dtl.transform.FindChild("spd_up").gameObject;
+                GameObject dtl = targetObj.transform.Find("BusyoDtlPlayer").gameObject;
+                GameObject effect = dtl.transform.Find("spd_up").gameObject;
                 effect.GetComponent<FadeoutOff>().currentRemainTime = 5;
                 effect.GetComponent<SpriteRenderer>().enabled = true;
                 effect.GetComponent<Animator>().enabled = true;
                 effect.GetComponent<FadeoutOff>().enabled = true;
 
-                GameObject value = dtl.transform.FindChild("MinHpBar").transform.FindChild("Value").gameObject;
+                GameObject value = dtl.transform.Find("MinHpBar").transform.Find("Value").gameObject;
                 value.GetComponent<MeshRenderer>().enabled = true;
                 value.GetComponent<TextMeshFadeoutOff>().enabled = true;
                 value.GetComponent<TextMesh>().text = upSpd.ToString() + "⇡";
@@ -137,14 +137,14 @@ public class SenpouStatusUp : MonoBehaviour {
                     float finalSpd = nowSpd + upSpd;
                     targetObj.GetComponent<HomingLong>().speed = finalSpd;
                 }
-                GameObject dtl = targetObj.transform.FindChild("BusyoDtlEnemy").gameObject;
-                GameObject effect = dtl.transform.FindChild("spd_up").gameObject;
+                GameObject dtl = targetObj.transform.Find("BusyoDtlEnemy").gameObject;
+                GameObject effect = dtl.transform.Find("spd_up").gameObject;
                 effect.GetComponent<FadeoutOff>().currentRemainTime = 5;
                 effect.GetComponent<SpriteRenderer>().enabled = true;
                 effect.GetComponent<Animator>().enabled = true;
                 effect.GetComponent<FadeoutOff>().enabled = true;
 
-                GameObject value = dtl.transform.FindChild("MinHpBar").transform.FindChild("Value").gameObject;
+                GameObject value = dtl.transform.Find("MinHpBar").transform.Find("Value").gameObject;
                 value.GetComponent<MeshRenderer>().enabled = true;
                 value.GetComponent<TextMeshFadeoutOff>().enabled = true;
                 value.GetComponent<TextMesh>().text = upSpd.ToString() + "⇡";

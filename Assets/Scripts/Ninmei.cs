@@ -89,25 +89,25 @@ public class Ninmei : MonoBehaviour {
                 foreach (Busyo Busyo in myBusyoSortList) {
 					string slotPath = "Prefabs/Naisei/BusyoSlot";
 					GameObject slot = Instantiate (Resources.Load (slotPath)) as GameObject;
-					slot.transform.SetParent (scroll.transform.FindChild ("NaiseiContent").transform);
+					slot.transform.SetParent (scroll.transform.Find ("NaiseiContent").transform);
 					slot.transform.localScale = new Vector2 (1, 1);
 
 					string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
 					GameObject busyo = Instantiate (Resources.Load (busyoPath)) as GameObject;
 					busyo.name = Busyo.busyoId.ToString();
-					busyo.transform.SetParent (slot.transform.FindChild ("Busyo").transform);
+					busyo.transform.SetParent (slot.transform.Find ("Busyo").transform);
 					busyo.transform.localScale = new Vector2 (3.5f, 3.5f);
 					RectTransform busyo_transform = busyo.GetComponent<RectTransform> ();
 					busyo_transform.anchoredPosition3D = new Vector3 (0, -300, 0);
 					busyo_transform.sizeDelta = new Vector2 (200, 200);
 					busyo.GetComponent<DragHandler> ().enabled = false;
 
-					GameObject text = busyo.transform.FindChild ("Text").gameObject;
+					GameObject text = busyo.transform.Find ("Text").gameObject;
 					text.transform.localScale = new Vector2 (0.6f, 0.6f);
 					RectTransform text_transform = text.GetComponent<RectTransform> ();
 					text_transform.anchoredPosition3D = new Vector3 (-200, 65, 0);
 
-					GameObject rank = busyo.transform.FindChild ("Rank").gameObject;
+					GameObject rank = busyo.transform.Find ("Rank").gameObject;
 					rank.transform.localScale = new Vector2 (1, 1);
 					RectTransform rank_transform = rank.GetComponent<RectTransform> ();
 					rank_transform.anchoredPosition3D = new Vector3 (30, -100, 0);
@@ -117,8 +117,8 @@ public class Ninmei : MonoBehaviour {
 					float boubiStatusTemp = (Busyo.hp + Busyo.atk) / 2;
 					float boubiStatus = boubiStatusTemp / 2;
 
-					slot.transform.FindChild ("Busyo").transform.FindChild ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + naiseiSts.ToString ("f1") + "%";
-					slot.transform.FindChild ("Busyo").transform.FindChild ("BoubiEffectValue").GetComponent<Text> ().text = "+" + boubiStatus.ToString ("f1") + "%";
+					slot.transform.Find ("Busyo").transform.Find ("NaiseiEffectValue").GetComponent<Text> ().text = "+" + naiseiSts.ToString ("f1") + "%";
+					slot.transform.Find ("Busyo").transform.Find ("BoubiEffectValue").GetComponent<Text> ().text = "+" + boubiStatus.ToString ("f1") + "%";
 
 					//Lv
 					string lvPath = "Prefabs/Naisei/Lv";
@@ -130,9 +130,9 @@ public class Ninmei : MonoBehaviour {
 					lv_transform.anchoredPosition3D = new Vector3 (130, -70, 0);
 
 					//Button
-					slot.transform.FindChild ("Busyo").transform.FindChild ("NinmeiButton").GetComponent<DoNinmei> ().busyoId = Busyo.busyoId.ToString();
+					slot.transform.Find ("Busyo").transform.Find ("NinmeiButton").GetComponent<DoNinmei> ().busyoId = Busyo.busyoId.ToString();
 				}
-                GameObject contents = scroll.transform.FindChild("NaiseiContent").gameObject;
+                GameObject contents = scroll.transform.Find("NaiseiContent").gameObject;
                 contents.transform.parent.GetComponent<ScrollRect>().horizontalNormalizedPosition = 0.0f;
             }else{
 				audioSources [4].Play ();
@@ -162,7 +162,7 @@ public class Ninmei : MonoBehaviour {
 			msgTransform.name = "kaininConfirm";
 
 			//Message Text Mod
-			GameObject msgObj = msg.transform.FindChild ("KaininText").gameObject;
+			GameObject msgObj = msg.transform.Find ("KaininText").gameObject;
 			int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
             string msgText = "";
 			if (myDaimyoBusyo == jyosyuId) {

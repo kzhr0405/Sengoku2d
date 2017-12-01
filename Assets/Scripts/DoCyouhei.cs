@@ -116,13 +116,13 @@ public class DoCyouhei : MonoBehaviour {
                 GameObject btn = GameObject.Find("ButtonKunren").gameObject;
                 btn.GetComponent<Button>().enabled = true;
                 btn.GetComponent<Image>().color = enabledColor;
-                btn.transform.FindChild("Text").GetComponent<Text>().color = enabledColor;
+                btn.transform.Find("Text").GetComponent<Text>().color = enabledColor;
 
                 GameObject ButaiStatus = GameObject.Find("ButaiStatus").gameObject;
                 GameObject BusyoStatus = GameObject.Find("BusyoStatus").gameObject;
                 ButaiStatus.transform.SetParent(BusyoStatus.transform);
                 
-                GameObject Button = GameObject.Find("Panel").transform.FindChild("Button").gameObject;
+                GameObject Button = GameObject.Find("Panel").transform.Find("Button").gameObject;
                 GameObject tBack = GameObject.Find("tBack").gameObject;
                 Button.transform.SetParent(tBack.transform);
                 Vector2 vect2 = new Vector2(0, 50);

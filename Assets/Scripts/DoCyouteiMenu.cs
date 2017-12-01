@@ -69,7 +69,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 
 			GameObject menu = GameObject.Find ("MenuKenjyo").gameObject;
-			menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
 			serihuScript.mikadoSerihuChanger (msg.getMessage(32));
 
@@ -98,7 +98,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 			}
 
 			GameObject menu = GameObject.Find ("MenuCyoutei").gameObject;
-			menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
 		} else if (name == "DoTeisenButton") {
 			
@@ -125,7 +125,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 			}
 
 			GameObject menu = GameObject.Find ("MenuTeisen").gameObject;
-			menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 			
 			
 		} else if (name == "DoKanniButton") {
@@ -152,7 +152,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 					GameObject btn = GameObject.Find ("Kanni").gameObject;
 					btn.GetComponent<Button> ().enabled = false;
 					btn.GetComponent<Image> ().color = enableImageColor;
-					btn.transform.FindChild ("Text").GetComponent<Text> ().color = enableTextColor;					
+					btn.transform.Find ("Text").GetComponent<Text> ().color = enableTextColor;					
 				}
 			} else {
 				audioSources [4].Play ();
@@ -160,7 +160,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 			}
 			
 			GameObject menu = GameObject.Find ("MenuKanni").gameObject;
-			menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
 
 		} else if (name == "DoCyoutekiButton") {
@@ -197,7 +197,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 						srcDaimyoKuniList.Add (temp.ToString ());
 
 						//Change Map Valye
-						KuniIconView.transform.FindChild (temp.ToString ()).GetComponent<SendParam> ().myYukouValue = 0;
+						KuniIconView.transform.Find (temp.ToString ()).GetComponent<SendParam> ().myYukouValue = 0;
 
 					}
 				}
@@ -254,7 +254,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 			}
 
 			GameObject menu = GameObject.Find ("MenuCyouteki").gameObject;
-			menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 		
 		} else if (name == "DoBakuhuButton") {
 			int reducePoint = 100;
@@ -292,7 +292,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 				//Enable Syogun Button
 				GameObject oya = GameObject.Find("SubButtonViewRight").gameObject;
-				GameObject ko = oya.transform.FindChild ("Bakuhu").gameObject;
+				GameObject ko = oya.transform.Find ("Bakuhu").gameObject;
 				ko.SetActive (true);
 
 				string pathOfAnim = "Prefabs/EffectAnime/point_up";
@@ -312,7 +312,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 			}
 
 			GameObject menu = GameObject.Find ("MenuBakuhu").gameObject;
-			menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().OnClick ();
+			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 		}
 	}
 

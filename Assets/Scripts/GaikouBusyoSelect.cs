@@ -21,7 +21,7 @@ public class GaikouBusyoSelect : MonoBehaviour {
 		foreach (Transform a in gameObject.transform) {
 			foreach (Transform b in a) {
 				if(b.name == "Chiryaku(Clone)"){
-					chiryaku = b.FindChild("value").GetComponent<Text>().text;
+					chiryaku = b.Find("value").GetComponent<Text>().text;
 				}
 				if(b.name == "Text"){
 					busyoName = b.GetComponent<Text>().text;
@@ -51,7 +51,7 @@ public class GaikouBusyoSelect : MonoBehaviour {
 			}else if(ratio<0) {
                 ratio = 0;
             }
-			GameObject.Find ("DoumeiRatio").transform.FindChild ("Value").GetComponent<Text> ().text = ratio.ToString () + "%";
+			GameObject.Find ("DoumeiRatio").transform.Find ("Value").GetComponent<Text> ().text = ratio.ToString () + "%";
 			GameObject.Find ("DoDoumeiBtn").GetComponent<DoGaikou> ().doumeiRatio = ratio;
 		
 		} else if (DoBtn.name == "DoDoukatsuBtn") {

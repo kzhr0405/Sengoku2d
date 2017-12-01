@@ -81,15 +81,15 @@ public class Gacya : MonoBehaviour {
                 GameObject.Find("CenterView").transform.SetParent(tBack.transform);
 
 
-                TextController textScript = GameObject.Find("TextBoard").transform.FindChild("Text").GetComponent<TextController>();
+                TextController textScript = GameObject.Find("TextBoard").transform.Find("Text").GetComponent<TextController>();
                 textScript.tutorialId = 7;
                 textScript.SetText(7);
                 textScript.SetNextLine();
 
-                GameObject busyoDamaGacyaBtn = GameObject.Find("tButton").transform.FindChild("BusyoDamaGacya").gameObject;
+                GameObject busyoDamaGacyaBtn = GameObject.Find("tButton").transform.Find("BusyoDamaGacya").gameObject;
                 busyoDamaGacyaBtn.transform.SetParent(GameObject.Find("UnderView").transform);
                 busyoDamaGacyaBtn.transform.localPosition = new Vector2(320,-300);
-                Destroy(busyoDamaGacyaBtn.transform.FindChild("point_up").gameObject);
+                Destroy(busyoDamaGacyaBtn.transform.Find("point_up").gameObject);
             }else { 
                 int busyoDama = PlayerPrefs.GetInt("busyoDama");
 			    if (busyoDama >= 100) {
@@ -245,7 +245,7 @@ public class Gacya : MonoBehaviour {
 		busyo1_transform.anchoredPosition3D = new Vector3(200,180,0);
 		busyo1_transform.sizeDelta = new Vector2( 30, 30);
 		busyo1.GetComponent<DragHandler> ().enabled = false;	
-		busyo1.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
+		busyo1.transform.Find ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
 
 		//2nd
 		string busyoPath2 = "Prefabs/Player/Unit/BusyoUnit";
@@ -257,7 +257,7 @@ public class Gacya : MonoBehaviour {
 		busyo2_transform.anchoredPosition3D = new Vector3(600,180,0);
 		busyo2_transform.sizeDelta = new Vector2( 30, 30);
 		busyo2.GetComponent<DragHandler> ().enabled = false;	
-		busyo2.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
+		busyo2.transform.Find ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
 
 		//3rd
 		string busyoPath3 = "Prefabs/Player/Unit/BusyoUnit";
@@ -269,7 +269,7 @@ public class Gacya : MonoBehaviour {
 		busyo3_transform.anchoredPosition3D = new Vector3(1000,180,0);
 		busyo3_transform.sizeDelta = new Vector2( 30, 30);
 		busyo3.GetComponent<DragHandler> ().enabled = false;	
-		busyo3.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
+		busyo3.transform.Find ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
 
 
 		/*Button or Batu*/
@@ -361,14 +361,14 @@ public class Gacya : MonoBehaviour {
 				batu2.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu2_transform = batu2.GetComponent<RectTransform>();
 				batu2_transform.anchoredPosition = new Vector2 (0,0);
-				batu2.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu2.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 				GameObject batu3 = Instantiate (Resources.Load (batuPath)) as GameObject;
 				batu3.transform.SetParent (busyo3.transform);
 				batu3.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu3_transform = batu3.GetComponent<RectTransform>();
 				batu3_transform.anchoredPosition = new Vector2 (0,0);
-				batu3.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu3.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 			}else if(tokens[1] == "1"){
@@ -378,7 +378,7 @@ public class Gacya : MonoBehaviour {
 				batu1.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu1_transform = batu1.GetComponent<RectTransform>();
 				batu1_transform.anchoredPosition = new Vector2 (0,0);
-				batu1.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu1.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 				GameObject batu2 = Instantiate (Resources.Load (batuPath)) as GameObject;
@@ -392,7 +392,7 @@ public class Gacya : MonoBehaviour {
 				batu3.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu3_transform = batu3.GetComponent<RectTransform>();
 				batu3_transform.anchoredPosition = new Vector2 (0,0);
-				batu3.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu3.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 			}else if(tokens[2] == "1"){
@@ -402,7 +402,7 @@ public class Gacya : MonoBehaviour {
 				batu1.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu1_transform = batu1.GetComponent<RectTransform>();
 				batu1_transform.anchoredPosition = new Vector2 (0,0);
-				batu1.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu1.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 				GameObject batu2 = Instantiate (Resources.Load (batuPath)) as GameObject;
@@ -410,7 +410,7 @@ public class Gacya : MonoBehaviour {
 				batu2.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu2_transform = batu2.GetComponent<RectTransform>();
 				batu2_transform.anchoredPosition = new Vector2 (0,0);
-				batu2.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu2.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 				GameObject batu3 = Instantiate (Resources.Load (batuPath)) as GameObject;
 				batu3.transform.SetParent (busyo3.transform);
@@ -432,7 +432,7 @@ public class Gacya : MonoBehaviour {
 		busyo1_transform.anchoredPosition3D = new Vector3(200,180,0);
 		busyo1_transform.sizeDelta = new Vector2( 30, 30);
 		busyo1.GetComponent<DragHandler> ().enabled = false;	
-		busyo1.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
+		busyo1.transform.Find ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
 
 		//2nd
 		string busyoPath2 =  "Prefabs/Player/Unit/BusyoUnit";
@@ -444,7 +444,7 @@ public class Gacya : MonoBehaviour {
 		busyo2_transform.anchoredPosition3D = new Vector3(600,180,0);
 		busyo2_transform.sizeDelta = new Vector2( 30, 30);
 		busyo2.GetComponent<DragHandler> ().enabled = false;	
-		busyo2.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
+		busyo2.transform.Find ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
 
 		//3rd
 		string busyoPath3 = "Prefabs/Player/Unit/BusyoUnit";
@@ -456,7 +456,7 @@ public class Gacya : MonoBehaviour {
 		busyo3_transform.anchoredPosition3D = new Vector3(1000,180,0);
 		busyo3_transform.sizeDelta = new Vector2( 30, 30);
 		busyo3.GetComponent<DragHandler> ().enabled = false;	
-		busyo3.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
+		busyo3.transform.Find ("Text").GetComponent<Text> ().color = new Color (255, 255, 255, 255);
 
 
 		/*Button or Batu*/
@@ -545,14 +545,14 @@ public class Gacya : MonoBehaviour {
 				batu2.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu2_transform = batu2.GetComponent<RectTransform>();
 				batu2_transform.anchoredPosition = new Vector2 (0,0);
-				batu2.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu2.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 				GameObject batu3 = Instantiate (Resources.Load (batuPath)) as GameObject;
 				batu3.transform.SetParent (busyo3.transform);
 				batu3.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu3_transform = batu3.GetComponent<RectTransform>();
 				batu3_transform.anchoredPosition = new Vector2 (0,0);
-				batu3.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu3.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 			}else if(tokens[1] == "1"){
@@ -562,7 +562,7 @@ public class Gacya : MonoBehaviour {
 				batu1.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu1_transform = batu1.GetComponent<RectTransform>();
 				batu1_transform.anchoredPosition = new Vector2 (0,0);
-				batu1.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu1.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 				GameObject batu2 = Instantiate (Resources.Load (batuPath)) as GameObject;
@@ -576,7 +576,7 @@ public class Gacya : MonoBehaviour {
 				batu3.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu3_transform = batu3.GetComponent<RectTransform>();
 				batu3_transform.anchoredPosition = new Vector2 (0,0);
-				batu3.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu3.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 			}else if(tokens[2] == "1"){
@@ -586,7 +586,7 @@ public class Gacya : MonoBehaviour {
 				batu1.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu1_transform = batu1.GetComponent<RectTransform>();
 				batu1_transform.anchoredPosition = new Vector2 (0,0);
-				batu1.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu1.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 
 				GameObject batu2 = Instantiate (Resources.Load (batuPath)) as GameObject;
@@ -594,7 +594,7 @@ public class Gacya : MonoBehaviour {
 				batu2.transform.localScale = new Vector2 (1, 1);
 				RectTransform batu2_transform = batu2.GetComponent<RectTransform>();
 				batu2_transform.anchoredPosition = new Vector2 (0,0);
-				batu2.transform.FindChild("TouyouZumiText").GetComponent<Text>().enabled = false;
+				batu2.transform.Find("TouyouZumiText").GetComponent<Text>().enabled = false;
 
 				GameObject batu3 = Instantiate (Resources.Load (batuPath)) as GameObject;
 				batu3.transform.SetParent (busyo3.transform);

@@ -39,8 +39,8 @@ public class SyouninPop : MonoBehaviour {
 			pop.name = "SelectSyoukaijyoBoard";
 			back.GetComponent<CloseLayer> ().closeTargetObj = pop;
 			back.GetComponent<CloseLayer> ().closeTargetBack = back;
-			pop.transform.FindChild ("CloseBtn").GetComponent<CloseLayer> ().closeTargetObj = pop;
-			pop.transform.FindChild ("CloseBtn").GetComponent<CloseLayer> ().closeTargetBack = back;
+			pop.transform.Find ("CloseBtn").GetComponent<CloseLayer> ().closeTargetObj = pop;
+			pop.transform.Find ("CloseBtn").GetComponent<CloseLayer> ().closeTargetBack = back;
 			
 			//Check Syoukaijyo
 			string nowQty = PlayerPrefs.GetString ("koueki");
@@ -49,61 +49,61 @@ public class SyouninPop : MonoBehaviour {
 			char[] delimiterChars = { ',' };
 			nowQtyList = new List<string> (nowQty.Split (delimiterChars));
 			
-			GameObject scrollView = pop.transform.FindChild ("ScrollView").gameObject;
-			GameObject content = scrollView.transform.FindChild ("Content").gameObject;
+			GameObject scrollView = pop.transform.Find ("ScrollView").gameObject;
+			GameObject content = scrollView.transform.Find ("Content").gameObject;
 			bool notZeroflg = false;
 			//Jyo
 			if (nowQtyList [2] == "0") {
-				content.transform.FindChild ("Jyo").gameObject.SetActive (false);
+				content.transform.Find ("Jyo").gameObject.SetActive (false);
 			} else {
 				notZeroflg = true;
-				content.transform.FindChild ("Jyo").transform.FindChild ("syounin").transform.FindChild ("Qty").GetComponent<Text> ().text = nowQtyList [2];
-				content.transform.FindChild ("Jyo").GetComponent<SyoukaijyoSelect> ().OnClick ();
+				content.transform.Find ("Jyo").transform.Find ("syounin").transform.Find ("Qty").GetComponent<Text> ().text = nowQtyList [2];
+				content.transform.Find ("Jyo").GetComponent<SyoukaijyoSelect> ().OnClick ();
 			}
 			
 			//Cyu
 			if (nowQtyList [1] == "0") {
-				content.transform.FindChild ("Cyu").gameObject.SetActive (false);
+				content.transform.Find ("Cyu").gameObject.SetActive (false);
 			} else {
 				notZeroflg = true;
-				content.transform.FindChild ("Cyu").transform.FindChild ("syounin").transform.FindChild ("Qty").GetComponent<Text> ().text = nowQtyList [1];
-				content.transform.FindChild ("Cyu").GetComponent<SyoukaijyoSelect> ().OnClick ();
+				content.transform.Find ("Cyu").transform.Find ("syounin").transform.Find ("Qty").GetComponent<Text> ().text = nowQtyList [1];
+				content.transform.Find ("Cyu").GetComponent<SyoukaijyoSelect> ().OnClick ();
 			}
 			
 			//Ge
 			if (nowQtyList [0] == "0") {
-				content.transform.FindChild ("Ge").gameObject.SetActive (false);
+				content.transform.Find ("Ge").gameObject.SetActive (false);
 			} else {
 				notZeroflg = true;
-				content.transform.FindChild ("Ge").transform.FindChild ("syounin").transform.FindChild ("Qty").GetComponent<Text> ().text = nowQtyList [0];
-				content.transform.FindChild ("Ge").GetComponent<SyoukaijyoSelect> ().OnClick ();
+				content.transform.Find ("Ge").transform.Find ("syounin").transform.Find ("Qty").GetComponent<Text> ().text = nowQtyList [0];
+				content.transform.Find ("Ge").GetComponent<SyoukaijyoSelect> ().OnClick ();
 			}
 			
 			
 			if (!notZeroflg) {
-				scrollView.transform.FindChild ("NoSyoukaijyo").GetComponent<Text> ().enabled = true;
-				pop.transform.FindChild ("Serihu").transform.FindChild ("Text").GetComponent<Text> ().text = msg.getMessage(41);
-				pop.transform.FindChild ("PassButton").gameObject.SetActive (false);
+				scrollView.transform.Find ("NoSyoukaijyo").GetComponent<Text> ().enabled = true;
+				pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(41);
+				pop.transform.Find ("PassButton").gameObject.SetActive (false);
 			}
 			
-			pop.transform.FindChild ("PassButton").GetComponent<SyouninPop> ().SelectSyoukaijyoBoard = pop;
-			pop.transform.FindChild ("PassButton").GetComponent<SyouninPop> ().myDaimyoFlg = myDaimyoFlg;
-			pop.transform.FindChild ("PassButton").GetComponent<SyouninPop> ().occupiedDaimyoName = occupiedDaimyoName;
-			pop.transform.FindChild ("PassButton").GetComponent<SyouninPop> ().yukoudo = yukoudo;
+			pop.transform.Find ("PassButton").GetComponent<SyouninPop> ().SelectSyoukaijyoBoard = pop;
+			pop.transform.Find ("PassButton").GetComponent<SyouninPop> ().myDaimyoFlg = myDaimyoFlg;
+			pop.transform.Find ("PassButton").GetComponent<SyouninPop> ().occupiedDaimyoName = occupiedDaimyoName;
+			pop.transform.Find ("PassButton").GetComponent<SyouninPop> ().yukoudo = yukoudo;
 
 			//Icon Change
 			if (sakaiFlg) {
 				string imagePath = "Prefabs/Syounin/Sprite/syounin2";
-				pop.transform.FindChild ("Syounin").GetComponent<Image> ().sprite = 
+				pop.transform.Find ("Syounin").GetComponent<Image> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;
                 if (langId == 2) {
-                    pop.transform.FindChild("SyouninName").GetComponent<Text>().text = "Sen no Rikyu";
+                    pop.transform.Find("SyouninName").GetComponent<Text>().text = "Sen no Rikyu";
                 }else { 
-                    pop.transform.FindChild ("SyouninName").GetComponent<Text> ().text = "千利休";
+                    pop.transform.Find ("SyouninName").GetComponent<Text> ().text = "千利休";
                 }
             }else {
                 if (langId == 2) {
-                    pop.transform.FindChild("SyouninName").GetComponent<Text>().text = "Sotan Kamiya";
+                    pop.transform.Find("SyouninName").GetComponent<Text>().text = "Sotan Kamiya";
                 }
             }
 
@@ -134,7 +134,7 @@ public class SyouninPop : MonoBehaviour {
                     GameObject.Find("GameController").GetComponent<MainStageController>().eventStopFlg = true;
                     
                     audioSources [3].Play ();
-					SelectSyoukaijyoBoard.transform.FindChild ("CloseBtn").GetComponent<CloseLayer> ().OnClick ();
+					SelectSyoukaijyoBoard.transform.Find ("CloseBtn").GetComponent<CloseLayer> ().OnClick ();
 
                     string pathOfBack = "Prefabs/Cyoutei/CyouteiBack";
 					GameObject back = Instantiate (Resources.Load (pathOfBack)) as GameObject;
@@ -149,7 +149,7 @@ public class SyouninPop : MonoBehaviour {
 					pop.transform.localPosition = new Vector2 (0, 0);
 					pop.name = "SyouninBoard";
 					
-					CloseLayer CloseLayerScript = pop.transform.FindChild ("CloseSyoukaijyo").GetComponent<CloseLayer> ();
+					CloseLayer CloseLayerScript = pop.transform.Find ("CloseSyoukaijyo").GetComponent<CloseLayer> ();
 					CloseLayerScript.closeTargetBack = back;
 					CloseLayerScript.closeTargetObj = pop;
 					CloseLayerScript.syoukaijyoRank = syoukaijyoRank;
@@ -168,7 +168,7 @@ public class SyouninPop : MonoBehaviour {
 					int syoukaijyoRankId = 0;
 					
 					//Change Menu by syoukaijyo rank
-					GameObject action = pop.transform.FindChild ("Action").gameObject;
+					GameObject action = pop.transform.Find ("Action").gameObject;
 
 					if (syoukaijyoRank == "Ge") {
 						if (!myDaimyoFlg) {
@@ -182,8 +182,8 @@ public class SyouninPop : MonoBehaviour {
 						stopBattleRatio = Random.Range (10, 30);
 						kanniRatio = Random.Range (20, 60);
 						syoukaijyoRankId = 1;
-						action.transform.FindChild ("ActionValue").GetComponent<Text> ().text = "1";
-						action.transform.FindChild ("ActionMaxValue").GetComponent<Text> ().text = "1";
+						action.transform.Find ("ActionValue").GetComponent<Text> ().text = "1";
+						action.transform.Find ("ActionMaxValue").GetComponent<Text> ().text = "1";
 
 
 					} else if (syoukaijyoRank == "Cyu") {
@@ -198,8 +198,8 @@ public class SyouninPop : MonoBehaviour {
 						stopBattleRatio = Random.Range (30, 80);
 						kanniRatio = Random.Range (40, 80);
 						syoukaijyoRankId = 2;
-						action.transform.FindChild ("ActionValue").GetComponent<Text> ().text = "2";
-						action.transform.FindChild ("ActionMaxValue").GetComponent<Text> ().text = "2";
+						action.transform.Find ("ActionValue").GetComponent<Text> ().text = "2";
+						action.transform.Find ("ActionMaxValue").GetComponent<Text> ().text = "2";
 
 						
 					} else if (syoukaijyoRank == "Jyo") {
@@ -211,8 +211,8 @@ public class SyouninPop : MonoBehaviour {
 						stopBattleRatio = 100;
 						kanniRatio = Random.Range (60, 100);
 						syoukaijyoRankId = 3;
-						action.transform.FindChild ("ActionValue").GetComponent<Text> ().text = "3";
-						action.transform.FindChild ("ActionMaxValue").GetComponent<Text> ().text = "3";
+						action.transform.Find ("ActionValue").GetComponent<Text> ().text = "3";
+						action.transform.Find ("ActionMaxValue").GetComponent<Text> ().text = "3";
 
 
 					}
@@ -313,7 +313,7 @@ public class SyouninPop : MonoBehaviour {
                         serihu = "これは" + daimyoName + "様。\n私共めに何用で御座いましょうか。";
                     }
                         
-					pop.transform.FindChild ("Serihu").transform.FindChild ("Text").GetComponent<Text> ().text = serihu;
+					pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = serihu;
 
 
 					PlayerPrefs.SetBool ("questSpecialFlg4",true);
@@ -345,10 +345,10 @@ public class SyouninPop : MonoBehaviour {
 		Color enableTextColor = new Color (125f / 255f, 125f / 255f, 125f / 255f, 255f / 255f);
 		
 		foreach(string n in btnNameList){
-			GameObject btn = pop.transform.FindChild (n).gameObject;
+			GameObject btn = pop.transform.Find (n).gameObject;
 			btn.GetComponent<Button>().enabled = false;
 			btn.GetComponent<Image> ().color = enableImageColor;
-			btn.transform.FindChild("Text").GetComponent<Text>().color = enableTextColor;
+			btn.transform.Find("Text").GetComponent<Text>().color = enableTextColor;
 		}
 	}
 

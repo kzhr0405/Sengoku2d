@@ -46,10 +46,10 @@ public class CyouteiMenu : MonoBehaviour {
 					menu.transform.SetParent (board.transform);
 					menu.transform.localScale = new Vector2 (1, 1);
 					menu.transform.localPosition = new Vector2 (0, -180);
-					menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+					menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 					menu.name = "MenuKenjyo";
-					GameObject giveSlider = menu.transform.FindChild ("GiveSlider").gameObject;
-					giveSlider.GetComponent<GiveSlider> ().valueObj = menu.transform.FindChild ("GiveMoneyValue").gameObject;
+					GameObject giveSlider = menu.transform.Find ("GiveSlider").gameObject;
+					giveSlider.GetComponent<GiveSlider> ().valueObj = menu.transform.Find ("GiveMoneyValue").gameObject;
 					giveSlider.GetComponent<Slider> ().value = 1.0f;
 
 					int tmp = money / 1000;
@@ -67,14 +67,14 @@ public class CyouteiMenu : MonoBehaviour {
 				menu.transform.SetParent (board.transform);
 				menu.transform.localScale = new Vector2 (1, 1);
 				menu.transform.localPosition = new Vector2 (0, -180);
-				menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+				menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 				menu.name = "MenuCyoutei";
 
 				int yukoudoUp = CloseLayerScript.yukouAddValue;
 				int reducePoint = CloseLayerScript.yukouReducePoint;
 
-				menu.transform.FindChild("CyouteiUpValue").GetComponent<Text>().text = yukoudoUp.ToString();
-				menu.transform.FindChild("ReduceValue").GetComponent<Text>().text = reducePoint.ToString();
+				menu.transform.Find("CyouteiUpValue").GetComponent<Text>().text = yukoudoUp.ToString();
+				menu.transform.Find("ReduceValue").GetComponent<Text>().text = reducePoint.ToString();
 				mikadoSerihuChanger(msg.getMessage(22));
 
 			} else if (name == "Teisen") {
@@ -99,28 +99,28 @@ public class CyouteiMenu : MonoBehaviour {
 					menu.transform.SetParent (board.transform);
 					menu.transform.localScale = new Vector2 (1, 1);
 					menu.transform.localPosition = new Vector2 (0, -180);
-					menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+					menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 					menu.name = "MenuTeisen";
 
 					int ratio = CloseLayerScript.stopBattleRatio;
 					int reducePoint = CloseLayerScript.stopBattleReducePoint;
 
-					menu.transform.FindChild("RatioValue").GetComponent<Text>().text = ratio.ToString();
-					menu.transform.FindChild("ReduceValue").GetComponent<Text>().text = reducePoint.ToString();
+					menu.transform.Find("RatioValue").GetComponent<Text>().text = ratio.ToString();
+					menu.transform.Find("ReduceValue").GetComponent<Text>().text = reducePoint.ToString();
 
 					int srcDaimyoId = targetGunzei.GetComponent<Gunzei>().srcDaimyoId;
 					string srcDaimyoName = targetGunzei.GetComponent<Gunzei>().srcDaimyoName;
 
 					string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + srcDaimyoId.ToString ();
-					GameObject gunzei = menu.transform.FindChild("Gunzei").gameObject;
+					GameObject gunzei = menu.transform.Find("Gunzei").gameObject;
 					gunzei.GetComponent<Image> ().sprite = 
 						Resources.Load (imagePath, typeof(Sprite)) as Sprite;
                     string serihu = "";
                     if (langId == 2) {
-                        gunzei.transform.FindChild("Text").GetComponent<Text>().text = srcDaimyoName;
+                        gunzei.transform.Find("Text").GetComponent<Text>().text = srcDaimyoName;
                         serihu = "Have you not been doing well with " + srcDaimyoName + "? We can stop the battle.";
                     }else { 
-                        gunzei.transform.FindChild("Text").GetComponent<Text>().text = srcDaimyoName + "隊";
+                        gunzei.transform.Find("Text").GetComponent<Text>().text = srcDaimyoName + "隊";
                         serihu = "ほう、" + srcDaimyoName + "と上手くいっていないのか。停戦要請をしても良いぞ。";
                     }
                     mikadoSerihuChanger(serihu);
@@ -143,7 +143,7 @@ public class CyouteiMenu : MonoBehaviour {
 					menu.transform.SetParent (board.transform);
 					menu.transform.localScale = new Vector2 (1, 1);
 					menu.transform.localPosition = new Vector2 (0, -180);
-					menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+					menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 					menu.name = "MenuKanni";
 					
 
@@ -284,7 +284,7 @@ public class CyouteiMenu : MonoBehaviour {
 									menu.transform.SetParent (board.transform);
 									menu.transform.localScale = new Vector2 (1, 1);
 									menu.transform.localPosition = new Vector2 (0, -180);
-									menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+									menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
                                     menu.name = "MenuBakuhu";
 									mikadoSerihuChanger(msg.getMessage(28));
 
@@ -312,7 +312,7 @@ public class CyouteiMenu : MonoBehaviour {
 								menu.transform.SetParent (board.transform);
 								menu.transform.localScale = new Vector2 (1, 1);
 								menu.transform.localPosition = new Vector2 (0, -180);
-								menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+								menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 								menu.name = "MenuBakuhu";
 								mikadoSerihuChanger(msg.getMessage(28));
 
@@ -364,16 +364,16 @@ public class CyouteiMenu : MonoBehaviour {
 						menu.transform.SetParent (board.transform);
 						menu.transform.localScale = new Vector2 (1, 1);
 						menu.transform.localPosition = new Vector2 (0, -180);
-						menu.transform.FindChild ("Close").GetComponent<CloseMenu> ().obj = menu;
+						menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 						menu.name = "MenuCyouteki";
 
 						cyoutekiDaimyo = CloseLayerScript.cyoutekiDaimyo;
 						string daimyoName = daimyo.getName (cyoutekiDaimyo,langId, senarioId);
 
-						menu.transform.FindChild ("CyoutekiDaimyo").GetComponent<Text> ().text = daimyoName;
+						menu.transform.Find ("CyoutekiDaimyo").GetComponent<Text> ().text = daimyoName;
 
 						int cyoutekiReducePoint = CloseLayerScript.cyoutekiReducePoint;
-						menu.transform.FindChild ("ReduceValue").GetComponent<Text> ().text = cyoutekiReducePoint.ToString ();
+						menu.transform.Find ("ReduceValue").GetComponent<Text> ().text = cyoutekiReducePoint.ToString ();
 
 						CloseLayerScript.cyoutekiDaimyoName = daimyoName;
                         string serihu = "";
@@ -394,6 +394,6 @@ public class CyouteiMenu : MonoBehaviour {
 	}
 
 	public void mikadoSerihuChanger(string serihu){
-		GameObject.Find("Serihu").transform.FindChild("Text").GetComponent<Text>().text = serihu;
+		GameObject.Find("Serihu").transform.Find("Text").GetComponent<Text>().text = serihu;
 	}
 }

@@ -40,19 +40,19 @@ public class GiveGokuiConfirm : MonoBehaviour {
         //Message Text Mod
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            msg.transform.FindChild("Text").GetComponent<Text>().text= "My lord, Do you want to transmit " + sakuName + "?\n He won't be able to use current active skill anymore.";
+            msg.transform.Find("Text").GetComponent<Text>().text= "My lord, Do you want to transmit " + sakuName + "?\n He won't be able to use current active skill anymore.";
         }else {
-            msg.transform.FindChild("Text").GetComponent<Text>().text = "御屋形様、" + sakuName + "を伝授なさいますか？\n現在の策は使用出来なくなりますぞ。";
+            msg.transform.Find("Text").GetComponent<Text>().text = "御屋形様、" + sakuName + "を伝授なさいますか？\n現在の策は使用出来なくなりますぞ。";
         }
 		//Add busyoId
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().busyoId = int.Parse (busyoId);
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().sakuId = sakuId;
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().sakuName = sakuName;
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().confirmObj = msg;
-		msg.transform.FindChild ("NoButton").GetComponent<GiveGokui> ().confirmObj = msg;
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().backObj = back;
-		msg.transform.FindChild ("NoButton").GetComponent<GiveGokui> ().backObj = back;
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().boardObj = boardObj;
-		msg.transform.FindChild ("YesButton").GetComponent<GiveGokui> ().boardBackObj = boardBackObj;
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().busyoId = int.Parse (busyoId);
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().sakuId = sakuId;
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().sakuName = sakuName;
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().confirmObj = msg;
+		msg.transform.Find ("NoButton").GetComponent<GiveGokui> ().confirmObj = msg;
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().backObj = back;
+		msg.transform.Find ("NoButton").GetComponent<GiveGokui> ().backObj = back;
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().boardObj = boardObj;
+		msg.transform.Find ("YesButton").GetComponent<GiveGokui> ().boardBackObj = boardBackObj;
 	}
 }

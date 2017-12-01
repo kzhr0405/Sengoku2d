@@ -73,14 +73,14 @@ public class QuestReceive : MonoBehaviour {
 
     public void deleteQuest(bool countQuestFlg, string target, int id) {
         if (target.Contains("Daily")) {
-            QuestMenu QuestMenu = GameObject.Find("QuestMenu").transform.FindChild("Daily").GetComponent<QuestMenu>();
+            QuestMenu QuestMenu = GameObject.Find("QuestMenu").transform.Find("Daily").GetComponent<QuestMenu>();
             if (countQuestFlg) {
                 QuestMenu.activeCountList.Remove(id);
             }else {
                 QuestMenu.activeList.Remove(id);
             }
         }else if(target.Contains("Special")){
-            QuestMenu QuestMenu = GameObject.Find("QuestMenu").transform.FindChild("Special").GetComponent<QuestMenu>();
+            QuestMenu QuestMenu = GameObject.Find("QuestMenu").transform.Find("Special").GetComponent<QuestMenu>();
             if (countQuestFlg) {
                 QuestMenu.activeCountList.Remove(id);
             }else {

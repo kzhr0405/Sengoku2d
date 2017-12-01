@@ -49,7 +49,7 @@ public class StartScene : MonoBehaviour {
                     board.transform.localPosition = new Vector2(0, 0);
 
                     back.GetComponent<CloseOneBoard>().deleteObj = board;
-                    board.transform.FindChild("NoButton").GetComponent<AddHyourou>().touchBackObj = back;
+                    board.transform.Find("NoButton").GetComponent<AddHyourou>().touchBackObj = back;
                     
                 }else {
                     //soudaisyo check
@@ -140,7 +140,7 @@ public class StartScene : MonoBehaviour {
 			board.transform.localPosition = new Vector2 (0, 0);
 
 			//qa
-			board.transform.FindChild("qa").GetComponent<QA> ().qaId = 15;
+			board.transform.Find("qa").GetComponent<QA> ().qaId = 15;
 			back.GetComponent<CloseOneBoard> ().deleteObj = board;
 
 
@@ -150,30 +150,30 @@ public class StartScene : MonoBehaviour {
 
 			bool SEOffFlg = PlayerPrefs.GetBool ("SEOffFlg");
 			if(SEOffFlg){
-				GameObject offObj = board.transform.FindChild ("SE").transform.FindChild ("OffButton").gameObject;
+				GameObject offObj = board.transform.Find ("SE").transform.Find ("OffButton").gameObject;
 				offObj.GetComponent<Image> ().color = onBtnColor;
-				offObj.transform.FindChild("Text").GetComponent<Text> ().color = onTxtColor;
+				offObj.transform.Find("Text").GetComponent<Text> ().color = onTxtColor;
 				offObj.GetComponent<Button> ().enabled = false;
 
 			}else{
-				GameObject onObj = board.transform.FindChild ("SE").transform.FindChild ("OnButton").gameObject;
+				GameObject onObj = board.transform.Find ("SE").transform.Find ("OnButton").gameObject;
 				onObj.GetComponent<Image> ().color = onBtnColor;
-				onObj.transform.FindChild("Text").GetComponent<Text> ().color = onTxtColor;
+				onObj.transform.Find("Text").GetComponent<Text> ().color = onTxtColor;
 				onObj.GetComponent<Button> ().enabled = false;
 
 			}
 
 			bool BGMOffFlg = PlayerPrefs.GetBool ("BGMOffFlg");
 			if(BGMOffFlg){
-				GameObject offObj = board.transform.FindChild ("BGM").transform.FindChild ("OffButton").gameObject;
+				GameObject offObj = board.transform.Find ("BGM").transform.Find ("OffButton").gameObject;
 				offObj.GetComponent<Image> ().color = onBtnColor;
-				offObj.transform.FindChild("Text").GetComponent<Text> ().color = onTxtColor;
+				offObj.transform.Find("Text").GetComponent<Text> ().color = onTxtColor;
 				offObj.GetComponent<Button> ().enabled = false;
 
 			}else{
-				GameObject onObj = board.transform.FindChild ("BGM").transform.FindChild ("OnButton").gameObject;
+				GameObject onObj = board.transform.Find ("BGM").transform.Find ("OnButton").gameObject;
 				onObj.GetComponent<Image> ().color = onBtnColor;
-				onObj.transform.FindChild("Text").GetComponent<Text> ().color = onTxtColor;
+				onObj.transform.Find("Text").GetComponent<Text> ().color = onTxtColor;
 				onObj.GetComponent<Button> ().enabled = false;
 
 			}
@@ -181,19 +181,19 @@ public class StartScene : MonoBehaviour {
             //Auto
             bool Auto2Flg = PlayerPrefs.GetBool("Auto2Flg");
             if(Auto2Flg) {
-                GameObject onObj = board.transform.FindChild("Auto").transform.FindChild("2").gameObject;
+                GameObject onObj = board.transform.Find("Auto").transform.Find("2").gameObject;
                 onObj.GetComponent<Image>().color = onBtnColor;
-                onObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+                onObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
                 onObj.GetComponent<Button>().enabled = false;
             }else {
-                GameObject onObj = board.transform.FindChild("Auto").transform.FindChild("4").gameObject;
+                GameObject onObj = board.transform.Find("Auto").transform.Find("4").gameObject;
                 onObj.GetComponent<Image>().color = onBtnColor;
-                onObj.transform.FindChild("Text").GetComponent<Text>().color = onTxtColor;
+                onObj.transform.Find("Text").GetComponent<Text>().color = onTxtColor;
                 onObj.GetComponent<Button>().enabled = false;
             }
 
             //Lang
-            GameObject Lang = board.transform.FindChild("Lang").gameObject;
+            GameObject Lang = board.transform.Find("Lang").gameObject;
             int langId = PlayerPrefs.GetInt("langId");
             LangSetting LangSetting = new LangSetting();
             LangSetting.ChangeButtonColorByConfig(langId, Lang);
@@ -232,12 +232,12 @@ public class StartScene : MonoBehaviour {
             board.transform.localPosition = new Vector2(0, 0);
 
             string userId = PlayerPrefs.GetString("userId");
-            board.transform.FindChild("userId").GetComponent<Text>().text = userId;
+            board.transform.Find("userId").GetComponent<Text>().text = userId;
 
             string versionNo = Application.version;
             string verTxt = "( Ver." + versionNo + ")";
             string final = SystemInfo.operatingSystem + verTxt;
-            board.transform.FindChild("ver").GetComponent<Text>().text = final;
+            board.transform.Find("ver").GetComponent<Text>().text = final;
             back.GetComponent<CloseOneBoard>().deleteObj = board;
 
         }

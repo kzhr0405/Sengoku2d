@@ -97,10 +97,10 @@ public class DataRecovery : MonoBehaviour {
             msg.transform.localScale = new Vector2(1, 1);
             msg.transform.localPosition = new Vector3(0, 0, 0);
             
-            msg.transform.FindChild("YesButton").GetComponent<DataRecoveryConfirm>().back = back;
-            msg.transform.FindChild("YesButton").GetComponent<DataRecoveryConfirm>().msg = msg;
-            msg.transform.FindChild("NoButton").GetComponent<DataRecoveryConfirm>().back = back;
-            msg.transform.FindChild("NoButton").GetComponent<DataRecoveryConfirm>().msg = msg;
+            msg.transform.Find("YesButton").GetComponent<DataRecoveryConfirm>().back = back;
+            msg.transform.Find("YesButton").GetComponent<DataRecoveryConfirm>().msg = msg;
+            msg.transform.Find("NoButton").GetComponent<DataRecoveryConfirm>().back = back;
+            msg.transform.Find("NoButton").GetComponent<DataRecoveryConfirm>().msg = msg;
 
             Fetched3 = true;
         }

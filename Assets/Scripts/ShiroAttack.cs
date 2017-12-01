@@ -27,12 +27,12 @@ public class ShiroAttack : MonoBehaviour {
     public AudioSource[] audioSources;
 
     void Start(){
-        timeText = transform.FindChild("time").GetComponent<TextMesh>();
+        timeText = transform.Find("time").GetComponent<TextMesh>();
         dataName = "remain" + kuniId + "-" + fromStageId;
         if(PlayerPrefs.HasKey(dataName)){
             time = PlayerPrefs.GetFloat(dataName);
         }
-        transform.FindChild("Button").GetComponent<EnemyAttackPop>().enemyDaimyoId = enemyDaimyoId;
+        transform.Find("Button").GetComponent<EnemyAttackPop>().enemyDaimyoId = enemyDaimyoId;
     }
 
 	void Update () {
@@ -92,8 +92,8 @@ public class ShiroAttack : MonoBehaviour {
         GameObject kuniMap = GameObject.Find("kuniMap" + kuniId).gameObject;
         UpdateShiroStatus(kuniMap);
 
-        GameObject toStageObj = kuniMap.transform.FindChild("stage" + toStageId).gameObject;
-        Destroy(toStageObj.transform.FindChild("cleared").gameObject);
+        GameObject toStageObj = kuniMap.transform.Find("stage" + toStageId).gameObject;
+        Destroy(toStageObj.transform.Find("cleared").gameObject);
         foreach (GameObject obs in GameObject.FindGameObjectsWithTag("StageGunzei")) {
             if(obs.GetComponent<TabStageGunzei>().toStageId == toStageId) {
                 Destroy(obs);
@@ -113,9 +113,9 @@ public class ShiroAttack : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         string stageName = stageScript.getStageName(kuniId, toStageId, langId);
         if (langId == 2) {
-            commentObj.transform.FindChild("SerihuText").GetComponent<Text>().text = "Hahaha, I got " + stageName + " castle！";
+            commentObj.transform.Find("SerihuText").GetComponent<Text>().text = "Hahaha, I got " + stageName + " castle！";
         }else {
-            commentObj.transform.FindChild("SerihuText").GetComponent<Text>().text = "ははは、" + stageName + "を盗り返したぞ！";
+            commentObj.transform.Find("SerihuText").GetComponent<Text>().text = "ははは、" + stageName + "を盗り返したぞ！";
         }
 
     }
@@ -204,12 +204,12 @@ public class ShiroAttack : MonoBehaviour {
 
         for (int k=1; k<11; k++) {
             string stageName = "stage" + k.ToString();
-            GameObject shiroObj = kuniMap.transform.FindChild(stageName).gameObject;
+            GameObject shiroObj = kuniMap.transform.Find(stageName).gameObject;
 
             if (closeStageIdList.Contains(k)) {
                 //Close
                 shiroObj.GetComponent<Button>().enabled = false;
-                shiroObj.transform.FindChild("shiroImage").GetComponent<SpriteRenderer>().color = closeColor;
+                shiroObj.transform.Find("shiroImage").GetComponent<SpriteRenderer>().color = closeColor;
             }else {
                 //Open
                 //shiroObj.GetComponent<Button>().enabled = true;

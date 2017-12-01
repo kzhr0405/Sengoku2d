@@ -38,16 +38,16 @@ public class EditPvPName : MonoBehaviour {
         board.transform.localPosition = new Vector2(0, 0);
 
         back.GetComponent<CloseOneBoard>().deleteObj = board;
-        board.transform.FindChild("NoButton").GetComponent<AddHyourou>().touchBackObj = back;
+        board.transform.Find("NoButton").GetComponent<AddHyourou>().touchBackObj = back;
 
         //Adjust for 2nd Time
-        board.transform.FindChild("YesButton").GetComponent<StartPvP>().secondTimeFlg = true;
-        board.transform.FindChild("YesButton").GetComponent<StartPvP>().touchBackObj = back;
+        board.transform.Find("YesButton").GetComponent<StartPvP>().secondTimeFlg = true;
+        board.transform.Find("YesButton").GetComponent<StartPvP>().touchBackObj = back;
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            board.transform.FindChild("YesButton").transform.FindChild("Text").GetComponent<Text>().text = "Edit";
+            board.transform.Find("YesButton").transform.Find("Text").GetComponent<Text>().text = "Edit";
         }else {
-            board.transform.FindChild("YesButton").transform.FindChild("Text").GetComponent<Text>().text = "変更";
+            board.transform.Find("YesButton").transform.Find("Text").GetComponent<Text>().text = "変更";
         }
 
 

@@ -129,7 +129,7 @@ public class ShowDaimyoSelect : MonoBehaviour {
         ScrollView.transform.localPosition = new Vector2(0, 0);
         ScrollView.name = "ScrollView";
 
-        foreach (Transform chld in ScrollView.transform.FindChild("Content").transform) {
+        foreach (Transform chld in ScrollView.transform.Find("Content").transform) {
             chld.GetComponent<ScenarioSelect>().kuniIconView = kuniIconView;
             chld.GetComponent<ScenarioSelect>().KuniMap = KuniMap;
             chld.GetComponent<ScenarioSelect>().ScrollView = ScrollView;

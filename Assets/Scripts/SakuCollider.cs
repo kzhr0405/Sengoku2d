@@ -59,7 +59,7 @@ public class SakuCollider : MonoBehaviour {
                 dtl.name = "BusyoDtlPlayer";
 
                 //Name
-                GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
+                GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;
                 if (langId == 2) {
                     nameLabel.GetComponent<TextMesh>().text = "Western Ship";
                 }else {
@@ -77,7 +77,7 @@ public class SakuCollider : MonoBehaviour {
                 }
 
                 //HP Bar
-                GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
+                GameObject minHpBar = dtl.transform.Find("MinHpBar").gameObject;
                 minHpBar.GetComponent<BusyoHPBar>().initLife = nbnHp;
 
                 ch_prefab.GetComponent<PlayerHP>().life = nbnHp;

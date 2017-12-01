@@ -14,9 +14,9 @@ public class FadeoutSenpou : MonoBehaviour {
 	void Start () {
 		time = fadetime;
 		image = GetComponent<Image>();
-		senpouText = image.transform.FindChild ("SenpouName").GetComponent<Text>();
-		serihuText = image.transform.FindChild ("SerihuText").GetComponent<Text>();
-		busyoImage = image.transform.FindChild ("Mask").transform.FindChild ("BusyoImage").GetComponent<Image> ();
+		senpouText = image.transform.Find ("SenpouName").GetComponent<Text>();
+		serihuText = image.transform.Find ("SerihuText").GetComponent<Text>();
+		busyoImage = image.transform.Find ("Mask").transform.Find ("BusyoImage").GetComponent<Image> ();
 	}
 
 	void Update () {

@@ -59,7 +59,7 @@ public class BusyoDetailInfo : MonoBehaviour {
             pop.transform.localPosition = new Vector2(0, 0);
 
             //Kamon
-            GameObject kamon = pop.transform.FindChild("kamon").gameObject;
+            GameObject kamon = pop.transform.Find("kamon").gameObject;
             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
             kamon.GetComponent<Image>().sprite =
                 Resources.Load(imagePath, typeof(Sprite)) as Sprite;
@@ -74,7 +74,7 @@ public class BusyoDetailInfo : MonoBehaviour {
             RectTransform busyoRect = busyo.GetComponent<RectTransform>();
             busyoRect.anchoredPosition3D = new Vector3(180, 400, 0);
             busyoRect.sizeDelta = new Vector2(40, 40);
-            busyo.transform.FindChild("Text").GetComponent<Text>().enabled = false;
+            busyo.transform.Find("Text").GetComponent<Text>().enabled = false;
 
             //Ship Rank
             string shipPath = "Prefabs/Busyo/ShipSts";
@@ -86,30 +86,30 @@ public class BusyoDetailInfo : MonoBehaviour {
             ShipObj.transform.localScale = new Vector2(0.2f, 0.2f);
             if (langId == 2) {
                 if (shipId == 1) {
-                    ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "High";
+                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "High";
                 }
                 else if (shipId == 2) {
-                    ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Mid";
+                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "Mid";
                 }
                 else if (shipId == 3) {
-                    ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "Low";
+                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "Low";
                 }
             }
             else {
                 if (shipId == 1) {
-                    ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "上";
+                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "上";
                 }
                 else if (shipId == 2) {
-                    ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "中";
+                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "中";
                 }
                 else if (shipId == 3) {
-                    ShipObj.transform.FindChild("Text").GetComponent<Text>().text = "下";
+                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "下";
                 }
             }
 
             //Name
-            pop.transform.FindChild("busyoNameValue").GetComponent<Text>().text = busyoName;
-            pop.transform.FindChild("lvValue").GetComponent<Text>().text = lv.ToString();
+            pop.transform.Find("busyoNameValue").GetComponent<Text>().text = busyoName;
+            pop.transform.Find("lvValue").GetComponent<Text>().text = lv.ToString();
             string heisyuName = "";
             Message msg = new Message();
             if (heisyu == "YR") {
@@ -121,12 +121,12 @@ public class BusyoDetailInfo : MonoBehaviour {
             }else if (heisyu == "TP") {
                 heisyuName = msg.getMessage(57);
             }
-            pop.transform.FindChild("childNameValue").GetComponent<Text>().text = heisyuName;
-            pop.transform.FindChild("childNum").GetComponent<Text>().text = chQty.ToString();        
-            pop.transform.FindChild("hpValue").GetComponent<Text>().text = hp.ToString();
-            pop.transform.FindChild("atkValue").GetComponent<Text>().text = atk.ToString();
-            pop.transform.FindChild("dfcValue").GetComponent<Text>().text = dfc.ToString();
-            pop.transform.FindChild("spdValue").GetComponent<Text>().text = spd.ToString();
+            pop.transform.Find("childNameValue").GetComponent<Text>().text = heisyuName;
+            pop.transform.Find("childNum").GetComponent<Text>().text = chQty.ToString();        
+            pop.transform.Find("hpValue").GetComponent<Text>().text = hp.ToString();
+            pop.transform.Find("atkValue").GetComponent<Text>().text = atk.ToString();
+            pop.transform.Find("dfcValue").GetComponent<Text>().text = dfc.ToString();
+            pop.transform.Find("spdValue").GetComponent<Text>().text = spd.ToString();
 
             //Senpou
             StatusGet sts = new StatusGet();
@@ -168,9 +168,9 @@ public class BusyoDetailInfo : MonoBehaviour {
             }
 
             //Fill fields by got Senpou Value
-            pop.transform.FindChild("senpouNameValue").GetComponent<Text>().text = senpouName;
-            pop.transform.FindChild("senpouExpValue").GetComponent<Text>().text = senpouExp;
-            pop.transform.FindChild("senpouLvValue").GetComponent<Text>().text = senpouLv.ToString();
+            pop.transform.Find("senpouNameValue").GetComponent<Text>().text = senpouName;
+            pop.transform.Find("senpouExpValue").GetComponent<Text>().text = senpouExp;
+            pop.transform.Find("senpouLvValue").GetComponent<Text>().text = senpouLv.ToString();
         
 
             //Saku
@@ -191,8 +191,8 @@ public class BusyoDetailInfo : MonoBehaviour {
             RectTransform sakuIcon_transform = sakuIcon.GetComponent<RectTransform>();
             sakuIcon_transform.anchoredPosition = new Vector3(-220, -185, 0);
             sakuIcon_transform.transform.SetSiblingIndex(30);
-            pop.transform.FindChild("sakuExpValue").GetComponent<Text>().text = sakuList[2];
-            pop.transform.FindChild("sakuLvValue").GetComponent<Text>().text = sakuList[3];
+            pop.transform.Find("sakuExpValue").GetComponent<Text>().text = sakuList[2];
+            pop.transform.Find("sakuLvValue").GetComponent<Text>().text = sakuList[3];
 
             //adjust
             if (Application.loadedLevelName == "preKaisen") {

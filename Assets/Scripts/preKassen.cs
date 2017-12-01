@@ -68,7 +68,7 @@ public class preKassen : MonoBehaviour {
                     msgTxt = daimyoName + "と雌雄を決する時です。腕が鳴りますな。";
                 }
             }
-			msgObj.transform.FindChild ("MessageText").GetComponent<Text> ().text = msgTxt;
+			msgObj.transform.Find ("MessageText").GetComponent<Text> ().text = msgTxt;
 		}
 
 		string stageName = PlayerPrefs.GetString ("activeStageName");
@@ -95,7 +95,7 @@ public class preKassen : MonoBehaviour {
 		if (isAttackedFlg) {
 			//Passive
 			GameObject tettaiBtn = GameObject.Find ("TettaiBtn").gameObject;
-			GameObject hyourouIcon = GameObject.Find ("StartBtn").transform.FindChild ("hyourouIcon").gameObject;
+			GameObject hyourouIcon = GameObject.Find ("StartBtn").transform.Find ("hyourouIcon").gameObject;
 			Destroy (tettaiBtn.gameObject);
 			Destroy (hyourouIcon.gameObject);
 
@@ -110,7 +110,7 @@ public class preKassen : MonoBehaviour {
 
 			if (stageMapId != 1) {
 
-				GameObject frontImage = panel.transform.FindChild ("FrontImage").gameObject;
+				GameObject frontImage = panel.transform.Find ("FrontImage").gameObject;
 				frontImage.GetComponent<Image> ().enabled = true;
 
 				if (stageMapId == 2) {
@@ -156,11 +156,11 @@ public class preKassen : MonoBehaviour {
 				kessenHyourou = PlayerPrefs.GetInt ("kessenHyourou");
 
 				GameObject startBtn = GameObject.Find ("StartBtn");
-				startBtn.transform.FindChild ("hyourouIcon").FindChild ("hyourouNoValue").GetComponent<Text> ().text = kessenHyourou.ToString ();
+				startBtn.transform.Find ("hyourouIcon").Find ("hyourouNoValue").GetComponent<Text> ().text = kessenHyourou.ToString ();
 
 				int harf = kessenHyourou / 2;
 				GameObject tettaiBtn = GameObject.Find ("TettaiBtn");
-				tettaiBtn.transform.FindChild ("hyourouIcon").FindChild ("hyourouNoValue").GetComponent<Text> ().text = harf.ToString ();
+				tettaiBtn.transform.Find ("hyourouIcon").Find ("hyourouNoValue").GetComponent<Text> ().text = harf.ToString ();
 
 				int activeStageId =  UnityEngine.Random.Range(1,4);
 				stageMapId = stage.getStageMap (1, activeStageId); 
@@ -182,7 +182,7 @@ public class preKassen : MonoBehaviour {
 			string mapFrontPath = "";
 			if (stageMapId != 1) {
 				
-				GameObject frontImage = panel.transform.FindChild("FrontImage").gameObject;
+				GameObject frontImage = panel.transform.Find("FrontImage").gameObject;
 				frontImage.GetComponent<Image> ().enabled = true;
 
 				if (stageMapId == 2) {
@@ -241,13 +241,13 @@ public class preKassen : MonoBehaviour {
 
 			GameObject slot = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot.transform.SetParent (content.transform);
-			GameObject text1 = slot.transform.FindChild ("Text1").gameObject;           
+			GameObject text1 = slot.transform.Find ("Text1").gameObject;           
             if (langId == 2) {
                 text1.GetComponent<Text> ().text = "Cavalry Unit Speed";
             }else {
                 text1.GetComponent<Text>().text = "地形効果 騎馬隊 迅速";
             }
-			text1.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text1.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot.transform.localScale = new Vector2 (1,1);
 			slot.transform.localPosition = new Vector3 (0,0,0);
 
@@ -262,25 +262,25 @@ public class preKassen : MonoBehaviour {
 
 			GameObject slot = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot.transform.SetParent (content.transform);
-			GameObject text1 = slot.transform.FindChild ("Text1").gameObject;
+			GameObject text1 = slot.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text1.GetComponent<Text> ().text = "Matchlock Unit Defence";
             }else {
                 text1.GetComponent<Text>().text = "地形効果 鉄砲隊 守備";
             }
-			text1.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text1.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot.transform.localScale = new Vector2 (1,1);
 			slot.transform.localPosition = new Vector3 (0,0,0);
 
 			GameObject slot2 = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot2.transform.SetParent (content.transform);
-			GameObject text2 = slot2.transform.FindChild ("Text1").gameObject;
+			GameObject text2 = slot2.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text2.GetComponent<Text>().text = "Bow Unit Defence";
             }else { 
                 text2.GetComponent<Text> ().text = "地形効果 弓隊 守備";
             }
-            text2.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+            text2.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot2.transform.localScale = new Vector2 (1,1);
 			slot2.transform.localPosition = new Vector3 (0,0,0);
 
@@ -295,25 +295,25 @@ public class preKassen : MonoBehaviour {
 
 			GameObject slot = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot.transform.SetParent (content.transform);
-			GameObject text = slot.transform.FindChild ("Text1").gameObject;
+			GameObject text = slot.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text.GetComponent<Text>().text = "Matchlock Unit Attack";
             }else {
                 text.GetComponent<Text>().text = "気象効果 鉄砲隊 武勇";
             }
-			text.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot.transform.localScale = new Vector2 (1,1);
 			slot.transform.localPosition = new Vector3 (0,0,0);
 
 			GameObject slot2 = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot2.transform.SetParent (content.transform);
-			GameObject text2 = slot2.transform.FindChild ("Text1").gameObject;
+			GameObject text2 = slot2.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text2.GetComponent<Text>().text = "Bow Unit Attack";
             }else {
                 text2.GetComponent<Text> ().text = "気象効果 弓隊 武勇";
             }
-			text2.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text2.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot2.transform.localScale = new Vector2 (1,1);
 			slot2.transform.localPosition = new Vector3 (0,0,0);
 
@@ -328,49 +328,49 @@ public class preKassen : MonoBehaviour {
 
 			GameObject slot = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot.transform.SetParent (content.transform);
-			GameObject text = slot.transform.FindChild ("Text1").gameObject;
+			GameObject text = slot.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text.GetComponent<Text>().text = "Cavalry Unit Defence";
             }else {
                 text.GetComponent<Text> ().text = "気象効果 騎馬隊 守備";
             }
-			text.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot.transform.localScale = new Vector2 (1,1);
 			slot.transform.localPosition = new Vector3 (0,0,0);
 
 			GameObject slot2 = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot2.transform.SetParent (content.transform);
-			GameObject text2 = slot2.transform.FindChild ("Text1").gameObject;
+			GameObject text2 = slot2.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text2.GetComponent<Text>().text = "Matchlock Unit Attack";
             }else {
                 text2.GetComponent<Text> ().text = "気象効果 鉄砲隊 武勇";
             }
-			text2.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text2.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot2.transform.localScale = new Vector2 (1,1);
 			slot2.transform.localPosition = new Vector3 (0,0,0);
 
 			GameObject slot3 = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot3.transform.SetParent (content.transform);
-			GameObject text3 = slot3.transform.FindChild ("Text1").gameObject;
+			GameObject text3 = slot3.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text3.GetComponent<Text>().text = "Bow Unit Attack";
             }else {
                 text3.GetComponent<Text> ().text = "気象効果 弓隊 武勇";
             }
-			text3.transform.FindChild ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
+			text3.transform.Find ("Text2").GetComponent<Text> ().text = "-" + minusRatio + "%";
 			slot3.transform.localScale = new Vector2 (1,1);
 			slot3.transform.localPosition = new Vector3 (0,0,0);
 
 			GameObject slot4 = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot4.transform.SetParent (content.transform);
-			GameObject text4 = slot4.transform.FindChild ("Text1").gameObject;
+			GameObject text4 = slot4.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text4.GetComponent<Text>().text = "All Unit Speed";
             }else {
                 text4.GetComponent<Text> ().text = "気象効果 全隊 迅速";
             }
-			text4.transform.FindChild ("Text2").GetComponent<Text> ().text = "-50%";
+			text4.transform.Find ("Text2").GetComponent<Text> ().text = "-50%";
 			slot4.transform.localScale = new Vector2 (1,1);
 			slot4.transform.localPosition = new Vector3 (0,0,0);
 
@@ -391,13 +391,13 @@ public class preKassen : MonoBehaviour {
 
 			GameObject slot = Instantiate (Resources.Load (txtPath)) as GameObject;
 			slot.transform.SetParent (content.transform);
-			GameObject text = slot.transform.FindChild ("Text1").gameObject;
+			GameObject text = slot.transform.Find ("Text1").gameObject;
             if (langId == 2) {
                 text.GetComponent<Text>().text = "Player Unit Defence";
             }else {
                 text.GetComponent<Text> ().text = "防備効果 味方 守備";
             }
-			text.transform.FindChild ("Text2").GetComponent<Text> ().text = "+" + boubi;
+			text.transform.Find ("Text2").GetComponent<Text> ().text = "+" + boubi;
 			slot.transform.localScale = new Vector2 (1,1);
 			slot.transform.localPosition = new Vector3 (0,0,0);
 
@@ -658,7 +658,7 @@ public class preKassen : MonoBehaviour {
 		tsyBusyo.name = taisyoBusyoId.ToString ();
 
 		string slotName = "Slot" + taisyoMapId;
-		tsyBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(slotName).transform);
+		tsyBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(slotName).transform);
 		tsyBusyo.name = taisyoBusyoId.ToString();
 		tsyBusyo.transform.localScale = new Vector2(-3,3);
 		tsyBusyo.transform.localPosition = new Vector3(0, 0, 0);
@@ -667,7 +667,7 @@ public class preKassen : MonoBehaviour {
 		//Roujyo Object Make
 		if (roujyoFlg && !isAttackedFlg) {
 			//Make Shiro on Soudaisyo
-			makeRoujyoObj(true,EnemyJinkeiView.transform.FindChild(slotName).gameObject,tsyBusyo,1);
+			makeRoujyoObj(true,EnemyJinkeiView.transform.Find(slotName).gameObject,tsyBusyo,1);
 		}
 
 		//Button
@@ -680,7 +680,7 @@ public class preKassen : MonoBehaviour {
 		tsyBusyo.GetComponent<DragHandler> ().enabled = false;
 		
 		//Label & Text
-		GameObject txtObj = tsyBusyo.transform.FindChild ("Text").gameObject;
+		GameObject txtObj = tsyBusyo.transform.Find ("Text").gameObject;
 		
 		Vector2 txtScale = txtObj.transform.localScale;
 		txtScale.x *= -1;
@@ -689,7 +689,7 @@ public class preKassen : MonoBehaviour {
 		txtPos.x *= -1;
 		txtObj.transform.localPosition = txtPos;
 
-		GameObject rblObj = tsyBusyo.transform.FindChild ("Rank").gameObject;
+		GameObject rblObj = tsyBusyo.transform.Find ("Rank").gameObject;
 		Vector2 rblScale = rblObj.transform.localScale;
 		rblScale.x *= -1;
 		rblObj.transform.localScale = rblScale;
@@ -697,7 +697,7 @@ public class preKassen : MonoBehaviour {
 		rblPos.x *= -1;
 		rblObj.transform.localPosition = rblPos;
 
-		GameObject tsyTxtObj = tsyBusyo.transform.FindChild ("enemySoudaisyo").transform.FindChild("Text").gameObject;
+		GameObject tsyTxtObj = tsyBusyo.transform.Find ("enemySoudaisyo").transform.Find("Text").gameObject;
 		Vector2 tsyScale = tsyTxtObj.transform.localScale;
 		tsyScale.x *= -1;
 		tsyTxtObj.transform.localScale = tsyScale;
@@ -740,7 +740,7 @@ public class preKassen : MonoBehaviour {
 				chdBusyo.name = "35";
 
 				string chdSlotName = "Slot" + mapId;
-				chdBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(chdSlotName).transform);
+				chdBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(chdSlotName).transform);
 				chdBusyo.transform.localScale = new Vector2(-3,3);
 				chdBusyo.transform.localPosition = new Vector3(0, 0, 0);
 
@@ -748,7 +748,7 @@ public class preKassen : MonoBehaviour {
 				chdBusyo.GetComponent<DragHandler> ().enabled = false;
 
 				//Rabel & Text
-				GameObject chTxtObj = chdBusyo.transform.FindChild ("Text").gameObject;
+				GameObject chTxtObj = chdBusyo.transform.Find ("Text").gameObject;
 				Vector2 chTxtScale = chTxtObj.transform.localScale;
 				chTxtScale.x *= -1;
 				chTxtObj.transform.localScale = chTxtScale;
@@ -756,7 +756,7 @@ public class preKassen : MonoBehaviour {
 				chTxtPos.x *= -1;
 				chTxtObj.transform.localPosition = chTxtPos;
 
-                GameObject chLblObj = chdBusyo.transform.FindChild("Rank").gameObject;
+                GameObject chLblObj = chdBusyo.transform.Find("Rank").gameObject;
                 Vector2 chLblScale = chLblObj.transform.localScale;
                 chLblScale.x *= -1;
                 chLblObj.transform.localScale = chLblScale;
@@ -774,7 +774,7 @@ public class preKassen : MonoBehaviour {
 
 						if (checkRoujyo(baseAtk, baseDfc)) {
 							torideQty = torideQty - 1;
-							makeRoujyoObj (false, EnemyJinkeiView.transform.FindChild (chdSlotName).gameObject, chdBusyo, 1);
+							makeRoujyoObj (false, EnemyJinkeiView.transform.Find (chdSlotName).gameObject, chdBusyo, 1);
 						}
 					}
 				}
@@ -917,7 +917,7 @@ public class preKassen : MonoBehaviour {
 		tsyBusyo.name = taisyoBusyoId.ToString ();
 
 		string slotName = "Slot" + taisyoMapId;
-		tsyBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(slotName).transform);
+		tsyBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(slotName).transform);
 		tsyBusyo.name = taisyoBusyoId.ToString();
 		tsyBusyo.transform.localScale = new Vector2(-3,3);
 		tsyBusyo.transform.localPosition = new Vector3(0, 0, 0);
@@ -926,7 +926,7 @@ public class preKassen : MonoBehaviour {
 		//Roujyo Object Make
 		if (roujyoFlg && !isAttackedFlg) {
 			//Make Shiro on Soudaisyo
-			makeRoujyoObj(true,EnemyJinkeiView.transform.FindChild(slotName).gameObject,tsyBusyo,2);
+			makeRoujyoObj(true,EnemyJinkeiView.transform.Find(slotName).gameObject,tsyBusyo,2);
 		}
 
 
@@ -940,7 +940,7 @@ public class preKassen : MonoBehaviour {
 		tsyBusyo.GetComponent<DragHandler> ().enabled = false;
 
 		//Text
-		GameObject txtObj = tsyBusyo.transform.FindChild ("Text").gameObject;
+		GameObject txtObj = tsyBusyo.transform.Find ("Text").gameObject;
 		Vector2 txtScale = txtObj.transform.localScale;
 		txtScale.x *= -1;
 		txtObj.transform.localScale = txtScale;
@@ -948,7 +948,7 @@ public class preKassen : MonoBehaviour {
 		txtPos.x *= -1;
 		txtObj.transform.localPosition = txtPos;
 
-		GameObject rblObj = tsyBusyo.transform.FindChild ("Rank").gameObject;
+		GameObject rblObj = tsyBusyo.transform.Find ("Rank").gameObject;
 		Vector2 rblScale = rblObj.transform.localScale;
 		rblScale.x *= -1;
 		rblObj.transform.localScale = rblScale;
@@ -956,7 +956,7 @@ public class preKassen : MonoBehaviour {
 		rblPos.x *= -1;
 		rblObj.transform.localPosition = rblPos;
 
-		GameObject tsyTxtObj = tsyBusyo.transform.FindChild ("enemySoudaisyo").transform.FindChild("Text").gameObject;
+		GameObject tsyTxtObj = tsyBusyo.transform.Find ("enemySoudaisyo").transform.Find("Text").gameObject;
 		Vector2 tsyScale = tsyTxtObj.transform.localScale;
 		tsyScale.x *= -1;
 		tsyTxtObj.transform.localScale = tsyScale;
@@ -1001,7 +1001,7 @@ public class preKassen : MonoBehaviour {
 					chdBusyo.name = randomBusyoId.ToString ();
 
 					string chdSlotName = "Slot" + mapId;
-					chdBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(chdSlotName).transform);
+					chdBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(chdSlotName).transform);
 					chdBusyo.name = randomBusyoId.ToString();
 					chdBusyo.transform.localScale = new Vector2(-3,3);
 					chdBusyo.transform.localPosition = new Vector3(0, 0, 0);
@@ -1010,7 +1010,7 @@ public class preKassen : MonoBehaviour {
 					chdBusyo.GetComponent<DragHandler> ().enabled = false;
 					
 					//Text
-					GameObject chTxtObj = chdBusyo.transform.FindChild ("Text").gameObject;
+					GameObject chTxtObj = chdBusyo.transform.Find ("Text").gameObject;
 					Vector2 chTxtScale = chTxtObj.transform.localScale;
 					chTxtScale.x *= -1;
 					chTxtObj.transform.localScale = chTxtScale;
@@ -1018,7 +1018,7 @@ public class preKassen : MonoBehaviour {
 					chTxtPos.x *= -1;
 					chTxtObj.transform.localPosition = chTxtPos;
 
-					GameObject chRblObj = chdBusyo.transform.FindChild ("Rank").gameObject;
+					GameObject chRblObj = chdBusyo.transform.Find ("Rank").gameObject;
 					Vector2 chRblScale = chRblObj.transform.localScale;
 					chRblScale.x *= -1;
 					chRblObj.transform.localScale = chRblScale;
@@ -1034,7 +1034,7 @@ public class preKassen : MonoBehaviour {
 
 							if (checkRoujyo(baseAtk, baseDfc)) {
 								torideQty = torideQty - 1;
-								makeRoujyoObj (false, EnemyJinkeiView.transform.FindChild (chdSlotName).gameObject, chdBusyo, 1);
+								makeRoujyoObj (false, EnemyJinkeiView.transform.Find (chdSlotName).gameObject, chdBusyo, 1);
 							}
 						}
 					}
@@ -1066,7 +1066,7 @@ public class preKassen : MonoBehaviour {
 				chdBusyo.name = "35";
 
 				string chdSlotName = "Slot" + mapId;
-				chdBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(chdSlotName).transform);
+				chdBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(chdSlotName).transform);
 				chdBusyo.transform.localScale = new Vector2(-3,3);
 				chdBusyo.transform.localPosition = new Vector3(0, 0, 0);
 
@@ -1074,7 +1074,7 @@ public class preKassen : MonoBehaviour {
 				chdBusyo.GetComponent<DragHandler> ().enabled = false;
 				
 				//Rabel & Text
-				GameObject chTxtObj = chdBusyo.transform.FindChild ("Text").gameObject;
+				GameObject chTxtObj = chdBusyo.transform.Find ("Text").gameObject;
 				Vector2 chTxtScale = chTxtObj.transform.localScale;
 				chTxtScale.x *= -1;
 				chTxtObj.transform.localScale = chTxtScale;
@@ -1082,7 +1082,7 @@ public class preKassen : MonoBehaviour {
 				chTxtPos.x *= -1;
 				chTxtObj.transform.localPosition = chTxtPos;
 
-                GameObject chRblObj = chdBusyo.transform.FindChild("Rank").gameObject;
+                GameObject chRblObj = chdBusyo.transform.Find("Rank").gameObject;
                 Vector2 chRblScale = chRblObj.transform.localScale;
                 chRblScale.x *= -1;
                 chRblObj.transform.localScale = chRblScale;
@@ -1098,7 +1098,7 @@ public class preKassen : MonoBehaviour {
 
 						if (checkRoujyo(baseAtk, baseDfc)) {
 							torideQty = torideQty - 1;
-							makeRoujyoObj (false, EnemyJinkeiView.transform.FindChild (chdSlotName).gameObject, chdBusyo, 1);
+							makeRoujyoObj (false, EnemyJinkeiView.transform.Find (chdSlotName).gameObject, chdBusyo, 1);
 						}
 					}
 				}
@@ -1157,7 +1157,7 @@ public class preKassen : MonoBehaviour {
 		tsyBusyo.name = daimyoBusyoId.ToString ();
 
 		string slotName = "Slot" + taisyoMapId;
-		tsyBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(slotName).transform);
+		tsyBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(slotName).transform);
 		tsyBusyo.name = daimyoBusyoId.ToString();
 		tsyBusyo.transform.localScale = new Vector2(-3,3);
 		tsyBusyo.transform.localPosition = new Vector3(0, 0, 0);
@@ -1166,7 +1166,7 @@ public class preKassen : MonoBehaviour {
 		//Roujyo Object Make
 		if (roujyoFlg && !isAttackedFlg) {
 			//Make Shiro on Soudaisyo
-			makeRoujyoObj(true,EnemyJinkeiView.transform.FindChild(slotName).gameObject,tsyBusyo,3);
+			makeRoujyoObj(true,EnemyJinkeiView.transform.Find(slotName).gameObject,tsyBusyo,3);
 
 		}
 
@@ -1180,7 +1180,7 @@ public class preKassen : MonoBehaviour {
 		tsyBusyo.GetComponent<DragHandler> ().enabled = false;
 		
 		//Text
-		GameObject txtObj = tsyBusyo.transform.FindChild ("Text").gameObject;
+		GameObject txtObj = tsyBusyo.transform.Find ("Text").gameObject;
 		Vector2 txtScale = txtObj.transform.localScale;
 		txtScale.x *= -1;
 		txtObj.transform.localScale = txtScale;
@@ -1188,7 +1188,7 @@ public class preKassen : MonoBehaviour {
 		txtPos.x *= -1;
 		txtObj.transform.localPosition = txtPos;
 
-		GameObject rblObj = tsyBusyo.transform.FindChild ("Rank").gameObject;
+		GameObject rblObj = tsyBusyo.transform.Find ("Rank").gameObject;
 		Vector2 rblScale = rblObj.transform.localScale;
 		rblScale.x *= -1;
 		rblObj.transform.localScale = rblScale;
@@ -1196,7 +1196,7 @@ public class preKassen : MonoBehaviour {
 		rblPos.x *= -1;
 		rblObj.transform.localPosition = rblPos;
 
-		GameObject tsyTxtObj = tsyBusyo.transform.FindChild ("enemySoudaisyo").transform.FindChild("Text").gameObject;
+		GameObject tsyTxtObj = tsyBusyo.transform.Find ("enemySoudaisyo").transform.Find("Text").gameObject;
 		Vector2 tsyScale = tsyTxtObj.transform.localScale;
 		tsyScale.x *= -1;
 		tsyTxtObj.transform.localScale = tsyScale;
@@ -1313,7 +1313,7 @@ public class preKassen : MonoBehaviour {
 						chdBusyo.name = randomBusyoId.ToString ();
 
 						string chdSlotName = "Slot" + mapId;
-						chdBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(chdSlotName).transform);
+						chdBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(chdSlotName).transform);
 						chdBusyo.name = randomBusyoId.ToString();
 						chdBusyo.transform.localScale = new Vector2(-3,3);
 						chdBusyo.transform.localPosition = new Vector3(0, 0, 0);
@@ -1322,7 +1322,7 @@ public class preKassen : MonoBehaviour {
 						chdBusyo.GetComponent<DragHandler> ().enabled = false;
 						
 						//Text
-						GameObject chTxtObj = chdBusyo.transform.FindChild ("Text").gameObject;
+						GameObject chTxtObj = chdBusyo.transform.Find ("Text").gameObject;
 						Vector2 chTxtScale = chTxtObj.transform.localScale;
 						chTxtScale.x *= -1;
 						chTxtObj.transform.localScale = chTxtScale;
@@ -1330,7 +1330,7 @@ public class preKassen : MonoBehaviour {
 						chTxtPos.x *= -1;
 						chTxtObj.transform.localPosition = chTxtPos;
 						
-						GameObject chRblObj = chdBusyo.transform.FindChild ("Rank").gameObject;
+						GameObject chRblObj = chdBusyo.transform.Find ("Rank").gameObject;
 						Vector2 chRblScale = chRblObj.transform.localScale;
 						chRblScale.x *= -1;
 						chRblObj.transform.localScale = chRblScale;
@@ -1346,7 +1346,7 @@ public class preKassen : MonoBehaviour {
 
 								if (baseAtk < baseDfc * 2) {
 									torideQty = torideQty - 1;
-									makeRoujyoObj (false, EnemyJinkeiView.transform.FindChild (chdSlotName).gameObject, chdBusyo, 1);
+									makeRoujyoObj (false, EnemyJinkeiView.transform.Find (chdSlotName).gameObject, chdBusyo, 1);
 								}
 							}
 						}
@@ -1377,7 +1377,7 @@ public class preKassen : MonoBehaviour {
 					chdBusyo.name = "35";
 
 					string chdSlotName = "Slot" + mapId;
-					chdBusyo.transform.SetParent(EnemyJinkeiView.transform.FindChild(chdSlotName).transform);
+					chdBusyo.transform.SetParent(EnemyJinkeiView.transform.Find(chdSlotName).transform);
 					chdBusyo.transform.localScale = new Vector2(-3,3);
 					chdBusyo.transform.localPosition = new Vector3(0, 0, 0);
 					
@@ -1385,7 +1385,7 @@ public class preKassen : MonoBehaviour {
 					chdBusyo.GetComponent<DragHandler> ().enabled = false;
 					
 					//Rabel & Text
-					GameObject chTxtObj = chdBusyo.transform.FindChild ("Text").gameObject;
+					GameObject chTxtObj = chdBusyo.transform.Find ("Text").gameObject;
 					Vector2 chTxtScale = chTxtObj.transform.localScale;
 					chTxtScale.x *= -1;
 					chTxtObj.transform.localScale = chTxtScale;
@@ -1393,7 +1393,7 @@ public class preKassen : MonoBehaviour {
 					chTxtPos.x *= -1;
 					chTxtObj.transform.localPosition = chTxtPos;
 
-                    GameObject chRblObj = chdBusyo.transform.FindChild("Rank").gameObject;
+                    GameObject chRblObj = chdBusyo.transform.Find("Rank").gameObject;
                     Vector2 chRblScale = chRblObj.transform.localScale;
                     chRblScale.x *= -1;
                     chRblObj.transform.localScale = chRblScale;
@@ -1409,7 +1409,7 @@ public class preKassen : MonoBehaviour {
 
 							if (checkRoujyo(baseAtk, baseDfc)) {
 								torideQty = torideQty - 1;
-								makeRoujyoObj (false, EnemyJinkeiView.transform.FindChild (chdSlotName).gameObject, chdBusyo, 1);
+								makeRoujyoObj (false, EnemyJinkeiView.transform.Find (chdSlotName).gameObject, chdBusyo, 1);
 							}
 						}
 					}
@@ -1566,7 +1566,7 @@ public class preKassen : MonoBehaviour {
         
 		if (slot.name == "Slot12") {
             //Shiro
-            if (!slot.transform.FindChild("shiro")) {
+            if (!slot.transform.Find("shiro")) {
                 string Type = "";
 			    if (shiroLv < 8) {
 				    Type = "s";
@@ -1603,7 +1603,7 @@ public class preKassen : MonoBehaviour {
 		} else {
 			//Toride
 
-            if(!slot.transform.FindChild("shiro")) {
+            if(!slot.transform.Find("shiro")) {
                 string Type = "";
 			    if (torideLv < 8) {
 				    Type = "s";
@@ -1705,7 +1705,7 @@ public class preKassen : MonoBehaviour {
 
                 //shiro
                 int shiroLv = int.Parse(naiseiList[0]);
-                makeMyRoujyoObj(PlayerShiroTorideView.transform.FindChild("Slot12").gameObject, shiroLv, 0, StartBtn);
+                makeMyRoujyoObj(PlayerShiroTorideView.transform.Find("Slot12").gameObject, shiroLv, 0, StartBtn);
 
                 //toride
                 char[] delimiterChars2 = { ':' };
@@ -1722,7 +1722,7 @@ public class preKassen : MonoBehaviour {
 
                         int torideLv = int.Parse(naiseiSlotList[1]);
 
-                        makeMyRoujyoObj(PlayerShiroTorideView.transform.FindChild(torideSlotName).gameObject, 0, torideLv, StartBtn);
+                        makeMyRoujyoObj(PlayerShiroTorideView.transform.Find(torideSlotName).gameObject, 0, torideLv, StartBtn);
 
                         if(targetTorideList.Count == 0) {
                             break;
@@ -2050,13 +2050,13 @@ public class preKassen : MonoBehaviour {
             }
         }
         PlayerPrefs.SetInt("jinkeiHeiryoku", totalHp);
-        Text playerHeiText = GameObject.Find("PlayerHei").transform.FindChild("HeiValue").GetComponent<Text>();
+        Text playerHeiText = GameObject.Find("PlayerHei").transform.Find("HeiValue").GetComponent<Text>();
         playerHeiText.text = totalHp.ToString();
 
         JinkeiPowerEffection powerEffection = new JinkeiPowerEffection();
         powerEffection.UpdateSenryoku();
 
-        GameObject.Find("BusyoScrollMenu").transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().jinkeiBusyo_list = jinkeiBusyo_list;
+        GameObject.Find("BusyoScrollMenu").transform.Find("ScrollView").transform.Find("Content").GetComponent<PrepBusyoScrollMenu>().jinkeiBusyo_list = jinkeiBusyo_list;
 
         jinkeiLimit = PlayerPrefs.GetInt("jinkeiLimit");
         int addLimit = 0;
@@ -2126,7 +2126,7 @@ public class preKassen : MonoBehaviour {
             }
             JinkeiPowerEffection JinkeiPowerEffection = new JinkeiPowerEffection();
             JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId,senarioId);
-            Text enemyHeiText = GameObject.Find("EnemyHei").transform.FindChild("HeiValue").GetComponent<Text>();
+            Text enemyHeiText = GameObject.Find("EnemyHei").transform.Find("HeiValue").GetComponent<Text>();
             enemyHeiText.text = enemyHei.ToString();
             startScript.enemySoudaisyo = tempEnemySoudaisyo;
 
@@ -2143,20 +2143,20 @@ public class preKassen : MonoBehaviour {
         GameObject JinkeiButton = GameObject.Find("JinkeiButton").gameObject;
 
         if(jinkeiId==1) {
-            JinkeiButton.transform.FindChild("Gyorin").GetComponent<Image>().color = pushedTabColor;
-            JinkeiButton.transform.FindChild("Gyorin").transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+            JinkeiButton.transform.Find("Gyorin").GetComponent<Image>().color = pushedTabColor;
+            JinkeiButton.transform.Find("Gyorin").transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
         }
         else if(jinkeiId==2) {
-            JinkeiButton.transform.FindChild("Kakuyoku").GetComponent<Image>().color = pushedTabColor;
-            JinkeiButton.transform.FindChild("Kakuyoku").transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+            JinkeiButton.transform.Find("Kakuyoku").GetComponent<Image>().color = pushedTabColor;
+            JinkeiButton.transform.Find("Kakuyoku").transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
         }
         else if (jinkeiId == 3) {
-            JinkeiButton.transform.FindChild("Engetsu").GetComponent<Image>().color = pushedTabColor;
-            JinkeiButton.transform.FindChild("Engetsu").transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+            JinkeiButton.transform.Find("Engetsu").GetComponent<Image>().color = pushedTabColor;
+            JinkeiButton.transform.Find("Engetsu").transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
         }
         else if (jinkeiId == 4) {
-            JinkeiButton.transform.FindChild("Gankou").GetComponent<Image>().color = pushedTabColor;
-            JinkeiButton.transform.FindChild("Gankou").transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+            JinkeiButton.transform.Find("Gankou").GetComponent<Image>().color = pushedTabColor;
+            JinkeiButton.transform.Find("Gankou").transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
         }
 
 

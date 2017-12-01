@@ -21,15 +21,15 @@ public class BouryakuView : MonoBehaviour {
 		
 		AttackButton.GetComponent<Image> ().enabled = false;
 		AttackButton.GetComponent<Button> ().enabled = false;
-		AttackButton.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		AttackButton.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		GaikouButton.GetComponent<Image> ().enabled = false;
 		GaikouButton.GetComponent<Button> ().enabled = false;
-		GaikouButton.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		GaikouButton.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		BouryakuButton.GetComponent<Image> ().enabled = false;
 		BouryakuButton.GetComponent<Button> ().enabled = false;
-		BouryakuButton.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		BouryakuButton.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		bool doumeiFlg = GameObject.Find ("close").GetComponent<CloseBoard>().doumeiFlg;
 		
@@ -59,15 +59,15 @@ public class BouryakuView : MonoBehaviour {
 			GameObject CyouteiIcon = GameObject.Find ("CyouteiIcon").gameObject;
 			CyouteiIcon.GetComponent<Image> ().enabled = false;
 			CyouteiIcon.GetComponent<Button> ().enabled = false;
-			CyouteiIcon.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
-			CyouteiIcon.transform.FindChild ("Image").GetComponent<Image> ().enabled = false;
+			CyouteiIcon.transform.Find ("Text").GetComponent<Text> ().enabled = false;
+			CyouteiIcon.transform.Find ("Image").GetComponent<Image> ().enabled = false;
 			
 		} else if (kuniId == 38 || kuniId == 39 || kuniId == 58) {
 			GameObject SyouninIcon = GameObject.Find ("SyouninIcon").gameObject;
 			SyouninIcon.GetComponent<Image> ().enabled = false;
 			SyouninIcon.GetComponent<Button> ().enabled = false;
-			SyouninIcon.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
-			SyouninIcon.transform.FindChild ("Image").GetComponent<Image> ().enabled = false;
+			SyouninIcon.transform.Find ("Text").GetComponent<Text> ().enabled = false;
+			SyouninIcon.transform.Find ("Image").GetComponent<Image> ().enabled = false;
 			
 		}
 

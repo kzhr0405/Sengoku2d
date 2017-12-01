@@ -126,7 +126,7 @@ public class EnemyEventHandler : MonoBehaviour {
 
         //Check Src Shiro Type
         string stageName = "stage" + fromStageId.ToString();
-        int powerType = kuniMap.transform.FindChild(stageName).GetComponent<ShowStageDtl>().powerType;
+        int powerType = kuniMap.transform.Find(stageName).GetComponent<ShowStageDtl>().powerType;
 
         //Choose Busyo
         string busyoListString = getBusyoList(powerType, daimyoId, activeBusyoQty, activeBusyoLv, activeButaiQty, activeButaiLv);
@@ -162,10 +162,10 @@ public class EnemyEventHandler : MonoBehaviour {
 
         string fromStageName = "stage" + fromStageId.ToString();
         string toStageName = "stage" + toStageId.ToString();
-        float fromLocationX = kuniMap.transform.FindChild(fromStageName).transform.localPosition.x;
-        float fromLocationY = kuniMap.transform.FindChild(fromStageName).transform.localPosition.y;
-        float toLocationX = kuniMap.transform.FindChild(toStageName).transform.localPosition.x;
-        float toLocationY = kuniMap.transform.FindChild(toStageName).transform.localPosition.y;
+        float fromLocationX = kuniMap.transform.Find(fromStageName).transform.localPosition.x;
+        float fromLocationY = kuniMap.transform.Find(fromStageName).transform.localPosition.y;
+        float toLocationX = kuniMap.transform.Find(toStageName).transform.localPosition.x;
+        float toLocationY = kuniMap.transform.Find(toStageName).transform.localPosition.y;
 
         string commentPath = "";
         int langId = PlayerPrefs.GetInt("langId");
@@ -197,7 +197,7 @@ public class EnemyEventHandler : MonoBehaviour {
                     rdmTxt = "陥とせい!";
                 }
             }
-            commentObj.transform.FindChild("txt").GetComponent<TextMesh>().text = rdmTxt;
+            commentObj.transform.Find("txt").GetComponent<TextMesh>().text = rdmTxt;
         }
 
         if (fromLocationX > toLocationX){
@@ -214,7 +214,7 @@ public class EnemyEventHandler : MonoBehaviour {
 
 
         string taisyoBusyoPath = "Prefabs/Player/Sprite/unit" + taisyoBusyoId.ToString();
-        gunzeiObj.transform.FindChild("taisyo").GetComponent<SpriteRenderer>().sprite =
+        gunzeiObj.transform.Find("taisyo").GetComponent<SpriteRenderer>().sprite =
             Resources.Load(taisyoBusyoPath, typeof(Sprite)) as Sprite;
 
         //Script
@@ -240,8 +240,8 @@ public class EnemyEventHandler : MonoBehaviour {
         //Create Katana Animation
         //Duplication Check
         string stageToName = "stage" + toStageId.ToString();
-        GameObject stageToObj = kuniMap.transform.FindChild(stageToName).gameObject;
-        GameObject clearedObj = stageToObj.transform.FindChild("cleared").gameObject;
+        GameObject stageToObj = kuniMap.transform.Find(stageToName).gameObject;
+        GameObject clearedObj = stageToObj.transform.Find("cleared").gameObject;
 
         int atk = 0;
         int hp = 0;
@@ -287,7 +287,7 @@ public class EnemyEventHandler : MonoBehaviour {
         }
         else{
             //Duplication
-            ShiroAttack shiroScript = clearedObj.transform.FindChild("enemyKatana").GetComponent<ShiroAttack>();
+            ShiroAttack shiroScript = clearedObj.transform.Find("enemyKatana").GetComponent<ShiroAttack>();
             int myHei = shiroScript.myHei;
             int preTotalHei = shiroScript.enemyHei;
             totalHei = totalHei + preTotalHei;

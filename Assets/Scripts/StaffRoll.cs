@@ -163,9 +163,9 @@ public class StaffRoll : MonoBehaviour {
 		GameObject finObj = Instantiate(Resources.Load (finPath)) as GameObject;
 		finObj.transform.SetParent(panel.transform);
 		finObj.transform.localScale = new Vector2(1,1);
-		finObj.transform.FindChild ("ReStartBtn").GetComponent<ShowDaimyoSelect> ().fin = finObj;
-		finObj.transform.FindChild ("ReStartBtn").GetComponent<ShowDaimyoSelect> ().panel = panel;
-		finObj.transform.FindChild ("ReStartBtn").transform.FindChild("Question").GetComponent<QA> ().qaId = 12;
+		finObj.transform.Find ("ReStartBtn").GetComponent<ShowDaimyoSelect> ().fin = finObj;
+		finObj.transform.Find ("ReStartBtn").GetComponent<ShowDaimyoSelect> ().panel = panel;
+		finObj.transform.Find ("ReStartBtn").transform.Find("Question").GetComponent<QA> ().qaId = 12;
 
 		int myDaimyo = PlayerPrefs.GetInt ("myDaimyo");
 		Daimyo daimyo = new Daimyo ();
@@ -181,11 +181,11 @@ public class StaffRoll : MonoBehaviour {
 		Destroy (prefab.GetComponent<PlayerHP>());
 
 		//Value Set
-		GameObject eval = finObj.transform.FindChild("Eval").gameObject;
-		GameObject Gunji = eval.transform.FindChild("Gunji").gameObject;
-		GameObject Naisei = eval.transform.FindChild("Naisei").gameObject;
-		GameObject Gaikou = eval.transform.FindChild("Gaikou").gameObject;
-		GameObject Bouryaku = eval.transform.FindChild("Bouryaku").gameObject;
+		GameObject eval = finObj.transform.Find("Eval").gameObject;
+		GameObject Gunji = eval.transform.Find("Gunji").gameObject;
+		GameObject Naisei = eval.transform.Find("Naisei").gameObject;
+		GameObject Gaikou = eval.transform.Find("Gaikou").gameObject;
+		GameObject Bouryaku = eval.transform.Find("Bouryaku").gameObject;
 
 		//Gunji
 		int TrackTotalKassenNo = PlayerPrefs.GetInt("TrackTotalKassenNo");
@@ -197,19 +197,19 @@ public class StaffRoll : MonoBehaviour {
 		int TrackNewBusyoHireNo = PlayerPrefs.GetInt("TrackNewBusyoHireNo");
 		int TrackEarnMoney = PlayerPrefs.GetInt("TrackEarnMoney");
 
-		Gunji.transform.FindChild ("KassenNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackTotalKassenNo.ToString();
+		Gunji.transform.Find ("KassenNo").transform.Find ("Text").GetComponent<Text> ().text = TrackTotalKassenNo.ToString();
 		int winRatio = Mathf.CeilToInt((float)TrackWinNo / (float)TrackTotalKassenNo * 100);
 		if (TrackWinNo == 0) {
 			winRatio = 0;
 		}
-		Gunji.transform.FindChild ("WinRatio").transform.FindChild ("Text").GetComponent<Text> ().text = winRatio.ToString() + "%";
-		Gunji.transform.FindChild ("Tettai").transform.FindChild ("Text").GetComponent<Text> ().text = TrackTettaiNo.ToString();
+		Gunji.transform.Find ("WinRatio").transform.Find ("Text").GetComponent<Text> ().text = winRatio.ToString() + "%";
+		Gunji.transform.Find ("Tettai").transform.Find ("Text").GetComponent<Text> ().text = TrackTettaiNo.ToString();
 		string daimyoName = daimyo.getName(TrackBiggestDaimyoId,langId,senarioId);
-		Gunji.transform.FindChild ("BiggestEnemy").transform.FindChild ("Text").GetComponent<Text> ().text = daimyoName;
-		Gunji.transform.FindChild ("BiggestEnemyHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackBiggestDaimyoHei.ToString();
-		Gunji.transform.FindChild ("BiggestPlayerHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackMyBiggestHei.ToString();
-		Gunji.transform.FindChild ("NewBusyoHire").transform.FindChild ("Text").GetComponent<Text> ().text = TrackNewBusyoHireNo.ToString();
-		Gunji.transform.FindChild ("EarnMoney").transform.FindChild ("Text").GetComponent<Text> ().text = TrackEarnMoney.ToString();
+		Gunji.transform.Find ("BiggestEnemy").transform.Find ("Text").GetComponent<Text> ().text = daimyoName;
+		Gunji.transform.Find ("BiggestEnemyHei").transform.Find ("Text").GetComponent<Text> ().text = TrackBiggestDaimyoHei.ToString();
+		Gunji.transform.Find ("BiggestPlayerHei").transform.Find ("Text").GetComponent<Text> ().text = TrackMyBiggestHei.ToString();
+		Gunji.transform.Find ("NewBusyoHire").transform.Find ("Text").GetComponent<Text> ().text = TrackNewBusyoHireNo.ToString();
+		Gunji.transform.Find ("EarnMoney").transform.Find ("Text").GetComponent<Text> ().text = TrackEarnMoney.ToString();
 
 
 
@@ -223,14 +223,14 @@ public class StaffRoll : MonoBehaviour {
 		int TrackIjinNo = PlayerPrefs.GetInt("TrackIjinNo");
 		int HstNanbansen = PlayerPrefs.GetInt("HstNanbansen");
 
-		Naisei.transform.FindChild ("MoneyProfitQty").transform.FindChild ("Text").GetComponent<Text> ().text = TrackGetMoneyNo.ToString();
-		Naisei.transform.FindChild ("HyourouProfitQty").transform.FindChild ("Text").GetComponent<Text> ().text = TrackGetHyourouNo.ToString();
-		Naisei.transform.FindChild ("SozaiProfitQty").transform.FindChild ("Text").GetComponent<Text> ().text = TrackGetSozaiNo.ToString();
-		Naisei.transform.FindChild ("NaiseiInvestment").transform.FindChild ("Text").GetComponent<Text> ().text = TrackBuildMoneyNo.ToString();
-		Naisei.transform.FindChild ("JyosyuNinmeiNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackJyosyuNinmeiNo.ToString();
-		Naisei.transform.FindChild ("TabibitoNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackTabibitoNo.ToString();
-		Naisei.transform.FindChild ("IjinNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackIjinNo.ToString();
-		Naisei.transform.FindChild ("Nanbansen").transform.FindChild ("Text").GetComponent<Text> ().text = HstNanbansen.ToString();
+		Naisei.transform.Find ("MoneyProfitQty").transform.Find ("Text").GetComponent<Text> ().text = TrackGetMoneyNo.ToString();
+		Naisei.transform.Find ("HyourouProfitQty").transform.Find ("Text").GetComponent<Text> ().text = TrackGetHyourouNo.ToString();
+		Naisei.transform.Find ("SozaiProfitQty").transform.Find ("Text").GetComponent<Text> ().text = TrackGetSozaiNo.ToString();
+		Naisei.transform.Find ("NaiseiInvestment").transform.Find ("Text").GetComponent<Text> ().text = TrackBuildMoneyNo.ToString();
+		Naisei.transform.Find ("JyosyuNinmeiNo").transform.Find ("Text").GetComponent<Text> ().text = TrackJyosyuNinmeiNo.ToString();
+		Naisei.transform.Find ("TabibitoNo").transform.Find ("Text").GetComponent<Text> ().text = TrackTabibitoNo.ToString();
+		Naisei.transform.Find ("IjinNo").transform.Find ("Text").GetComponent<Text> ().text = TrackIjinNo.ToString();
+		Naisei.transform.Find ("Nanbansen").transform.Find ("Text").GetComponent<Text> ().text = HstNanbansen.ToString();
 
 
 
@@ -270,14 +270,14 @@ public class StaffRoll : MonoBehaviour {
         }
 		int TrackToubatsuNo = PlayerPrefs.GetInt("TrackToubatsuNo");
 
-		Gaikou.transform.FindChild ("GaikouNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackGaikouNo.ToString();
-		Gaikou.transform.FindChild ("GaikouMoney").transform.FindChild ("Text").GetComponent<Text> ().text = TrackGaikouMoneyNo.ToString();
-		Gaikou.transform.FindChild ("DoumeiNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackDoumeiNo.ToString();
-		Gaikou.transform.FindChild ("CyouteiNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackCyouteiNo.ToString();
-		Gaikou.transform.FindChild ("SyouninNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackSyouninNo.ToString();
-		Gaikou.transform.FindChild ("Bakuhu").transform.FindChild ("Text").GetComponent<Text> ().text = Bakuhu;
-		Gaikou.transform.FindChild ("Soubujirei").transform.FindChild ("Text").GetComponent<Text> ().text = Soubujirei;
-		Gaikou.transform.FindChild ("ToubatsuNo").transform.FindChild ("Text").GetComponent<Text> ().text = TrackToubatsuNo.ToString();
+		Gaikou.transform.Find ("GaikouNo").transform.Find ("Text").GetComponent<Text> ().text = TrackGaikouNo.ToString();
+		Gaikou.transform.Find ("GaikouMoney").transform.Find ("Text").GetComponent<Text> ().text = TrackGaikouMoneyNo.ToString();
+		Gaikou.transform.Find ("DoumeiNo").transform.Find ("Text").GetComponent<Text> ().text = TrackDoumeiNo.ToString();
+		Gaikou.transform.Find ("CyouteiNo").transform.Find ("Text").GetComponent<Text> ().text = TrackCyouteiNo.ToString();
+		Gaikou.transform.Find ("SyouninNo").transform.Find ("Text").GetComponent<Text> ().text = TrackSyouninNo.ToString();
+		Gaikou.transform.Find ("Bakuhu").transform.Find ("Text").GetComponent<Text> ().text = Bakuhu;
+		Gaikou.transform.Find ("Soubujirei").transform.Find ("Text").GetComponent<Text> ().text = Soubujirei;
+		Gaikou.transform.Find ("ToubatsuNo").transform.Find ("Text").GetComponent<Text> ().text = TrackToubatsuNo.ToString();
 
 
 
@@ -291,18 +291,18 @@ public class StaffRoll : MonoBehaviour {
 		int TrackLinkCutNo = PlayerPrefs.GetInt("TrackLinkCutNo");
 		int TrackSyuppeiNo = PlayerPrefs.GetInt("TrackSyuppeiNo");
 
-		Bouryaku.transform.FindChild ("BouryakuQty").transform.FindChild ("Text").GetComponent<Text> ().text = TrackBouryakuNo.ToString();
+		Bouryaku.transform.Find ("BouryakuQty").transform.Find ("Text").GetComponent<Text> ().text = TrackBouryakuNo.ToString();
 		int successRatio = Mathf.CeilToInt((float)TrackBouryakuSuccessNo / (float)TrackBouryakuNo * 100);
 		if (TrackBouryakuSuccessNo == 0) {
 			successRatio = 0;
 		}
-		Bouryaku.transform.FindChild ("BouryakuRatio").transform.FindChild ("Text").GetComponent<Text> ().text = successRatio.ToString() + "%";
-		Bouryaku.transform.FindChild ("Cyouhou").transform.FindChild ("Text").GetComponent<Text> ().text = TrackCyouhouNo.ToString();
-		Bouryaku.transform.FindChild ("Ryugen").transform.FindChild ("Text").GetComponent<Text> ().text = TrackRyugenNo.ToString();
-		Bouryaku.transform.FindChild ("GihouHei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackGihouHei.ToString();
-		Bouryaku.transform.FindChild ("Cyouryaku").transform.FindChild ("Text").GetComponent<Text> ().text = TrackCyouryakuNo.ToString();
-		Bouryaku.transform.FindChild ("LinkCut").transform.FindChild ("Text").GetComponent<Text> ().text = TrackLinkCutNo.ToString();
-		Bouryaku.transform.FindChild ("Syuppei").transform.FindChild ("Text").GetComponent<Text> ().text = TrackSyuppeiNo.ToString();
+		Bouryaku.transform.Find ("BouryakuRatio").transform.Find ("Text").GetComponent<Text> ().text = successRatio.ToString() + "%";
+		Bouryaku.transform.Find ("Cyouhou").transform.Find ("Text").GetComponent<Text> ().text = TrackCyouhouNo.ToString();
+		Bouryaku.transform.Find ("Ryugen").transform.Find ("Text").GetComponent<Text> ().text = TrackRyugenNo.ToString();
+		Bouryaku.transform.Find ("GihouHei").transform.Find ("Text").GetComponent<Text> ().text = TrackGihouHei.ToString();
+		Bouryaku.transform.Find ("Cyouryaku").transform.Find ("Text").GetComponent<Text> ().text = TrackCyouryakuNo.ToString();
+		Bouryaku.transform.Find ("LinkCut").transform.Find ("Text").GetComponent<Text> ().text = TrackLinkCutNo.ToString();
+		Bouryaku.transform.Find ("Syuppei").transform.Find ("Text").GetComponent<Text> ().text = TrackSyuppeiNo.ToString();
 
 
 	}

@@ -68,9 +68,9 @@ public class Gunzei : MonoBehaviour {
 		audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		//Same Daimyo Check
-		int latestDaimyoId = kuniIconView.transform.FindChild (dstKuni.ToString ()).GetComponent<SendParam> ().daimyoId;
-		GameObject MsgBack = this.transform.FindChild ("MsgBack").gameObject;
-		GameObject MsgText = MsgBack.transform.FindChild ("MsgText").gameObject;
+		int latestDaimyoId = kuniIconView.transform.Find (dstKuni.ToString ()).GetComponent<SendParam> ().daimyoId;
+		GameObject MsgBack = this.transform.Find ("MsgBack").gameObject;
+		GameObject MsgText = MsgBack.transform.Find ("MsgText").gameObject;
 
 		if (dstDaimyoId == latestDaimyoId) {
 		
@@ -174,8 +174,8 @@ public class Gunzei : MonoBehaviour {
 	public int heiryokuCalc(int kuni){
 		GameObject targetKuni = GameObject.Find ("KuniIconView");
 		int enemyTotalHei = 0;
-		if (targetKuni.transform.FindChild (kuni.ToString ())) {
-			SendParam sendParam = targetKuni.transform.FindChild (kuni.ToString ()).GetComponent<SendParam> ();
+		if (targetKuni.transform.Find (kuni.ToString ())) {
+			SendParam sendParam = targetKuni.transform.Find (kuni.ToString ()).GetComponent<SendParam> ();
 			int daimyoBusyoId = sendParam.daimyoBusyoId;
 			int busyoLv = sendParam.busyoLv;
 			int busyoQty = sendParam.busyoQty;
@@ -270,8 +270,8 @@ public class Gunzei : MonoBehaviour {
 
 				back.GetComponent<CloseEventBoard> ().deleteObj = board;
 				back.GetComponent<CloseEventBoard> ().deleteObj2 = back;
-				board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj = board;
-				board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
+				board.transform.Find ("close").GetComponent<CloseEventBoard> ().deleteObj = board;
+				board.transform.Find ("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
 
 				string pathOfScroll = "Prefabs/Event/Metsubou";
 				GameObject scroll = Instantiate (Resources.Load (pathOfScroll)) as GameObject;
@@ -279,7 +279,7 @@ public class Gunzei : MonoBehaviour {
 				scroll.transform.localScale = new Vector2 (1, 1);
 				
 				string pathOfSlot = "Prefabs/Event/MetsubouSlot";
-				GameObject contents = scroll.transform.FindChild ("MetsubouScrollView/MetsubouContent").gameObject;
+				GameObject contents = scroll.transform.Find ("MetsubouScrollView/MetsubouContent").gameObject;
 				GameObject slot = Instantiate (Resources.Load (pathOfSlot)) as GameObject;
 				slot.transform.SetParent (contents.transform);
                 Daimyo daimyoScript = new Daimyo();
@@ -294,14 +294,14 @@ public class Gunzei : MonoBehaviour {
                 }
 
 
-                slot.transform.FindChild ("MetsubouText").GetComponent<Text> ().text = metsubouText;
+                slot.transform.Find ("MetsubouText").GetComponent<Text> ().text = metsubouText;
 				slot.transform.localScale = new Vector2 (1, 1);
 
                 //pointer
                 back.GetComponent<CloseEventBoard>().metsubouKuniList.Add(dstKuni);
-                board.transform.FindChild("close").GetComponent<CloseEventBoard>().metsubouKuniList.Add(dstKuni);
+                board.transform.Find("close").GetComponent<CloseEventBoard>().metsubouKuniList.Add(dstKuni);
                 back.GetComponent<CloseEventBoard>().activityUpdateFlg = true;
-                board.transform.FindChild("close").GetComponent<CloseEventBoard>().activityUpdateFlg = true;
+                board.transform.Find("close").GetComponent<CloseEventBoard>().activityUpdateFlg = true;
 
                 //Metsubou Daimyo Handling
                 string srcMetsubouTemp = "metsubou" + tSrcDaimyoId.ToString();
@@ -366,7 +366,7 @@ public class Gunzei : MonoBehaviour {
         //Change Icon
         string imagePath = "Prefabs/Kamon/" + srcDaimyoId.ToString ();
 		GameObject kuniIconView = GameObject.Find ("KuniIconView");
-		GameObject targetKuni = kuniIconView.transform.FindChild(dstKuni.ToString()).gameObject;
+		GameObject targetKuni = kuniIconView.transform.Find(dstKuni.ToString()).gameObject;
 
 		targetKuni.GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;	
@@ -378,7 +378,7 @@ public class Gunzei : MonoBehaviour {
         float colorG = daimyoScript.getColorG(srcDaimyoId);
         float colorB = daimyoScript.getColorB(srcDaimyoId);
         Color kuniColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
-		KuniMap.transform.FindChild (dstKuni.ToString()).GetComponent<Image> ().color = kuniColor;
+		KuniMap.transform.Find (dstKuni.ToString()).GetComponent<Image> ().color = kuniColor;
 
 		//Change Yukoudo
 		string tmp = "gaikou" + srcDaimyoId;
@@ -421,7 +421,7 @@ public class Gunzei : MonoBehaviour {
                 targetKuni.GetComponent<SendParam>().daimyoName = daimyoScript.getName(srcDaimyoId,langId,senarioId);//daimyoMst.param [srcDaimyoId - 1].daimyoName;
                 targetKuni.GetComponent<SendParam>().daimyoBusyoId = daimyoScript.getDaimyoBusyoId(srcDaimyoId,senarioId);//daimyoMst.param [srcDaimyoId - 1].busyoId;
 
-                SendParam winnerParam = kuniIconView.transform.FindChild (tmpKuniId.ToString ()).GetComponent<SendParam> ();
+                SendParam winnerParam = kuniIconView.transform.Find (tmpKuniId.ToString ()).GetComponent<SendParam> ();
 				winnerParam.busyoQty = busyoQty;
 				winnerParam.busyoLv = busyoLv;
 				winnerParam.butaiQty = butaiQty;
@@ -440,7 +440,7 @@ public class Gunzei : MonoBehaviour {
 				int butaiQty = calc.EnemyButaiQtyCalc (newLoserKuniQty, myKuniQty);
 				int butaiLv = calc.EnemyButaiLvCalc (senryokuRatio);
 
-				SendParam loserParam = kuniIconView.transform.FindChild (tmpKuniId.ToString ()).GetComponent<SendParam> ();
+				SendParam loserParam = kuniIconView.transform.Find (tmpKuniId.ToString ()).GetComponent<SendParam> ();
 				loserParam.busyoQty = busyoQty;
 				loserParam.busyoLv = busyoLv;
 				loserParam.butaiQty = butaiQty;
@@ -525,7 +525,7 @@ public class Gunzei : MonoBehaviour {
 
     public void fire(int kuniIconId) {
 
-        GameObject kuniIconObj = GameObject.Find("KuniIconView").transform.FindChild(kuniIconId.ToString()).gameObject;
+        GameObject kuniIconObj = GameObject.Find("KuniIconView").transform.Find(kuniIconId.ToString()).gameObject;
 
         string path = "Prefabs/Saku/sakuEvent/6";
         GameObject fireObj = Instantiate(Resources.Load(path)) as GameObject;

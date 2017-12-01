@@ -55,11 +55,11 @@ public class SyoguScene : MonoBehaviour {
         
 		if (busyoId == daimyoBusyoId.ToString ()) {
 			kanjyo.GetComponent<Image> ().color = ngImageColor; 
-			kanjyo.transform.FindChild ("Text").GetComponent<Text> ().color = ngTextColor; 
+			kanjyo.transform.Find ("Text").GetComponent<Text> ().color = ngTextColor; 
 			kanjyo.GetComponent<Button> ().enabled = false;
 
 			tsuihou.GetComponent<Image> ().color = ngImageColor; 
-			tsuihou.transform.FindChild ("Text").GetComponent<Text> ().color = ngTextColor; 
+			tsuihou.transform.Find ("Text").GetComponent<Text> ().color = ngTextColor; 
 			tsuihou.GetComponent<Button> ().enabled = false;
 
 		} else {
@@ -69,16 +69,16 @@ public class SyoguScene : MonoBehaviour {
             if (lv != maxLv) {
 				kanjyo.GetComponent<BusyoStatusButton> ().pa_lv = lv;
 				kanjyo.GetComponent<Image> ().color = okImageColor; 
-				kanjyo.transform.FindChild ("Text").GetComponent<Text> ().color = okTextColor;
+				kanjyo.transform.Find ("Text").GetComponent<Text> ().color = okTextColor;
 				kanjyo.GetComponent<Button> ().enabled = true;
 			} else {
 				kanjyo.GetComponent<Image> ().color = ngImageColor; 
-				kanjyo.transform.FindChild ("Text").GetComponent<Text> ().color = ngTextColor; 
+				kanjyo.transform.Find ("Text").GetComponent<Text> ().color = ngTextColor; 
 				kanjyo.GetComponent<Button> ().enabled = false;
 			}
 
 			tsuihou.GetComponent<Image> ().color = okImageColor;
-			tsuihou.transform.FindChild ("Text").GetComponent<Text> ().color = okTextColor; 
+			tsuihou.transform.Find ("Text").GetComponent<Text> ().color = okTextColor; 
 			tsuihou.GetComponent<Button> ().enabled = true;
 
 		}
@@ -113,7 +113,7 @@ public class SyoguScene : MonoBehaviour {
 
 				string kanniNameString = kanniScript.getKanni(kanniId);
 				string kanniIkai = kanniScript.getIkai(kanniId);
-				kanniName.transform.FindChild("value").GetComponent<Text>().text = kanniIkai + "\n" + kanniNameString;
+				kanniName.transform.Find("value").GetComponent<Text>().text = kanniIkai + "\n" + kanniNameString;
                 string effectTarget = kanniScript.getEffectTarget(kanniId);
                 string effectLabel = kanniScript.getEffectLabel(kanniId);
 				int effect = kanniScript.getEffect(kanniId);
@@ -123,10 +123,10 @@ public class SyoguScene : MonoBehaviour {
                 }else {
                     kanni.GetComponent<RonkouKousyoMenu>().kanniHpFlg = false;
                 }
-                kanniName.transform.FindChild("effectLabel").GetComponent<Text>().text = effectLabel;
-				kanniName.transform.FindChild("effectValue").GetComponent<Text>().text = "+" + effect.ToString() + "%"; 
+                kanniName.transform.Find("effectLabel").GetComponent<Text>().text = effectLabel;
+				kanniName.transform.Find("effectValue").GetComponent<Text>().text = "+" + effect.ToString() + "%"; 
 
-				kanni.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+				kanni.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 			}else {
                 foreach (Transform n in kanni.transform) {
                     if (n.name == "KanniName") {
@@ -135,7 +135,7 @@ public class SyoguScene : MonoBehaviour {
                 }
 
                 kanni.GetComponent<RonkouKousyoMenu>().kanniId = 0;
-                kanni.transform.FindChild("Text").GetComponent<Text>().enabled = true;
+                kanni.transform.Find("Text").GetComponent<Text>().enabled = true;
             }
 		} else {
 			foreach(Transform n in kanni.transform){
@@ -145,7 +145,7 @@ public class SyoguScene : MonoBehaviour {
 			}
 
 			kanni.GetComponent<RonkouKousyoMenu> ().kanniId = 0;
-			kanni.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+			kanni.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		}
 
         string jyosyuTmp = "jyosyuBusyo" + busyoId;
@@ -178,10 +178,10 @@ public class SyoguScene : MonoBehaviour {
 				jyosyuName.transform.localPosition = new Vector2 (0, 0);
 				jyosyuName.name = "JyosyuName";
 
-				jyosyuName.transform.FindChild("value").GetComponent<Text>().text = kuniName; 
-				jyosyuName.transform.FindChild("effectValue").GetComponent<Text>().text = "+" + jyosyuHei.ToString();
+				jyosyuName.transform.Find("value").GetComponent<Text>().text = kuniName; 
+				jyosyuName.transform.Find("effectValue").GetComponent<Text>().text = "+" + jyosyuHei.ToString();
 				
-				jyosyu.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+				jyosyu.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 			}			
 		} else {
 			foreach(Transform n in jyosyu.transform){
@@ -190,7 +190,7 @@ public class SyoguScene : MonoBehaviour {
 				}
 			}
 			jyosyu.GetComponent<RonkouKousyoMenu> ().jyosyuKuniId = 0;
-			jyosyu.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+			jyosyu.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		}
 
 

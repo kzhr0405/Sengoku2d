@@ -53,8 +53,8 @@ public class AddHyourouConfirm : MonoBehaviour {
 			qa.GetComponent<QA> ().qaId = 7;
 
 			back.GetComponent<CloseOneBoard> ().deleteObj = board;
-			board.transform.FindChild ("YesButton").GetComponent<AddHyourou> ().touchBackObj = back;
-			board.transform.FindChild ("NoButton").GetComponent<AddHyourou> ().touchBackObj = back;
+			board.transform.Find ("YesButton").GetComponent<AddHyourou> ().touchBackObj = back;
+			board.transform.Find ("NoButton").GetComponent<AddHyourou> ().touchBackObj = back;
 		
 		} else {
 			audioSources [4].Play ();

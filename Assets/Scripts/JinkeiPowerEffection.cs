@@ -121,9 +121,9 @@ public class JinkeiPowerEffection : MonoBehaviour {
 		flag.transform.localPosition = new Vector3(0, 0, 0);
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            flag.transform.FindChild ("Effect").GetComponent<Text> ().text = "ATK+" + addAtk + "\n" + "DFC+" + addDfc;
+            flag.transform.Find ("Effect").GetComponent<Text> ().text = "ATK+" + addAtk + "\n" + "DFC+" + addDfc;
         }else {
-            flag.transform.FindChild("Effect").GetComponent<Text>().text = "武勇+" + addAtk + "\n" + "守備+" + addDfc;
+            flag.transform.Find("Effect").GetComponent<Text>().text = "武勇+" + addAtk + "\n" + "守備+" + addDfc;
         }
 	}
 
@@ -137,9 +137,9 @@ public class JinkeiPowerEffection : MonoBehaviour {
 		msgObj.transform.localPosition = new Vector3(0, 0, 0);
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
-            msgObj.transform.FindChild ("Text").GetComponent<Text> ().text = "Total ATK+" + totalAddAtk + "\n" + "Total DFC+" + totalAddDfc;
+            msgObj.transform.Find ("Text").GetComponent<Text> ().text = "Total ATK+" + totalAddAtk + "\n" + "Total DFC+" + totalAddDfc;
         }else {
-            msgObj.transform.FindChild("Text").GetComponent<Text>().text = "総武勇+" + totalAddAtk + "\n" + "総守備+" + totalAddDfc;
+            msgObj.transform.Find("Text").GetComponent<Text>().text = "総武勇+" + totalAddAtk + "\n" + "総守備+" + totalAddDfc;
         }
 	}
 
@@ -183,7 +183,7 @@ public class JinkeiPowerEffection : MonoBehaviour {
                 string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId1.ToString();
                 flag.GetComponent<Image>().sprite =
                     Resources.Load(imagePath, typeof(Sprite)) as Sprite;
-                flag.transform.SetParent(EnemyJinkeiView.transform.FindChild("Slot" + mapId).GetChild(0).transform);
+                flag.transform.SetParent(EnemyJinkeiView.transform.Find("Slot" + mapId).GetChild(0).transform);
                 flag.transform.localScale = new Vector3(0.5f, 0.5f, 0);
                 flag.transform.localPosition = new Vector3(0, 0, 0);
                 

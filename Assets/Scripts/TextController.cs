@@ -86,20 +86,20 @@ public class TextController : MonoBehaviour {
                 if (currentLine == 1) {                   
                     GameObject tBack = GameObject.Find("tBack").gameObject;
                     GameObject BusyoStatus = GameObject.Find("BusyoStatus").gameObject;
-                    BusyoStatus.transform.FindChild("StatusLv").transform.SetParent(tBack.transform);
-                    BusyoStatus.transform.FindChild("StatusTosotsu").transform.SetParent(tBack.transform);
-                    BusyoStatus.transform.FindChild("StatusBuyuu").transform.SetParent(tBack.transform);
-                    BusyoStatus.transform.FindChild("StatusChiryaku").transform.SetParent(tBack.transform);
-                    BusyoStatus.transform.FindChild("StatusSpeed").transform.SetParent(tBack.transform);
+                    BusyoStatus.transform.Find("StatusLv").transform.SetParent(tBack.transform);
+                    BusyoStatus.transform.Find("StatusTosotsu").transform.SetParent(tBack.transform);
+                    BusyoStatus.transform.Find("StatusBuyuu").transform.SetParent(tBack.transform);
+                    BusyoStatus.transform.Find("StatusChiryaku").transform.SetParent(tBack.transform);
+                    BusyoStatus.transform.Find("StatusSpeed").transform.SetParent(tBack.transform);
                     actOnFlg = true;
                 }else if(currentLine == 5) {
                     GameObject tBack = GameObject.Find("tBack").gameObject;
                     GameObject BusyoStatus = GameObject.Find("BusyoStatus").gameObject;
-                    tBack.transform.FindChild("StatusLv").transform.SetParent(BusyoStatus.transform);
-                    tBack.transform.FindChild("StatusTosotsu").transform.SetParent(BusyoStatus.transform);
-                    tBack.transform.FindChild("StatusBuyuu").transform.SetParent(BusyoStatus.transform);
-                    tBack.transform.FindChild("StatusChiryaku").transform.SetParent(BusyoStatus.transform);
-                    tBack.transform.FindChild("StatusSpeed").transform.SetParent(BusyoStatus.transform);
+                    tBack.transform.Find("StatusLv").transform.SetParent(BusyoStatus.transform);
+                    tBack.transform.Find("StatusTosotsu").transform.SetParent(BusyoStatus.transform);
+                    tBack.transform.Find("StatusBuyuu").transform.SetParent(BusyoStatus.transform);
+                    tBack.transform.Find("StatusChiryaku").transform.SetParent(BusyoStatus.transform);
+                    tBack.transform.Find("StatusSpeed").transform.SetParent(BusyoStatus.transform);
                     GameObject.Find("ButaiStatus").transform.SetParent(tBack.transform);                   
                     GameObject btn1 = GameObject.Find("ButtonCyouhei").gameObject;
                     GameObject btn2 = GameObject.Find("ButtonKunren").gameObject;
@@ -107,8 +107,8 @@ public class TextController : MonoBehaviour {
                     btn2.GetComponent<Button>().enabled = false;
                     btn1.GetComponent<Image>().color = disabledColor;
                     btn2.GetComponent<Image>().color = disabledColor;
-                    btn1.transform.FindChild("Text").GetComponent<Text>().color = disabledColor;
-                    btn2.transform.FindChild("Text").GetComponent<Text>().color = disabledColor;
+                    btn1.transform.Find("Text").GetComponent<Text>().color = disabledColor;
+                    btn2.transform.Find("Text").GetComponent<Text>().color = disabledColor;
 
                     actOnFlg = true;
                 }else if (currentLine == 7) {
@@ -120,7 +120,7 @@ public class TextController : MonoBehaviour {
 
                     btn.GetComponent<Button>().enabled = true;
                     btn.GetComponent<Image>().color = enabledColor;
-                    btn.transform.FindChild("Text").GetComponent<Text>().color = enabledColor;
+                    btn.transform.Find("Text").GetComponent<Text>().color = enabledColor;
                     actOnFlg = true;
                 }
             }
@@ -131,7 +131,7 @@ public class TextController : MonoBehaviour {
                     Vector2 vect = new Vector2(0, 0);
                     Vector2 size1 = new Vector2(60, 60);
                     Vector2 size2 = new Vector2(150, 150);
-                    tutorialScript.SetDoublePointer(GameObject.Find("Video").gameObject, GameObject.Find("MainButtonView").transform.FindChild("Syounin").gameObject, vect, vect, size1, size2);
+                    tutorialScript.SetDoublePointer(GameObject.Find("Video").gameObject, GameObject.Find("MainButtonView").transform.Find("Syounin").gameObject, vect, vect, size1, size2);
                     actOnFlg = true;
                 }else if(currentLine == 5){
                     TutorialController tutorialScript = new TutorialController();

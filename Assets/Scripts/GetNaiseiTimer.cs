@@ -13,7 +13,7 @@ public class GetNaiseiTimer : MonoBehaviour {
         GameObject GameController = GameObject.Find("GameController").gameObject;
         MainStageController MainStageController = GameController.GetComponent<MainStageController>();
         timer = MainStageController.yearTimer;
-        TimerText = transform.FindChild("TimerText").GetComponent<Text>();
+        TimerText = transform.Find("TimerText").GetComponent<Text>();
 
     }
 

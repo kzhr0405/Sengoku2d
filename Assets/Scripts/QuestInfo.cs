@@ -27,7 +27,7 @@ public class QuestInfo : MonoBehaviour {
 		RectTransform popupTransform = popup.GetComponent<RectTransform> ();
 		popupTransform.anchoredPosition = new Vector3 (0, 0, 0);
 		popup.name = "board";
-		GameObject close = popup.transform.FindChild ("close").gameObject;
+		GameObject close = popup.transform.Find ("close").gameObject;
 
 		//qa
 		string qaPath = "Prefabs/Common/Question";
@@ -69,8 +69,8 @@ public class QuestInfo : MonoBehaviour {
         menu.transform.SetParent(popup.transform);
         menu.transform.localScale = new Vector2(1, 1);
         menu.name = "QuestMenu";
-        QuestMenu QuestMenuDaily = menu.transform.FindChild("Daily").GetComponent<QuestMenu>();
-        QuestMenu QuestMenuSpecial = menu.transform.FindChild("Special").GetComponent<QuestMenu>();
+        QuestMenu QuestMenuDaily = menu.transform.Find("Daily").GetComponent<QuestMenu>();
+        QuestMenu QuestMenuSpecial = menu.transform.Find("Special").GetComponent<QuestMenu>();
         QuestMenuDaily.scrollObj = scroll;
         QuestMenuSpecial.scrollObj = scroll;        
 

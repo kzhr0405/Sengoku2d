@@ -125,11 +125,11 @@ public class SenpouController : MonoBehaviour {
 			prefab.transform.localScale = new Vector3 (1,1,1);
 			prefab.transform.localPosition = new Vector3 (-245,173,0);
 
-			prefab.transform.FindChild ("SenpouName").GetComponent<Text> ().text = senpouName;
-			prefab.transform.FindChild ("SerihuText").GetComponent<Text> ().text = senpouSerihu;
+			prefab.transform.Find ("SenpouName").GetComponent<Text> ().text = senpouName;
+			prefab.transform.Find ("SerihuText").GetComponent<Text> ().text = senpouSerihu;
 
 			string imagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();
-			prefab.transform.FindChild ("Mask").transform.FindChild("BusyoImage").GetComponent<Image>().sprite = 
+			prefab.transform.Find ("Mask").transform.Find("BusyoImage").GetComponent<Image>().sprite = 
 				Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 			
 		} else {
@@ -139,11 +139,11 @@ public class SenpouController : MonoBehaviour {
 			prefab.transform.localScale = new Vector3 (-1,1,1);
 			prefab.transform.localPosition = new Vector3 (245,173,0);
 
-			prefab.transform.FindChild ("SenpouName").GetComponent<Text> ().text = senpouName;
-			prefab.transform.FindChild ("SerihuText").GetComponent<Text> ().text = senpouSerihu;
+			prefab.transform.Find ("SenpouName").GetComponent<Text> ().text = senpouName;
+			prefab.transform.Find ("SerihuText").GetComponent<Text> ().text = senpouSerihu;
 
 			string imagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();
-			prefab.transform.FindChild ("Mask").transform.FindChild("BusyoImage").GetComponent<Image>().sprite = 
+			prefab.transform.Find ("Mask").transform.Find("BusyoImage").GetComponent<Image>().sprite = 
 				Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
 

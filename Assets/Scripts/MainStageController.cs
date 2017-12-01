@@ -195,7 +195,7 @@ public class MainStageController : MonoBehaviour {
                         modeString = "普通";
                     }
                 }
-                GameObject.Find("Mode").transform.FindChild("Text").GetComponent<Text>().text = modeString;
+                GameObject.Find("Mode").transform.Find("Text").GetComponent<Text>().text = modeString;
                 
 
                 //Adjust Enemy Busyo Qty by Purchased Jinkei
@@ -406,7 +406,7 @@ public class MainStageController : MonoBehaviour {
 					float colorB = (float)daimyo.getColorB(daimyoId);
 					Color kuniColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
 
-					KuniMap.transform.FindChild (kuni.name).GetComponent<Image> ().color = kuniColor;
+					KuniMap.transform.Find (kuni.name).GetComponent<Image> ().color = kuniColor;
 
 					//Daimyo Kamon Image
 					string imagePath = "Prefabs/Kamon/" + daimyoId.ToString ();
@@ -476,7 +476,7 @@ public class MainStageController : MonoBehaviour {
 				for (int i=0; i<openKuniList.Count; i++) {
 					string openKuniId = openKuniList [i];
 					//Flg Change
-					GameObject targetOpenKuni = GameObject.Find ("KuniIconView").transform.FindChild (openKuniId).gameObject;
+					GameObject targetOpenKuni = GameObject.Find ("KuniIconView").transform.Find (openKuniId).gameObject;
 					targetOpenKuni.GetComponent<SendParam> ().openFlg = true;
 					bool doumeiFlg = targetOpenKuni.GetComponent<SendParam> ().doumeiFlg;
 
@@ -503,7 +503,7 @@ public class MainStageController : MonoBehaviour {
                     if (fromNaiseiFlg || fromKassenFlg) {
 						//Click
 						int activeKuniId = PlayerPrefs.GetInt ("activeKuniId");
-						GameObject.Find ("KuniIconView").transform.FindChild (activeKuniId.ToString ()).GetComponent<SendParam> ().OnClick ();
+						GameObject.Find ("KuniIconView").transform.Find (activeKuniId.ToString ()).GetComponent<SendParam> ().OnClick ();
                         
                         GameObject.Find ("AttackButton").GetComponent<AttackNaiseiView> ().OnClick ();
 						string kassenWinLoseFlee = PlayerPrefs.GetString ("kassenWinLoseFlee");
@@ -655,11 +655,11 @@ public class MainStageController : MonoBehaviour {
 						commentObj.transform.localPosition = new Vector2 (0, 0);
 						commentObj.GetComponent<FadeoutSenpou> ().enabled = true;
 						commentObj.name = "EventCommentOnMap";
-						commentObj.transform.FindChild ("SerihuText").GetComponent<Text> ().text = comment;
+						commentObj.transform.Find ("SerihuText").GetComponent<Text> ().text = comment;
 
 						int daimyoBusyoId = daimyo.getDaimyoBusyoId (activeDaimyoId,senarioId);
 						string daimyoImagePath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
-						commentObj.transform.FindChild ("Mask").transform.FindChild ("BusyoImage").GetComponent<Image> ().sprite =
+						commentObj.transform.Find ("Mask").transform.Find ("BusyoImage").GetComponent<Image> ().sprite =
 							Resources.Load (daimyoImagePath, typeof(Sprite)) as Sprite;
 					}
 				}
@@ -973,9 +973,9 @@ public class MainStageController : MonoBehaviour {
 		if (GameObject.Find ("Quest")) {
 			GameObject quest = GameObject.Find ("Quest").gameObject;
 			if (remainActiveQuest) {
-				quest.transform.FindChild ("Ex").GetComponent<Image> ().enabled = true;
+				quest.transform.Find ("Ex").GetComponent<Image> ().enabled = true;
 			} else {
-				quest.transform.FindChild ("Ex").GetComponent<Image> ().enabled = false;
+				quest.transform.Find ("Ex").GetComponent<Image> ().enabled = false;
 			}
 		}
 	}
@@ -1209,7 +1209,7 @@ public class MainStageController : MonoBehaviour {
 							    //View Previous
 							    string path = "Prefabs/Map/Gunzei";
 							    GameObject Gunzei = Instantiate (Resources.Load (path)) as GameObject;			
-							    Gunzei.transform.SetParent (GameObject.Find ("Panel").transform.FindChild("GunzeiView").transform);
+							    Gunzei.transform.SetParent (GameObject.Find ("Panel").transform.Find("GunzeiView").transform);
 
 							    Gunzei.GetComponent<Gunzei> ().key = keyTemp;
 							    Gunzei.GetComponent<Gunzei> ().srcKuni = int.Parse (srcDstKuniList [0]);
@@ -1233,7 +1233,7 @@ public class MainStageController : MonoBehaviour {
 								    Gunzei.transform.localScale = new Vector2 (1, 1);
 							    } else {
 								    Gunzei.transform.localScale = new Vector2 (-1, 1);
-                                    Gunzei.transform.FindChild("MsgBack").localScale = new Vector2(-1, 1);
+                                    Gunzei.transform.Find("MsgBack").localScale = new Vector2(-1, 1);
                                     Gunzei.GetComponent<Gunzei> ().leftFlg = true;
 							    }
 						    }
@@ -1280,8 +1280,8 @@ public class MainStageController : MonoBehaviour {
 
 			    back.GetComponent<CloseEventBoard> ().deleteObj = board;
 			    back.GetComponent<CloseEventBoard> ().deleteObj2 = back;
-			    board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj = board;
-			    board.transform.FindChild ("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
+			    board.transform.Find ("close").GetComponent<CloseEventBoard> ().deleteObj = board;
+			    board.transform.Find ("close").GetComponent<CloseEventBoard> ().deleteObj2 = back;
 
 			    string pathOfScroll = "Prefabs/Event/Metsubou";
 			    GameObject scroll = Instantiate (Resources.Load (pathOfScroll)) as GameObject;
@@ -1289,7 +1289,7 @@ public class MainStageController : MonoBehaviour {
 			    scroll.transform.localScale = new Vector2 (1, 1);
 
 			    string pathOfSlot = "Prefabs/Event/MetsubouSlot";
-			    GameObject contents = scroll.transform.FindChild ("MetsubouScrollView/MetsubouContent").gameObject;
+			    GameObject contents = scroll.transform.Find ("MetsubouScrollView/MetsubouContent").gameObject;
 			    char[] delimiterChars2 = { ':' };
 			    foreach (string text in metsubouList) {
 				    GameObject slot = Instantiate (Resources.Load (pathOfSlot)) as GameObject;
@@ -1305,7 +1305,7 @@ public class MainStageController : MonoBehaviour {
                         metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
                     }
 
-                    slot.transform.FindChild ("MetsubouText").GetComponent<Text> ().text = metsubouText;
+                    slot.transform.Find ("MetsubouText").GetComponent<Text> ().text = metsubouText;
 				    slot.transform.localScale = new Vector2 (1, 1);
 
 				    //Metsubou Daimyo Handling
@@ -1416,7 +1416,7 @@ public class MainStageController : MonoBehaviour {
         }
 
         string seasonText = GetSeasonText(nowSeason,langId);
-        seasonChangeBoard.transform.FindChild("textBoard").transform.FindChild("Text").GetComponent<TextReader>().scenarios.Add(seasonText);
+        seasonChangeBoard.transform.Find("textBoard").transform.Find("Text").GetComponent<TextReader>().scenarios.Add(seasonText);
         back.GetComponent<CloseOneBoard>().deleteObj = seasonChangeBoard;
         
         string newYearSeason = nowYear.ToString() + "," + nowSeason.ToString();
@@ -1611,10 +1611,10 @@ public class MainStageController : MonoBehaviour {
         }
 
         //Visualize & Data Register
-        GameObject Syukaku = seasonChangeBoard.transform.FindChild("Syukaku").gameObject;
+        GameObject Syukaku = seasonChangeBoard.transform.Find("Syukaku").gameObject;
         if (nowSeason==1) {
             //spring
-            Syukaku.transform.FindChild("TargetMoney").transform.FindChild("TargetMoneyValue").GetComponent<Text>().text = (totalMoney + kozanMoney).ToString();
+            Syukaku.transform.Find("TargetMoney").transform.Find("TargetMoneyValue").GetComponent<Text>().text = (totalMoney + kozanMoney).ToString();
 
             //data
             int nowMoney = PlayerPrefs.GetInt("money");
@@ -1631,57 +1631,57 @@ public class MainStageController : MonoBehaviour {
 
         } else if(nowSeason==2 || nowSeason == 4) {
             //summer or winter
-            Syukaku.transform.FindChild("TargetMoney").transform.FindChild("TargetMoneyValue").GetComponent<Text>().text = kozanMoney.ToString();
+            Syukaku.transform.Find("TargetMoney").transform.Find("TargetMoneyValue").GetComponent<Text>().text = kozanMoney.ToString();
 
-            GameObject TargetGunjyu = Syukaku.transform.FindChild("TargetGunjyu").gameObject;
+            GameObject TargetGunjyu = Syukaku.transform.Find("TargetGunjyu").gameObject;
             if(totalYRH != 0) {
-                TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueH").GetComponent<Text>().text = totalYRH.ToString();
+                TargetGunjyu.transform.Find("YR").transform.Find("CyouheiYRValueH").GetComponent<Text>().text = totalYRH.ToString();
             }
             if (totalYRM != 0) {
-                TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueM").GetComponent<Text>().text = totalYRM.ToString();
+                TargetGunjyu.transform.Find("YR").transform.Find("CyouheiYRValueM").GetComponent<Text>().text = totalYRM.ToString();
             }
             if (totalYRL != 0) {
-                TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueL").GetComponent<Text>().text = totalYRL.ToString();
+                TargetGunjyu.transform.Find("YR").transform.Find("CyouheiYRValueL").GetComponent<Text>().text = totalYRL.ToString();
             }
 
             if (totalKBH != 0) {
-                TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueH").GetComponent<Text>().text = totalKBH.ToString();
+                TargetGunjyu.transform.Find("KB").transform.Find("CyouheiKBValueH").GetComponent<Text>().text = totalKBH.ToString();
             }
             if (totalKBM != 0) {
-                TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueM").GetComponent<Text>().text = totalKBM.ToString();
+                TargetGunjyu.transform.Find("KB").transform.Find("CyouheiKBValueM").GetComponent<Text>().text = totalKBM.ToString();
             }
             if (totalKBL != 0) {
-                TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueL").GetComponent<Text>().text = totalKBL.ToString();
+                TargetGunjyu.transform.Find("KB").transform.Find("CyouheiKBValueL").GetComponent<Text>().text = totalKBL.ToString();
             }
 
             if(totalYMH != 0) {
-                TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueH").GetComponent<Text>().text = totalYMH.ToString();
+                TargetGunjyu.transform.Find("YM").transform.Find("CyouheiYMValueH").GetComponent<Text>().text = totalYMH.ToString();
             }
             if (totalYMM != 0) {
-                TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueM").GetComponent<Text>().text = totalYMM.ToString();
+                TargetGunjyu.transform.Find("YM").transform.Find("CyouheiYMValueM").GetComponent<Text>().text = totalYMM.ToString();
             }
             if (totalYML != 0) {
-                TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueL").GetComponent<Text>().text = totalYML.ToString();
+                TargetGunjyu.transform.Find("YM").transform.Find("CyouheiYMValueL").GetComponent<Text>().text = totalYML.ToString();
             }
 
             if (totalTPH != 0) {
-                TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueH").GetComponent<Text>().text = totalTPH.ToString();
+                TargetGunjyu.transform.Find("TP").transform.Find("CyouheiTPValueH").GetComponent<Text>().text = totalTPH.ToString();
             }
             if (totalTPM != 0) {
-                TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueM").GetComponent<Text>().text = totalTPM.ToString();
+                TargetGunjyu.transform.Find("TP").transform.Find("CyouheiTPValueM").GetComponent<Text>().text = totalTPM.ToString();
             }
             if (totalTPL != 0) {
-                TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
+                TargetGunjyu.transform.Find("TP").transform.Find("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
             }
 
             if (totalSNBH != 0) {
-                TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
+                TargetGunjyu.transform.Find("SNB").transform.Find("SNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
             }
             if (totalSNBM != 0) {
-                TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
+                TargetGunjyu.transform.Find("SNB").transform.Find("SNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
             }
             if (totalSNBL != 0) {
-                TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
+                TargetGunjyu.transform.Find("SNB").transform.Find("SNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
             }
 
 
@@ -1794,8 +1794,8 @@ public class MainStageController : MonoBehaviour {
 
         }else if (nowSeason == 3) {
             //autumn
-            Syukaku.transform.FindChild("TargetMoney").transform.FindChild("TargetMoneyValue").GetComponent<Text>().text = kozanMoney.ToString();
-            Syukaku.transform.FindChild("TargetHyourou").transform.FindChild("TargetHyourouValue").GetComponent<Text>().text = totalHyourou.ToString();
+            Syukaku.transform.Find("TargetMoney").transform.Find("TargetMoneyValue").GetComponent<Text>().text = kozanMoney.ToString();
+            Syukaku.transform.Find("TargetHyourou").transform.Find("TargetHyourouValue").GetComponent<Text>().text = totalHyourou.ToString();
 
             //data
             int nowHyourou = PlayerPrefs.GetInt("hyourou");

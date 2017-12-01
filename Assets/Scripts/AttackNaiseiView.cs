@@ -42,7 +42,7 @@ public class AttackNaiseiView : MonoBehaviour {
     public void OnClick(){
         int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
-        cyouhouSnbRankId = transform.parent.gameObject.transform.FindChild("close").GetComponent<CloseBoard>().cyouhouSnbRankId;
+        cyouhouSnbRankId = transform.parent.gameObject.transform.Find("close").GetComponent<CloseBoard>().cyouhouSnbRankId;
 
         //SE
         sound = GameObject.Find ("SEController").GetComponent<AudioSource> ();
@@ -61,13 +61,13 @@ public class AttackNaiseiView : MonoBehaviour {
         char[] delimiterChars = { ',' };
 
         if (Application.loadedLevelName == "tutorialMain") {
-            board.transform.FindChild("board").transform.FindChild("close").gameObject.SetActive(false);
+            board.transform.Find("board").transform.Find("close").gameObject.SetActive(false);
         }
         
         /*Indivisual Process by Kuni*/
         string pathOfKuniMap = "Prefabs/Map/stage/kuniMap";
 		GameObject kuniMap = Instantiate (Resources.Load (pathOfKuniMap)) as GameObject;
-		board.transform.FindChild ("kuniName").GetComponent<Text> ().text = kuniName;
+		board.transform.Find ("kuniName").GetComponent<Text> ().text = kuniName;
 
 		string kuniImagePath = "Prefabs/Map/stage/MapSprite/stage" + kuniId.ToString ();
         string assetBundlePath = "stage" + kuniId.ToString();
@@ -78,7 +78,7 @@ public class AttackNaiseiView : MonoBehaviour {
             //assetBundleManager.assetBundleCache.Unload(false);
 
         //kuni
-        GameObject boardObj = board.transform.FindChild("board").gameObject;
+        GameObject boardObj = board.transform.Find("board").gameObject;
 		kuniMap.transform.SetParent (boardObj.transform);
 		kuniMap.transform.localScale = new Vector2 (9, 6);
 		kuniMap.transform.localPosition = new Vector3 (-145, 4, 0);
@@ -205,11 +205,11 @@ public class AttackNaiseiView : MonoBehaviour {
 
 			if(powerType==2){
 				string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_m";
-				stage.transform.FindChild("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
+				stage.transform.Find("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 			}else if(powerType==3){
 				string imagePath = "Prefabs/Naisei/Shiro/Sprite/shiro_l";
-                stage.transform.FindChild("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
+                stage.transform.Find("shiroImage").GetComponent<SpriteRenderer> ().sprite = 
 					Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 			}
 
@@ -258,13 +258,13 @@ public class AttackNaiseiView : MonoBehaviour {
 
 				//1st
 				string temp1 = "stage" + stage1Name;
-				GameObject stage1 = kuniMap.transform.FindChild(temp1).gameObject;
+				GameObject stage1 = kuniMap.transform.Find(temp1).gameObject;
 				RectTransform rectStage1 = stage1.GetComponent<RectTransform>();
 				Vector3 vect1 = new Vector3(rectStage1.anchoredPosition.x,rectStage1.anchoredPosition.y,0);
 
 				//2nd
 				string temp2 = "stage" + stage2Name;
-				GameObject stage2 = kuniMap.transform.FindChild(temp2).gameObject;
+				GameObject stage2 = kuniMap.transform.Find(temp2).gameObject;
 				RectTransform rectStage2 = stage2.GetComponent<RectTransform>();
 				Vector3 vect2 = new Vector3(rectStage2.anchoredPosition.x,rectStage2.anchoredPosition.y,0);
 
@@ -318,17 +318,17 @@ public class AttackNaiseiView : MonoBehaviour {
 			naiseiBtn.transform.localScale = new Vector2 (0.4f, 0.4f);
 			naiseiBtn.transform.localPosition = new Vector2 (-490, -300);            
             if (langId == 2) {
-                boardObj.transform.FindChild ("stageDtl").transform.FindChild ("BattleButton").transform.FindChild ("Text").GetComponent<Text> ().text = "Training";
+                boardObj.transform.Find ("stageDtl").transform.Find ("BattleButton").transform.Find ("Text").GetComponent<Text> ().text = "Training";
             }else {
-                boardObj.transform.FindChild("stageDtl").transform.FindChild("BattleButton").transform.FindChild("Text").GetComponent<Text>().text = "訓練";
+                boardObj.transform.Find("stageDtl").transform.Find("BattleButton").transform.Find("Text").GetComponent<Text>().text = "訓練";
             }
             GameObject firstStage = GameObject.Find("stage1");
             firstStage.GetComponent<ShowStageDtl>().OnClick();
 
             if (Application.loadedLevelName == "tutorialMain") {
-                GameObject battleBtnObj = boardObj.transform.FindChild("stageDtl").transform.FindChild("BattleButton").gameObject;
+                GameObject battleBtnObj = boardObj.transform.Find("stageDtl").transform.Find("BattleButton").gameObject;
                 battleBtnObj.GetComponent<Button>().interactable = false;
-                battleBtnObj.transform.FindChild("Text").GetComponent<Text>().color = new Color(220f / 255f, 190f / 255f, 40f / 255f, 100f / 255f);
+                battleBtnObj.transform.Find("Text").GetComponent<Text>().color = new Color(220f / 255f, 190f / 255f, 40f / 255f, 100f / 255f);
 
                 TutorialController tutorialScript = new TutorialController();
                 Vector2 vect = new Vector2(0, 100);
@@ -338,8 +338,8 @@ public class AttackNaiseiView : MonoBehaviour {
         } else{
             //enemy attack
 
-            GameObject closeObj = boardObj.transform.FindChild("close").gameObject;
-            EnemyEventHandler enemyEvent = board.transform.FindChild("board").GetComponent<EnemyEventHandler>();
+            GameObject closeObj = boardObj.transform.Find("close").gameObject;
+            EnemyEventHandler enemyEvent = board.transform.Find("board").GetComponent<EnemyEventHandler>();
             enemyEvent.doEnemyEvent(kuniMap, closeObj,kuniId, daimyoId, activeBusyoQty, activeBusyoLv, activeButaiQty, activeButaiLv);
 
             //open shiro
@@ -399,9 +399,9 @@ public class AttackNaiseiView : MonoBehaviour {
             for (int k=0; k<closeStageIdList.Count; k++){
                 int closeStageId = closeStageIdList[k];
                 string stageName = "stage" + closeStageId.ToString();
-                GameObject closeStageObj = kuniMap.transform.FindChild(stageName).gameObject;
+                GameObject closeStageObj = kuniMap.transform.Find(stageName).gameObject;
                 closeStageObj.GetComponent<Button>().enabled = false;
-                closeStageObj.transform.FindChild("shiroImage").GetComponent<SpriteRenderer>().color = closeColor;
+                closeStageObj.transform.Find("shiroImage").GetComponent<SpriteRenderer>().color = closeColor;
             }
 
 
@@ -442,11 +442,11 @@ public class AttackNaiseiView : MonoBehaviour {
 		} else {
 			GameObject LinkCutButton = GameObject.Find ("LinkCutButton").gameObject;
 			LinkCutButton.GetComponent<Button> ().interactable = false;
-			LinkCutButton.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (220f / 255f, 190f / 255f, 40f / 255f, 100f / 255f);
+			LinkCutButton.transform.Find ("Text").GetComponent<Text> ().color = new Color (220f / 255f, 190f / 255f, 40f / 255f, 100f / 255f);
 
 			GameObject CyouryakuButton = GameObject.Find ("CyouryakuButton").gameObject;
 			CyouryakuButton.GetComponent<Button> ().interactable = false;
-			CyouryakuButton.transform.FindChild ("Text").GetComponent<Text> ().color = new Color (220f / 255f, 190f / 255f, 40f / 255f, 100f / 255f);
+			CyouryakuButton.transform.Find ("Text").GetComponent<Text> ().color = new Color (220f / 255f, 190f / 255f, 40f / 255f, 100f / 255f);
 
 		}
 
@@ -480,7 +480,7 @@ public class AttackNaiseiView : MonoBehaviour {
             string pathOfSrcKuni = "Prefabs/Map/Stage/ArrowKuniName";
             GameObject srcKuniNameObj = Instantiate(Resources.Load(pathOfSrcKuni)) as GameObject;
             srcKuniNameObj.name = "Arrow" + srcKuniId;
-            srcKuniNameObj.transform.SetParent(board.transform.FindChild("board").transform);
+            srcKuniNameObj.transform.SetParent(board.transform.Find("board").transform);
             srcKuniNameObj.transform.localScale = new Vector2(0.1f, 0.15f);
             srcKuniNameObj.transform.localPosition = new Vector2(XYList[0], XYList[1]);
             srcKuniNameObj.GetComponent<Text>().text = kuniScript.getKuniName(srcKuniId,langId);
@@ -495,13 +495,13 @@ public class AttackNaiseiView : MonoBehaviour {
             arrowDaimyo.transform.SetParent(srcKuniNameObj.transform);
             arrowDaimyo.transform.localScale = new Vector2(8, 7);
             arrowDaimyo.transform.localPosition = new Vector2(0, 0);
-            arrowDaimyo.transform.FindChild("Effect").GetComponent<DamagePop>().divSpeed = 5;
-            arrowDaimyo.transform.FindChild("Effect").GetComponent<DamagePop>().attackBoardflg = true;
+            arrowDaimyo.transform.Find("Effect").GetComponent<DamagePop>().divSpeed = 5;
+            arrowDaimyo.transform.Find("Effect").GetComponent<DamagePop>().attackBoardflg = true;
 
             int arrowDaimyoId = int.Parse(seiryokuList[srcKuniId-1]);
             string daimyoName = daimyoScript.getName(arrowDaimyoId,langId, senarioId);
-            arrowDaimyo.transform.FindChild("Effect").GetComponent<Text>().text = daimyoName;
-            arrowDaimyo.transform.FindChild("Effect").transform.localScale = new Vector2(0.12f,0.12f);
+            arrowDaimyo.transform.Find("Effect").GetComponent<Text>().text = daimyoName;
+            arrowDaimyo.transform.Find("Effect").transform.localScale = new Vector2(0.12f,0.12f);
             string kamonPath = "Prefabs/Kamon/MyDaimyoKamon/" + arrowDaimyoId.ToString();
             arrowDaimyo.GetComponent<Image>().sprite =
                 Resources.Load(kamonPath, typeof(Sprite)) as Sprite;
@@ -515,7 +515,7 @@ public class AttackNaiseiView : MonoBehaviour {
                 arrow.transform.localScale = new Vector2(200, 200);
                 arrow.transform.localPosition = new Vector2(0, 0);
                 string stageId = "stage" + linkStageList[j];
-                GameObject tgtStageObj  = kuniMap.transform.FindChild(stageId).gameObject;
+                GameObject tgtStageObj  = kuniMap.transform.Find(stageId).gameObject;
                 Vector3 posDif = tgtStageObj.transform.position - arrow.transform.position;
                 float angle = Mathf.Atan2(posDif.y, posDif.x) * Mathf.Rad2Deg;
 

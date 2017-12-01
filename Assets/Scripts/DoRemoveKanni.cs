@@ -59,7 +59,7 @@ public class DoRemoveKanni : MonoBehaviour {
 			}
 		}
 		//Activate
-		kanni.transform.FindChild("Text").GetComponent<Text>().enabled = true;
+		kanni.transform.Find("Text").GetComponent<Text>().enabled = true;
 		kanni.GetComponent<RonkouKousyoMenu>().kanniId = 0;
 
         if (hpFlg) {

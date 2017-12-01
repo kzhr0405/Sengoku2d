@@ -80,7 +80,7 @@ public class UnitMover : MonoBehaviour {
 				leftFlg = false;
 
                 //Name Bar
-                GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                 Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                 targetChldScale.x *= -1;
                 BusyoDtlPlayer.transform.localScale = targetChldScale;
@@ -94,7 +94,7 @@ public class UnitMover : MonoBehaviour {
 				leftFlg = true;
 
                 //Name Bar
-                GameObject BusyoDtlPlayer = transform.FindChild("BusyoDtlPlayer").gameObject;
+                GameObject BusyoDtlPlayer = transform.Find("BusyoDtlPlayer").gameObject;
                 Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
                 targetChldScale.x *= -1;
                 BusyoDtlPlayer.transform.localScale = targetChldScale;

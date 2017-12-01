@@ -564,12 +564,12 @@ public class DoShisya : MonoBehaviour {
 		GameObject ysBtn = GameObject.Find ("YesButton").gameObject;
 		ysBtn.GetComponent<Button>().enabled = false;
 		ysBtn.GetComponent<Image> ().color = NGColor;
-		ysBtn.transform.FindChild("Text").GetComponent<Text> ().color = NGColor;
+		ysBtn.transform.Find("Text").GetComponent<Text> ().color = NGColor;
 
 		GameObject noBtn = GameObject.Find ("NoButton").gameObject;
 		noBtn.GetComponent<Button>().enabled = false;
 		noBtn.GetComponent<Image> ().color = NGColor;
-		noBtn.transform.FindChild("Text").GetComponent<Text> ().color = NGColor;
+		noBtn.transform.Find("Text").GetComponent<Text> ().color = NGColor;
 
 		//comment
 		ShisyaSelect script = slot.GetComponent<ShisyaSelect> ();
@@ -580,7 +580,7 @@ public class DoShisya : MonoBehaviour {
 		} else {
 			serihu = shisya.getNGSerihu (script.shisyaId);
 		}
-		GameObject.Find ("Comment").transform.FindChild ("Text").GetComponent<Text> ().text = serihu;
+		GameObject.Find ("Comment").transform.Find ("Text").GetComponent<Text> ().text = serihu;
 
 	}
 

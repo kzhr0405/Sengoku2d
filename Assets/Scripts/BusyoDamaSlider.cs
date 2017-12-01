@@ -12,8 +12,8 @@ public class BusyoDamaSlider : MonoBehaviour {
     // Use this for initialization
     void Start() {
         bdSlider = this.GetComponent<Slider>();
-        busyoDamaText = gameObject.transform.FindChild("BusyoDama").GetComponent<Text>();
-        spaceText = gameObject.transform.FindChild("Space").GetComponent<Text>();
+        busyoDamaText = gameObject.transform.Find("BusyoDama").GetComponent<Text>();
+        spaceText = gameObject.transform.Find("Space").GetComponent<Text>();
         float paiedBusyoDama = 0;
 
         bdSlider.onValueChanged.AddListener((value) => {

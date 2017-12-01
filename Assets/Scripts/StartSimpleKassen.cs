@@ -55,8 +55,8 @@ public class StartSimpleKassen : MonoBehaviour {
             
 
             //Battle Powerup
-            float myHei = (float)GameObject.Find("BattleBoard").transform.FindChild("Base").transform.FindChild("Player").transform.FindChild("Hei").GetComponent<simpleHPCounter>().life;
-            float enemyHei = (float)GameObject.Find("BattleBoard").transform.FindChild("Base").transform.FindChild("Enemy").transform.FindChild("Hei").GetComponent<simpleHPCounter>().life;
+            float myHei = (float)GameObject.Find("BattleBoard").transform.Find("Base").transform.Find("Player").transform.Find("Hei").GetComponent<simpleHPCounter>().life;
+            float enemyHei = (float)GameObject.Find("BattleBoard").transform.Find("Base").transform.Find("Enemy").transform.Find("Hei").GetComponent<simpleHPCounter>().life;
             if(myHei > enemyHei) {
                 //enemy flg on
                 foreach (GameObject obs in GameObject.FindGameObjectsWithTag("Enemy")) {
@@ -75,11 +75,11 @@ public class StartSimpleKassen : MonoBehaviour {
             
             //Button Disabled
             GameObject boardObj = transform.parent.gameObject;
-            GameObject baseObj = boardObj.transform.FindChild("Base").gameObject;
-            baseObj.transform.FindChild("YesButton").gameObject.SetActive(false);
-            baseObj.transform.FindChild("NoButton").gameObject.SetActive(false);
-            boardObj.transform.FindChild("Yes").GetComponent<Button>().enabled = false;
-            boardObj.transform.FindChild("No").GetComponent<Button>().enabled = false;
+            GameObject baseObj = boardObj.transform.Find("Base").gameObject;
+            baseObj.transform.Find("YesButton").gameObject.SetActive(false);
+            baseObj.transform.Find("NoButton").gameObject.SetActive(false);
+            boardObj.transform.Find("Yes").GetComponent<Button>().enabled = false;
+            boardObj.transform.Find("No").GetComponent<Button>().enabled = false;
 
             //Effect
             string pathBack = "Prefabs/PreKassen/backGroundSprite";

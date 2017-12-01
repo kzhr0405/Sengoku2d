@@ -43,9 +43,9 @@ public class TabibitoSpdUpConfirm : MonoBehaviour {
             qa.GetComponent<QA>().qaId = 28;
 
             back.GetComponent<CloseOneBoard>().deleteObj = board;
-            board.transform.FindChild("YesButton").GetComponent<TabibitoSpdUp>().touchBackObj = back;
-            board.transform.FindChild("YesButton").GetComponent<TabibitoSpdUp>().baseBtnObj = gameObject;
-            board.transform.FindChild("NoButton").GetComponent<TabibitoSpdUp>().touchBackObj = back;
+            board.transform.Find("YesButton").GetComponent<TabibitoSpdUp>().touchBackObj = back;
+            board.transform.Find("YesButton").GetComponent<TabibitoSpdUp>().baseBtnObj = gameObject;
+            board.transform.Find("NoButton").GetComponent<TabibitoSpdUp>().touchBackObj = back;
         }
         
     }

@@ -58,7 +58,7 @@ public class GaikouKuniSelect : MonoBehaviour {
             }
 
 
-            GameObject.Find ("KyoutouRatio").transform.FindChild ("Value").GetComponent<Text> ().text = ratioInt.ToString () + "%";
+            GameObject.Find ("KyoutouRatio").transform.Find ("Value").GetComponent<Text> ().text = ratioInt.ToString () + "%";
 			GameObject.Find ("DoKyoutouBtn").GetComponent<DoGaikou> ().kyoutouRatio = ratioInt;
 			GameObject.Find ("DoKyoutouBtn").GetComponent<DoGaikou> ().myYukoudo = myYukoudo;
 			GameObject.Find ("DoKyoutouBtn").GetComponent<DoGaikou> ().kuniName = kuniName;
@@ -80,7 +80,7 @@ public class GaikouKuniSelect : MonoBehaviour {
 				ratioInt = (int)ratio;
 			}
 
-			GameObject.Find ("KyoutouRatio").transform.FindChild ("Value").GetComponent<Text> ().text = ratioInt.ToString () + "%";
+			GameObject.Find ("KyoutouRatio").transform.Find ("Value").GetComponent<Text> ().text = ratioInt.ToString () + "%";
 			DoGaikou DoSyuppeiBtnScript = GameObject.Find ("DoSyuppeiBtn").GetComponent<DoGaikou>();
 			DoSyuppeiBtnScript.kyoutouRatio = ratioInt;
 			DoSyuppeiBtnScript.myYukoudo = myYukoudo;

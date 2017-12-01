@@ -89,13 +89,13 @@ public class GacyaSpecialSelect : MonoBehaviour {
         string sakuName = saku.getSakuName(sakuId);
         string senpouName = senpou.getName(senpouId);
 
-        Detail.transform.FindChild("HP").transform.FindChild("Value").GetComponent<Text>().text = hp.ToString();
-        Detail.transform.FindChild("ATK").transform.FindChild("Value").GetComponent<Text>().text = atk.ToString();
-        Detail.transform.FindChild("DFC").transform.FindChild("Value").GetComponent<Text>().text = dfc.ToString();
-        Detail.transform.FindChild("SPD").transform.FindChild("Value").GetComponent<Text>().text = spd.ToString();
-        Detail.transform.FindChild("Name").GetComponent<Text>().text = name;
-        Detail.transform.FindChild("Senpou").transform.FindChild("Value").GetComponent<Text>().text = senpouName;
-        Detail.transform.FindChild("Saku").transform.FindChild("Value").GetComponent<Text>().text = sakuName;
+        Detail.transform.Find("HP").transform.Find("Value").GetComponent<Text>().text = hp.ToString();
+        Detail.transform.Find("ATK").transform.Find("Value").GetComponent<Text>().text = atk.ToString();
+        Detail.transform.Find("DFC").transform.Find("Value").GetComponent<Text>().text = dfc.ToString();
+        Detail.transform.Find("SPD").transform.Find("Value").GetComponent<Text>().text = spd.ToString();
+        Detail.transform.Find("Name").GetComponent<Text>().text = name;
+        Detail.transform.Find("Senpou").transform.Find("Value").GetComponent<Text>().text = senpouName;
+        Detail.transform.Find("Saku").transform.Find("Value").GetComponent<Text>().text = sakuName;
 
         if (GameObject.Find("zukan")) {
             Destroy(GameObject.Find("zukan").gameObject);

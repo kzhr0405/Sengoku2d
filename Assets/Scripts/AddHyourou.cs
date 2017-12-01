@@ -22,7 +22,7 @@ public class AddHyourou : MonoBehaviour {
                 if (Application.loadedLevelName != "shisya") {
                     GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = newHyourou.ToString ();
                 }else {
-                    GameObject.Find("Hyourou").transform.FindChild("Value").GetComponent<Text>().text = newHyourou.ToString();
+                    GameObject.Find("Hyourou").transform.Find("Value").GetComponent<Text>().text = newHyourou.ToString();
                 }
 
 				int newBusyoDama = busyoDama - 100;

@@ -24,10 +24,10 @@ public class Restart : MonoBehaviour {
 		msgTransform.anchoredPosition = new Vector3 (0, 0, 0);
 		msgTransform.name = "RestartConfirm";
 
-		msg.transform.FindChild ("YesButton").GetComponent<DoRestart> ().back = back;
-		msg.transform.FindChild ("YesButton").GetComponent<DoRestart> ().confirm = msg;
-		msg.transform.FindChild ("NoButton").GetComponent<DoRestart> ().back = back;
-		msg.transform.FindChild ("NoButton").GetComponent<DoRestart> ().confirm = msg;
+		msg.transform.Find ("YesButton").GetComponent<DoRestart> ().back = back;
+		msg.transform.Find ("YesButton").GetComponent<DoRestart> ().confirm = msg;
+		msg.transform.Find ("NoButton").GetComponent<DoRestart> ().back = back;
+		msg.transform.Find ("NoButton").GetComponent<DoRestart> ().confirm = msg;
 
 	}
 }

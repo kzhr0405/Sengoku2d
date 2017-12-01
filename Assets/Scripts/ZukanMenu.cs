@@ -87,12 +87,12 @@ public class ZukanMenu : MonoBehaviour {
         foreach (Transform obj in UpperView.transform) {
             if (obj.name == pushedTabName) {
                 obj.GetComponent<Image>().color = pushedTabColor;
-                obj.transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+                obj.transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
                 obj.GetComponent<ZukanMenu>().pushedFlg = true;
             }
             else {
                 obj.GetComponent<Image>().color = normalTabColor;
-                obj.transform.FindChild("Text").GetComponent<Text>().color = normalTextColor;
+                obj.transform.Find("Text").GetComponent<Text>().color = normalTextColor;
                 obj.GetComponent<ZukanMenu>().pushedFlg = false;
 
             }
@@ -205,7 +205,7 @@ public class ZukanMenu : MonoBehaviour {
                 back.transform.localScale = new Vector2(1, 1);
                 back.transform.localPosition = new Vector3(0, 0, 0);
 
-                GameObject kamon = back.transform.FindChild("kamon").gameObject;
+                GameObject kamon = back.transform.Find("kamon").gameObject;
 
                 //Busyo Icon		
                 string busyoPath = "Prefabs/Player/Unit/BusyoUnit";
@@ -233,7 +233,7 @@ public class ZukanMenu : MonoBehaviour {
                 nameRank.transform.localPosition = new Vector3(0, 0, 0);
 
 
-                GameObject rank = nameRank.transform.FindChild("Rank").gameObject;
+                GameObject rank = nameRank.transform.Find("Rank").gameObject;
                 rank.GetComponent<Text>().text = busyoRank;
 
 
@@ -241,7 +241,7 @@ public class ZukanMenu : MonoBehaviour {
                 if (zukanBusyoHstList.Contains(busyoId.ToString())) {
                     NowQty = NowQty + 1;
 
-                    GameObject name = nameRank.transform.FindChild("Name").gameObject;
+                    GameObject name = nameRank.transform.Find("Name").gameObject;
                     name.GetComponent<Text>().text = busyoName;
 
                     float hp = Busyo.hp;
@@ -670,7 +670,7 @@ public class ZukanMenu : MonoBehaviour {
             tenkahubuIcon.transform.localScale = new Vector2(1, 1);
             tenkahubuIcon.transform.localPosition = new Vector3(0, 0, 0);
 
-            GameObject kamonIcon = tenkahubuIcon.transform.FindChild("kamon").gameObject;
+            GameObject kamonIcon = tenkahubuIcon.transform.Find("kamon").gameObject;
             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
             kamonIcon.GetComponent<Image>().sprite =
                 Resources.Load(imagePath, typeof(Sprite)) as Sprite;
@@ -679,7 +679,7 @@ public class ZukanMenu : MonoBehaviour {
             kamonRect.anchoredPosition3D = new Vector3(80, -95, 0);
             kamonRect.sizeDelta = new Vector3(100, 100, 0);
 
-            GameObject tenkaIcon = tenkahubuIcon.transform.FindChild("Image").gameObject;
+            GameObject tenkaIcon = tenkahubuIcon.transform.Find("Image").gameObject;
             RectTransform tenkaRect = tenkaIcon.GetComponent<RectTransform>();
             tenkaRect.anchoredPosition3D = new Vector3(20, 10, 0);
             tenkaRect.sizeDelta = new Vector3(80, 100, 0);
@@ -687,7 +687,7 @@ public class ZukanMenu : MonoBehaviour {
             if (!gameClearDaimyoList.Contains(daimyoId.ToString())) {
                 tenkahubuIcon.GetComponent<Image>().color = backColor;
                 kamonIcon.GetComponent<Image>().color = kamonColor;
-                tenkahubuIcon.transform.FindChild("Image").GetComponent<Image>().enabled = false;
+                tenkahubuIcon.transform.Find("Image").GetComponent<Image>().enabled = false;
 
                 GameObject nameObj = Instantiate(Resources.Load(nameWhitePath)) as GameObject;
                 nameObj.transform.SetParent(tenkahubuIcon.transform);
@@ -696,7 +696,7 @@ public class ZukanMenu : MonoBehaviour {
                 nameObj.GetComponent<Text>().text = Daimyo.getName(i, langId, senarioId);
                 
                 nameObj.transform.localPosition = new Vector2(0, 60);
-                Destroy(tenkahubuIcon.transform.FindChild("Hard").gameObject);
+                Destroy(tenkahubuIcon.transform.Find("Hard").gameObject);
 
             }
             else {
@@ -708,7 +708,7 @@ public class ZukanMenu : MonoBehaviour {
 
 
                 if (!gameClearDaimyoHardList.Contains((daimyoId.ToString()))) {
-                    Destroy(tenkahubuIcon.transform.FindChild("Hard").gameObject);
+                    Destroy(tenkahubuIcon.transform.Find("Hard").gameObject);
                 }
 
 

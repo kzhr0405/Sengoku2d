@@ -38,7 +38,7 @@ public class HidensyoView : MonoBehaviour {
 		busyo_transform.sizeDelta = new Vector2( 100, 100);
 
 		//Text Modification
-		GameObject text = Busyo.transform.FindChild ("Text").gameObject;
+		GameObject text = Busyo.transform.Find ("Text").gameObject;
 		text.GetComponent<Text> ().color = new Color(255,255,255,255);
 		RectTransform text_transform = text.GetComponent<RectTransform>();
 		text_transform.anchoredPosition = new Vector3 (-70,30,0);
@@ -46,7 +46,7 @@ public class HidensyoView : MonoBehaviour {
 		text.transform.localScale = new Vector2 (0.2f,0.2f);
 		
 		//Rank Text Modification
-		GameObject rank = Busyo.transform.FindChild ("Rank").gameObject;
+		GameObject rank = Busyo.transform.Find ("Rank").gameObject;
 		RectTransform rank_transform = rank.GetComponent<RectTransform>();
 		rank_transform.anchoredPosition = new Vector3 (20,-50,0);
 		rank_transform.sizeDelta = new Vector2( 200, 200);

@@ -50,9 +50,9 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 					string daimyoName2 = daimyo.getName (int.Parse (dstDaimyoId),langId,senarioId);
 
 					string daimyoBusyoPath = "Prefabs/Player/Sprite/unit" + daimyoBusyoId.ToString ();
-					btmSlot.transform.FindChild ("Image").transform.FindChild ("Image").GetComponent<Image> ().sprite = 
+					btmSlot.transform.Find ("Image").transform.Find ("Image").GetComponent<Image> ().sprite = 
 						Resources.Load (daimyoBusyoPath, typeof(Sprite)) as Sprite;
-					btmSlot.transform.FindChild ("DaimyoName").GetComponent<Text> ().text = daimyoName2;
+					btmSlot.transform.Find ("DaimyoName").GetComponent<Text> ().text = daimyoName2;
 					btmSlot.GetComponent<CyusaiDaimyoSelect> ().bottomFlg = true;
 					btmSlot.GetComponent<CyusaiDaimyoSelect> ().uprContent = uprContent;
 					btmSlot.GetComponent<CyusaiDaimyoSelect> ().btnContent = btnContent;
@@ -91,14 +91,14 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 			msgTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 			msgTransform.name = "CyusaiConfirm";
             if (langId == 2) {
-                msg.transform.FindChild ("Text").GetComponent<Text> ().text = "Do you want to mediate between " + daimyoName + " and " + daimyoName2 + "? \n Friendship will increase.";
+                msg.transform.Find ("Text").GetComponent<Text> ().text = "Do you want to mediate between " + daimyoName + " and " + daimyoName2 + "? \n Friendship will increase.";
             }else {
-                msg.transform.FindChild("Text").GetComponent<Text>().text = daimyoName + "と" + daimyoName2 + "を仲裁しますか？\n二大名間の友好度が上がります。";
+                msg.transform.Find("Text").GetComponent<Text>().text = daimyoName + "と" + daimyoName2 + "を仲裁しますか？\n二大名間の友好度が上がります。";
             }
 
 
-			GameObject YesBtn = msg.transform.FindChild ("YesButton").gameObject;
-			GameObject NoBtn = msg.transform.FindChild ("NoButton").gameObject;
+			GameObject YesBtn = msg.transform.Find ("YesButton").gameObject;
+			GameObject NoBtn = msg.transform.Find ("NoButton").gameObject;
 			YesBtn.GetComponent<DoCyusai> ().daimyoId = daimyoId;
 			YesBtn.GetComponent<DoCyusai> ().daimyoId2 = daimyoId2;
 			YesBtn.GetComponent<DoCyusai> ().daimyoName = daimyoName;

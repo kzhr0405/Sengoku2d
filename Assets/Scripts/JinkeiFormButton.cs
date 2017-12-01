@@ -410,34 +410,34 @@ public class JinkeiFormButton : MonoBehaviour {
 
 
 		GameObject jinkeiButton = GameObject.Find ("JinkeiButton").gameObject;
-		GameObject gyorin = jinkeiButton.transform.FindChild ("Gyorin").gameObject;
-		GameObject kakuyoku = jinkeiButton.transform.FindChild ("Kakuyoku").gameObject;
-		GameObject engetsu = jinkeiButton.transform.FindChild ("Engetsu").gameObject;
-		GameObject gankou = jinkeiButton.transform.FindChild ("Gankou").gameObject;
+		GameObject gyorin = jinkeiButton.transform.Find ("Gyorin").gameObject;
+		GameObject kakuyoku = jinkeiButton.transform.Find ("Kakuyoku").gameObject;
+		GameObject engetsu = jinkeiButton.transform.Find ("Engetsu").gameObject;
+		GameObject gankou = jinkeiButton.transform.Find ("Gankou").gameObject;
 
 		gyorin.GetComponent<Image> ().color = normalTabColor;
 		kakuyoku.GetComponent<Image> ().color = normalTabColor;
 		engetsu.GetComponent<Image> ().color = normalTabColor;
 		gankou.GetComponent<Image> ().color = normalTabColor;
 
-		gyorin.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
-		kakuyoku.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
-		engetsu.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
-		gankou.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
+		gyorin.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
+		kakuyoku.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
+		engetsu.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
+		gankou.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
 
 		//Change selected Tab Color
 		if(btnName == "Gyorin"){
 			gyorin.GetComponent<Image> ().color = pushedTabColor;
-			gyorin.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			gyorin.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}else if(btnName == "Kakuyoku"){
 			kakuyoku.GetComponent<Image> ().color = pushedTabColor;
-			kakuyoku.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			kakuyoku.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}else if(btnName == "Engetsu"){
 			engetsu.GetComponent<Image> ().color = pushedTabColor;
-			engetsu.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			engetsu.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}else if(btnName == "Gankou"){
 			gankou.GetComponent<Image> ().color = pushedTabColor;
-			gankou.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			gankou.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}
 
 	}

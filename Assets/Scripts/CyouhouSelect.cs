@@ -28,7 +28,7 @@ public class CyouhouSelect : MonoBehaviour {
 			/*Status*/
 			//Common
 			GameObject kuniIconView = GameObject.Find ("KuniIconView").gameObject;
-			SendParam script = kuniIconView.transform.FindChild (kuniId.ToString ()).GetComponent<SendParam> ();
+			SendParam script = kuniIconView.transform.Find (kuniId.ToString ()).GetComponent<SendParam> ();
 			KuniInfo kuni = new KuniInfo ();
 			Daimyo daimyo = new Daimyo ();
 			Gaikou gaikou = new Gaikou ();
@@ -38,23 +38,23 @@ public class CyouhouSelect : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
 
             //Kamon
-            GameObject daimyoNameObj = status.transform.FindChild ("DaimyoName").gameObject;
+            GameObject daimyoNameObj = status.transform.Find ("DaimyoName").gameObject;
 			string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString ();
-			daimyoNameObj.transform.FindChild ("Kamon").GetComponent<Image> ().sprite = 
+			daimyoNameObj.transform.Find ("Kamon").GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 
 			//Daimyo Name
-			daimyoNameObj.transform.FindChild ("Value").GetComponent<Text> ().text = daimyoName;
+			daimyoNameObj.transform.Find ("Value").GetComponent<Text> ().text = daimyoName;
 
 			//Kuni Name
-			GameObject kuniNameObj = status.transform.FindChild ("KuniName").gameObject;
-			kuniNameObj.transform.FindChild ("Value").GetComponent<Text> ().text = kuniName;
+			GameObject kuniNameObj = status.transform.Find ("KuniName").gameObject;
+			kuniNameObj.transform.Find ("Value").GetComponent<Text> ().text = kuniName;
 
 			//Heiryoku
-			status.transform.FindChild ("Heiryoku").transform.FindChild ("Value").GetComponent<Text> ().text = script.heiryoku.ToString ();
+			status.transform.Find ("Heiryoku").transform.Find ("Value").GetComponent<Text> ().text = script.heiryoku.ToString ();
 
 			//Yukou
-			status.transform.FindChild ("Yukoudo").transform.FindChild ("Value").GetComponent<Text> ().text = script.myYukouValue.ToString ();
+			status.transform.Find ("Yukoudo").transform.Find ("Value").GetComponent<Text> ().text = script.myYukouValue.ToString ();
 
 			//Attack Target
 			bool aggressiveFlg = script.aggressiveFlg;
@@ -66,12 +66,12 @@ public class CyouhouSelect : MonoBehaviour {
 				string targetKuniName = kuni.getKuniName (targetKuniId,langId);
 				targetDaimyoId = int.Parse (seiryokuList [targetKuniId - 1]);
 				string targetDaimyoName = daimyo.getClanName (targetDaimyoId, langId);
-				status.transform.FindChild ("Atk").transform.FindChild ("Value").GetComponent<Text> ().text = targetKuniName + "(" + targetDaimyoName + ")";
+				status.transform.Find ("Atk").transform.Find ("Value").GetComponent<Text> ().text = targetKuniName + "(" + targetDaimyoName + ")";
 			} else {               
                 if (langId == 2) {
-                    status.transform.FindChild("Atk").transform.FindChild("Value").GetComponent<Text>().text = "None";
+                    status.transform.Find("Atk").transform.Find("Value").GetComponent<Text>().text = "None";
                 }else {
-                    status.transform.FindChild ("Atk").transform.FindChild ("Value").GetComponent<Text> ().text = "無し";
+                    status.transform.Find ("Atk").transform.Find ("Value").GetComponent<Text> ().text = "無し";
                 }
 
             }
@@ -88,21 +88,21 @@ public class CyouhouSelect : MonoBehaviour {
 					string targetGaikouDaimyoName = daimyo.getClanName (targetGaikouDaimyoId,langId);
 
 					if (targetDaimyoId != targetGaikouDaimyoId) {
-						status.transform.FindChild ("Gaiko").transform.FindChild ("Value").GetComponent<Text> ().text = targetGaikouKuniName + "(" + targetGaikouDaimyoName + ")";
+						status.transform.Find ("Gaiko").transform.Find ("Value").GetComponent<Text> ().text = targetGaikouKuniName + "(" + targetGaikouDaimyoName + ")";
 					} else {
 						sameDaimyoFlg = true;
                         if (langId == 2) {
-                            status.transform.FindChild("Gaiko").transform.FindChild("Value").GetComponent<Text>().text = "None";
+                            status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = "None";
                         } else {
-                            status.transform.FindChild ("Gaiko").transform.FindChild ("Value").GetComponent<Text> ().text = "無し";
+                            status.transform.Find ("Gaiko").transform.Find ("Value").GetComponent<Text> ().text = "無し";
                         }
                     }
 				} else {                    
                     if (langId == 2) {
-                        status.transform.FindChild("Gaiko").transform.FindChild("Value").GetComponent<Text>().text = "None";
+                        status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = "None";
                     }
                     else {
-                        status.transform.FindChild("Gaiko").transform.FindChild("Value").GetComponent<Text>().text = "無し";
+                        status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = "無し";
                     }
                 }
 
@@ -144,12 +144,12 @@ public class CyouhouSelect : MonoBehaviour {
 					}
 				}
 
-				status.transform.FindChild ("Doumei").transform.FindChild ("Value").GetComponent<Text> ().text = doumeiNameList;
+				status.transform.Find ("Doumei").transform.Find ("Value").GetComponent<Text> ().text = doumeiNameList;
 			
 			} else {
 				//Ge
-				status.transform.FindChild ("Gaiko").transform.FindChild ("Value").GetComponent<Text> ().text = "?";
-				status.transform.FindChild ("Doumei").transform.FindChild ("Value").GetComponent<Text> ().text = "?";
+				status.transform.Find ("Gaiko").transform.Find ("Value").GetComponent<Text> ().text = "?";
+				status.transform.Find ("Doumei").transform.Find ("Value").GetComponent<Text> ().text = "?";
 
 			}
 
@@ -163,13 +163,13 @@ public class CyouhouSelect : MonoBehaviour {
 
 				//BusyoQty
 				//Heisyu
-				status.transform.FindChild ("BusyoQty").transform.FindChild ("Value").GetComponent<Text> ().text = qtyAndHeisyuiList[0];
-				status.transform.FindChild ("Heisyu").transform.FindChild ("Value").GetComponent<Text> ().text = qtyAndHeisyuiList[1];
+				status.transform.Find ("BusyoQty").transform.Find ("Value").GetComponent<Text> ().text = qtyAndHeisyuiList[0];
+				status.transform.Find ("Heisyu").transform.Find ("Value").GetComponent<Text> ().text = qtyAndHeisyuiList[1];
 			
 			} else {
 				//Cyu or Ge
-				status.transform.FindChild ("BusyoQty").transform.FindChild ("Value").GetComponent<Text> ().text = "?";
-				status.transform.FindChild ("Heisyu").transform.FindChild ("Value").GetComponent<Text> ().text = "?";
+				status.transform.Find ("BusyoQty").transform.Find ("Value").GetComponent<Text> ().text = "?";
+				status.transform.Find ("Heisyu").transform.Find ("Value").GetComponent<Text> ().text = "?";
 
 			}
 
@@ -187,7 +187,7 @@ public class CyouhouSelect : MonoBehaviour {
             GameObject copiedKuniMap = Object.Instantiate(originalKuniMap) as GameObject;
             copiedKuniMap.transform.SetParent(board.transform);
             copiedKuniMap.transform.localScale = new Vector2(1, 0.8f);
-            Vector3 vect = copiedKuniMap.transform.FindChild(kuniId.ToString()).transform.localPosition;
+            Vector3 vect = copiedKuniMap.transform.Find(kuniId.ToString()).transform.localPosition;
             float adjstX = vect.x * -1;
             float adjustY = vect.y * -1;
             RectTransform mapRect = copiedKuniMap.GetComponent<RectTransform>();
@@ -206,8 +206,8 @@ public class CyouhouSelect : MonoBehaviour {
             for (int i = 0; i < kuniMst.param.Count; i++) {
                 int subKuniId = i + 1;
 
-                GameObject tmpKuniObj = copiedKuniMap.transform.FindChild(subKuniId.ToString()).gameObject;
-                GameObject tmpKamonObj = copiedKamon.transform.FindChild(subKuniId.ToString()).gameObject;
+                GameObject tmpKuniObj = copiedKuniMap.transform.Find(subKuniId.ToString()).gameObject;
+                GameObject tmpKamonObj = copiedKamon.transform.Find(subKuniId.ToString()).gameObject;
                 tmpKamonObj.GetComponent<Image>().color = whiteColor;
 
                 if (subKuniId == kuniId) {
@@ -425,7 +425,7 @@ public class CyouhouSelect : MonoBehaviour {
 
 		for (int k=0; k<targetKuniList.Count; k++) {	
 			
-			SendParam sendParam = kuniIconView.transform.FindChild (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
+			SendParam sendParam = kuniIconView.transform.Find (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
 
 			if (aggressiveFlg) {
 				//Find worst gaikou daimyo
@@ -532,7 +532,7 @@ public class CyouhouSelect : MonoBehaviour {
 
 		for (int k=0; k<targetKuniList.Count; k++) {
 
-			SendParam sendParam = kuniIconView.transform.FindChild (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
+			SendParam sendParam = kuniIconView.transform.Find (targetKuniList [k].ToString ()).GetComponent<SendParam> ();
 
 			if (aggressiveFlg) {
 				//Find best gaikou daimyo

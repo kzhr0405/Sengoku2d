@@ -53,7 +53,7 @@ public class UserMessage : MonoBehaviour {
 
                 back.GetComponent<CloseEventBoard>().deleteObj = board;
                 back.GetComponent<CloseEventBoard>().deleteObj2 = back;
-                Destroy(board.transform.FindChild("close").gameObject);                
+                Destroy(board.transform.Find("close").gameObject);                
 
                 string pathOfScroll = "Prefabs/Event/EventScrollView";
                 GameObject scroll = Instantiate(Resources.Load(pathOfScroll)) as GameObject;
@@ -64,9 +64,9 @@ public class UserMessage : MonoBehaviour {
 
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
-                    board.transform.FindChild("popText").GetComponent<Text>().text = "Message";
+                    board.transform.Find("popText").GetComponent<Text>().text = "Message";
                 }else {
-                    board.transform.FindChild("popText").GetComponent<Text>().text = "御連絡";
+                    board.transform.Find("popText").GetComponent<Text>().text = "御連絡";
                 }
 
                 string pathOfMail = "Prefabs/Common/Mail";
@@ -78,9 +78,9 @@ public class UserMessage : MonoBehaviour {
                 string pathOfSlot = "Prefabs/Common/UserMessageSlot";
                 foreach (string text in messageList) {
                     GameObject slot = Instantiate(Resources.Load(pathOfSlot)) as GameObject;
-                    slot.transform.SetParent(scroll.transform.FindChild("Content").transform);
-                    slot.transform.FindChild("EventText").GetComponent<Text>().text = text;
-                    slot.transform.FindChild("EventText").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                    slot.transform.SetParent(scroll.transform.Find("Content").transform);
+                    slot.transform.Find("EventText").GetComponent<Text>().text = text;
+                    slot.transform.Find("EventText").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
                     slot.transform.localScale = new Vector2(1, 1);
                 }
 

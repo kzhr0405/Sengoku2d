@@ -40,8 +40,8 @@ public class TabibitoItemConfirm : MonoBehaviour {
 			qa.GetComponent<QA> ().qaId = 14;
 
 			back.GetComponent<CloseOneBoard> ().deleteObj = board;
-			board.transform.FindChild ("YesButton").GetComponent<TabibitoItem> ().touchBackObj = back;
-			board.transform.FindChild ("NoButton").GetComponent<TabibitoItem> ().touchBackObj = back;
+			board.transform.Find ("YesButton").GetComponent<TabibitoItem> ().touchBackObj = back;
+			board.transform.Find ("NoButton").GetComponent<TabibitoItem> ().touchBackObj = back;
 
 		} else {
 			audioSources [4].Play ();

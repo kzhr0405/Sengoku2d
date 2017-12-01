@@ -168,7 +168,7 @@ public class DoTobatsu : MonoBehaviour {
 					indvRatio = indvRatio + (float)((100 - otherGaikouValue) / 5);
 
 					//5.
-					int srcKuniQty = BakuhuKuniIconView.transform.FindChild (srcDstList [0]).GetComponent<SendParam> ().kuniQty;
+					int srcKuniQty = BakuhuKuniIconView.transform.Find (srcDstList [0]).GetComponent<SendParam> ().kuniQty;
 					float addRatio = 0;
 					if (srcKuniQty >= kuniQty) {
 						addRatio = 10;
@@ -375,27 +375,27 @@ public class DoTobatsu : MonoBehaviour {
 		}
 
 		GameObject toubatsuSelect = GameObject.Find ("ToubatsuSelect").gameObject;
-		toubatsuSelect.transform.FindChild ("ToubatsuBtn").gameObject.SetActive (false);
+		toubatsuSelect.transform.Find ("ToubatsuBtn").gameObject.SetActive (false);
 		if (toubatsuFlg) {
 			audioSources [3].Play ();
             if (langId == 2) {
-                toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "Declared " + targetDaimyoName + " attack order. Other clan responded to it.";
+                toubatsuSelect.transform.Find ("Exp").GetComponent<Text> ().text = "Declared " + targetDaimyoName + " attack order. Other clan responded to it.";
             }else {
-                toubatsuSelect.transform.FindChild("Exp").GetComponent<Text>().text = targetDaimyoName + "の討伐令を出しました。諸大名が呼応したようです。";
+                toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = targetDaimyoName + "の討伐令を出しました。諸大名が呼応したようです。";
             }
 		} else {
 			audioSources [4].Play ();
 			if (srcDstKuniList.Count == 0) {
                 if (langId == 2) {
-                    toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "There is no clan who can respond to " + targetDaimyoName + " attack order.";
+                    toubatsuSelect.transform.Find ("Exp").GetComponent<Text> ().text = "There is no clan who can respond to " + targetDaimyoName + " attack order.";
                 }else {
-                    toubatsuSelect.transform.FindChild("Exp").GetComponent<Text>().text = "現在" + targetDaimyoName + "の討伐に呼応可能な大名はおりません。";
+                    toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = "現在" + targetDaimyoName + "の討伐に呼応可能な大名はおりません。";
                 }
             } else{
                 if (langId == 2) {
-                    toubatsuSelect.transform.FindChild ("Exp").GetComponent<Text> ().text = "No clan responded to our attack order because of fear for " + targetDaimyoName + ".";
+                    toubatsuSelect.transform.Find ("Exp").GetComponent<Text> ().text = "No clan responded to our attack order because of fear for " + targetDaimyoName + ".";
 			    }else {
-                    toubatsuSelect.transform.FindChild("Exp").GetComponent<Text>().text = targetDaimyoName + "を恐れてか、討伐令にどの大名も呼応しませんでした。";
+                    toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = targetDaimyoName + "を恐れてか、討伐令にどの大名も呼応しませんでした。";
                 }
             }
 		}

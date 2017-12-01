@@ -32,8 +32,8 @@ public class BakuhuInfo : MonoBehaviour {
 
 
         //Param
-        GameObject scrollObj = popup.transform.FindChild("ScrollView").gameObject;
-		GameObject contentObj = scrollObj.transform.FindChild ("Content").gameObject;
+        GameObject scrollObj = popup.transform.Find("ScrollView").gameObject;
+		GameObject contentObj = scrollObj.transform.Find ("Content").gameObject;
 
 		foreach(Transform btnObj in contentObj.transform){
 			btnObj.GetComponent<BakuhuMenu> ().board = popup;
@@ -58,16 +58,16 @@ public class BakuhuInfo : MonoBehaviour {
         int senarioId = PlayerPrefs.GetInt("senarioId");
         int daimyoId = PlayerPrefs.GetInt ("bakuhuTobatsuDaimyoId");
 		if (daimyoId != null && daimyoId != 0) {
-			GameObject atkBtn = contentObj.transform.FindChild ("AtkOrderBtn").gameObject;
+			GameObject atkBtn = contentObj.transform.Find ("AtkOrderBtn").gameObject;
 			atkBtn.GetComponent<Button> ().enabled = false;
 			atkBtn.GetComponent<Image> ().color = new Color (120f / 255f, 120f / 255f, 120f / 255f, 150f / 255f);
-			atkBtn.transform.FindChild ("HyourouIcon").gameObject.SetActive (false);
+			atkBtn.transform.Find ("HyourouIcon").gameObject.SetActive (false);
 			Daimyo daimyo = new Daimyo ();
 			string toubatsuDaiymoName = daimyo.getName (daimyoId,langId, senarioId);
             if (langId==2) {
-                atkBtn.transform.FindChild ("Exp").GetComponent<Text> ().text = "You've already issued attack order to " + toubatsuDaiymoName + " in this season.\n You can order for 1 time in a season.";
+                atkBtn.transform.Find ("Exp").GetComponent<Text> ().text = "You've already issued attack order to " + toubatsuDaiymoName + " in this season.\n You can order for 1 time in a season.";
             }else {
-                atkBtn.transform.FindChild("Exp").GetComponent<Text>().text = "今季は既に" + toubatsuDaiymoName + "に討伐令が出ています。\n討伐令は季節に一回のみ実施可能です。";
+                atkBtn.transform.Find("Exp").GetComponent<Text>().text = "今季は既に" + toubatsuDaiymoName + "に討伐令が出ています。\n討伐令は季節に一回のみ実施可能です。";
             }
 		}
 	}
@@ -77,10 +77,10 @@ public class BakuhuInfo : MonoBehaviour {
         //disable
         int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
-        contentObj.transform.FindChild ("SobujiKessenBtn").gameObject.SetActive(false);
-		contentObj.transform.FindChild ("AtkOrderBtn").gameObject.SetActive(false);
-		contentObj.transform.FindChild ("DfcOrderBtn").gameObject.SetActive(false);
-		contentObj.transform.FindChild ("RelationshipBtn").gameObject.SetActive(false);
+        contentObj.transform.Find ("SobujiKessenBtn").gameObject.SetActive(false);
+		contentObj.transform.Find ("AtkOrderBtn").gameObject.SetActive(false);
+		contentObj.transform.Find ("DfcOrderBtn").gameObject.SetActive(false);
+		contentObj.transform.Find ("RelationshipBtn").gameObject.SetActive(false);
 
 		Daimyo daimyo = new Daimyo ();
 		string seiryoku = PlayerPrefs.GetString ("seiryoku");
@@ -184,12 +184,12 @@ public class BakuhuInfo : MonoBehaviour {
 					    slotObj.transform.localScale = new Vector2 (1,1);
 					    slotObj.name = "KessenBtn";
                         if (langId==2) {
-                            slotObj.transform.FindChild ("Title").GetComponent<Text> ().text = daimyoName + "\n Final War";
+                            slotObj.transform.Find ("Title").GetComponent<Text> ().text = daimyoName + "\n Final War";
                         }else {
-                            slotObj.transform.FindChild("Title").GetComponent<Text>().text = daimyoName + "\n決戦";
+                            slotObj.transform.Find("Title").GetComponent<Text>().text = daimyoName + "\n決戦";
                         }
 					    string imagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();
-					    slotObj.transform.FindChild ("Mask").transform.FindChild("Image").GetComponent<Image>().sprite = 
+					    slotObj.transform.Find ("Mask").transform.Find("Image").GetComponent<Image>().sprite = 
 						    Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 					    slotObj.GetComponent<BakuhuMenu> ().daimyoId = daimyoId;
 					    slotObj.GetComponent<BakuhuMenu> ().daimyoName = daimyoName;
@@ -199,7 +199,7 @@ public class BakuhuInfo : MonoBehaviour {
 						    hyourou = 80;
 					    }
 					    slotObj.GetComponent<BakuhuMenu> ().hyourouNo = hyourou;
-					    slotObj.transform.FindChild ("HyourouIcon").transform.FindChild ("HyourouValue").GetComponent<Text> ().text = hyourou.ToString ();
+					    slotObj.transform.Find ("HyourouIcon").transform.Find ("HyourouValue").GetComponent<Text> ().text = hyourou.ToString ();
                     }
                 }
 			}

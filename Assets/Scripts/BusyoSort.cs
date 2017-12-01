@@ -21,7 +21,7 @@ public class BusyoSort : MonoBehaviour {
             Dropdown.options[1].text = "Clan";
             Dropdown.options[2].text = "Lv";
 
-            Text text = transform.FindChild("Label").GetComponent<Text>();
+            Text text = transform.Find("Label").GetComponent<Text>();
             text.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;                
         }
     }

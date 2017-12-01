@@ -46,11 +46,11 @@ public class SenkouButton : MonoBehaviour {
             //Value Change
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
-                slot.transform.FindChild("Title").GetComponent<Text>().text = "No. " + juni;
+                slot.transform.Find("Title").GetComponent<Text>().text = "No. " + juni;
             }else {
-                slot.transform.FindChild("Title").GetComponent<Text>().text = "戦功第" + juni + "位";
+                slot.transform.Find("Title").GetComponent<Text>().text = "戦功第" + juni + "位";
             }
-			slot.transform.FindChild("Kunkou").GetComponent<TextMesh>().text = senkou.ToString();
+			slot.transform.Find("Kunkou").GetComponent<TextMesh>().text = senkou.ToString();
 
 			//Busyo
 			string busyoPath = "Prefabs/Player/Unit/BusyoUnit";

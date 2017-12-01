@@ -11,7 +11,7 @@ public class MoneySlider : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mSlider = this.GetComponent <Slider> ();
-		moneyText = gameObject.transform.FindChild ("MoneyValue").GetComponent<Text> ();
+		moneyText = gameObject.transform.Find ("MoneyValue").GetComponent<Text> ();
 		float paiedMoney = 0;
 
 		mSlider.onValueChanged.AddListener((value) => {

@@ -38,7 +38,7 @@ public class EnemyInstance : MonoBehaviour {
 			    buildingObj.name = "shiro";
 
 			    string stageName = PlayerPrefs.GetString ("activeStageName");
-			    buildingObj.transform.FindChild ("BusyoDtlEnemy").transform.FindChild ("NameLabel").GetComponent<TextMesh> ().text = stageName;
+			    buildingObj.transform.Find ("BusyoDtlEnemy").transform.Find ("NameLabel").GetComponent<TextMesh> ().text = stageName;
 
 			    //HP
 			    int powerType = PlayerPrefs.GetInt("activePowerType");
@@ -155,7 +155,7 @@ public class EnemyInstance : MonoBehaviour {
         dtl.name = "BusyoDtlEnemy";
 
         //Name
-        GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
+        GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;
 		nameLabel.GetComponent<TextMesh> ().text = busyoName;
 		
 
@@ -283,7 +283,7 @@ public class EnemyInstance : MonoBehaviour {
         }
         
         //HP Bar
-        GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
+        GameObject minHpBar = dtl.transform.Find("MinHpBar").gameObject;
 		minHpBar.GetComponent<BusyoHPBar>().initLife = hp + jyosyuHei + Mathf.FloorToInt(addHpByKanni);
         prefab.GetComponent<EnemyHP>().life = hp + jyosyuHei + Mathf.FloorToInt(addHpByKanni);
         totalHeiryoku = hp + jyosyuHei + Mathf.FloorToInt(addHpByKanni);
@@ -506,7 +506,7 @@ public class EnemyInstance : MonoBehaviour {
 			List<float> randomList = new List<float>(){1.5f,2.0f,2.5f,3.0f,3.5f,4.0f,4.5f,5.0f};
 			int rdm = UnityEngine.Random.Range (0, randomList.Count);
 			float randomValue = randomList [rdm];
-			buildingObj.transform.FindChild("BusyoDtlEnemy").transform.FindChild("MinHpBar").GetComponent<BusyoHPBar>().initLife = (float)hp * randomValue;
+			buildingObj.transform.Find("BusyoDtlEnemy").transform.Find("MinHpBar").GetComponent<BusyoHPBar>().initLife = (float)hp * randomValue;
 			buildingObj.GetComponent<EnemyHP>().life = (float)hp*randomValue;
             
 		}
@@ -691,7 +691,7 @@ public class EnemyInstance : MonoBehaviour {
         dtl.name = "BusyoDtlEnemy";
 
         //Name
-        GameObject nameLabel = dtl.transform.FindChild("NameLabel").gameObject;
+        GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;
         nameLabel.GetComponent<TextMesh>().text = busyoName;
         if(langId == 2) {
             nameLabel.GetComponent<TextMesh>().fontSize = 40;
@@ -788,7 +788,7 @@ public class EnemyInstance : MonoBehaviour {
         if (adjSpd <= 0) {
             adjSpd = 1;
         }
-        GameObject minHpBar = dtl.transform.FindChild("MinHpBar").gameObject;
+        GameObject minHpBar = dtl.transform.Find("MinHpBar").gameObject;
         minHpBar.GetComponent<BusyoHPBar>().initLife = hp;
         prefab.GetComponent<EnemyHP>().life = hp;
         prefab.GetComponent<EnemyAttack>().attack = atk;       

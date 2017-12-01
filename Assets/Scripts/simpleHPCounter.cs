@@ -24,8 +24,8 @@ public class simpleHPCounter : MonoBehaviour {
     void Awake() {
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>(); GameObject.Find("SEController").GetComponents<AudioSource>();
         heiText = GetComponent<TextMesh>();
-        atkTxtScript = transform.parent.FindChild("Atk").GetComponent<TextMesh>();
-        dfcTxtScript = transform.parent.FindChild("Dfc").GetComponent<TextMesh>();
+        atkTxtScript = transform.parent.Find("Atk").GetComponent<TextMesh>();
+        dfcTxtScript = transform.parent.Find("Dfc").GetComponent<TextMesh>();
         //atkTxtScript = GameObject.Find(targetTag).transform.FindChild("Atk").GetComponent<TextMesh>();
         //dfcTxtScript = GameObject.Find(targetTag).transform.FindChild("Dfc").GetComponent<TextMesh>();
     }
@@ -134,7 +134,7 @@ public class simpleHPCounter : MonoBehaviour {
                 PlayerPrefs.Flush();
                 //change remain time on board
                 string remainTimeOnShiro = "stage" + toStageId.ToString();
-                GameObject katanaObj = GameObject.Find(remainTimeOnShiro).transform.FindChild("cleared").transform.FindChild("enemyKatana").gameObject;
+                GameObject katanaObj = GameObject.Find(remainTimeOnShiro).transform.Find("cleared").transform.Find("enemyKatana").gameObject;
                 katanaObj.GetComponent<ShiroAttack>().time = halfTime;
 
                 string path = "Prefabs/EffectAnime/point_down";
@@ -169,7 +169,7 @@ public class simpleHPCounter : MonoBehaviour {
                 string fromStageLable = "stage" + fromStageId.ToString();
                 GameObject closeStageObj = GameObject.Find(fromStageLable).gameObject;
                 closeStageObj.GetComponent<Button>().enabled = true;
-                closeStageObj.transform.FindChild("shiroImage").GetComponent<SpriteRenderer>().color = openColor;
+                closeStageObj.transform.Find("shiroImage").GetComponent<SpriteRenderer>().color = openColor;
 
                 string deleteLabel1 = "attack" + key;
                 string deleteLabel2 = "remain" + key;
@@ -180,8 +180,8 @@ public class simpleHPCounter : MonoBehaviour {
         }
         PlayerPrefs.Flush();
         string stageLable = "stage" + stageId.ToString();
-        if (GameObject.Find(stageLable).transform.FindChild("cleared").transform.FindChild("enemyKatana").gameObject) {
-            GameObject katanaObj = GameObject.Find(stageLable).transform.FindChild("cleared").transform.FindChild("enemyKatana").gameObject;
+        if (GameObject.Find(stageLable).transform.Find("cleared").transform.Find("enemyKatana").gameObject) {
+            GameObject katanaObj = GameObject.Find(stageLable).transform.Find("cleared").transform.Find("enemyKatana").gameObject;
             Destroy(katanaObj);
         }
 

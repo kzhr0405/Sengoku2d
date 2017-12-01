@@ -345,132 +345,132 @@ public class SeiryokuInfo : MonoBehaviour {
 
         /*visualize*/
         //Upper Board
-        GameObject spring = CyosyuObj.transform.FindChild("spring").gameObject;
-        spring.transform.FindChild("TargetMoney").transform.FindChild("Value").GetComponent<Text>().text = (totalMoney + kozanMoney).ToString();
+        GameObject spring = CyosyuObj.transform.Find("spring").gameObject;
+        spring.transform.Find("TargetMoney").transform.Find("Value").GetComponent<Text>().text = (totalMoney + kozanMoney).ToString();
 
-        GameObject summerWinter = CyosyuObj.transform.FindChild("summerWinter").gameObject;
-        summerWinter.transform.FindChild("TargetMoney").transform.FindChild("Value").GetComponent<Text>().text = kozanMoney.ToString();
-        GameObject TargetGunjyu = summerWinter.transform.FindChild("TargetGunjyu").gameObject;
+        GameObject summerWinter = CyosyuObj.transform.Find("summerWinter").gameObject;
+        summerWinter.transform.Find("TargetMoney").transform.Find("Value").GetComponent<Text>().text = kozanMoney.ToString();
+        GameObject TargetGunjyu = summerWinter.transform.Find("TargetGunjyu").gameObject;
         if (totalYRH != 0) {
-            TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueH").GetComponent<Text>().text = totalYRH.ToString();
+            TargetGunjyu.transform.Find("YR").transform.Find("CyouheiYRValueH").GetComponent<Text>().text = totalYRH.ToString();
         }
         if (totalYRM != 0) {
-            TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueM").GetComponent<Text>().text = totalYRM.ToString();
+            TargetGunjyu.transform.Find("YR").transform.Find("CyouheiYRValueM").GetComponent<Text>().text = totalYRM.ToString();
         }
         if (totalYRL != 0) {
-            TargetGunjyu.transform.FindChild("YR").transform.FindChild("CyouheiYRValueL").GetComponent<Text>().text = totalYRL.ToString();
+            TargetGunjyu.transform.Find("YR").transform.Find("CyouheiYRValueL").GetComponent<Text>().text = totalYRL.ToString();
         }
         if (totalKBH != 0) {
-            TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueH").GetComponent<Text>().text = totalKBH.ToString();
+            TargetGunjyu.transform.Find("KB").transform.Find("CyouheiKBValueH").GetComponent<Text>().text = totalKBH.ToString();
         }
         if (totalKBM != 0) {
-            TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueM").GetComponent<Text>().text = totalKBM.ToString();
+            TargetGunjyu.transform.Find("KB").transform.Find("CyouheiKBValueM").GetComponent<Text>().text = totalKBM.ToString();
         }
         if (totalKBL != 0) {
-            TargetGunjyu.transform.FindChild("KB").transform.FindChild("CyouheiKBValueL").GetComponent<Text>().text = totalKBL.ToString();
+            TargetGunjyu.transform.Find("KB").transform.Find("CyouheiKBValueL").GetComponent<Text>().text = totalKBL.ToString();
         }
         if (totalYMH != 0) {
-            TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueH").GetComponent<Text>().text = totalYMH.ToString();
+            TargetGunjyu.transform.Find("YM").transform.Find("CyouheiYMValueH").GetComponent<Text>().text = totalYMH.ToString();
         }
         if (totalYMM != 0) {
-            TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueM").GetComponent<Text>().text = totalYMM.ToString();
+            TargetGunjyu.transform.Find("YM").transform.Find("CyouheiYMValueM").GetComponent<Text>().text = totalYMM.ToString();
         }
         if (totalYML != 0) {
-            TargetGunjyu.transform.FindChild("YM").transform.FindChild("CyouheiYMValueL").GetComponent<Text>().text = totalYML.ToString();
+            TargetGunjyu.transform.Find("YM").transform.Find("CyouheiYMValueL").GetComponent<Text>().text = totalYML.ToString();
         }
         if (totalTPH != 0) {
-            TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueH").GetComponent<Text>().text = totalTPH.ToString();
+            TargetGunjyu.transform.Find("TP").transform.Find("CyouheiTPValueH").GetComponent<Text>().text = totalTPH.ToString();
         }
         if (totalTPM != 0) {
-            TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueM").GetComponent<Text>().text = totalTPM.ToString();
+            TargetGunjyu.transform.Find("TP").transform.Find("CyouheiTPValueM").GetComponent<Text>().text = totalTPM.ToString();
         }
         if (totalTPL != 0) {
-            TargetGunjyu.transform.FindChild("TP").transform.FindChild("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
+            TargetGunjyu.transform.Find("TP").transform.Find("CyouheiTPValueL").GetComponent<Text>().text = totalTPL.ToString();
         }
         if (totalSNBH != 0) {
-            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
+            TargetGunjyu.transform.Find("SNB").transform.Find("SNBValueH").GetComponent<Text>().text = totalSNBH.ToString();
         }
         if (totalSNBM != 0) {
-            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
+            TargetGunjyu.transform.Find("SNB").transform.Find("SNBValueM").GetComponent<Text>().text = totalSNBM.ToString();
         }
         if (totalSNBL != 0) {
-            TargetGunjyu.transform.FindChild("SNB").transform.FindChild("SNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
+            TargetGunjyu.transform.Find("SNB").transform.Find("SNBValueL").GetComponent<Text>().text = totalSNBL.ToString();
         }
 
-        GameObject autumn = CyosyuObj.transform.FindChild("autumn").gameObject;
-        autumn.transform.FindChild("TargetMoney").transform.FindChild("Value").GetComponent<Text>().text = kozanMoney.ToString();
-        autumn.transform.FindChild("TargetHyourou").transform.FindChild("Value").GetComponent<Text>().text = totalHyourou.ToString();
+        GameObject autumn = CyosyuObj.transform.Find("autumn").gameObject;
+        autumn.transform.Find("TargetMoney").transform.Find("Value").GetComponent<Text>().text = kozanMoney.ToString();
+        autumn.transform.Find("TargetHyourou").transform.Find("Value").GetComponent<Text>().text = totalHyourou.ToString();
 
         //Color
         int nowSeason = MainStageController.nowSeason;
         if (nowSeason==1) {
-            summerWinter.transform.FindChild("summer").gameObject.AddComponent<TextBlinker>();
+            summerWinter.transform.Find("summer").gameObject.AddComponent<TextBlinker>();
         }else if(nowSeason==2) {
-            autumn.transform.FindChild("autumn").gameObject.AddComponent<TextBlinker>();
+            autumn.transform.Find("autumn").gameObject.AddComponent<TextBlinker>();
         }else if(nowSeason==3) {
-            summerWinter.transform.FindChild("winter").gameObject.AddComponent<TextBlinker>();
+            summerWinter.transform.Find("winter").gameObject.AddComponent<TextBlinker>();
         }else if(nowSeason==4) {
-            spring.transform.FindChild("spring").gameObject.AddComponent<TextBlinker>();
+            spring.transform.Find("spring").gameObject.AddComponent<TextBlinker>();
         }
 
 
         //Lower Board
-        GameObject status = CyosyuObj.transform.FindChild("statusBack").gameObject;
+        GameObject status = CyosyuObj.transform.Find("statusBack").gameObject;
 
 		//Kamon
 		string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + myDaimyoId.ToString ();
-		GameObject kamon = status.transform.FindChild ("Kamon").gameObject;
+		GameObject kamon = status.transform.Find ("Kamon").gameObject;
 		kamon.GetComponent<Image> ().sprite = 
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
         if (langId == 2) {
-            kamon.transform.FindChild("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + " Status";
+            kamon.transform.Find("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + " Status";
         }else {
-            kamon.transform.FindChild("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + "  国状況";
+            kamon.transform.Find("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + "  国状況";
         }
         //Kuni
-        status.transform.FindChild("Shiro").transform.FindChild("No").GetComponent<Text>().text = mySeiryokuList.Count.ToString();
+        status.transform.Find("Shiro").transform.Find("No").GetComponent<Text>().text = mySeiryokuList.Count.ToString();
 
 		//Naisei Bldg.
-		status.transform.FindChild("Naisei").transform.FindChild("No").GetComponent<Text>().text = (naiseiBldg + mySeiryokuList.Count).ToString();
+		status.transform.Find("Naisei").transform.Find("No").GetComponent<Text>().text = (naiseiBldg + mySeiryokuList.Count).ToString();
 
 		//Tabibito
 		int tabibitoQty = PlayerPrefs.GetInt ("HstTabibito");
-		status.transform.FindChild("Tabibito").transform.FindChild("No").GetComponent<Text>().text = tabibitoQty.ToString();
+		status.transform.Find("Tabibito").transform.Find("No").GetComponent<Text>().text = tabibitoQty.ToString();
 			
 		//Nanbansen
 		int nanbansenQty = PlayerPrefs.GetInt ("HstNanbansen");
-		status.transform.FindChild("Ship").transform.FindChild("No").GetComponent<Text>().text = nanbansenQty.ToString();
+		status.transform.Find("Ship").transform.Find("No").GetComponent<Text>().text = nanbansenQty.ToString();
 
 		//Syogyo
-		status.transform.FindChild("StatusSyogyo").transform.FindChild("SyogyoValue").GetComponent<Text>().text = syogyo.ToString();
+		status.transform.Find("StatusSyogyo").transform.Find("SyogyoValue").GetComponent<Text>().text = syogyo.ToString();
 
 		//Nogyo
-		status.transform.FindChild("StatusNougyo").transform.FindChild("NougyoValue").GetComponent<Text>().text = nogyo.ToString();
+		status.transform.Find("StatusNougyo").transform.Find("NougyoValue").GetComponent<Text>().text = nogyo.ToString();
 
 		//Gunjyu
-		status.transform.FindChild("StatusGunjyu").transform.FindChild("GunjyuValue").GetComponent<Text>().text = (gunjyu*2).ToString();
+		status.transform.Find("StatusGunjyu").transform.Find("GunjyuValue").GetComponent<Text>().text = (gunjyu*2).ToString();
 
 		//Ashigaru
-		status.transform.FindChild("StatusAshigaru").transform.FindChild("AshigaruValue").GetComponent<Text>().text = ashigaru.ToString();
+		status.transform.Find("StatusAshigaru").transform.Find("AshigaruValue").GetComponent<Text>().text = ashigaru.ToString();
 
 		//Boubi
-		status.transform.FindChild("StatusBoubi").transform.FindChild("BoubiValue").GetComponent<Text>().text = boubi.ToString();
+		status.transform.Find("StatusBoubi").transform.Find("BoubiValue").GetComponent<Text>().text = boubi.ToString();
 
 		//Bukkyo
-		status.transform.FindChild("StatusBukkyo").transform.FindChild("BukkyoValue").GetComponent<Text>().text = bukkyo.ToString();
+		status.transform.Find("StatusBukkyo").transform.Find("BukkyoValue").GetComponent<Text>().text = bukkyo.ToString();
 
 		//Kirisuto
-		status.transform.FindChild("StatusKirisuto").transform.FindChild("KirisutoValue").GetComponent<Text>().text = kirisuto.ToString();
+		status.transform.Find("StatusKirisuto").transform.Find("KirisutoValue").GetComponent<Text>().text = kirisuto.ToString();
 
 		//Bunka
-		status.transform.FindChild("StatusBunka").transform.FindChild("BunkaValue").GetComponent<Text>().text = bunka.ToString();
+		status.transform.Find("StatusBunka").transform.Find("BunkaValue").GetComponent<Text>().text = bunka.ToString();
 
         //tutorial
         if (Application.loadedLevelName == "tutorialMain") {
-            Destroy(transform.FindChild("point_up").gameObject);
+            Destroy(transform.Find("point_up").gameObject);
             TutorialController TutorialController = new TutorialController();
             Vector2 vect = new Vector2(0, 50);
-            GameObject closeObj = popup.transform.FindChild("close").gameObject;
+            GameObject closeObj = popup.transform.Find("close").gameObject;
             GameObject animObj = TutorialController.SetPointer(closeObj, vect);
             animObj.transform.localScale = new Vector2(120, 120);
             

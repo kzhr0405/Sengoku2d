@@ -50,7 +50,7 @@ public class clearOrGameOver : MonoBehaviour {
             }else {
                 exp = clanName + "の一族は滅亡した。武運尽きた"+ myDaimyoName + "は、戦場の露と消え、今や彼の者を覚えるものは無い。";
             }   
-			popObj.transform.FindChild("ExpValue").GetComponent<Text>().text = exp;
+			popObj.transform.Find("ExpValue").GetComponent<Text>().text = exp;
 
 			//Change Yaer & Season
 			string yearSeason = PlayerPrefs.GetString ("yearSeason");
@@ -58,33 +58,33 @@ public class clearOrGameOver : MonoBehaviour {
 			string[] yearSeasonList = yearSeason.Split (delimiterChars);
 			int nowYear = int.Parse (yearSeasonList [0]);
 			int nowSeason = int.Parse (yearSeasonList [1]);
-			GameObject yearSeasonObj = popObj.transform.FindChild ("YearValue").gameObject;
+			GameObject yearSeasonObj = popObj.transform.Find ("YearValue").gameObject;
 			yearSeasonObj.GetComponent<Text>().text = nowYear.ToString();
             if (langId == 2) {
                 if (nowSeason == 1){
-				    yearSeasonObj.transform.FindChild ("SeasonValue").GetComponent<Text>().text  = "Spring";
+				    yearSeasonObj.transform.Find ("SeasonValue").GetComponent<Text>().text  = "Spring";
 
 			    }else if(nowSeason == 2){
-				    yearSeasonObj.transform.FindChild ("SeasonValue").GetComponent<Text>().text  = "Summer";
+				    yearSeasonObj.transform.Find ("SeasonValue").GetComponent<Text>().text  = "Summer";
 
 			    }else if(nowSeason == 3){
-				    yearSeasonObj.transform.FindChild ("SeasonValue").GetComponent<Text>().text  = "Autumn";
+				    yearSeasonObj.transform.Find ("SeasonValue").GetComponent<Text>().text  = "Autumn";
 
 			    }else if(nowSeason == 4){
-				    yearSeasonObj.transform.FindChild ("SeasonValue").GetComponent<Text>().text  = "Winter";
+				    yearSeasonObj.transform.Find ("SeasonValue").GetComponent<Text>().text  = "Winter";
 			    }
             }else {
                 if (nowSeason == 1) {
-                    yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "春";
+                    yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "春";
 
                 }else if (nowSeason == 2) {
-                    yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "夏";
+                    yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "夏";
 
                 }else if (nowSeason == 3) {
-                    yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "秋";
+                    yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "秋";
 
                 }else if (nowSeason == 4) {
-                    yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "冬";
+                    yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "冬";
                 }
             }
 			GameObject button = GameObject.Find("Button").gameObject;
@@ -142,7 +142,7 @@ public class clearOrGameOver : MonoBehaviour {
                     }else {
                         exp = "遂に" + myDaimyoName + "は、天下統一を果たした。これより天下人として、泰平の世を創っていくこととなる。";
                     }
-                    popObj.transform.FindChild("ExpValue").GetComponent<Text>().text = exp;
+                    popObj.transform.Find("ExpValue").GetComponent<Text>().text = exp;
 
 					//Change Yaer & Season
 					string yearSeason = PlayerPrefs.GetString ("yearSeason");
@@ -150,33 +150,33 @@ public class clearOrGameOver : MonoBehaviour {
 					string[] yearSeasonList = yearSeason.Split (delimiterChars);
 					int nowYear = int.Parse (yearSeasonList [0]);
 					int nowSeason = int.Parse (yearSeasonList [1]);
-					GameObject yearSeasonObj = popObj.transform.FindChild ("YearValue").gameObject;
+					GameObject yearSeasonObj = popObj.transform.Find ("YearValue").gameObject;
 					yearSeasonObj.GetComponent<Text>().text = nowYear.ToString();
                     if (langId == 2) {
                         if (nowSeason == 1) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "Spring";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "Spring";
                         }else if (nowSeason == 2) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "Summer";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "Summer";
                         }else if (nowSeason == 3) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "Autumn";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "Autumn";
                         }else if (nowSeason == 4) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "Winter";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "Winter";
                         }
                     }else {
                         if (nowSeason == 1) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "春";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "春";
                         }else if (nowSeason == 2) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "夏";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "夏";
                         }else if (nowSeason == 3) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "秋";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "秋";
                         }else if (nowSeason == 4) {
-                            yearSeasonObj.transform.FindChild("SeasonValue").GetComponent<Text>().text = "冬";
+                            yearSeasonObj.transform.Find("SeasonValue").GetComponent<Text>().text = "冬";
                         }
                     }
 
                     //Change Kamon
                     string imagePath = "Prefabs/Kamon/" + myDaimyo.ToString ();
-					popObj.transform.FindChild("Kamon").GetComponent<Image>().sprite = 
+					popObj.transform.Find("Kamon").GetComponent<Image>().sprite = 
 						Resources.Load (imagePath, typeof(Sprite)) as Sprite;
 					
 
@@ -189,7 +189,7 @@ public class clearOrGameOver : MonoBehaviour {
 					item1Obj.transform.SetParent(item1.transform);
 					item1Obj.transform.localScale = new Vector2(1.0f,1.1f);	
 
-					GameObject myKamon = item1Obj.transform.FindChild("kamon").gameObject;
+					GameObject myKamon = item1Obj.transform.Find("kamon").gameObject;
 					string kamonPath = "Prefabs/Kamon/MyDaimyoKamon/" + myDaimyo.ToString ();
 					myKamon.GetComponent<Image> ().sprite = 
 						Resources.Load (kamonPath, typeof(Sprite)) as Sprite;
@@ -220,7 +220,7 @@ public class clearOrGameOver : MonoBehaviour {
 					GameObject item2 = GameObject.Find("item2").gameObject;
 					item2Obj.transform.SetParent(item2.transform);
 					item2Obj.transform.localScale = new Vector2(1.0f,1.1f);	
-					RectTransform rectRank = item2Obj.transform.FindChild("Rank").GetComponent<RectTransform>();
+					RectTransform rectRank = item2Obj.transform.Find("Rank").GetComponent<RectTransform>();
 					rectRank.anchoredPosition3D = new Vector3(30,-30,0);
 					item2Obj.GetComponent<Button>().enabled = false;
 
@@ -307,7 +307,7 @@ public class clearOrGameOver : MonoBehaviour {
 			float colorB = (float)daimyoMst.param [daimyoId - 1].colorB;
 			Color kuniColor = new Color (colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
 			
-			KuniMap.transform.FindChild (kuni.name).GetComponent<Image> ().color = kuniColor;
+			KuniMap.transform.Find (kuni.name).GetComponent<Image> ().color = kuniColor;
 			
 			//Daimyo Kamon Image
 			string imagePath = "Prefabs/Kamon/" + daimyoId.ToString ();

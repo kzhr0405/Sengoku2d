@@ -30,7 +30,7 @@ public class AutoAttack : MonoBehaviour {
                 Color NGClorBtn = new Color(130 / 255f, 130 / 255f, 130 / 255f, 255f / 255f);
                 Color NGClorTxt = new Color(180 / 255f, 180 / 255f, 180 / 255f, 150f / 255f);
                 GetComponent<Image>().color = NGClorBtn;
-                transform.FindChild("Text").GetComponent<Text>().color = NGClorTxt;
+                transform.Find("Text").GetComponent<Text>().color = NGClorTxt;
             }
             changeAutoScript();
             CameraSpeedDown();
@@ -43,7 +43,7 @@ public class AutoAttack : MonoBehaviour {
                 Color ManualClorBtn = new Color(255 / 255f, 255/ 255f, 255 / 255f, 100 / 255f);
                 Color ManualClorTxt = new Color(50 / 255f, 50 / 255f, 50 / 255f, 100 / 255f);
                 GetComponent<Image>().color = ManualClorBtn;
-                transform.FindChild("Text").GetComponent<Text>().color = ManualClorTxt;
+                transform.Find("Text").GetComponent<Text>().color = ManualClorTxt;
             }
             changeManualScript();
             CameraSpeedUp();
@@ -117,7 +117,7 @@ public class AutoAttack : MonoBehaviour {
     public void switchBarDirect(GameObject obj, bool leftFlg) {
         
         if(leftFlg) {
-            GameObject BusyoDtlPlayer = obj.transform.FindChild("BusyoDtlPlayer").gameObject;
+            GameObject BusyoDtlPlayer = obj.transform.Find("BusyoDtlPlayer").gameObject;
             Vector2 targetChldScale = BusyoDtlPlayer.transform.localScale;
 
             if ((obj.transform.localScale.x<0 && targetChldScale.x>0) ||(obj.transform.localScale.x > 0 && targetChldScale.x < 0) ) {

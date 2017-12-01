@@ -65,9 +65,9 @@ public class GaikouMenu : MonoBehaviour {
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
                 if (langId == 2) {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "Gift";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "Gift";
                 }else {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "貢物";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "貢物";
                 }
 
                 //Slider
@@ -141,9 +141,9 @@ public class GaikouMenu : MonoBehaviour {
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
 
                 if (langId == 2) {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "Alliance";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "Alliance";
                 }else {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "同盟";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "同盟";
                 }
 
                 //Money
@@ -211,10 +211,10 @@ public class GaikouMenu : MonoBehaviour {
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
 
                 if (langId == 2) {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "Threat";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "Threat";
                 }
                 else {
-                    btn.transform.FindChild("Text").GetComponent<Text>().text = "恫喝";
+                    btn.transform.Find("Text").GetComponent<Text>().text = "恫喝";
                 }
                 //Hyourou Check
                 hyourouOKflg = HyourouCheck (nowHyourou);
@@ -224,7 +224,7 @@ public class GaikouMenu : MonoBehaviour {
 				ScrollView (gaikouObj, btn);
 
 				//Scroll Adjustment
-				GameObject scroll = gaikouObj.transform.FindChild ("scroll").gameObject;
+				GameObject scroll = gaikouObj.transform.Find ("scroll").gameObject;
 				scroll.transform.localScale = new Vector3 (0.65f, 0.65f, 1);
 				RectTransform scrollTransform = scroll.GetComponent<RectTransform> ();
 				scrollTransform.anchoredPosition = new Vector3 (0, -15, 0);
@@ -256,14 +256,14 @@ public class GaikouMenu : MonoBehaviour {
 				GameObject kouekiObj = Instantiate (Resources.Load (kouekiPath)) as GameObject;
 				kouekiObj.transform.SetParent (GameObject.Find ("smallBoard(Clone)").transform);
 				kouekiObj.transform.localScale = new Vector3 (1, 1, 1);
-				kouekiObj.transform.FindChild("Buy").GetComponent<KouekiMenu>().kouekiObj = kouekiObj;
-				kouekiObj.transform.FindChild("Change").GetComponent<KouekiMenu>().kouekiObj = kouekiObj;
+				kouekiObj.transform.Find("Buy").GetComponent<KouekiMenu>().kouekiObj = kouekiObj;
+				kouekiObj.transform.Find("Change").GetComponent<KouekiMenu>().kouekiObj = kouekiObj;
 
-				kouekiObj.transform.FindChild("Buy").GetComponent<KouekiMenu>().clickBuy();
+				kouekiObj.transform.Find("Buy").GetComponent<KouekiMenu>().clickBuy();
 				GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = kouekiObj;
 
 				//Daimyo Change
-				GameObject daimyo = kouekiObj.transform.FindChild("Daimyo").gameObject;
+				GameObject daimyo = kouekiObj.transform.Find("Daimyo").gameObject;
 				foreach(Transform obj in daimyo.transform){
 					Destroy(obj);
 				}
@@ -355,7 +355,7 @@ public class GaikouMenu : MonoBehaviour {
 
 		string slotPath = "Prefabs/Map/common/Slot";
 		string chiryakuPath = "Prefabs/Map/common/Chiryaku";
-		GameObject contents = scroll.transform.FindChild("Content").gameObject;
+		GameObject contents = scroll.transform.Find("Content").gameObject;
 
 
         List<Busyo> baseBusyoList = new List<Busyo>();
@@ -397,13 +397,13 @@ public class GaikouMenu : MonoBehaviour {
 			busyo.transform.localScale = new Vector3 (4, 5, 4);
 			busyo.name = Busyo.busyoId.ToString();
 
-            RectTransform text_transform = busyo.transform.FindChild("Text").GetComponent<RectTransform>();
+            RectTransform text_transform = busyo.transform.Find("Text").GetComponent<RectTransform>();
 			text_transform.anchoredPosition = new Vector3(-32,12,0);
 			prefab.name = "Slot" + busyo.name;
 
 			GameObject chiryaku = Instantiate (Resources.Load (chiryakuPath)) as GameObject;
 			chiryaku.transform.SetParent(busyo.transform);
-			chiryaku.transform.FindChild("value").GetComponent<Text>().text = Busyo.dfc.ToString();
+			chiryaku.transform.Find("value").GetComponent<Text>().text = Busyo.dfc.ToString();
 			chiryaku.transform.localScale = new Vector3 (1, 1, 1);
             chiryaku.transform.localPosition = new Vector3(0, 0, 0);
 
@@ -422,26 +422,26 @@ public class GaikouMenu : MonoBehaviour {
 	public void OffGaikouMenuList(){
 		
 		GameObject newMenu = GameObject.Find ("return").GetComponent<MenuReturn>().NewMenu;
-		GameObject MitsugiBtn = newMenu.transform.FindChild ("Mitsugi").gameObject;
-		GameObject DoumeiBtn = newMenu.transform.FindChild ("Doumei").gameObject;
-		GameObject KouekiBtn = newMenu.transform.FindChild ("Koueki").gameObject;
-		GameObject DoukatsuBtn = newMenu.transform.FindChild ("Doukatsu").gameObject;
+		GameObject MitsugiBtn = newMenu.transform.Find ("Mitsugi").gameObject;
+		GameObject DoumeiBtn = newMenu.transform.Find ("Doumei").gameObject;
+		GameObject KouekiBtn = newMenu.transform.Find ("Koueki").gameObject;
+		GameObject DoukatsuBtn = newMenu.transform.Find ("Doukatsu").gameObject;
 		
 		MitsugiBtn.GetComponent<Image> ().enabled = false;
 		MitsugiBtn.GetComponent<Button> ().enabled = false;
-		MitsugiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		MitsugiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		DoumeiBtn.GetComponent<Image> ().enabled = false;
 		DoumeiBtn.GetComponent<Button> ().enabled = false;
-		DoumeiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		DoumeiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		KouekiBtn.GetComponent<Image> ().enabled = false;
 		KouekiBtn.GetComponent<Button> ().enabled = false;
-		KouekiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		KouekiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		DoukatsuBtn.GetComponent<Image> ().enabled = false;
 		DoukatsuBtn.GetComponent<Button> ().enabled = false;
-		DoukatsuBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		DoukatsuBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		
 	}
@@ -462,7 +462,7 @@ public class GaikouMenu : MonoBehaviour {
 		foreach (Transform n in kamon.transform) {
 			n.gameObject.GetComponent<Image>().enabled = false;
 			if(n.name == "Doumei"){
-				n.FindChild("Text").GetComponent<Text>().enabled = false;
+				n.Find("Text").GetComponent<Text>().enabled = false;
 			}
 		}
 		foreach (Transform n in daimyoName.transform) {
@@ -477,26 +477,26 @@ public class GaikouMenu : MonoBehaviour {
 		
 		
 		GameObject newMenu = GameObject.Find ("return").GetComponent<MenuReturn>().NewMenu;
-		GameObject MitsugiBtn = newMenu.transform.FindChild ("Mitsugi").gameObject;
-		GameObject DoumeiBtn = newMenu.transform.FindChild ("Doumei").gameObject;
-		GameObject KouekiBtn = newMenu.transform.FindChild ("Koueki").gameObject;
-		GameObject DoukatsuBtn = newMenu.transform.FindChild ("Doukatsu").gameObject;
+		GameObject MitsugiBtn = newMenu.transform.Find ("Mitsugi").gameObject;
+		GameObject DoumeiBtn = newMenu.transform.Find ("Doumei").gameObject;
+		GameObject KouekiBtn = newMenu.transform.Find ("Koueki").gameObject;
+		GameObject DoukatsuBtn = newMenu.transform.Find ("Doukatsu").gameObject;
 		
 		MitsugiBtn.GetComponent<Image> ().enabled = false;
 		MitsugiBtn.GetComponent<Button> ().enabled = false;
-		MitsugiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		MitsugiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 
 		DoumeiBtn.GetComponent<Image> ().enabled = false;
 		DoumeiBtn.GetComponent<Button> ().enabled = false;
-		DoumeiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		DoumeiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		KouekiBtn.GetComponent<Image> ().enabled = false;
 		KouekiBtn.GetComponent<Button> ().enabled = false;
-		KouekiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		KouekiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 		
 		DoukatsuBtn.GetComponent<Image> ().enabled = false;
 		DoukatsuBtn.GetComponent<Button> ().enabled = false;
-		DoukatsuBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = false;
+		DoukatsuBtn.transform.Find ("Text").GetComponent<Text> ().enabled = false;
 	
 
 	}
@@ -516,7 +516,7 @@ public class GaikouMenu : MonoBehaviour {
 		foreach (Transform n in kamon.transform) {
 			n.gameObject.GetComponent<Image>().enabled = true;
 			if(n.name == "Doumei"){
-				n.FindChild("Text").GetComponent<Text>().enabled = true;
+				n.Find("Text").GetComponent<Text>().enabled = true;
 			}
 		}
 		foreach (Transform n in daimyoName.transform) {
@@ -531,26 +531,26 @@ public class GaikouMenu : MonoBehaviour {
 		
 		
 		GameObject newMenu = GameObject.Find ("return").GetComponent<MenuReturn>().NewMenu;
-		GameObject MitsugiBtn = newMenu.transform.FindChild ("Mitsugi").gameObject;
-		GameObject DoumeiBtn = newMenu.transform.FindChild ("Doumei").gameObject;
-		GameObject KouekiBtn = newMenu.transform.FindChild ("Koueki").gameObject;
-		GameObject DoukatsuBtn = newMenu.transform.FindChild ("Doukatsu").gameObject;
+		GameObject MitsugiBtn = newMenu.transform.Find ("Mitsugi").gameObject;
+		GameObject DoumeiBtn = newMenu.transform.Find ("Doumei").gameObject;
+		GameObject KouekiBtn = newMenu.transform.Find ("Koueki").gameObject;
+		GameObject DoukatsuBtn = newMenu.transform.Find ("Doukatsu").gameObject;
 		
 		MitsugiBtn.GetComponent<Image> ().enabled = true;
 		MitsugiBtn.GetComponent<Button> ().enabled = true;
-		MitsugiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		MitsugiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 		DoumeiBtn.GetComponent<Image> ().enabled = true;
 		DoumeiBtn.GetComponent<Button> ().enabled = true;
-		DoumeiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		DoumeiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 		KouekiBtn.GetComponent<Image> ().enabled = true;
 		KouekiBtn.GetComponent<Button> ().enabled = true;
-		KouekiBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		KouekiBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 		DoukatsuBtn.GetComponent<Image> ().enabled = true;
 		DoukatsuBtn.GetComponent<Button> ().enabled = true;
-		DoukatsuBtn.transform.FindChild ("Text").GetComponent<Text> ().enabled = true;
+		DoukatsuBtn.transform.Find ("Text").GetComponent<Text> ().enabled = true;
 		
 	}
 

@@ -52,7 +52,7 @@ public class DoDestroy : MonoBehaviour {
 
 				//Animation
 				GameObject naiseiView = GameObject.Find("NaiseiView").gameObject;
-				Vector2 areaPosition = naiseiView.transform.FindChild (areaId.ToString ()).transform.localPosition;
+				Vector2 areaPosition = naiseiView.transform.Find (areaId.ToString ()).transform.localPosition;
 				string animPath = "Prefabs/Naisei/DestroyAnim";
 				GameObject destroyObj = Instantiate (Resources.Load (animPath)) as GameObject;		
 				destroyObj.transform.SetParent (naiseiView.transform);

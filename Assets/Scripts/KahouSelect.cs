@@ -233,9 +233,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = buguKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = buguKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				}else if(target =="Kabuto"){
@@ -251,9 +251,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = kabutoKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = kabutoKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 
@@ -270,9 +270,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = gusokuKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = gusokuKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 
@@ -289,9 +289,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = meibaKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = meibaKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
@@ -308,9 +308,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = cyadouguKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = cyadouguKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
@@ -327,9 +327,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = heihousyoKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = heihousyoKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
@@ -346,9 +346,9 @@ public class KahouSelect : MonoBehaviour {
                     }
                     int kahouEffect = chishikisyoKahouMst.param [kahouId-1].kahouEffect;
 					string kahouUnit = chishikisyoKahouMst.param [kahouId-1].unit;
-					kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-					kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+					kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+					kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+					kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 					viewKahouIcon(kahouSlot,kahouTypId);
 					setKahouInfo(kahouSlot,target,kahouId, kahouName, kahouTarget, kahouEffect, kahouUnit);
 				}
@@ -375,9 +375,9 @@ public class KahouSelect : MonoBehaviour {
                 }
 				int kahouEffect = buguKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;	
 				string kahouUnit = buguKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
@@ -394,9 +394,9 @@ public class KahouSelect : MonoBehaviour {
                 }
                 int kahouEffect = kabutoKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;
 				string kahouUnit = kabutoKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text =  "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
@@ -413,9 +413,9 @@ public class KahouSelect : MonoBehaviour {
                 }
                 int kahouEffect = gusokuKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;
 				string kahouUnit = gusokuKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
@@ -432,9 +432,9 @@ public class KahouSelect : MonoBehaviour {
                 }
                 int kahouEffect = meibaKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;
 				string kahouUnit = meibaKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 
@@ -451,9 +451,9 @@ public class KahouSelect : MonoBehaviour {
                 }
                 int kahouEffect = cyadouguKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;
 				string kahouUnit = cyadouguKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
@@ -470,9 +470,9 @@ public class KahouSelect : MonoBehaviour {
                 }
                 int kahouEffect = heihousyoKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;
 				string kahouUnit = heihousyoKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
@@ -489,9 +489,9 @@ public class KahouSelect : MonoBehaviour {
                 }
                 int kahouEffect = chishikisyoKahouMst.param [int.Parse(availableKahou)-1].kahouEffect;
 				string kahouUnit = chishikisyoKahouMst.param [int.Parse(availableKahou)-1].unit;
-				kahouSlot.transform.FindChild("KahouName").GetComponent<Text>().text = kahouName;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
-				kahouSlot.transform.FindChild("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
+				kahouSlot.transform.Find("KahouName").GetComponent<Text>().text = kahouName;
+				kahouSlot.transform.Find("KahouName/KahouEffectLabel").GetComponent<Text>().text = kahouTarget;
+				kahouSlot.transform.Find("KahouName/KahouEffectValue").GetComponent<Text>().text = "+" + kahouEffect.ToString() + kahouUnit;
 				viewKahouIcon(kahouSlot,kahouTypId);
 				setKahouInfo(kahouSlot,target,int.Parse(availableKahou), kahouName, kahouTarget, kahouEffect, kahouUnit);
 				
@@ -502,7 +502,7 @@ public class KahouSelect : MonoBehaviour {
 	public void viewKahouIcon(GameObject obj,string kahouTypId){
 		string kahouIconPath = "Prefabs/Item/Kahou/" + kahouTypId;
 		GameObject kahouIcon = Instantiate (Resources.Load (kahouIconPath)) as GameObject;
-		kahouIcon.transform.SetParent(obj.transform.FindChild("KahouName").transform);
+		kahouIcon.transform.SetParent(obj.transform.Find("KahouName").transform);
 
 		RectTransform iconTransform = kahouIcon.GetComponent<RectTransform> ();
 		iconTransform.anchoredPosition3D = new Vector3 (0, -500, 0);
@@ -512,7 +512,7 @@ public class KahouSelect : MonoBehaviour {
 		kahouIcon.GetComponent<Button> ().enabled = false;
 
 		//Text Modification
-		RectTransform rankTransform = kahouIcon.transform.FindChild ("Rank").GetComponent<RectTransform> ();
+		RectTransform rankTransform = kahouIcon.transform.Find ("Rank").GetComponent<RectTransform> ();
 		rankTransform.anchoredPosition3D = new Vector3 (10, -10, 0);
 		rankTransform.sizeDelta = new Vector2 (40, 40);
 		rankTransform.transform.localScale = new Vector2 (0.1f, 0.1f);
@@ -520,7 +520,7 @@ public class KahouSelect : MonoBehaviour {
 	}
 	public void setKahouInfo(GameObject obj, string kahouType, int kahouId, string kahouName, string kahouTypName, int kahouEffect, string kahouUnit) {
 
-        EquipKahou EquipKahou = obj.transform.FindChild("KahouName/EquipButton").GetComponent<EquipKahou>();
+        EquipKahou EquipKahou = obj.transform.Find("KahouName/EquipButton").GetComponent<EquipKahou>();
 
         EquipKahou.kahouId = kahouId;
         EquipKahou.kahouType = kahouType;

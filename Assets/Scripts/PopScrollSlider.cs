@@ -20,7 +20,7 @@ public class PopScrollSlider : MonoBehaviour {
         //if(transform.FindChild("ScrollView").transform.FindChild("Content").childCount == 0) {
         if(name == "BusyoScrollMenu") {
             if(!onceSlideInFlg) {
-                transform.FindChild("ScrollView").transform.FindChild("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu();
+                transform.Find("ScrollView").transform.Find("Content").GetComponent<PrepBusyoScrollMenu>().PrepareBusyoScrollMenu();
                 onceSlideInFlg = true;
             }
         }

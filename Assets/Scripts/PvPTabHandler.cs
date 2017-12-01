@@ -53,11 +53,11 @@ public class PvPTabHandler : MonoBehaviour {
                 GameObject UpperView = GameObject.Find("UpperView").gameObject;
                 foreach (Transform obj in UpperView.transform) {
                     obj.GetComponent<Image>().color = normalTabColor;
-                    obj.transform.FindChild("Text").GetComponent<Text>().color = normalTextColor;
+                    obj.transform.Find("Text").GetComponent<Text>().color = normalTextColor;
                     obj.GetComponent<PvPTabHandler>().clicked = false;
                 }
                 GetComponent<Image>().color = pushedTabColor;
-                transform.FindChild("Text").GetComponent<Text>().color = pushedTextColor;
+                transform.Find("Text").GetComponent<Text>().color = pushedTextColor;
                 clicked = true;
 
                 if(name == "Kassen") {

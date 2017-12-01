@@ -269,11 +269,11 @@ public class SakuMaker : MonoBehaviour {
 			kengou.transform.position = new Vector2 (vect.x, vect.y);
 
 			//Name
-			GameObject nameLabel = dtl.transform.FindChild ("NameLabel").gameObject;
+			GameObject nameLabel = dtl.transform.Find ("NameLabel").gameObject;
 			nameLabel.GetComponent<TextMesh> ().text = kengouName;
 			
 			//HP Bar
-			GameObject minHpBar = dtl.transform.FindChild ("MinHpBar").gameObject;
+			GameObject minHpBar = dtl.transform.Find ("MinHpBar").gameObject;
 			minHpBar.GetComponent<BusyoHPBar> ().initLife = kengouHp;
 
 			kengou.GetComponent<PlayerHP> ().life = kengouHp;
@@ -472,11 +472,11 @@ public class SakuMaker : MonoBehaviour {
 		kengou.transform.position = new Vector2 (vect.x + rdmX, vect.y + rdmY);
 
 		//Name
-		GameObject nameLabel = dtl.transform.FindChild ("NameLabel").gameObject;
+		GameObject nameLabel = dtl.transform.Find ("NameLabel").gameObject;
 		nameLabel.GetComponent<TextMesh> ().text = kengouName;
 
 		//HP Bar
-		GameObject minHpBar = dtl.transform.FindChild ("MinHpBar").gameObject;
+		GameObject minHpBar = dtl.transform.Find ("MinHpBar").gameObject;
 		minHpBar.GetComponent<BusyoHPBar> ().initLife = kengouHp;
 
         if (playerFlg) {

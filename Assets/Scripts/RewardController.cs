@@ -24,35 +24,35 @@ public class RewardController : MonoBehaviour {
             slot.transform.localScale = new Vector2(1,1);
 
             //view
-            slot.transform.FindChild("title").GetComponent<Text>().text = title;
+            slot.transform.Find("title").GetComponent<Text>().text = title;
 
             //hide other image
-            GameObject imageContent = slot.transform.FindChild("ScrollView").transform.FindChild("Viewport").transform.FindChild("Content").gameObject;
-            RewardReceive RewardReceive = slot.transform.FindChild("button").GetComponent<RewardReceive>();
+            GameObject imageContent = slot.transform.Find("ScrollView").transform.Find("Viewport").transform.Find("Content").gameObject;
+            RewardReceive RewardReceive = slot.transform.Find("button").GetComponent<RewardReceive>();
 
             foreach (Transform obj in imageContent.transform) {
                 if(obj.name != grp) {
                    
                     Destroy(obj.gameObject);
-                    slot.transform.FindChild("circle").transform.FindChild("Text").GetComponent<Text>().text = grp;
-                    slot.transform.FindChild("circle").transform.FindChild("Text").GetComponent<Text>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+                    slot.transform.Find("circle").transform.Find("Text").GetComponent<Text>().text = grp;
+                    slot.transform.Find("circle").transform.Find("Text").GetComponent<Text>().color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
                 }
                 else {
                     if (grp == "money") {
-                        obj.transform.FindChild("qty").GetComponent<Text>().text = qty.ToString();
+                        obj.transform.Find("qty").GetComponent<Text>().text = qty.ToString();
                     }
                     else if (grp == "stone") {
-                        obj.transform.FindChild("qty").GetComponent<Text>().text = qty.ToString();
+                        obj.transform.Find("qty").GetComponent<Text>().text = qty.ToString();
                     }
                     else if (grp == "busyo") {
-                        obj.transform.FindChild("rank").GetComponent<Text>().text = rank;
+                        obj.transform.Find("rank").GetComponent<Text>().text = rank;
                         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
                         int busyoId = BusyoInfoGet.getRandomBusyoId(rank);
                         RewardReceive.busyoId = busyoId;
                     }
                     else if (grp == "kaho") {
-                        obj.transform.FindChild("qty").GetComponent<Text>().text = "x " + qty.ToString();
-                        obj.transform.FindChild("rank").GetComponent<Text>().text = rank;
+                        obj.transform.Find("qty").GetComponent<Text>().text = "x " + qty.ToString();
+                        obj.transform.Find("rank").GetComponent<Text>().text = rank;
 
                         //kahouType bugu,kabuto,gusoku,meiba,cyadougu,heihousyo,chishikisyo
                         for(int j=0; j<qty; j++) {
@@ -87,8 +87,8 @@ public class RewardController : MonoBehaviour {
                                 rankTmp = "下";
                             }
                         }
-                        obj.transform.FindChild("qty").GetComponent<Text>().text = "x " + qty.ToString();
-                        obj.transform.FindChild("rank").GetComponent<Text>().text = rankTmp;
+                        obj.transform.Find("qty").GetComponent<Text>().text = "x " + qty.ToString();
+                        obj.transform.Find("rank").GetComponent<Text>().text = rankTmp;
                     }
                 }
             }

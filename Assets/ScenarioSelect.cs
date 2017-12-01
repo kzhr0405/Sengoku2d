@@ -18,7 +18,7 @@ public class ScenarioSelect : MonoBehaviour {
         Destroy(ScrollView);
         Destroy(GameObject.Find("Back"));
         Message Message = new Message();
-        FixedMessage.transform.FindChild("MessageText").GetComponent<Text>().text = Message.getMessage(163);
+        FixedMessage.transform.Find("MessageText").GetComponent<Text>().text = Message.getMessage(163);
         clearOrGameOver clearOrGameOver = GameObject.Find("GameController").GetComponent<clearOrGameOver>();
         clearOrGameOver.SenarioSelct.SetActive(true);
         clearOrGameOver.senarioId = int.Parse(name);
@@ -113,7 +113,7 @@ public class ScenarioSelect : MonoBehaviour {
             float colorB = daimyoScript.getColorB(daimyoId);
             Color kuniColor = new Color(colorR / 255f, colorG / 255f, colorB / 255f, 255f / 255f);
 
-            KuniMap.transform.FindChild(kuni.name).GetComponent<Image>().color = kuniColor;
+            KuniMap.transform.Find(kuni.name).GetComponent<Image>().color = kuniColor;
 
             //Daimyo Kamon Image
             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();

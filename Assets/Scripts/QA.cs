@@ -48,8 +48,8 @@ public class QA : MonoBehaviour {
 		RectTransform qaBoardTransform = qaBoard.GetComponent<RectTransform> ();
 		qaBoardTransform.anchoredPosition3D = new Vector3 (0, 0, 0);
 		qaBoard.name = "QABoard";
-		qaBoard.transform.FindChild ("Kakejiku").transform.FindChild ("Exp").GetComponent<Text> ().text = qaExp;
-		qaBoard.transform.FindChild ("Kakejiku").transform.FindChild ("Title").GetComponent<Text> ().text = qaTitle;
+		qaBoard.transform.Find ("Kakejiku").transform.Find ("Exp").GetComponent<Text> ().text = qaExp;
+		qaBoard.transform.Find ("Kakejiku").transform.Find ("Title").GetComponent<Text> ().text = qaTitle;
 
         //Sort
         if(GameObject.Find("Canvas")) {

@@ -646,15 +646,15 @@ public class DoBouryaku : MonoBehaviour {
 						if (snbValue == 1) {
 							Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = lowColor;
-							shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "下";
+							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "下";
 						} else if (snbValue == 2) {
 							Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = midColor;
-							shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "中";
+							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "中";
 						} else if (snbValue == 3) {
 							Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = highColor;
-							shinobi.transform.FindChild ("ShinobiRank").GetComponent<Text> ().text = "上";
+							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "上";
 						}
 
 
@@ -676,15 +676,15 @@ public class DoBouryaku : MonoBehaviour {
 						if (snbValue == 1) {
 							Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image>().color = lowColor;
-							shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "下";
+							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
 						} else if (snbValue == 2) {
 							Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image>().color = midColor;
-							shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "中";
+							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
 						} else if (snbValue == 3) {
 							Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image>().color = highColor;
-							shinobi.transform.FindChild("ShinobiRank").GetComponent<Text>().text = "上";
+							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
 						}
 
                         //Set Flg
@@ -693,7 +693,7 @@ public class DoBouryaku : MonoBehaviour {
                     }
 
 					GameObject kuniIconView = GameObject.Find ("KuniIconView").gameObject;
-					kuniIconView.transform.FindChild (kuniId.ToString ()).GetComponent<SendParam> ().cyouhouSnbRankId = snbValue;
+					kuniIconView.transform.Find (kuniId.ToString ()).GetComponent<SendParam> ().cyouhouSnbRankId = snbValue;
 
 
 					KuniInfo kuni = new KuniInfo();

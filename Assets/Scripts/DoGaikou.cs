@@ -190,7 +190,7 @@ public class DoGaikou : MonoBehaviour {
 
 							if (tempDaimyoId == daimyoId) {
 								int kuniId = i + 1;
-								GameObject kuniIcon = KuniIconView.transform.FindChild (kuniId.ToString ()).gameObject;
+								GameObject kuniIcon = KuniIconView.transform.Find (kuniId.ToString ()).gameObject;
 								kuniIcon.GetComponent<Image> ().color = doumeiColor;
 								kuniIcon.GetComponent<SendParam> ().doumeiFlg = true;
 							}

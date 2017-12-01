@@ -26,25 +26,25 @@ public class TabHandler : MonoBehaviour {
 		kahou.GetComponent<Image> ().color = normalTabColor;
 		syogu.GetComponent<Image> ().color = normalTabColor;
 
-		ronkou.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
-		senpou.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
-		kahou.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
-		syogu.transform.FindChild ("Text").GetComponent<Text> ().color = normalTextColor;
+		ronkou.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
+		senpou.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
+		kahou.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
+		syogu.transform.Find ("Text").GetComponent<Text> ().color = normalTextColor;
 
 
 		//Change selected Tab Color
 		if(buttonName == "Ronkou"){
 			ronkou.GetComponent<Image> ().color = pushedTabColor;
-			ronkou.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			ronkou.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}else if(buttonName == "Senpou"){
 			senpou.GetComponent<Image> ().color = pushedTabColor;
-			senpou.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			senpou.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}else if(buttonName == "Kahou"){
 			kahou.GetComponent<Image> ().color = pushedTabColor;
-			kahou.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			kahou.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}else if(buttonName == "Syogu"){
 			syogu.GetComponent<Image> ().color = pushedTabColor;
-			syogu.transform.FindChild ("Text").GetComponent<Text> ().color = pushedTextColor;
+			syogu.transform.Find ("Text").GetComponent<Text> ().color = pushedTextColor;
 		}
 	}
 
