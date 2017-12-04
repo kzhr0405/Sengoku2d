@@ -65,7 +65,7 @@ public class Timer : MonoBehaviour {
         if (Application.loadedLevelName != "tutorialKassen") {
             playerEngunList = PlayerPrefs.GetString("playerEngunList");
         }else {
-            playerEngunList = "1-158-50-20-10:1-141-50-20-10:1-52-50-20-10";
+            playerEngunList = "1-158-70-20-20:1-141-70-20-20:1-52-70-20-20";
         }
 
 		if (playerEngunList == null || playerEngunList == "") {

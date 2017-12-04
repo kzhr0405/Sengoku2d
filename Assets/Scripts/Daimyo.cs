@@ -20,8 +20,7 @@ public class Daimyo : MonoBehaviour {
             }else {
                 busyoId = daimyoMst.param[daimyoId - 1].busyoId;
             }
-            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-            Debug.Log(senarioId + "," + daimyoId + "," + busyoId);
+            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();            
             daimyoName = BusyoInfoGet.getName(busyoId, langId);
 
         }
@@ -47,12 +46,15 @@ public class Daimyo : MonoBehaviour {
 		return senryoku;
 	}
 
-	public bool daimyoBusyoCheck(int busyoId){
+	public bool daimyoBusyoCheck(int busyoId) {
 		bool daimyoFlg = false;
 
 		for(int i=0; i<daimyoMst.param.Count; i++){
 			int tempBusyoId = daimyoMst.param[i].busyoId;
-			if(busyoId == tempBusyoId){
+            int tempBusyoId1 = daimyoMst.param[i].busyoId1;
+            int tempBusyoId2 = daimyoMst.param[i].busyoId2;
+            int tempBusyoId3 = daimyoMst.param[i].busyoId3;            
+            if (busyoId == tempBusyoId || busyoId == tempBusyoId1 || busyoId == tempBusyoId2 || busyoId == tempBusyoId3) {
 				daimyoFlg = true;
 			}
 		}

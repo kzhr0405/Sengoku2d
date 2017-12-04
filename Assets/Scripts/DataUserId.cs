@@ -8,6 +8,8 @@ public class DataUserId : MonoBehaviour {
 
     public bool RegisteredFlg = false;
 
+    int langId = 0;
+    int senarioId = 0;
     int kuniLv = 0;
     int kuniExp = 0;
     int myDaimyo = 0;
@@ -97,6 +99,8 @@ public class DataUserId : MonoBehaviour {
         System.DateTime now = System.DateTime.Now;
 
         userIdClass["userId"] = userId;
+        userIdClass["langId"] = langId;
+        userIdClass["senarioId"] = senarioId;
         userIdClass["loginDate"] = now.ToString();
         userIdClass["platform"] = SystemInfo.operatingSystem;
         userIdClass["appVer"] = Application.version;
@@ -209,6 +213,8 @@ public class DataUserId : MonoBehaviour {
                     string loginDate = System.Convert.ToString(objList[0]["loginDate"]);
                     System.DateTime now = System.DateTime.Now;
                     if (now.ToString() != loginDate) {
+                        objList[0]["langId"] = langId;
+                        objList[0]["senarioId"] = senarioId;
                         objList[0]["loginDate"] = now.ToString();
                         objList[0]["platform"] = SystemInfo.operatingSystem;
                         objList[0]["appVer"] = Application.version;
@@ -311,7 +317,8 @@ public class DataUserId : MonoBehaviour {
     }
 
     void getAllData() {
-
+        langId = PlayerPrefs.GetInt("langId");
+        senarioId = PlayerPrefs.GetInt("senarioId");
         kuniLv = PlayerPrefs.GetInt("kuniLv");
         if (kuniLv <= 0) {
             kuniLv = 1;

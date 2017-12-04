@@ -298,4 +298,44 @@ public class KuniInfo : MonoBehaviour {
         return daimyoId;
     }
 
+
+    public string getDefaultSeiryoku(int senarioId) {
+        string seiryoku = "";
+
+        if(senarioId==0) {
+            for(int i=0; i< kuniMst.param.Count; i ++) {
+                if(seiryoku=="") {
+                    seiryoku = kuniMst.param[i].daimyoId.ToString();
+                }else {
+                    seiryoku = seiryoku + "," + kuniMst.param[i].daimyoId.ToString();
+                }
+            }
+        }else if(senarioId==1) {
+            for (int i = 0; i < kuniMst.param.Count; i++) {
+                if (seiryoku == "") {
+                    seiryoku = kuniMst.param[i].daimyoId1.ToString();
+                }else {
+                    seiryoku = seiryoku + "," + kuniMst.param[i].daimyoId1.ToString();
+                }
+            }
+        }else if (senarioId == 2) {
+            for (int i = 0; i < kuniMst.param.Count; i++) {
+                if (seiryoku == "") {
+                    seiryoku = kuniMst.param[i].daimyoId2.ToString();
+                }else {
+                    seiryoku = seiryoku + "," + kuniMst.param[i].daimyoId2.ToString();
+                }
+            }
+        }else if (senarioId == 3) {
+            for (int i = 0; i < kuniMst.param.Count; i++) {
+                if (seiryoku == "") {
+                    seiryoku = kuniMst.param[i].daimyoId3.ToString();
+                }else {
+                    seiryoku = seiryoku + "," + kuniMst.param[i].daimyoId3.ToString();
+                }
+            }
+        }
+
+        return seiryoku;
+    }
 }

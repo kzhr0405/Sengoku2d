@@ -264,15 +264,15 @@ public class preKaisen : MonoBehaviour {
 
     //PowerType1
     //Busyo + Mob
-    public int powerType1(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId) {
+    public int powerType1(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId, int senarioId) {
         int totalHei = 0;
         int langId = PlayerPrefs.GetInt("langId");
         int activeBusyoQty = PlayerPrefs.GetInt("activeBusyoQty");
         int activeBusyoLv = PlayerPrefs.GetInt("activeBusyoLv");
         int activeButaiQty = PlayerPrefs.GetInt("activeButaiQty");
         int activeButaiLv = PlayerPrefs.GetInt("activeButaiLv");
-        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
-        int daimyoBusyoId = daimyoMst.param[activeDaimyoId - 1].busyoId;
+        Daimyo Daimyo = new Daimyo();
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(activeDaimyoId, senarioId);
 
         /*Busyo Master Setting Start*/
         //Active Busyo List
@@ -289,22 +289,9 @@ public class preKaisen : MonoBehaviour {
             }
         }
         metsubouDaimyoList.Add(activeDaimyoId.ToString());
-
-
-        Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
-        List<int> busyoList = new List<int>();
-
-        for (int i = 0; i < busyoMst.param.Count; i++) {
-            int busyoId = busyoMst.param[i].id;
-            int daimyoId = busyoMst.param[i].daimyoId;
-
-            if (metsubouDaimyoList.Contains(daimyoId.ToString())) {
-                if (busyoId != daimyoBusyoId) {
-
-                    busyoList.Add(busyoId);
-                }
-            }
-        }
+        
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        List<int> busyoList = BusyoInfoGet.getDaimyoBusyoList(senarioId, metsubouDaimyoList, daimyoBusyoId);
         /*Busyo Master Setting End*/
 
         /*Random Shuffle*/
@@ -496,15 +483,15 @@ public class preKaisen : MonoBehaviour {
 
     //PowerType2
     //Busyo + Busyo
-    public int powerType2(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId) {
+    public int powerType2(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId, int senarioId) {
         int totalHei = 0;
         int langId = PlayerPrefs.GetInt("langId");
         int activeBusyoQty = PlayerPrefs.GetInt("activeBusyoQty");
         int activeBusyoLv = PlayerPrefs.GetInt("activeBusyoLv");
         int activeButaiQty = PlayerPrefs.GetInt("activeButaiQty");
         int activeButaiLv = PlayerPrefs.GetInt("activeButaiLv");
-        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
-        int daimyoBusyoId = daimyoMst.param[activeDaimyoId - 1].busyoId;
+        Daimyo Daimyo = new Daimyo();
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(activeDaimyoId, senarioId);
 
 
         /*Busyo Master Setting Start*/
@@ -523,20 +510,8 @@ public class preKaisen : MonoBehaviour {
         }
         metsubouDaimyoList.Add(activeDaimyoId.ToString());
 
-        Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
-        List<int> busyoList = new List<int>();
-
-        for (int i = 0; i < busyoMst.param.Count; i++) {
-            int busyoId = busyoMst.param[i].id;
-            int daimyoId = busyoMst.param[i].daimyoId;
-
-            if (metsubouDaimyoList.Contains(daimyoId.ToString())) {
-                if (busyoId != daimyoBusyoId) {
-
-                    busyoList.Add(busyoId);
-                }
-            }
-        }
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        List<int> busyoList = BusyoInfoGet.getDaimyoBusyoList(senarioId, metsubouDaimyoList, daimyoBusyoId);
         /*Busyo Master Setting End*/
 
         /*Random Shuffle*/
@@ -786,7 +761,7 @@ public class preKaisen : MonoBehaviour {
 
     //PowerType3
     //Daimyo + Busyo
-    public int powerType3(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId) {
+    public int powerType3(List<int> mapList, int taisyoMapId, int linkNo, int activeDaimyoId, int senarioId) {
         int totalHei = 0;
         int langId = PlayerPrefs.GetInt("langId");
         int activeBusyoQty = PlayerPrefs.GetInt("activeBusyoQty");
@@ -794,8 +769,8 @@ public class preKaisen : MonoBehaviour {
         int activeButaiQty = PlayerPrefs.GetInt("activeButaiQty");
         int activeButaiLv = PlayerPrefs.GetInt("activeButaiLv");
 
-        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
-        int daimyoBusyoId = daimyoMst.param[activeDaimyoId - 1].busyoId;
+        Daimyo Daimyo = new Daimyo();
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(activeDaimyoId, senarioId);
 
         /*Taisyo Setting Start*/
         GameObject EnemyJinkeiView = GameObject.Find("EnemyJinkeiView").gameObject;
@@ -897,19 +872,8 @@ public class preKaisen : MonoBehaviour {
             }
             metsubouDaimyoList.Add(activeDaimyoId.ToString());
 
-            Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
-            List<int> busyoList = new List<int>();
-
-            for (int i = 0; i < busyoMst.param.Count; i++) {
-                int busyoId = busyoMst.param[i].id;
-                int daimyoId = busyoMst.param[i].daimyoId;
-
-                if (metsubouDaimyoList.Contains(daimyoId.ToString())) {
-                    if (busyoId != daimyoBusyoId) {
-                        busyoList.Add(busyoId);
-                    }
-                }
-            }
+            BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+            List<int> busyoList = BusyoInfoGet.getDaimyoBusyoList(senarioId, metsubouDaimyoList, daimyoBusyoId);
 
             //Random Shuffle
             for (int i = 0; i < busyoList.Count; i++) {
@@ -1256,10 +1220,10 @@ public class preKaisen : MonoBehaviour {
                         kamon.transform.SetParent(chldBusyo.transform);
                         kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                         kamon.transform.localPosition = new Vector2(-15, -12);
-                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name),senarioId);
                         if (daimyoId == 0)
                         {
-                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name),senarioId);
                         }
                         string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                         kamon.GetComponent<Image>().sprite =
@@ -1328,10 +1292,10 @@ public class preKaisen : MonoBehaviour {
                         kamon.transform.SetParent(chldBusyo.transform);
                         kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                         kamon.transform.localPosition = new Vector2(-15, -12);
-                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name),senarioId);
                         if (daimyoId == 0)
                         {
-                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name),senarioId);
                         }
                         string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                         kamon.GetComponent<Image>().sprite =
@@ -1396,10 +1360,10 @@ public class preKaisen : MonoBehaviour {
                         kamon.transform.SetParent(chldBusyo.transform);
                         kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                         kamon.transform.localPosition = new Vector2(-15, -12);
-                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name),senarioId);
                         if (daimyoId == 0)
                         {
-                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name),senarioId);
                         }
                         string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                         kamon.GetComponent<Image>().sprite =
@@ -1463,10 +1427,10 @@ public class preKaisen : MonoBehaviour {
                         kamon.transform.SetParent(chldBusyo.transform);
                         kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                         kamon.transform.localPosition = new Vector2(-15, -12);
-                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name),senarioId);
                         if (daimyoId == 0)
                         {
-                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name),senarioId);
                         }
                         string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                         kamon.GetComponent<Image>().sprite =
@@ -1558,17 +1522,17 @@ public class preKaisen : MonoBehaviour {
             if (powerType == 1) {
                 //busyo + mob
                 mapList = enemyJinkeiMaker(enemyJinkei);
-                enemyHei = powerType1(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
+                enemyHei = powerType1(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, senarioId);
             }
             else if (powerType == 2) {
                 //busyo only
                 mapList = enemyJinkeiMaker(enemyJinkei);
-                enemyHei = powerType2(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
+                enemyHei = powerType2(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, senarioId);
             }
             else if (powerType == 3 || powerType == 0) {
                 //daimyo + busyo
                 mapList = enemyJinkeiMaker(enemyJinkei);
-                enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId);
+                enemyHei = powerType3(mapList, getTaisyoMapId(enemyJinkei), linkNo, activeDaimyoId, senarioId);
             }
             JinkeiPowerEffection JinkeiPowerEffection = new JinkeiPowerEffection();
             JinkeiPowerEffection.EnemySameDaimyoNum(activeDaimyoId,senarioId);

@@ -454,9 +454,10 @@ public class CyouhouSelect : MonoBehaviour {
 							gaikouValue = PlayerPrefs.GetInt (gaikouTemp);
 
 						} else {
-							//non exist
-							//gaikou check
-							gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+                            //non exist
+                            //gaikou check
+                            int senarioId = PlayerPrefs.GetInt("senarioId");
+							gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId,senarioId);
 
 						}
 					}
@@ -501,8 +502,9 @@ public class CyouhouSelect : MonoBehaviour {
 								//exsit
 								gaikouValue = PlayerPrefs.GetInt (gaikouTemp);
 							} else {
-								//non exist
-								gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+                                //non exist
+                                int senarioId = PlayerPrefs.GetInt("senarioId");
+                                gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId,senarioId);
 							}
 						}
 						worstGaikouValue = gaikouValue;
@@ -561,9 +563,10 @@ public class CyouhouSelect : MonoBehaviour {
 							gaikouValue = PlayerPrefs.GetInt (gaikouTemp);
 
 						} else {
-							//non exist
-							//gaikou check
-							gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+                            //non exist
+                            //gaikou check
+                            int senarioId = PlayerPrefs.GetInt("senarioId");
+                            gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId,senarioId);
 
 						}
 					}
@@ -609,8 +612,9 @@ public class CyouhouSelect : MonoBehaviour {
 								//exsit
 								gaikouValue = PlayerPrefs.GetInt (gaikouTemp);
 							} else {
-								//non exist
-								gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+                                //non exist
+                                int senarioId = PlayerPrefs.GetInt("senarioId");
+                                gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId,senarioId);
 							}
 						}
 						bestGaikouValue = gaikouValue;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class SimpleHP : MonoBehaviour {
 
@@ -17,9 +18,10 @@ public class SimpleHP : MonoBehaviour {
 
         if(name != "shiro") {
             BusyoInfoGet busyo = new BusyoInfoGet();
-            belongDaimyoId = busyo.getDaimyoId(int.Parse(name));
+            int senarioId = PlayerPrefs.GetInt("senarioId");
+            belongDaimyoId = busyo.getDaimyoId(int.Parse(name),senarioId);
             if (belongDaimyoId == 0) {
-                belongDaimyoId = busyo.getDaimyoHst(int.Parse(name));
+                belongDaimyoId = busyo.getDaimyoHst(int.Parse(name),senarioId);
             }
         }
 

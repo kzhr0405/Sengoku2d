@@ -20,8 +20,10 @@ public class KassenEvent : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         List<string> kassenWinLoseFleeList = new List<string> ();
 		kassenWinLoseFleeList = new List<string> (kassenWinLoseFlee.Split (delimiterChars));
-		int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
-		string myDiamyoName = busyo.getName (myDaimyoBusyo, langId);
+        Daimyo Daimyo = new Daimyo();
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+        string myDiamyoName = busyo.getName (myDaimyoBusyo, langId);
 
         //Comment Select
         string finalComment = "";        

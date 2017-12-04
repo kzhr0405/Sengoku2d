@@ -77,9 +77,10 @@ public class BusyoSort : MonoBehaviour {
                 kamon.transform.SetParent(busyo.transform);
                 kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                 kamon.transform.localPosition = new Vector2(-15, -12);
-                int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name));
+                int senarioId = PlayerPrefs.GetInt("senarioId");
+                int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name), senarioId);
                 if (daimyoId == 0) {
-                    daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name));
+                    daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name), senarioId);
                 }
                 string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                 kamon.GetComponent<Image>().sprite =

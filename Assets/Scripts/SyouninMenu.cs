@@ -305,9 +305,11 @@ public class SyouninMenu : MonoBehaviour {
 				
 				//check cyadougu
 				List<string> kahouList = new List<string>();
-				int daimyoBusyoId = PlayerPrefs.GetInt("myDaimyoBusyo");
 				int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
-				BusyoInfoGet busyoInfo = new BusyoInfoGet ();
+                int senarioId = PlayerPrefs.GetInt("senarioId");
+                Daimyo Daimyo = new Daimyo();
+                int daimyoBusyoId = Daimyo.getDaimyoBusyoId(myDaimyoId, senarioId);
+                BusyoInfoGet busyoInfo = new BusyoInfoGet ();
 				string daimyoBusyoName = busyoInfo.getName (daimyoBusyoId,langId);
 
 				string tmp = "kahou" + daimyoBusyoId;

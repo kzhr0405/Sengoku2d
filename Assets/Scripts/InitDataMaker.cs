@@ -110,7 +110,7 @@ public class InitDataMaker : MonoBehaviour {
 		        /*******************************/
 		        Gaikou gaikou = new Gaikou ();
 		        for(int l=2; l<47; l++){
-			        int value = gaikou.getGaikouValue(myDaimyo,l);
+			        int value = gaikou.getGaikouValue(myDaimyo,l,0);
 			        string temp = "gaikou" + l.ToString();
 			        PlayerPrefs.SetInt (temp, value);
 		        }

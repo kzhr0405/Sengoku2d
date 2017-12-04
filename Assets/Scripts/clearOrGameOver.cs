@@ -299,7 +299,6 @@ public class clearOrGameOver : MonoBehaviour {
 			//Seiryoku Handling
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);			
 			string daimyoName = Daimyo.getName(daimyoId, langId, senarioId);
-			int daimyoBusyoIdTemp = daimyoMst.param [daimyoId - 1].busyoId;
 			
 			//Color Handling
 			float colorR = (float)daimyoMst.param [daimyoId - 1].colorR;

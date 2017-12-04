@@ -9,6 +9,7 @@ public class RecoveryDataStore : MonoBehaviour {
     public AudioSource[] audioSources;
     public string inputUserId;
     public int dataStore_userId = -1; //dataStore=0, userId=1
+    public int senarioId = -1;
 
     //user id
     public int userIdCount = -1;
@@ -163,6 +164,7 @@ public class RecoveryDataStore : MonoBehaviour {
                 userIdCount = objList.Count;
                 if (userIdCount != 0) {
                     foreach (NCMBObject obj in objList) {
+                        if (checkDataExist(obj, "senarioId")) senarioId = System.Convert.ToInt32(obj["senarioId"]);
                         kuniLv = System.Convert.ToInt32(obj["kuniLv"]);
                         kuniExp = System.Convert.ToInt32(obj["kuniExp"]);
                         myDaimyo = System.Convert.ToInt32(obj["myDaimyo"]);

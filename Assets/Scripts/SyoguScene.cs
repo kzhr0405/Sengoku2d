@@ -51,7 +51,10 @@ public class SyoguScene : MonoBehaviour {
 		GameObject kanjyo = GameObject.Find("kanjyo").gameObject;
 		GameObject tsuihou = GameObject.Find("tsuihou").gameObject;
 
-		int daimyoBusyoId = PlayerPrefs.GetInt ("myDaimyoBusyo");
+        Daimyo Daimyo = new Daimyo();
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
         
 		if (busyoId == daimyoBusyoId.ToString ()) {
 			kanjyo.GetComponent<Image> ().color = ngImageColor; 

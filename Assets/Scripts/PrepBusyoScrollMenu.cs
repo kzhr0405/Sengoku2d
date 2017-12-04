@@ -10,7 +10,7 @@ public class PrepBusyoScrollMenu : MonoBehaviour {
     public List<string> jinkeiBusyo_list;
 
     public void PrepareBusyoScrollMenu () {
-        
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         //Clear Previous Unit
         foreach (Transform chd in GameObject.Find("Content").transform) {
             //Delete
@@ -58,9 +58,9 @@ public class PrepBusyoScrollMenu : MonoBehaviour {
                 kamon.transform.SetParent(busyo.transform);
                 kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                 kamon.transform.localPosition = new Vector2(-15, -12);
-                int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name));
+                int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name),senarioId);
                 if (daimyoId == 0) {               
-                    daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name));
+                    daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name),senarioId);
                 }
                 string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                 kamon.GetComponent<Image>().sprite =
@@ -97,10 +97,10 @@ public class PrepBusyoScrollMenu : MonoBehaviour {
                 kamon.transform.SetParent(tsyBusyo.transform);
                 kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                 kamon.transform.localPosition = new Vector2(-15, -12);
-                int daimyoId = busyoScript.getDaimyoId(int.Parse(tsyBusyo.name));
+                int daimyoId = busyoScript.getDaimyoId(int.Parse(tsyBusyo.name),senarioId);
                 if (daimyoId == 0)
                 {
-                    daimyoId = busyoScript.getDaimyoHst(int.Parse(tsyBusyo.name));
+                    daimyoId = busyoScript.getDaimyoHst(int.Parse(tsyBusyo.name),senarioId);
                 }
                 string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                 kamon.GetComponent<Image>().sprite =

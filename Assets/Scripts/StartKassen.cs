@@ -28,6 +28,7 @@ public class StartKassen : MonoBehaviour {
     public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (!checkJinkeiAvailable()) {
             audioSources[4].Play();
@@ -133,11 +134,11 @@ public class StartKassen : MonoBehaviour {
                                 dstEngunFlg = true;
 						        if(dstEngunDaimyoId !=null && dstEngunDaimyoId !=""){
 							        dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-							        string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts,seiryokuList);
+							        string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts,seiryokuList,senarioId);
 							        dstEngunSts = dstEngunSts + ":" + engunDaimyo + "-" + tempEngunSts;
 						        }else{
 							        dstEngunDaimyoId = engunDaimyo;
-							        string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList);
+							        string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList,senarioId);
 							        dstEngunSts = engunDaimyo + "-" + tempEngunSts;
 							
 						        }

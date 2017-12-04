@@ -85,7 +85,7 @@ public class ShowDaimyoSelect : MonoBehaviour {
 
 			}else{
 				//Never Cleared >> Start From Oda Nobunaga
-				data.dataMake(true, 1, 19, "TP", true);
+				data.dataMake(true, 1, 19, "TP", true,0);
 
 			}
 		}

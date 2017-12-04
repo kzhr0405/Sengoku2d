@@ -129,7 +129,8 @@ public class MainStageController : MonoBehaviour {
 			/*Game Clear*/
 			/*--------------------*/
 			gameClearFlg = PlayerPrefs.GetBool ("gameClearFlg");
-			if (gameClearFlg) {
+            //gameClearFlg = true;//test
+            if (gameClearFlg) {
 				
 				audioSources [3].Play ();
 				SceneManager.LoadScene ("clearOrGameOver");

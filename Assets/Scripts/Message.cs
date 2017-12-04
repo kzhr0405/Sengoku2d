@@ -101,7 +101,7 @@ public class Message : MonoBehaviour {
 		GameObject messageBoardBase = Instantiate (Resources.Load (Path)) as GameObject;
 		messageBoardBase.transform.SetParent(GameObject.Find ("Map").transform);
 		messageBoardBase.name = "SlotMessageBoard";
-		messageBoardBase.transform.localScale = new Vector2 (1, 1);
+		messageBoardBase.transform.localScale = new Vector2 (1.2f, 1.2f);
 		messageBoardBase.transform.localPosition = new Vector3(0, 0, 0);
 
 		GameObject content = messageBoardBase.transform.Find ("ScrollView").transform.Find ("Content").gameObject;
@@ -111,7 +111,7 @@ public class Message : MonoBehaviour {
 			GameObject slotMessage = Instantiate (Resources.Load (unitPath)) as GameObject;
 			messageBoardBase.GetComponent<FadeOutSlotMessage> ().contentList.Add (slotMessage);
 			slotMessage.transform.SetParent (content.transform);
-			slotMessage.transform.localScale = new Vector2 (1, 0.8f);
+			slotMessage.transform.localScale = new Vector2 (1, 1);
 			slotMessage.transform.Find ("Text").GetComponent<Text> ().text = message;
 		}
 	

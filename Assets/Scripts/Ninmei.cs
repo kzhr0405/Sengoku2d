@@ -163,7 +163,11 @@ public class Ninmei : MonoBehaviour {
 
 			//Message Text Mod
 			GameObject msgObj = msg.transform.Find ("KaininText").gameObject;
-			int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
+            Daimyo Daimyo = new Daimyo();
+            int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+            int senarioId = PlayerPrefs.GetInt("senarioId");
+            int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+
             string msgText = "";
 			if (myDaimyoBusyo == jyosyuId) {
                 if (langId == 2) {

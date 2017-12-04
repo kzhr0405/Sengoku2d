@@ -13,14 +13,14 @@ public class DoSelectDaimyo : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (name == "YesButton" || name == "YesButtonHard") {
-            int senarioId = GameObject.Find("GameController").GetComponent<clearOrGameOver>().senarioId;
-            PlayerPrefs.SetInt("senarioId", senarioId);
+            int senarioId = GameObject.Find("GameController").GetComponent<clearOrGameOver>().senarioId;            
 
             if (name == "YesButtonHard") {
                 PlayerPrefs.SetBool("hardFlg",true);                
             }else {
                 PlayerPrefs.SetBool("hardFlg", false);
             }
+
             PlayerPrefs.Flush();
             audioSources [5].Play ();
 
@@ -35,9 +35,9 @@ public class DoSelectDaimyo : MonoBehaviour {
 
 			int preMyDaimyo = PlayerPrefs.GetInt("myDaimyo");
             if (preMyDaimyo == daimyoId) {
-				data.dataMake(busyoHaveFlg, daimyoId, daimyoBusyoId, heisyu, true);
+				data.dataMake(busyoHaveFlg, daimyoId, daimyoBusyoId, heisyu, true, senarioId);
 			} else {
-				data.dataMake(busyoHaveFlg, daimyoId, daimyoBusyoId, heisyu, false);
+				data.dataMake(busyoHaveFlg, daimyoId, daimyoBusyoId, heisyu, false, senarioId);
 			}
 
 

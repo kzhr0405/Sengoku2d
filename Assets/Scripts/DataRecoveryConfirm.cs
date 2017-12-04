@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using UnityEngine.UI;
+using System.Linq;
 
 public class DataRecoveryConfirm : MonoBehaviour {
 
@@ -22,8 +23,7 @@ public class DataRecoveryConfirm : MonoBehaviour {
 
     public void OnClick() {
 
-        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-        int senarioId = PlayerPrefs.GetInt("senarioId");
+        AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();        
 
         if (name == "YesButton") {
             audioSources[0].Play();
@@ -34,6 +34,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
             if (RecoveryDataStore.kuniLv > 100) RecoveryDataStore.kuniLv = 100;
             if (RecoveryDataStore.kuniLv < 1) RecoveryDataStore.kuniLv = 1;
             PlayerPrefs.SetInt("kuniLv", RecoveryDataStore.kuniLv);
+            PlayerPrefs.SetInt("senarioId", RecoveryDataStore.senarioId);
+            int senarioId = RecoveryDataStore.senarioId;
             Exp expScript = new Exp();
             int jinkeiLimit = expScript.getJinkeiLimit(RecoveryDataStore.kuniLv);
             int stockLimit = expScript.getStockLimit(RecoveryDataStore.kuniLv);
@@ -71,7 +73,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetInt("space", RecoveryDataStore.space);
                 if(RecoveryDataStore.pvpHeiryoku !=0 ) PlayerPrefs.SetInt("pvpHeiryoku", RecoveryDataStore.pvpHeiryoku);
                 string seiryoku = RecoveryDataStore.seiryoku;
-                if (seiryoku == "") seiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
+                KuniInfo KuniInfo = new KuniInfo();
+                if (seiryoku == "") seiryoku = KuniInfo.getDefaultSeiryoku(RecoveryDataStore.senarioId);
                 PlayerPrefs.SetString("seiryoku", seiryoku);
                 KuniInfo kuniScript = new KuniInfo();
                 kuniScript.updateOpenKuni(RecoveryDataStore.myDaimyo, seiryoku);
@@ -280,9 +283,15 @@ public class DataRecoveryConfirm : MonoBehaviour {
 
                 //Gaikou
                 Gaikou gaikou = new Gaikou();
-                for (int l = 2; l < 47; l++) {
-                    int value = gaikou.getGaikouValue(RecoveryDataStore.myDaimyo, l);
-                    string temp = "gaikou" + l.ToString();
+                char[] delimiterChars = { ',' };
+                List<string>seiryokuList = new List<string>(seiryoku.Split(delimiterChars));
+                List<string> daimyoList = new List<string>(seiryokuList);
+                daimyoList.Distinct();
+                for (int l = 0; l < daimyoList.Count; l++) {
+                    int daimyo = int.Parse(daimyoList[l]);
+                    int value = gaikou.getGaikouValue(RecoveryDataStore.myDaimyo, daimyo, senarioId);
+                    Debug.Log(value + "=" + RecoveryDataStore.myDaimyo + "," + daimyo +","+  senarioId);
+                    string temp = "gaikou" + daimyo.ToString();
                     PlayerPrefs.SetInt(temp, value);
                 }
 

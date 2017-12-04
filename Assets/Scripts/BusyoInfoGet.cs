@@ -8,8 +8,7 @@ public class BusyoInfoGet : MonoBehaviour {
 	Entity_busyo_mst busyoMst  = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
 
 	public string getName(int busyoId, int langId) {
-        string name = "";
-        
+        string name = "";        
         if (langId == 2) {
             name = busyoMst.param[busyoId - 1].nameEng;
         } else if(langId==3) {
@@ -106,14 +105,33 @@ public class BusyoInfoGet : MonoBehaviour {
 		return qtyAndHeisyu;
 	}
 
-	public int getDaimyoId(int busyoId){
-		int daimyoId = busyoMst.param[busyoId - 1].daimyoId;
-		return daimyoId;
+	public int getDaimyoId(int busyoId, int senarioId) {
+
+        int daimyoId = 0;
+        if (senarioId == 1) {
+            daimyoId = busyoMst.param[busyoId - 1].daimyoId1;
+        }else if (senarioId == 2) {
+            daimyoId = busyoMst.param[busyoId - 1].daimyoId2;
+        }else if (senarioId == 3) {
+            daimyoId = busyoMst.param[busyoId - 1].daimyoId3;
+        }else {
+            daimyoId = busyoMst.param[busyoId - 1].daimyoId;
+        }        
+        return daimyoId;
 	}
 
-	public int getDaimyoHst(int busyoId){
-		int daimyoHst = busyoMst.param[busyoId - 1].daimyoHst;
-		return daimyoHst;
+	public int getDaimyoHst(int busyoId, int senarioId){
+        int daimyoHst = 0;
+        if (senarioId == 1) {
+            daimyoHst = busyoMst.param[busyoId - 1].daimyoHst1;
+        }else if (senarioId == 2) {
+            daimyoHst = busyoMst.param[busyoId - 1].daimyoHst2;
+        }else if (senarioId == 3) {
+            daimyoHst = busyoMst.param[busyoId - 1].daimyoHst3;
+        }else {
+            daimyoHst = busyoMst.param[busyoId - 1].daimyoHst;
+        }        
+        return daimyoHst;
 	}
 
     public int getShipId(int busyoId) {
@@ -146,6 +164,87 @@ public class BusyoInfoGet : MonoBehaviour {
         return busyoId;
     }
 
+    public List<int> getDaimyoBusyoList(int senarioId, List<string>daimyoList, int daimyoBusyoId) {
+        List<int> busyoList = new List<int>();
+        for(int i=0; i<busyoMst.param.Count; i++) {
+            if(senarioId==1) {
+                int daimyoIdtmp = busyoMst.param[i].daimyoId1;
+                if(daimyoIdtmp != 0) {
+                    if(daimyoList.Contains(daimyoIdtmp.ToString())) {
+                        int busyoId = busyoMst.param[i].id;
+                        if (daimyoBusyoId!= busyoId) busyoList.Add(busyoId);
+                    }
+                }
+            }else if (senarioId == 2) {
+                int daimyoIdtmp = busyoMst.param[i].daimyoId2;
+                if (daimyoIdtmp != 0) {
+                    if (daimyoList.Contains(daimyoIdtmp.ToString())) {
+                        int busyoId = busyoMst.param[i].id;
+                        if (daimyoBusyoId != busyoId) busyoList.Add(busyoId);
+                    }
+                }
+            }else if (senarioId == 3) {
+                int daimyoIdtmp = busyoMst.param[i].daimyoId3;
+                if (daimyoIdtmp != 0) {
+                    if (daimyoList.Contains(daimyoIdtmp.ToString())) {
+                        int busyoId = busyoMst.param[i].id;
+                        if (daimyoBusyoId != busyoId) busyoList.Add(busyoId);
+                    }
+                }
+            }else {
+                int daimyoIdtmp = busyoMst.param[i].daimyoId;
+                if (daimyoIdtmp != 0) {
+                    if (daimyoList.Contains(daimyoIdtmp.ToString())) {
+                        int busyoId = busyoMst.param[i].id;
+                        if (daimyoBusyoId != busyoId) busyoList.Add(busyoId);
+                    }
+                }
+            }
+        }
+        
+        return busyoList;
+    }
 
+    public int getRandomBusyo(int activeDaimyoId, int daimyoBusyoId, int senarioId) {
+
+        /*Busyo Master Setting Start*/
+        //Active Busyo List
+        List<string> metsubouDaimyoList = new List<string>();
+        string metsubouTemp = "metsubou" + activeDaimyoId;
+        string metsubouDaimyoString = PlayerPrefs.GetString(metsubouTemp);
+        char[] delimiterChars2 = { ',' };
+        if (metsubouDaimyoString != null && metsubouDaimyoString != "") {
+            if (metsubouDaimyoString.Contains(",")) {
+                metsubouDaimyoList = new List<string>(metsubouDaimyoString.Split(delimiterChars2));
+            }else {
+                metsubouDaimyoList = new List<string>(metsubouDaimyoString.Split(delimiterChars2));
+            }
+        }
+        metsubouDaimyoList.Add(activeDaimyoId.ToString());
+
+        List<int> busyoList = getDaimyoBusyoList(senarioId, metsubouDaimyoList, daimyoBusyoId);
+        /*Busyo Master Setting End*/
+
+        /*Random Shuffle*/
+        for (int i = 0; i < busyoList.Count; i++) {
+            int temp = busyoList[i];
+            int randomIndex = UnityEngine.Random.Range(0, busyoList.Count);
+            busyoList[i] = busyoList[randomIndex];
+            busyoList[randomIndex] = temp;
+        }
+
+
+        int returnValue = 0;
+        if (busyoList.Count == 0) {
+            returnValue = 35;
+        }
+        else {
+            returnValue = busyoList[0];
+        }
+
+
+        return returnValue;
+
+    }
 
 }

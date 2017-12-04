@@ -8,17 +8,58 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 public class Gaikou : MonoBehaviour {
 
 	Entity_gaikou_mst gaikouMst  = Resources.Load ("Data/gaikou_mst") as Entity_gaikou_mst;
+    Entity_gaikou1_mst gaikou1Mst = Resources.Load("Data/gaikou1_mst") as Entity_gaikou1_mst;
+    Entity_gaikou2_mst gaikou2Mst = Resources.Load("Data/gaikou2_mst") as Entity_gaikou2_mst;
+    Entity_gaikou3_mst gaikou3Mst = Resources.Load("Data/gaikou3_mst") as Entity_gaikou3_mst;
 
-	public int getGaikouValue (int srcDaimyo, int dstDaimyo) {
-		int yuukouValue = 0;
-		int startline = srcDaimyo - 1;
-		object stslst = gaikouMst.param[startline];
-		Type t = stslst.GetType();
-		String param = "daimyo" + dstDaimyo;
-		FieldInfo f = t.GetField(param);
-		yuukouValue = (int)f.GetValue(stslst);
-
-		return yuukouValue;
+    public int getGaikouValue (int srcDaimyo, int dstDaimyo, int senarioId) {
+		int yuukouValue = 0;        
+        if(senarioId==1) {
+            for (int i = 0; i < gaikou1Mst.param.Count; i++) {
+                int tmpDaimyoId = gaikou1Mst.param[i].daimyoId;
+                if (tmpDaimyoId == srcDaimyo) {
+                    object stslst = gaikou1Mst.param[i];
+                    Type t = stslst.GetType();
+                    String param = "daimyo" + dstDaimyo;
+                    FieldInfo f = t.GetField(param);
+                    yuukouValue = (int)f.GetValue(stslst);
+                }
+            }
+        }else if (senarioId == 2) {
+            for (int i = 0; i < gaikou2Mst.param.Count; i++) {
+                int tmpDaimyoId = gaikou2Mst.param[i].daimyoId;
+                if (tmpDaimyoId == srcDaimyo) {
+                    object stslst = gaikou2Mst.param[i];
+                    Type t = stslst.GetType();
+                    String param = "daimyo" + dstDaimyo;
+                    FieldInfo f = t.GetField(param);
+                    yuukouValue = (int)f.GetValue(stslst);
+                }
+            }
+        }else if (senarioId == 3) {
+            for (int i = 0; i < gaikou3Mst.param.Count; i++) {
+                int tmpDaimyoId = gaikou3Mst.param[i].daimyoId;
+                if (tmpDaimyoId == srcDaimyo) {
+                    object stslst = gaikou3Mst.param[i];
+                    Type t = stslst.GetType();
+                    String param = "daimyo" + dstDaimyo;
+                    FieldInfo f = t.GetField(param);
+                    yuukouValue = (int)f.GetValue(stslst);
+                }
+            }
+        }else { 
+            for (int i = 0; i < gaikouMst.param.Count; i++) {
+                int tmpDaimyoId = gaikouMst.param[i].daimyoId;
+                if (tmpDaimyoId == srcDaimyo) {
+                    object stslst = gaikouMst.param[i];
+                    Type t = stslst.GetType();
+                    String param = "daimyo" + dstDaimyo;
+                    FieldInfo f = t.GetField(param);
+                    yuukouValue = (int)f.GetValue(stslst);
+                }
+            }
+        }
+            return yuukouValue;
 	}
 
 	public void downGaikouByAttack(int srcDaimyo, int dstDaimyo){
@@ -92,6 +133,7 @@ public class Gaikou : MonoBehaviour {
 		}else{
 			//Enemy - Enemy Battle
 			string tempGaikou = "";
+            int senarioId = PlayerPrefs.GetInt("senarioId");
 			if(srcDaimyo < dstDaimyo){
 				tempGaikou = srcDaimyo.ToString() + "gaikou" + dstDaimyo.ToString();
 			}else{
@@ -100,7 +142,7 @@ public class Gaikou : MonoBehaviour {
 			if(PlayerPrefs.HasKey(tempGaikou)){
 				yukoudo = PlayerPrefs.GetInt (tempGaikou);
 			}else{
-				yukoudo = getGaikouValue(srcDaimyo,dstDaimyo);
+				yukoudo = getGaikouValue(srcDaimyo,dstDaimyo, senarioId);
 			}
 		}
 		
@@ -146,7 +188,8 @@ public class Gaikou : MonoBehaviour {
 
 		//Enemy - Enemy Battle
 		string tempGaikou = "";
-		if(srcDaimyo < dstDaimyo){
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        if (srcDaimyo < dstDaimyo){
 			tempGaikou = srcDaimyo.ToString() + "gaikou" + dstDaimyo.ToString();
 		}else{
 			tempGaikou = dstDaimyo.ToString() + "gaikou" + srcDaimyo.ToString();
@@ -154,7 +197,7 @@ public class Gaikou : MonoBehaviour {
 		if(PlayerPrefs.HasKey(tempGaikou)){
 			yukoudo = PlayerPrefs.GetInt (tempGaikou);
 		}else{
-			yukoudo = getGaikouValue(srcDaimyo,dstDaimyo);
+			yukoudo = getGaikouValue(srcDaimyo,dstDaimyo,senarioId);
 		}
 
 		return yukoudo;
@@ -166,7 +209,8 @@ public class Gaikou : MonoBehaviour {
 		//Get Current yukoudo
 		int nowYukoudo = 0;
 		string tempGaikou = "";
-		if(daimyoId1 < daimyoId2){
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        if (daimyoId1 < daimyoId2){
 			tempGaikou = daimyoId1.ToString() + "gaikou" + daimyoId2.ToString();
 		}else{
 			tempGaikou = daimyoId2.ToString() + "gaikou" + daimyoId1.ToString();
@@ -174,7 +218,7 @@ public class Gaikou : MonoBehaviour {
 		if(PlayerPrefs.HasKey(tempGaikou)){
 			nowYukoudo = PlayerPrefs.GetInt (tempGaikou);
 		}else{
-			nowYukoudo = getGaikouValue(daimyoId1,daimyoId2);
+			nowYukoudo = getGaikouValue(daimyoId1,daimyoId2,senarioId);
 		}
 
 		//Up yukoudo

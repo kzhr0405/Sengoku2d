@@ -44,7 +44,11 @@ public class MessageBusyo : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
 
         string serihu = "";
-		int myDaimyoBusyo = PlayerPrefs.GetInt ("myDaimyoBusyo");
+        Daimyo Daimyo = new Daimyo();
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+
 		if (myDaimyoBusyo == busyoId) {
 
             Entity_serihu_mst serihuMst = Resources.Load("Data/serihu_mst") as Entity_serihu_mst;

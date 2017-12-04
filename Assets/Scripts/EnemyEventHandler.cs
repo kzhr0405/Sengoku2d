@@ -11,7 +11,7 @@ public class EnemyEventHandler : MonoBehaviour {
     public void doEnemyEvent(GameObject kuniMap, GameObject closeObj, int kuniId, int daimyoId, int activeBusyoQty, int activeBusyoLv, int activeButaiQty, int activeButaiLv){
 
         List<string> clearedStageList = new List<string>();
-
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         string temp = "kuni" + kuniId.ToString();
         string clearedStageString = PlayerPrefs.GetString(temp);
         if (clearedStageString != null && clearedStageString != ""){
@@ -74,7 +74,7 @@ public class EnemyEventHandler : MonoBehaviour {
                             }
                         }
                         if(!fromDupFlg) {
-                            createAttack(kuniMap, kuniId,fromStageId, toStageId, daimyoId, activeBusyoQty, activeBusyoLv, activeButaiQty, activeButaiLv);
+                            createAttack(kuniMap, kuniId,fromStageId, toStageId, daimyoId, activeBusyoQty, activeBusyoLv, activeButaiQty, activeButaiLv, senarioId);
                         }
                     }
                 }
@@ -119,7 +119,7 @@ public class EnemyEventHandler : MonoBehaviour {
 
 
 
-    public void createAttack(GameObject kuniMap, int kuniId, int fromStageId, int toStageId, int daimyoId, int activeBusyoQty, int activeBusyoLv, int activeButaiQty, int activeButaiLv){
+    public void createAttack(GameObject kuniMap, int kuniId, int fromStageId, int toStageId, int daimyoId, int activeBusyoQty, int activeBusyoLv, int activeButaiQty, int activeButaiLv, int senarioId){
 
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         audioSources[7].Play();
@@ -129,7 +129,7 @@ public class EnemyEventHandler : MonoBehaviour {
         int powerType = kuniMap.transform.Find(stageName).GetComponent<ShowStageDtl>().powerType;
 
         //Choose Busyo
-        string busyoListString = getBusyoList(powerType, daimyoId, activeBusyoQty, activeBusyoLv, activeButaiQty, activeButaiLv);
+        string busyoListString = getBusyoList(powerType, daimyoId, activeBusyoQty, activeBusyoLv, activeButaiQty, activeButaiLv, senarioId);
         
         if(busyoListString!="") {
             createGunzei(busyoListString, kuniMap, kuniId, fromStageId, toStageId, daimyoId, activeBusyoLv,true);
@@ -315,12 +315,12 @@ public class EnemyEventHandler : MonoBehaviour {
 
 
 
-    public string getBusyoList(int powerType, int activeDaimyoId, int activeBusyoQty, int activeBusyoLv, int activeButaiQty, int activeButaiLv){
+    public string getBusyoList(int powerType, int activeDaimyoId, int activeBusyoQty, int activeBusyoLv, int activeButaiQty, int activeButaiLv, int senarioId){
         string returnString = ""; //busyoA-busyoB-busyoC...,totalhei
 
         int totalHei = 0;
-        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
-        int daimyoBusyoId = daimyoMst.param[activeDaimyoId - 1].busyoId;
+        Daimyo Daimyo = new Daimyo();
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(activeDaimyoId, senarioId);
 
         /*Busyo Master Setting Start*/
         //Active Busyo List
@@ -342,7 +342,16 @@ public class EnemyEventHandler : MonoBehaviour {
 
         for (int i = 0; i < busyoMst.param.Count; i++){
             int busyoId = busyoMst.param[i].id;
-            int daimyoId = busyoMst.param[i].daimyoId;
+            int daimyoId = 0;
+            if (senarioId == 1) {
+                daimyoId = busyoMst.param[i].daimyoId1;
+            }else if (senarioId == 2) {
+                daimyoId = busyoMst.param[i].daimyoId2;
+            }else if (senarioId == 3) {
+                daimyoId = busyoMst.param[i].daimyoId3;
+            }else {
+                daimyoId = busyoMst.param[i].daimyoId;
+            }
 
             if (metsubouDaimyoList.Contains(daimyoId.ToString())){
                 if (busyoId != daimyoBusyoId){
