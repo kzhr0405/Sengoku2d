@@ -381,6 +381,9 @@ public class Timer : MonoBehaviour {
 
 						            PlayerPrefs.Flush();
 					            }
+
+                                // 勝利したので10%の確率でレビュー誘導
+                                ReviewManager.Request10Parcent(transform.parent);
                             }else {
                                 busouKaijyo();
 
