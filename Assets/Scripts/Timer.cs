@@ -294,7 +294,7 @@ public class Timer : MonoBehaviour {
                                 if (langId == 2) {
                                     GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
                                 }else {
-                                    GameObject.Find("winlose").GetComponent<TextMesh>().text = "時勝切れ";
+                                    GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
                                 }
 					            string stageName = PlayerPrefs.GetString("activeStageName");
 					            audioSources [3].Play ();
