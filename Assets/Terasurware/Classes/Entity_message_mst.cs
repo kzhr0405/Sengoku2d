@@ -13,5 +13,6 @@ public class Entity_message_mst : ScriptableObject
 		public int id;
 		public string message;
 		public string messageEng;
+		public string messageSChn;
 	}
 }

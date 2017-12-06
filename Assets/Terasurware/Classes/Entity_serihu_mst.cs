@@ -21,5 +21,9 @@ public class Entity_serihu_mst : ScriptableObject
 		public string touyouMsgEng;
 		public string tsuihouMsgEng;
 		public string senpouMsgEng;
+		public string nameSChn;
+		public string touyouMsgSChn;
+		public string tsuihouMsgSChn;
+		public string senpouMsgSChn;
 	}
 }

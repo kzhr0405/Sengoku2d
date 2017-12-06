@@ -143,7 +143,11 @@ public class StatusGet : MonoBehaviour {
         if (langId == 2) {
             senpouArray.Add (senpouMst.param[senpouId-1].nameEng);
 		    senpouArray.Add (senpouMst.param[senpouId-1].effectionEng);
-        }else {
+        }else if (langId == 3) {
+            senpouArray.Add(senpouMst.param[senpouId - 1].nameSChn);
+            senpouArray.Add(senpouMst.param[senpouId - 1].effectionSChn);
+        }
+        else {
             senpouArray.Add(senpouMst.param[senpouId - 1].name);
             senpouArray.Add(senpouMst.param[senpouId - 1].effection);
         }
@@ -202,7 +206,11 @@ public class StatusGet : MonoBehaviour {
         if (langId == 2) {
             senpouArray.Add (senpouMst.param[senpouId-1].nameEng);
 		    senpouArray.Add (senpouMst.param[senpouId-1].effectionEng);
-        }else {
+        }else if (langId == 3) {
+            senpouArray.Add(senpouMst.param[senpouId - 1].nameSChn);
+            senpouArray.Add(senpouMst.param[senpouId - 1].effectionSChn);
+        }
+        else {
             senpouArray.Add(senpouMst.param[senpouId - 1].name);
             senpouArray.Add(senpouMst.param[senpouId - 1].effection);
         }
@@ -322,6 +330,9 @@ public class StatusGet : MonoBehaviour {
         if (langId == 2) {
             senpouArray.Add(senpouMst.param[senpouId - 1].nameEng);
             senpouArray.Add(senpouMst.param[senpouId - 1].effectionEng);
+        }else if (langId == 3) {
+            senpouArray.Add(senpouMst.param[senpouId - 1].nameSChn);
+            senpouArray.Add(senpouMst.param[senpouId - 1].effectionSChn);
         }
         else {
             senpouArray.Add(senpouMst.param[senpouId - 1].name);

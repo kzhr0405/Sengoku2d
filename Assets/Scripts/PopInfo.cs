@@ -109,6 +109,8 @@ public class PopInfo : MonoBehaviour {
 		Entity_senpou_mst senpouMst  = Resources.Load ("Data/senpou_mst") as Entity_senpou_mst;
         if (langId == 2) {
             GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].nameEng;
+        } else if (langId == 3) {
+            GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].nameSChn;
         } else {
             GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].name;
         }
@@ -119,6 +121,8 @@ public class PopInfo : MonoBehaviour {
         string senpouExp = "";
         if (langId == 2) {
             senpouExp = senpouMst.param [senpouId - 1].effectionEng;
+        }else if (langId == 3) {
+            senpouExp = senpouMst.param[senpouId - 1].effectionSChn;
         }else {
             senpouExp = senpouMst.param[senpouId - 1].effection;
         }
@@ -127,7 +131,7 @@ public class PopInfo : MonoBehaviour {
             senpouExp = senpouExp.Replace("ABC", senpouStatus.ToString());
             senpouExp = senpouExp.Replace("DEF", each.ToString());
             senpouExp = senpouExp.Replace("GHI", ratio.ToString());
-            senpouExp = senpouExp.Replace("JKL", term.ToString());
+            senpouExp = senpouExp.Replace("JKL", term.ToString());        
         }else {
             senpouExp = senpouExp.Replace("A", senpouStatus.ToString());
             senpouExp = senpouExp.Replace("B", each.ToString());

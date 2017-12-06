@@ -66,6 +66,9 @@ public class kahou_chishikisyo_mst_importer : AssetPostprocessor
 					cell = row.GetCell(11); p.kahouNameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(12); p.kahouExpEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(13); p.kahouTargetEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(14); p.kahouNameChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(15); p.kahouExpChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(16); p.kahouTargetChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

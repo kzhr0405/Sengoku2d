@@ -110,6 +110,10 @@ public class Kanni : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             totalName = kanniMst.param[kanniId - 1].IkaiEng;
+        }else if (langId == 3) {
+            string ikai = kanniMst.param[kanniId - 1].IkaiSChn;
+            string kanni = kanniMst.param[kanniId - 1].KanniSChn;
+            totalName = ikai + kanni;
         }else {
             string ikai = kanniMst.param[kanniId - 1].Ikai;
             string kanni = kanniMst.param[kanniId - 1].Kanni;

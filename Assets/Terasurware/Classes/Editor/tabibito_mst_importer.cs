@@ -65,6 +65,9 @@ public class tabibito_mst_importer : AssetPostprocessor
 					cell = row.GetCell(10); p.GrpEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(11); p.NameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(12); p.ExpEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(13); p.GrpSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(14); p.NameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(15); p.ExpSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

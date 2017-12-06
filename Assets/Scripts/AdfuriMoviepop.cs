@@ -123,6 +123,10 @@ public class AdfuriMoviepop : MonoBehaviour {
                 int movieCount = PlayerPrefs.GetInt("movieCount");
                 movieCount = movieCount + 1;
                 PlayerPrefs.SetInt("movieCount",movieCount);
+
+                int movieCountDaily = PlayerPrefs.GetInt("movieCountDaily");
+                movieCountDaily = movieCountDaily + 1;
+                PlayerPrefs.SetInt("movieCountDaily", movieCountDaily);
                 
                 if (!hyourouFlg) {
                     

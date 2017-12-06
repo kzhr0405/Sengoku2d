@@ -24,7 +24,10 @@ public class QA : MonoBehaviour {
         if (langId == 2) {
             qaTitle = qaMst.param [qaId - 1].titleEng;
 		    qaExp = qaMst.param [qaId - 1].ExpEng;
-        }else {
+        }else if (langId == 3) {
+            qaTitle = qaMst.param[qaId - 1].titleSChn;
+            qaExp = qaMst.param[qaId - 1].ExpSChn;
+        } else {
             qaTitle = qaMst.param[qaId - 1].title;
             qaExp = qaMst.param[qaId - 1].Exp;
         }

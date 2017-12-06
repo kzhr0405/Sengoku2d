@@ -73,6 +73,12 @@ public class shisya_mst_importer : AssetPostprocessor
 					cell = row.GetCell(18); p.Serihu3Eng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(19); p.OKSerihuEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(20); p.NGSerihuEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(21); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(22); p.Serihu1SChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(23); p.Serihu2SChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(24); p.Serihu3SChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(25); p.OKSerihuSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(26); p.NGSerihuSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

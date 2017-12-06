@@ -23,5 +23,8 @@ public class Entity_tabibito_mst : ScriptableObject
 		public string GrpEng;
 		public string NameEng;
 		public string ExpEng;
+		public string GrpSChn;
+		public string NameSChn;
+		public string ExpSChn;
 	}
 }

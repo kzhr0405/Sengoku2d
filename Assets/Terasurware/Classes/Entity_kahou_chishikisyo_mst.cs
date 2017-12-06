@@ -24,5 +24,8 @@ public class Entity_kahou_chishikisyo_mst : ScriptableObject
 		public string kahouNameEng;
 		public string kahouExpEng;
 		public string kahouTargetEng;
+		public string kahouNameChn;
+		public string kahouExpChn;
+		public string kahouTargetChn;
 	}
 }

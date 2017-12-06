@@ -63,6 +63,10 @@ public class serihu_mst_importer : AssetPostprocessor
 					cell = row.GetCell(8); p.touyouMsgEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(9); p.tsuihouMsgEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(10); p.senpouMsgEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(11); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(12); p.touyouMsgSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(13); p.tsuihouMsgSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(14); p.senpouMsgSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

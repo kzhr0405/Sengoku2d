@@ -71,7 +71,10 @@ public class DataRecoveryConfirm : MonoBehaviour {
                 PlayerPrefs.SetString("yearSeason", RecoveryDataStore.yearSeason);
                 PlayerPrefs.SetInt("movieCount", RecoveryDataStore.movieCount);
                 PlayerPrefs.SetInt("space", RecoveryDataStore.space);
-                if(RecoveryDataStore.pvpHeiryoku !=0 ) PlayerPrefs.SetInt("pvpHeiryoku", RecoveryDataStore.pvpHeiryoku);
+                if(RecoveryDataStore.pvpHeiryoku !=0 ) {
+                    PlayerPrefs.SetInt("pvpHeiryoku", RecoveryDataStore.pvpHeiryoku);
+                    PlayerPrefs.SetInt("jinkeiHeiryoku", RecoveryDataStore.pvpHeiryoku);                    
+                }
                 string seiryoku = RecoveryDataStore.seiryoku;
                 KuniInfo KuniInfo = new KuniInfo();
                 if (seiryoku == "") seiryoku = KuniInfo.getDefaultSeiryoku(RecoveryDataStore.senarioId);

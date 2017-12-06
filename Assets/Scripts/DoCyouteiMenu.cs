@@ -5,12 +5,12 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using System.Collections.Generic;
 
 public class DoCyouteiMenu : MonoBehaviour {
-
-	CyouteiMenu serihuScript = new CyouteiMenu();
+    
 	public AudioSource[] audioSources;
 
 	public void OnClick(){
-		audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        CyouteiMenu serihuScript = new CyouteiMenu();
+        audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		CloseLayer closeLayerScript = GameObject.Find ("CloseSyoukaijyo").GetComponent<CloseLayer> ();
 		string rank = closeLayerScript.syoukaijyoRank;
@@ -418,8 +418,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 	}
 
 	public bool teisen(int stropBattleRatio){
-
-		float ratio = (float)stropBattleRatio;
+        CyouteiMenu serihuScript = new CyouteiMenu();
+        float ratio = (float)stropBattleRatio;
 		float percent = Random.value;
 		percent = percent * 100;
 		bool successFlg = false;
@@ -540,8 +540,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 
 	public bool registerKanni(int kanniRatio, int kanniId, string kanniName){
-		
-		float ratio = (float)kanniRatio;
+        CyouteiMenu serihuScript = new CyouteiMenu();
+        float ratio = (float)kanniRatio;
 		float percent = Random.value;
 		percent = percent * 100;
 		bool successFlg = false;

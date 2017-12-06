@@ -15,5 +15,7 @@ public class Entity_qa_mst : ScriptableObject
 		public string Exp;
 		public string titleEng;
 		public string ExpEng;
+		public string titleSChn;
+		public string ExpSChn;
 	}
 }

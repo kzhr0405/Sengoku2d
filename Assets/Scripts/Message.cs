@@ -173,6 +173,8 @@ public class Message : MonoBehaviour {
         Entity_message_mst msgMst = Resources.Load("Data/message_mst") as Entity_message_mst;
         if (langId==2) {
             message = msgMst.param[id - 1].messageEng;
+        }else if (langId == 3) {
+            message = msgMst.param[id - 1].messageSChn;
         }else {
             message = msgMst.param[id - 1].message;
         }
