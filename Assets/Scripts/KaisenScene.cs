@@ -451,6 +451,16 @@ public class KaisenScene : MonoBehaviour {
             getEnemyStsAndMakeInstance(linkNo, mapId,  rainMinusRatio, snowMinusRatio, AIType);
         }
 
+		//for Navigation
+		if(GameScene.isUseNavigation && wall != null){
+			NavMeshMapWall.makeSceneFloor(wall);
+			//障害物の配置が完了したので、ここでNavMeshを更新する
+			LocalNavMeshBuilder builder = GameObject.FindObjectOfType<LocalNavMeshBuilder>();
+			if(builder != null){
+				builder.UpdateNavMesh(true);
+			}
+		}
+
         GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
 
         /*Dynamic Enemy Setting Finish*/

@@ -57,6 +57,8 @@ public class GameScene : MonoBehaviour {
     public int playerTotalHeiryoku = 0;
     public int enemyTotalHeiryoku = 0;
 
+	//Navigation2D
+	public static bool isUseNavigation = true;//Navigation2Dを使うかどうか
 
     // Use this for initialization
     void Start () {
@@ -110,6 +112,9 @@ public class GameScene : MonoBehaviour {
             }
         }
         
+		//for Navigation
+		GameObject wallObject = null;
+		GameObject mapFrontObject = null;
 
         if (!pvpFlg) {
             if(GameObject.Find("PvPName")) {
@@ -148,6 +153,7 @@ public class GameScene : MonoBehaviour {
 			    string mapFrontPath = "";
 			    GameObject wall = Instantiate (wallPrefab);
 			    wall.name = "wall";
+				wallObject = wall;
 
 			    if (stageMapId != 1) {
 				    if (stageMapId == 2) {
@@ -156,6 +162,7 @@ public class GameScene : MonoBehaviour {
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
 					    mapFrontPath = "Prefabs/PreKassen/mapFront2";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
+						mapFrontObject = mapFront;
                         setMapFrontWithRandomPosition(mapFront, mapSpecial);
 
 					    weatherHandling(stageMapId, map, mapFront);
@@ -166,13 +173,14 @@ public class GameScene : MonoBehaviour {
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
 					    mapFrontPath = "Prefabs/PreKassen/mapFront3";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
+						mapFrontObject = mapFront;
                         setMapFrontWithRandomPosition(mapFront, mapSpecial);
 
                         weatherHandling(stageMapId, map, mapFront);
 				    }
 			    } else {
 				
-				    Instantiate (treePrefab);
+				    mapFrontObject = Instantiate (treePrefab);
 
 				    mapPath = "Prefabs/PreKassen/map1";
 				    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
@@ -191,7 +199,7 @@ public class GameScene : MonoBehaviour {
 
 			    string mapPath = "";
 			    string mapFrontPath = "";
-			    Instantiate (wallPrefab);
+			    wallObject = Instantiate (wallPrefab);
 
 			    if (stageMapId != 1) {
 				    if (stageMapId == 2) {
@@ -200,6 +208,7 @@ public class GameScene : MonoBehaviour {
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
 					    mapFrontPath = "Prefabs/PreKassen/mapFront2";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
+						mapFrontObject = mapFront;
                         setMapFrontWithRandomPosition(mapFront, mapSpecial);
 
                         weatherHandling(stageMapId, map, mapFront);
@@ -209,13 +218,14 @@ public class GameScene : MonoBehaviour {
 					    GameObject map = Instantiate (Resources.Load (mapPath)) as GameObject;
 					    mapFrontPath = "Prefabs/PreKassen/mapFront3";
 					    GameObject mapFront = Instantiate (Resources.Load (mapFrontPath)) as GameObject;
+						mapFrontObject = mapFront;
                         setMapFrontWithRandomPosition(mapFront, mapSpecial);
 
                         weatherHandling(stageMapId, map, mapFront);
 				    }
 			    } else {
 				    Instantiate (mapPrefab);
-				    Instantiate (treePrefab);
+					mapFrontObject = Instantiate (treePrefab);
 
 				    weatherHandling(stageMapId, mapPrefab, null);
 			    }
@@ -246,6 +256,7 @@ public class GameScene : MonoBehaviour {
             string mapFrontPath = "";
             GameObject wall = Instantiate(wallPrefab);
             wall.name = "wall";
+			wallObject = wall;
             pvpStageId = PlayerPrefs.GetInt("pvpStageId",1);
             int weatherId = getPvPWeatherId();
 
@@ -256,6 +267,7 @@ public class GameScene : MonoBehaviour {
                     GameObject map = Instantiate(Resources.Load(mapPath)) as GameObject;
                     mapFrontPath = "Prefabs/PreKassen/mapFront2";
                     GameObject mapFront = Instantiate(Resources.Load(mapFrontPath)) as GameObject;
+					mapFrontObject = mapFront;
                     setMapFrontWithRandomPosition(mapFront, 0);
 
                     weatherHandling(pvpStageId, map, mapFront);
@@ -270,6 +282,7 @@ public class GameScene : MonoBehaviour {
                     GameObject map = Instantiate(Resources.Load(mapPath)) as GameObject;
                     mapFrontPath = "Prefabs/PreKassen/mapFront3";
                     GameObject mapFront = Instantiate(Resources.Load(mapFrontPath)) as GameObject;
+					mapFrontObject = mapFront;
                     setMapFrontWithRandomPosition(mapFront, 0);
 
                     weatherHandling(pvpStageId, map, mapFront);
@@ -280,7 +293,7 @@ public class GameScene : MonoBehaviour {
                     seaMinusRatio = (100 - (float)minusRatio) / 100;
                 }
             }else {
-                Instantiate(treePrefab);
+				mapFrontObject = Instantiate(treePrefab);
                 mapPath = "Prefabs/PreKassen/map1";
                 GameObject map = Instantiate(Resources.Load(mapPath)) as GameObject;
                 weatherHandling(pvpStageId, map, null);
@@ -931,6 +944,18 @@ public class GameScene : MonoBehaviour {
             GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
 
         }
+
+		//for Navigation
+		if(isUseNavigation && wallObject != null){
+			NavMeshSourceTag.clearStaticList();
+			NavMeshMapWall.makeSceneFloor(wallObject);
+			NavMeshMapObstacle.makeSceneMapFront(mapFrontObject);
+			//障害物の配置が完了したので、ここでNavMeshを更新する
+			LocalNavMeshBuilder builder = GameObject.FindObjectOfType<LocalNavMeshBuilder>();
+			if(builder != null){
+				builder.UpdateNavMesh(true);
+			}
+		}
 
         if (Application.loadedLevelName == "tutorialKassen") {
             StopEveryObject();
