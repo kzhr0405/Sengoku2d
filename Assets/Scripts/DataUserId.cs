@@ -17,6 +17,9 @@ public class DataUserId : MonoBehaviour {
     bool addJinkei2 = false;
     bool addJinkei3 = false;
     bool addJinkei4 = false;
+    bool scenario1 = false;
+    bool scenario2 = false;
+    bool scenario3 = false;    
     string yearSeason = "";
     string seiryoku = "";
     int money = 0;
@@ -111,8 +114,11 @@ public class DataUserId : MonoBehaviour {
         userIdClass["addJinkei2"] = addJinkei2;
         userIdClass["addJinkei3"] = addJinkei3;
         userIdClass["addJinkei4"] = addJinkei4;
-
+        userIdClass["scenario1"] = scenario1;
+        userIdClass["scenario2"] = scenario2;
+        userIdClass["scenario3"] = scenario3;
         /**Data Store**/
+
         //basic
         userIdClass["seiryoku"] = seiryoku;
         userIdClass["money"] = money;
@@ -225,6 +231,9 @@ public class DataUserId : MonoBehaviour {
                         objList[0]["addJinkei2"] = addJinkei2;
                         objList[0]["addJinkei3"] = addJinkei3;
                         objList[0]["addJinkei4"] = addJinkei4;
+                        objList[0]["scenario1"] = scenario1;
+                        objList[0]["scenario2"] = scenario2;
+                        objList[0]["scenario3"] = scenario3;
 
                         /**Data Store**/
                         //basic
@@ -330,6 +339,9 @@ public class DataUserId : MonoBehaviour {
         addJinkei2 = PlayerPrefs.GetBool("addJinkei2");
         addJinkei3 = PlayerPrefs.GetBool("addJinkei3");
         addJinkei4 = PlayerPrefs.GetBool("addJinkei4");
+        scenario1 = PlayerPrefs.GetBool("scenario1");
+        scenario2 = PlayerPrefs.GetBool("scenario2");
+        scenario3 = PlayerPrefs.GetBool("scenario3");
 
         //common
         yearSeason = PlayerPrefs.GetString("yearSeason");

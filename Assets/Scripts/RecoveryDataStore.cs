@@ -19,6 +19,9 @@ public class RecoveryDataStore : MonoBehaviour {
     public bool addJinkei2 = false;
     public bool addJinkei3 = false;
     public bool addJinkei4 = false;
+    public bool scenario1 = false;
+    public bool scenario2 = false;
+    public bool scenario3 = false;
 
     //recovery
     public int dataRecoveryCount = -1;
@@ -172,6 +175,9 @@ public class RecoveryDataStore : MonoBehaviour {
                         addJinkei2 = System.Convert.ToBoolean(obj["addJinkei2"]);
                         addJinkei3 = System.Convert.ToBoolean(obj["addJinkei3"]);
                         addJinkei4 = System.Convert.ToBoolean(obj["addJinkei4"]);
+                        if (checkDataExist(obj, "scenario1")) scenario1 = System.Convert.ToBoolean(obj["scenario1"]);
+                        if (checkDataExist(obj, "scenario2")) scenario2 = System.Convert.ToBoolean(obj["scenario2"]);
+                        if (checkDataExist(obj, "scenario3")) scenario3 = System.Convert.ToBoolean(obj["scenario3"]);
                         yearSeason = System.Convert.ToString(obj["yearSeason"]);
                         seiryoku = System.Convert.ToString(obj["seiryoku"]);
                         money = System.Convert.ToInt32(obj["money"]);
@@ -483,6 +489,9 @@ public class RecoveryDataStore : MonoBehaviour {
         addJinkei2 = false;
         addJinkei3 = false;
         addJinkei4 = false;
+        scenario1 = false;
+        scenario2 = false;
+        scenario3 = false;
         dataRecoveryCount = -1;
         busyoList = new List<int>();
         lvList = new List<int>();
