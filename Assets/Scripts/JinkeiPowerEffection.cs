@@ -155,7 +155,7 @@ public class JinkeiPowerEffection : MonoBehaviour {
             
             if (obs.transform.childCount > 0) {
                 int childBusyoId = int.Parse(obs.transform.GetChild(0).name);                
-                int belongDaimyoId = BusyoInfoGet.getDaimyoId(childBusyoId);
+                int belongDaimyoId = BusyoInfoGet.getDaimyoId(childBusyoId,senarioId);
                 daimyoIdList[mapId-1] = belongDaimyoId;
                 if (childBusyoId == daimyoBusyoId) {
                     daimyoBusyoFlg = true;

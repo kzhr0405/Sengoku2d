@@ -11,7 +11,8 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
 
 		//For Dramatic Enemy Creation
 		GameObject kuniView = GameObject.Find("KuniIconView");
-		if (kuniView.transform.Find (srcKuni.ToString ())) {
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        if (kuniView.transform.Find (srcKuni.ToString ())) {
 			SendParam param = kuniView.transform.Find (srcKuni.ToString ()).GetComponent<SendParam> ();
             Gaikou gaikou = new Gaikou();
             int busyoQty = param.busyoQty;
@@ -130,12 +131,12 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
                                 engunFlg = true;
                                 if (dstEngunDaimyoId != null && dstEngunDaimyoId != "") {
                                     dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-                                    string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList);
+                                    string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList,senarioId);
                                     dstEngunSts = dstEngunSts + ":" + engunDaimyo + "-" + tempEngunSts;
                                 }
                                 else {
                                     dstEngunDaimyoId = engunDaimyo;
-                                    string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList);
+                                    string tempEngunSts = main.getSomeEngunSts(engunDaimyo, dstEngunSts, seiryokuList,senarioId);
                                     dstEngunSts = engunDaimyo + "-" + tempEngunSts;
 
                                 }

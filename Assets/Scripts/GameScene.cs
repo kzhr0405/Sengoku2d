@@ -1288,7 +1288,8 @@ public class GameScene : MonoBehaviour {
 
         //same daimyo  
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
-        int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        int daimyoId = BusyoInfoGet.getDaimyoId(busyoId,senarioId);
         int num = 0;
         if (sameDaimyoList.Contains(daimyoId.ToString())) {
             int i = sameDaimyoList.IndexOf(daimyoId.ToString());

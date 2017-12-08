@@ -22,5 +22,8 @@ public class Entity_kanni_mst : ScriptableObject
 		public int SyoukaijyoRank;
 		public string IkaiEng;
 		public string EffectLabelEng;
+		public string KanniSChn;
+		public string IkaiSChn;
+		public string EffectLabelSChn;
 	}
 }

@@ -83,6 +83,8 @@ public class senpou_mst_importer : AssetPostprocessor
 					cell = row.GetCell(28); p.onlySeaFlg = (cell == null ? false : cell.BooleanCellValue);
 					cell = row.GetCell(29); p.nameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(30); p.effectionEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(31); p.nameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(32); p.effectionSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

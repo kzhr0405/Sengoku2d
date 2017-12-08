@@ -5,7 +5,12 @@ public class SelectPurchaseItem : MonoBehaviour {
 
 	public void OnClick(){
         
-		PurchaseManager script = GameObject.Find ("PurchaseManager").GetComponent<PurchaseManager> ();
-		script.BuyProductId (name);
-	}
+        if(Application.loadedLevelName == "clearOrGameOver") {
+            PurchaseManagerScenario script = GameObject.Find("PurchaseManager").GetComponent<PurchaseManagerScenario>();
+            script.BuyProductId(name);
+        }else {
+            PurchaseManager script = GameObject.Find ("PurchaseManager").GetComponent<PurchaseManager> ();
+		    script.BuyProductId (name);
+        }
+    }
 }

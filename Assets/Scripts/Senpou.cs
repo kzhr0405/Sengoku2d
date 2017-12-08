@@ -11,6 +11,8 @@ public class Senpou : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             senpouName = senpouMst.param[senpouId - 1].nameEng;
+        }else if (langId == 3) {
+            senpouName = senpouMst.param[senpouId - 1].nameSChn;
         }else {
             senpouName = senpouMst.param[senpouId - 1].name;
         }
@@ -30,6 +32,12 @@ public class Senpou : MonoBehaviour {
             senpouExp = senpouExp.Replace("DEF", each.ToString());
             senpouExp = senpouExp.Replace("GHI", ratio.ToString());
             senpouExp = senpouExp.Replace("JKL", term.ToString());
+        }else if (langId == 3) {
+            senpouExp = senpouMst.param[senpouId - 1].effectionSChn;
+            senpouExp = senpouExp.Replace("A", senpouStatus.ToString());
+            senpouExp = senpouExp.Replace("B", each.ToString());
+            senpouExp = senpouExp.Replace("C", ratio.ToString());
+            senpouExp = senpouExp.Replace("D", term.ToString());
         }else {
             senpouExp = senpouMst.param[senpouId - 1].effection;
             senpouExp = senpouExp.Replace("A", senpouStatus.ToString());

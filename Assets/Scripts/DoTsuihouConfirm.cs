@@ -12,7 +12,11 @@ public class DoTsuihouConfirm : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		string busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
 		string busyoId = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyo;
-		int daimyoBusyoId = PlayerPrefs.GetInt ("myDaimyoBusyo");
+        Daimyo Daimyo = new Daimyo();
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+
         int langId = PlayerPrefs.GetInt("langId");
 
         if (busyoId == daimyoBusyoId.ToString ()) {

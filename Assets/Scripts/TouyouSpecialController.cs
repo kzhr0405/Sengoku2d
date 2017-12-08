@@ -23,7 +23,7 @@ public class TouyouSpecialController : MonoBehaviour {
     void Start () {
         //Common
         int busyoDama = PlayerPrefs.GetInt("busyoDama");
-
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = busyoDama.ToString();
         Panel = GameObject.Find("Panel").gameObject;
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
@@ -42,21 +42,36 @@ public class TouyouSpecialController : MonoBehaviour {
                 busyoName = busyoMst.param[i].name;
             }
             string heisyu = busyoMst.param[i].heisyu;
-            int daimyoId = busyoMst.param[i].daimyoId;
-            int daimyoHst = busyoMst.param[i].daimyoHst;
+
+            int daimyoId = 0;
+            int daimyoHst = 0;
+            if (senarioId==1) {
+                daimyoId = busyoMst.param[i].daimyoId1;
+                daimyoHst = busyoMst.param[i].daimyoHst1;
+            }else if(senarioId==2) {
+                daimyoId = busyoMst.param[i].daimyoId2;
+                daimyoHst = busyoMst.param[i].daimyoHst2;
+            }else if (senarioId == 3) {
+                daimyoId = busyoMst.param[i].daimyoId3;
+                daimyoHst = busyoMst.param[i].daimyoHst3;
+            }else{
+                daimyoId = busyoMst.param[i].daimyoId;
+                daimyoHst = busyoMst.param[i].daimyoHst;
+            }
+            
             //busyoListDic.Add(busyoId, new Busyo { busyoId = busyoId, busyoName= busyoName, rank = rank, heisyu = heisyu, daimyoId = daimyoId , daimyoHst = daimyoHst });
             busyoListDic.Add(busyoId, new Busyo (busyoId, busyoName, rank, 0,heisyu, daimyoId, daimyoHst,0 ,0,0,0,0,0,0));
         }
 
         //target
         bool todayGacyaSpecialFlg = PlayerPrefs.GetBool("todayGacyaSpecialFlg");
-        //bool todayGacyaSpecialFlg = false; //test
+        //todayGacyaSpecialFlg = false; //test
         if (!todayGacyaSpecialFlg) {
             List<string> targetHeisyuList = new List<string>() { "YR", "KB", "TP", "YM"};
             int rdmHeisyuId = UnityEngine.Random.Range(0, targetHeisyuList.Count);
             targetHeisyu = targetHeisyuList[rdmHeisyuId];
 
-            List<int> SrankDaimyoList = getSrankDaimyoList();
+            List<int> SrankDaimyoList = getSrankDaimyoList(senarioId);
             int rdmDaimyo1 = UnityEngine.Random.Range(0, SrankDaimyoList.Count);
             targetDaimyoId1 = SrankDaimyoList[rdmDaimyo1];
             SrankDaimyoList.Remove(targetDaimyoId1);
@@ -118,7 +133,7 @@ public class TouyouSpecialController : MonoBehaviour {
 
 
         //S rank
-        List<int> SrankBusyoList = getSrankBusyoList(targetDaimyoId1, targetDaimyoId2, targetDaimyoId3);
+        List<int> SrankBusyoList = getSrankBusyoList(targetDaimyoId1, targetDaimyoId2, targetDaimyoId3, senarioId);
         int rdmDaimyoId1 = UnityEngine.Random.Range(0, SrankBusyoList.Count);
         int busyoId1 = SrankBusyoList[rdmDaimyoId1];
         if (SrankBusyoList.Count > 1) SrankBusyoList.Remove(busyoId1);
@@ -350,16 +365,19 @@ public class TouyouSpecialController : MonoBehaviour {
         }
     }
 
-    public List<int> getSrankDaimyoList() {
+    public List<int> getSrankDaimyoList(int senarioId) {
         List<int> SrankDaimyoList = new List<int>();
         Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
-        for(int i=0; i< busyoMst.param.Count; i++) {
+        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        for (int i=0; i< busyoMst.param.Count; i++) {
             string rank = busyoMst.param[i].rank;
             if(rank=="S") {
-                int daimyoId = busyoMst.param[i].daimyoId;
-                if(daimyoId==0) daimyoId = busyoMst.param[i].daimyoHst;
+                int busyoId = i + 1;
+                int daimyoId = BusyoInfoGet.getDaimyoId(busyoId, senarioId);
+                if (daimyoId==0) daimyoId = BusyoInfoGet.getDaimyoHst(busyoId, senarioId);
                 if (!SrankDaimyoList.Contains(daimyoId)) {
-                    if (daimyoId < 47) {
+                    if (daimyoId < daimyoMst.param.Count+1) {
                         SrankDaimyoList.Add(daimyoId);                        
                     }
                 }
@@ -368,16 +386,17 @@ public class TouyouSpecialController : MonoBehaviour {
         return SrankDaimyoList;
     }
 
-    public List<int> getSrankBusyoList(int targetDaimyoId1, int targetDaimyoId2, int targetDaimyoId3) {
+    public List<int> getSrankBusyoList(int targetDaimyoId1, int targetDaimyoId2, int targetDaimyoId3, int senarioId) {
         List<int> SrankBusyoList = new List<int>();
         Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
         for (int i = 0; i < busyoMst.param.Count; i++) {
-            int daimyoId = busyoMst.param[i].daimyoId;
-            if(daimyoId==0) daimyoId = busyoMst.param[i].daimyoHst;
+            int busyoId = i + 1;
+            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId, senarioId);
+            if (daimyoId==0) daimyoId = BusyoInfoGet.getDaimyoHst(busyoId, senarioId);
             if (targetDaimyoId1 == daimyoId || targetDaimyoId2 == daimyoId|| targetDaimyoId3 == daimyoId) {
                 string rank = busyoMst.param[i].rank;
                 if(rank=="S") {
-                    int busyoId = busyoMst.param[i].id;
                     SrankBusyoList.Add(busyoId);
                 }
             }
@@ -428,8 +447,9 @@ public class TouyouSpecialController : MonoBehaviour {
             int busyoId = int.Parse(specialBusyo);
             string rank = BusyoInfoGet.getRank(busyoId);
             string busyoName = BusyoInfoGet.getName(busyoId, langId);
-            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
-            if (daimyoId == 0) daimyoId = BusyoInfoGet.getDaimyoHst(busyoId);
+            int senarioId = PlayerPrefs.GetInt("senarioId");
+            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId,senarioId);
+            if (daimyoId == 0) daimyoId = BusyoInfoGet.getDaimyoHst(busyoId,senarioId);
             string heisyu = BusyoInfoGet.getHeisyu(busyoId);            
             audioSources[0].Play();
 

@@ -175,7 +175,11 @@ public class QuestMenu : MonoBehaviour {
 
                 int count = 0;
                 if(criteriaTyp== "movieCount") {
-                    count = PlayerPrefs.GetInt("movieCount");
+                    if (daily) {
+                       count = PlayerPrefs.GetInt("movieCountDaily");
+                    } else {
+                       count = PlayerPrefs.GetInt("movieCount");
+                    }
                 }else if(criteriaTyp== "zukanBusyoHstCount") {
                     string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
                     List<string> zukanBusyoHstList = new List<string>();

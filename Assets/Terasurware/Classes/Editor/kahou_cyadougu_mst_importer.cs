@@ -66,6 +66,9 @@ public class kahou_cyadougu_mst_importer : AssetPostprocessor
 					cell = row.GetCell(11); p.kahouNameEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(12); p.kahouExpEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(13); p.kahouTargetEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(14); p.kahouNameSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(15); p.kahouExpSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(16); p.kahouTargetSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

@@ -73,7 +73,8 @@ public class ShisyaScene : MonoBehaviour {
 
 						//Choose Buka
 						int daimyoBusyoId = daimyo.getDaimyoBusyoId (int.Parse (daimyoId), senarioId);
-						int busyoId = getRandomBusyo (int.Parse (daimyoId), daimyoBusyoId);
+                        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+                        int busyoId = BusyoInfoGet.getRandomBusyo (int.Parse (daimyoId), daimyoBusyoId, senarioId);
 
 						string busyoImagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();
 						slotObj.transform.Find ("Image").GetComponent<Image> ().sprite = 
@@ -373,59 +374,7 @@ public class ShisyaScene : MonoBehaviour {
 		return finalSerihu;
 	}
 
-	public int getRandomBusyo(int activeDaimyoId, int daimyoBusyoId){
-		
-		/*Busyo Master Setting Start*/
-		//Active Busyo List
-		List<string> metsubouDaimyoList = new List<string> ();
-		string metsubouTemp = "metsubou" + activeDaimyoId;
-		string metsubouDaimyoString = PlayerPrefs.GetString (metsubouTemp);
-		char[] delimiterChars2 = {','};
-		if (metsubouDaimyoString != null && metsubouDaimyoString != "") {
-			if (metsubouDaimyoString.Contains (",")) {
-				metsubouDaimyoList = new List<string> (metsubouDaimyoString.Split (delimiterChars2));
-			} else {
-				metsubouDaimyoList = new List<string> (metsubouDaimyoString.Split (delimiterChars2));
-			}
-		}
-		metsubouDaimyoList.Add (activeDaimyoId.ToString ());
-
-		Entity_busyo_mst busyoMst = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
-		List<int> busyoList = new List<int> ();
-
-		for (int i=0; i<busyoMst.param.Count; i++) {
-			int busyoId = busyoMst.param [i].id;
-			int daimyoId = busyoMst.param [i].daimyoId;
-
-			if (metsubouDaimyoList.Contains (daimyoId.ToString ())) {
-				if (busyoId != daimyoBusyoId) {
-
-					busyoList.Add (busyoId);
-				}
-			}
-		}
-		/*Busyo Master Setting End*/
-
-		/*Random Shuffle*/
-		for (int i = 0; i < busyoList.Count; i++) {
-			int temp = busyoList [i];
-			int randomIndex = UnityEngine.Random.Range (0, busyoList.Count);
-			busyoList [i] = busyoList [randomIndex];
-			busyoList [randomIndex] = temp;
-		}
-
-
-		int returnValue = 0;
-		if (busyoList.Count == 0) {
-			returnValue = 35;
-		} else {
-			returnValue = busyoList[0];
-		}
-			
-
-		return returnValue;
-
-	}
+	
 
 	public void randomMyKahouView(GameObject slot){
 

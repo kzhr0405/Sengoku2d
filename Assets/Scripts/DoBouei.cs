@@ -54,7 +54,8 @@ public class DoBouei : MonoBehaviour {
 				audioSources [3].Play ();
 
 				MainEventHandler mEvent = new MainEventHandler();
-				string engunSts = engunDaimyoId + "-" + mEvent.getEngunSts(engunDaimyoId.ToString());
+                int senarioId = PlayerPrefs.GetInt("senarioId");
+                string engunSts = engunDaimyoId + "-" + mEvent.getEngunSts(engunDaimyoId.ToString(),senarioId);
 				int engunHei  = mEvent.getEngunHei(engunSts);
 
 				GameObject gunzei = GameObject.Find (key).gameObject;

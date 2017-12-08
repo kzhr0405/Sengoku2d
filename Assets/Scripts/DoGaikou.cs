@@ -40,8 +40,9 @@ public class DoGaikou : MonoBehaviour {
 		Gaikou gaikou = new Gaikou ();
 		CloseBoard closeScript = GameObject.Find ("close").GetComponent<CloseBoard> ();
 		daimyoId = closeScript.daimyoId;
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
-		if (hyourouOKflg) {
+        if (hyourouOKflg) {
 			if (moneyOKflg) {
 
 				//Track
@@ -270,9 +271,9 @@ public class DoGaikou : MonoBehaviour {
 						string playerKyoutouList = PlayerPrefs.GetString ("playerKyoutouList", "");
 						MainEventHandler kyoutou = new MainEventHandler ();
 						if (playerKyoutouList == null || playerKyoutouList == "") {
-							playerKyoutouList = targetKuniId + "-" + kyoutou.getEngunSts (daimyoId.ToString ());
+							playerKyoutouList = targetKuniId + "-" + kyoutou.getEngunSts (daimyoId.ToString (), senarioId);
 						} else {
-							playerKyoutouList = playerKyoutouList + ":" + +targetKuniId + "-" + kyoutou.getEngunSts (daimyoId.ToString ());
+							playerKyoutouList = playerKyoutouList + ":" + +targetKuniId + "-" + kyoutou.getEngunSts (daimyoId.ToString (), senarioId);
 						}
 						PlayerPrefs.SetString ("playerKyoutouList", playerKyoutouList);
 
@@ -663,7 +664,7 @@ public class DoGaikou : MonoBehaviour {
 									dstEngunFlg = true;
 									if(dstEngunDaimyoId !=null && dstEngunDaimyoId !=""){
 										dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-										string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo);
+										string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo, senarioId);
 										int tempEngunHei = mainEvent.getEngunHei(tempEngunSts);
 										dstEngunHei = dstEngunHei + ":" + tempEngunHei.ToString();
 										totalEngunHei = totalEngunHei + tempEngunHei;
@@ -671,7 +672,7 @@ public class DoGaikou : MonoBehaviour {
 
 									}else{
 										dstEngunDaimyoId = engunDaimyo;
-										string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo);
+										string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo, senarioId);
 										int tempEngunHei = mainEvent.getEngunHei(tempEngunSts);
 										dstEngunHei = tempEngunHei.ToString();
 										totalEngunHei = tempEngunHei;

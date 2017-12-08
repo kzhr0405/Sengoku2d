@@ -64,6 +64,9 @@ public class kanni_mst_importer : AssetPostprocessor
 					cell = row.GetCell(9); p.SyoukaijyoRank = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(10); p.IkaiEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(11); p.EffectLabelEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(12); p.KanniSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(13); p.IkaiSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(14); p.EffectLabelSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

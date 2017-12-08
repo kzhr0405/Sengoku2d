@@ -452,10 +452,10 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		int myYukoudo = PlayerPrefs.GetInt(temp);
 
         //Get Chiryaku
-        Daimyo daimyoScript = new Daimyo();
-		Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
-		int myDaimyoBusyoId = daimyoMst.param [myDaimyo - 1].busyoId;
-		BusyoInfoGet busyo = new BusyoInfoGet ();
+        Daimyo Daimyo = new Daimyo();
+        int myDaimyoBusyoId = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+
+        BusyoInfoGet busyo = new BusyoInfoGet ();
 		int chiryaku = busyo.getMaxDfc (myDaimyoBusyoId);
 		//StatusGet sts = new StatusGet();
 		//int lv = PlayerPrefs.GetInt (myDaimyoBusyoId.ToString());
@@ -472,7 +472,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			int kuniId = sameTargetKuniList[i];
 			int daimyoId = int.Parse (seiryokuList [kuniId - 1]);
 			// daimyoName = daimyoMst.param [daimyoId - 1].daimyoName;
-            string daimyoName = daimyoScript.getName(daimyoId,langId,senarioId);
+            string daimyoName = Daimyo.getName(daimyoId,langId,senarioId);
 
             string imagePath = "Prefabs/Kamon/" + daimyoId.ToString();
             prefab.transform.Find("Image").GetComponent<Image>().sprite =
@@ -628,7 +628,6 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 		int myYukoudo = PlayerPrefs.GetInt(temp);
 
         //Get Chiryaku
-        //Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
         Daimyo daimyoScript = new Daimyo();
         int myDaimyoBusyoId = daimyoScript.getDaimyoBusyoId(myDaimyo,senarioId);
 		BusyoInfoGet busyo = new BusyoInfoGet ();

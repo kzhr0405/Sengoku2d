@@ -49,7 +49,9 @@ public class IconClick : MonoBehaviour {
                 kanniName = "征夷大将軍";
             }
 		} else {
-			int myDaimyoBusyo = PlayerPrefs.GetInt("myDaimyoBusyo");
+            Daimyo Daimyo = new Daimyo();
+            int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyoId, senarioId);
+
 			string kanniTmp = "kanni" + myDaimyoBusyo.ToString ();
 			if (PlayerPrefs.HasKey (kanniTmp)) {
 				int kanniId = PlayerPrefs.GetInt (kanniTmp);

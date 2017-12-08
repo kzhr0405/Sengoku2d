@@ -31,15 +31,19 @@ public class Senryoku : MonoBehaviour {
         if(result) {
 
             //Parent
-            int myDaimyoBusyo = PlayerPrefs.GetInt("myDaimyoBusyo");
+            Daimyo Daimyo = new Daimyo();
+            int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+            int senarioId = PlayerPrefs.GetInt("senarioId");
+            int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+
 		    if (int.Parse(busyoId) == myDaimyoBusyo) {
 			    myDaimyoBusyoFlg = true;
 		    }
 
 		    BusyoInfoGet busyo = new BusyoInfoGet();
-		    belongDaimyoId = busyo.getDaimyoId (int.Parse(busyoId));
+		    belongDaimyoId = busyo.getDaimyoId (int.Parse(busyoId),senarioId);
 		    if (belongDaimyoId == 0) {
-			    belongDaimyoId = busyo.getDaimyoHst(int.Parse(busyoId));
+			    belongDaimyoId = busyo.getDaimyoHst(int.Parse(busyoId),senarioId);
 		    }
             shipId = busyo.getShipId(int.Parse(busyoId));
 

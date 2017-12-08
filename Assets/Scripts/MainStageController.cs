@@ -68,7 +68,7 @@ public class MainStageController : MonoBehaviour {
     
 
     public void Start () {
-
+        
         //Common
         Resources.UnloadUnusedAssets();
         Time.timeScale = 1;
@@ -129,7 +129,8 @@ public class MainStageController : MonoBehaviour {
 			/*Game Clear*/
 			/*--------------------*/
 			gameClearFlg = PlayerPrefs.GetBool ("gameClearFlg");
-			if (gameClearFlg) {
+            //gameClearFlg = true;//test
+            if (gameClearFlg) {
 				
 				audioSources [3].Play ();
 				SceneManager.LoadScene ("clearOrGameOver");
@@ -751,8 +752,8 @@ public class MainStageController : MonoBehaviour {
 				    System.DateTime loginDate = System.DateTime.Parse (lastLoginDateString);
 				    System.TimeSpan loginSpan = System.DateTime.Today - loginDate;
 				    double loginSpanDay = loginSpan.TotalDays;
-
-				    if (loginSpanDay >= 1) {
+                    
+                    if (loginSpanDay >= 1) {
 					    //Change Date
 					    //Quest Flg Change
 					    List<int> dailyQuestList = new List<int> ();
@@ -785,7 +786,7 @@ public class MainStageController : MonoBehaviour {
                         lastLoginDateString = System.DateTime.Today.ToString ();
 					    PlayerPrefs.SetString ("loginDate", lastLoginDateString);
                         PlayerPrefs.DeleteKey("todayGacyaSpecialFlg");
-
+                        PlayerPrefs.DeleteKey("movieCountDaily");
                         PlayerPrefs.SetBool ("questDailyFlg14", true);
 					    PlayerPrefs.Flush ();
 				    }
@@ -1345,25 +1346,7 @@ public class MainStageController : MonoBehaviour {
 		questExtension ();
 
 	}
-
     
-	void OnApplicationPause (bool pauseStatus) {
-		if (!pauseStatus) {
-            if (!adRunFlg && !iapRunFlg) {
-                //アプリを終了しないでホーム画面からアプリを起動して復帰した時                
-                //destroy data store
-                if(GameObject.Find("DataStore")) {
-                    Destroy(GameObject.Find("DataStore").gameObject);
-                }
-                //back to top
-				PlayerPrefs.Flush();//通常のFlushを行い、現在の状態をファイルへ反映する
-                SceneManager.LoadScene ("top");
-            }
-		} else {
-			//アプリがバックグラウンドに移行する時
-			PlayerPrefs.Flush(true);//専用のFlushを行い、現在の状態を一時ファイルへ書き出す
-		}
-	}
     
 	public bool CheckByProbability (int ratio) {
 		bool checkFlg = false;
@@ -1879,6 +1862,25 @@ public class MainStageController : MonoBehaviour {
                     }
                 }
             }
+        }
+    }
+    
+    void OnApplicationPause(bool pauseStatus) {
+        if (!pauseStatus) {
+            if (!adRunFlg && !iapRunFlg) {
+                //アプリを終了しないでホーム画面からアプリを起動して復帰した時                
+                //destroy data store
+                if (GameObject.Find("DataStore")) {
+                    Destroy(GameObject.Find("DataStore").gameObject);
+                }
+                //back to top
+                PlayerPrefs.Flush();//通常のFlushを行い、現在の状態をファイルへ反映する
+                SceneManager.LoadScene("top");
+            }
+        }
+        else {
+            //アプリがバックグラウンドに移行する時
+            PlayerPrefs.Flush(true);//専用のFlushを行い、現在の状態を一時ファイルへ書き出す
         }
     }
 }

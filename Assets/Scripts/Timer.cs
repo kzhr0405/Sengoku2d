@@ -65,7 +65,7 @@ public class Timer : MonoBehaviour {
         if (Application.loadedLevelName != "tutorialKassen") {
             playerEngunList = PlayerPrefs.GetString("playerEngunList");
         }else {
-            playerEngunList = "1-158-50-20-10:1-141-50-20-10:1-52-50-20-10";
+            playerEngunList = "1-158-70-20-20:1-141-70-20-20:1-52-70-20-20";
         }
 
 		if (playerEngunList == null || playerEngunList == "") {
@@ -294,7 +294,7 @@ public class Timer : MonoBehaviour {
                                 if (langId == 2) {
                                     GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
                                 }else {
-                                    GameObject.Find("winlose").GetComponent<TextMesh>().text = "時勝切れ";
+                                    GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
                                 }
 					            string stageName = PlayerPrefs.GetString("activeStageName");
 					            audioSources [3].Play ();
@@ -381,6 +381,9 @@ public class Timer : MonoBehaviour {
 
 						            PlayerPrefs.Flush();
 					            }
+
+                                // 勝利したので10%の確率でレビュー誘導
+                                ReviewManager.Request10Parcent(transform.parent);
                             }else {
                                 busouKaijyo();
 

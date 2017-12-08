@@ -31,5 +31,11 @@ public class Entity_shisya_mst : ScriptableObject
 		public string Serihu3Eng;
 		public string OKSerihuEng;
 		public string NGSerihuEng;
+		public string nameSChn;
+		public string Serihu1SChn;
+		public string Serihu2SChn;
+		public string Serihu3SChn;
+		public string OKSerihuSChn;
+		public string NGSerihuSChn;
 	}
 }

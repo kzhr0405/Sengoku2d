@@ -57,6 +57,8 @@ public class qa_mst_importer : AssetPostprocessor
 					cell = row.GetCell(2); p.Exp = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(3); p.titleEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(4); p.ExpEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(5); p.titleSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(6); p.ExpSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

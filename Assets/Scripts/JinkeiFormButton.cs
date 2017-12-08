@@ -127,9 +127,9 @@ public class JinkeiFormButton : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0) {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -205,9 +205,9 @@ public class JinkeiFormButton : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name),senarioId);
                             if (daimyoId == 0) {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name),senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -282,9 +282,9 @@ public class JinkeiFormButton : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0) {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -358,9 +358,9 @@ public class JinkeiFormButton : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0) {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =

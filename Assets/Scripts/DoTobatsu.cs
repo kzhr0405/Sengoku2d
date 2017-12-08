@@ -47,9 +47,9 @@ public class DoTobatsu : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
         if (langId == 2) {
-            firstKassenText = "Declared " + targetDaimyoName + " attack order. \n Friendship reduced " +reducedValueWithTarget+ " point.";
+            firstKassenText = "Declared " + targetDaimyoName + " attack order. Friendship reduced " +reducedValueWithTarget+ " point.";
         }else {
-            firstKassenText = targetDaimyoName + "討伐を宣言しました。\n当家との友好度が" + reducedValueWithTarget + "下がります。";
+            firstKassenText = targetDaimyoName + "討伐を宣言しました。当家との友好度が" + reducedValueWithTarget + "下がります。";
         }
 		doGaikou.downYukouOnIcon(targetDaimyoId, newYukoudoWithTarget);
 		messageList.Add (firstKassenText);
@@ -291,7 +291,7 @@ public class DoTobatsu : MonoBehaviour {
 										dstEngunFlg = true;
 										if(dstEngunDaimyoId !=null && dstEngunDaimyoId !=""){
 											dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-											string tempEngunSts = engunDaimyo + "-" + mEvent.getEngunSts(engunDaimyo);
+											string tempEngunSts = engunDaimyo + "-" + mEvent.getEngunSts(engunDaimyo,senarioId);
 											int tempEngunHei = mEvent.getEngunHei(tempEngunSts);
 											dstEngunHei = dstEngunHei + ":" + tempEngunHei.ToString();
 											totalEngunHei = totalEngunHei + tempEngunHei;
@@ -299,7 +299,7 @@ public class DoTobatsu : MonoBehaviour {
 
 										}else{
 											dstEngunDaimyoId = engunDaimyo;
-											string tempEngunSts = engunDaimyo + "-" + mEvent.getEngunSts(engunDaimyo);
+											string tempEngunSts = engunDaimyo + "-" + mEvent.getEngunSts(engunDaimyo,senarioId);
 											int tempEngunHei = mEvent.getEngunHei(tempEngunSts);
 											dstEngunHei = tempEngunHei.ToString();
 											totalEngunHei = tempEngunHei;

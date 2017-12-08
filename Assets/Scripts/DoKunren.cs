@@ -8,10 +8,10 @@ using System;
 
 public class DoKunren : MonoBehaviour {
 	public bool moneyOK = true;
-	Message msg = new Message(); 
-
+	
 	public void OnClick () {
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        Message msg = new Message();
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (moneyOK != true) {
 			//Error

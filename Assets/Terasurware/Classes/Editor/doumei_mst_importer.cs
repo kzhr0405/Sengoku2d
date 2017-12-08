@@ -52,8 +52,9 @@ public class doumei_mst_importer : AssetPostprocessor
                         
                         var p = new Entity_doumei_mst.Param();
 			
-					cell = row.GetCell(0); p.doumeiSrc = (int)(cell == null ? 0 : cell.NumericCellValue);
-					cell = row.GetCell(1); p.doumeiDst = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(0); p.senarioId = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(1); p.doumeiSrc = (int)(cell == null ? 0 : cell.NumericCellValue);
+					cell = row.GetCell(2); p.doumeiDst = (int)(cell == null ? 0 : cell.NumericCellValue);
 
                         data.param.Add(p);
                     }

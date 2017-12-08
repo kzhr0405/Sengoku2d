@@ -33,9 +33,10 @@ public class TouyouView : MonoBehaviour {
 		kamon.transform.localScale = new Vector2 (1, 1);
 		kamon.transform.localPosition = new Vector2 (-310, 0);
 		BusyoInfoGet busyoScript = new BusyoInfoGet ();
-		int daimyoId = busyoScript.getDaimyoId (busyoId);
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        int daimyoId = busyoScript.getDaimyoId (busyoId,senarioId);
 		if (daimyoId == 0) {
-			daimyoId = busyoScript.getDaimyoHst (busyoId);
+			daimyoId = busyoScript.getDaimyoHst (busyoId,senarioId);
 		}
 		string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString ();
 		kamon.GetComponent<Image> ().sprite = 

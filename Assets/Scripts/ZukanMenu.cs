@@ -150,10 +150,24 @@ public class ZukanMenu : MonoBehaviour {
         busyoMst.param.AddRange(tempBusyoMst.param);
         List<Busyo> busyoList = new List<Busyo>();
         BusyoInfoGet busyoScript = new BusyoInfoGet();
+        Debug.Log(senarioId);
         for (int i = 0; i < busyoMst.param.Count; i++) {
             int busyoId = busyoMst.param[i].id;
-            int daimyoId = busyoMst.param[i].daimyoId;
-            if (daimyoId == 0) daimyoId = busyoMst.param[i].daimyoHst;
+            int daimyoId = 0;
+            if (senarioId==1) {
+                daimyoId = busyoMst.param[i].daimyoId1;
+                if (daimyoId == 0) daimyoId = busyoMst.param[i].daimyoHst1;
+            }else if(senarioId==2) {
+                daimyoId = busyoMst.param[i].daimyoId2;
+                if (daimyoId == 0) daimyoId = busyoMst.param[i].daimyoHst2;
+            }else if (senarioId == 3) {
+                daimyoId = busyoMst.param[i].daimyoId3;
+                if (daimyoId == 0) daimyoId = busyoMst.param[i].daimyoHst3;
+            }else{
+                daimyoId = busyoMst.param[i].daimyoId;
+                if (daimyoId == 0) daimyoId = busyoMst.param[i].daimyoHst;
+            }
+            
             string busyoName = busyoScript.getName(busyoId,langId);
             string busyoRank = busyoMst.param[i].rank;
             int rankId = 0;
@@ -662,59 +676,90 @@ public class ZukanMenu : MonoBehaviour {
         string tenkahubuPath = "Prefabs/Item/Tenkahubu/tenkahubu";
         string nameWhitePath = "Prefabs/Zukan/NameWhite";
         string nameBlackPath = "Prefabs/Zukan/NameBlack";
-        Daimyo Daimyo = new Daimyo();
+        BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
         for (int i = 0; i < daimyoMst.param.Count; i++) {
-            int daimyoId = daimyoMst.param[i].daimyoId;
-            GameObject tenkahubuIcon = Instantiate(Resources.Load(tenkahubuPath)) as GameObject;
-            tenkahubuIcon.transform.SetParent(Content.transform);
-            tenkahubuIcon.transform.localScale = new Vector2(1, 1);
-            tenkahubuIcon.transform.localPosition = new Vector3(0, 0, 0);
+            if(daimyoMst.param[i].busyoId != 0 || daimyoMst.param[i].busyoId1 != 0 || daimyoMst.param[i].busyoId2 != 0 || daimyoMst.param[i].busyoId3 != 0) {
+                int daimyoId = daimyoMst.param[i].daimyoId;
+                GameObject tenkahubuIcon = Instantiate(Resources.Load(tenkahubuPath)) as GameObject;
+                tenkahubuIcon.transform.SetParent(Content.transform);
+                tenkahubuIcon.transform.localScale = new Vector2(1, 1);
+                tenkahubuIcon.transform.localPosition = new Vector3(0, 0, 0);
 
-            GameObject kamonIcon = tenkahubuIcon.transform.Find("kamon").gameObject;
-            string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
-            kamonIcon.GetComponent<Image>().sprite =
-                Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+                GameObject kamonIcon = tenkahubuIcon.transform.Find("kamon").gameObject;
+                string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
+                kamonIcon.GetComponent<Image>().sprite =
+                    Resources.Load(imagePath, typeof(Sprite)) as Sprite;
 
-            RectTransform kamonRect = kamonIcon.GetComponent<RectTransform>();
-            kamonRect.anchoredPosition3D = new Vector3(80, -95, 0);
-            kamonRect.sizeDelta = new Vector3(100, 100, 0);
+                RectTransform kamonRect = kamonIcon.GetComponent<RectTransform>();
+                kamonRect.anchoredPosition3D = new Vector3(80, -95, 0);
+                kamonRect.sizeDelta = new Vector3(100, 100, 0);
 
-            GameObject tenkaIcon = tenkahubuIcon.transform.Find("Image").gameObject;
-            RectTransform tenkaRect = tenkaIcon.GetComponent<RectTransform>();
-            tenkaRect.anchoredPosition3D = new Vector3(20, 10, 0);
-            tenkaRect.sizeDelta = new Vector3(80, 100, 0);
+                GameObject tenkaIcon = tenkahubuIcon.transform.Find("Image").gameObject;
+                RectTransform tenkaRect = tenkaIcon.GetComponent<RectTransform>();
+                tenkaRect.anchoredPosition3D = new Vector3(20, 10, 0);
+                tenkaRect.sizeDelta = new Vector3(80, 100, 0);
             
-            if (!gameClearDaimyoList.Contains(daimyoId.ToString())) {
-                tenkahubuIcon.GetComponent<Image>().color = backColor;
-                kamonIcon.GetComponent<Image>().color = kamonColor;
-                tenkahubuIcon.transform.Find("Image").GetComponent<Image>().enabled = false;
+                if (!gameClearDaimyoList.Contains(daimyoId.ToString())) {
+                    tenkahubuIcon.GetComponent<Image>().color = backColor;
+                    kamonIcon.GetComponent<Image>().color = kamonColor;
+                    tenkahubuIcon.transform.Find("Image").GetComponent<Image>().enabled = false;
 
-                GameObject nameObj = Instantiate(Resources.Load(nameWhitePath)) as GameObject;
-                nameObj.transform.SetParent(tenkahubuIcon.transform);
-                nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
-                
-                nameObj.GetComponent<Text>().text = Daimyo.getName(i, langId, senarioId);
-                
-                nameObj.transform.localPosition = new Vector2(0, 60);
-                Destroy(tenkahubuIcon.transform.Find("Hard").gameObject);
+                    GameObject nameObj = Instantiate(Resources.Load(nameWhitePath)) as GameObject;
+                    nameObj.transform.SetParent(tenkahubuIcon.transform);
+                    nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
 
-            }
-            else {
-                GameObject nameObj = Instantiate(Resources.Load(nameBlackPath)) as GameObject;
-                nameObj.transform.SetParent(tenkahubuIcon.transform);
-                nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
-                nameObj.GetComponent<Text>().text = Daimyo.getName(i, langId, senarioId);
-                nameObj.transform.localPosition = new Vector2(0, 60);
+                    string daimyoBusyoName = "";
+                    if(daimyoMst.param[i].busyoId !=0) {
+                        daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId, langId);
+                    }else {
+                        if (daimyoMst.param[i].busyoId1 != 0) {
+                            daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId1, langId);
+                        }else {
+                            if (daimyoMst.param[i].busyoId2 != 0) {
+                                daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId2, langId);
+                            }else {
+                                if (daimyoMst.param[i].busyoId3 != 0) {
+                                    daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId3, langId);
+                                }
+                            }
+                        }
+                    }
+                    nameObj.GetComponent<Text>().text = daimyoBusyoName;
 
-
-                if (!gameClearDaimyoHardList.Contains((daimyoId.ToString()))) {
+                    nameObj.transform.localPosition = new Vector2(0, 60);
                     Destroy(tenkahubuIcon.transform.Find("Hard").gameObject);
+
+                }else {
+                    GameObject nameObj = Instantiate(Resources.Load(nameBlackPath)) as GameObject;
+                    nameObj.transform.SetParent(tenkahubuIcon.transform);
+                    nameObj.transform.localScale = new Vector2(0.25f, 0.25f);
+                    string daimyoBusyoName = "";
+                    if (daimyoMst.param[i].busyoId != 0) {
+                        daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId, langId);
+                    }else {
+                        if (daimyoMst.param[i].busyoId1 != 0) {
+                            daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId1, langId);
+                        }else {
+                            if (daimyoMst.param[i].busyoId2 != 0) {
+                                daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId2, langId);
+                            }else {
+                                if (daimyoMst.param[i].busyoId3 != 0) {
+                                    daimyoBusyoName = BusyoInfoGet.getName(daimyoMst.param[i].busyoId3, langId);
+                                }
+                            }
+                        }
+                    }
+                    nameObj.GetComponent<Text>().text = daimyoBusyoName;
+                    nameObj.transform.localPosition = new Vector2(0, 60);
+
+
+                    if (!gameClearDaimyoHardList.Contains((daimyoId.ToString()))) {
+                        Destroy(tenkahubuIcon.transform.Find("Hard").gameObject);
+                    }
+
+
                 }
-
-
             }
-
-
         }
 
         //Qty				

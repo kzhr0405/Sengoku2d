@@ -277,7 +277,11 @@ public class EnemyAttackPop : MonoBehaviour {
         prefab.GetComponent<SimpleHP>().life = hp;
 
         //check
-        int myDaimyoBusyo = PlayerPrefs.GetInt("myDaimyoBusyo");
+        Daimyo Daimyo = new Daimyo();
+        int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+        int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
+
         if (busyoId == myDaimyoBusyo) {
             myDaimyoBusyoFlg = true;
         }

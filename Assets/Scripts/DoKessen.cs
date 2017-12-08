@@ -102,8 +102,8 @@ public class DoKessen : MonoBehaviour {
 			List<string> checkedList = new List<string> ();
 			string dstEngunDaimyoId = "";
 			string dstEngunSts = ""; //BusyoId-BusyoLv-ButaiQty-ButaiLv:
-
-			okDaimyoList = doumei.traceNeighborDaimyo(kuniId, daimyoId, doumeiList, seiryokuList, checkedList, okDaimyoList);
+            int senarioId = PlayerPrefs.GetInt("senarioId");
+            okDaimyoList = doumei.traceNeighborDaimyo(kuniId, daimyoId, doumeiList, seiryokuList, checkedList, okDaimyoList);
 			if (okDaimyoList.Count != 0) {
 				for (int k = 0; k < okDaimyoList.Count; k++) {
 					string engunDaimyo = okDaimyoList [k];
@@ -117,12 +117,12 @@ public class DoKessen : MonoBehaviour {
 						dstEngunFlg = true;
 						if (dstEngunDaimyoId != null && dstEngunDaimyoId != "") {
 							dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-							string tempEngunSts = main.getEngunSts (engunDaimyo);
+							string tempEngunSts = main.getEngunSts (engunDaimyo, senarioId);
 							dstEngunSts = dstEngunSts + ":" + engunDaimyo + "-" + tempEngunSts;
 
 						} else {
 							dstEngunDaimyoId = engunDaimyo;
-							string tempEngunSts = main.getEngunSts (engunDaimyo);
+							string tempEngunSts = main.getEngunSts (engunDaimyo,senarioId);
 							dstEngunSts = engunDaimyo + "-" + tempEngunSts;
 
 						}

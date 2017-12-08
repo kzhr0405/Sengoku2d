@@ -132,7 +132,7 @@ public class MainEventHandler : MonoBehaviour {
 										} else {
 											//non exist
 											//gaikou check
-											gaikouValue = gaikou.getGaikouValue (int.Parse (eDaimyo), int.Parse (tDaimyo));
+											gaikouValue = gaikou.getGaikouValue (int.Parse (eDaimyo), int.Parse (tDaimyo), senarioId);
 
 										}
 									}
@@ -177,8 +177,8 @@ public class MainEventHandler : MonoBehaviour {
 												//exsit
 												gaikouValue = PlayerPrefs.GetInt (gaikouTemp);
 											} else {
-												//non exist
-												gaikouValue = gaikou.getGaikouValue (int.Parse (eDaimyo), int.Parse (tDaimyo));
+                                                //non exist
+                                                gaikouValue = gaikou.getGaikouValue (int.Parse (eDaimyo), int.Parse (tDaimyo),senarioId);
 											}
 										}
 										worstGaikouValue = gaikouValue;
@@ -317,7 +317,7 @@ public class MainEventHandler : MonoBehaviour {
 														dstEngunFlg = true;
 														if (dstEngunDaimyoId != null && dstEngunDaimyoId != "") {
 															dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-															string tempEngunSts = engunDaimyo + "-" + getEngunSts(engunDaimyo);
+															string tempEngunSts = engunDaimyo + "-" + getEngunSts(engunDaimyo, senarioId);
 															int tempEngunHei = getEngunHei (tempEngunSts);
 															dstEngunHei = dstEngunHei + ":" + tempEngunHei.ToString ();
 															totalEngunHei = totalEngunHei + tempEngunHei;
@@ -325,7 +325,7 @@ public class MainEventHandler : MonoBehaviour {
 
 														} else {
 															dstEngunDaimyoId = engunDaimyo;
-															string tempEngunSts = engunDaimyo + "-" + getEngunSts(engunDaimyo);
+															string tempEngunSts = engunDaimyo + "-" + getEngunSts(engunDaimyo, senarioId);
 															int tempEngunHei = getEngunHei (tempEngunSts);
 															dstEngunHei = tempEngunHei.ToString ();
 															totalEngunHei = tempEngunHei;
@@ -498,7 +498,7 @@ public class MainEventHandler : MonoBehaviour {
 									} else {
 										//non exist
 										//gaikou check
-										gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+										gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId, senarioId);
 
 									}
 								}
@@ -546,7 +546,7 @@ public class MainEventHandler : MonoBehaviour {
 											gaikouValue = PlayerPrefs.GetInt (gaikouTemp);
 										} else {
 											//non exist
-											gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+											gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId, senarioId);
 										}
 									}
 									bestGaikouValue = gaikouValue;
@@ -1014,7 +1014,7 @@ public class MainEventHandler : MonoBehaviour {
                     if(srcKuniId !=0 && dstKuniId !=0) {
                         //run
                         string myDaimyoName = daimyo.getName(myDaimyo,langId, senarioId);
-                        messageList.Add(createKokuninGunzei(srcKuniId, dstKuniId, srcDaimyoId, myDaimyo, srcDaimyoName, myDaimyoName, kokuninReject, langId));
+                        messageList.Add(createKokuninGunzei(srcKuniId, dstKuniId, srcDaimyoId, myDaimyo, srcDaimyoName, myDaimyoName, kokuninReject, langId, senarioId));
 
                         //set & reset
                         PlayerPrefs.SetInt("kokuninReject",0);
@@ -1464,8 +1464,9 @@ public class MainEventHandler : MonoBehaviour {
 	}
 
 	public int UpYukouValueWithOther(int srcDaimyoId, int dstDaimyoId){
+        int senarioId = PlayerPrefs.GetInt("senarioId");
 
-		string temp = "";
+        string temp = "";
 		int addYukoudo = 0;
 
 		if (srcDaimyoId < dstDaimyoId) {
@@ -1487,7 +1488,7 @@ public class MainEventHandler : MonoBehaviour {
 
 		} else {
 			//1st time
-			int gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+			int gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId, senarioId);
 			addYukoudo = UnityEngine.Random.Range (5, 16);
 			int total = gaikouValue + addYukoudo;
 			if (total >= 100) {
@@ -1522,8 +1523,9 @@ public class MainEventHandler : MonoBehaviour {
 	}
 
 	public int DownYukouValueWithOther(int srcDaimyoId, int dstDaimyoId){
-		
-		string temp = "";
+        int senarioId = PlayerPrefs.GetInt("senarioId");
+
+        string temp = "";
 		int reduceYukoudo = 0;
 
 		if (srcDaimyoId < dstDaimyoId) {
@@ -1544,7 +1546,7 @@ public class MainEventHandler : MonoBehaviour {
 			flush ();
 		} else {
 			//1st time
-			int gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId);
+			int gaikouValue = gaikou.getGaikouValue (srcDaimyoId, dstDaimyoId, senarioId);
 			reduceYukoudo = UnityEngine.Random.Range (5, 16);
 			int total = gaikouValue - reduceYukoudo;
 			if (total < 0) {
@@ -1560,19 +1562,28 @@ public class MainEventHandler : MonoBehaviour {
 	}
 
 
-	public int randomEngunBusyo(int activeDaimyoId){
+	public int randomEngunBusyo(int activeDaimyoId, int senarioId) {
 		int engunBusyoId = 0;
 
 		Entity_busyo_mst busyoMst  = Resources.Load ("Data/busyo_mst") as Entity_busyo_mst;
-		Entity_daimyo_mst daimyoMst = Resources.Load ("Data/daimyo_mst") as Entity_daimyo_mst;
-		int daimyoBusyoId = daimyoMst.param[activeDaimyoId-1].busyoId;
-		List<int> busyoList = new List<int> ();
+        Daimyo Daimyo = new Daimyo();
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(activeDaimyoId, senarioId);
+        List<int> busyoList = new List<int> ();
 		
 		for(int i=0; i<busyoMst.param.Count; i++){
 			int busyoId = busyoMst.param[i].id;
-			int daimyoId = busyoMst.param[i].daimyoId;
-			
-			if(daimyoId == activeDaimyoId){
+            int daimyoId = 0;
+            if (senarioId == 1) {
+                daimyoId = busyoMst.param[i].daimyoId1;
+            }else if (senarioId == 2) {
+                daimyoId = busyoMst.param[i].daimyoId2;
+            }else if (senarioId == 3) {
+                daimyoId = busyoMst.param[i].daimyoId3;
+            }else {
+                daimyoId = busyoMst.param[i].daimyoId;
+            }
+            
+            if (daimyoId == activeDaimyoId){
 
 				busyoList.Add (busyoId);
 			}
@@ -1584,7 +1595,7 @@ public class MainEventHandler : MonoBehaviour {
 		return engunBusyoId;
 	}
 
-	public string getEngunSts(string engunDaimyoId){
+	public string getEngunSts(string engunDaimyoId, int senarioId) {
 		string engunSts = "";//BusyoId-BusyoLv-ButaiQty-ButaiLv:
 		
 		string seiryoku = PlayerPrefs.GetString ("seiryoku");
@@ -1602,7 +1613,7 @@ public class MainEventHandler : MonoBehaviour {
 		GameObject targetKuni = GameObject.Find ("KuniIconView");
 		SendParam sendParam = targetKuni.transform.Find (kuniId.ToString ()).GetComponent<SendParam> ();
 
-		int busyoId = randomEngunBusyo(int.Parse(engunDaimyoId));
+		int busyoId = randomEngunBusyo(int.Parse(engunDaimyoId), senarioId);
 		int busyoLv = sendParam.busyoLv;
 		int butaiQty = sendParam.butaiQty;
 		int butaiLv = sendParam.butaiLv;
@@ -1629,17 +1640,27 @@ public class MainEventHandler : MonoBehaviour {
     }
 
 
-    public int randomEngunBusyoWODuplication(int activeDaimyoId, List<int>doneBusyoList) {
+    public int randomEngunBusyoWODuplication(int activeDaimyoId, List<int>doneBusyoList, int senarioId) {
         int engunBusyoId = 0;
 
         Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
-        Entity_daimyo_mst daimyoMst = Resources.Load("Data/daimyo_mst") as Entity_daimyo_mst;
-        int daimyoBusyoId = daimyoMst.param[activeDaimyoId - 1].busyoId;
+        Daimyo Daimyo = new Daimyo();
+        int daimyoBusyoId = Daimyo.getDaimyoBusyoId(activeDaimyoId, senarioId);
         List<int> busyoList = new List<int>();
 
         for (int i = 0; i < busyoMst.param.Count; i++) {
-            int busyoId = busyoMst.param[i].id;
-            int daimyoId = busyoMst.param[i].daimyoId;
+            int busyoId = busyoMst.param[i].id;            
+            int daimyoId = 0;
+            if (senarioId == 1) {
+                daimyoId = busyoMst.param[i].daimyoId1;
+            }else if (senarioId == 2) {
+                daimyoId = busyoMst.param[i].daimyoId2;
+            }else if (senarioId == 3) {
+                daimyoId = busyoMst.param[i].daimyoId3;
+            }else {
+                daimyoId = busyoMst.param[i].daimyoId;
+            }            
+
             if (daimyoId == activeDaimyoId) {
                 busyoList.Add(busyoId);
             }
@@ -1656,7 +1677,7 @@ public class MainEventHandler : MonoBehaviour {
     }
 
 
-    public string getSomeEngunSts(string engunDaimyoId, string enemyEngunList, List<string> seiryokuList) {
+    public string getSomeEngunSts(string engunDaimyoId, string enemyEngunList, List<string> seiryokuList, int senarioId) {
 
         List<string> daimyoEnguniList = new List<string>();
         char[] delimiterChars = { ':' };
@@ -1690,7 +1711,7 @@ public class MainEventHandler : MonoBehaviour {
         GameObject targetKuni = GameObject.Find("KuniIconView");
         SendParam sendParam = targetKuni.transform.Find(kuniId.ToString()).GetComponent<SendParam>();
 
-        int busyoId = randomEngunBusyoWODuplication(int.Parse(engunDaimyoId), doneBusyoList);
+        int busyoId = randomEngunBusyoWODuplication(int.Parse(engunDaimyoId), doneBusyoList, senarioId);
         int busyoLv = sendParam.busyoLv;
         int butaiQty = sendParam.butaiQty;
         int butaiLv = sendParam.butaiLv;
@@ -2008,7 +2029,7 @@ public class MainEventHandler : MonoBehaviour {
         PlayerPrefs.Flush();        
     }
 
-    public string createKokuninGunzei(int srcKuniId, int dstKuniId, int srcDaimyoId, int dstDaimyoId, string srcDaimyoName, string dstDaimyoName, int kokuninReject, int langId) {
+    public string createKokuninGunzei(int srcKuniId, int dstKuniId, int srcDaimyoId, int dstDaimyoId, string srcDaimyoName, string dstDaimyoName, int kokuninReject, int langId, int senarioId) {
         string msg = "";
 
         string path = "Prefabs/Map/Gunzei";
@@ -2097,7 +2118,7 @@ public class MainEventHandler : MonoBehaviour {
                     dstEngunFlg = true;
                     if (dstEngunDaimyoId != null && dstEngunDaimyoId != "") {
                         dstEngunDaimyoId = dstEngunDaimyoId + ":" + engunDaimyo;
-                        string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo);
+                        string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo, senarioId);
                         int tempEngunHei = mainEvent.getEngunHei(tempEngunSts);
                         dstEngunHei = dstEngunHei + ":" + tempEngunHei.ToString();
                         totalEngunHei = totalEngunHei + tempEngunHei;
@@ -2105,7 +2126,7 @@ public class MainEventHandler : MonoBehaviour {
 
                     }else {
                         dstEngunDaimyoId = engunDaimyo;
-                        string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo);
+                        string tempEngunSts = engunDaimyo + "-" + mainEvent.getEngunSts(engunDaimyo, senarioId);
                         int tempEngunHei = mainEvent.getEngunHei(tempEngunSts);
                         dstEngunHei = tempEngunHei.ToString();
                         totalEngunHei = tempEngunHei;

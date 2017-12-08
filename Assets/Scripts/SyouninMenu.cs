@@ -130,9 +130,9 @@ public class SyouninMenu : MonoBehaviour {
 				YRObj.GetComponent<Button>().enabled = false;
 				YRObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[0];
 				YRObj.name = "CyouheiYR";
-				RectTransform trn1 = YRObj.transform.Find("Qty").GetComponent<RectTransform>();
-				trn1.anchoredPosition3D = new Vector3(-30,-40,0);
-				colorByRankChanger(YRObj, busshiRankList[0]);
+                YRObj.transform.Find("Qty").transform.localScale = new Vector3(0.3f,0.35f,0);
+                YRObj.transform.Find("Qty").transform.localPosition = new Vector3(0, -30, 0);                
+                colorByRankChanger(YRObj, busshiRankList[0]);
 
 				string itemCdYR = YRObj.name + busshiRankList[0];
 				float unitPriceYR = (float)item.getUnitPrice(itemCdYR);
@@ -151,9 +151,9 @@ public class SyouninMenu : MonoBehaviour {
 				KBObj.GetComponent<Button>().enabled = false;
 				KBObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[1];
 				KBObj.name = "CyouheiKB";
-				RectTransform trn2 = KBObj.transform.Find("Qty").GetComponent<RectTransform>();
-				trn2.anchoredPosition3D = new Vector3(-30,-40,0);
-				colorByRankChanger(KBObj, busshiRankList[1]);
+                KBObj.transform.Find("Qty").transform.localScale = new Vector3(0.3f, 0.35f, 0);
+                KBObj.transform.Find("Qty").transform.localPosition = new Vector3(0, -30, 0);
+                colorByRankChanger(KBObj, busshiRankList[1]);
 
 				string itemCdKB = KBObj.name + busshiRankList[1];
 				float unitPriceKB = (float)item.getUnitPrice(itemCdKB);
@@ -173,9 +173,9 @@ public class SyouninMenu : MonoBehaviour {
 				TPObj.GetComponent<Button>().enabled = false;
 				TPObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[2];
 				TPObj.name = "CyouheiTP";
-				RectTransform trn3 = TPObj.transform.Find("Qty").GetComponent<RectTransform>();
-				trn3.anchoredPosition3D = new Vector3(-30,-40,0);
-				colorByRankChanger(TPObj, busshiRankList[2]);
+                TPObj.transform.Find("Qty").transform.localScale = new Vector3(0.3f, 0.35f, 0);
+                TPObj.transform.Find("Qty").transform.localPosition = new Vector3(0, -30, 0);
+                colorByRankChanger(TPObj, busshiRankList[2]);
 
 				string itemCdTP = TPObj.name + busshiRankList[2];
 				float unitPriceTP = (float)item.getUnitPrice(itemCdTP);
@@ -195,9 +195,9 @@ public class SyouninMenu : MonoBehaviour {
 				YMObj.GetComponent<Button>().enabled = false;
 				YMObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[3];
 				YMObj.name = "CyouheiYM";
-				RectTransform trn4 = YMObj.transform.Find("Qty").GetComponent<RectTransform>();
-				trn4.anchoredPosition3D = new Vector3(-30,-40,0);
-				colorByRankChanger(YMObj, busshiRankList[3]);
+                YMObj.transform.Find("Qty").transform.localScale = new Vector3(0.3f, 0.35f, 0);
+                YMObj.transform.Find("Qty").transform.localPosition = new Vector3(0, -30, 0);
+                colorByRankChanger(YMObj, busshiRankList[3]);
 
 				string itemCdYM = YMObj.name + busshiRankList[3];
 				float unitPriceYM = (float)item.getUnitPrice(itemCdYM);
@@ -217,9 +217,9 @@ public class SyouninMenu : MonoBehaviour {
 				SNBObj.GetComponent<Button>().enabled = false;
 				SNBObj.transform.Find("Qty").GetComponent<Text>().text = busshiQtyList[4];
 				SNBObj.name = "Shinobi";
-				RectTransform trn5 = SNBObj.transform.Find("Qty").GetComponent<RectTransform>();
-				trn5.anchoredPosition3D = new Vector3(-30,-40,0);
-				RectTransform trnContent = SNBObj.transform.Find("Shinobi").GetComponent<RectTransform>();
+                SNBObj.transform.Find("Qty").transform.localScale = new Vector3(0.3f, 0.35f, 0);
+                SNBObj.transform.Find("Qty").transform.localPosition = new Vector3(0, -30, 0);
+                RectTransform trnContent = SNBObj.transform.Find("Shinobi").GetComponent<RectTransform>();
 				trnContent.sizeDelta = new Vector3(95,120,0);
 				colorByRankChanger(SNBObj, busshiRankList[4]);
 
@@ -305,9 +305,11 @@ public class SyouninMenu : MonoBehaviour {
 				
 				//check cyadougu
 				List<string> kahouList = new List<string>();
-				int daimyoBusyoId = PlayerPrefs.GetInt("myDaimyoBusyo");
 				int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
-				BusyoInfoGet busyoInfo = new BusyoInfoGet ();
+                int senarioId = PlayerPrefs.GetInt("senarioId");
+                Daimyo Daimyo = new Daimyo();
+                int daimyoBusyoId = Daimyo.getDaimyoBusyoId(myDaimyoId, senarioId);
+                BusyoInfoGet busyoInfo = new BusyoInfoGet ();
 				string daimyoBusyoName = busyoInfo.getName (daimyoBusyoId,langId);
 
 				string tmp = "kahou" + daimyoBusyoId;

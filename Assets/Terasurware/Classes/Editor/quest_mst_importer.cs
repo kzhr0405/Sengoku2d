@@ -59,6 +59,8 @@ public class quest_mst_importer : AssetPostprocessor
 					cell = row.GetCell(4); p.amnt = (int)(cell == null ? 0 : cell.NumericCellValue);
 					cell = row.GetCell(5); p.titleEng = (cell == null ? "" : cell.StringCellValue);
 					cell = row.GetCell(6); p.expEng = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(7); p.titleSChn = (cell == null ? "" : cell.StringCellValue);
+					cell = row.GetCell(8); p.expSChn = (cell == null ? "" : cell.StringCellValue);
 
                         data.param.Add(p);
                     }

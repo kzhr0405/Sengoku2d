@@ -73,6 +73,7 @@ public class RonkouScene : MonoBehaviour {
 	public string createScrollView(List<string> myBusyo_list, string minBusyoId, GameObject mainController, bool initflg){
         //Scroll View
         int langId = PlayerPrefs.GetInt("langId");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         string myBusyoString = "";       
         BusyoInfoGet busyoScript = new BusyoInfoGet();
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
@@ -152,8 +153,8 @@ public class RonkouScene : MonoBehaviour {
                 string busyoNameSort = BusyoInfoGet.getName(busyoId,langId);
                 string rank = BusyoInfoGet.getRank(busyoId);
                 string heisyu = BusyoInfoGet.getHeisyu(busyoId);
-                int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
-                int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
+                int daimyoId = BusyoInfoGet.getDaimyoId(busyoId,senarioId);
+                int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId,senarioId);
                 if (daimyoId == 0) daimyoId = daimyoHst;
                 int lv = PlayerPrefs.GetInt(busyoId.ToString());
                 baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank,0, heisyu, daimyoId, daimyoHst, lv,0,0,0,0,0,0));                
@@ -231,9 +232,9 @@ public class RonkouScene : MonoBehaviour {
             kamon.transform.SetParent(busyo.transform);
             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
             kamon.transform.localPosition = new Vector2(-15, -12);
-            int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name));
+            int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name),senarioId);
             if (daimyoId == 0) {
-                daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name));
+                daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name),senarioId);
             }
             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
             kamon.GetComponent<Image>().sprite =

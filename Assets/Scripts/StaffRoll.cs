@@ -92,53 +92,54 @@ public class StaffRoll : MonoBehaviour {
         int busyoDama = PlayerPrefs.GetInt ("busyoDama");
 		int newBusyoDama = busyoDama + 1000;
 		PlayerPrefs.SetInt ("busyoDama", newBusyoDama);
-		
+
 
 
         //Get Daimyo Busyo
-        Daimyo daimyoScript = new Daimyo();
-        int daimyoId = PlayerPrefs.GetInt("myDaimyo");
-        int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(daimyoId,senarioId);
+        if(senarioId==0) {
+            Daimyo daimyoScript = new Daimyo();
+            int daimyoId = PlayerPrefs.GetInt("myDaimyo");
+            int daimyoBusyoId = daimyoScript.getDaimyoBusyoId(daimyoId,senarioId);
 
-        string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
-        List<string> zukanBusyoHstList = new List<string>();
-        if (zukanBusyoHst != null && zukanBusyoHst != "") {
-            if (zukanBusyoHst.Contains(",")) {
-                zukanBusyoHstList = new List<string>(zukanBusyoHst.Split(delimiterChars));
-            }else {
-                zukanBusyoHstList.Add(zukanBusyoHst);
-            }
-        }
-        if(!zukanBusyoHstList.Contains(daimyoBusyoId.ToString())) {
+            string zukanBusyoHst = PlayerPrefs.GetString("zukanBusyoHst");
+            List<string> zukanBusyoHstList = new List<string>();
             if (zukanBusyoHst != null && zukanBusyoHst != "") {
-                zukanBusyoHst = zukanBusyoHst + "," + daimyoBusyoId.ToString();
-            }else {
-                zukanBusyoHst = daimyoBusyoId.ToString();
-            }
-            PlayerPrefs.SetString("zukanBusyoHst", zukanBusyoHst);
-        }
-
-        if (daimyoScript.daimyoBusyoCheck(daimyoBusyoId)) {
-            string gacyaDaimyoHst = PlayerPrefs.GetString("gacyaDaimyoHst");
-            List<string> gacyaDaimyoHstList = new List<string>();
-            if (gacyaDaimyoHst != null && gacyaDaimyoHst != "") {
-                if (gacyaDaimyoHst.Contains(",")) {
-                    gacyaDaimyoHstList = new List<string>(gacyaDaimyoHst.Split(delimiterChars));
+                if (zukanBusyoHst.Contains(",")) {
+                    zukanBusyoHstList = new List<string>(zukanBusyoHst.Split(delimiterChars));
                 }else {
-                    gacyaDaimyoHstList.Add(gacyaDaimyoHst);
+                    zukanBusyoHstList.Add(zukanBusyoHst);
                 }
             }
-            if(!gacyaDaimyoHstList.Contains(daimyoBusyoId.ToString())) {
+            if(!zukanBusyoHstList.Contains(daimyoBusyoId.ToString())) {
+                if (zukanBusyoHst != null && zukanBusyoHst != "") {
+                    zukanBusyoHst = zukanBusyoHst + "," + daimyoBusyoId.ToString();
+                }else {
+                    zukanBusyoHst = daimyoBusyoId.ToString();
+                }
+                PlayerPrefs.SetString("zukanBusyoHst", zukanBusyoHst);
+            }
+
+            if (daimyoScript.daimyoBusyoCheck(daimyoBusyoId)) {
+                string gacyaDaimyoHst = PlayerPrefs.GetString("gacyaDaimyoHst");
+                List<string> gacyaDaimyoHstList = new List<string>();
                 if (gacyaDaimyoHst != null && gacyaDaimyoHst != "") {
-                    gacyaDaimyoHst = gacyaDaimyoHst + "," + daimyoBusyoId.ToString();
+                    if (gacyaDaimyoHst.Contains(",")) {
+                        gacyaDaimyoHstList = new List<string>(gacyaDaimyoHst.Split(delimiterChars));
+                    }else {
+                        gacyaDaimyoHstList.Add(gacyaDaimyoHst);
+                    }
                 }
-                else {
-                    gacyaDaimyoHst = daimyoBusyoId.ToString();
+                if(!gacyaDaimyoHstList.Contains(daimyoBusyoId.ToString())) {
+                    if (gacyaDaimyoHst != null && gacyaDaimyoHst != "") {
+                        gacyaDaimyoHst = gacyaDaimyoHst + "," + daimyoBusyoId.ToString();
+                    }
+                    else {
+                        gacyaDaimyoHst = daimyoBusyoId.ToString();
+                    }
+                    PlayerPrefs.SetString("gacyaDaimyoHst", gacyaDaimyoHst);
                 }
-                PlayerPrefs.SetString("gacyaDaimyoHst", gacyaDaimyoHst);
             }
         }
-
         PlayerPrefs.Flush();
 
 

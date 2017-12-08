@@ -14,6 +14,7 @@ public class JinkeiScene : MonoBehaviour {
 	void Start () {
 
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         if (!tutorialDoneFlg || Application.loadedLevelName != "tutorialHyojyo") {
 
             //Kamon
@@ -103,10 +104,10 @@ public class JinkeiScene : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0)
                             {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -182,10 +183,10 @@ public class JinkeiScene : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0)
                             {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -259,10 +260,10 @@ public class JinkeiScene : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0)
                             {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -335,10 +336,10 @@ public class JinkeiScene : MonoBehaviour {
                             kamon.transform.SetParent(chldBusyo.transform);
                             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                             kamon.transform.localPosition = new Vector2(-15, -12);
-                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                            int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                             if (daimyoId == 0)
                             {
-                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                                daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                             }
                             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                             kamon.GetComponent<Image>().sprite =
@@ -435,9 +436,9 @@ public class JinkeiScene : MonoBehaviour {
                         kamon.transform.SetParent(chldBusyo.transform);
                         kamon.transform.localScale = new Vector2(0.1f, 0.1f);
                         kamon.transform.localPosition = new Vector2(-15, -12);
-                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name));
+                        int daimyoId = busyoScript.getDaimyoId(int.Parse(chldBusyo.name), senarioId);
                         if (daimyoId == 0) {
-                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name));
+                            daimyoId = busyoScript.getDaimyoHst(int.Parse(chldBusyo.name), senarioId);
                         }
                         string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                         kamon.GetComponent<Image>().sprite =
@@ -542,13 +543,14 @@ public class JinkeiScene : MonoBehaviour {
         //Sort by DaimyoId & LV
         List<Busyo> baseBusyoList = new List<Busyo>();
         BusyoInfoGet BusyoInfoGet = new BusyoInfoGet();
+        int senarioId = PlayerPrefs.GetInt("senarioId");
         foreach (string busyoIdString in myBusyo_list) {
             int busyoId = int.Parse(busyoIdString);
             string busyoNameSort = BusyoInfoGet.getName(busyoId,langId);
             string rank = BusyoInfoGet.getRank(busyoId);
             string heisyu = BusyoInfoGet.getHeisyu(busyoId);
-            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId);
-            int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId);
+            int daimyoId = BusyoInfoGet.getDaimyoId(busyoId, senarioId);
+            int daimyoHst = BusyoInfoGet.getDaimyoHst(busyoId, senarioId);
             if (daimyoId == 0) daimyoId = daimyoHst;
             int lv = PlayerPrefs.GetInt(busyoId.ToString());
             baseBusyoList.Add(new Busyo(busyoId, busyoNameSort, rank, 0,heisyu, daimyoId, daimyoHst, lv,0,0,0,0,0,0));
@@ -609,9 +611,9 @@ public class JinkeiScene : MonoBehaviour {
                 kamon.transform.SetParent(busyo.transform);
                 kamon.transform.localScale = new Vector2(0.1f,0.1f);
                 kamon.transform.localPosition = new Vector2(-15, -12);
-                int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name));
+                int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name), senarioId);
                 if (daimyoId == 0){
-                    daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name));
+                    daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name), senarioId);
                 }
                 string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
                 kamon.GetComponent<Image>().sprite =
@@ -670,9 +672,10 @@ public class JinkeiScene : MonoBehaviour {
             kamon.transform.SetParent(busyo.transform);
             kamon.transform.localScale = new Vector2(0.1f, 0.1f);
             kamon.transform.localPosition = new Vector2(-15, -12);
-            int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name));
+            int senarioId = PlayerPrefs.GetInt("senarioId");
+            int daimyoId = busyoScript.getDaimyoId(int.Parse(busyo.name), senarioId);
             if (daimyoId == 0) {
-                daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name));
+                daimyoId = busyoScript.getDaimyoHst(int.Parse(busyo.name), senarioId);
             }
             string imagePath = "Prefabs/Kamon/MyDaimyoKamon/" + daimyoId.ToString();
             kamon.GetComponent<Image>().sprite =

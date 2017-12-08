@@ -501,7 +501,7 @@ public class AttackNaiseiView : MonoBehaviour {
             int arrowDaimyoId = int.Parse(seiryokuList[srcKuniId-1]);
             string daimyoName = daimyoScript.getName(arrowDaimyoId,langId, senarioId);
             arrowDaimyo.transform.Find("Effect").GetComponent<Text>().text = daimyoName;
-            arrowDaimyo.transform.Find("Effect").transform.localScale = new Vector2(0.12f,0.12f);
+            arrowDaimyo.transform.Find("Effect").transform.localScale = new Vector2(0.6f,0.6f);
             string kamonPath = "Prefabs/Kamon/MyDaimyoKamon/" + arrowDaimyoId.ToString();
             arrowDaimyo.GetComponent<Image>().sprite =
                 Resources.Load(kamonPath, typeof(Sprite)) as Sprite;

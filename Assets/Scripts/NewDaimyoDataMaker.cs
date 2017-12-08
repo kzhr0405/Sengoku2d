@@ -2,17 +2,31 @@
 using System.Collections;
 using PlayerPrefs = PreviewLabs.PlayerPrefs;
 using System.Collections.Generic;
+using System.Linq;
 
 public class NewDaimyoDataMaker : MonoBehaviour {
 
-	public void dataMake(bool busyoExitFlg, int newDaimyo, int newDaimyoBusyo, string heisyu, bool sameDaimyoFlg){
+	public void dataMake(bool busyoExitFlg, int newDaimyo, int newDaimyoBusyo, string heisyu, bool sameDaimyoFlg, int senarioId) {
 
-		/*******************************/
-		/*****      Base Value     *****/
-		/*******************************/
-		System.DateTime now = System.DateTime.Now;
+        /*******************************/
+        /*****      Base Value     *****/
+        /*******************************/
+        int oldSenarioId = PlayerPrefs.GetInt("senarioId");
+        System.DateTime now = System.DateTime.Now;
 		PlayerPrefs.SetString ("lasttime", now.ToString ());
-		PlayerPrefs.SetString ("yearSeason","1560,1");
+        if(senarioId==1) {
+            PlayerPrefs.SetString("yearSeason", "1572,1");
+            PlayerPrefs.SetInt("syogunDaimyoId", 14);
+        }else if(senarioId==2) {
+            PlayerPrefs.SetString("yearSeason", "1582,2");
+            PlayerPrefs.DeleteKey("syogunDaimyoId");
+        }else if(senarioId==3) {
+            PlayerPrefs.SetString("yearSeason", "1600,2");
+            PlayerPrefs.DeleteKey("syogunDaimyoId");
+        }else {
+            PlayerPrefs.SetString("yearSeason", "1560,1");
+            PlayerPrefs.SetInt("syogunDaimyoId", 14);            
+        }		
 		PlayerPrefs.DeleteKey("gameClearFlg");
 		PlayerPrefs.DeleteKey("gameClearItemGetFlg");
 		PlayerPrefs.DeleteKey("gameOverFlg");
@@ -112,8 +126,7 @@ public class NewDaimyoDataMaker : MonoBehaviour {
         /*****      Cyoutei & Bakuhu Value    *****/
         /*******************************/
         PlayerPrefs.DeleteKey ("cyoutekiDaimyo");
-		PlayerPrefs.DeleteKey ("cyouteiPoint");
-		PlayerPrefs.SetInt ("syogunDaimyoId",14);
+		PlayerPrefs.DeleteKey ("cyouteiPoint");		
 		PlayerPrefs.DeleteKey ("bakuhuTobatsuDaimyoId");
 		PlayerPrefs.DeleteKey ("soubujireiFlg");
 
@@ -121,7 +134,6 @@ public class NewDaimyoDataMaker : MonoBehaviour {
         /*******************************/
         /*****      Busyo Value    *****/
         /*******************************/
-
         //Jyosyu Delete
         Entity_busyo_mst busyoMst = Resources.Load("Data/busyo_mst") as Entity_busyo_mst;
         for (int i=0; i< busyoMst.param.Count; i++) {
@@ -136,11 +148,14 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 
         char[] delimiterChars = { ',' };
 		if (!sameDaimyoFlg) {
-			//Old Daimyo
-			//Delete Previous Daimyo Busyo in the case of it has never been gotten by Gacya
-			int preDaimyoBusyoId = PlayerPrefs.GetInt ("myDaimyoBusyo");
+            //Old Daimyo
+            //Delete Previous Daimyo Busyo in the case of it has never been gotten by Gacya
+            Daimyo Daimyo = new Daimyo();
+            int myDaimyo = PlayerPrefs.GetInt("myDaimyo");
+            int preDaimyoBusyoId = Daimyo.getDaimyoBusyoId(myDaimyo, senarioId);
            
             string gacyaDaimyoHst = PlayerPrefs.GetString ("gacyaDaimyoHst");
+            Debug.Log(gacyaDaimyoHst);
 			List<string> gacyaDaimyoHstList = new List<string> ();
 
 			if (gacyaDaimyoHst != null && gacyaDaimyoHst != "") {
@@ -152,9 +167,8 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 			}
 			if (!gacyaDaimyoHstList.Contains (preDaimyoBusyoId.ToString ())) {
 				//delete daimyo
-
 				//delete my busyo
-				string myBusyo = PlayerPrefs.GetString ("myBusyo");
+				string myBusyo = PlayerPrefs.GetString ("myBusyo");                
 				List<string> myBusyoList = new List<string> ();
 				if (myBusyo.Contains (",")) {
 					myBusyoList = new List<string> (myBusyo.Split (delimiterChars));
@@ -173,7 +187,7 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 						myNewBusyo = myNewBusyo + "," + myBusyoList [i];				
 					}
 				}
-
+                Debug.Log(myBusyo + " > " + myNewBusyo);
 				PlayerPrefs.SetString ("myBusyo", myNewBusyo);
 				int myBusyoQty = PlayerPrefs.GetInt ("myBusyoQty");
 				myBusyoQty = myBusyoQty - 1;
@@ -301,7 +315,6 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 					PlayerPrefs.SetInt (tmpMap, newDaimyoBusyo);
 				}
 			}
-
 		}
 
 		//My Daimyo Busyo
@@ -310,11 +323,13 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 		PlayerPrefs.DeleteKey ("usedBusyo");
 
 
-		/*******************************/
-		/*****    	  Kuni Value     *****/
-		/*******************************/
-		string newSeiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
-		PlayerPrefs.SetString ("seiryoku",newSeiryoku);
+        /*******************************/
+        /*****    	  Kuni Value     *****/
+        /*******************************/
+        KuniInfo KuniInfo = new KuniInfo();        
+        string newSeiryoku = KuniInfo.getDefaultSeiryoku(senarioId);        
+        //string newSeiryoku = "1,2,3,4,5,6,7,8,3,4,9,10,12,11,13,14,15,16,3,17,18,17,19,8,19,19,20,21,22,23,24,25,26,27,28,29,30,31,31,32,33,34,35,35,36,37,38,38,38,38,31,31,31,39,40,41,41,41,41,42,43,44,45,45,46";
+        PlayerPrefs.SetString ("seiryoku",newSeiryoku);
 		List<string> seiryokuList = new List<string> ();
 		seiryokuList = new List<string> (newSeiryoku.Split (delimiterChars));
 		string newClearedKuni = "";
@@ -389,26 +404,33 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 
 		//My Gaikou
 		Gaikou gaikou = new Gaikou ();
-		for(int l=1; l<47; l++){
-			int value = gaikou.getGaikouValue(newDaimyo,l);
-			string temp = "gaikou" + l.ToString();
+        List<string> daimyoList = new List<string>(seiryokuList);
+        daimyoList.Distinct();
+
+        for (int l=0; l< daimyoList.Count; l++){
+            int otherDaimyo = int.Parse(daimyoList[l]);
+			int value = gaikou.getGaikouValue(newDaimyo, otherDaimyo,senarioId);
+			string temp = "gaikou" + otherDaimyo.ToString();
 			PlayerPrefs.SetInt (temp, value);
 
-			string metsubouTemp = "metsubou" + l.ToString();
+			string metsubouTemp = "metsubou" + otherDaimyo.ToString();
 			PlayerPrefs.DeleteKey (metsubouTemp);
 		}
 
 		//Other Daimyo Gaikou
-		for(int x =2; x<47; x++ ){
-			for(int y=2; y<47; y++){
-				if(x != y){
-					string temp = x.ToString() + "gaikou" + y.ToString();
-					string temp2 = x.ToString() + "key" + y.ToString();
+		for(int x=0; x< daimyoList.Count; x++ ){
+            int daimyo1 = int.Parse(daimyoList[x]);
+            for (int y=0; y< daimyoList.Count; y++){
+                int daimyo2 = int.Parse(daimyoList[y]);
+                if (daimyo1 != daimyo2) {
+					string temp = daimyo1.ToString() + "gaikou" + daimyo2.ToString();
+					string temp2 = daimyo1.ToString() + "key" + daimyo2.ToString();
 					PlayerPrefs.DeleteKey(temp);
 					PlayerPrefs.DeleteKey(temp2);
 				}
 			}
 		}
+
 		/*******************************/
 		/*****       Shisya        *****/
 		/*******************************/
@@ -453,32 +475,55 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 
 		PlayerPrefs.DeleteKey("doumei");
 		string newMyDoumei = "";
-		Entity_doumei_mst doumeiMst = Resources.Load ("Data/doumei_mst") as Entity_doumei_mst;
-		for(int i=0; i < doumeiMst.param.Count; i++){
-			int srcDaimyoId = doumeiMst.param[i].doumeiSrc;
-			int dstDaimyoId = doumeiMst.param[i].doumeiDst;
+		Entity_doumei_mst doumeiMst = Resources.Load ("Data/doumei_mst") as Entity_doumei_mst;        
+		for(int i=0; i < doumeiMst.param.Count; i++){            
+            if (senarioId == doumeiMst.param[i].senarioId) {
+			    int daimyoId1 = doumeiMst.param[i].doumeiSrc;
+			    int daimyoId2 = doumeiMst.param[i].doumeiDst;
+              
+			    if(daimyoId1 == newDaimyo){
+				    if(newMyDoumei != null && newMyDoumei !=""){
+					    newMyDoumei = newMyDoumei + "," + daimyoId2;
+				    }else{
+					    newMyDoumei = daimyoId2.ToString();
+				    }
+			    }else{
+				    string temp = "doumei" + daimyoId1;
+				    string previous = PlayerPrefs.GetString(temp);
 
-			if(srcDaimyoId == newDaimyo){
-				if(newMyDoumei != null && newMyDoumei !=""){
-					newMyDoumei = newMyDoumei + "," + dstDaimyoId;
-				}else{
-					newMyDoumei = dstDaimyoId.ToString();
-				}
+				    if(previous != null && previous !=""){
+					    previous = previous + "," + daimyoId2;
+					    PlayerPrefs.SetString (temp,previous);
+				    }else{
+					    PlayerPrefs.SetString (temp, daimyoId2.ToString());
+				    }
+			    }
 
-			}else{
-				string temp = "doumei" + srcDaimyoId;
-				string previous = PlayerPrefs.GetString(temp);
+                if (daimyoId2 == newDaimyo) {
+                    if (newMyDoumei != null && newMyDoumei != "") {
+                        newMyDoumei = newMyDoumei + "," + daimyoId1;
+                    }
+                    else {
+                        newMyDoumei = daimyoId1.ToString();
+                    }
+                }else {
+                    string temp = "doumei" + daimyoId2;
+                    string previous = PlayerPrefs.GetString(temp);
 
-				if(previous != null && previous !=""){
-					previous = previous + "," + dstDaimyoId;
-					PlayerPrefs.SetString (temp,previous);
-				}else{
-					PlayerPrefs.SetString (temp,dstDaimyoId.ToString());
-				}
-			}
+                    if (previous != null && previous != "") {
+                        previous = previous + "," + daimyoId1;
+                        PlayerPrefs.SetString(temp, previous);
+                    }else {
+                        PlayerPrefs.SetString(temp, daimyoId1.ToString());
+                    }
+                }
+
+
+            }
 		}
 		PlayerPrefs.SetString ("doumei",newMyDoumei);
-		PlayerPrefs.Flush ();
+        PlayerPrefs.SetInt("senarioId", senarioId);
+        PlayerPrefs.Flush ();
 
 
 		Application.LoadLevel ("mainStage");
