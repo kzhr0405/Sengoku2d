@@ -62,6 +62,21 @@ public class DataRecoveryConfirm : MonoBehaviour {
             }else {
                 PlayerPrefs.SetBool("addJinkei4", false);
             }
+            if (RecoveryDataStore.scenario1) {
+                PlayerPrefs.SetBool("scenario1", true);
+            }else {
+                PlayerPrefs.SetBool("scenario1", false);
+            }
+            if (RecoveryDataStore.scenario2) {
+                PlayerPrefs.SetBool("scenario2", true);
+            }else {
+                PlayerPrefs.SetBool("scenario2", false);
+            }
+            if (RecoveryDataStore.scenario3) {
+                PlayerPrefs.SetBool("scenario3", true);
+            }else {
+                PlayerPrefs.SetBool("scenario3", false);
+            }
             PlayerPrefs.DeleteKey("rengouFlg");
             PlayerPrefs.DeleteKey("rengouDaimyo");
             
