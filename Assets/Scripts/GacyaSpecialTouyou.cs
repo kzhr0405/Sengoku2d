@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class GacyaSpecialTouyou : MonoBehaviour {
 
@@ -17,10 +18,10 @@ public class GacyaSpecialTouyou : MonoBehaviour {
 
     public void OnClick() {
         Message msg = new Message();
-
+        int langId = PlayerPrefs.GetInt("langId");
         if (selectCount == 0) {
             audioSources[4].Play();
-            msg.makeMessage(msg.getMessage(157));
+            msg.makeMessage(msg.getMessage(157,langId));
         }else {
             audioSources[0].Play();
             string text = "";
@@ -43,9 +44,9 @@ public class GacyaSpecialTouyou : MonoBehaviour {
             GacyaSpecialTouyouConfirmNo.back = back;
 
             if (hireCount > selectCount) {
-                msgObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(158);
+                msgObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(158,langId);
             }else {
-                msgObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(159);
+                msgObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(159,langId);
             }
             GameObject.Find("Canvas").GetComponent<Canvas>().sortingLayerName = "unit";
         }

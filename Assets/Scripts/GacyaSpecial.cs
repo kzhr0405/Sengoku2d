@@ -54,7 +54,9 @@ public class GacyaSpecial : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     Text = "You need " + stockReq.ToString() + " samurai space for special gacya. Now you have just " + (stockLimit - myBusyoQty).ToString() + " space.";
-                }else {
+                }else if(langId==3) {
+                    Text = "进行特别扭蛋需要" + stockReq.ToString() + "个的武将空位。现在只有" + (stockLimit - myBusyoQty).ToString() + "个武将空位。";
+                } else {
                     Text = "特別ガチャには" + stockReq.ToString() + "人分の武将の空きが必要ですぞ。今は" +(stockLimit-myBusyoQty).ToString() + "人分しか空きがありませぬ。";
                 }
                 msg.makeSpaceBuyBoard(Text);
@@ -78,8 +80,10 @@ public class GacyaSpecial : MonoBehaviour {
         } else {
             //Error
             Message msg = new Message();
+            int langId = PlayerPrefs.GetInt("langId");
+
             audioSources[4].Play();
-            msg.makeMessage(msg.getMessage(2));
+            msg.makeMessage(msg.getMessage(2,langId));
         }
 	}
 }

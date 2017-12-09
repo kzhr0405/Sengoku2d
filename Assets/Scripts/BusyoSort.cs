@@ -23,6 +23,14 @@ public class BusyoSort : MonoBehaviour {
 
             Text text = transform.Find("Label").GetComponent<Text>();
             text.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;                
+        }else if(langId==3) {
+            Dropdown Dropdown = GetComponent<Dropdown>();
+            Dropdown.options[0].text = "级别";
+            Dropdown.options[1].text = "大名家";
+            Dropdown.options[2].text = "等级";
+
+            Text text = transform.Find("Label").GetComponent<Text>();
+            text.font = (Font)Resources.Load("Fonts/simplifiedChinese");
         }
     }
 

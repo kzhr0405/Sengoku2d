@@ -75,7 +75,7 @@ public class HPCounter : MonoBehaviour {
                     GameObject.Find("AutoBtn").SetActive(false);
                 }
                 GameObject canvas = GameObject.Find ("Canvas").gameObject;
-
+                Message msg = new Message();
                 if (Application.loadedLevelName == "tutorialKassen") {
                     string backPath = "Prefabs/PostKassen/back";
                     GameObject backObj = Instantiate(Resources.Load(backPath)) as GameObject;
@@ -96,40 +96,23 @@ public class HPCounter : MonoBehaviour {
                     bttnListObj.transform.localPosition = new Vector2(0, 20);
 
                     GameObject.Find("timer").GetComponent<Timer>().enabled = false;
-
+                    int langId = PlayerPrefs.GetInt("langId");
                     if (targetTag == "Player") {
                         //lose
                         audioSources[4].Play();
-                        Color color = Color.blue;
-                        int langId = PlayerPrefs.GetInt("langId");
-                        if (langId == 2) {
-                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "Lose";
-                            }
-                        }else {
-                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "敗北";
-                            }
+                        Color color = Color.blue;                        
+                        if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                            GameObject.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(250,langId);
                         }
                         GameObject.Find("winlose").GetComponent<TextMesh>().color = color;
-
-                        if (langId == 2) {
-                            bttnListObj.transform.Find("nextbtn").transform.Find("Text").GetComponent<Text>().text = "Restart";
-                        }else {
-                            bttnListObj.transform.Find("nextbtn").transform.Find("Text").GetComponent<Text>().text = "再戦する";
-                        }
+                        bttnListObj.transform.Find("nextbtn").transform.Find("Text").GetComponent<Text>().text = msg.getMessage(251,langId);
                         bttnListObj.transform.Find("nextbtn").GetComponent<BackStageButton>().tutorialRestartFlg = true;
 
                     }else {
                         //Win
                         audioSources[3].Play();
                         audioSources[7].Play();
-                        int langId = PlayerPrefs.GetInt("langId");
-                        if (langId == 2) {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "Win";
-                        }else {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = "勝利";
-                        }
+                        GameObject.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(252,langId);
                         string particlePath = "Prefabs/PostKassen/particle";
                         GameObject particleObj = Instantiate(Resources.Load(particlePath)) as GameObject;
                         particleObj.transform.SetParent(canvas.transform);
@@ -149,16 +132,11 @@ public class HPCounter : MonoBehaviour {
 
 				        //Chane word
 				        Color color = Color.blue;
-                        int langId = PlayerPrefs.GetInt("langId");
-                        if (langId == 2) {
-                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "Lose";
-                            }
-                        } else {
-                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "敗北";
-                            }
+                        int langId = PlayerPrefs.GetInt("langId");                        
+                        if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                            GameObject.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(250,langId);
                         }
+                        
 				        GameObject.Find ("winlose").GetComponent<TextMesh>().color = color;
 					
 				        string blackPath = "Prefabs/PostKassen/black";
@@ -206,7 +184,10 @@ public class HPCounter : MonoBehaviour {
 					            PlayerPrefs.SetInt("winChecker",2);
                                 if (langId == 2) {
                                     stageNameObj.transform.Find ("stageNameValue").GetComponent<Text> ().text = stageName + " Failed";
-                                }else {
+                                }else if(langId==3) {
+                                    stageNameObj.transform.Find("stageNameValue").GetComponent<Text>().text = stageName + "失败";
+                                }
+                                else {
                                     stageNameObj.transform.Find("stageNameValue").GetComponent<Text>().text = stageName + "失敗";
                                 }
 
@@ -331,7 +312,10 @@ public class HPCounter : MonoBehaviour {
 						            audioSources [4].Play ();
                                     if (langId == 2) {
                                         stageNameObj.transform.Find ("stageNameValue").GetComponent<Text> ().text = stageName + " Failed";
-                                    }else {
+                                    }
+                                    else if (langId == 3) {
+                                        stageNameObj.transform.Find("stageNameValue").GetComponent<Text>().text = "攻略" + stageName + "失败";
+                                    } else {
                                         stageNameObj.transform.Find("stageNameValue").GetComponent<Text>().text = stageName + "攻略失敗";
                                     }
 						            int stageId = PlayerPrefs.GetInt ("activeStageId");
@@ -459,14 +443,8 @@ public class HPCounter : MonoBehaviour {
 				        string stageName = PlayerPrefs.GetString("activeStageName");
 
                         int langId = PlayerPrefs.GetInt("langId");
-                        if (langId == 2) {
-                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "Win";
-                            }
-                        }else {
-                            if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "勝利";
-                            }
+                        if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
+                            GameObject.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(252,langId);
                         }
 
 
@@ -492,7 +470,9 @@ public class HPCounter : MonoBehaviour {
                                 }else {
                                     if (langId == 2) {
                                         itemListObj.transform.Find ("stageName").transform.Find ("stageNameValue").GetComponent<Text> ().text = stageName + " Cleared";
-                                    }else {
+                                    }else if(langId==3) {
+                                        itemListObj.transform.Find("stageName").transform.Find("stageNameValue").GetComponent<Text>().text = "已攻略" + stageName;
+                                    } else {
                                         itemListObj.transform.Find("stageName").transform.Find("stageNameValue").GetComponent<Text>().text = stageName + "攻略";
                                     }
                                 }
@@ -520,7 +500,7 @@ public class HPCounter : MonoBehaviour {
 							        if (activeItemType.Contains ("Cyouhei") == true) {
 								        string newCyouheiString = "";
 
-								        makeItemIcon (cyouheiPath, activeItemId.ToString (), itemListObj);
+								        makeItemIcon (cyouheiPath, activeItemId.ToString (), itemListObj, langId);
 								        if (activeItemType.Contains ("YR") == true) {
 									        string cyouheiString = PlayerPrefs.GetString ("cyouheiYR");
 									        string[] cyouheiList = cyouheiString.Split (delimiterChars);
@@ -611,7 +591,7 @@ public class HPCounter : MonoBehaviour {
 
 								        //Kanjyo
 							        } else if (activeItemType == "Kanjyo") {
-								        makeItemIcon (kanjyoPath, activeItemId.ToString (), itemListObj);
+								        makeItemIcon (kanjyoPath, activeItemId.ToString (), itemListObj, langId);
 
 								        string newKanjyoString = "";
 								        string kanjyoString = PlayerPrefs.GetString ("kanjyo");
@@ -636,7 +616,7 @@ public class HPCounter : MonoBehaviour {
 								
 								        //Hidensyo
 							        } else if (activeItemType == "Hidensyo") {
-								        makeItemIcon (hidensyoPath, activeItemId.ToString (), itemListObj);
+								        makeItemIcon (hidensyoPath, activeItemId.ToString (), itemListObj, langId);
 
 								        if (activeItemId == 1) {
 									        int hidensyoQty = PlayerPrefs.GetInt ("hidensyoGe");
@@ -656,7 +636,7 @@ public class HPCounter : MonoBehaviour {
 
 								        //Shinobi
 							        } else if (activeItemType == "Shinobi") {
-								        makeItemIcon (shinobiPath, activeItemId.ToString (), itemListObj);
+								        makeItemIcon (shinobiPath, activeItemId.ToString (), itemListObj, langId);
 								        RectTransform rect = itemListObj.transform.Find ("itemIcon").transform.Find ("Shinobi").GetComponent<RectTransform> ();
 								        rect.sizeDelta = new Vector2 (100, 100);
 
@@ -732,35 +712,24 @@ public class HPCounter : MonoBehaviour {
 										        GameObject nameObj = icon.transform.Find ("Name").gameObject;
 										        
 										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                if (langId == 2) {
-                                                    nameObj.GetComponent<Text>().text = "Yamashina";
-                                                    icon.transform.Find ("Rank").GetComponent<Text> ().text = "Low";
-                                                }else {
-                                                    nameObj.GetComponent<Text>().text = "山科言継";
-                                                    icon.transform.Find("Rank").GetComponent<Text>().text = "下";
-                                                }
-									        } else if (activeItemId == 2) {
+
+                                                nameObj.GetComponent<Text>().text = msg.getMessage(233,langId);
+                                                icon.transform.Find("Rank").GetComponent<Text>().text = msg.getMessage(181,langId);
+
+                                            } else if (activeItemId == 2) {
 										        GameObject nameObj = icon.transform.Find ("Name").gameObject;
 										        
-										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                if (langId == 2) {
-                                                    nameObj.GetComponent<Text>().text = "Sanjyo";
-                                                    icon.transform.Find ("Rank").GetComponent<Text> ().text = "Mid";
-                                                }else {
-                                                    nameObj.GetComponent<Text>().text = "三条西実枝";
-                                                    icon.transform.Find("Rank").GetComponent<Text>().text = "中";
-                                                }
-									        } else if (activeItemId == 3) {
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);                                                
+                                                nameObj.GetComponent<Text>().text = msg.getMessage(235,langId);
+                                                icon.transform.Find("Rank").GetComponent<Text>().text = msg.getMessage(182,langId);
+
+                                            } else if (activeItemId == 3) {
 										        GameObject nameObj = icon.transform.Find ("Name").gameObject;										        
-										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                if (langId == 2) {
-                                                    nameObj.GetComponent<Text>().text = "Konoe";
-                                                    icon.transform.Find ("Rank").GetComponent<Text> ().text = "High";
-                                                }else {
-                                                    nameObj.GetComponent<Text>().text = "近衛前久";
-                                                    icon.transform.Find("Rank").GetComponent<Text>().text = "上";
-                                                }
-									        }
+										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);                                               
+                                                nameObj.GetComponent<Text>().text = msg.getMessage(237,langId);
+                                                icon.transform.Find("Rank").GetComponent<Text>().text = msg.getMessage(183,langId);
+
+                                            }
 
 								        } else if (activeItemType == "koueki") {
 									        string syoukaijyoPath = "Prefabs/Item/koueki";
@@ -773,34 +742,23 @@ public class HPCounter : MonoBehaviour {
 									        if (activeItemId == 1) {
 										        GameObject nameObj = icon.transform.Find ("Name").gameObject;										       
 										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                if (langId == 2) {
-                                                    nameObj.GetComponent<Text>().text = "Kato";
-                                                    icon.transform.Find ("Rank").GetComponent<Text> ().text = "Low";
-                                                }else {
-                                                    nameObj.GetComponent<Text>().text = "加藤浄与";
-                                                    icon.transform.Find("Rank").GetComponent<Text>().text = "下";
-                                                }
+                                                
+                                                nameObj.GetComponent<Text>().text = msg.getMessage(232,langId);
+                                                icon.transform.Find("Rank").GetComponent<Text>().text = msg.getMessage(181,langId);
+                                                
 									        } else if (activeItemId == 2) {
 										        GameObject nameObj = icon.transform.Find ("Name").gameObject;										        
 										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                if (langId == 2) {
-                                                    nameObj.GetComponent<Text>().text = "Shimai";
-                                                    icon.transform.Find ("Rank").GetComponent<Text> ().text = "Mid";
-                                                }else {
-                                                    nameObj.GetComponent<Text>().text = "島井宗室";
-                                                    icon.transform.Find("Rank").GetComponent<Text>().text = "中";
-                                                }
-									        } else if (activeItemId == 3) {
+                                                nameObj.GetComponent<Text>().text = msg.getMessage(234,langId);
+                                                icon.transform.Find("Rank").GetComponent<Text>().text = msg.getMessage(182,langId);
+
+                                            } else if (activeItemId == 3) {
 										        GameObject nameObj = icon.transform.Find ("Name").gameObject;										        
 										        nameObj.transform.localScale = new Vector2 (0.08f, 0.1f);
-                                                if (langId == 2) {
-                                                    nameObj.GetComponent<Text>().text = "Cyaya";
-                                                    icon.transform.Find ("Rank").GetComponent<Text> ().text = "High";
-                                                }else {
-                                                    nameObj.GetComponent<Text>().text = "茶屋四郎次郎";
-                                                    icon.transform.Find("Rank").GetComponent<Text>().text = "上";
-                                                }
-									        }
+                                                nameObj.GetComponent<Text>().text = msg.getMessage(236,langId);
+                                                icon.transform.Find("Rank").GetComponent<Text>().text = msg.getMessage(183,langId);
+
+                                            }
 								        }
 
 								        TabibitoItemGetter syoukaijyo = new TabibitoItemGetter ();
@@ -901,12 +859,14 @@ public class HPCounter : MonoBehaviour {
 					        PlayerPrefs.SetInt("jinkeiLimit",jinkeiLimit);
 					        PlayerPrefs.SetInt("stockLimit",stockLimit);
 
-					        //Popup
-					        Message msg = new Message ();
+					        //Popup					        
                             string text = "";
                             if (langId == 2) {
                                 text = "Our Country increased Lv " + newKuniLv + ". \n Stamina recovered all.";
-                            }else {
+                            }else if(langId==3) {
+                                text = "本家威信提升至" + newKuniLv + "，兵粮数量已恢复。";
+                            }
+                            else {
                                 text = "当家の威信が" + newKuniLv + "に上がりましたぞ。\n兵糧が全回復します。";
                             }
 
@@ -918,7 +878,11 @@ public class HPCounter : MonoBehaviour {
                                 string addText = "";
                                 if (langId == 2) {
                                     addText = "\n And also increased the number of battle available samurai";
-                                }else {
+                                }
+                                else if (langId == 3) {
+                                    addText = "\n可出阵武将数增加1人。";
+                                }
+                                else {
                                     addText = "\nまた出陣可能な武将数も一人増えました。";
                                 }
                                 text = text + addText;
@@ -1114,7 +1078,7 @@ public class HPCounter : MonoBehaviour {
 
 	}
 
-	public void makeItemIcon(string path, string itemId, GameObject item){
+	public void makeItemIcon(string path, string itemId, GameObject item, int langId){
 		Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 		Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 		Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
@@ -1127,20 +1091,15 @@ public class HPCounter : MonoBehaviour {
 		iconTransform.anchoredPosition = new Vector3 (250, 35, 0);
 		iconTransform.sizeDelta = new Vector2 (100, 100);
 		itemIcon.GetComponent<Button>().enabled = false;
-
+        Message Message = new Message();
 
         //Color
-        int langId = PlayerPrefs.GetInt("langId");
         if (itemId == "1") {
 			itemIcon.GetComponent<Image> ().color = lowColor;
 
 			foreach (Transform obj in itemIcon.transform){
 				if(obj.tag == "ItemRank"){
-                    if (langId == 2) {
-                        obj.gameObject.GetComponent<Text>().text = "Low";
-                    }else {
-                        obj.gameObject.GetComponent<Text>().text = "下";
-                    }
+                    obj.gameObject.GetComponent<Text>().text = Message.getMessage(181,langId);
 				}
 			}
 
@@ -1148,24 +1107,16 @@ public class HPCounter : MonoBehaviour {
 			itemIcon.GetComponent<Image> ().color = midColor;
 			foreach (Transform obj in itemIcon.transform){
 				if(obj.tag == "ItemRank"){
-                    if (langId == 2) {
-                        obj.gameObject.GetComponent<Text>().text = "Mid";
-                    }else {
-                        obj.gameObject.GetComponent<Text>().text = "中";
-                    }
-				}
+                    obj.gameObject.GetComponent<Text>().text = Message.getMessage(182,langId);
+                }
 			}
 
 		} else if (itemId == "3") {
 			itemIcon.GetComponent<Image> ().color = highColor;
 			foreach (Transform obj in itemIcon.transform){
 				if(obj.tag == "ItemRank"){
-                    if (langId == 2) {
-                        obj.gameObject.GetComponent<Text>().text = "High";
-                    }else {
-                        obj.gameObject.GetComponent<Text>().text = "上";
-                    }
-				}
+                    obj.gameObject.GetComponent<Text>().text = Message.getMessage(183,langId);
+                }
 			}
 		}
 

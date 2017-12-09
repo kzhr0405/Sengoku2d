@@ -16,7 +16,7 @@ public class StartScene : MonoBehaviour {
 
 		//シーン遷移前にデータを書き出す
 		PlayerPrefs.Flush();
-
+        int langId = PlayerPrefs.GetInt("langId");
         bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
         //Under Button
         if (name == "Jinkei") {
@@ -30,7 +30,7 @@ public class StartScene : MonoBehaviour {
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(5));
+                msg.makeMessage(msg.getMessage(5,langId));
             }else {
                 string PvPName = PlayerPrefs.GetString("PvPName");
                 
@@ -67,7 +67,7 @@ public class StartScene : MonoBehaviour {
                         Application.LoadLevel("pvp");
                     }else {
                         Message msg = new Message();
-                        msg.makeMessage(msg.getMessage(161));
+                        msg.makeMessage(msg.getMessage(161,langId));
                     }
                 }
 
@@ -95,7 +95,7 @@ public class StartScene : MonoBehaviour {
 			if (Application.internetReachability == NetworkReachability.NotReachable) {
 				//接続されていないときの処理
 				Message msg = new Message ();
-				msg.makeMessage (msg.getMessage(136));
+				msg.makeMessage (msg.getMessage(136,langId));
 			} else {
                 //接続されているときの処理
                 Application.LoadLevel("purchase");
@@ -194,7 +194,6 @@ public class StartScene : MonoBehaviour {
 
             //Lang
             GameObject Lang = board.transform.Find("Lang").gameObject;
-            int langId = PlayerPrefs.GetInt("langId");
             LangSetting LangSetting = new LangSetting();
             LangSetting.ChangeButtonColorByConfig(langId, Lang);
 
@@ -203,7 +202,7 @@ public class StartScene : MonoBehaviour {
             if (Application.internetReachability == NetworkReachability.NotReachable) {
                 //接続されていないときの処理
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(5));
+                msg.makeMessage(msg.getMessage(5,langId));
             }else {
                 Application.LoadLevel("reward");
             }

@@ -152,6 +152,7 @@ public class PurchaseManagerScenario : MonoBehaviour, IStoreListener {
         Debug.Log("Purchase OK: " + e.purchasedProduct.definition.id);
         Debug.Log("Receipt: " + e.purchasedProduct.receipt);
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
         m_PurchaseInProgress = false;
 
         //Data Change Process
@@ -167,7 +168,7 @@ public class PurchaseManagerScenario : MonoBehaviour, IStoreListener {
         PlayerPrefs.Flush();
         audioSources[3].Play();
 
-        msg.makeMessageOnGameObject(msg.getMessage(164), panel);
+        msg.makeMessageOnGameObject(msg.getMessage(164,langId), panel);
         initUI();
 
         // Indicate we have handled this purchase, we will not be informed of it again.x
@@ -182,19 +183,20 @@ public class PurchaseManagerScenario : MonoBehaviour, IStoreListener {
 
         string errorMsg = "";
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
         switch (error) {
             case InitializationFailureReason.AppNotKnown:
-                errorMsg = msg.getMessage(104);
+                errorMsg = msg.getMessage(104, langId);
                 audioSources[4].Play();
                 break;
 
             case InitializationFailureReason.PurchasingUnavailable:
-                errorMsg = msg.getMessage(105);
+                errorMsg = msg.getMessage(105, langId);
                 audioSources[4].Play();
                 break;
 
             case InitializationFailureReason.NoProductsAvailable:
-                errorMsg = msg.getMessage(106);
+                errorMsg = msg.getMessage(106, langId);
                 audioSources[4].Play();
                 break;
 
@@ -213,34 +215,34 @@ public class PurchaseManagerScenario : MonoBehaviour, IStoreListener {
 
         string errorMsg = "";
         Message msg = new Message();
-
+        int langId = PlayerPrefs.GetInt("langId");
         switch (r) {
             case PurchaseFailureReason.PurchasingUnavailable:
-                errorMsg = msg.getMessage(107);
+                errorMsg = msg.getMessage(107,langId);
                 audioSources[4].Play();
                 break;
             case PurchaseFailureReason.ExistingPurchasePending:
-                errorMsg = msg.getMessage(108);
+                errorMsg = msg.getMessage(108, langId);
                 audioSources[4].Play();
                 break;
             case PurchaseFailureReason.PaymentDeclined:
-                errorMsg = msg.getMessage(109);
+                errorMsg = msg.getMessage(109, langId);
                 audioSources[4].Play();
                 break;
             case PurchaseFailureReason.ProductUnavailable:
-                errorMsg = msg.getMessage(110);
+                errorMsg = msg.getMessage(110, langId);
                 audioSources[4].Play();
                 break;
             case PurchaseFailureReason.SignatureInvalid:
-                errorMsg = msg.getMessage(111);
+                errorMsg = msg.getMessage(111, langId);
                 audioSources[4].Play();
                 break;
             case PurchaseFailureReason.UserCancelled:
-                errorMsg = msg.getMessage(112);
+                errorMsg = msg.getMessage(112, langId);
                 audioSources[4].Play();
                 break;
             case PurchaseFailureReason.Unknown:
-                errorMsg = msg.getMessage(113);
+                errorMsg = msg.getMessage(113,langId);
                 audioSources[4].Play();
                 break;
         }

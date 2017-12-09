@@ -136,8 +136,11 @@ public class KahouSelect : MonoBehaviour {
         string messageContent = "";
         if (langId == 2) {
             messageContent = "My lord, you don't have any " + targetText + ".";
-        }else {
-            messageContent = "御館様、" + targetText + "御座りませぬ。";
+        }else if(langId==3) {
+            messageContent = "主公，没有" + targetText + "。";
+        }
+        else {
+            messageContent = "御館様、" + targetText + "は御座りませぬ。";
         }
         //messageContent = messageContent.Replace("A", targetText);
 		message.GetComponent<Text>().text = messageContent;
@@ -146,41 +149,24 @@ public class KahouSelect : MonoBehaviour {
 
         int langId = PlayerPrefs.GetInt("langId");
         string targetText = "";
-        if (langId == 2) {
-            targetText = "Treasure";
-		    if (target == "Bugu") {
-			    targetText = "Arms";
-		    } else if (target == "Kabuto") {
-			    targetText = "Helmet";
-		    } else if (target == "Gusoku") {
-			    targetText = "Armor";
-		    } else if(target == "Meiba"){
-			    targetText = "Horse";
-		    }else if(target == "Cyadougu"){
-			    targetText = "Tea Things";
-		    }else if(target == "Heihousyo"){
-			    targetText = "Tactics";
-		    }else if(target == "Chishikisyo"){
-			    targetText = "Book";
-		    }
-        }else {
-            targetText = "家宝";
-            if (target == "Bugu") {
-                targetText = "武具";
-            }else if (target == "Kabuto") {
-                targetText = "兜";
-            }else if (target == "Gusoku") {
-                targetText = "具足";
-            }else if (target == "Meiba") {
-                targetText = "名馬";
-            }else if (target == "Cyadougu") {
-                targetText = "茶道具";
-            }else if (target == "Heihousyo") {
-                targetText = "兵法書";
-            }else if (target == "Chishikisyo") {
-                targetText = "知識書";
-            }
+        Message Message = new Message();
+        targetText = "家宝";
+        if (target == "Bugu") {
+            targetText = Message.getMessage(255,langId);
+        }else if (target == "Kabuto") {
+            targetText = Message.getMessage(257, langId);
+        }else if (target == "Gusoku") {
+            targetText = Message.getMessage(256, langId);
+        }else if (target == "Meiba") {
+            targetText = Message.getMessage(258, langId);
+        }else if (target == "Cyadougu") {
+            targetText = Message.getMessage(259, langId);
+        }else if (target == "Heihousyo") {
+            targetText = Message.getMessage(261, langId);
+        }else if (target == "Chishikisyo") {
+            targetText = Message.getMessage(260, langId);
         }
+        
 		return targetText;
 	}
 
@@ -200,6 +186,8 @@ public class KahouSelect : MonoBehaviour {
         string targetText =returnKahouName (target);
         if (langId == 2) {
             GameObject.Find ("ScrollText").GetComponent<Text> ().text = targetText + " List";
+        }else if(langId==3) {
+            GameObject.Find("ScrollText").GetComponent<Text>().text = targetText + "一览";
         }else {
             GameObject.Find("ScrollText").GetComponent<Text>().text = targetText + "一覧";
         }

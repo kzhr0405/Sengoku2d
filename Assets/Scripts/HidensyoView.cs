@@ -20,12 +20,9 @@ public class HidensyoView : MonoBehaviour {
 		BusyoStatusButton pop = new BusyoStatusButton ();
 		pop.commonPopup(22);
         int langId = PlayerPrefs.GetInt("langId");
-
-        if (langId == 2) {
-            GameObject.Find ("popText").GetComponent<Text> ().text ="Give Skillbook";
-        }else {
-            GameObject.Find("popText").GetComponent<Text>().text = "秘伝書授与";
-        }
+        Message Message = new Message();
+        GameObject.Find("popText").GetComponent<Text>().text = Message.getMessage(249,langId);
+       
 		//Busyo View
 		string path = "Prefabs/Player/Unit/BusyoUnit";
 		GameObject Busyo = Instantiate (Resources.Load (path)) as GameObject;
@@ -113,11 +110,7 @@ public class HidensyoView : MonoBehaviour {
 		if(senpouType=="low"){
 			Color lowColor = new Color (86f / 255f, 87f / 255f, 255f / 255f, 255f / 255f);
 			hImage.color = lowColor;
-            if (langId == 2) {
-                hRank.text = "Low";
-            }else {
-                hRank.text = "下";
-            }
+            hRank.text = Message.getMessage(181,langId);
             int hidensyoGeQty = PlayerPrefs.GetInt ("hidensyoGe");
 			DoHidensyoObj.GetComponent<DoHidensyo>().itemType = senpouType;
 			if(hidensyoGeQty < int.Parse(itemText.text)){
@@ -128,11 +121,7 @@ public class HidensyoView : MonoBehaviour {
 		}else if(senpouType=="middle"){
 			Color midColor = new Color (236f / 255f, 93f / 255f, 93f / 255f, 255f / 255f);
 			hImage.color = midColor;
-            if (langId == 2) {
-                hRank.text = "Mid";
-            }else {
-                hRank.text = "中";
-            }
+            hRank.text = Message.getMessage(182,langId);
             int hidensyoCyuQty = PlayerPrefs.GetInt ("hidensyoCyu");
 			DoHidensyoObj.GetComponent<DoHidensyo>().itemType = senpouType;
 			if(hidensyoCyuQty < int.Parse(itemText.text)){
@@ -142,11 +131,7 @@ public class HidensyoView : MonoBehaviour {
 		}else if(senpouType=="high"){
 			Color hightColor = new Color (207f / 255f, 232f / 255f, 95f / 255f, 255f / 255f);
 			hImage.color = hightColor;
-            if (langId == 2) {
-                hRank.text = "High";
-            }else {
-                hRank.text = "上";
-            }
+            hRank.text = Message.getMessage(183,langId);
             int hidensyoJyoQty = PlayerPrefs.GetInt ("hidensyoJyo");
 			DoHidensyoObj.GetComponent<DoHidensyo>().itemType = senpouType;
 			if(hidensyoJyoQty < int.Parse(itemText.text)){

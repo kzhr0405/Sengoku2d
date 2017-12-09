@@ -74,6 +74,7 @@ public class MainStageController : MonoBehaviour {
         Time.timeScale = 1;
         int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
+        Message Message = new Message();
 
         //Set Object
         HyourouCurrentValue = currentHyourou.GetComponent<Text>();
@@ -183,18 +184,10 @@ public class MainStageController : MonoBehaviour {
                     hardFlg = PlayerPrefs.GetBool("hardFlg");
                 }
                 string modeString = "";
-                if (langId == 2) {
-                    if (hardFlg) {
-                        modeString = "Hard";
-                    }else {
-                        modeString = "Normal";
-                    }
+                if (hardFlg) {
+                    modeString = Message.getMessage(266,langId);
                 }else {
-                    if (hardFlg) {
-                        modeString = "煉獄";
-                    }else {
-                        modeString = "普通";
-                    }
+                    modeString = Message.getMessage(267,langId);
                 }
                 GameObject.Find("Mode").transform.Find("Text").GetComponent<Text>().text = modeString;
                 
@@ -564,7 +557,10 @@ public class MainStageController : MonoBehaviour {
                             
                             if (langId==2) {
                                 addComment = "I took away all the castles！";
-                            }else {
+                            }else if(langId==3) {
+                                addComment = "已夺取全部城池了！";
+                            }
+                            else {
                                 addComment = "全ての城を奪ってやったぞ！";
                             }
                         }
@@ -582,14 +578,21 @@ public class MainStageController : MonoBehaviour {
                             
                             if (langId == 2) {
                                 addComment = "I took " + stageQty.ToString() + " castles!";
-                            }else {
+                            }
+                            else if (langId == 3) {
+                                addComment = "已夺取" + stageQty.ToString() + "座城池了！";
+                            }
+                            else {
                                 addComment = stageQty.ToString() + "つの城を奪ってやったぞ！";
                             }
                         }
                         
                         if (langId == 2) {
                             comment = "hehehe, I can imagine " + myDaimyoName + " is regreting by lost " + kuniName + "\n" + addComment;
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            comment = "哈哈哈，可笑的" + myDaimyoName + "，我似乎能看到他因" + kuniName + "被夺取而气急败坏的样子了。\n" + addComment;
+                        } else {
                             comment = "ふふふ、" + myDaimyoName + "め。" + kuniName + "を盗られて悔しがってる姿が目に浮かぶわ。\n" + addComment;
                         }
 
@@ -601,7 +604,11 @@ public class MainStageController : MonoBehaviour {
 						
                         if (langId == 2) {
                             comment = "Darn! I didn't get "+ kuniName + " staked everything I had";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            comment = "倾尽全力，竟然也不能攻陷" + kuniName + "。";
+                        }
+                        else {
                             comment = "ぬう、乾坤一擲の力を以ってしても" + kuniName + "を落とせぬとは。";
                         }
 
@@ -610,7 +617,10 @@ public class MainStageController : MonoBehaviour {
 
                         if (langId == 2) {
                             comment = "I lost the final battle. My glory only last for a time. How will my name remain in history.";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            comment = "决战胜负已分，我之生涯，黄粱一梦，不知后世史官如何评述。";
+                        } else {
                             comment = "決戦に負けてしもうた。儚い世であったわ。我が名は後世にどう残るのかのう。";
                         }
 
@@ -621,7 +631,11 @@ public class MainStageController : MonoBehaviour {
 						
                         if (langId == 2) {
                             comment = "Hehe, I defeated " + myDaimyoName + " in the final battle.";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            comment = "哈哈，决战胜利了，我" + myDaimyoName + "怎么可能输给" + daimyoName + "之流呢。";
+                        }
+                        else {
                             comment = "ははは、決戦に勝ったぞ。" + myDaimyoName + "如きに敗れる" + daimyoName + "ではないわ。";
                         }
 
@@ -630,7 +644,11 @@ public class MainStageController : MonoBehaviour {
 						msgOnFlg = true;
                         if (langId == 2) {
                             comment = "Hahaha, he ran away. I will take you on anytime.";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            comment = "让他逃了，无论何时何地，你若挑战，随时奉陪。";
+                        }
+                        else {
                             comment = "ははは､無様じゃのう。逃げ出しおったわ。いつでも相手して進ぜよう。";
                         }
 
@@ -1302,7 +1320,11 @@ public class MainStageController : MonoBehaviour {
                     string metsubouText = "";
                     if (langId == 2) {
                         metsubouText = dstDaimyoName + " was was destroyed completly by " + srcDaimyoName + ".";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        metsubouText = dstDaimyoName + "被" + srcDaimyoName + "灭亡了。";
+                    }
+                    else {
                         metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
                     }
 
@@ -1819,27 +1841,20 @@ public class MainStageController : MonoBehaviour {
 
         string seasonText = "";
 
-        if (langId == 2) {
-            if (seasonId == 1) {
-                seasonText = "Spring has come. You have levied money in this season. My lord, please develop your town, store or mine to increase income.";
-            }else if (seasonId == 2) {
-                seasonText = "Summer has come. You have levied weapon items in this season. My lord, please develop your town, Blacksmith of each item to increase income.";
-            }else if (seasonId == 3) {
-                seasonText = "Autumn has come. You have levied stamina in this season. My lord, please develop your town, farm to increase this income.";
-            }else if (seasonId == 4) {
-                seasonText = "Winter has come. You have levied weapon items in this season. My lord, please develop your town, Blacksmith of each item to increase income.";
-            }
-        }else {
-            if (seasonId == 1) {
-                seasonText = "春になりました。商人町と鉱山から金を徴収しました。金が無くては何も出来ませぬ、内政開発に励みましょうぞ。";
-            }else if (seasonId == 2) {
-                seasonText = "夏になりました。鍛冶屋などの職人町から素材を徴収しました。部隊を増やしたり忍を派遣できますゆえ、内政開発に励みましょうぞ。";
-            }else if (seasonId == 3) {
-                seasonText = "秋になりました。村落から兵糧を徴収しました。腹が減っては戦は出来ぬ、内政開発に励みましょうぞ。";
-            }else if (seasonId == 4) {
-                seasonText = "おお寒い、冬になりました。鍛冶屋などの職人町から素材を徴収しました。部隊を増やしたり忍を派遣できますゆえ、内政開発に励みましょうぞ。";
-            }
+        Message Message = new Message();
+        if (seasonId == 1) {
+            seasonText = Message.getMessage(262,langId);
         }
+        else if (seasonId == 2) {
+            seasonText = Message.getMessage(263, langId);
+        }
+        else if (seasonId == 3) {
+            seasonText = Message.getMessage(264, langId);
+        }
+        else if (seasonId == 4) {
+            seasonText = Message.getMessage(265, langId);
+        }
+        
 
         return seasonText;
     }

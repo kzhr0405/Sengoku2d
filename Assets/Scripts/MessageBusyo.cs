@@ -66,7 +66,7 @@ public class MessageBusyo : MonoBehaviour {
                     serihu = serihuMst.param[busyoId - 1].touyouMsg;
                 }
             }else if (type == "ninmei") {
-                serihu = msg.getMessage(89);
+                serihu = msg.getMessage(89,langId);
             }
             
         } else {
@@ -87,7 +87,7 @@ public class MessageBusyo : MonoBehaviour {
                     serihu = serihuMst.param[busyoId - 1].touyouMsg;
                 }
 			} else if (type == "ninmei") {
-				serihu = msg.getMessage(90);
+				serihu = msg.getMessage(90,langId);
 			} 
 		}
 		Serihu.transform.Find("BusyoSerihu").GetComponent<Text>().text = serihu;

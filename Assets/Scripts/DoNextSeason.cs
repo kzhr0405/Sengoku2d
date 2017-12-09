@@ -12,9 +12,10 @@ public class DoNextSeason : MonoBehaviour {
 		
 		if (name == "YesButton") {
 			Message msg = new Message ();
+            int langId = PlayerPrefs.GetInt("langId");
 
-			//check
-			int busyoDama = PlayerPrefs.GetInt ("busyoDama");
+            //check
+            int busyoDama = PlayerPrefs.GetInt ("busyoDama");
 			if (busyoDama >= 100) {
 
 				AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
@@ -68,10 +69,10 @@ public class DoNextSeason : MonoBehaviour {
                 MainStageController mainScript = GameObject.Find("GameController").GetComponent<MainStageController>();
                 mainScript.yearTimer = 1;
 
-				msg.makeMessageOnBoard (msg.getMessage(1));
+				msg.makeMessageOnBoard (msg.getMessage(1,langId));
 
 			} else {
-				msg.makeMessageOnBoard (msg.getMessage(2));
+				msg.makeMessageOnBoard (msg.getMessage(2,langId));
 			}
 		}
 		touchBackObj.GetComponent<CloseOneBoard> ().OnClick ();

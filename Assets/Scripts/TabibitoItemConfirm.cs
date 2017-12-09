@@ -47,7 +47,8 @@ public class TabibitoItemConfirm : MonoBehaviour {
 			audioSources [4].Play ();
 
 			Message msg = new Message ();
-			msg.makeMessage (msg.getMessage(117));		
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage (msg.getMessage(117,langId));		
 		}
 
 	}

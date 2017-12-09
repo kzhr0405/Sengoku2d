@@ -26,10 +26,10 @@ public class Gacya : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		int[] hitBusyo = new int[3];
-	
+        int langId = PlayerPrefs.GetInt("langId");
 
-		//Check
-		Message msg = new Message();
+        //Check
+        Message msg = new Message();
 		if(name == "DailyGacyaButton"){
 
 			TouyouController script = GameObject.Find("TouyouController").GetComponent<TouyouController>();
@@ -62,7 +62,7 @@ public class Gacya : MonoBehaviour {
 			}else{
 				audioSources [4].Play ();
 
-				msg.makeMessage(msg.getMessage(54));
+				msg.makeMessage(msg.getMessage(54,langId));
 			}
 
 		}else if(name == "BusyoDamaGacyaButton"){
@@ -116,7 +116,7 @@ public class Gacya : MonoBehaviour {
 
 			    } else {
 				    audioSources [4].Play ();
-				    msg.makeMessage(msg.getMessage(2));
+				    msg.makeMessage(msg.getMessage(2,langId));
 			    }
             }
         }

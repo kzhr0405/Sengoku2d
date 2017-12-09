@@ -38,13 +38,13 @@ public class BuildNaiseiWithItem : MonoBehaviour {
 		if (qty < 1) {
 			//Error
 			//Message
-			msg.makeMessage(msg.getMessage(129));
+			msg.makeMessage(msg.getMessage(129,langId));
             audioSources[4].Play();
 
         } else {
 			if (nowHyourou < requiredHyourou) {
 				//Error
-				msg.makeMessage(msg.getMessage(7));
+				msg.makeMessage(msg.getMessage(7,langId));
                 audioSources[4].Play();
 
             } else {
@@ -82,18 +82,19 @@ public class BuildNaiseiWithItem : MonoBehaviour {
 				PlayerPrefs.SetInt(tempParam,resultItem);
 				PlayerPrefs.SetInt("hyourou",resultHyourou);
 				
-				
 				PlayerPrefs.SetString (temp, newNaiseiString);
 				PlayerPrefs.Flush();
 
                 //Message
                 string OKtext = "";
                 if (langId == 2) {
-                    OKtext = "You built " + naiseiName + ".\n The country is thriving.";
+                    OKtext = "You built " + naiseiName + ". The country is thriving.";
+                }else if (langId == 3) {
+                    OKtext = "已建设" + naiseiName + ", 领内日益繁荣。";
                 }else {
-                    OKtext = naiseiName + "を建築しましたぞ。\n国が栄えますな。";
+                    OKtext = naiseiName + "を建築しましたぞ。国が栄えますな。";
                 }
-                
+
                 msg.makeMessage (OKtext);
 				
 				//Close Tab

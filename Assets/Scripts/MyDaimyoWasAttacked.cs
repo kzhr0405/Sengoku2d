@@ -37,6 +37,8 @@ public class MyDaimyoWasAttacked : MonoBehaviour {
             string kassenName = "";
             if (langId == 2) {
                 kassenName = kuniName + " Defence";
+            }else if(langId==3) {
+                kassenName = "防卫" + kuniName;
             }else {
                  kassenName = kuniName + "防衛";
             }

@@ -223,12 +223,9 @@ public class TextController : MonoBehaviour {
         }
         if (tutorialId==15) {
             bool tutorialDoneFlg = PlayerPrefs.GetBool("tutorialDoneFlg");
-            if (tutorialDoneFlg) {                
-                if (langId == 2) {
-                    scenarios[6] = "…Well, There is royal court in Yamashiro country and also merchant in Settsu Izumi, Kawachi, Chikuzen country. You can do several requests to them.";
-                }else {
-                    scenarios[6] = "そうそう、山城国には朝廷が、摂津和泉や河内、筑前国には商人がおりますぞ。特別な紹介状が必要ですが様々なことが出来るようになります。";
-                }
+            if (tutorialDoneFlg) {
+                Message Message = new Message();
+                scenarios[6] = Message.getMessage(285, langId);                
             }
         } 
     }

@@ -47,7 +47,10 @@ public class SenkouButton : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 slot.transform.Find("Title").GetComponent<Text>().text = "No. " + juni;
-            }else {
+            }else if(langId==3) {
+                slot.transform.Find("Title").GetComponent<Text>().text = "战功第" + juni + "位";
+            }
+            else {
                 slot.transform.Find("Title").GetComponent<Text>().text = "戦功第" + juni + "位";
             }
 			slot.transform.Find("Kunkou").GetComponent<TextMesh>().text = senkou.ToString();

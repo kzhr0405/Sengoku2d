@@ -17,35 +17,20 @@ public class Item : MonoBehaviour {
 		List<string> itemList = new List<string> ();
 		char[] delimiterChars = {','};
         int langId = PlayerPrefs.GetInt("langId");
+        Message Message = new Message();
         string temp = "";
 		if (shigenType == 1) {
 			temp = "cyouheiKB";
-            if (langId == 2) {
-                shigenName = "Cavalry";
-            }else {
-                shigenName = "馬素材";
-            }
+            shigenName = Message.getMessage(172, langId);
 		}else if (shigenType == 2) {
 			temp = "cyouheiYR";
-            if (langId == 2) {
-                shigenName = "Spear";
-            }else {
-                shigenName = "槍素材";
-            }
+            shigenName = Message.getMessage(171, langId);
 		}else if (shigenType == 3) {
 			temp = "cyouheiTP";
-            if (langId == 2) {
-                shigenName = "Gun";
-            }else {
-                shigenName = "鉄砲素材";
-            }
+            shigenName = Message.getMessage(173, langId);            
 		}else if (shigenType == 4) {
 			temp = "cyouheiYM";
-            if (langId == 2) {
-                shigenName = "Bow";
-            }else {
-                shigenName = "弓素材";
-            }
+            shigenName = Message.getMessage(174, langId);
 		} 
 
 		string itemString = PlayerPrefs.GetString (temp);

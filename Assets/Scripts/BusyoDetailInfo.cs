@@ -84,42 +84,30 @@ public class BusyoDetailInfo : MonoBehaviour {
             int shipId = kaisenScript.getShipSprite(ShipObj, busyoId);
             ShipObj.transform.localPosition = new Vector3(-10, -15, 0);
             ShipObj.transform.localScale = new Vector2(0.2f, 0.2f);
-            if (langId == 2) {
-                if (shipId == 1) {
-                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "High";
-                }
-                else if (shipId == 2) {
-                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "Mid";
-                }
-                else if (shipId == 3) {
-                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "Low";
-                }
+            Message msg = new Message();
+            if (shipId == 1) {
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(183,langId);
             }
-            else {
-                if (shipId == 1) {
-                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "上";
-                }
-                else if (shipId == 2) {
-                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "中";
-                }
-                else if (shipId == 3) {
-                    ShipObj.transform.Find("Text").GetComponent<Text>().text = "下";
-                }
+            else if (shipId == 2) {
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(182,langId);
             }
+            else if (shipId == 3) {
+                ShipObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(181,langId);
+            }
+            
 
             //Name
             pop.transform.Find("busyoNameValue").GetComponent<Text>().text = busyoName;
             pop.transform.Find("lvValue").GetComponent<Text>().text = lv.ToString();
-            string heisyuName = "";
-            Message msg = new Message();
+            string heisyuName = "";           
             if (heisyu == "YR") {
-                heisyuName = msg.getMessage(56);
+                heisyuName = msg.getMessage(56,langId);
             }else if (heisyu == "KB") {
-                heisyuName = msg.getMessage(55);
+                heisyuName = msg.getMessage(55,langId);
             }else if (heisyu == "YM") {
-                heisyuName = msg.getMessage(58);
+                heisyuName = msg.getMessage(58,langId);
             }else if (heisyu == "TP") {
-                heisyuName = msg.getMessage(57);
+                heisyuName = msg.getMessage(57,langId);
             }
             pop.transform.Find("childNameValue").GetComponent<Text>().text = heisyuName;
             pop.transform.Find("childNum").GetComponent<Text>().text = chQty.ToString();        

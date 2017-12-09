@@ -187,8 +187,37 @@ public class SendParam : MonoBehaviour {
                                 naiseiIcon.GetComponent<IconExp>().IconId = 11;
 
                             }
-                        }
-                        else {
+                        }else if(langId==3) {
+                            if (naiseiName == "kb") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "马";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 5;
+                            }
+                            else if (naiseiName == "tp") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "炮";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 6;
+                            }
+                            else if (naiseiName == "kzn") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "矿";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 7;
+                            }
+                            else if (naiseiName == "snb") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "忍";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 8;
+                            }
+                            else if (naiseiName == "nbn") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "南";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 9;
+                            }
+                            else if (naiseiName == "mkd") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "帝";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 10;
+                            }
+                            else if (naiseiName == "syn") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "商";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 11;
+
+                            }
+                        } else {
                             if (naiseiName == "kb") {
                                 naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "馬";
                                 naiseiIcon.GetComponent<IconExp>().IconId = 5;
@@ -425,6 +454,8 @@ public class SendParam : MonoBehaviour {
                             btn.transform.Find("Text").GetComponent<Text>().text = "Sakai";
                             btn.transform.Find("Text").GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
                             btn.transform.Find("Text").GetComponent<Text>().fontSize = 200;
+                        }else if(langId==3) {
+                            btn.transform.Find("Text").GetComponent<Text>().text = "堺港";
                         } else {
                             btn.transform.Find("Text").GetComponent<Text>().text = "堺";
                         }
@@ -487,14 +518,17 @@ public class SendParam : MonoBehaviour {
 				if (gameClearFlg) {
                     if (langId == 2) {
                         GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = " Cleared";
-                    }else {
+                    }else if(langId==3) {
+                        GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = "已攻略";
+                    }
+                    else {
                         GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = "攻略済";
                     }
                         
 				}else {
                     if (langId == 2) {
                         GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = " Never Cleared";
-                    }else {
+                    } else {
                         GameObject.Find("KouryakuFlg").transform.Find("Label").GetComponent<Text>().text = "未攻略";
                     }
                 }
@@ -543,7 +577,21 @@ public class SendParam : MonoBehaviour {
 				    } else if (heisyu == "TP") {
 					    heisyuKanji = "Gun";
 				    }
-                }else {
+                }else if(langId==3) {
+                    if (heisyu == "YR") {
+                        heisyuKanji = "枪";
+                    }
+                    else if (heisyu == "KB") {
+                        heisyuKanji = "骑马";
+                    }
+                    else if (heisyu == "YM") {
+                        heisyuKanji = "弓";
+                    }
+                    else if (heisyu == "TP") {
+                        heisyuKanji = "铁炮";
+                    }
+                }
+                else {
                     if (heisyu == "YR") {
                         heisyuKanji = "槍";
                     }else if (heisyu == "KB") {
@@ -612,6 +660,39 @@ public class SendParam : MonoBehaviour {
                                 naiseiIcon.GetComponent<IconExp>().IconId = 11;
 
                             }
+                        }
+                        else if (langId == 3) {
+                            if (naiseiName == "kb") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "马";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 5;
+                            }
+                            else if (naiseiName == "tp") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "炮";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 6;
+                            }
+                            else if (naiseiName == "kzn") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "矿";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 7;
+                            }
+                            else if (naiseiName == "snb") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "忍";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 8;
+                            }
+                            else if (naiseiName == "nbn") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "南";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 9;
+                            }
+                            else if (naiseiName == "mkd") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "帝";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 10;
+                            }
+                            else if (naiseiName == "syn") {
+                                naiseiIcon.transform.Find("Text").GetComponent<Text>().text = "商";
+                                naiseiIcon.GetComponent<IconExp>().IconId = 11;
+
+                            }
+
+
                         }
                         else {
                             if (naiseiName == "kb") {
@@ -685,7 +766,11 @@ public class SendParam : MonoBehaviour {
             if (langId == 2) {
                 toubatsu.transform.Find ("Exp").GetComponent<Text> ().text = 
 				"Would you declare " + daimyoName+ " attack order to surrounding parties?";
-            }else {
+            }else if(langId==3) {
+                toubatsu.transform.Find("Exp").GetComponent<Text>().text =
+                "是否向周边大名发出针对"+daimyoName+"的讨伐令？";
+            }
+            else {
                 toubatsu.transform.Find("Exp").GetComponent<Text>().text =
                 daimyoName + "の討伐令を周辺大名に出しますか？";
             }

@@ -87,7 +87,7 @@ public class SeiryokuInfo : MonoBehaviour {
 		string popTextPath = "Prefabs/Busyo/popText";
 		GameObject popText = Instantiate (Resources.Load (popTextPath)) as GameObject;
 		popText.transform.SetParent(popup.transform);
-		popText.transform.localScale = new Vector2 (0.35f, 0.35f);
+		popText.transform.localScale = new Vector2 (0.25f, 0.25f);
 		RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 		popTextTransform.anchoredPosition = new Vector3 (0, 260, 0);
 		popText.name = "popText";
@@ -424,7 +424,9 @@ public class SeiryokuInfo : MonoBehaviour {
 			Resources.Load (imagePath, typeof(Sprite)) as Sprite;
         if (langId == 2) {
             kamon.transform.Find("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + " Status";
-        }else {
+        }else if(langId==3) {
+            kamon.transform.Find("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + "  本国状况";
+        } else {
             kamon.transform.Find("Value").GetComponent<Text>().text = GameObject.Find("DaimyoValue").GetComponent<Text>().text + "  国状況";
         }
         //Kuni

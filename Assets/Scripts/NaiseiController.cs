@@ -97,23 +97,27 @@ public class NaiseiController : MonoBehaviour {
 			    //Ninmei Button
 			    GameObject btn = GameObject.Find ("Ninmei").gameObject;
 			    btn.GetComponent<Ninmei>().kaininFlg = true;
-			    btn.transform.Find("NinmeiText").GetComponent<Text>().text = msg.getMessage(114);
+                int langId = PlayerPrefs.GetInt("langId");
+                btn.transform.Find("NinmeiText").GetComponent<Text>().text = msg.getMessage(114,langId);
 			    btn.GetComponent<Ninmei>().jyosyuId = jyosyuId;
 			    btn.GetComponent<Ninmei>().jyosyuName = jyosyuName;
             }
 		} else {
             //Jyosyu Not Exist
             int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2 || langId == 3) {
+            if (langId == 2) {
                 title = kuniName;
-            }else {
+            }else if(langId==3) {
+                title = kuniName + "・藏入地";
+            }
+            else {
                 title = kuniName + "・蔵入地";
             }
 
 			//Ninmei Button
 			GameObject btn = GameObject.Find ("Ninmei").gameObject;
 			btn.GetComponent<Ninmei>().kaininFlg = false;
-			btn.transform.Find("NinmeiText").GetComponent<Text>().text = msg.getMessage(115);
+			btn.transform.Find("NinmeiText").GetComponent<Text>().text = msg.getMessage(115,langId);
 		}
 
 		GameObject.Find ("StageNameValue").GetComponent<Text> ().text = title;

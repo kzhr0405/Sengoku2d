@@ -505,7 +505,8 @@ public class DataRecoveryConfirm : MonoBehaviour {
             Destroy(msg.gameObject);
             GameObject.Find("Start").GetComponent<Button>().enabled = false;
             Message msgScript = new Message();
-            msgScript.makeMessage(msgScript.getMessage(151));
+            int langId = PlayerPrefs.GetInt("langId");
+            msgScript.makeMessage(msgScript.getMessage(151,langId));
 
         }else {
             audioSources[1].Play();

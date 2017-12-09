@@ -110,7 +110,8 @@ public class Slot : MonoBehaviour,IDropHandler {
                                     audioSources[4].Play();
 
                                     Message msg = new Message();
-                                    msg.makeMessage(msg.getMessage(144));
+                                    int langId = PlayerPrefs.GetInt("langId");
+                                    msg.makeMessage(msg.getMessage(144,langId));
 
                                 } else { 
 
@@ -162,8 +163,9 @@ public class Slot : MonoBehaviour,IDropHandler {
 						}else{
 							audioSources [4].Play ();
 							limitFlg = false;
-							Message msg = new Message(); 
-							msg.makeMessage (msg.getMessage(59)); 
+							Message msg = new Message();
+                            int langId = PlayerPrefs.GetInt("langId");
+                            msg.makeMessage (msg.getMessage(59,langId)); 
 
 						}
 					}

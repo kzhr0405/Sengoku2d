@@ -108,7 +108,10 @@ public class DoBouei : MonoBehaviour {
                 
                 if (langId == 2) {
                     OKtext = engunDaimyoName + " sent " + engunHei.ToString() + " soldiers to \n" + kuniName + " to support.";
-                }else {
+                }else if(langId==3) {
+                    OKtext = engunDaimyoName + "大人率领" + engunHei.ToString() + "兵前往救援" + kuniName + "了。";
+                }
+                else {
                     OKtext = engunDaimyoName + "殿が" + engunHei.ToString() + "の兵を\n" + kuniName + "救援に差し向けましたぞ。";
                 }
 				msg.makeMessageOnBoard (OKtext);
@@ -126,6 +129,9 @@ public class DoBouei : MonoBehaviour {
                 string NGtext = "";
                 if (langId == 2) {
                     NGtext = engunDaimyoName + " declined our defence order. \n Friendship decreased " + reducedValue + " point.";
+                }
+                else if (langId == 3) {
+                    NGtext = engunDaimyoName + "已经拒绝了援军邀请，和本家友好度下降了" + reducedValue + "。";
                 } else {
                     NGtext = "援軍の儀、" + engunDaimyoName + "殿に断られ申した。\n当家との友好度が" + reducedValue + "下がります。";
                 }
@@ -142,6 +148,8 @@ public class DoBouei : MonoBehaviour {
             string NGtext = "";
             if (langId == 2) {
                 NGtext = "My lord, it was too late. Battle already finished.";
+            }else if(langId==3) {
+                NGtext = "主公，胜负已分。";
             }else {
                 NGtext = "御屋形様、既に勝敗は決してしまったようですぞ。";
             }

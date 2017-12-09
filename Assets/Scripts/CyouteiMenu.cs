@@ -23,9 +23,9 @@ public class CyouteiMenu : MonoBehaviour {
 		if (actionRemainQty <= 0) {
 			audioSources [4].Play ();
 
-			msg.makeMessage (msg.getMessage(17));
+			msg.makeMessage (msg.getMessage(17,langId));
 
-            string serihu = msg.getMessage(18);
+            string serihu = msg.getMessage(18,langId);
             mikadoSerihuChanger(serihu);
 
 		} else {
@@ -36,8 +36,8 @@ public class CyouteiMenu : MonoBehaviour {
 				int money = PlayerPrefs.GetInt ("money");
 				if (money < 1000) {
 					audioSources [4].Play ();
-					msg.makeMessage (msg.getMessage(19));
-					mikadoSerihuChanger(msg.getMessage(20));
+					msg.makeMessage (msg.getMessage(19,langId));
+					mikadoSerihuChanger(msg.getMessage(20,langId));
 				} else {
 					audioSources [0].Play ();
 
@@ -56,7 +56,7 @@ public class CyouteiMenu : MonoBehaviour {
 					if (tmp < 10) {
 						giveSlider.GetComponent<Slider> ().maxValue = (float)tmp;
 					}
-					mikadoSerihuChanger(msg.getMessage(21));
+					mikadoSerihuChanger(msg.getMessage(21,langId));
 				}
 
 			} else if (name == "Cyoutei") {
@@ -75,7 +75,7 @@ public class CyouteiMenu : MonoBehaviour {
 
 				menu.transform.Find("CyouteiUpValue").GetComponent<Text>().text = yukoudoUp.ToString();
 				menu.transform.Find("ReduceValue").GetComponent<Text>().text = reducePoint.ToString();
-				mikadoSerihuChanger(msg.getMessage(22));
+				mikadoSerihuChanger(msg.getMessage(22,langId));
 
 			} else if (name == "Teisen") {
 
@@ -119,7 +119,11 @@ public class CyouteiMenu : MonoBehaviour {
                     if (langId == 2) {
                         gunzei.transform.Find("Text").GetComponent<Text>().text = srcDaimyoName;
                         serihu = "Have you not been doing well with " + srcDaimyoName + "? We can stop the battle.";
-                    }else { 
+                    }else if(langId==3) {
+                        gunzei.transform.Find("Text").GetComponent<Text>().text = srcDaimyoName + "队";
+                        serihu = "哦，和" + srcDaimyoName + "关系不顺啊。我可以帮忙调解关系敦促停战。";
+                    }
+                    else { 
                         gunzei.transform.Find("Text").GetComponent<Text>().text = srcDaimyoName + "隊";
                         serihu = "ほう、" + srcDaimyoName + "と上手くいっていないのか。停戦要請をしても良いぞ。";
                     }
@@ -127,7 +131,7 @@ public class CyouteiMenu : MonoBehaviour {
 
 				}else{
 					audioSources [4].Play ();
-					msg.makeMessage (msg.getMessage(23));
+					msg.makeMessage (msg.getMessage(23,langId));
 				}
 
 
@@ -157,6 +161,8 @@ public class CyouteiMenu : MonoBehaviour {
                     string serihu = "";
                     if (langId == 2) {
                         serihu = "I'm glad of your loyalty.\n I can give you " + kanniName + ".";
+                    }else if(langId==3) {
+                        serihu = "卿之忠义，其心可嘉。\n现今" + kanniName + "正空着呢。";
                     } else {
                         serihu = "そなたの忠勤うれしく思う。\n今は" + kanniName + "の任が空いておるぞ。";
                     }
@@ -165,8 +171,8 @@ public class CyouteiMenu : MonoBehaviour {
 				}else{
 					audioSources [4].Play ();
                     
-					msg.makeMessage (msg.getMessage(24));
-					mikadoSerihuChanger(msg.getMessage(25));
+					msg.makeMessage (msg.getMessage(24,langId));
+					mikadoSerihuChanger(msg.getMessage(25,langId));
 					
 				}
 			} else if (name == "Bakuhu") {
@@ -178,12 +184,16 @@ public class CyouteiMenu : MonoBehaviour {
 
 				if (syogunDaimyoId == myDaimyoId) {
 					audioSources [4].Play ();
-					msg.makeMessage (msg.getMessage(26));
+					msg.makeMessage (msg.getMessage(26,langId));
 
                     string serihu = "";
                     if (langId == 2) {
                         serihu = "Lord " + myDaimyoBusyoName + ". You are syogun. What do you want anymore?";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        serihu = myDaimyoBusyoName + "大人，您已经开辟幕府了。还想要什么？";
+                    }
+                    else {
                         serihu = myDaimyoBusyoName + "殿、そなた既に幕府を開いておろう。これ以上何を望むというのじゃ。";
                     }
                         
@@ -204,6 +214,8 @@ public class CyouteiMenu : MonoBehaviour {
                         string Text = "";
                         if (langId == 2) {
                             Text = "Other clan " + syogunBusyoName + " has been assigned as syogun.";
+                        }else if (langId == 3) {
+                            Text = syogunBusyoName + "大人已经被任命为征夷大将军了。";
                         } else {
                             Text = "既に" + syogunBusyoName + "殿が征夷大将軍に任命されておりますぞ。";
                         }
@@ -211,6 +223,8 @@ public class CyouteiMenu : MonoBehaviour {
                         string serihu = "";
                         if (langId == 2) {
                             serihu = "Other clan, loard " + syogunBusyoName + " has been assigned as syogun.";
+                        }else if (langId == 3) {
+                            serihu = syogunBusyoName + "大人已经开辟幕府了。阁下的消息是否太晚了点。";
                         } else {
                             serihu = "既に" + syogunBusyoName + "殿が幕府を開いておる。そなた世情にあまりにも疎いのう。";
                         }
@@ -235,11 +249,14 @@ public class CyouteiMenu : MonoBehaviour {
 							//NG
 							audioSources [4].Play ();
 
-							msg.makeMessage (msg.getMessage(27));
+							msg.makeMessage (msg.getMessage(27,langId));
                             string serihu = "";
                             if (langId == 2) {
                                 serihu = "You don't have country " + NGKuniName + ". It's too early for you to assign syogun.";
-                            }else {
+                            }else if (langId == 3) {
+                                serihu = "您尚未统治" + NGKuniName + ",此时谈就任征夷大将军，为时尚早。";
+                            }
+                            else {
                                 serihu = NGKuniName + "をまだ治めていないようじゃのう。残念だが征夷大将軍の任命は時期尚早じゃ。";
                             }
 							mikadoSerihuChanger(serihu);
@@ -286,21 +303,23 @@ public class CyouteiMenu : MonoBehaviour {
 									menu.transform.localPosition = new Vector2 (0, -180);
 									menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
                                     menu.name = "MenuBakuhu";
-									mikadoSerihuChanger(msg.getMessage(28));
+									mikadoSerihuChanger(msg.getMessage(28,langId));
 
 								} else {
 									//NG
 									audioSources [4].Play ();
 
 									onceBakuhuNg = true;
-									msg.makeMessage (msg.getMessage(29));
+									msg.makeMessage (msg.getMessage(29,langId));
 
                                     string serihu = "";
 
                                     if (langId == 2) {
                                         serihu = "I want to assign you but " + maxDaimyoName + " disagreed.\n I can't ignore due to his influence.";
+                                    }else if (langId == 3) {
+                                        serihu = "虽然很想任命，但是" + maxDaimyoName + "在宫中影响甚大，不可无视。";
                                     } else {
-                                        serihu = "そちを任命したいのだが、\n" + maxDaimyoName + "が五月蝿うてのう。\n宮中にも影響力があるゆえ無視は出来ぬ。";
+                                        serihu = "そちを任命したいのだが、" + maxDaimyoName + "が五月蝿うてのう。\n宮中にも影響力があるゆえ無視は出来ぬ。";
                                     }                                        
 									mikadoSerihuChanger (serihu);
 								}
@@ -314,7 +333,7 @@ public class CyouteiMenu : MonoBehaviour {
 								menu.transform.localPosition = new Vector2 (0, -180);
 								menu.transform.Find ("Close").GetComponent<CloseMenu> ().obj = menu;
 								menu.name = "MenuBakuhu";
-								mikadoSerihuChanger(msg.getMessage(28));
+								mikadoSerihuChanger(msg.getMessage(28,langId));
 
 							}
 
@@ -343,7 +362,10 @@ public class CyouteiMenu : MonoBehaviour {
                     string Text = "";
                     if (langId == 2) {
                         Text = daimyoName + " was declared as enemy of imperial court.";
-                    }else {
+                    }else if (langId == 3) {
+                        Text = daimyoName + "已经被指定为朝敌了。";
+                    }
+                    else {
                         Text = "既に" + daimyoName + "が朝敵に指定されているようですぞ。";
                     }
                         msg.makeMessage (Text);
@@ -354,7 +376,7 @@ public class CyouteiMenu : MonoBehaviour {
 					bool remain1DaimyoFlg = daimyo.checkRemain1DaimyoOnMain(myDaimyo);
 					if (remain1DaimyoFlg) {
 						audioSources [4].Play ();
-						msg.makeMessage (msg.getMessage(14));
+						msg.makeMessage (msg.getMessage(14,langId));
 
 					} else {
 						audioSources [0].Play ();
@@ -379,7 +401,11 @@ public class CyouteiMenu : MonoBehaviour {
                         string serihu = "";
                         if (langId == 2) {
                             serihu = "Please attack " + daimyoName + ", enemy of imperial court.";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            serihu = "请去讨伐违逆朝廷的逆贼" + daimyoName + "。";
+                        }
+                        else {
                             serihu = "朝廷に弓引く、逆賊" + daimyoName + "を討ってくれ。";
                         }
 						mikadoSerihuChanger (serihu);

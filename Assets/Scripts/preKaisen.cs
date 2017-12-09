@@ -54,14 +54,21 @@ public class preKaisen : MonoBehaviour {
                 string kuniName = kuni.getKuniName(activeKuniId,langId);
                 if (langId == 2) {
                     msgTxt = daimyoName + " is attacking " + kuniName + ". \n Let's defend this country.";
-                }else {
+                }else if(langId==3) {
+                    msgTxt = daimyoName + "正在进攻" + kuniName + "，让我们死守到底吧。";
+                }
+                else {
                     msgTxt = daimyoName + "が" + kuniName + "に侵攻していますぞ。\n守り抜きましょうぞ。";
                 }
             }
             else if (isKessenFlg) {
                 if (langId == 2) {
                     msgTxt = "It's a time to have a showdown with " + daimyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    msgTxt = "到了和" + daimyoName + "一决雌雄的时刻了，跃跃欲试啊。";
+                }
+                else {
                     msgTxt = daimyoName + "と雌雄を決する時です。\n腕が鳴りますな。";
                 }
             }
@@ -73,7 +80,11 @@ public class preKaisen : MonoBehaviour {
         if (!isKessenFlg) {
             if (langId == 2) {
                 GameObject.Find("KassenNameValue").GetComponent<Text>().text = "Battle of " + stageName;
-            }else {
+            }
+            else if (langId == 3) {
+                GameObject.Find("KassenNameValue").GetComponent<Text>().text = stageName + "之战";
+            }
+            else {
                 GameObject.Find("KassenNameValue").GetComponent<Text>().text = stageName + "の戦い";
             }
         }
@@ -114,7 +125,11 @@ public class preKaisen : MonoBehaviour {
             GameObject text4 = slot4.transform.Find("Text1").gameObject;
             if (langId == 2) {
                 text4.GetComponent<Text>().text = "All Unit Speed";
-            }else {
+            }
+            else if (langId == 3) {
+                text4.GetComponent<Text>().text = "气象效果 全队 迅速";
+            }
+            else {
                 text4.GetComponent<Text>().text = "気象効果 全隊 迅速";
             }
             text4.transform.Find("Text2").GetComponent<Text>().text = "-50%";
@@ -134,7 +149,11 @@ public class preKaisen : MonoBehaviour {
             GameObject text = slot.transform.Find("Text1").gameObject;
             if (langId == 2) {
                 text.GetComponent<Text>().text = "Player Unit Defence";
-            }else {
+            }
+            else if (langId == 3) {
+                text.GetComponent<Text>().text = "防御效果 己方 防御";
+            }
+            else {
                 text.GetComponent<Text>().text = "防備効果 味方 守備";
             }
             text.transform.Find("Text2").GetComponent<Text>().text = "+" + boubi;

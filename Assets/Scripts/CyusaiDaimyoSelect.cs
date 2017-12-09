@@ -92,7 +92,9 @@ public class CyusaiDaimyoSelect : MonoBehaviour {
 			msgTransform.name = "CyusaiConfirm";
             if (langId == 2) {
                 msg.transform.Find ("Text").GetComponent<Text> ().text = "Do you want to mediate between " + daimyoName + " and " + daimyoName2 + "? \n Friendship will increase.";
-            }else {
+            }else if(langId==3) {
+                msg.transform.Find("Text").GetComponent<Text>().text = "仲裁" + daimyoName + "和" + daimyoName2 + "吗？两大名的友好度上升了。";
+            } else {
                 msg.transform.Find("Text").GetComponent<Text>().text = daimyoName + "と" + daimyoName2 + "を仲裁しますか？\n二大名間の友好度が上がります。";
             }
 

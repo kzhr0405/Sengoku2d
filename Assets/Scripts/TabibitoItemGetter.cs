@@ -22,11 +22,12 @@ public class TabibitoItemGetter : MonoBehaviour {
 		string Text = "";
 		Kahou kahou = new Kahou ();
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		if (!isNanbansenFlg) {
+        if (!isNanbansenFlg) {
 
             audioSources[3].Play ();
-            Text = msg.getMessage(122);
+            Text = msg.getMessage(122,langId);
 
             if (itemCd == "money") {
 				//Money
@@ -55,7 +56,7 @@ public class TabibitoItemGetter : MonoBehaviour {
 					nowHyourou = maxHyourou;
 					PlayerPrefs.SetInt ("hyourou", nowHyourou);
 
-					Text = msg.getMessage(123);
+					Text = msg.getMessage(123,langId);
 
 					//Label
 					Text nowHyourouLabelText = GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ();
@@ -190,10 +191,10 @@ public class TabibitoItemGetter : MonoBehaviour {
                     kahou.registerHeihousyo(itemId);
                 }
 
-                Text = msg.getMessage(124);
+                Text = msg.getMessage(124,langId);
 			}else{
 				audioSources [4].Play ();
-                Text = msg.getMessage(125);
+                Text = msg.getMessage(125,langId);
             }
 		}
 

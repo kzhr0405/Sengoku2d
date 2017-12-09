@@ -122,7 +122,10 @@ public class JinkeiPowerEffection : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             flag.transform.Find ("Effect").GetComponent<Text> ().text = "ATK+" + addAtk + "\n" + "DFC+" + addDfc;
-        }else {
+        }else if(langId==3) {
+            flag.transform.Find("Effect").GetComponent<Text>().text = "勇武+" + addAtk + "\n" + "防御+" + addDfc;
+        }
+        else {
             flag.transform.Find("Effect").GetComponent<Text>().text = "武勇+" + addAtk + "\n" + "守備+" + addDfc;
         }
 	}
@@ -138,7 +141,9 @@ public class JinkeiPowerEffection : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msgObj.transform.Find ("Text").GetComponent<Text> ().text = "Total ATK+" + totalAddAtk + "\n" + "Total DFC+" + totalAddDfc;
-        }else {
+        }else if (langId == 3) {
+            msgObj.transform.Find("Text").GetComponent<Text>().text = "总勇武+" + totalAddAtk + "\n" + "总防御+" + totalAddDfc;
+        } else {
             msgObj.transform.Find("Text").GetComponent<Text>().text = "総武勇+" + totalAddAtk + "\n" + "総守備+" + totalAddDfc;
         }
 	}

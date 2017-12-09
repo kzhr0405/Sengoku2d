@@ -38,8 +38,9 @@ public class DoKainin : MonoBehaviour {
 
 			//Initialization
 			//Message
-			Message msg = new Message(); 
-			msg.makeMessage(msg.getMessage(87));
+			Message msg = new Message();
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage(msg.getMessage(87,langId));
 
             Jinkei Jinkei = new Jinkei();
             Jinkei.jinkeiHpUpda(false, jyosyuHei);

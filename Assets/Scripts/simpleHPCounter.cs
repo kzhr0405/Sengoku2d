@@ -102,13 +102,9 @@ public class simpleHPCounter : MonoBehaviour {
         textObj.transform.localPosition = new Vector2(0,0);
         textObj.transform.localScale = new Vector2(0.25f, 0.2f);
         textObj.GetComponent<Fadein>().destroyBoard = board;
- 
+        Message Message = new Message();
         if (!winFlg) {
-            if (langId == 2) {
-                textObj.GetComponent<TextMesh>().text = "Lose";
-            } else {
-                textObj.GetComponent<TextMesh>().text = "敗北";
-            }
+            textObj.GetComponent<TextMesh>().text = Message.getMessage(250,langId);
         }
     }
 
@@ -219,7 +215,10 @@ public class simpleHPCounter : MonoBehaviour {
                 itemId = script.getItemRank(30, 10);
                 if (langId == 2) {
                     MsgText = "You got " + itemScript.getItemName(itemTyp + itemId.ToString()) + ".";
-                }else {
+                }else if(langId==3) {
+                    MsgText = "已入手" + itemScript.getItemName(itemTyp + itemId.ToString()) + "。";
+                }
+                else {
                     MsgText = itemScript.getItemName(itemTyp + itemId.ToString()) + "を手に入れましたぞ。";
                 }
                 msg.makeMeshMessage(MsgText);
@@ -234,7 +233,11 @@ public class simpleHPCounter : MonoBehaviour {
                 }
                 if (langId == 2) {
                     MsgText = "You got " + itemQty.ToString() + " stone.";
-                }else {
+                }
+                else if (langId == 3) {
+                    MsgText = "已入手武将珠" + itemQty.ToString() + "个。";
+                }
+                else {
                     MsgText = "武将珠を" + itemQty.ToString() + "個手に入れましたぞ。";
                 }
                 msg.makeMeshMessage(MsgText);
@@ -243,7 +246,11 @@ public class simpleHPCounter : MonoBehaviour {
                 itemId = script.getItemRank(10, 1);
                 if (langId == 2) {
                     MsgText = "You got " + itemScript.getItemName(itemTyp + itemId.ToString()) + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    MsgText = "已入手" + itemScript.getItemName(itemTyp + itemId.ToString()) + "个。";
+                }
+                else {
                     MsgText = itemScript.getItemName(itemTyp + itemId.ToString()) + "を手に入れましたぞ。";
                 }
                 msg.makeMeshMessage(MsgText);
@@ -256,7 +263,11 @@ public class simpleHPCounter : MonoBehaviour {
             itemName = kahou.getKahouName(itemTyp, itemId);
             if (langId == 2) {
                 MsgText = "You got treasure, " + itemName + ".";
-            }else {
+            }
+            else if (langId == 3) {
+                MsgText = "已入手家宝" + itemName + "。";
+            }
+            else {
                 MsgText = "家宝、" + itemName + "を手に入れましたぞ。";
             }
             msg.makeMeshMessage(MsgText);
@@ -266,7 +277,11 @@ public class simpleHPCounter : MonoBehaviour {
             itemQty = UnityEngine.Random.Range(100, 500);
             if (langId == 2) {
                 MsgText = "You got money " + itemQty.ToString() + ".";
-            }else {
+            }
+            else if (langId == 3) {
+                MsgText = "已入手金钱" + itemQty.ToString() + "。";
+            }
+            else {
                 MsgText = "金" + itemQty.ToString() + "を手に入れましたぞ。";
             }
             msg.makeMeshMessage(MsgText);
@@ -282,7 +297,11 @@ public class simpleHPCounter : MonoBehaviour {
         }else {
            if (langId == 2) {
                 MsgText = "No items";
-            }else {
+            }
+            else if (langId == 3) {
+                MsgText = "没有战利品。";
+            }
+            else {
                 MsgText = "戦利品はありませんでした。";
             }
             msg.makeMeshMessage(MsgText);

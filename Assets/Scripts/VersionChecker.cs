@@ -108,6 +108,13 @@ public class VersionChecker : MonoBehaviour {
             MobileNativeDialog dialog = new MobileNativeDialog(title, message, yes, no);
 
             dialog.OnComplete += OnPopUpClose;   
+        }else if(langId == 3){
+            string title = "「合战-战国绘卷-」有最新版本";
+            string message = "是否更新？";
+            string yes = "是";
+            string no = "否";
+            MobileNativeDialog dialog = new MobileNativeDialog(title, message, yes, no);
+            dialog.OnComplete += OnPopUpClose;
         }else {    
             string title = "「合戦-戦国絵巻-」の最新バージョンがあります";
             string message = "更新しますか？";

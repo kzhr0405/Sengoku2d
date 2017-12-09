@@ -121,7 +121,11 @@ public class DoDoumeiHaki : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     OKtext = "Renounced alliance with " + daimyoName + ".\n Friendship decreased " + reduceYukoudo + " point";
-                }else {
+                }
+                else if (langId == 3) {
+                    OKtext = "和" + daimyoName + "大人的同盟破裂了, 友好度下降了" + reduceYukoudo + "。";
+                }
+                else {
                     OKtext = daimyoName + "殿との同盟を破棄致しました。\n友好度が" + reduceYukoudo + "下がりまする。";
                 }
 				msg.makeMessage (OKtext);
@@ -134,7 +138,8 @@ public class DoDoumeiHaki : MonoBehaviour {
 				Destroy(GameObject.Find("TouchBack(Clone)"));
 				
 			}else{
-				msg.makeMessage (msg.getMessage(7));
+                int langId = PlayerPrefs.GetInt("langId");
+                msg.makeMessage (msg.getMessage(7,langId));
 
 				Destroy(GameObject.Find("DoumeiHakiConfirm"));
 				Destroy(GameObject.Find("Back(Clone)"));

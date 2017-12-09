@@ -41,7 +41,9 @@ public class GiveGokuiConfirm : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg.transform.Find("Text").GetComponent<Text>().text= "My lord, Do you want to transmit " + sakuName + "?\n He won't be able to use current active skill anymore.";
-        }else {
+        }else if(langId==3) {
+            msg.transform.Find("Text").GetComponent<Text>().text = "主公，是否要传授" + sakuName + "？传授之后现在的策略就无法使用了。";
+        } else {
             msg.transform.Find("Text").GetComponent<Text>().text = "御屋形様、" + sakuName + "を伝授なさいますか？\n現在の策は使用出来なくなりますぞ。";
         }
 		//Add busyoId

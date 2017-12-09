@@ -164,7 +164,8 @@ public class Timer : MonoBehaviour {
 			        if (!cyouryakuFlg) {
 				        if (timer < cyouryakuTime) {
 					        cyouryakuFlg = true;
-					        cyouryaku(cyouryakuHeiQty,cyouryakuTmp);
+                            int langId = PlayerPrefs.GetInt("langId");
+                            cyouryaku(cyouryakuHeiQty,cyouryakuTmp,langId);
 				        }
 			        }
                 }
@@ -203,7 +204,8 @@ public class Timer : MonoBehaviour {
                         if (GameObject.Find("AutoBtn")) {
                             GameObject.Find("AutoBtn").SetActive(false);
                         }
-                        if (!isAttackedFlg) {
+                        Message Message = new Message();
+                        if (!isAttackedFlg) {                           
                             //Player Attacked
                             //Game Over
                             string backPath = "Prefabs/PostKassen/back";
@@ -215,11 +217,7 @@ public class Timer : MonoBehaviour {
 					        //Chane word
 					        Color color = Color.blue;
                             int langId = PlayerPrefs.GetInt("langId");
-                            if (langId == 2) {                               
-                                GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
-                            }else {
-                                GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
-                            }
+                            GameObject.Find("winlose").GetComponent<TextMesh>().text = Message.getMessage(286, langId);
 					        GameObject.Find ("winlose").GetComponent<TextMesh> ().color = color;
 					        audioSources [4].Play ();
 					        busouKaijyo ();
@@ -291,11 +289,7 @@ public class Timer : MonoBehaviour {
 					            makimonoObj.transform.localPosition = new Vector2(0,-135);
 
                                 int langId = PlayerPrefs.GetInt("langId");
-                                if (langId == 2) {
-                                    GameObject.Find ("winlose").GetComponent<TextMesh> ().text = "Timeup";
-                                }else {
-                                    GameObject.Find("winlose").GetComponent<TextMesh>().text = "時間切れ";
-                                }
+                                GameObject.Find("winlose").GetComponent<TextMesh>().text = Message.getMessage(286, langId);
 					            string stageName = PlayerPrefs.GetString("activeStageName");
 					            audioSources [3].Play ();
 					            audioSources [7].Play ();
@@ -429,7 +423,8 @@ public class Timer : MonoBehaviour {
 	public void playerEngunInstance(string playerEngunList,float mntMinusRatio,float seaMinusRatio,float rainMinusRatio,float snowMinusRatio){
 
 		List<string> daimyoEnguniList = new List<string> ();
-		char[] delimiterChars = {':'};
+        int langId = PlayerPrefs.GetInt("langId");
+        char[] delimiterChars = {':'};
 		char[] delimiterChars2 = {'-'};
 		if(playerEngunList.Contains(":")){
 			daimyoEnguniList = new List<string> (playerEngunList.Split (delimiterChars));
@@ -544,7 +539,7 @@ public class Timer : MonoBehaviour {
         }
 
 		Message msg = new Message ();
-		msg.makeKassenMessage (msg.getMessage(130));
+		msg.makeKassenMessage (msg.getMessage(130,langId));
 
 
 	}
@@ -553,7 +548,8 @@ public class Timer : MonoBehaviour {
 	public void enemyEngunInstance(string enemyEngunList,float mntMinusRatio,float seaMinusRatio,float rainMinusRatio,float snowMinusRatio, bool kokuninFlg){
 		
 		List<string> daimyoEnguniList = new List<string> ();
-		char[] delimiterChars = {':'};
+        int langId = PlayerPrefs.GetInt("langId");
+        char[] delimiterChars = {':'};
 		char[] delimiterChars2 = {'-'};
 		if(enemyEngunList.Contains(":")){
 			daimyoEnguniList = new List<string> (enemyEngunList.Split (delimiterChars));
@@ -674,15 +670,15 @@ public class Timer : MonoBehaviour {
 		}
 		Message msg = new Message ();
         if(kokuninFlg) {
-            msg.makeKassenMessage(msg.getMessage(162));
+            msg.makeKassenMessage(msg.getMessage(162,langId));
         }else { 
-    		msg.makeKassenMessage (msg.getMessage(131));
+    		msg.makeKassenMessage (msg.getMessage(131,langId));
         }
 
     }
 
 
-	public void cyouryaku(int heiQty, string cyouryakuTmp){
+	public void cyouryaku(int heiQty, string cyouryakuTmp, int langId){
 
 		//Cyouryaku Target
 		int counter = 0;
@@ -831,7 +827,7 @@ public class Timer : MonoBehaviour {
 
 
 		Message msg = new Message ();
-		msg.makeKassenMessage (msg.getMessage(132));
+		msg.makeKassenMessage (msg.getMessage(132,langId));
 	}
 
 	public void busouKaijyo(){

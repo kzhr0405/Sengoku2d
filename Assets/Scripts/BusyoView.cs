@@ -14,10 +14,10 @@ public class BusyoView : MonoBehaviour {
 	public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [2].Play ();
-
-		/*Busyo View*/
-		//Delete Previous
-		foreach ( Transform n in GameObject.Find ("BusyoView").transform ){
+        Message msg = new Message();
+        /*Busyo View*/
+        //Delete Previous
+        foreach ( Transform n in GameObject.Find ("BusyoView").transform ){
 			GameObject.Destroy(n.gameObject);
 		}
         //Jinkei Flg
@@ -53,23 +53,15 @@ public class BusyoView : MonoBehaviour {
         ShipObj.transform.localPosition = new Vector3(-40,-40,0);
         ShipObj.transform.localScale = new Vector2(0.4f, 0.4f);
         int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
-            if (shipId==1) {
-                ShipObj.transform.Find("Text").GetComponent<Text>().text = "High";
-            }else if(shipId==2) {
-                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Mid";
-            }else if(shipId==3) {
-                ShipObj.transform.Find("Text").GetComponent<Text>().text = "Low";
-            }
-        }else {
-            if (shipId == 1) {
-                ShipObj.transform.Find("Text").GetComponent<Text>().text = "上";
-            }else if (shipId == 2) {
-                ShipObj.transform.Find("Text").GetComponent<Text>().text = "中";
-            }else if (shipId == 3) {
-                ShipObj.transform.Find("Text").GetComponent<Text>().text = "下";
-            }
+       
+        if (shipId == 1) {
+            ShipObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(183,langId);
+        }else if (shipId == 2) {
+            ShipObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(182,langId);
+        }else if (shipId == 3) {
+            ShipObj.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(181,langId);
         }
+       
         //Text Modification
         GameObject text = Busyo.transform.Find ("Text").gameObject;
 		text.GetComponent<Text> ().color = new Color(255,255,255,255);
@@ -129,15 +121,10 @@ public class BusyoView : MonoBehaviour {
 			} else {
 				requiredExp = exp.getExpLvMax(maxLv);
 			}
-
-
+            
             int diff = requiredExp - nowExp;
-            if (langId == 2) {
-                GameObject.Find("ExpValue").GetComponent<Text>().text = "another " + diff.ToString();
-            }else {
-                GameObject.Find("ExpValue").GetComponent<Text>().text = "あと" + diff.ToString();
-            }
-
+            GameObject.Find("ExpValue").GetComponent<Text>().text = msg.getMessage(215,langId) + diff.ToString();
+            
             //Kahou status
             KahouStatusGet kahouSts = new KahouStatusGet ();
 			string[] KahouStatusArray =kahouSts.getKahouForStatus (busyoId,adjHp,adjAtk,adjDfc,spd);
@@ -169,18 +156,10 @@ public class BusyoView : MonoBehaviour {
 					    addDfcByKanni = ((float)adjDfc * (float)effect)/100;
 				    }
                 }else {
-                    if (langId == 2) {
-                        GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "No Rank";
-                    }else {
-                        GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
-                    }
+                    GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = msg.getMessage(216,langId);                    
                 }
-            } else {
-                if (langId == 2) {
-                    GameObject.Find ("StatusKanni").transform.Find ("Value").GetComponent<Text> ().text = "No Rank";
-                }else {
-                    GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
-                }                
+            } else {               
+                GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = msg.getMessage(216,langId);                                
 			}
 
 			//Jyosyu
@@ -195,11 +174,7 @@ public class BusyoView : MonoBehaviour {
                     GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = kuniName + "\n城主";
                 }
 			} else {
-                if (langId == 2) {
-                    GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "No Feud";
-                }else {
-                    GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "城無し";
-                }
+                GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = msg.getMessage(217,langId);                
 			}
 
 			//Show Additional Status
@@ -248,16 +223,15 @@ public class BusyoView : MonoBehaviour {
                     PlayerPrefs.SetString(heiId, ch_type + ":" + ch_num.ToString() + ":" + ch_lv.ToString() + ":" + ch_status.ToString());
                 }
 
-                string heisyu = "";
-                Message msg = new Message();
+                string heisyu = "";                
                 if (ch_type == "KB") {
-                    heisyu = msg.getMessage(55);
+                    heisyu = msg.getMessage(55,langId);
                 }else if (ch_type == "YR") {
-                    heisyu = msg.getMessage(56);
+                    heisyu = msg.getMessage(56,langId);
                 }else if (ch_type == "TP") {
-                    heisyu = msg.getMessage(57);
+                    heisyu = msg.getMessage(57,langId);
                 }else if (ch_type == "YM") {
-                    heisyu = msg.getMessage(58);
+                    heisyu = msg.getMessage(58,langId);
                 }
             
                 GameObject.Find ("ChildNameValue").GetComponent<Text> ().text = heisyu;

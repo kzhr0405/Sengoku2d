@@ -18,10 +18,11 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             audioSources[7].Play();
             audioSources[3].Play();
 
-            GameObject Content = GameObject.Find("Content").gameObject;
+            GameObject Content = GameObject.Find("Busyo").transform.Find("ScrollView").transform.Find("Content").gameObject;
             List<int> touyouBusyoList = new List<int>();
             foreach(Transform slot in Content.transform) {
                 GacyaSpecialSelect GacyaSpecialSelect = slot.GetComponent<GacyaSpecialSelect>();
+                Debug.Log(slot.name);
                 if (GacyaSpecialSelect.selectFlg) {
                     touyouBusyoList.Add(GacyaSpecialSelect.busyoId);
                 }
@@ -64,7 +65,10 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             if (id5 != 0) {
                 if (langId == 2) {
                     messageList.Add(id5 + " new samurai joined your clan.\n");
-                }else {
+                }else if (langId == 3) {
+                    messageList.Add("首次登用武将" + id5 + "人。\n");
+                }
+                else {
                     messageList.Add(id5 + "人の武将を新規に登用。\n");
                 }
             }
@@ -72,7 +76,11 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             if (id4 != 0) {
                 if (langId == 2) {
                     messageList.Add(id4 + " samurai joined your clan again.\n");
-                }else {
+                }
+                else if (langId == 3) {
+                    messageList.Add("再次登用武将" + id4 + "人。\n");
+                }
+                else {
                     messageList.Add(id4 + "人の武将を改めて登用。\n");
                 }
             }
@@ -80,7 +88,11 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             if (id3 != 0) {
                 if (langId == 2) {
                     messageList.Add(id3 + " samurai increased Lv.\n");
-                }else {
+                }
+                else if (langId == 3) {
+                    messageList.Add(id3 + "名武将等级提升1。\n");
+                }
+                else {
                     messageList.Add(id3 + "人の武将が1レベルアップ。\n");
                 }
             }
@@ -91,7 +103,11 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
                 PlayerPrefs.Flush();
                 if (langId == 2) {
                     messageList.Add(id2 + " samurai archived max lv.You got " + gacyaSpecialBusyoDama + " stone.\n");
-                }else {
+                }
+                else if (langId == 3) {
+                    messageList.Add(id2 + "名武将已达等级上限，入手武将珠" + gacyaSpecialBusyoDama + "个。\n");
+                }
+                else {
                     messageList.Add(id2 + "人が最大レベルに到達し、武将珠を" + gacyaSpecialBusyoDama +"入手。\n");
                 }
                 GameObject.Find("BusyoDamaValue").GetComponent<Text>().text = PlayerPrefs.GetInt("busyoDama").ToString();
@@ -100,8 +116,12 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
             if (id1 !=0) {
                 if (langId == 2) {
                     messageList.Add(id1 + " samurai increased max Lv.\n");
-                }else {
+                }
+                else if (langId == 3) {
                     messageList.Add(id1 + "人の武将の最大レベルが1上昇。\n");
+                }
+                else {
+                    messageList.Add(id1 + "名武将最大等级提升1。\n");
                 }
             }
                 

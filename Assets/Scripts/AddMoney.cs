@@ -11,9 +11,9 @@ public class AddMoney : MonoBehaviour {
 
 		if (name == "YesButton") {
 			Message msg = new Message ();
-
-			//check
-			int busyoDama = PlayerPrefs.GetInt ("busyoDama");
+            int langId = PlayerPrefs.GetInt("langId");
+            //check
+            int busyoDama = PlayerPrefs.GetInt ("busyoDama");
 			if (busyoDama >= 100) {
 				AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 				audioSources [3].Play ();
@@ -38,10 +38,10 @@ public class AddMoney : MonoBehaviour {
 				MainStageController main = new MainStageController();
 				main.questExtension();
 
-				msg.makeMessage (msg.getMessage(3));
+				msg.makeMessage (msg.getMessage(3, langId));
 
 			} else {
-				msg.makeMessage (msg.getMessage(2));
+				msg.makeMessage (msg.getMessage(2, langId));
 			}
 		}
 

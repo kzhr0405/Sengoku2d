@@ -47,7 +47,9 @@ public class clearOrGameOver : MonoBehaviour {
             string clanName = daimyo.getClanName(myDaimyo,langId);            
             if (langId == 2) {
                 exp = clanName + " clan was downfallen. " + myDaimyoName + " fell in battle and there is no one remember his name now.";
-            }else {
+            }else if(langId==3) {
+                exp = clanName + "一族已经灭亡。武运已尽的" + myDaimyoName + "如露水般消散，没人再记得他们的存在。";
+            } else {
                 exp = clanName + "の一族は滅亡した。武運尽きた"+ myDaimyoName + "は、戦場の露と消え、今や彼の者を覚えるものは無い。";
             }   
 			popObj.transform.Find("ExpValue").GetComponent<Text>().text = exp;
@@ -139,7 +141,9 @@ public class clearOrGameOver : MonoBehaviour {
                     string exp = "";
                     if (langId == 2) {
                         exp = "Finally " + myDaimyoName + " achieved the unification of the whole country. He will be able to create the time of peace as ruler.";
-                    }else {
+                    }else if(langId==3) {
+                        exp = myDaimyoName + "终于完成了统一天下的伟业。今后还请作为天下人，开创一个和平安定的盛世。";
+                    } else {
                         exp = "遂に" + myDaimyoName + "は、天下統一を果たした。これより天下人として、泰平の世を創っていくこととなる。";
                     }
                     popObj.transform.Find("ExpValue").GetComponent<Text>().text = exp;

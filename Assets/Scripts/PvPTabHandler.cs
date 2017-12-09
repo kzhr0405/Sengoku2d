@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class PvPTabHandler : MonoBehaviour {
 
@@ -80,7 +81,8 @@ public class PvPTabHandler : MonoBehaviour {
             }
         }else {
             Message msg = new Message();
-            msg.makeMessage(msg.getMessage(143));
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage(msg.getMessage(143,langId));
         }
     }
 

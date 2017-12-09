@@ -35,6 +35,7 @@ public class IconClick : MonoBehaviour {
         kakejiku.transform.localScale = new Vector2 (1, 1);
         kakejiku.name = "Kakejiku";
         GameObject kuni = kakejiku.transform.Find("Kakejiku").transform.Find("KuniInfo").gameObject;
+        Message Message = new Message();
 
         //Kanni
         int syogunDaimyoId = PlayerPrefs.GetInt("syogunDaimyoId");
@@ -42,12 +43,9 @@ public class IconClick : MonoBehaviour {
 		string kanniName = "";
         int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
-        if (syogunDaimyoId == myDaimyoId) {
-            if (langId == 2) {
-                kanniName = "Shogun";
-            }else {
-                kanniName = "征夷大将軍";
-            }
+        if (syogunDaimyoId == myDaimyoId) {            
+            kanniName = Message.getMessage(253,langId);
+            
 		} else {
             Daimyo Daimyo = new Daimyo();
             int myDaimyoBusyo = Daimyo.getDaimyoBusyoId(myDaimyoId, senarioId);
@@ -58,11 +56,7 @@ public class IconClick : MonoBehaviour {
 				Kanni kanni = new Kanni ();
 				kanniName = kanni.getKanniName (kanniId);
 			} else {
-                if (langId == 2) {
-                    kanniName = "No Royal Court Rank";
-                }else { 
-                    kanniName = "官位なし";
-                }
+                kanniName = Message.getMessage(254,langId);
             }
 		}
 		kuni.transform.Find ("KaniValue").GetComponent<Text> ().text = kanniName;

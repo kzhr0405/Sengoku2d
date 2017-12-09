@@ -481,8 +481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Message
-  chineseText: 
+  chineseText: "\u516C\u544A"
   englishFontSize: 35
+  chineseFontSize: 50
   arialFg: 1
 --- !u!1 &629607784
 GameObject:
@@ -922,8 +923,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Start Game
-  chineseText: 
+  chineseText: "\u5F00\u59CB\u6218\u56FD\u4E4B\u4E16"
   englishFontSize: 50
+  chineseFontSize: 40
   arialFg: 1
 --- !u!1 &821158433
 GameObject:
@@ -1030,8 +1032,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: The Samurai Wars
-  chineseText: 
+  chineseText: "\u6218\u56FD\u7ED8\u5377"
   englishFontSize: 50
+  chineseFontSize: 0
   arialFg: 1
 --- !u!224 &968754076
 RectTransform:
@@ -1470,7 +1473,6 @@ GameObject:
   - component: {fileID: 1289278955}
   - component: {fileID: 1289278958}
   - component: {fileID: 1289278957}
-  - component: {fileID: 1289278956}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1497,22 +1499,6 @@ RectTransform:
   m_AnchoredPosition: {x: 60, y: -100}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1289278956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114459223036890650, guid: 45c95065ddcbb384381f4ca4790bd030,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289278954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a48b957b0a96734ea15bf08690516e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: User Id
-  chineseText: 
-  englishFontSize: 35
-  arialFg: 1
 --- !u!114 &1289278957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2204,8 +2190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Recovery
-  chineseText: 
+  chineseText: "\u6062\u590D"
   englishFontSize: 35
+  chineseFontSize: 50
   arialFg: 1
 --- !u!114 &2052036625
 MonoBehaviour:

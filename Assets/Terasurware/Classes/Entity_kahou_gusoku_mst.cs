@@ -24,5 +24,8 @@ public class Entity_kahou_gusoku_mst : ScriptableObject
 		public string kahouNameEng;
 		public string kahouExpEng;
 		public string kahouTargetEng;
+		public string kahouNameSChn;
+		public string kahouExpSChn;
+		public string kahouTargetSChn;
 	}
 }

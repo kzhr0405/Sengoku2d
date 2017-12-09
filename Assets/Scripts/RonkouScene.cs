@@ -390,7 +390,10 @@ public class RonkouScene : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             GameObject.Find ("ExpValue").GetComponent<Text> ().text = "another " + diff.ToString();
-        }else {
+        }else if(langId==3) {
+            GameObject.Find("ExpValue").GetComponent<Text>().text = "还剩" + diff.ToString();
+        }
+        else {
             GameObject.Find("ExpValue").GetComponent<Text>().text = "あと" + diff.ToString();
         }
 
@@ -432,14 +435,21 @@ public class RonkouScene : MonoBehaviour {
                 }else {
                     if (langId == 2) {
                         GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "No Rank";
-                    }else {
+                    }else if(langId==3) {
+                        GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "没有官位";
+                    }
+                    else {
                         GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
                     }
                 }
             } else {
                 if (langId == 2) {
                     GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "No Rank";
-                }else {
+                }
+                else if (langId == 3) {
+                    GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "没有官位";
+                }
+                else {
                     GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
                 }
             }
@@ -462,6 +472,9 @@ public class RonkouScene : MonoBehaviour {
                 if (langId == 2) {
                     GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "No Feud";
                 }
+                else if (langId == 3) {
+                    GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "没有城池";
+                }
                 else {
                     GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "城無し";
                 }
@@ -482,13 +495,21 @@ public class RonkouScene : MonoBehaviour {
 
             if (langId == 2) {
                 GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "No Rank";
-            }else {
+            }
+            else if (langId == 3) {
+                GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "没有官位";
+            }
+            else {
                 GameObject.Find("StatusKanni").transform.Find("Value").GetComponent<Text>().text = "官位無し";
             }
 
             if (langId == 2) {
                 GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "No Feud";
-            }else {
+            }
+            else if (langId == 3) {
+                GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "没有城池";
+            }
+            else {
                 GameObject.Find("StatusJyosyu").transform.Find("Value").GetComponent<Text>().text = "城無し";
             }
 
@@ -536,13 +557,13 @@ public class RonkouScene : MonoBehaviour {
         string heisyu = "";
         Message msg = new Message();
         if (ch_type == "KB") {
-            heisyu = msg.getMessage(55);
+            heisyu = msg.getMessage(55,langId);
         }else if (ch_type == "YR") {
-            heisyu = msg.getMessage(56);
+            heisyu = msg.getMessage(56,langId);
         }else if (ch_type == "TP") {
-            heisyu = msg.getMessage(57);
+            heisyu = msg.getMessage(57,langId);
         }else if (ch_type == "YM") {
-            heisyu = msg.getMessage(58);
+            heisyu = msg.getMessage(58,langId);
         }
 
         GameObject.Find ("ChildNameValue").GetComponent<Text> ().text = heisyu;

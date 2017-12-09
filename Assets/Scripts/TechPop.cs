@@ -21,36 +21,14 @@ public class TechPop : MonoBehaviour {
 				avlNaiseiList.Add(shigen);
 			}
 		}
-
-		if (avlNaiseiList.Contains ("tp") && avlNaiseiList.Contains ("kb") && avlNaiseiList.Contains ("snb")) {
-			Message msg = new Message();
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                msg.makeMessage("You have already transferred technology of Gun, Hourse, Ninja.");
-            }else {
-                msg.makeMessage("この国に鉄砲、騎馬、忍技術は伝達済みです。");
-            }
-		
-		} else {
-		
+        Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
+        if (avlNaiseiList.Contains ("tp") && avlNaiseiList.Contains ("kb") && avlNaiseiList.Contains ("snb")) {			            
+            msg.makeMessage(msg.getMessage(283,langId));		
+		} else {		
 			BusyoStatusButton pop = new BusyoStatusButton ();
-			pop.commonPopup (26);
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                GameObject.Find ("popText").GetComponent<Text> ().text = "Tech Transfer";
-            }else {
-                GameObject.Find("popText").GetComponent<Text>().text = "技術伝達";
-            }
-
-
-
-
-
-
-		}
-
-
-
-
+			pop.commonPopup (26);            
+            msg.makeMessage(msg.getMessage(284, langId));            
+        }        
 	}
 }

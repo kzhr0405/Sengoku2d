@@ -83,7 +83,7 @@ public class CyouteiPop : MonoBehaviour {
 
 			if (!notZeroflg) {
 				scrollView.transform.Find ("NoSyoukaijyo").GetComponent<Text> ().enabled = true;
-				pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(16);
+				pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(16,langId);
 				pop.transform.Find ("PassButton").gameObject.SetActive (false);
 			}
 
@@ -280,7 +280,9 @@ public class CyouteiPop : MonoBehaviour {
                         string serihu = "";
                         if (langId == 2) {
                             serihu = "Your good rumor has arrived to the Imperial court. Please lend me your power for the world.\n I assigned you as " + firstKanniName + ".";
-                        }else {
+                        }if (langId == 3) {
+                            serihu = "为天下静谧，任命你为" + firstKanniName + "。";
+                        } else {
                             serihu = "天下静謐のため力を貸してくれ。\n" + firstKanniName + "に任ずるぞ。";
                         }
                         pop.transform.Find("Serihu").transform.Find("Text").GetComponent<Text>().text = serihu;
@@ -293,7 +295,11 @@ public class CyouteiPop : MonoBehaviour {
                         string serihu = "";
                         if (langId == 2) {
                             serihu = "Lord " + daimyoName + ".\n What do you want?";
-                        }else {
+                        }
+                        if (langId == 3) {
+                            serihu = "哦，是" + daimyoName + "大人。\n此番前来，何为啊？";
+                        }
+                        else {
                             serihu = "おお、" + daimyoName + "殿。\n此度は何用か。" ;
                         }
                         pop.transform.Find("Serihu").transform.Find("Text").GetComponent<Text>().text = serihu;
@@ -305,6 +311,9 @@ public class CyouteiPop : MonoBehaviour {
 					audioSources [4].Play ();
                     if (langId == 2) {
                         msg.makeMessage("My lord " + occupiedDaimyoName + " disturbed us to visit coart.");
+                    }
+                    if (langId == 3) {
+                        msg.makeMessage("主公，" + occupiedDaimyoName + "妨碍我们参拜朝廷。");
                     } else {
                         msg.makeMessage("御屋形様、" + occupiedDaimyoName + "めに参内を邪魔されました。");
                     }

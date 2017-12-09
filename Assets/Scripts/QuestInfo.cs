@@ -44,13 +44,15 @@ public class QuestInfo : MonoBehaviour {
 		string popTextPath = "Prefabs/Busyo/popText";
 		GameObject popText = Instantiate (Resources.Load (popTextPath)) as GameObject;
 		popText.transform.SetParent (popup.transform);
-		popText.transform.localScale = new Vector2 (0.35f, 0.35f);
+		popText.transform.localScale = new Vector2 (0.25f, 0.25f);
 		RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 		popTextTransform.anchoredPosition = new Vector3 (0, 275, 0);
 		popText.name = "popText";
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             popText.GetComponent<Text>().text = "Achievement";
+        }else if(langId==3) {
+            popText.GetComponent<Text>().text = "目标达成";
         }else {
             popText.GetComponent<Text>().text = "達成目標";
         }
@@ -216,23 +218,25 @@ public class QuestInfo : MonoBehaviour {
     }
 
 
-    public string getQuestTitle(int id){
+    public string getQuestTitle(int id, int langId){
 		Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
         string title = "";
-        int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             title = questMst.param[id].titleEng;
+        }else if(langId==3) {
+            title = questMst.param[id].titleSChn;
         }else { 
             title = questMst.param[id].title;
         }
         return title;
 	}
-	public string getQuestExp(int id){
+	public string getQuestExp(int id, int langId) {
 		Entity_quest_mst questMst = Resources.Load ("Data/quest_mst") as Entity_quest_mst;
         string exp = "";
-        int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             exp = questMst.param[id].expEng;
+        }else if(langId==3) {
+            exp = questMst.param[id].expSChn;
         }else {
             exp = questMst.param[id].exp;
         }   

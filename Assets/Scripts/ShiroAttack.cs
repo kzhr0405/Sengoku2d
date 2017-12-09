@@ -114,7 +114,10 @@ public class ShiroAttack : MonoBehaviour {
         string stageName = stageScript.getStageName(kuniId, toStageId, langId);
         if (langId == 2) {
             commentObj.transform.Find("SerihuText").GetComponent<Text>().text = "Hahaha, I got " + stageName + " castle！";
-        }else {
+        }else if(langId==3) {
+            commentObj.transform.Find("SerihuText").GetComponent<Text>().text = "已夺回" + stageName + "！";
+        }
+        else {
             commentObj.transform.Find("SerihuText").GetComponent<Text>().text = "ははは、" + stageName + "を盗り返したぞ！";
         }
 

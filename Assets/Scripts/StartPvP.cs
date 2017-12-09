@@ -16,10 +16,11 @@ public class StartPvP : MonoBehaviour {
         if (textScript.text == "") {
             audioSources[4].Play();
             Message msg = new Message();
+            int langId = PlayerPrefs.GetInt("langId");
             if (!secondTimeFlg) {
-                msg.makeMessage(msg.getMessage(140));
+                msg.makeMessage(msg.getMessage(140,langId));
             }else {
-                msg.makeMessage(msg.getMessage(142));
+                msg.makeMessage(msg.getMessage(142,langId));
             }
         }else {
             //Text Registeration

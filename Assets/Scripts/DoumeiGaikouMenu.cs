@@ -38,12 +38,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 			if (isExistFlg) {
 
-                //Menu Handling                
-                if (langId == 2) {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "Gift";
-                }else {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "貢物";
-                }
+                //Menu Handling
+                string txt = msg.getMessage(238,langId);
+                GameObject.Find("kuniName").GetComponent<Text>().text = txt;
                 OffGaikouMenu ();
 				
 				//Mitsugi Object
@@ -60,11 +57,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				btn.name = "DoMitsugiBtn";
 				RectTransform btn_transform = btn.GetComponent<RectTransform> ();
 				btn_transform.anchoredPosition = new Vector3 (0, -200, 0);
-                if (langId == 2) {
-                    btn.transform.Find("Text").GetComponent<Text>().text = "Gift";
-                }else {
-                    btn.transform.Find("Text").GetComponent<Text>().text = "貢物";
-                }
+                btn.transform.Find("Text").GetComponent<Text>().text = txt;
+
                 //Slider
                 string sliderPath = "Prefabs/Map/common/MoneySlider";
 				GameObject slider = Instantiate (Resources.Load (sliderPath)) as GameObject;
@@ -104,7 +98,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = mitsugiObj;
 			
 			} else {
-				msg.makeMessage (msg.getMessage(8));
+				msg.makeMessage (msg.getMessage(8,langId));
 			}			
 
 
@@ -112,11 +106,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 			if (isExistFlg) {
                 //Menu Handling
-                if (langId == 2) {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "Joint Battle";
-                }else {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "共闘";
-                }
+                string txt = msg.getMessage(239,langId);
+                GameObject.Find("kuniName").GetComponent<Text>().text = txt;
                 OffGaikouMenu ();
 
 				string path = "Prefabs/Map/gaikou/KyoutouObj";
@@ -135,6 +126,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
                 if (langId == 2) {
                     btn.transform.Find("Text").GetComponent<Text>().text = "Do";
+                }else if(langId==3) {
+                    btn.transform.Find("Text").GetComponent<Text>().text = "共斗";
                 }else {
                     btn.transform.Find("Text").GetComponent<Text>().text = "共闘";
                 }
@@ -156,7 +149,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 				//Set Obj
 				GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
 			} else {
-				msg.makeMessage (msg.getMessage(8));
+				msg.makeMessage (msg.getMessage(8,langId));
 			}
 		} else if (name == "Haki") {
 			//Back Cover
@@ -190,13 +183,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 			string myDaimyoName = GameObject.Find ("DaimyoValue").GetComponent<Text> ().text;
 
 			if (yukoudo >= 20) {
-
-
-                if (langId == 2) {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "Trade";
-                }else {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "交易";
-                }
+                string txt = msg.getMessage(240,langId);                
+                GameObject.Find("kuniName").GetComponent<Text>().text = txt;
+                
                 OffGaikouMenu ();
 				
 				string kouekiPath = "Prefabs/Map/gaikou/kouekiObj";
@@ -233,7 +222,23 @@ public class DoumeiGaikouMenu : MonoBehaviour {
                         GameObject.Find("SerihuText").GetComponent<Text>().text = "Lord " + myDaimyoName + ",  I just wanted to talk to you. Please enjoy our country.";
                     if (90 <= yukoudo)
                         GameObject.Find("SerihuText").GetComponent<Text>().text = "Oh, Lord " + myDaimyoName + ", Let's make good trade! I got a special item.";
-
+                }else if (langId == 3) {
+                    if (20 <= yukoudo && yukoudo < 30)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = "是" + myDaimyoName + "啊，为何事而来。";
+                    if (30 <= yukoudo && yukoudo < 40)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = "许久未曾拜见，最近交易品的价格略有上涨啊。";
+                    if (40 <= yukoudo && yukoudo < 50)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = "许久未曾拜见，请看这里的交易品。";
+                    if (50 <= yukoudo && yukoudo < 60)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = "看您的条件，和您进行相应的贸易，请看这边的交易品。";
+                    if (60 <= yukoudo && yukoudo < 70)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = myDaimyoName + "大人，您看这件如何，真珍品也。";
+                    if (70 <= yukoudo && yukoudo < 80)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = myDaimyoName + "大人，您的活跃，我也略有耳闻，请务必买点东西回去。";
+                    if (80 <= yukoudo && yukoudo < 90)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = myDaimyoName + "大人，正好还想找您谈谈话，您就来了，您请便。";
+                    if (90 <= yukoudo)
+                        GameObject.Find("SerihuText").GetComponent<Text>().text = "这不是" + myDaimyoName + "大人吗！还请四处观看，我最近又入手了不错的珍品哟。";
                 }
                 else {
                     if (20 <= yukoudo && yukoudo < 30)
@@ -269,7 +274,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
 				
 			} else {
-				msg.makeMessage (msg.getMessage(9));
+				msg.makeMessage (msg.getMessage(9,langId));
 			}
 
 
@@ -289,16 +294,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 					}
 				}
 				if (gunzeiExistFlg) {
-					msg.makeMessage (msg.getMessage(10));
+					msg.makeMessage (msg.getMessage(10,langId));
 				} else {
-
-
-                    if (langId == 2) {
-                        GameObject.Find("kuniName").GetComponent<Text>().text = "Battle Request";
-                    }
-                    else {
-                        GameObject.Find("kuniName").GetComponent<Text>().text = "出兵願";
-                    }
+                    GameObject.Find("kuniName").GetComponent<Text>().text = msg.getMessage(241,langId);
                     OffGaikouMenu ();
 
 					string path = "Prefabs/Map/gaikou/SyuppeiObj";
@@ -317,6 +315,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 
                     if (langId == 2) {
                         btn.transform.Find("Text").GetComponent<Text>().text = "Request";
+                    }else if(langId==3) {
+                        btn.transform.Find("Text").GetComponent<Text>().text = "请求";
                     }
                     else {
                         btn.transform.Find("Text").GetComponent<Text>().text = "依頼";
@@ -339,7 +339,7 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 					GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
 				}
 			} else {
-				msg.makeMessage (msg.getMessage(8));
+				msg.makeMessage (msg.getMessage(8,langId));
 			}
 			
 		}
@@ -535,8 +535,9 @@ public class DoumeiGaikouMenu : MonoBehaviour {
 	public void SyuppeiKuniScrollView(GameObject baseObj,  string targetDaimyo, GameObject btn, int langId, int senarioId){
         //View kuni which have openkuni
         GameObject content = baseObj.transform.Find("scroll").transform.Find("Content").gameObject;
+        Message Message = new Message();
 
-		string seiryoku = PlayerPrefs.GetString ("seiryoku");
+        string seiryoku = PlayerPrefs.GetString ("seiryoku");
 		char[] delimiterChars = {','};
 		List<string> seiryokuList = new List<string>();
 		seiryokuList = new List<string> (seiryoku.Split (delimiterChars));
@@ -691,11 +692,8 @@ public class DoumeiGaikouMenu : MonoBehaviour {
             msg.transform.localScale = new Vector3(0.17f, 0.2f, 1);
             RectTransform msgTransform = msg.GetComponent<RectTransform>();
             msgTransform.anchoredPosition = new Vector3(-260, -115, 0);
-            if (langId == 2) {
-                msg.GetComponent<Text>().text = "There is no available country.\nWe are surranded by allianced party.";
-            }else {
-                msg.GetComponent<Text>().text = "出兵可能な国はありませぬ\n周辺国は同盟大名しかおりませぬぞ";
-            }
+            msg.GetComponent<Text>().text = Message.getMessage(242,langId);
+            
 
             GameObject a = baseObj.transform.Find("RequiredMoney").gameObject;
             GameObject b = baseObj.transform.Find("KyoutouRatio").gameObject;

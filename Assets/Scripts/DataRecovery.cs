@@ -15,48 +15,49 @@ public class DataRecovery : MonoBehaviour {
     public bool Fetched2 = false;
     public bool Fetched3 = false;
     public bool ClickedFlg = false;
+    public int langId;
 
     public void Start() {
         RecoveryDataStore = GameObject.Find("RecoveryDataStore").GetComponent<RecoveryDataStore>();
         audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
-
+        langId = PlayerPrefs.GetInt("langId");
     }
 
     public void OnClick() {
         
         Message msg = new Message();
         inputUserId = textScript.text;
-
+        
         if (Application.internetReachability == NetworkReachability.NotReachable) {
             audioSources[4].Play();
-            msg.makeMessage(msg.getMessage(5));
+            msg.makeMessage(msg.getMessage(5, langId));
         }else {
 
             if (inputUserId == "") {
                 audioSources[4].Play();
-                msg.makeMessage(msg.getMessage(145));                
+                msg.makeMessage(msg.getMessage(145, langId));                
             } else {
                 //Check user Id not equal current
                 string userId = PlayerPrefs.GetString("userId");
                 //string userId = "";//test
                 if (inputUserId == userId) {
                     audioSources[4].Play();
-                    msg.makeMessage(msg.getMessage(146));                
+                    msg.makeMessage(msg.getMessage(146, langId));                
                 }else {
                     //Check 24 digit
                     if(inputUserId.Length != 24) {
                         audioSources[4].Play();
-                        msg.makeMessage(msg.getMessage(147));
+                        msg.makeMessage(msg.getMessage(147,langId));
                     } else {
                         //Start
                         //Get All user stored data(dataStore or userId+jinkeiPvP)
                         if(!ClickedFlg) {
                             ClickedFlg = true;
                             audioSources[0].Play();
-                            RecoveryDataStore.GetDataStore(inputUserId);
+                            RecoveryDataStore.GetDataStore(inputUserId,langId);
                         }else {
                             audioSources[4].Play();
-                            msg.makeMessage(msg.getMessage(155));
+                            msg.makeMessage(msg.getMessage(155, langId));
                         }
                     }
                 }                
@@ -73,7 +74,7 @@ public class DataRecovery : MonoBehaviour {
         }
 
         if (RecoveryDataStore.userIdCount != -1 && RecoveryDataStore.dataStore_userId != -1 && Fetched1 && !Fetched2) {
-            RecoveryDataStore.GetPvP(inputUserId);
+            RecoveryDataStore.GetPvP(inputUserId,langId);
             Fetched2 = true;
         }
         

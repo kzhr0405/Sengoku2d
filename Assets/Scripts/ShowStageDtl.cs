@@ -49,6 +49,8 @@ public class ShowStageDtl : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             labelDataStage.text = stageName + "\n" + "Castle";
+        }else if (langId == 3) {
+            labelDataStage.text = stageName + "之战";
         }else {
             labelDataStage.text = stageName + "の戦い";
         }

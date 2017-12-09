@@ -22,9 +22,10 @@ public class UserMessage : MonoBehaviour {
 
     public void OnClick () {
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
         if (Application.internetReachability == NetworkReachability.NotReachable) {
             audioSources[4].Play();
-            msg.makeMessage(msg.getMessage(5));
+            msg.makeMessage(msg.getMessage(5,langId));
         }else {
             audioSources[0].Play();
             msgBoardOn = true;            
@@ -65,7 +66,10 @@ public class UserMessage : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     board.transform.Find("popText").GetComponent<Text>().text = "Message";
-                }else {
+                }else if(langId==3) {
+                    board.transform.Find("popText").GetComponent<Text>().text = "公告";
+                }
+                else {
                     board.transform.Find("popText").GetComponent<Text>().text = "御連絡";
                 }
 
@@ -99,10 +103,10 @@ public class UserMessage : MonoBehaviour {
 
     public void GetMessage() {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("message");
+        int langId = PlayerPrefs.GetInt("langId");
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
             if (e == null) {
                 messageCount = objList.Count;
-                int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     foreach (NCMBObject obj in objList) {
                         if(!System.Convert.ToBoolean(obj["stopFlg"])) {
@@ -119,7 +123,7 @@ public class UserMessage : MonoBehaviour {
             }else {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
             }
         });
     }

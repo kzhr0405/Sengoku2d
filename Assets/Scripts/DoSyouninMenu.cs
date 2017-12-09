@@ -30,8 +30,8 @@ public class DoSyouninMenu : MonoBehaviour {
 
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-
-		Color enableImageColor = new Color (35f / 255f, 35f / 255f, 35f / 255f, 155f / 255f);
+        int langId = PlayerPrefs.GetInt("langId");
+        Color enableImageColor = new Color (35f / 255f, 35f / 255f, 35f / 255f, 155f / 255f);
 		Color enableTextColor = new Color (125f / 255f, 125f / 255f, 125f / 255f, 255f / 255f);
 
 		if (name == "DoKahouButton") {
@@ -68,7 +68,7 @@ public class DoSyouninMenu : MonoBehaviour {
 					kahou.registerHeihousyo (kahouId);					
 				}
 
-				msg.makeMessage (msg.getMessage(92));
+				msg.makeMessage (msg.getMessage(92,langId));
 
 				//Close
 				GameObject.Find ("MenuKahou").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
@@ -81,7 +81,7 @@ public class DoSyouninMenu : MonoBehaviour {
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			}
 
 
@@ -233,7 +233,7 @@ public class DoSyouninMenu : MonoBehaviour {
 
 
 				
-				msg.makeMessage (msg.getMessage(93));
+				msg.makeMessage (msg.getMessage(93,langId));
 				
 				//Close
 				GameObject.Find ("MenuBusshi").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
@@ -246,7 +246,7 @@ public class DoSyouninMenu : MonoBehaviour {
 				
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			}
 
 
@@ -288,7 +288,7 @@ public class DoSyouninMenu : MonoBehaviour {
 				PlayerPrefs.SetString ("kengouItem", newKengouString);
 				PlayerPrefs.Flush ();
 
-				msg.makeMessage (msg.getMessage(94));
+				msg.makeMessage (msg.getMessage(94,langId));
 				
 				//Close
 				GameObject.Find ("MenuRounin").transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
@@ -300,7 +300,7 @@ public class DoSyouninMenu : MonoBehaviour {
 			
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			
 			}
 
@@ -324,17 +324,20 @@ public class DoSyouninMenu : MonoBehaviour {
 				PlayerPrefs.Flush ();
 				GameObject.Find ("MoneyValue").GetComponent<Text> ().text = newMoney.ToString ();
                 string yasenTxt = "";
-                int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     yasenTxt = "We levied money " + price + " on merchants.";
-                }else {
+                }
+                else if (langId == 3) {
+                    yasenTxt = "已得到" + price + "贯的金钱。";
+                }
+                else {
                     yasenTxt = price + "貫の矢銭を供出させましたぞ。";
                 }
 				msg.makeMessage (yasenTxt);
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(95));
+				msg.makeMessage (msg.getMessage(95,langId));
 			}
 
 			//Close
@@ -369,19 +372,19 @@ public class DoSyouninMenu : MonoBehaviour {
 					int qty = PlayerPrefs.GetInt("transferTP",0);
 					int newQty = qty + 1;
 					PlayerPrefs.SetInt("transferTP",newQty);
-					txt = msg.getMessage(96);
+					txt = msg.getMessage(96,langId);
 
 				}else if(techId == 2){
 					int qty = PlayerPrefs.GetInt("transferKB",0);
 					int newQty = qty + 1;
 					PlayerPrefs.SetInt("transferKB",newQty);
-                    txt = msg.getMessage(97);
+                    txt = msg.getMessage(97,langId);
 
                 }else if(techId == 3){
 					int qty = PlayerPrefs.GetInt("transferSNB",0);
 					int newQty = qty  + 1;
 					PlayerPrefs.SetInt("transferSNB",newQty);
-                    txt = msg.getMessage(98);
+                    txt = msg.getMessage(98,langId);
 
                 }
 				PlayerPrefs.Flush ();
@@ -395,7 +398,7 @@ public class DoSyouninMenu : MonoBehaviour {
 
 			}else{
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			}
 
 			//Close
@@ -436,17 +439,21 @@ public class DoSyouninMenu : MonoBehaviour {
 
                 string finalTxt = "";
 				if (!doneCyadouguFlg) {
-                    int langId = PlayerPrefs.GetInt("langId");
                     if (langId == 2) {
                         finalTxt = "It was good tea party.\n You got " + targetKuniQty + " reputation item. \n Traveller will visit your country.";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        finalTxt = "茶会盛况空前，取得名声" + targetKuniQty + "个，旅人将会造访城下。";
+                    } else {
                         finalTxt = "茶会は大盛況でした。\n名声を" + targetKuniQty + "個取得しました。\n旅人が来訪いたしますぞ。";
                     }
 				} else {
-                    int langId = PlayerPrefs.GetInt("langId");
                     if (langId == 2) {
                         finalTxt = "You have already shown your tea item so it didn't get lively. \n You got " + targetKuniQty + " reputation item.";
-				    }else {
+                    }
+                    else if (langId == 3) {
+                        finalTxt = "可能是因为使用了以前展示过的茶道具的原因，茶会盛况空前，取得名声" + targetKuniQty + "个。";
+                    } else {
                         finalTxt = "以前お披露目した茶道具を使用したせいか、盛り上がりは今ひとつでしたな。\n名声を" + targetKuniQty + "個取得しました。";
                     }
                 }
@@ -460,7 +467,7 @@ public class DoSyouninMenu : MonoBehaviour {
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			}
 
 			//Close

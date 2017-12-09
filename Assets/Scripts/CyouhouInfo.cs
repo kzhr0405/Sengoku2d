@@ -9,9 +9,10 @@ public class CyouhouInfo : MonoBehaviour {
 	public void OnClick(){
 
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-
-		//Count cyouhou
-		string cyouhou = PlayerPrefs.GetString("cyouhou");
+        Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
+        //Count cyouhou
+        string cyouhou = PlayerPrefs.GetString("cyouhou");
 		if (cyouhou != null && cyouhou != "") {
 
 			//SE
@@ -50,20 +51,14 @@ public class CyouhouInfo : MonoBehaviour {
 			string popTextPath = "Prefabs/Busyo/popText";
 			GameObject popText = Instantiate (Resources.Load (popTextPath)) as GameObject;
 			popText.transform.SetParent (popup.transform);
-			popText.transform.localScale = new Vector2 (0.35f, 0.35f);
+			popText.transform.localScale = new Vector2 (0.25f, 0.25f);
 			RectTransform popTextTransform = popText.GetComponent<RectTransform> ();
 			popTextTransform.anchoredPosition = new Vector3 (0, 275, 0);
 			popText.name = "popText";
 
-            int langId = PlayerPrefs.GetInt("langId");
             int senarioId = PlayerPrefs.GetInt("senarioId");
-            if (langId == 2) {
-                popText.GetComponent<Text>().text = "Spy";
-            }
-            else {
-                popText.GetComponent<Text>().text = "諜報";
-            }
-
+            popText.GetComponent<Text>().text = msg.getMessage(204,langId);
+            
             //kuni board
             string boardPath = "Prefabs/Map/cyouhou/CyouhouKuniBoard";
 			GameObject board = Instantiate (Resources.Load (boardPath)) as GameObject;
@@ -177,19 +172,9 @@ public class CyouhouInfo : MonoBehaviour {
 
 		} else {
 			//Error
-			audioSources [4].Play ();
-
-			Message msg = new Message();
-			string txt = "";
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                txt = "You don't have ninja spying in other country.\n Please get Ninja via trading or development your country.";
-            }else {
-                txt = "他国に潜伏中の忍はおりませんぞ。\n忍は他国との交易か、内政開発にて取得できます。";
-            }
+			audioSources [4].Play ();            
+			string txt = msg.getMessage(218,langId);            
             msg.makeMessage (txt);
-
-
 		}
 
 	}

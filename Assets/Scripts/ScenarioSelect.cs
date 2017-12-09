@@ -18,7 +18,8 @@ public class ScenarioSelect : MonoBehaviour {
         Destroy(ScrollView);
         Destroy(GameObject.Find("Back"));
         Message Message = new Message();
-        FixedMessage.transform.Find("MessageText").GetComponent<Text>().text = Message.getMessage(163);
+        int langId = PlayerPrefs.GetInt("langId");
+        FixedMessage.transform.Find("MessageText").GetComponent<Text>().text = Message.getMessage(163,langId);
         clearOrGameOver clearOrGameOver = GameObject.Find("GameController").GetComponent<clearOrGameOver>();
         clearOrGameOver.SenarioSelct.SetActive(true);
         clearOrGameOver.senarioId = int.Parse(name);

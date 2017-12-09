@@ -48,7 +48,10 @@ public class DoTobatsu : MonoBehaviour {
         int senarioId = PlayerPrefs.GetInt("senarioId");
         if (langId == 2) {
             firstKassenText = "Declared " + targetDaimyoName + " attack order. Friendship reduced " +reducedValueWithTarget+ " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            firstKassenText = "已发布" + targetDaimyoName + "的讨伐令，其与本家友好度下降了" + reducedValueWithTarget + "。";
+        } else {
             firstKassenText = targetDaimyoName + "討伐を宣言しました。当家との友好度が" + reducedValueWithTarget + "下がります。";
         }
 		doGaikou.downYukouOnIcon(targetDaimyoId, newYukoudoWithTarget);
@@ -338,7 +341,14 @@ public class DoTobatsu : MonoBehaviour {
 						    }else{
 							    kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " with " + myHei + " soldiers.\n Defender's allianced country sent " + totalEngunHei + " soldiers.";
 						    }
-                        }else {
+                        }else if (langId == 3) {
+                            if (!dstEngunFlg) {
+                                kassenText = srcDaimyoName + "起兵" + dstDaimyoName + "讨伐" + myHei + "。";
+                            }else {
+                                kassenText = srcDaimyoName + "起兵" + dstDaimyoName + "讨伐" + myHei + "，防守一方的同盟国派出援军" + totalEngunHei + "人防御。";
+                            }
+                        }
+                        else {
                             if (!dstEngunFlg) {
                                 kassenText = srcDaimyoName + "が" + dstDaimyoName + "討伐の兵" + myHei + "人を起こしました。";
                             }
@@ -356,7 +366,10 @@ public class DoTobatsu : MonoBehaviour {
 						int reducedValue = myGaikouValue - newYukoudo;
                         if (langId == 2) {
                             kassenText = srcDaimyoName + " rejected our attack order. Friendship reduced " +reducedValue+ " point.";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            kassenText = srcDaimyoName + "无视讨伐令，与本家友好度下降了" + reducedValue + "。";
+                        } else {
                             kassenText = srcDaimyoName + "が討伐令を黙殺しました。当家との友好度が" + reducedValue + "下がります。";
                         }
 						doGaikou.downYukouOnIcon(srcDaimyo, newYukoudo);
@@ -380,7 +393,10 @@ public class DoTobatsu : MonoBehaviour {
 			audioSources [3].Play ();
             if (langId == 2) {
                 toubatsuSelect.transform.Find ("Exp").GetComponent<Text> ().text = "Declared " + targetDaimyoName + " attack order. Other clan responded to it.";
-            }else {
+            }
+            else if (langId == 3) {
+                toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = "已发布" + targetDaimyoName + "的讨伐令，诸大名纷纷响应。";
+            } else {
                 toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = targetDaimyoName + "の討伐令を出しました。諸大名が呼応したようです。";
             }
 		} else {
@@ -388,13 +404,19 @@ public class DoTobatsu : MonoBehaviour {
 			if (srcDstKuniList.Count == 0) {
                 if (langId == 2) {
                     toubatsuSelect.transform.Find ("Exp").GetComponent<Text> ().text = "There is no clan who can respond to " + targetDaimyoName + " attack order.";
-                }else {
+                }
+                else if (langId == 3) {
+                    toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = "现在没有可响应参与讨伐" + targetDaimyoName + "的大名。";
+                } else {
                     toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = "現在" + targetDaimyoName + "の討伐に呼応可能な大名はおりません。";
                 }
             } else{
                 if (langId == 2) {
                     toubatsuSelect.transform.Find ("Exp").GetComponent<Text> ().text = "No clan responded to our attack order because of fear for " + targetDaimyoName + ".";
-			    }else {
+                }
+                else if (langId == 3) {
+                    toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = "可能是畏惧" + targetDaimyoName + "，没有大名响应讨伐令。";
+                } else {
                     toubatsuSelect.transform.Find("Exp").GetComponent<Text>().text = targetDaimyoName + "を恐れてか、討伐令にどの大名も呼応しませんでした。";
                 }
             }

@@ -14,14 +14,11 @@ public class BakuhuMenuReturn : MonoBehaviour {
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [1].Play ();
-
-		Destroy (deleteObj);
+        Message Message = new Message();
         int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
-            board.transform.Find("popText").GetComponent<Text>().text = "Shogunate";
-        } else {
-            board.transform.Find("popText").GetComponent<Text>().text = "幕府";
-        }
+        Destroy (deleteObj);
+        board.transform.Find("popText").GetComponent<Text>().text = Message.getMessage(203,langId);
+        
 		scrollView.SetActive (true);
 
 		BakuhuInfo bakuhu = new BakuhuInfo ();

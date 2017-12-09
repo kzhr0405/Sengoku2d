@@ -28,11 +28,12 @@ public class StartKassen : MonoBehaviour {
     public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
 
         if (!checkJinkeiAvailable()) {
             audioSources[4].Play();
-            msg.makeUpperMessageOnBoard(msg.getMessage(133));
+            msg.makeUpperMessageOnBoard(msg.getMessage(133,langId));
 
         } else { 
             

@@ -50,7 +50,10 @@ public class SwitchTown : MonoBehaviour {
             
             if (langId == 2) {
                 transform.Find("Text").GetComponent<Text>().text = "Next Town\n" + nextKuniName;
-            }else {
+            }else if(langId==3) {
+                transform.Find("Text").GetComponent<Text>().text = "下一国\n" + nextKuniName;
+            }
+            else {
                 transform.Find("Text").GetComponent<Text>().text = "次の国へ\n" + nextKuniName;
             }
 

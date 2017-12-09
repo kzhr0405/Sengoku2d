@@ -44,7 +44,8 @@ public class NextSeason : MonoBehaviour {
 		} else {
 			audioSources [4].Play ();
 			Message msg = new Message ();
-			msg.makeMessageOnBoard (msg.getMessage(2));		
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessageOnBoard (msg.getMessage(2,langId));		
 		}
 	}
 }

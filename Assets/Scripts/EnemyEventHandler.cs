@@ -151,7 +151,7 @@ public class EnemyEventHandler : MonoBehaviour {
         List<string> itemList = new List<string>(busyoListString.Split(delimiterChars));
         string busyoListString2 = itemList[0];
         List<string> busyoList = new List<string>(busyoListString2.Split(delimiterChars2));
-
+        Message Message = new Message();
         int totalHei = int.Parse(itemList[1]);
         int taisyoBusyoId = int.Parse(busyoList[0]);
 
@@ -179,24 +179,15 @@ public class EnemyEventHandler : MonoBehaviour {
         commentObj.transform.localPosition = new Vector2(0,10);
         if(!newFlg) {
             int rdmId = UnityEngine.Random.Range(1, 4);
-            string rdmTxt = "";
-            if (langId == 2) {
-                if (rdmId==1) {
-                    rdmTxt = "Sic 'em!";
-                }else if(rdmId==2) {
-                    rdmTxt = "Go Go!";
-                }else if(rdmId==3) {
-                    rdmTxt = "Attack!";
-                }
-            }else {
-                if (rdmId == 1) {
-                    rdmTxt = "あと少しじゃ!";
-                }else if (rdmId == 2) {
-                    rdmTxt = "掛かれい!";
-                }else if (rdmId == 3) {
-                    rdmTxt = "陥とせい!";
-                }
+            string rdmTxt = "";            
+            if (rdmId == 1) {
+                rdmTxt = Message.getMessage(243,langId);
+            }else if (rdmId == 2) {
+                rdmTxt = Message.getMessage(244, langId);
+            }else if (rdmId == 3) {
+                rdmTxt = Message.getMessage(245,langId);
             }
+            
             commentObj.transform.Find("txt").GetComponent<TextMesh>().text = rdmTxt;
         }
 

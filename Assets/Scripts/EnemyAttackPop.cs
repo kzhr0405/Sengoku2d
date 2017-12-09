@@ -136,7 +136,11 @@ public class EnemyAttackPop : MonoBehaviour {
         if (langId == 2) {
             baseObj.transform.Find("Player").transform.Find("Name").GetComponent<TextMesh>().text = myDaimyoName;
             baseObj.transform.Find("Enemy").transform.Find("Name").GetComponent<TextMesh>().text = enemyDaimyoName;
-        }else {
+        }else if(langId==3) {
+            baseObj.transform.Find("Player").transform.Find("Name").GetComponent<TextMesh>().text = myDaimyoName + "军";
+            baseObj.transform.Find("Enemy").transform.Find("Name").GetComponent<TextMesh>().text = enemyDaimyoName + "军";
+        }
+        else {
             baseObj.transform.Find("Player").transform.Find("Name").GetComponent<TextMesh>().text = myDaimyoName + "軍";
             baseObj.transform.Find("Enemy").transform.Find("Name").GetComponent<TextMesh>().text = enemyDaimyoName + "軍";
         }

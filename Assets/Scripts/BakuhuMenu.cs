@@ -28,6 +28,7 @@ public class BakuhuMenu : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         int langId = PlayerPrefs.GetInt("langId");
         int senarioId = PlayerPrefs.GetInt("senarioId");
+        Message Message = new Message();
 
         if (name == "AtkOrderBtn") {
 
@@ -54,12 +55,9 @@ public class BakuhuMenu : MonoBehaviour {
 				baseObj.name = "BakuhuBase";
 				returnObj.GetComponent<BakuhuMenuReturn> ().deleteObj = baseObj;
 				returnObj.GetComponent<BakuhuMenuReturn> ().scrollView = scrollView;
-				returnObj.GetComponent<BakuhuMenuReturn> ().board = board;                
-                if (langId == 2) {
-                    board.transform.Find ("popText").GetComponent<Text> ().text = "Attack Order";
-                }else {
-                    board.transform.Find("popText").GetComponent<Text>().text = "討伐令";
-                }
+				returnObj.GetComponent<BakuhuMenuReturn> ().board = board;
+                board.transform.Find("popText").GetComponent<Text>().text = Message.getMessage(199,langId);
+                
 				string textPath = "Prefabs/Bakuhu/ToubatsuText";
 				GameObject textObj = Instantiate (Resources.Load (textPath)) as GameObject;
 				textObj.transform.SetParent (baseObj.transform);
@@ -339,12 +337,9 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.transform.SetParent (board.transform);
 					returnObj.transform.localScale = new Vector2 (1, 1);
 					returnObj.transform.localPosition = new Vector2 (-560, 290);
-					returnObj.name = "bakuhuReturn";                    
-                    if (langId == 2) {
-                        board.transform.Find ("popText").GetComponent<Text> ().text = "Defence Order";
-                    }else {
-                        board.transform.Find("popText").GetComponent<Text>().text = "防衛令";
-                    }
+					returnObj.name = "bakuhuReturn";
+                    board.transform.Find("popText").GetComponent<Text>().text = Message.getMessage(200,langId);
+                    
 					//Disabled
 					scrollView.SetActive (false);
 
@@ -393,12 +388,9 @@ public class BakuhuMenu : MonoBehaviour {
 
 							GameObject slot = Instantiate (Resources.Load (uniSlotPath)) as GameObject;
 							slot.transform.SetParent (content.transform);
-							slot.transform.localScale = new Vector2 (1, 1);                           
-                            if (langId == 2) {
-                                slot.transform.Find ("Kuni").GetComponent<Text> ().text = kuniName + " Defence";
-                            }else {
-                                slot.transform.Find("Kuni").GetComponent<Text>().text = kuniName + "防衛";
-                            }
+							slot.transform.localScale = new Vector2 (1, 1);                                                       
+                            slot.transform.Find("Kuni").GetComponent<Text>().text = kuniName + Message.getMessage(201,langId);
+                            
 							string dfcDaimyoPath = daimyoBusyoPath + dstDaimyoBusyoId.ToString ();
 							slot.transform.Find ("Dfc").transform.Find ("Image").GetComponent<Image> ().sprite = 
 								Resources.Load (dfcDaimyoPath, typeof(Sprite)) as Sprite;
@@ -414,8 +406,10 @@ public class BakuhuMenu : MonoBehaviour {
 							slot.transform.Find ("EgnName").GetComponent<Text> ().text = engunDaimyoName;
                             if (langId == 2) {
                                 slot.transform.Find("Exp").GetComponent<Text>().text = "Request " + engunDaimyoName + " for reinforcement";
-                            }else {
-                                slot.transform.Find("Exp").GetComponent<Text>().text = engunDaimyoName + "に援軍の出兵支持を出す。";
+                            }else if(langId==3){
+                                slot.transform.Find("Exp").GetComponent<Text>().text = "向" + engunDaimyoName + "发出援军邀请";
+                            } else {
+                                slot.transform.Find("Exp").GetComponent<Text>().text = engunDaimyoName + "に援軍の出兵指示を出す。";
                             }
                             //Param
                             GameObject btn = slot.transform.Find ("BoueiBtn").gameObject;
@@ -437,7 +431,7 @@ public class BakuhuMenu : MonoBehaviour {
 					audioSources [4].Play ();
 
 					Message msg = new Message ();
-					msg.makeMessageOnBoard (msg.getMessage(99));
+					msg.makeMessageOnBoard (msg.getMessage(99,langId));
 				}
 			} else {
 				audioSources [4].Play ();
@@ -486,12 +480,9 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.transform.SetParent (board.transform);
 					returnObj.transform.localScale = new Vector2 (1, 1);
 					returnObj.transform.localPosition = new Vector2 (-560, 290);
-					returnObj.name = "bakuhuReturn";                    
-                    if (langId == 2) {
-                        board.transform.Find ("popText").GetComponent<Text> ().text = "Defence Order";
-                    }else {
-                        board.transform.Find("popText").GetComponent<Text>().text = "防衛令";
-                    }
+					returnObj.name = "bakuhuReturn";                                        
+                    board.transform.Find("popText").GetComponent<Text>().text = "防衛令";
+                    
 					//Disabled
 					scrollView.SetActive (false);
 
@@ -504,11 +495,8 @@ public class BakuhuMenu : MonoBehaviour {
 					returnObj.GetComponent<BakuhuMenuReturn> ().deleteObj = baseObj;
 					returnObj.GetComponent<BakuhuMenuReturn> ().scrollView = scrollView;
 					returnObj.GetComponent<BakuhuMenuReturn> ().board = board;
-                    if (langId == 2) {
-                        board.transform.Find ("popText").GetComponent<Text> ().text = "Mediation";
-                    }else {
-                        board.transform.Find("popText").GetComponent<Text>().text = "仲裁";
-                    }
+                    board.transform.Find("popText").GetComponent<Text>().text = Message.getMessage(202,langId);
+                    
 					//Scroll
 					string scrollPath = "Prefabs/Bakuhu/CyusaiScrollView";
 					GameObject uprScroll = Instantiate (Resources.Load (scrollPath)) as GameObject;
@@ -557,7 +545,7 @@ public class BakuhuMenu : MonoBehaviour {
 					audioSources [4].Play ();
 
 					Message msg = new Message ();
-					msg.makeMessageOnBoard (msg.getMessage(100));
+					msg.makeMessageOnBoard (msg.getMessage(100,langId));
 				}
 			} else {
 				audioSources [4].Play ();
@@ -604,7 +592,7 @@ public class BakuhuMenu : MonoBehaviour {
 					audioSources [4].Play ();
 
 					Message msg = new Message ();
-					msg.makeMessageOnBoard (msg.getMessage(101));
+					msg.makeMessageOnBoard (msg.getMessage(101,langId));
 				}
 			} else {
 				audioSources [4].Play ();
@@ -638,7 +626,10 @@ public class BakuhuMenu : MonoBehaviour {
 				msgTransform.name = "KessenConfirm";                
                 if (langId == 2) {
                     msg.transform.Find("Text").GetComponent<Text>().text = "Operate final war with " + daimyoName + ".";
-                }else {
+                }else if(langId==3) {
+                    msg.transform.Find("Text").GetComponent<Text>().text = "与" + daimyoName + "进行决战。";
+                }
+                else {
                     msg.transform.Find("Text").GetComponent<Text>().text = daimyoName + "に決戦を仕掛けます";
                 }
 				GameObject YesBtn = msg.transform.Find ("YesButton").gameObject;

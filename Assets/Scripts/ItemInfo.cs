@@ -145,7 +145,10 @@ public class ItemInfo : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     msgText = "My lord, do you want to build " + itemName + " here?";
-                }else {
+                }else if(langId==3) {
+                    msgText = "主公，是否用" + itemName + "在此地筑城？";
+                }
+                else {
                     msgText = "御館様、" + itemName + "をこの地に築城なさいますか？";
                 }
                 msgObj.GetComponent<Text>().text = msgText;

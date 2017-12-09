@@ -8,7 +8,7 @@ public class TextOnlyJap : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
+        if (langId == 2 || langId == 3) {
             Destroy(gameObject);
         }
     }

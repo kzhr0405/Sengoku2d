@@ -42,11 +42,7 @@ public class EnemyHP : MonoBehaviour {
 				Message msg = new Message ();
 				string text = "";
                 int langId = PlayerPrefs.GetInt("langId");
-                if (langId == 2) {
-                    text = "Enemy leader was defeated！";
-                }else {
-                    text = "敵方の大将、退却！";
-                }
+                text = msg.getMessage(246,langId);
 
 
                 msg.makeKassenMessage (text);

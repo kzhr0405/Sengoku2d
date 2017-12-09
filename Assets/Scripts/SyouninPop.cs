@@ -82,7 +82,7 @@ public class SyouninPop : MonoBehaviour {
 			
 			if (!notZeroflg) {
 				scrollView.transform.Find ("NoSyoukaijyo").GetComponent<Text> ().enabled = true;
-				pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(41);
+				pop.transform.Find ("Serihu").transform.Find ("Text").GetComponent<Text> ().text = msg.getMessage(41,langId);
 				pop.transform.Find ("PassButton").gameObject.SetActive (false);
 			}
 			
@@ -309,7 +309,10 @@ public class SyouninPop : MonoBehaviour {
                     string serihu = "";
                     if (langId == 2) {
                         serihu = "Oh, lord " + daimyoName + ".\nCan I help you?";
-                    }else {
+                    }else if(langId==3) {
+                        serihu = "这不是" + daimyoName + "大人吗？找我们有何贵干啊。";
+                    }
+                    else {
                         serihu = "これは" + daimyoName + "様。\n私共めに何用で御座いましょうか。";
                     }
                         
@@ -327,6 +330,9 @@ public class SyouninPop : MonoBehaviour {
 
                     if (langId == 2) {
                         msg.makeMessage("My lord " + occupiedDaimyoName + " disturbed our business.");
+                    }
+                    else if (langId == 3) {
+                        msg.makeMessage("主公，可恶的" + occupiedDaimyoName + "阻止我们进行贸易。");
                     }
                     else {
                         msg.makeMessage("御屋形様、" + occupiedDaimyoName + "めに\n取引を邪魔されました。");

@@ -32,6 +32,7 @@ public class GetAllShigen : MonoBehaviour {
 
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
         int langId = PlayerPrefs.GetInt("langId");
+        Message msg = new Message();
         if (!doneCyosyuFlg) {
 			audioSources [3].Play ();
             doneCyosyuFlg = true;
@@ -84,11 +85,8 @@ public class GetAllShigen : MonoBehaviour {
                     resultMoney = int.MaxValue;
                 }
                 PlayerPrefs.SetInt("money",resultMoney);
-                if (langId == 2) {
-                    targetName = "Money";
-                }else {
-                    targetName = "金";
-                }
+                targetName = msg.getMessage(169,langId);
+                
 				GameObject.Find ("MoneyValue").GetComponent<Text> ().text = resultMoney.ToString ();
 
 				int TrackGetMoneyNo = PlayerPrefs.GetInt ("TrackGetMoneyNo",0);
@@ -103,11 +101,8 @@ public class GetAllShigen : MonoBehaviour {
 				if(resultHyourou > maxHyourou) resultHyourou = maxHyourou;
 				PlayerPrefs.SetInt("hyourou",resultHyourou);
 				GameObject.Find ("HyourouCurrentValue").GetComponent<Text> ().text = resultHyourou.ToString();
-                if (langId == 2) {
-                    targetName = "Stamina";
-                }else {
-                    targetName = "兵糧";
-                }
+                targetName = msg.getMessage(170,langId);
+                
 				int TrackGetHyourouNo = PlayerPrefs.GetInt ("TrackGetHyourouNo",0);
 				TrackGetHyourouNo = TrackGetHyourouNo + totalHyourou;
 				PlayerPrefs.SetInt ("TrackGetHyourouNo",TrackGetHyourouNo);
@@ -121,7 +116,10 @@ public class GetAllShigen : MonoBehaviour {
                     PlayerPrefs.SetInt("money",resultMoney);
                     if (langId == 2) {
                         targetName = targetName + " and Gold";
-                    }else {
+                    }else if(langId==3) {
+                        targetName = targetName + "与矿山收入";
+                    }
+                    else {
                         targetName = targetName + "と鉱山収入";
                     }
 
@@ -135,7 +133,11 @@ public class GetAllShigen : MonoBehaviour {
 			}else if(cyosyuTarget == "gunjyu"){
                 if (langId == 2) {
                     targetName = "Weapon";
-                }else {
+                }
+                else if (langId == 3) {
+                    targetName = "军需物资";
+                }
+                else {
                     targetName = "軍需物資";
                 }
 
@@ -240,7 +242,11 @@ public class GetAllShigen : MonoBehaviour {
                     PlayerPrefs.SetInt("money",resultMoney);
                     if (langId == 2) {
                         targetName = targetName + " and Gold";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        targetName = targetName + "与矿山收入";
+                    }
+                    else {
                         targetName = targetName + "と鉱山収入";
                     }
 
@@ -259,13 +265,15 @@ public class GetAllShigen : MonoBehaviour {
 			MainStageController mainStage = new MainStageController();
 			mainStage.questExtension();
 
-			//Message
-			Message msg = new Message();
+			//Message			
             string text = "";
             if (langId == 2) {
-                text = "My lord, you earned " + targetName + ".\nPlease enrich the country more by development.";
-            }else {
-                text = targetName + "を徴収しましたぞ。\n内政でより国を富ませましょう。";
+                text = "My lord, you earned " + targetName + ". Please enrich the country more by development.";
+            }else if(langId==3) {
+                text = "已征收" + targetName + "，请通过内政，富国强兵。";
+            }
+            else {
+                text = targetName + "を徴収しましたぞ。内政でより国を富ませましょう。";
             }
             msg.makeMessageOnBoard(text);
 
@@ -292,14 +300,16 @@ public class GetAllShigen : MonoBehaviour {
                 
             }
 
-            } else {
+        } else {
 			audioSources [4].Play ();
-
-			Message msg = new Message();
             string text = "";
             if (langId == 2) {
                 text = "Season hasn't changed.\nPlease wait a moment for collecting taxes.";
-            }else {
+            }
+            else if (langId == 3) {
+                text = "季节尚未变换\n还请稍后进行征收。";
+            }
+            else {
                 text = "まだ季節は変わっておりませぬぞ。\n徴収は今しばらくお待ち下さいませ。";
             }
             msg.makeMessageOnBoard(text);

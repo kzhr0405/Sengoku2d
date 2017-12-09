@@ -18,9 +18,9 @@ public class SyouninMenu : MonoBehaviour {
 
 		if (actionRemainQty <= 0) {
 			audioSources [4].Play ();
-			msg.makeMessage (msg.getMessage(42));
+			msg.makeMessage (msg.getMessage(42, langId));
 			
-			serihuChanger (msg.getMessage(43));
+			serihuChanger (msg.getMessage(43,langId));
 			
 		} else{
 
@@ -94,7 +94,7 @@ public class SyouninMenu : MonoBehaviour {
 
 				//Initial
 				content.transform.Find("item1").GetComponent<SyouninProductSelect>().OnClick();
-				serihuChanger (msg.getMessage(44));
+				serihuChanger (msg.getMessage(44, langId));
 
 			}else if(name == "Busshi"){
 				audioSources [0].Play ();
@@ -234,7 +234,7 @@ public class SyouninMenu : MonoBehaviour {
 				//Initial
 				item1.GetComponent<SyouninProductSelect>().OnClick();
 
-				serihuChanger (msg.getMessage(45));
+				serihuChanger (msg.getMessage(45, langId));
 
 			}else if(name == "Yasen"){
 				audioSources [0].Play ();
@@ -252,7 +252,7 @@ public class SyouninMenu : MonoBehaviour {
 				GameObject btn = menu.transform.Find("DoYasenButton").gameObject;
 				btn.GetComponent<DoSyouninMenu>().price = yasenAmt;
 
-				serihuChanger (msg.getMessage(46));
+				serihuChanger (msg.getMessage(46, langId));
 
 			}else if(name == "Youjinbou"){
 				audioSources [0].Play ();
@@ -299,7 +299,7 @@ public class SyouninMenu : MonoBehaviour {
 				info.transform.Find("Name").GetComponent<Text>().text = kengouName;
 				info.transform.Find("EffectLabel").GetComponent<Text>().text = exp;
 				menu.transform.Find("MoneyValue").GetComponent<Text>().text = Mathf.CeilToInt(finalPrice).ToString();
-				serihuChanger (msg.getMessage(47));
+				serihuChanger (msg.getMessage(47, langId));
 
 			}else if(name == "Cyakai"){
 				
@@ -320,7 +320,10 @@ public class SyouninMenu : MonoBehaviour {
                     string text = "";
                     if (langId == 2) {
                         text = "Lord " + daimyoBusyoName + " don't have any teaware.";
-                    }else {
+                    }else if(langId==3) {
+                        text = daimyoBusyoName + "大人并没有任何茶器。";
+                    }
+                    else {
                         text = daimyoBusyoName + "様は\n茶器をお持ちでないようですな。";
                     }
                     msg.makeMessageOnBoard (text);
@@ -448,10 +451,10 @@ public class SyouninMenu : MonoBehaviour {
 					string serihu = "";
 					if (!doneCyadouguFlg1 && !doneCyadouguFlg2) {
 						btn.GetComponent<DoSyouninMenu> ().doneCyadouguFlg = false;
-                        serihu = msg.getMessage(48);
+                        serihu = msg.getMessage(48, langId);
 					} else {
 						btn.GetComponent<DoSyouninMenu> ().doneCyadouguFlg = true;
-						serihu = msg.getMessage(49);
+						serihu = msg.getMessage(49, langId);
                     }
 					serihuChanger (serihu);
 
@@ -499,7 +502,7 @@ public class SyouninMenu : MonoBehaviour {
 				info.transform.Find("Name").GetComponent<Text>().text = techName;
 				info.transform.Find("EffectLabel").GetComponent<Text>().text = exp;
 				menu.transform.Find("MoneyValue").GetComponent<Text>().text = Mathf.CeilToInt(finalPrice).ToString();
-				serihuChanger (msg.getMessage(50));
+				serihuChanger (msg.getMessage(50, langId));
 
 			}
 

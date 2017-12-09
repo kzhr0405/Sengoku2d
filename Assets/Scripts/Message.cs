@@ -166,10 +166,9 @@ public class Message : MonoBehaviour {
     }
 
 
-    public string getMessage(int id) {
+    public string getMessage(int id, int langId) {
 
         string message = "";
-        int langId = PlayerPrefs.GetInt("langId");
         Entity_message_mst msgMst = Resources.Load("Data/message_mst") as Entity_message_mst;
         if (langId==2) {
             message = msgMst.param[id - 1].messageEng;

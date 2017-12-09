@@ -68,8 +68,9 @@ public class DoKanjyo : MonoBehaviour {
 		if (kanjyoQty == 0) {
 			/*Error*/
 			audioSources [4].Play ();
-			Message msg = new Message(); 
-			msg.makeMessage (msg.getMessage(64));
+			Message msg = new Message();
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage (msg.getMessage(64,langId));
 			
 			GameObject.Find ("DoKakyuKanjyo").GetComponent<Button> ().enabled = true;
 			GameObject.Find ("DoCyukyuKanjyo").GetComponent<Button> ().enabled = true;
@@ -164,7 +165,11 @@ public class DoKanjyo : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 kanjyoText = "You gave certificate to " + busyoName + ".";
-            }else {
+            }
+            else if (langId == 3) {
+                kanjyoText = "已授予 " + busyoName + "感状。";
+            }
+            else {
                 kanjyoText = busyoName + "に感状を与えました。";
             }
 			Message msg = new Message(); 

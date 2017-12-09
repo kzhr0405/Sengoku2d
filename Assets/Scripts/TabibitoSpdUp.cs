@@ -14,6 +14,7 @@ public class TabibitoSpdUp : MonoBehaviour {
 
         if (name == "YesButton") {
             Message msg = new Message();
+            int langId = PlayerPrefs.GetInt("langId");
 
             //check
             int busyoDama = PlayerPrefs.GetInt("busyoDama");
@@ -39,12 +40,12 @@ public class TabibitoSpdUp : MonoBehaviour {
 
                 NaiseiController script = GameObject.Find("NaiseiController").GetComponent<NaiseiController>();
                 script.tabibitoSecMst = 0.5f;
-                msg.makeMessage(msg.getMessage(141));
+                msg.makeMessage(msg.getMessage(141,langId));
 
                 Destroy(baseBtnObj);
             }else {
                 audioSources[4].Play();
-                msg.makeMessage(msg.getMessage(2));
+                msg.makeMessage(msg.getMessage(2,langId));
             }
         }else {
             audioSources[1].Play();

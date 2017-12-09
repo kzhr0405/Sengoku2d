@@ -13,10 +13,11 @@ public class DoNinmei : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		Message msgLine = new Message ();
-		int nowMoney = PlayerPrefs.GetInt ("money");
+        int langId = PlayerPrefs.GetInt("langId");
+        int nowMoney = PlayerPrefs.GetInt ("money");
 		if (nowMoney < 1000) {
 			audioSources [4].Play ();
-			msgLine.makeMessage(msgLine.getMessage(6));
+			msgLine.makeMessage(msgLine.getMessage(6,langId));
 
 		} else {
 
@@ -68,7 +69,7 @@ public class DoNinmei : MonoBehaviour {
 
 				//Message
 				MessageBusyo msg = new MessageBusyo ();
-                string text = msgLine.getMessage(88);
+                string text = msgLine.getMessage(88,langId);
                 string type = "ninmei";
 				msg.makeMessage (text, int.Parse (busyoId), type);
 
