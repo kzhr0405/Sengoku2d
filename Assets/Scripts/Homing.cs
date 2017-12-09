@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class Homing : MonoBehaviour {
@@ -15,6 +16,7 @@ public class Homing : MonoBehaviour {
 	public bool leftFlg = false; //左を向いているか
     public bool KBFlg = false;
     public GameObject playerTaisyoObj;
+	private NavMeshAgent2D navMeshAgent2D;
 
 	void Start(){
 
@@ -38,6 +40,11 @@ public class Homing : MonoBehaviour {
 		if (audioSources.Length != 0) {
 			audioSources [0].Play ();
 		}
+
+		navMeshAgent2D = GetComponent<NavMeshAgent2D>();
+		if(navMeshAgent2D == null){
+			//Debug.Log("navMeshAgent2D is null!");
+		}
 	}
 	
 	// Update is called once per frame
@@ -58,8 +65,14 @@ public class Homing : MonoBehaviour {
 				}
 			} else {
 				//相手が居ない場合ストップ
-				GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-				GetComponent<Rigidbody2D> ().angularVelocity = 0;
+				if(GameScene.isUseNavigation && navMeshAgent2D != null){
+					if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+						navMeshAgent2D.destination = transform.position;//自分自身
+					}
+				}else{
+					GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+					GetComponent<Rigidbody2D> ().angularVelocity = 0;
+				}
 				anim.SetBool ("IsAttack", false); 
 			}
 		} else {
@@ -93,7 +106,19 @@ public class Homing : MonoBehaviour {
 		// 距離によって移動速度が変わってしまう為normalizedで一定速度にする
 
         if(target != null) {
-		    GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
+			if(GameScene.isUseNavigation && navMeshAgent2D != null){
+				var movePos = target.transform.position;
+				var pos = navMeshAgent2D.destination;
+				if(pos.x != movePos.x || pos.y != movePos.y){
+					if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+						navMeshAgent2D.destination = movePos;
+					}
+				}else{
+					//既に設定済みの時は何もしない
+				}
+			}else{
+				GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
+			}
 
             //Change Sprite Direction
             if (target.transform.position.x < transform.position.x) {

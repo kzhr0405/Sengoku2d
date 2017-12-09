@@ -41,6 +41,12 @@ public class NavMeshUtils2D
         return Vector3.Scale(ScaleTo3D(co.transform.localScale), new Vector3(co.size.x, 1, co.size.y));
     }
     
+	public static Vector3 ScaleFromCapsuleCollider2D(CapsuleCollider2D co)
+	{
+		// transform.localScale * collider size (but with components swapped for 3d)
+		return Vector3.Scale(ScaleTo3D(co.transform.localScale), new Vector3(co.size.x, 1, co.size.y));
+	}
+
     public static Vector3 ScaleFromCircleCollider2D(CircleCollider2D co)
     {
         // transform.localScale * collider size (but with components swapped for 3d)

@@ -313,6 +313,20 @@ public class GameScene : MonoBehaviour {
 
         }
 
+		//for Navigation
+		if(isUseNavigation && wallObject != null){
+			NavMeshSourceTag.clearStaticList();
+			NavMeshMapWall.makeSceneFloor(wallObject);
+			if(mapFrontObject != null){
+				NavMeshMapObstacle.makeSceneMapFront(mapFrontObject);
+			}
+			//障害物の配置が完了したので、ここでNavMeshを更新する
+			LocalNavMeshBuilder builder = GameObject.FindObjectOfType<LocalNavMeshBuilder>();
+			if(builder != null){
+				builder.UpdateNavMesh(false);//非同期で行う
+			}
+		}
+
 		/*プレイヤー配置*/
 		//ユーザ陣形データのロード
 		int jinkei =PlayerPrefs.GetInt("jinkei",1);
@@ -944,18 +958,6 @@ public class GameScene : MonoBehaviour {
             GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
 
         }
-
-		//for Navigation
-		if(isUseNavigation && wallObject != null){
-			NavMeshSourceTag.clearStaticList();
-			NavMeshMapWall.makeSceneFloor(wallObject);
-			NavMeshMapObstacle.makeSceneMapFront(mapFrontObject);
-			//障害物の配置が完了したので、ここでNavMeshを更新する
-			LocalNavMeshBuilder builder = GameObject.FindObjectOfType<LocalNavMeshBuilder>();
-			if(builder != null){
-				builder.UpdateNavMesh(true);
-			}
-		}
 
         if (Application.loadedLevelName == "tutorialKassen") {
             StopEveryObject();

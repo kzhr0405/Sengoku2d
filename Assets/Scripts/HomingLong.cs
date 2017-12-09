@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class HomingLong : MonoBehaviour {
@@ -19,6 +20,7 @@ public class HomingLong : MonoBehaviour {
 	public float coolTime = 0;
 	public bool fireFlg = false;
 	public float fireCoolTime = 0;
+	private NavMeshAgent2D navMeshAgent2D;
 
 	void Start(){
 		
@@ -52,6 +54,11 @@ public class HomingLong : MonoBehaviour {
 		if (GetComponent<SenpouController> ()) {
 			GetComponent<SenpouController> ().initCoolTime = coolTime;
 			GetComponent<SenpouController> ().initDisTarget = DisTarget;
+		}
+
+		navMeshAgent2D = GetComponent<NavMeshAgent2D>();
+		if(navMeshAgent2D == null){
+			//Debug.Log("navMeshAgent2D is null!");
 		}
 
 	}
@@ -93,9 +100,15 @@ public class HomingLong : MonoBehaviour {
 
 					
 					} else {
-						GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-						GetComponent<Rigidbody2D> ().angularVelocity = 0;
-
+						//相手がいない場合ストップ
+						if(GameScene.isUseNavigation && navMeshAgent2D != null){
+							if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+								navMeshAgent2D.destination = transform.position;//自分自身
+							}
+						}else{
+							GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+							GetComponent<Rigidbody2D> ().angularVelocity = 0;
+						}
 					}
 				}
 			} else {
@@ -104,8 +117,14 @@ public class HomingLong : MonoBehaviour {
 					fireFlg = true;
 
 					//Attack
-					GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-					GetComponent<Rigidbody2D> ().angularVelocity = 0;
+					if(GameScene.isUseNavigation && navMeshAgent2D != null){
+						if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+							navMeshAgent2D.destination = transform.position;//自分自身
+						}
+					}else{
+						GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+						GetComponent<Rigidbody2D> ().angularVelocity = 0;
+					}
 
 					if (nearObj == null) {
 						anim.SetBool ("IsAttack", false);
@@ -260,8 +279,20 @@ public class HomingLong : MonoBehaviour {
 	}
 
 	void Move (GameObject target){
+		if(GameScene.isUseNavigation && navMeshAgent2D != null){
+			var movePos = target.transform.position;
+			var pos = navMeshAgent2D.destination;
+			if(pos.x != movePos.x || pos.y != movePos.y){
+				if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+					navMeshAgent2D.destination = movePos;
+				}
+			}else{
+				//既に設定済みの時は何もしない
+			}
+		}else{
+			GetComponent<Rigidbody2D> ().velocity = (target.transform.position - transform.position).normalized * speed;
+		}
 
-		GetComponent<Rigidbody2D> ().velocity = (target.transform.position - transform.position).normalized * speed;
 
 		//Change Sprite Direction
 		if (target.transform.position.x < transform.position.x) {

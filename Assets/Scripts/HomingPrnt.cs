@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class HomingPrnt : MonoBehaviour {
@@ -9,6 +10,7 @@ public class HomingPrnt : MonoBehaviour {
 	public string targetTag;
 	public GameObject nearObj;         //最も近いオブジェクト
 	public bool leftFlg = false; //左を向いているか
+	private NavMeshAgent2D navMeshAgent2D;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +29,11 @@ public class HomingPrnt : MonoBehaviour {
 		} else if (this.tag == "Player") {
 			targetTag = "Enemy";
 		}
+
+		navMeshAgent2D = GetComponent<NavMeshAgent2D>();
+		if(navMeshAgent2D == null){
+			//Debug.Log("navMeshAgent2D is null!");
+		}
 	}
 	
 	// Update is called once per frame
@@ -41,9 +48,15 @@ public class HomingPrnt : MonoBehaviour {
 
 			} else {
 				//相手が居ない場合ストップ
-				GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
-				GetComponent<Rigidbody2D> ().angularVelocity = 0;
-				
+				if(GameScene.isUseNavigation && navMeshAgent2D != null){
+					if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+						navMeshAgent2D.destination = transform.position;//自分自身
+					}
+				}else{
+					GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+					GetComponent<Rigidbody2D> ().angularVelocity = 0;
+				}
+
 				anim = GetComponent( "Animator" ) as Animator;
 				anim.SetBool("IsAttack", false ); 
 			}
@@ -52,7 +65,20 @@ public class HomingPrnt : MonoBehaviour {
 
 	public void Move(GameObject target){
 		nearObj = target;
-		GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
+
+		if(GameScene.isUseNavigation && navMeshAgent2D != null){
+			var movePos = target.transform.position;
+			var pos = navMeshAgent2D.destination;
+			if(pos.x != movePos.x || pos.y != movePos.y){
+				if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+					navMeshAgent2D.destination = movePos;
+				}
+			}else{
+				//既に設定済みの時は何もしない
+			}
+		}else{
+			GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
+		}
 
 	}
 
@@ -89,7 +115,19 @@ public class HomingPrnt : MonoBehaviour {
 
 	public void MoveWithoutParent(GameObject target){
 		nearObj = target;
-		GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
+		if(GameScene.isUseNavigation && navMeshAgent2D != null){
+			var movePos = target.transform.position;
+			var pos = navMeshAgent2D.destination;
+			if(pos.x != movePos.x || pos.y != movePos.y){
+				if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+					navMeshAgent2D.destination = movePos;
+				}
+			}else{
+				//既に設定済みの時は何もしない
+			}
+		}else{
+			GetComponent<Rigidbody2D>().velocity = (target.transform.position - transform.position).normalized * speed;
+		}
 
 		//Change Sprite Direction
 		if (this.tag == "Player") { 

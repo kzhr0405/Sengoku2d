@@ -447,16 +447,9 @@ public class PlayerInstance : MonoBehaviour {
 
 		}
 
-		//TODO test
-		if(isDebugEnableReplaceCollider){
-			//重そうなPolygonCollider2Dを削除してみる
-			PolygonCollider2D obj =  prefab.GetComponent<PolygonCollider2D>();
-			Destroy(obj);
-			//代わりに軽そうなCircleCollider2Dを追加してみる
-			CircleCollider2D cc = prefab.AddComponent<CircleCollider2D>();
-			cc.radius = PlayerInstance.replaceCircleColliderRadius;
-		}
-        
+		//速度改善と経路探索の初期化
+		initExtension(prefab);
+
         return totalHeiryoku;
     }
 
@@ -716,7 +709,10 @@ public class PlayerInstance : MonoBehaviour {
 
 
 		}
-		
+
+		//速度改善と経路探索の初期化
+		initExtension(prefab);
+
 	}
 
     public void makeKaisenInstance(int busyoId, int shipId, int mapId, int hp, int atk, int dfc, int spd, ArrayList senpouArray, string busyoName, int soudaisyo, int boubi, bool engunFlg, int engunButaiQty, int engunButaiSts) {
@@ -1045,6 +1041,23 @@ public class PlayerInstance : MonoBehaviour {
                 prefab.GetComponent<PlayerHP>().dfc = prefab.GetComponent<PlayerHP>().dfc + (ch_num * atkDfc);
             }
         }
-       
+
+		//速度改善と経路探索の初期化
+		initExtension(prefab);
+
     }
+
+	public static void initExtension(GameObject prefab){
+		if(PlayerInstance.isDebugEnableReplaceCollider){
+			//重そうなPolygonCollider2Dを削除してみる
+			PolygonCollider2D obj =  prefab.GetComponent<PolygonCollider2D>();
+			Destroy(obj);
+			//代わりに軽そうなCircleCollider2Dを追加してみる
+			CircleCollider2D cc = prefab.AddComponent<CircleCollider2D>();
+			cc.radius = PlayerInstance.replaceCircleColliderRadius;
+		}
+
+		//for Navigation
+		NavMeshMapAgent.addNavMeshAgent2D(prefab);
+	}
 }

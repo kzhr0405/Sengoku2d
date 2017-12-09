@@ -81,7 +81,7 @@ public class NavMeshAgent2D : MonoBehaviour
             // stop agent movement, reset it to current position
             agent.ResetPath();
             agent.transform.position = NavMeshUtils2D.ProjectTo3D(transform.position);
-            Debug.Log("stopped agent because of collision in 2D plane");
+            //Debug.Log("stopped agent because of collision in 2D plane");
         }
     }
 

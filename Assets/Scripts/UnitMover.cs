@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class UnitMover : MonoBehaviour {
@@ -18,6 +19,7 @@ public class UnitMover : MonoBehaviour {
 	public GameObject nearObj;
 	public Animator anim;
 	private float timeleft;
+	private NavMeshAgent2D navMeshAgent2D;
 
 
     void Start () {
@@ -42,7 +44,9 @@ public class UnitMover : MonoBehaviour {
 			    GetComponent<SenpouController> ().initCoolTime = coolTime;
 			    GetComponent<SenpouController> ().initDisTarget = DisTarget;
             }
+
         }
+		navMeshAgent2D = GetComponent<NavMeshAgent2D>();
 
     }
 
@@ -69,7 +73,19 @@ public class UnitMover : MonoBehaviour {
 
 
 	public void Move(Vector3 touchEndPosition){
-		GetComponent<Rigidbody2D>().velocity = (touchEndPosition - transform.position).normalized * speed;
+		if(GameScene.isUseNavigation && navMeshAgent2D != null){
+			var pos = navMeshAgent2D.destination;
+			if(pos.x != touchEndPosition.x || pos.y != touchEndPosition.y){
+				if(navMeshAgent2D.pathStatus != NavMeshPathStatus.PathInvalid){
+					navMeshAgent2D.destination = touchEndPosition;
+				}
+			}else{
+				//既に設定済み
+				//navMeshAgent2D.destination = transform.position;
+			}
+		}else{
+			GetComponent<Rigidbody2D>().velocity = (touchEndPosition - transform.position).normalized * speed;
+		}
 
 		//Change Direction
 		if (touchEndPosition.x >= transform.position.x) {

@@ -511,15 +511,8 @@ public class EnemyInstance : MonoBehaviour {
             
 		}
 
-
-		if(PlayerInstance.isDebugEnableReplaceCollider){
-			//重そうなPolygonCollider2Dを削除してみる
-			PolygonCollider2D obj =  prefab.GetComponent<PolygonCollider2D>();
-			Destroy(obj);
-			//代わりに軽そうなCircleCollider2Dを追加してみる
-			CircleCollider2D cc = prefab.AddComponent<CircleCollider2D>();
-			cc.radius = PlayerInstance.replaceCircleColliderRadius;
-		}
+		//速度改善と経路探索の初期化
+		PlayerInstance.initExtension(prefab);
 
         return totalHeiryoku;
 	}
@@ -891,5 +884,9 @@ public class EnemyInstance : MonoBehaviour {
 
 
         }
+
+		//速度改善と経路探索の初期化
+		PlayerInstance.initExtension(prefab);
+
     }
 }
