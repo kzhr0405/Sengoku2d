@@ -135,7 +135,12 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(buguKahouMst.param [kahouId-1].kahouNameEng);
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }else if(langId==3) {
+                kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouNameSChn);
+                kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouExpSChn);
+                kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouTargetSChn);
+            }
+            else {
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(buguKahouMst.param[kahouId - 1].kahouTarget);
@@ -152,7 +157,13 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }
+            else if (langId == 3) {
+                kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouNameSChn);
+                kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouExpSChn);
+                kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouTargetSChn);
+            }
+            else {
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(kabutoKahouMst.param[kahouId - 1].kahouTarget);
@@ -169,7 +180,13 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }
+            else if (langId == 3) {
+                kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouNameSChn);
+                kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouExpSChn);
+                kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouTargetSChn);
+            }
+            else {
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(gusokuKahouMst.param[kahouId - 1].kahouTarget);
@@ -186,7 +203,13 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }
+            else if (langId == 3) {
+                kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouNameSChn);
+                kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouExpSChn);
+                kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouTargetSChn);
+            }
+            else {
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(meibaKahouMst.param[kahouId - 1].kahouTarget);
@@ -203,7 +226,13 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }
+            else if (langId == 3) {
+                kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouNameSChn);
+                kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouExpSChn);
+                kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouTargetSChn);
+            }
+            else {
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(cyadouguKahouMst.param[kahouId - 1].kahouTarget);
@@ -220,7 +249,13 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }
+            else if (langId == 3) {
+                kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouNameSChn);
+                kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouExpSChn);
+                kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouTargetSChn);
+            }
+            else {
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(heihousyoKahouMst.param[kahouId - 1].kahouTarget);
@@ -237,7 +272,13 @@ public class KahouStatusGet : MonoBehaviour {
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouNameEng);
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouExpEng);
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouTargetEng);
-            }else {
+            }
+            else if (langId == 3) {
+                kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouNameChn);
+                kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouExpChn);
+                kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouTargetChn);
+            }
+            else {
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouName);
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouExp);
                 kahouInfoList.Add(chishikisyoKahouMst.param[kahouId - 1].kahouTarget);

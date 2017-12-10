@@ -29,7 +29,6 @@ GameObject:
   - component: {fileID: 10294074}
   - component: {fileID: 11424170}
   - component: {fileID: 11431092}
-  - component: {fileID: 114809529020394444}
   m_Layer: 19
   m_Name: sakuName
   m_TagString: Senpou
@@ -79,6 +78,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -94,12 +94,14 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1765688209
+  m_SortingLayer: 7
   m_SortingOrder: 6
 --- !u!61 &6176498
 BoxCollider2D:
@@ -112,9 +114,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6.3999996, y: 4.7999997}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 6.5, y: 5}
+  m_EdgeRadius: 0
 --- !u!95 &9594564
 Animator:
   serializedVersion: 3
@@ -215,9 +228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sakuId: 11
   sakuEffect: 10
-  sakuTempEffect: 0
   vect: {x: 0, y: 0}
   upColor: {r: 0.19607843, g: 0.74509805, b: 0.13725491, a: 1}
+  targetTag: 
 --- !u!212 &21204626
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -227,6 +240,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -242,17 +256,25 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1765688209
+  m_SortingLayer: 7
   m_SortingOrder: 5
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.509}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &21299276
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -262,6 +284,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -277,17 +300,25 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -860927367
+  m_SortingLayer: 3
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300004, guid: 781f4aa549d954142b5e64c0c263f560, type: 3}
   m_Color: {r: 1, g: 0.99264705, b: 0.99264705, a: 0.72039443}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!224 &22404828
 RectTransform:
   m_ObjectHideFlags: 1
@@ -337,17 +368,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 180450}
   m_IsPrefabParent: 1
---- !u!114 &114809529020394444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 156746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b7cff6b80ac0148acbf9716a91849e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  englishText: Yagyu Shinkage Sword
-  englishFontSize: 200
-  arialFg: 0

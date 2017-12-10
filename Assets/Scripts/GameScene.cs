@@ -14,9 +14,10 @@ public class GameScene : MonoBehaviour {
 	public GameObject wallPrefab;
 	public int activeKuniId = 0;
 	public int activeStageId = 0;
+    public int langId;
 
-	//enemy
-	public int enemySoudaisyo;
+    //enemy
+    public int enemySoudaisyo;
 	public int totalSenpouLv = 0;
 	public int aveSenpouLv = 0;
     public List<string> sameDaimyoList;
@@ -62,6 +63,8 @@ public class GameScene : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        langId = PlayerPrefs.GetInt("langId");
 
         //Sound
         BGMSESwitch bgm = new BGMSESwitch();
@@ -1000,9 +1003,17 @@ public class GameScene : MonoBehaviour {
                 }
             
                 if (!menuWrapFlg) {
-                    sakuFlg = false;
-					string sakuPath = "Prefabs/Saku/SakuEvent/" + sakuId;
-					GameObject saku = Instantiate(Resources.Load (sakuPath)) as GameObject;
+                    sakuFlg = false;	
+                    string sakuPath = "";
+                    if (langId == 2) {
+                        sakuPath = "Prefabs/Saku/sakuEventEng/" + sakuId;
+                    }else if (langId == 3) {
+                        sakuPath = "Prefabs/Saku/sakuEventSChn/" + sakuId;
+                    }else {
+                        sakuPath = "Prefabs/Saku/sakuEvent/" + sakuId;
+                    }
+                    
+                    GameObject saku = Instantiate(Resources.Load (sakuPath)) as GameObject;
 					Vector2 worldPos = Camera.main.ScreenToWorldPoint(TouchPosition);
 
 					if (11 <= sakuId && sakuId <= 15) {
@@ -1516,9 +1527,23 @@ public class GameScene : MonoBehaviour {
 		shiroObj.transform.localScale = new Vector2 (2,1.5f);
 		setPlayerObjectOnMap (12, shiroObj);
 		shiroObj.name = "shiro";
-
-		string stageName = PlayerPrefs.GetString ("activeStageName");
-		shiroObj.transform.Find ("BusyoDtlPlayer").transform.Find ("NameLabel").GetComponent<TextMesh> ().text = stageName;
+        
+        string shiroDtlPath = "";
+        if (langId == 2) {
+            shiroDtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
+        }else if (langId == 3) {
+            shiroDtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
+        }else {
+            shiroDtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
+        }
+        GameObject shiroDtl = Instantiate(Resources.Load(shiroDtlPath)) as GameObject;
+        shiroDtl.transform.SetParent(shiroObj.transform);
+        shiroDtl.transform.localPosition = new Vector3(0, 5, 0);
+        shiroDtl.transform.localScale = new Vector3(2f, 2.5f, 0);
+        shiroDtl.name = "BusyoDtlPlayer";
+        
+        string stageName = PlayerPrefs.GetString ("activeStageName");
+        shiroDtl.transform.Find ("NameLabel").GetComponent<TextMesh> ().text = stageName;
 
 		//Sprite
         string shiroTmp = "shiro" + activeKuniId;
@@ -1553,7 +1578,7 @@ public class GameScene : MonoBehaviour {
 		int shiroEffect = 2000 + tmpShiroEffect * 25;
 		shiroObj.GetComponent<PlayerHP> ().initLife = shiroEffect;
 		shiroObj.GetComponent<PlayerHP> ().life = shiroEffect;
-		shiroObj.transform.Find ("BusyoDtlPlayer").transform.Find ("MinHpBar").GetComponent<BusyoHPBar> ().initLife = shiroEffect;
+        shiroDtl.transform.Find ("MinHpBar").GetComponent<BusyoHPBar> ().initLife = shiroEffect;
 
 		//Toride
 		for (int i = 1; i < 26; i++) {

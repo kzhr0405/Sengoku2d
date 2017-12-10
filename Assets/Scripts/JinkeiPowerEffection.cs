@@ -191,7 +191,7 @@ public class JinkeiPowerEffection : MonoBehaviour {
                 flag.transform.SetParent(EnemyJinkeiView.transform.Find("Slot" + mapId).GetChild(0).transform);
                 flag.transform.localScale = new Vector3(0.5f, 0.5f, 0);
                 flag.transform.localPosition = new Vector3(0, 0, 0);
-                
+                Destroy(flag.transform.Find("Effect").gameObject);
                 if(!sameDaimyoList.Contains(daimyoId1)) {
                     sameDaimyoList.Add(daimyoId1);
                     sameDaimyoNumList.Add(count);

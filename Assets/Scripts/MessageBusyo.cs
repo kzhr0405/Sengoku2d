@@ -56,13 +56,20 @@ public class MessageBusyo : MonoBehaviour {
                 
                 if (langId == 2) {
                     serihu = serihuMst.param[busyoId - 1].tsuihouMsgEng;
-                }else {
+                }else if(langId==3) {
+                    serihu = serihuMst.param[busyoId - 1].tsuihouMsgSChn;
+                }
+                else {
                     serihu = serihuMst.param[busyoId - 1].tsuihouMsg;
                 }
             }else if (type == "touyou") {
                 if (langId == 2) {
                     serihu = serihuMst.param[busyoId - 1].touyouMsgEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    serihu = serihuMst.param[busyoId - 1].touyouMsgSChn;
+                }
+                else {
                     serihu = serihuMst.param[busyoId - 1].touyouMsg;
                 }
             }else if (type == "ninmei") {
@@ -77,13 +84,21 @@ public class MessageBusyo : MonoBehaviour {
 			if (type == "tsuihou") {
                 if (langId == 2) {
                     serihu = serihuMst.param [busyoId - 1].tsuihouMsgEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    serihu = serihuMst.param[busyoId - 1].tsuihouMsgSChn;
+                }
+                else {
                     serihu = serihuMst.param[busyoId - 1].tsuihouMsg;
                 }
 			} else if (type == "touyou") {
                 if (langId == 2) {
                     serihu = serihuMst.param [busyoId - 1].touyouMsgEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    serihu = serihuMst.param[busyoId - 1].touyouMsgSChn;
+                }
+                else {
                     serihu = serihuMst.param[busyoId - 1].touyouMsg;
                 }
 			} else if (type == "ninmei") {

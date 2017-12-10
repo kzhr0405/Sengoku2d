@@ -11,6 +11,8 @@ public class Shisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = Mst.param [id - 1].nameEng;
+        }else if(langId==3){
+            value = Mst.param[id - 1].nameSChn;
         }else {
             value = Mst.param[id - 1].name;
         }
@@ -28,7 +30,11 @@ public class Shisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = Mst.param [id - 1].Serihu1Eng;
-        }else {
+        }
+        else if (langId == 3) {
+            value = Mst.param[id - 1].Serihu1SChn;
+        }
+        else {
             value = Mst.param[id - 1].Serihu1;
         }
 		return value;
@@ -39,7 +45,11 @@ public class Shisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = Mst.param [id - 1].Serihu2Eng;
-        }else {
+        }
+        else if (langId == 3) {
+            value = Mst.param[id - 1].Serihu2SChn;
+        }
+        else {
             value = Mst.param[id - 1].Serihu2;
         }
 		return value;
@@ -50,7 +60,11 @@ public class Shisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = Mst.param [id - 1].Serihu3Eng;
-        }else {
+        }
+        else if (langId == 3) {
+            value = Mst.param[id - 1].Serihu3SChn;
+        }
+        else {
             value = Mst.param[id - 1].Serihu3;
         }
 		return value;
@@ -79,7 +93,11 @@ public class Shisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = Mst.param [id - 1].OKSerihuEng;
-        }else {
+        }
+        else if (langId == 3) {
+            value = Mst.param[id - 1].OKSerihuSChn;
+        }
+        else {
             value = Mst.param[id - 1].OKSerihu;
         }
 		return value;
@@ -90,7 +108,11 @@ public class Shisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             value = Mst.param [id - 1].NGSerihuEng;
-        }else {
+        }
+        else if (langId == 3) {
+            value = Mst.param[id - 1].NGSerihuSChn;
+        }
+        else {
             value = Mst.param[id - 1].NGSerihu;
         }
 		return value;

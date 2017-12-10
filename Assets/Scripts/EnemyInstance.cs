@@ -36,9 +36,23 @@ public class EnemyInstance : MonoBehaviour {
 			    buildingObj.transform.localScale = new Vector2(2, 1.5f);
                 setEnemyObjectOnMap (mapId, buildingObj);
 			    buildingObj.name = "shiro";
+                string shiroDtlPath = "";
+                if (langId == 2) {
+                    shiroDtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
+                }else if (langId == 3) {
+                    shiroDtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemySChn";
+                }else {
+                    shiroDtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
+                }
+                GameObject shiroDtl = Instantiate(Resources.Load(shiroDtlPath)) as GameObject;
+                shiroDtl.transform.SetParent(buildingObj.transform);
+                shiroDtl.transform.localPosition = new Vector3(0, 5, 0);
+                shiroDtl.transform.localScale = new Vector3(2f, 2.5f, 0);
+                shiroDtl.name = "BusyoDtlEnemy";
 
-			    string stageName = PlayerPrefs.GetString ("activeStageName");
-			    buildingObj.transform.Find ("BusyoDtlEnemy").transform.Find ("NameLabel").GetComponent<TextMesh> ().text = stageName;
+
+                string stageName = PlayerPrefs.GetString ("activeStageName");
+                shiroDtl.transform.Find ("NameLabel").GetComponent<TextMesh> ().text = stageName;
 
 			    //HP
 			    int powerType = PlayerPrefs.GetInt("activePowerType");
@@ -131,7 +145,12 @@ public class EnemyInstance : MonoBehaviour {
             string serihu = "";
             if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
-            }else {
+            }else if(langId==3) {
+                Debug.Log(busyoId + ">" + serihu);
+                serihu = serihuMst.param[busyoId - 1].senpouMsgSChn;
+                
+            }
+            else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
             }
             prefab.GetComponent<SenpouController>().senpouSerihu = serihu;
@@ -671,10 +690,14 @@ public class EnemyInstance : MonoBehaviour {
         prefab.GetComponent<Homing>().AIType = AIType;
 
         //Busyo Detail Info [Name & HP Bar]
-        string dtlPath = "";        
+        string dtlPath = "";
         if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
-        }else {
+        }
+        else if (langId == 3) {
+            dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemySChn";
+        }
+        else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
         }
         GameObject dtl = Instantiate(Resources.Load(dtlPath)) as GameObject;

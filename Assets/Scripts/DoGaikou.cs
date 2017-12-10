@@ -642,7 +642,8 @@ public class DoGaikou : MonoBehaviour {
 							direction = "right";
 						}else{
 							Gunzei.transform.localScale = new Vector2 (-1, 1);
-							direction = "left";
+                            Gunzei.transform.Find("MsgBack").localScale = new Vector2(-1, 1);
+                            direction = "left";
 							Gunzei.GetComponent<Gunzei> ().leftFlg = true;
 
 						}

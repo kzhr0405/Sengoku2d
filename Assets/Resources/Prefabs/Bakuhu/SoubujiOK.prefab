@@ -204,7 +204,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.0009460449, y: -23.600006, z: 0}
   m_LocalScale: {x: 0.09, y: 0.1, z: 0}
   m_Children: []
   m_Father: {fileID: 22418178}
@@ -222,7 +222,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.00091552734, y: -2.399994, z: 0}
   m_LocalScale: {x: 0.04, y: 0.055, z: 0}
   m_Children: []
   m_Father: {fileID: 22418178}
@@ -256,7 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Approved
+  chineseText: "\u540C\u610F"
   englishFontSize: 200
+  chineseFontSize: 250
   arialFg: 1
 --- !u!114 &114895862833789774
 MonoBehaviour:
@@ -270,4 +272,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishFontSize: 200
+  chineseFontSize: 0
   arialFg: 1

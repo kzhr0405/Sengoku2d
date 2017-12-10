@@ -153,6 +153,7 @@ public class Gunzei : MonoBehaviour {
 					MainStageController main = new MainStageController ();
 					main.deleteKeyHistory (key);
 				}
+                
 			
 			} else {
 				MyDaimyoWasAttacked atked = new MyDaimyoWasAttacked ();
