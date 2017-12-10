@@ -1055,6 +1055,8 @@ public class PlayerInstance : MonoBehaviour {
 			//代わりに軽そうなCircleCollider2Dを追加してみる
 			CircleCollider2D cc = prefab.AddComponent<CircleCollider2D>();
 			cc.radius = PlayerInstance.replaceCircleColliderRadius;
+			cc.enabled = false;
+			cc.enabled = true;
 		}
 
 		//for Navigation
