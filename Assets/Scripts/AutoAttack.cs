@@ -110,6 +110,10 @@ public class AutoAttack : MonoBehaviour {
                     //switchBarDirect(obs);
                 }
             }
+			NavMeshAgent2D agent = obs.GetComponent<NavMeshAgent2D>();
+			if(agent != null){
+				agent.destination = obs.transform.position;
+			}
         }
     }
 
