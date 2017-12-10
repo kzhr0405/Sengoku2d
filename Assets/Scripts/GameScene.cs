@@ -325,6 +325,12 @@ public class GameScene : MonoBehaviour {
 			if(builder != null){
 				builder.UpdateNavMesh(false);//非同期で行う
 			}
+			//武将にタッチが効かなくなることがある問題の修正
+			//移動範囲をカバーするコライダーを無効化する
+			var collider = wallObject.GetComponent<BoxCollider2D>();
+			if(collider){
+				collider.enabled = false;
+			}
 		}
 
 		/*プレイヤー配置*/
