@@ -20,6 +20,8 @@ public class EnemyAttackPop : MonoBehaviour {
         string simpaleBattlePath = "";
         if (langId == 2) {
             simpaleBattlePath = "Prefabs/SimpleBattle/BattleBoardEng";
+        }else if(langId==3) {
+            simpaleBattlePath = "Prefabs/SimpleBattle/BattleBoardSChn";
         } else {
             simpaleBattlePath = "Prefabs/SimpleBattle/BattleBoard";
         }

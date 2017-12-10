@@ -118,10 +118,10 @@ public class GacyaSpecialTouyouConfirm : MonoBehaviour {
                     messageList.Add(id1 + " samurai increased max Lv.\n");
                 }
                 else if (langId == 3) {
-                    messageList.Add(id1 + "人の武将の最大レベルが1上昇。\n");
+                    messageList.Add(id1 + "名武将最大等级提升1。\n");
                 }
                 else {
-                    messageList.Add(id1 + "名武将最大等级提升1。\n");
+                    messageList.Add(id1 + "人の武将の最大レベルが1上昇。\n");
                 }
             }
                 

@@ -184,7 +184,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -31.899994, z: 0}
   m_LocalScale: {x: 0.48, y: 0.6, z: 0}
   m_Children: []
   m_Father: {fileID: 22474558}
@@ -202,7 +202,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 189890}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -10.699997, z: 0}
   m_LocalScale: {x: 0.24, y: 0.33, z: 0}
   m_Children: []
   m_Father: {fileID: 22474558}
@@ -220,7 +220,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 126760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 217.5, y: 33.3, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children:
   - {fileID: 22428956}
@@ -256,7 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Rejected
+  chineseText: "\u62D2\u7EDD"
   englishFontSize: 40
+  chineseFontSize: 40
   arialFg: 1
 --- !u!114 &114815471802600712
 MonoBehaviour:
@@ -270,4 +272,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishFontSize: 40
+  chineseFontSize: 0
   arialFg: 1

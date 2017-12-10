@@ -77,7 +77,15 @@ public class HPCounter : MonoBehaviour {
                 GameObject canvas = GameObject.Find ("Canvas").gameObject;
                 Message msg = new Message();
                 if (Application.loadedLevelName == "tutorialKassen") {
-                    string backPath = "Prefabs/PostKassen/back";
+                    int langId = PlayerPrefs.GetInt("langId");
+                    string backPath = "";
+                    if (langId == 3) {
+                        backPath = "Prefabs/PostKassen/backSChn";
+                    }
+                    else {
+                        backPath = "Prefabs/PostKassen/back";
+                    }
+
                     GameObject backObj = Instantiate(Resources.Load(backPath)) as GameObject;
                     backObj.transform.SetParent(canvas.transform);
                     backObj.transform.localScale = new Vector2(70, 63);
@@ -95,8 +103,7 @@ public class HPCounter : MonoBehaviour {
                     bttnListObj.transform.localScale = new Vector2(1, 1);
                     bttnListObj.transform.localPosition = new Vector2(0, 20);
 
-                    GameObject.Find("timer").GetComponent<Timer>().enabled = false;
-                    int langId = PlayerPrefs.GetInt("langId");
+                    GameObject.Find("timer").GetComponent<Timer>().enabled = false;                    
                     if (targetTag == "Player") {
                         //lose
                         audioSources[4].Play();
@@ -123,22 +130,27 @@ public class HPCounter : MonoBehaviour {
                 } else {
 
                     if (targetTag == "Player") {
-				        //Game Over
-				        string backPath = "Prefabs/PostKassen/back";
-				        GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
+                        //Game Over
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string backPath = "";
+                        if (langId==3) {
+                            backPath = "Prefabs/PostKassen/backSChn";
+                        }else {
+                            backPath = "Prefabs/PostKassen/back";
+                        }
+
+                        GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
 				        backObj.transform.SetParent (canvas.transform);
 				        backObj.transform.localScale = new Vector2(70,63);
 				        backObj.transform.localPosition = new Vector2 (0,0);
 
 				        //Chane word
-				        Color color = Color.blue;
-                        int langId = PlayerPrefs.GetInt("langId");                        
-                        if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
-                            GameObject.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(250,langId);
+				        Color color = Color.blue;                                 
+                        if (backObj.transform.Find("winlose").GetComponent<TextMesh>()) {
+                            backObj.transform.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(250,langId);
+                            backObj.transform.Find("winlose").GetComponent<TextMesh>().color = color;
                         }
                         
-				        GameObject.Find ("winlose").GetComponent<TextMesh>().color = color;
-					
 				        string blackPath = "Prefabs/PostKassen/black";
 				        GameObject blackObj = Instantiate(Resources.Load (blackPath)) as GameObject;
 				        blackObj.transform.SetParent (canvas.transform);
@@ -417,8 +429,16 @@ public class HPCounter : MonoBehaviour {
                             
                         }
 
-				        string backPath = "Prefabs/PostKassen/back";
-				        GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string backPath = "";
+                        if (langId == 3) {
+                            backPath = "Prefabs/PostKassen/backSChn";
+                        }
+                        else {
+                            backPath = "Prefabs/PostKassen/back";
+                        }
+
+                        GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
 				        backObj.transform.SetParent (canvas.transform);
 				        backObj.transform.localScale = new Vector2(70,63);
 				        backObj.transform.localPosition = new Vector2 (0,0);
@@ -441,8 +461,7 @@ public class HPCounter : MonoBehaviour {
 				        makimonoObj.transform.localPosition = new Vector2(0,-135);
 
 				        string stageName = PlayerPrefs.GetString("activeStageName");
-
-                        int langId = PlayerPrefs.GetInt("langId");
+                        
                         if (GameObject.Find("winlose").GetComponent<TextMesh>()) {
                             GameObject.Find("winlose").GetComponent<TextMesh>().text = msg.getMessage(252,langId);
                         }

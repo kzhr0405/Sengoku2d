@@ -5,6 +5,7 @@ using PlayerPrefs = PreviewLabs.PlayerPrefs;
 public class TextLocalizerMesh : MonoBehaviour {
     [Multiline]
     public string englishText;
+    [Multiline]
     public string chineseText;
     public int englishFontSize;
     public bool arialFg = false;

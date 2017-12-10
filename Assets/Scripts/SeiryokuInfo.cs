@@ -94,6 +94,8 @@ public class SeiryokuInfo : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             popText.GetComponent<Text>().text = "Finance";
+        }else if(langId==3) {
+            popText.GetComponent<Text>().text = "内政状况";
         }else { 
             popText.GetComponent<Text> ().text = "内政状況";
         }

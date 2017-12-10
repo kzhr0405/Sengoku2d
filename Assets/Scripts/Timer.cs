@@ -13,9 +13,10 @@ public class Timer : MonoBehaviour {
 	public bool paused = false;
 	bool flag = false;
 	public bool engunTimerflg = false;
+    public int langId;
 
-	//Engun
-	public bool playerEngunFlg = false;
+    //Engun
+    public bool playerEngunFlg = false;
 	public bool enemyEngunFlg = false;
 	public string playerEngunList = "";
 	public string enemyEngunList = "";
@@ -55,7 +56,7 @@ public class Timer : MonoBehaviour {
 
     private void Start(){
 		reset();
-
+        langId = PlayerPrefs.GetInt("langId");
         mntMinusRatio = PlayerPrefs.GetFloat("mntMinusStatus",0);
 		seaMinusRatio = PlayerPrefs.GetFloat("seaMinusStatus",0);
 		rainMinusRatio = PlayerPrefs.GetFloat("rainMinusStatus",0);
@@ -174,7 +175,7 @@ public class Timer : MonoBehaviour {
                     if (timer< sakuTimer) {
                         //run
                         EnemySaku EnemySaku = EnemySakuList[sakuTimerId];
-                        RunEnemySaku(EnemySaku);
+                        RunEnemySaku(EnemySaku, langId);
                         sakuTimerId++;
                         if(sakuTimerId < 12) sakuTimer = EnemySakuTimerList[sakuTimerId];
                     }
@@ -205,18 +206,25 @@ public class Timer : MonoBehaviour {
                             GameObject.Find("AutoBtn").SetActive(false);
                         }
                         Message Message = new Message();
-                        if (!isAttackedFlg) {                           
+                        if (!isAttackedFlg) {
                             //Player Attacked
                             //Game Over
-                            string backPath = "Prefabs/PostKassen/back";
-					        GameObject backObj = Instantiate (Resources.Load (backPath)) as GameObject;
+                            int langId = PlayerPrefs.GetInt("langId");
+                            string backPath = "";
+                            if (langId == 3) {
+                                backPath = "Prefabs/PostKassen/backSChn";
+                            }
+                            else {
+                                backPath = "Prefabs/PostKassen/back";
+                            }
+
+                            GameObject backObj = Instantiate (Resources.Load (backPath)) as GameObject;
 					        backObj.transform.SetParent (canvas.transform);
 					        backObj.transform.localScale = new Vector2 (70, 63);
 					        backObj.transform.localPosition = new Vector2 (0,0);
 
 					        //Chane word
-					        Color color = Color.blue;
-                            int langId = PlayerPrefs.GetInt("langId");
+					        Color color = Color.blue;                            
                             GameObject.Find("winlose").GetComponent<TextMesh>().text = Message.getMessage(286, langId);
 					        GameObject.Find ("winlose").GetComponent<TextMesh> ().color = color;
 					        audioSources [4].Play ();
@@ -263,10 +271,18 @@ public class Timer : MonoBehaviour {
 						            PlayerPrefs.DeleteKey ("twiceHeiFlg");
 						            PlayerPrefs.Flush();
 					            }
-                        
+
                                 //View
-                                string backPath = "Prefabs/PostKassen/back";
-					            GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
+                                int langId = PlayerPrefs.GetInt("langId");
+                                string backPath = "";
+                                if (langId == 3) {
+                                    backPath = "Prefabs/PostKassen/backSChn";
+                                }
+                                else {
+                                    backPath = "Prefabs/PostKassen/back";
+                                }
+
+                                GameObject backObj = Instantiate(Resources.Load (backPath)) as GameObject;
 					            backObj.transform.SetParent (canvas.transform);
 					            backObj.transform.localScale = new Vector2(70,63);
 					            backObj.transform.localPosition = new Vector2 (0,0);
@@ -288,7 +304,6 @@ public class Timer : MonoBehaviour {
 					            makimonoObj.transform.localScale = new Vector2(1,1);
 					            makimonoObj.transform.localPosition = new Vector2(0,-135);
 
-                                int langId = PlayerPrefs.GetInt("langId");
                                 GameObject.Find("winlose").GetComponent<TextMesh>().text = Message.getMessage(286, langId);
 					            string stageName = PlayerPrefs.GetString("activeStageName");
 					            audioSources [3].Play ();
@@ -381,7 +396,15 @@ public class Timer : MonoBehaviour {
                             }else {
                                 busouKaijyo();
 
-                                string backPath = "Prefabs/PostKassen/back";
+                                int langId = PlayerPrefs.GetInt("langId");
+                                string backPath = "";
+                                if (langId == 3) {
+                                    backPath = "Prefabs/PostKassen/backSChn";
+                                }
+                                else {
+                                    backPath = "Prefabs/PostKassen/back";
+                                }
+
                                 GameObject backObj = Instantiate(Resources.Load(backPath)) as GameObject;
                                 backObj.transform.SetParent(canvas.transform);
                                 backObj.transform.localScale = new Vector2(70, 63);
@@ -842,10 +865,19 @@ public class Timer : MonoBehaviour {
 
 	}
 
-    void RunEnemySaku(EnemySaku EnemySaku) {
+    void RunEnemySaku(EnemySaku EnemySaku, int langId) {
 
         int runPlace = EnemySaku.runPlace; //0:My Place, 1:Enemy Attack, 2:Middle
-        string sakuPath = "Prefabs/Saku/SakuEvent/" + EnemySaku.id;
+        string sakuPath = "";
+        if (langId == 2) {
+            sakuPath = "Prefabs/Saku/sakuEventEng/" + EnemySaku.id;
+        }else if (langId == 3) {
+            sakuPath = "Prefabs/Saku/sakuEventSChn/" + EnemySaku.id;
+        }else {
+            sakuPath = "Prefabs/Saku/sakuEvent/" + EnemySaku.id;
+        }
+
+
         GameObject saku = Instantiate(Resources.Load(sakuPath)) as GameObject;
         saku.layer = LayerMask.NameToLayer("EnemySaku");
         Vector2 worldPos = new Vector3(0, 0, 0);//Camera.main.ScreenToWorldPoint(TouchPosition);

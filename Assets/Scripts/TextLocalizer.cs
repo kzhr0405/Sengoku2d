@@ -29,7 +29,7 @@ public class TextLocalizer : MonoBehaviour {
             }
             if (arialFg) {
                 text.font = (Font)Resources.Load("Fonts/simplifiedChinese");
-                if(chineseFontSize !=0) text.fontSize = chineseFontSize;
+                if (chineseFontSize !=0) text.fontSize = chineseFontSize;
             }
         }
     }

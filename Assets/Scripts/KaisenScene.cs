@@ -20,6 +20,7 @@ public class KaisenScene : MonoBehaviour {
     public int aveSenpouLv = 0;
     public List<string> sameDaimyoList;
     public List<string> sameDaimyoNumList;
+    public int langId;
 
     //saku
     public bool sakuFlg;
@@ -39,6 +40,7 @@ public class KaisenScene : MonoBehaviour {
     void Start () {
 
         GameScene gameSceneScript = new GameScene();
+        langId = PlayerPrefs.GetInt("langId");
 
         //Sound
         BGMSESwitch bgm = new BGMSESwitch();
@@ -497,7 +499,14 @@ public class KaisenScene : MonoBehaviour {
 
                 if (!menuWrapFlg) {
                     sakuFlg = false;
-                    string sakuPath = "Prefabs/Saku/SakuEvent/" + sakuId;
+                    string sakuPath = "";
+                    if (langId == 2) {
+                        sakuPath = "Prefabs/Saku/sakuEventEng/" + sakuId;
+                    }else if (langId == 3) {
+                        sakuPath = "Prefabs/Saku/sakuEventSChn/" + sakuId;
+                    }else {
+                        sakuPath = "Prefabs/Saku/sakuEvent/" + sakuId;
+                    }
                     GameObject saku = Instantiate(Resources.Load(sakuPath)) as GameObject;
                     Vector2 worldPos = Camera.main.ScreenToWorldPoint(TouchPosition);
                     RectTransform sakuTransform = saku.GetComponent<RectTransform>();

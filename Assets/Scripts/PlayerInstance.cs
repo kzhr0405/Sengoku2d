@@ -40,6 +40,8 @@ public class PlayerInstance : MonoBehaviour {
             string serihu = "";
             if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
+            }else if(langId==3) {
+                serihu = serihuMst.param[busyoId - 1].senpouMsgSChn;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
             }
