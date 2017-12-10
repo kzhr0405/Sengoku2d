@@ -92,6 +92,22 @@ public class KaisenScene : MonoBehaviour {
         wall.name = "wall";
         kaisenWeatherHandling(map);
 
+		//for Navigation
+		if(GameScene.isUseNavigation && wall != null){
+			NavMeshMapWall.makeSceneFloor(wall);
+			//障害物の配置が完了したので、ここでNavMeshを更新する
+			LocalNavMeshBuilder builder = GameObject.FindObjectOfType<LocalNavMeshBuilder>();
+			if(builder != null){
+				builder.UpdateNavMesh(false);//非同期で行う
+			}
+			//武将にタッチが効かなくなることがある問題の修正
+			//移動範囲をカバーするコライダーを無効化する
+			var collider = wall.GetComponent<BoxCollider2D>();
+			if(collider){
+				collider.enabled = false;
+			}
+		}
+
         //Get Minus Status
         float rainMinusRatio = PlayerPrefs.GetFloat("rainMinusStatus", 0);
         float snowMinusRatio = PlayerPrefs.GetFloat("snowMinusStatus", 0);
@@ -452,16 +468,6 @@ public class KaisenScene : MonoBehaviour {
             int mapId = 25;
             getEnemyStsAndMakeInstance(linkNo, mapId,  rainMinusRatio, snowMinusRatio, AIType);
         }
-
-		//for Navigation
-		if(GameScene.isUseNavigation && wall != null){
-			NavMeshMapWall.makeSceneFloor(wall);
-			//障害物の配置が完了したので、ここでNavMeshを更新する
-			LocalNavMeshBuilder builder = GameObject.FindObjectOfType<LocalNavMeshBuilder>();
-			if(builder != null){
-				builder.UpdateNavMesh(true);
-			}
-		}
 
         GameObject.Find("timer").GetComponent<Timer>().EnemySakuList = EnemySakuList;
 
