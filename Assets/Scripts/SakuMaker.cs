@@ -347,48 +347,26 @@ public class SakuMaker : MonoBehaviour {
 
             //Hikita
             int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                bool kengouFlg1 = CheckByProbability(sakuEffect);
-			    if (kengouFlg1) {
-				    makeKengou(100, "Hikita");
-			    }
-			    //Houzouin
-			    bool kengouFlg2 = CheckByProbability(sakuEffect); 
-			    if (kengouFlg2) {
-				    makeKengou(80,"Hozoin");
-			    }
-			    //Jingo
-			    bool kengouFlg3 = CheckByProbability(sakuEffect*2); 
-			    if (kengouFlg3) {
-				    makeKengou(40,"Jingo");
-			    }
-			    //Okuyama
-			    bool kengouFlg4 = CheckByProbability(sakuEffect*2); 
-			    if (kengouFlg4) {
-				    makeKengou(40,"Okuyama");
-			    }
-            }else {
-                bool kengouFlg1 = CheckByProbability(sakuEffect);
-                if (kengouFlg1) {
-                    makeKengou(100, "疋田景兼");
-                }
-                //Houzouin
-                bool kengouFlg2 = CheckByProbability(sakuEffect);
-                if (kengouFlg2) {
-                    makeKengou(80, "宝蔵院胤栄");
-                }
-                //Jingo
-                bool kengouFlg3 = CheckByProbability(sakuEffect * 2);
-                if (kengouFlg3) {
-                    makeKengou(40, "神後宗治");
-                }
-                //Okuyama
-                bool kengouFlg4 = CheckByProbability(sakuEffect * 2);
-                if (kengouFlg4) {
-                    makeKengou(40, "奥山公重");
-                }
-            }
-
+            Message Message = new Message();            
+            bool kengouFlg1 = CheckByProbability(sakuEffect);
+			if (kengouFlg1) {
+				makeKengou(100, Message.getMessage(277,langId));
+			}
+			//Houzouin
+			bool kengouFlg2 = CheckByProbability(sakuEffect); 
+			if (kengouFlg2) {
+				makeKengou(80, Message.getMessage(275, langId));
+			}
+			//Jingo
+			bool kengouFlg3 = CheckByProbability(sakuEffect*2); 
+			if (kengouFlg3) {
+				makeKengou(40, Message.getMessage(273, langId));
+			}
+			//Okuyama
+			bool kengouFlg4 = CheckByProbability(sakuEffect*2); 
+			if (kengouFlg4) {
+				makeKengou(40, Message.getMessage(272, langId));
+			}          
         }
 	}
 
@@ -503,7 +481,10 @@ public class SakuMaker : MonoBehaviour {
 		damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);        
         if (langId == 2) {
             damageObj.GetComponent<TextMesh> ().text = kengouName + " here";
-        }else {
+        }else if(langId==3) {
+            damageObj.GetComponent<TextMesh>().text = kengouName + "见参";
+        }
+        else {
             damageObj.GetComponent<TextMesh>().text = kengouName + "推参";
         }
 	}

@@ -99,6 +99,7 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &11437142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +184,7 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!222 &22242982
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -208,7 +210,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4000, y: 37.699997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 22452884}
@@ -226,7 +228,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -14.99999, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0}
   m_Children:
   - {fileID: 22434594}
@@ -280,5 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: No Effectiveness
+  chineseText: "\u65E0\u6548\u679C"
   englishFontSize: 200
+  chineseFontSize: 250
   arialFg: 1

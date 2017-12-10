@@ -42,7 +42,10 @@ public class SelectDaimyo : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msgText = "Would you start the samurai world with " + daimyoName + "?";
-        }else {
+        }else if(langId==3) {
+            msgText = "是否要用" + daimyoName + "开始战国乱世？";
+        }
+        else {
             msgText = daimyoName + "で戦国の世を始めますか？";
         }
         msgObj.GetComponent<Text> ().text = msgText;

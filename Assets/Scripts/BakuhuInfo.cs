@@ -65,9 +65,11 @@ public class BakuhuInfo : MonoBehaviour {
 			Daimyo daimyo = new Daimyo ();
 			string toubatsuDaiymoName = daimyo.getName (daimyoId,langId, senarioId);
             if (langId==2) {
-                atkBtn.transform.Find ("Exp").GetComponent<Text> ().text = "You've already issued attack order to " + toubatsuDaiymoName + " in this season.\n You can order for 1 time in a season.";
-            }else {
-                atkBtn.transform.Find("Exp").GetComponent<Text>().text = "今季は既に" + toubatsuDaiymoName + "に討伐令が出ています。\n討伐令は季節に一回のみ実施可能です。";
+                atkBtn.transform.Find ("Exp").GetComponent<Text> ().text = "You've already issued attack order to " + toubatsuDaiymoName + " in this season. You can order for 1 time in a season.";
+            }else if(langId==3) {
+                atkBtn.transform.Find("Exp").GetComponent<Text>().text = "本季已发布对" + toubatsuDaiymoName + "的讨伐令。讨伐令每个季节只能发布一次。";
+            } else {
+                atkBtn.transform.Find("Exp").GetComponent<Text>().text = "今季は既に" + toubatsuDaiymoName + "に討伐令が出ています。討伐令は季節に一回のみ実施可能です。";
             }
 		}
 	}
@@ -185,7 +187,9 @@ public class BakuhuInfo : MonoBehaviour {
 					    slotObj.name = "KessenBtn";
                         if (langId==2) {
                             slotObj.transform.Find ("Title").GetComponent<Text> ().text = daimyoName + "\n Final War";
-                        }else {
+                        }else if (langId == 3) {
+                            slotObj.transform.Find("Title").GetComponent<Text>().text = daimyoName + "\n决战";
+                        } else {
                             slotObj.transform.Find("Title").GetComponent<Text>().text = daimyoName + "\n決戦";
                         }
 					    string imagePath = "Prefabs/Player/Sprite/unit" + busyoId.ToString ();

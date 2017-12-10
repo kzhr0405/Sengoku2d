@@ -115,7 +115,10 @@ public class DoBouryaku : MonoBehaviour {
                     string OKtext = "";
                     if (langId == 2) {
                         OKtext = "My lord, misreport was successful. \n" + daimyoName + " army withdrawn.";
-                    }else {
+                    }else if(langId==3) {
+                        OKtext = "主公，伪报成功了。\n" + daimyoName + "的军队撤退了。";
+                    }
+                    else {
                         OKtext = "御屋形様、偽報に成功しましたぞ。\n" + daimyoName + "の軍勢が退却します。";
                     }   
 					msg.makeMessage (OKtext);
@@ -133,7 +136,10 @@ public class DoBouryaku : MonoBehaviour {
                     string NGtext = "";
                     if (langId == 2) {
                         NGtext = "My lord, I'm sorry. failed misreport. \n Friendship decreased " + reduceYukoudo + " point";
-                    }else {
+                    }else if (langId == 3) {
+                        NGtext = "十分抱歉，伪报失败了。和对方友好度下降了" + reduceYukoudo + "。";
+                    }
+                    else {
                         NGtext = "申し訳御座りませぬ。偽報に失敗しましたぞ。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                     }
                         
@@ -252,7 +258,10 @@ public class DoBouryaku : MonoBehaviour {
 
                         if (langId == 2) {
                             ryugenText = ryugenText + dstDaimyoName + " friendship decreased " + reduceYukoudo + " point \n";
-                        }else {
+                        }else if (langId == 3) {
+                            ryugenText = ryugenText + "和" + dstDaimyoName + "友好度下降了" + reduceYukoudo + "。\n";
+                        }
+                        else {
                             ryugenText = ryugenText + dstDaimyoName + "との友好度が" + reduceYukoudo + "下がりました。\n";
                         }
                     }
@@ -267,7 +276,10 @@ public class DoBouryaku : MonoBehaviour {
                     string OKtext = "";
                     if (langId == 2) {
                         OKtext = "My lord, bad rumor was successful. \n" + ryugenText;
-                    }else {
+                    }else if (langId == 3) {
+                        OKtext = "主公，流言成功了。\n " + ryugenText;
+                    }
+                    else {
                         OKtext = "御屋形様、流言に成功しましたぞ。\n " + ryugenText;
                     }
                     msg.makeMessage (OKtext);
@@ -287,7 +299,11 @@ public class DoBouryaku : MonoBehaviour {
                     string NGtext = "";
                     if (langId == 2) {
                         NGtext = "My lord, I'm sorry. failed misreport. \n Friendship decreased " + reduceYukoudo + " point";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        NGtext = "十分抱歉，流言失败了，和对方友好度下降了" + reduceYukoudo + "。";
+                    }
+                    else {
                         NGtext = "申し訳御座りませぬ。流言に失敗しましたぞ。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                     }
                        
@@ -491,8 +507,9 @@ public class DoBouryaku : MonoBehaviour {
                     string OKtext = "";
                     if (langId == 2) {
                         OKtext = "My lord, successed to rob.\n";
-                    }
-                    else {
+                    }else if(langId==3) {
+                        OKtext = "主公，强夺成功了。\n";
+                    } else {
                         OKtext = "御屋形様、強奪に成功しましたぞ。\n";
                     }
 
@@ -502,6 +519,8 @@ public class DoBouryaku : MonoBehaviour {
 
                         if (langId == 2) {
                             addText = "got " + getMoney + " money.";
+                        }else if (langId == 3) {
+                            addText = "已夺取金钱" + getMoney + "。";
                         }
                         else {
                             addText = "金を" + getMoney + "奪って参りました。";
@@ -514,6 +533,9 @@ public class DoBouryaku : MonoBehaviour {
                             if (langId == 2) {
                                 addText = " got treasure " + kahouName + ".";
                             }
+                            else if (langId == 3) {
+                                addText = "已夺取家宝" + kahouName + "。";
+                            }
                             else {
                                 addText = "家宝、" + kahouName + "を奪って参りました。";
                             }
@@ -523,6 +545,9 @@ public class DoBouryaku : MonoBehaviour {
 
                             if (langId == 2) {
                                 addText = " got " + addQty + " " + shigenName + ".";
+                            }
+                            else if (langId == 3) {
+                                addText = "已夺取素材" + shigenName + + addQty + "。";
                             }
                             else {
                                 addText = shigenName + "を" + addQty + "個奪って参りました。";
@@ -546,6 +571,9 @@ public class DoBouryaku : MonoBehaviour {
                     string NGtext = "";
                     if (langId == 2) {
                         NGtext = "My lord, I'm sorry. failed to rob. \n Friendship decreased " + reduceYukoudo + " point";
+                    }
+                    else if (langId == 3) {
+                        NGtext = "十分抱歉，强夺失败了。和对方友好度下降了" + reduceYukoudo + "。";
                     }
                     else {
                         NGtext = "申し訳御座りませぬ。強奪に失敗しましたぞ。\n友好度が" + reduceYukoudo + "下がりますぞ。";
@@ -646,16 +674,16 @@ public class DoBouryaku : MonoBehaviour {
 						if (snbValue == 1) {
 							Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = lowColor;
-							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "下";
+                            shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(181,langId);
 						} else if (snbValue == 2) {
 							Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = midColor;
-							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "中";
-						} else if (snbValue == 3) {
+							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = msg.getMessage(182,langId);
+                        } else if (snbValue == 3) {
 							Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image> ().color = highColor;
-							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = "上";
-						}
+							shinobi.transform.Find ("ShinobiRank").GetComponent<Text> ().text = msg.getMessage(183,langId);
+                        }
 
 
 
@@ -676,16 +704,16 @@ public class DoBouryaku : MonoBehaviour {
 						if (snbValue == 1) {
 							Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image>().color = lowColor;
-							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
-						} else if (snbValue == 2) {
+							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(181,langId);
+                        } else if (snbValue == 2) {
 							Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image>().color = midColor;
-							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
-						} else if (snbValue == 3) {
+							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(182,langId);
+                        } else if (snbValue == 3) {
 							Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 							shinobi.GetComponent<Image>().color = highColor;
-							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
-						}
+							shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(183,langId);
+                        }
 
                         //Set Flg
                         closeScript.cyouhouFlg = true;
@@ -707,7 +735,10 @@ public class DoBouryaku : MonoBehaviour {
                     string OKtext = "";
                     if (langId == 2) {
                         OKtext = "Ninja hided in " + kuniName + " well. \n Please check spy report.";
-                    }else {
+                    }else if(langId==3) {
+                        OKtext = "忍者已成功潜伏于" + kuniName + "，请确认谍报内容。";
+                    }
+                    else {
                         OKtext = "忍が上手く" + kuniName + "に潜伏しましたぞ。\n諜報内容をご確認下され。";
                     }
                     msg.makeMessage (OKtext);
@@ -723,6 +754,9 @@ public class DoBouryaku : MonoBehaviour {
                     string NGtext = "";
                     if (langId == 2) {
                         NGtext = "Ninja was caught. \n Friendship decreased " + reduceYukoudo + " point";
+                    }
+                    else if (langId == 3) {
+                        NGtext = "忍者被逮捕了，友好度下降了" + reduceYukoudo + "。";
                     } else {
                         NGtext = "忍が捕まってしまったようです。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                     }

@@ -25,7 +25,8 @@ public class RewardReceive : MonoBehaviour {
         if (Application.internetReachability == NetworkReachability.NotReachable) {
             //接続されていないときの処理
             Message msg = new Message();
-            msg.makeMessage(msg.getMessage(136));
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage(msg.getMessage(136,langId));
             audioSources[4].Play();
 
         } else {
@@ -68,7 +69,10 @@ public class RewardReceive : MonoBehaviour {
                 
                 if (langId == 2) {
                     msg = "You got " + qty + " money.";
-                }else {
+                }else if(langId==3) {
+                    msg = "拜领金钱" + qty + "个。";
+                }
+                else {
                     msg = "金を" + qty + "受領しました。";
                 }
                 msgScript.makeMessage(msg);
@@ -81,8 +85,12 @@ public class RewardReceive : MonoBehaviour {
                 PlayerPrefs.SetInt("busyoDama", newBusyoDama);
                 if (langId == 2) {
                     msg = "You got " + qty + " stone.";
-                }else {
+                }
+                else if (langId == 3) {
                     msg = "武将珠を" + qty + "個受領しました。";
+                }
+                else {
+                    msg = "拜领武将珠" + qty + "个。";
                 }
                 msgScript.makeMessage(msg);
             }
@@ -105,7 +113,11 @@ public class RewardReceive : MonoBehaviour {
                 string msg = "";
                 if (langId == 2) {
                     msg = "You got " + shiroName + ". You can enhance your castle in town development.";
-                }else {
+                }
+                else if (langId == 3) {
+                    msg = "可修筑难攻不落之名称、" + shiroName + "，请在内政界面上增强城池。";
+                }
+                else {
                     msg = "天下の要害、" + shiroName + "を築城できますぞ。内政で城を増強しましょう。";
                 }
                 msgScript.makeMessage(msg);
@@ -125,7 +137,11 @@ public class RewardReceive : MonoBehaviour {
                 string msg = "";
                 if (langId == 2) {
                     msg = "You got an additional formation.";
-                }else {
+                }
+                else if (langId == 3) {
+                    msg = "已受领追加阵型。";
+                }
+                else {
                     msg = "追加陣形を受領しました。";
                 }
                 msgScript.makeMessage(msg);
@@ -136,7 +152,11 @@ public class RewardReceive : MonoBehaviour {
                 string msg = "";
                 if (langId == 2) {
                     msg = "You got " + qty.ToString() + " " + grp + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    msg = "已入手" + grp + "," + qty + "个。";
+                }
+                else {
                     msg = grp + "を" + qty + "入手しました。";
                 }
                 msgScript.makeMessage(msg);
@@ -190,7 +210,11 @@ public class RewardReceive : MonoBehaviour {
         string msg = "";
         if (langId == 2) {
             msg = "You got " + kahouMsg + ".";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已受领" + kahouMsg + "，真是入手了个不错的物品啊。";
+        }
+        else {
             msg = kahouMsg + "を受領しましたぞ。良い物を手に入れられましたな。";
         }
         msgScript.makeMessage(msg);
@@ -228,7 +252,11 @@ public class RewardReceive : MonoBehaviour {
 
             if (langId == 2) {
                 msg = "You got letter of introduction for the imperial court.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "已入手朝廷介绍状。";
+            }
+            else {
                 msg = "朝廷への紹介状を入手しましたぞ。";
             }
 
@@ -259,7 +287,11 @@ public class RewardReceive : MonoBehaviour {
 
             if (langId == 2) {
                 msg = "You got letter of introduction for merchant.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "已入手豪商介绍状。";
+            }
+            else {
                 msg = "豪商への紹介状を入手しましたぞ。";
             }
 
@@ -342,6 +374,9 @@ public class RewardReceive : MonoBehaviour {
                 if (langId == 2) {
                     msgText = "Max Lv of " + busyoName + " increased.";
                 }
+                else if (langId == 3) {
+                    msgText = busyoName + "最大等级提升1。";
+                }
                 else {
                     msgText = busyoName + "の最大レベルが1上がりました。";
                 }
@@ -373,7 +408,11 @@ public class RewardReceive : MonoBehaviour {
                     PlayerPrefs.SetInt("busyoDama", myBusyoDama);
                     if (langId == 2) {
                         lvUpText = "You got " + busyoDama + " stone.";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        lvUpText = "赠送您武将珠" + busyoDama + "个。";
+                    }
+                    else {
                         lvUpText = "武将珠" + busyoDama + "個を贈呈します。";
                     }
 
@@ -413,7 +452,11 @@ public class RewardReceive : MonoBehaviour {
                 string touyouuText = "";
                 if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    touyouuText = "已登用" + busyoName + "。";
+                }
+                else {
                     touyouuText = busyoName + "を登用しました。";
                 }
                 string type = "touyou";
@@ -457,6 +500,9 @@ public class RewardReceive : MonoBehaviour {
                 string touyouuText = "";
                 if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
+                }
+                else if (langId == 3) {
+                    touyouuText = "已登用" + busyoName + "。";
                 }
                 else {
                     touyouuText = busyoName + "を登用しました。";

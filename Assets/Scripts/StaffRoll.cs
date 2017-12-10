@@ -242,32 +242,18 @@ public class StaffRoll : MonoBehaviour {
 		int TrackCyouteiNo = PlayerPrefs.GetInt("TrackCyouteiNo");
 		int TrackSyouninNo = PlayerPrefs.GetInt("TrackSyouninNo");
 		int syogunDaimyoId = PlayerPrefs.GetInt ("syogunDaimyoId");
+        Message Message = new Message();
         string Bakuhu = "";        
-        if (langId == 2) {
-            Bakuhu = "Not Yet";
-        }else {
-            Bakuhu = "未開闢";
-        }
+        
+        Bakuhu = Message.getMessage(278,langId);        
 		if(syogunDaimyoId == myDaimyo){
-            if (langId == 2) {
-                Bakuhu = "Done";
-            }else {
-                Bakuhu = "開闢済";
-            }
-		}
+            Bakuhu = Message.getMessage(279, langId);
+        }
 		bool soubujireiFlg = PlayerPrefs.GetBool ("soubujireiFlg");
         string Soubujirei = "";
-        if (langId == 2) {
-            Soubujirei = "Not Yet";
-        }else {
-            Soubujirei = "未施行";
-        }
+        Bakuhu = Message.getMessage(280, langId);
         if (soubujireiFlg){
-            if (langId == 2) {
-                Soubujirei = "Done";
-		    }else {
-                Soubujirei = "施行済";
-            }
+            Bakuhu = Message.getMessage(281, langId);
         }
 		int TrackToubatsuNo = PlayerPrefs.GetInt("TrackToubatsuNo");
 

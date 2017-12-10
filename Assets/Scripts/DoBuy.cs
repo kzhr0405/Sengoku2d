@@ -15,8 +15,8 @@ public class DoBuy : MonoBehaviour {
 
 		int hyourou = PlayerPrefs.GetInt ("hyourou");
 		Message msg = new Message ();
-
-		if (hyourou >= 5) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (hyourou >= 5) {
 			int money = PlayerPrefs.GetInt("money");
 			int payMoney = int.Parse(GameObject.Find("MoneyAmt").GetComponent<Text>().text);
 			if(money >= payMoney){
@@ -211,16 +211,16 @@ public class DoBuy : MonoBehaviour {
 				mainStage.questExtension();
 
 				//Closing
-				GameObject.Find("SerihuText").GetComponent<Text>().text = msg.getMessage(11);
+				GameObject.Find("SerihuText").GetComponent<Text>().text = msg.getMessage(11,langId);
 
 				//Message
-                msg.makeMessage (msg.getMessage(12));
+                msg.makeMessage (msg.getMessage(12,langId));
 
 
 			}else{
 				//Message
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			}
 		} else {
 			//Message

@@ -24,7 +24,8 @@ public class DoRestart : MonoBehaviour {
 
 			} else {
 				Message msg = new Message ();
-                msg.makeMessageOnBoard(msg.getMessage(2));
+                int langId = PlayerPrefs.GetInt("langId");
+                msg.makeMessageOnBoard(msg.getMessage(2,langId));
             }
 		} else {
 			audioSources [1].Play ();

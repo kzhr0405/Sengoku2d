@@ -27,15 +27,22 @@ public class SeasonTimer : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msgText = "Next season will come after " + hms;
-            }else {
+            }else if(langId==3) {
+                msgText = "到下一个季节还剩" + hms + "。";
+            }
+            else {
                 msgText = "次の季節まであと" + hms + "ですぞ。";
             }
         }else {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msgText = "Next season has come.";
-            }else {
-                msgText = "次の季節はもう来ておりますぞ";
+            }
+            else if (langId == 3) {
+                msgText = "下一个季节已来临。";
+            }
+            else {
+                msgText = "次の季節はもう来ておりますぞ。";
             }
         }        
         msg.makeMessage(msgText);

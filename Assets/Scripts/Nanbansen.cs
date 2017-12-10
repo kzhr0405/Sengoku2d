@@ -50,7 +50,11 @@ public class Nanbansen : MonoBehaviour {
         if (langId == 2) {
             board.transform.Find ("GrpValue").GetComponent<Text> ().text = "Western Ship";
 		    board.transform.Find ("Name").transform.Find ("NameValue").GetComponent<Text> ().text = "You can buy only 1 item.";
-        }else {
+        }else if(langId==3) {
+            board.transform.Find("GrpValue").GetComponent<Text>().text = "南蛮船";
+            board.transform.Find("Name").transform.Find("NameValue").GetComponent<Text>().text = "只可购入一件物品";
+        }
+        else {
             board.transform.Find("GrpValue").GetComponent<Text>().text = "南蛮船";
             board.transform.Find("Name").transform.Find("NameValue").GetComponent<Text>().text = "一品ダケ購入デキマス";
         }
@@ -72,7 +76,10 @@ public class Nanbansen : MonoBehaviour {
 		GameObject BuyBtn = board.transform.Find ("GetButton").gameObject;
         if (langId == 2) {
             BuyBtn.transform.Find ("Text").GetComponent<Text> ().text = "Buy";
-        }else {
+        }else if(langId==3) {
+            BuyBtn.transform.Find("Text").GetComponent<Text>().text = "购入";
+        }
+        else {
             BuyBtn.transform.Find("Text").GetComponent<Text>().text = "購入";
         }
 		BuyBtn.GetComponent<TabibitoItemGetter> ().shipObj = gameObject;

@@ -36,7 +36,8 @@ public class KanniInfo : MonoBehaviour {
 
         if (myKanniList.Count == 0) {
 			Message msg = new Message ();
-			msg.makeMessageOnBoard (msg.getMessage(135));
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessageOnBoard (msg.getMessage(135,langId));
 		
 		} else {
 			

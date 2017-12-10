@@ -27,7 +27,8 @@ public class BuildNaisei : MonoBehaviour {
 			//Error
 			//Message
 			audioSources [4].Play ();
-			msg.makeMessage(msg.getMessage(6));
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage(msg.getMessage(6,langId));
 			
 		} else {
 			if (nowHyourou < requiredHyourou) {
@@ -88,9 +89,11 @@ public class BuildNaisei : MonoBehaviour {
                 string OKtext = "";
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
-                    OKtext = "You built " + naiseiName + ".\n The country is thriving.";
+                    OKtext = "You built " + naiseiName + ". The country is thriving.";
+                }else if(langId==3) {
+                    OKtext = "已建设" + naiseiName + ", 领内日益繁荣。";
                 }else {
-                    OKtext = naiseiName + "を建築しましたぞ。\n国が栄えますな。";
+                    OKtext = naiseiName + "を建築しましたぞ。国が栄えますな。";
                 }
 				msg.makeMessage (OKtext);
 

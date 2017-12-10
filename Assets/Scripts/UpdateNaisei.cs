@@ -19,15 +19,17 @@ public class UpdateNaisei : MonoBehaviour {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		//Money Check
-		Message msg = new Message(); 
-		int nowMoney = PlayerPrefs.GetInt ("money");
+		Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
+
+        int nowMoney = PlayerPrefs.GetInt ("money");
 		int nowHyourou = PlayerPrefs.GetInt ("hyourou");
 
 		if (nowMoney < requiredMoney) {
 			//Error
 			//Message
 			audioSources [4].Play ();
-			msg.makeMessage (msg.getMessage(6));
+			msg.makeMessage (msg.getMessage(6,langId));
 			
 		} else {
 			if (nowHyourou < requiredHyourou) {
@@ -95,10 +97,12 @@ public class UpdateNaisei : MonoBehaviour {
 
                 //Message
                 string OKtext = "";
-                int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     OKtext = "You upgraded " + naiseiName + ".\n The country is thriving.";
-                }else {
+                }else if(langId==3) {
+                    OKtext = "已开发" + naiseiName + "，此国日益繁荣。";
+                }
+                else {
                     OKtext = naiseiName + "を開発しましたぞ。\nますます国が栄えますな。";
                 }
 				GameObject msgObj = msg.makeMessage (OKtext);

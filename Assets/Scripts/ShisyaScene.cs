@@ -85,7 +85,10 @@ public class ShisyaScene : MonoBehaviour {
 						string daimyoName = daimyo.getName (int.Parse (daimyoId),langId,senarioId);
                         if (langId == 2) {
                             script.shisyaName = daimyoName + "'s retainer :" + busyoName;
-                        }else {
+                        }else if(langId==3) {
+                            script.shisyaName = daimyoName + "属下 " + busyoName;
+                        }
+                        else {
                             script.shisyaName = daimyoName + "配下 " + busyoName;
                         }
 
@@ -116,6 +119,9 @@ public class ShisyaScene : MonoBehaviour {
 							string daimyoName = daimyo.getName (syogunId,langId, senarioId);
                             if (langId == 2) {
                                 script.shisyaName = " Shogun " + daimyoName + "'s retainer";
+                            }
+                            else if (langId == 3) {
+                                script.shisyaName = "将军" + daimyoName + "麾下";
                             } else {
                                 script.shisyaName = "将軍" + daimyoName + "配下";
                             }
@@ -126,7 +132,10 @@ public class ShisyaScene : MonoBehaviour {
 						if (i == 13 || i == 15 || i == 16 || i == 17) {
                             if (langId == 2) {
                                 script.shisyaName = "Nobleman";
-                            }else {
+                            }else if (langId == 3) {
+                                script.shisyaName = "贵族";
+                            }
+                            else {
                                 script.shisyaName = "貴族";
                             }
 						} else if(i == 18){
@@ -144,13 +153,21 @@ public class ShisyaScene : MonoBehaviour {
 						}else if(i == 20){
                             if (langId == 2) {
                                 script.shisyaName = "Monk";
-                            }else {
+                            }
+                            else if (langId == 3) {
+                                script.shisyaName = "僧侣";
+                            }
+                            else {
                                 script.shisyaName = "僧";
                             }
 						}else if(i == 21){
                             if (langId == 2) {
                                 script.shisyaName = "Local Samurai";
-                            }else {
+                            }
+                            else if (langId == 3) {
+                                script.shisyaName = "国人众";
+                            }
+                            else {
                                 script.shisyaName = "国人衆";
                             }
 						}

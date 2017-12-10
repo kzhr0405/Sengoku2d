@@ -21,8 +21,8 @@ public class CyouhouSelect : MonoBehaviour {
 
 		if (close.GetComponent<CloseBoard> ().kuniId != kuniId) {
 			close.GetComponent<CloseBoard> ().kuniId = kuniId;
-
-			AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+            Message Message = new Message();
+            AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 			audioSources [2].Play ();
 
 			/*Status*/
@@ -68,12 +68,7 @@ public class CyouhouSelect : MonoBehaviour {
 				string targetDaimyoName = daimyo.getClanName (targetDaimyoId, langId);
 				status.transform.Find ("Atk").transform.Find ("Value").GetComponent<Text> ().text = targetKuniName + "(" + targetDaimyoName + ")";
 			} else {               
-                if (langId == 2) {
-                    status.transform.Find("Atk").transform.Find("Value").GetComponent<Text>().text = "None";
-                }else {
-                    status.transform.Find ("Atk").transform.Find ("Value").GetComponent<Text> ().text = "無し";
-                }
-
+                status.transform.Find("Atk").transform.Find("Value").GetComponent<Text>().text = Message.getMessage(219,langId);
             }
 
 
@@ -91,19 +86,12 @@ public class CyouhouSelect : MonoBehaviour {
 						status.transform.Find ("Gaiko").transform.Find ("Value").GetComponent<Text> ().text = targetGaikouKuniName + "(" + targetGaikouDaimyoName + ")";
 					} else {
 						sameDaimyoFlg = true;
-                        if (langId == 2) {
-                            status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = "None";
-                        } else {
-                            status.transform.Find ("Gaiko").transform.Find ("Value").GetComponent<Text> ().text = "無し";
-                        }
+                        status.transform.Find ("Gaiko").transform.Find ("Value").GetComponent<Text> ().text = Message.getMessage(219,langId);
+                        
                     }
-				} else {                    
-                    if (langId == 2) {
-                        status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = "None";
-                    }
-                    else {
-                        status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = "無し";
-                    }
+				} else {                                        
+                    status.transform.Find("Gaiko").transform.Find("Value").GetComponent<Text>().text = Message.getMessage(219,langId);
+                    
                 }
 
 				//Doumei
@@ -129,12 +117,9 @@ public class CyouhouSelect : MonoBehaviour {
 						}
 					}
 				}
-                string doumeiNameList = "";                
-                if (langId == 2) {
-                    doumeiNameList = "None";
-                }else {
-                    doumeiNameList = "無し";
-                }
+                string doumeiNameList = "";                                
+                doumeiNameList = Message.getMessage(219,langId);
+                
 
                 for (int j = 0; j < doumeiList.Count; j++) {
 					if (j == 0) {

@@ -14,6 +14,7 @@ public class DoSpaceBuy : MonoBehaviour {
     public void OnClick() {
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
         if (busyoDamaOKflg) {
             //minus
             int nowBusyoDama = PlayerPrefs.GetInt("busyoDama");
@@ -30,12 +31,12 @@ public class DoSpaceBuy : MonoBehaviour {
             touchBackObj.GetComponent<CloseOneBoard>().OnClick();
 
             audioSources[3].Play();
-            msg.makeMessage(msg.getMessage(160));
+            msg.makeMessage(msg.getMessage(160,langId));
 
         }else {
             //Message            
             audioSources[4].Play();            
-            msg.makeMessage(msg.getMessage(2));
+            msg.makeMessage(msg.getMessage(2,langId));
         }
     }
 }

@@ -144,6 +144,8 @@ public class AttackNaiseiView : MonoBehaviour {
 			int powerType = stageMst.param [i].powerTyp;            
             if (langId == 2) {
                 stageName = stageMst.param[i].stageNameEng;
+            }else if(langId==3) {
+                stageName = stageMst.param[i].stageNameSChn;
             }else {
                 stageName = stageMst.param[i].stageName;
             }
@@ -316,12 +318,10 @@ public class AttackNaiseiView : MonoBehaviour {
 			naiseiBtn.GetComponent<StartNaisei> ().activeKuniName = kuniName;
 			naiseiBtn.GetComponent<StartNaisei> ().clearedFlg = clearedFlg;
 			naiseiBtn.transform.localScale = new Vector2 (0.4f, 0.4f);
-			naiseiBtn.transform.localPosition = new Vector2 (-490, -300);            
-            if (langId == 2) {
-                boardObj.transform.Find ("stageDtl").transform.Find ("BattleButton").transform.Find ("Text").GetComponent<Text> ().text = "Training";
-            }else {
-                boardObj.transform.Find("stageDtl").transform.Find("BattleButton").transform.Find("Text").GetComponent<Text>().text = "訓練";
-            }
+			naiseiBtn.transform.localPosition = new Vector2 (-490, -300);
+            Message Message = new Message();
+            boardObj.transform.Find("stageDtl").transform.Find("BattleButton").transform.Find("Text").GetComponent<Text>().text = Message.getMessage(198,langId);
+            
             GameObject firstStage = GameObject.Find("stage1");
             firstStage.GetComponent<ShowStageDtl>().OnClick();
 

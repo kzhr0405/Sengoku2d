@@ -136,6 +136,7 @@ public class QuestMenu : MonoBehaviour {
             //create count slot
             string activeCountSlotPath = "Prefabs/Map/quest/ActiveQuestCountSlot";
             Entity_quest_count_mst questCountMst = Resources.Load("Data/quest_count_mst") as Entity_quest_count_mst;
+            int langId = PlayerPrefs.GetInt("langId");
             for (int j = 0; j < activeCountList.Count; j++) {
                 int id = activeCountList[j];
 
@@ -144,7 +145,7 @@ public class QuestMenu : MonoBehaviour {
                 slot.transform.localScale = new Vector2(1, 1);
                 slot.name = "ActiveQuestCountSlot" + id.ToString();
                 string title = "";
-                int langId = PlayerPrefs.GetInt("langId");
+                
                 if (langId == 2) {
                     title = questCountMst.param[id].titleEng;
                 }else if (langId == 3) {
@@ -259,8 +260,8 @@ public class QuestMenu : MonoBehaviour {
                 slot.transform.localScale = new Vector2(1, 1);
                 slot.name = "ActiveQuestSlot" + id.ToString();
 
-                string title = questScript.getQuestTitle(id);
-                string exp = questScript.getQuestExp(id);
+                string title = questScript.getQuestTitle(id, langId);
+                string exp = questScript.getQuestExp(id, langId);
                 string target = questScript.getQuestTarget(id);
                 int amnt = questScript.getQuestAmnt(id);
                 bool daily = questScript.getQuestDaily(id);
@@ -311,8 +312,8 @@ public class QuestMenu : MonoBehaviour {
                 slot.transform.localScale = new Vector2(1, 1);
                 slot.name = "InactiveQuestSlot" + id.ToString();
 
-                string title = questScript.getQuestTitle(id);
-                string exp = questScript.getQuestExp(id);
+                string title = questScript.getQuestTitle(id, langId);
+                string exp = questScript.getQuestExp(id, langId);
                 string target = questScript.getQuestTarget(id);
                 int amnt = questScript.getQuestAmnt(id);
 
@@ -344,13 +345,5 @@ public class QuestMenu : MonoBehaviour {
         }
     }
 
-
-    public bool getQuestCount(int id, bool daily) {
-        Entity_quest_count_mst questMst = Resources.Load("Data/quest_count_mst") as Entity_quest_count_mst;
-        bool dailyTmp = questMst.param[id].daily;
-        if(dailyTmp == daily) {
-
-        }
-        return daily;
-    }
+    
 }

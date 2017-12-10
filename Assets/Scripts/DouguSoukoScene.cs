@@ -9,9 +9,10 @@ public class DouguSoukoScene : MonoBehaviour {
 	public void OnClick () {
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
+        Message Message = new Message();
 
-		/*Scene Change*/
-		GameObject.Find ("GameScene").GetComponent<SoukoScene> ().currentTab = "DouguScene";
+        /*Scene Change*/
+        GameObject.Find ("GameScene").GetComponent<SoukoScene> ().currentTab = "DouguScene";
 
 		//button color change
 		Color pushedTabColor = new Color (118f / 255f, 103f / 255f, 16f / 255f, 255f / 255f);
@@ -42,7 +43,11 @@ public class DouguSoukoScene : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             itemView.transform.Find ("ItemNameValue").GetComponent<Text> ().text = "Select Item";
-        }else {
+        }
+        else if (langId == 3) {
+            itemView.transform.Find("ItemNameValue").GetComponent<Text>().text = "选择道具";
+        }
+        else {
             itemView.transform.Find("ItemNameValue").GetComponent<Text>().text = "道具選択";
         }
 		GameObject.Find ("Background").GetComponent<Image>().enabled = false;
@@ -91,12 +96,9 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowKanjyoItem.transform.SetParent(GameObject.Find ("Content").transform);
 			lowKanjyoItem.transform.localScale = new Vector2 (1, 1);
 			lowKanjyoItem.transform.localPosition = new Vector3 (0, 0, 0);
-			lowKanjyoItem.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "下";
-            }
+			lowKanjyoItem.GetComponent<Image>().color = lowColor;            
+            lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = Message.getMessage(181, langId);
+            
 			lowKanjyoItem.transform.Find("Qty").GetComponent<Text>().text = kanjyoGeQty.ToString();
 			lowKanjyoItem.name = "Kanjyo1";
 			lowKanjyoItem.GetComponent<Button>().enabled = true;
@@ -113,11 +115,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			midKanjyoItem.transform.localScale = new Vector2 (1, 1);
 			midKanjyoItem.transform.localPosition = new Vector3 (0, 0, 0);
 			midKanjyoItem.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "中";
-            }
+            midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = Message.getMessage(182, langId);
 			midKanjyoItem.transform.Find("Qty").GetComponent<Text>().text = kanjyoCyuQty.ToString();
 			midKanjyoItem.name = "Kanjyo2";
 			midKanjyoItem.GetComponent<Button>().enabled = true;
@@ -134,12 +132,8 @@ public class DouguSoukoScene : MonoBehaviour {
 			jyoKanjyoItem.transform.SetParent(GameObject.Find ("Content").transform);
 			jyoKanjyoItem.transform.localScale = new Vector2 (1, 1);
 			jyoKanjyoItem.transform.localPosition = new Vector3 (0, 0, 0);
-			jyoKanjyoItem.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                jyoKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "High";
-            }else {
-                jyoKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "上";
-            }
+			jyoKanjyoItem.GetComponent<Image>().color = highColor;            
+            jyoKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = Message.getMessage(183, langId);            
 			jyoKanjyoItem.transform.Find("Qty").GetComponent<Text>().text = kanjyoJyoQty.ToString();
 			jyoKanjyoItem.name = "Kanjyo3";
 			jyoKanjyoItem.GetComponent<Button>().enabled = true;
@@ -162,11 +156,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowCyouheiYR.transform.localScale = new Vector2 (1, 1);
 			lowCyouheiYR.transform.localPosition = new Vector3 (0, 0, 0);
 			lowCyouheiYR.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
-            }
+            lowCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(181, langId);            
 			lowCyouheiYR.transform.Find("Qty").GetComponent<Text>().text = cyouheiYRGeQty.ToString();
 			lowCyouheiYR.name = "CyouheiYR1";
 			lowCyouheiYR.GetComponent<Button>().enabled = true;
@@ -180,12 +170,8 @@ public class DouguSoukoScene : MonoBehaviour {
 			midCyouheiYR.transform.SetParent(GameObject.Find ("Content").transform);
 			midCyouheiYR.transform.localScale = new Vector2 (1, 1);
 			midCyouheiYR.transform.localPosition = new Vector3 (0, 0, 0);
-			midCyouheiYR.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
-            }
+			midCyouheiYR.GetComponent<Image>().color = midColor;            
+            midCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(182, langId);            
 			midCyouheiYR.transform.Find("Qty").GetComponent<Text>().text = cyouheiYRCyuQty.ToString();
 			midCyouheiYR.name = "CyouheiYR2";
 			midCyouheiYR.GetComponent<Button>().enabled = true;
@@ -200,11 +186,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			highCyouheiYR.transform.localScale = new Vector2 (1, 1);
 			highCyouheiYR.transform.localPosition = new Vector3 (0, 0, 0);
 			highCyouheiYR.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                highCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
-            }else {
-                highCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
-            }
+            highCyouheiYR.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(183, langId);
 			highCyouheiYR.transform.Find("Qty").GetComponent<Text>().text = cyouheiYRJyoQty.ToString();
 			highCyouheiYR.name = "CyouheiYR3";
 			highCyouheiYR.GetComponent<Button>().enabled = true;
@@ -224,11 +206,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowCyouheiKB.transform.localScale = new Vector2 (1, 1);
 			lowCyouheiKB.transform.localPosition = new Vector3 (0, 0, 0);
 			lowCyouheiKB.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
-            }
+            lowCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(181, langId);
 			lowCyouheiKB.transform.Find("Qty").GetComponent<Text>().text = cyouheiKBGeQty.ToString();
 			lowCyouheiKB.name = "CyouheiKB1";
 			lowCyouheiKB.GetComponent<Button>().enabled = true;
@@ -243,11 +221,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			midCyouheiKB.transform.localScale = new Vector2 (1, 1);
 			midCyouheiKB.transform.localPosition = new Vector3 (0, 0, 0);
 			midCyouheiKB.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
-            }
+            midCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(182, langId);
 			midCyouheiKB.transform.Find("Qty").GetComponent<Text>().text = cyouheiKBCyuQty.ToString();
 			midCyouheiKB.name = "CyouheiKB2";
 			midCyouheiKB.GetComponent<Button>().enabled = true;
@@ -262,11 +236,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			highCyouheiKB.transform.localScale = new Vector2 (1, 1);
 			highCyouheiKB.transform.localPosition = new Vector3 (0, 0, 0);
 			highCyouheiKB.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                highCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
-            }else {
-                highCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
-            }
+            highCyouheiKB.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(183, langId);
 			highCyouheiKB.transform.Find("Qty").GetComponent<Text>().text = cyouheiKBJyoQty.ToString();
 			highCyouheiKB.name = "CyouheiKB3";
 			highCyouheiKB.GetComponent<Button>().enabled = true;
@@ -286,11 +256,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowCyouheiTP.transform.localScale = new Vector2 (1, 1);
 			lowCyouheiTP.transform.localPosition = new Vector3 (0, 0, 0);
 			lowCyouheiTP.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
-            }
+            lowCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(181, langId);
 			lowCyouheiTP.transform.Find("Qty").GetComponent<Text>().text = cyouheiTPGeQty.ToString();
 			lowCyouheiTP.name =  "CyouheiTP1";
 			lowCyouheiTP.GetComponent<Button>().enabled = true;
@@ -305,11 +271,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			midCyouheiTP.transform.localScale = new Vector2 (1, 1);
 			midCyouheiTP.transform.localPosition = new Vector3 (0, 0, 0);
 			midCyouheiTP.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
-            }
+            midCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(182, langId);
 			midCyouheiTP.transform.Find("Qty").GetComponent<Text>().text = cyouheiTPCyuQty.ToString();
 			midCyouheiTP.name = "CyouheiTP2";
 			midCyouheiTP.GetComponent<Button>().enabled = true;
@@ -324,11 +286,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			highCyouheiTP.transform.localScale = new Vector2 (1, 1);
 			highCyouheiTP.transform.localPosition = new Vector3 (0, 0, 0);
 			highCyouheiTP.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                highCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
-            }else {
-                highCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
-            }
+            highCyouheiTP.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(183, langId);
 			highCyouheiTP.transform.Find("Qty").GetComponent<Text>().text = cyouheiTPJyoQty.ToString();
 			highCyouheiTP.name = "CyouheiTP3";
 			highCyouheiTP.GetComponent<Button>().enabled = true;
@@ -348,11 +306,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowCyouheiYM.transform.localScale = new Vector2 (1, 1);
 			lowCyouheiYM.transform.localPosition = new Vector3 (0, 0, 0);
 			lowCyouheiYM.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
-            }
+            lowCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(181, langId);
 			lowCyouheiYM.transform.Find("Qty").GetComponent<Text>().text = cyouheiYMGeQty.ToString();
 			lowCyouheiYM.name = "CyouheiYM1";
 			lowCyouheiYM.GetComponent<Button>().enabled = true;
@@ -367,11 +321,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			midCyouheiYM.transform.localScale = new Vector2 (1, 1);
 			midCyouheiYM.transform.localPosition = new Vector3 (0, 0, 0);
 			midCyouheiYM.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
-            }
+            midCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(182, langId);
 			midCyouheiYM.transform.Find("Qty").GetComponent<Text>().text = cyouheiYMCyuQty.ToString();
 			midCyouheiYM.name =  "CyouheiYM2";
 			midCyouheiYM.GetComponent<Button>().enabled = true;
@@ -386,11 +336,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			highCyouheiYM.transform.localScale = new Vector2 (1, 1);
 			highCyouheiYM.transform.localPosition = new Vector3 (0, 0, 0);
 			highCyouheiYM.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                highCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
-            }else {
-                highCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
-            }
+            highCyouheiYM.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(183, langId);
 			highCyouheiYM.transform.Find("Qty").GetComponent<Text>().text = cyouheiYMJyoQty.ToString();
 			highCyouheiYM.name = "CyouheiYM3";
 			highCyouheiYM.GetComponent<Button>().enabled = true;
@@ -407,11 +353,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowHidensyo.transform.localScale = new Vector2 (1, 1);
 			lowHidensyo.transform.localPosition = new Vector3 (0, 0, 0);
 			lowHidensyo.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = "下";
-            }
+            lowHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = Message.getMessage(181, langId);
 			lowHidensyo.transform.Find("Qty").GetComponent<Text>().text = hidensyoGeQty.ToString();
 			lowHidensyo.name = "Hidensyo1";
 			lowHidensyo.GetComponent<Button>().enabled = true;
@@ -427,11 +369,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			midHidensyo.transform.localScale = new Vector2 (1, 1);
 			midHidensyo.transform.localPosition = new Vector3 (0, 0, 0);
 			midHidensyo.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = "中";
-            }
+            midHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = Message.getMessage(182, langId);            
 			midHidensyo.transform.Find("Qty").GetComponent<Text>().text = hidensyoCyuQty.ToString();
 			midHidensyo.name = "Hidensyo2";
 			midHidensyo.GetComponent<Button>().enabled = true;
@@ -446,11 +384,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			highHidensyo.transform.localScale = new Vector2 (1, 1);
 			highHidensyo.transform.localPosition = new Vector3 (0, 0, 0);
 			highHidensyo.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                highHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = "High";
-            }else {
-                highHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = "上";
-            }
+            highHidensyo.transform.Find("HidensyoRank").GetComponent<Text>().text = Message.getMessage(183, langId);
 			highHidensyo.transform.Find("Qty").GetComponent<Text>().text = hidensyoJyoQty.ToString();
 			highHidensyo.name = "Hidensyo3";
 			highHidensyo.GetComponent<Button>().enabled = true;
@@ -467,11 +401,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			lowShinobi.transform.localScale = new Vector2 (1, 1);
 			lowShinobi.transform.localPosition = new Vector3 (0, 0, 0);
 			lowShinobi.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
-            }
+            lowShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = Message.getMessage(181, langId);            
 			lowShinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiGeQty.ToString();
 			lowShinobi.name = "Shinobi1";
 			lowShinobi.GetComponent<Button>().enabled = true;
@@ -487,11 +417,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			midShinobi.transform.localScale = new Vector2 (1, 1);
 			midShinobi.transform.localPosition = new Vector3 (0, 0, 0);
 			midShinobi.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
-            }
+            midShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = Message.getMessage(182, langId);
 			midShinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiCyuQty.ToString();
 			midShinobi.name = "Shinobi2";
 			midShinobi.GetComponent<Button>().enabled = true;
@@ -506,11 +432,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			highShinobi.transform.localScale = new Vector2 (1, 1);
 			highShinobi.transform.localPosition = new Vector3 (0, 0, 0);
 			highShinobi.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                highShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "High";
-            }else {
-                highShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
-            }
+            highShinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = Message.getMessage(183,langId);            
 			highShinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiJyoQty.ToString();
 			highShinobi.name = "Shinobi3";
 			highShinobi.GetComponent<Button>().enabled = true;
@@ -711,7 +633,8 @@ public class DouguSoukoScene : MonoBehaviour {
 
 	public void showThreeItem(string itemCd){
 		string nowQty = PlayerPrefs.GetString (itemCd);
-		List<string> nowQtyList = new List<string> ();
+        Message Message = new Message();
+        List<string> nowQtyList = new List<string> ();
 		char[] delimiterChars = {','};
 		nowQtyList = new List<string> (nowQty.Split (delimiterChars));
         int langId = PlayerPrefs.GetInt("langId");
@@ -728,18 +651,10 @@ public class DouguSoukoScene : MonoBehaviour {
 
 			string syoukaiName = "";
 			if(itemCd == "koueki"){
-                if (langId == 2) {
-                    syoukaiName = "Kato";
-                }else {
-                    syoukaiName = "加藤浄与";
-                }
+                syoukaiName = Message.getMessage(232, langId);
 				itemName.GetComponent<Text>().text = syoukaiName;
 			}else if(itemCd == "cyoutei"){
-                if (langId == 2) {
-                    syoukaiName = "Yamashina";
-                }else {
-                    syoukaiName = "山科言継";
-                }
+                syoukaiName = Message.getMessage(233, langId);
 				itemName.GetComponent<Text>().text = syoukaiName;
 			}
 			RectTransform itemNameRect = itemName.GetComponent<RectTransform>();
@@ -747,11 +662,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			itemNameRect.localScale = new Vector3(0.1f,0.15f,0);
 
 			GameObject itemRank = item.transform.Find("Rank").gameObject;
-            if (langId == 2) {
-                itemRank.GetComponent<Text>().text = "Low";
-            }else {
-                itemRank.GetComponent<Text>().text = "下";
-            }
+            itemRank.GetComponent<Text>().text = Message.getMessage(181, langId);
 			RectTransform itemRankRect = itemRank.GetComponent<RectTransform>();
 			itemRankRect.anchoredPosition3D = new Vector3(30,-35,0);
 			itemRankRect.localScale = new Vector3(0.18f,0.22f,0);
@@ -772,18 +683,10 @@ public class DouguSoukoScene : MonoBehaviour {
 			GameObject itemName = item.transform.Find("Name").gameObject;
 			string syoukaiName = "";
 			if(itemCd == "koueki"){
-                if (langId == 2) {
-                    syoukaiName = "Shimai";
-                }else {
-                    syoukaiName = "島井宗室";
-                }
+                syoukaiName = Message.getMessage(234, langId);
 				itemName.GetComponent<Text>().text = syoukaiName;
 			}else if(itemCd == "cyoutei"){
-                if (langId == 2) {
-                    syoukaiName = "Sanjyo";
-                }else {
-                    syoukaiName = "三条西実枝";
-                }
+                syoukaiName = Message.getMessage(235, langId);                
 				itemName.GetComponent<Text>().text = syoukaiName;
 			}
 			RectTransform itemNameRect = itemName.GetComponent<RectTransform>();
@@ -791,11 +694,8 @@ public class DouguSoukoScene : MonoBehaviour {
 			itemNameRect.localScale = new Vector3(0.1f,0.15f,0);
 
 			GameObject itemRank = item.transform.Find("Rank").gameObject;
-            if (langId == 2) {
-                itemRank.GetComponent<Text>().text = "Mid";
-            }else {
-                itemRank.GetComponent<Text>().text = "中";
-            }
+            itemRank.GetComponent<Text>().text = Message.getMessage(182, langId);
+            
 			RectTransform itemRankRect = itemRank.GetComponent<RectTransform>();
 			itemRankRect.anchoredPosition3D = new Vector3(30,-35,0);
 			itemRankRect.localScale = new Vector3(0.18f,0.22f,0);
@@ -815,19 +715,11 @@ public class DouguSoukoScene : MonoBehaviour {
 			item.transform.Find("Qty").GetComponent<Text>().text = nowQtyList [2];
 			GameObject itemName = item.transform.Find("Name").gameObject;
 			string syoukaiName = "";
-			if(itemCd == "koueki"){
-                if (langId == 2) {
-                    syoukaiName = "Cyaya";
-                }else {
-                    syoukaiName = "茶屋四郎次郎";
-                }
+			if(itemCd == "koueki"){                
+                syoukaiName = Message.getMessage(236, langId);                
 				itemName.GetComponent<Text>().text = syoukaiName;
-			}else if(itemCd == "cyoutei"){
-                if (langId == 2) {
-                    syoukaiName = "Konoe";
-                }else {
-                    syoukaiName = "近衛前久";
-                }
+			}else if(itemCd == "cyoutei"){                
+                syoukaiName = Message.getMessage(237, langId);            
 				itemName.GetComponent<Text>().text = syoukaiName;
 			}
 			RectTransform itemNameRect = itemName.GetComponent<RectTransform>();
@@ -835,11 +727,7 @@ public class DouguSoukoScene : MonoBehaviour {
 			itemNameRect.localScale = new Vector3(0.1f,0.15f,0);
 
 			GameObject itemRank = item.transform.Find("Rank").gameObject;
-            if (langId == 2) {
-                itemRank.GetComponent<Text>().text = "High";
-            }else {
-                itemRank.GetComponent<Text>().text = "上";
-            }
+            itemRank.GetComponent<Text>().text = Message.getMessage(183, langId);
 			RectTransform itemRankRect = itemRank.GetComponent<RectTransform>();
 			itemRankRect.anchoredPosition3D = new Vector3(30,-35,0);
 			itemRankRect.localScale = new Vector3(0.18f,0.22f,0);

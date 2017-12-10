@@ -21,7 +21,11 @@ public class Mail : MonoBehaviour {
         if (langId == 2) {
             subject = "【The Samurai Wars】";
 		     body = "Body of the letter";
-        }else {
+        }else if(langId==3) {
+            subject = "【合战-战国绘卷-】咨询";
+            body = "请输入咨询内容。";
+        }
+        else {
             subject = "【合戦-戦国絵巻-】お問い合わせ";
             body = "お問い合わせ内容をご記載下さい。";
         }

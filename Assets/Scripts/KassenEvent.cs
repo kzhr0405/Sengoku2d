@@ -67,7 +67,56 @@ public class KassenEvent : MonoBehaviour {
 			    finalComment = "It's a fall of our clan...It was short-lived. How earn my place in history?";
 
 		    }
-        }else {
+        }else if(langId==3) {
+            if (kassenWinLoseFleeList[1] == "2") {
+                //Player Win
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
+                int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                if (powerTyp == 1) {
+                    finalComment = stageNmae + "被攻陷了啊，这样下去，本家面目何存。";
+                }
+                else if (powerTyp == 2) {
+                    finalComment = "什么!?" + stageNmae + "可是我们的重要据点，要在被孤立之前夺回。";
+                }
+                else if (powerTyp == 3) {
+                    finalComment = "可恶的, " + myDiamyoName + ", 攻打我" + stageNmae + "之仇，定当加倍奉还。";
+                }
+            }
+            else if (kassenWinLoseFleeList[1] == "1") {
+                //Flee
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
+                int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                finalComment = "哈哈哈，可笑的" + myDiamyoName + "，在我们坚固的" + stageNmae + "面前无计可施，夹着尾巴逃了！";
+            }
+            else if (kassenWinLoseFleeList[1] == "0") {
+                //Player Lose
+                string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
+                int powerTyp = stage.getPowerTyp(kuniId, int.Parse(kassenWinLoseFleeList[0]));
+                if (powerTyp == 1) {
+                    finalComment = "众人，干得漂亮！随我将" + myDiamyoName + "击溃。";
+                }
+                else if (powerTyp == 2) {
+                    finalComment = "哈哈哈，可笑的" + myDiamyoName + "，在我们坚固的" + stageNmae + "面前无计可施，夹着尾巴逃了。";
+                }
+                else if (powerTyp == 3) {
+                    finalComment = "欢呼胜利吧，这是我们的胜利！天下险要之地" + stageNmae + "，岂可轻易被攻陷。";
+                }
+
+            }
+            else if (kassenWinLoseFleeList[1] == "3") {
+                //Kuni
+                KuniInfo kuni = new KuniInfo();
+                string kuniName = kuni.getKuniName(kuniId, langId);
+                finalComment = "竟盗取了我的" + kuniName + "。可恶的" + myDiamyoName + "，这份耻辱，日后定当加倍奉还。";
+
+            }
+            else if (kassenWinLoseFleeList[1] == "4") {
+                //Metsubou
+                finalComment = "本家也终成黄粱一梦，不知后世史官，如何记录我的生平。";
+
+            }
+        }
+        else {
             if (kassenWinLoseFleeList[1] == "2") {
                 //Player Win
                 string stageNmae = stage.getStageName(kuniId, int.Parse(kassenWinLoseFleeList[0]), langId);
@@ -222,6 +271,8 @@ public class KassenEvent : MonoBehaviour {
 
                                 if (langId == 2) {
                                     finalComment = "What? Isolated " + stageName + " castle betrayed " + myDiamyoName + ".";
+                                }else if(langId==3) {
+                                    finalComment = "这叫什么事，孤立的" + stageName + "竟然投降了" + myDiamyoName + "。";
                                 } else {
                                     finalComment = "うぬう、何とした事だ。孤立した" + stageName + "が、" + myDiamyoName + "に寝返りおったわ。";
                                 }

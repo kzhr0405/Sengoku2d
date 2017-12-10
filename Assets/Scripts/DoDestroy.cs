@@ -40,8 +40,10 @@ public class DoDestroy : MonoBehaviour {
 				PlayerPrefs.SetString (temp,newNaiseiString);
 				PlayerPrefs.Flush();
 
-				Message msg = new Message(); 
-				msg.makeMessage (msg.getMessage(118));
+				Message msg = new Message();
+                int langId = PlayerPrefs.GetInt("langId");
+
+                msg.makeMessage (msg.getMessage(118,langId));
 
 				//Close Tab
 				GameObject.Find ("close").GetComponent<CloseBoard> ().onClick ();

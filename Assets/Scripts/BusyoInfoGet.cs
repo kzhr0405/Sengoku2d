@@ -80,28 +80,18 @@ public class BusyoInfoGet : MonoBehaviour {
 			}
 		}
 
-        //Make return value
-        if (langId == 2) {
-            if (yrQty >= kbQty && yrQty >= tpQty && yrQty >= ymQty) {
-			    qtyAndHeisyu = qty.ToString () + ",Spear";
-		    } else if (ymQty >= yrQty && ymQty >= kbQty && ymQty >= tpQty) {
-			    qtyAndHeisyu = qty.ToString () + ",Bow";
-		    } else if (kbQty >= yrQty && kbQty >= tpQty && kbQty >= ymQty) {
-			    qtyAndHeisyu = qty.ToString () + ",Cavalry";
-		    } else if (tpQty >= yrQty && tpQty >= kbQty && tpQty >= ymQty) {
-			    qtyAndHeisyu = qty.ToString () + ",Gun";
-		    }
-        }else {
-            if (yrQty >= kbQty && yrQty >= tpQty && yrQty >= ymQty) {
-                qtyAndHeisyu = qty.ToString() + ",槍隊";
-            }else if (ymQty >= yrQty && ymQty >= kbQty && ymQty >= tpQty) {
-                qtyAndHeisyu = qty.ToString() + ",弓隊";
-            }else if (kbQty >= yrQty && kbQty >= tpQty && kbQty >= ymQty) {
-                qtyAndHeisyu = qty.ToString() + ",騎馬隊";
-            }else if (tpQty >= yrQty && tpQty >= kbQty && tpQty >= ymQty) {
-                qtyAndHeisyu = qty.ToString() + ",鉄砲隊";
-            }
+        //Make return value  
+        Message Message = new Message();
+        if (yrQty >= kbQty && yrQty >= tpQty && yrQty >= ymQty) {
+            qtyAndHeisyu = qty.ToString() + "," + Message.getMessage(208,langId);
+        }else if (ymQty >= yrQty && ymQty >= kbQty && ymQty >= tpQty) {
+            qtyAndHeisyu = qty.ToString() + "," + Message.getMessage(209, langId);
+        }else if (kbQty >= yrQty && kbQty >= tpQty && kbQty >= ymQty) {
+            qtyAndHeisyu = qty.ToString() + "," + Message.getMessage(210, langId);
+        }else if (tpQty >= yrQty && tpQty >= kbQty && tpQty >= ymQty) {
+            qtyAndHeisyu = qty.ToString() + "," + Message.getMessage(211, langId);
         }
+        
 		return qtyAndHeisyu;
 	}
 

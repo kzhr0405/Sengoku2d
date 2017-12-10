@@ -19,8 +19,10 @@ public class DoTsuihou : MonoBehaviour {
 			if (myBusyoQty == 1) {
 				//Error
 				audioSources [4].Play ();
-				Message msg = new Message(); 
-				msg.makeMessage (msg.getMessage(91));
+				Message msg = new Message();
+                int langId = PlayerPrefs.GetInt("langId");
+
+                msg.makeMessage (msg.getMessage(91,langId));
 				
 			} else {
                     
@@ -211,7 +213,11 @@ public class DoTsuihou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     tsuihouText = "Banished "+ busyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    tsuihouText = "已流放" + busyoName + "。";
+                }
+                else {
                     tsuihouText = busyoName + "を追放しました。";
                 }
 				string type = "tsuihou"; 

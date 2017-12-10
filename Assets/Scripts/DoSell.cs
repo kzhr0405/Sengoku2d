@@ -63,7 +63,9 @@ public class DoSell : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 OKtext = "Sold " + sellQty.ToString() + " " + kahouName + ".";
-            }else {
+            }else if (langId == 3) {
+                OKtext = "已贩卖家宝" + kahouName + "," + sellQty.ToString() + "个。";
+            } else {
                 OKtext = kahouName + "を" + sellQty.ToString() + "個売却致しました。";
             }
 			msg.makeMessage(OKtext);
@@ -421,6 +423,8 @@ public class DoSell : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 OKtext = "Sold " + sellQty.ToString() + " " + kahouName  + ".";
+            }else if (langId == 3) {
+                OKtext = "已贩卖家宝" + kahouName + "," + sellQty.ToString() + "个。";
             } else {
                 OKtext = kahouName + "を" + sellQty.ToString() + "個売却致しました。";
             }

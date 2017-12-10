@@ -19,7 +19,8 @@ public class DoKousaku : MonoBehaviour {
 
 		int nowHyourou = PlayerPrefs.GetInt ("hyourou");
 		Message msg = new Message ();
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        int langId = PlayerPrefs.GetInt("langId");
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (name == "Back") {
 			scrollObj.SetActive (false);
@@ -28,7 +29,7 @@ public class DoKousaku : MonoBehaviour {
 		} else {
 
 			if (nowHyourou < 5) {
-				msg.makeUpperMessageOnBoard (msg.getMessage(7));
+				msg.makeUpperMessageOnBoard (msg.getMessage(7,langId));
 
 			} else {
 				//Track
@@ -142,21 +143,22 @@ public class DoKousaku : MonoBehaviour {
 							int TrackLinkCutNo = PlayerPrefs.GetInt("TrackLinkCutNo",0);
 							TrackLinkCutNo = TrackLinkCutNo + okCount;
 							PlayerPrefs.SetInt ("TrackLinkCutNo", TrackLinkCutNo);
-							PlayerPrefs.Flush ();
-                            int langId = PlayerPrefs.GetInt("langId");
+							PlayerPrefs.Flush ();                            
                             if (langId == 2) {
                                 msg.makeUpperMessageOnBoard ("You cut " + okCount + " line. \n Enemy power keep be down in this season.");
-                            }else {
+                            }else if(langId==3) {
+                                msg.makeUpperMessageOnBoard("已切断联络线" + okCount + "条，本季节，敌军战力将会减弱。");
+                            } else {
                                 msg.makeUpperMessageOnBoard("連絡線を" + okCount + "本遮断しました。\n今季節中は敵戦力が減りますぞ。");
                             }
 							addUsedBusyo.addUsedBusyo (busyoId);
 						} else {
-							msg.makeUpperMessageOnBoard (msg.getMessage(126)); 
+							msg.makeUpperMessageOnBoard (msg.getMessage(126,langId)); 
 						}
 
 					} else {
 						
-						msg.makeUpperMessageOnBoard (msg.getMessage(127));
+						msg.makeUpperMessageOnBoard (msg.getMessage(127,langId));
 					}
 
 
@@ -202,17 +204,18 @@ public class DoKousaku : MonoBehaviour {
 						PlayerPrefs.Flush ();
 
 						MainStageController mainStage = new MainStageController ();
-						mainStage.questExtension ();
-                        int langId = PlayerPrefs.GetInt("langId");
+						mainStage.questExtension ();                        
                         if (langId == 2) {
                             msg.makeUpperMessageOnBoard ("You are succeed to win over. \n Enemy " + cyouryakuHeiQty.ToString () + " unit will change to player unit in a battle.");
-                        }else {
+                        }else if (langId == 3) {
+                            msg.makeUpperMessageOnBoard("调略成功，合战中，" + cyouryakuHeiQty.ToString() + "部队将会倒戈。");
+                        } else {
                             msg.makeUpperMessageOnBoard("調略に成功しましたぞ。\n合戦にて" + cyouryakuHeiQty.ToString() + "部隊が寝返ります。");
                         }
 						addUsedBusyo.addUsedBusyo (busyoId);
 
 					} else {
-						msg.makeUpperMessageOnBoard (msg.getMessage(128));
+						msg.makeUpperMessageOnBoard (msg.getMessage(128,langId));
 					}
 
 				}

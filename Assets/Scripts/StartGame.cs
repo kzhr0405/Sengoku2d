@@ -53,14 +53,15 @@ public class StartGame : MonoBehaviour {
 
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         int busyoDama = PlayerPrefs.GetInt("busyoDama");
-        if(busyoDama>criteria) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (busyoDama>criteria) {
             Message msg = new Message();
-            msg.makeMessage(msg.getMessage(153));
+            msg.makeMessage(msg.getMessage(153,langId));
             audioSources[4].Play();
         }else { 
             if(ban>0) {
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(153));
+                msg.makeMessage(msg.getMessage(153,langId));
                 audioSources[4].Play();
             }else { 
                 loading.SetActive(true);

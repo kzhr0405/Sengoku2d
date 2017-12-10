@@ -17,8 +17,8 @@ public class DoShisya : MonoBehaviour {
 	public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		Message msgScript = new Message ();
-
-		ShisyaSelect script = slot.GetComponent<ShisyaSelect> ();
+        int langId = PlayerPrefs.GetInt("langId");
+        ShisyaSelect script = slot.GetComponent<ShisyaSelect> ();
 
 		if (name == "YesButton") {
 			if (script.shisyaId == 1) {
@@ -34,11 +34,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					}else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(68));	
+						msgScript.makeMessage (msgScript.getMessage(68, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-                    msgScript.makeMessage(msgScript.getMessage(67));
+                    msgScript.makeMessage(msgScript.getMessage(67, langId));
                 }
 			} else if (script.shisyaId == 3) {
 				//engun
@@ -53,11 +53,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(69));	
+						msgScript.makeMessage (msgScript.getMessage(69, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(70));	
+					msgScript.makeMessage (msgScript.getMessage(70, langId));	
 				}
 			} else if (script.shisyaId == 4) {
 				//doukatsu
@@ -72,7 +72,7 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(71));	
+						msgScript.makeMessage (msgScript.getMessage(71, langId));	
 					}
 				} else {
 					//item
@@ -97,7 +97,7 @@ public class DoShisya : MonoBehaviour {
 					
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(72));	
+					msgScript.makeMessage (msgScript.getMessage(72, langId));	
 				}
 
 
@@ -122,7 +122,7 @@ public class DoShisya : MonoBehaviour {
 				int busyoDama = PlayerPrefs.GetInt("busyoDama");
 				if (busyoDama < 100) {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(73));	
+					msgScript.makeMessage (msgScript.getMessage(73, langId));	
 				} else {
 					audioSources [3].Play ();
 					string msg = registerKyouhaku(busyoDama,slot);
@@ -143,11 +143,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(74));	
+						msgScript.makeMessage (msgScript.getMessage(74, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(75));	
+					msgScript.makeMessage (msgScript.getMessage(75, langId));	
 				}
 
 			} else if (script.shisyaId == 10) {
@@ -161,7 +161,7 @@ public class DoShisya : MonoBehaviour {
 					Destroy (slot);
 				}else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(76));
+					msgScript.makeMessage (msgScript.getMessage(76, langId));
 				}
 			} else if (script.shisyaId == 11) {
 				//Toubatsurei
@@ -176,11 +176,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(77));	
+						msgScript.makeMessage (msgScript.getMessage(77, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(78));	
+					msgScript.makeMessage (msgScript.getMessage(78, langId));	
 				}
 
 
@@ -197,11 +197,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(79));	
+						msgScript.makeMessage (msgScript.getMessage(79, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(80));	
+					msgScript.makeMessage (msgScript.getMessage(80, langId));	
 				}
 
 
@@ -211,13 +211,13 @@ public class DoShisya : MonoBehaviour {
 				int hyourou = PlayerPrefs.GetInt ("hyourou");
 				if (hyourou >= 50) {
 					audioSources [3].Play ();
-					string msg = registerSyogunApproval (slot);
+					string msg = registerSyogunApproval (slot,langId);
 					msgScript.makeMessage (msg);
 					AfterShisyaProcess (slot, true);
 					Destroy (slot);
 				}else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(81));
+					msgScript.makeMessage (msgScript.getMessage(81, langId));
 				}
 
 
@@ -234,11 +234,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(82));	
+						msgScript.makeMessage (msgScript.getMessage(82, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(83));	
+					msgScript.makeMessage (msgScript.getMessage(83,langId));	
 				}
 			} else if (script.shisyaId == 15) {
 				//Kizoku musin
@@ -253,11 +253,11 @@ public class DoShisya : MonoBehaviour {
 						Destroy (slot);
 					} else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(82));	
+						msgScript.makeMessage (msgScript.getMessage(82, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(83));	
+					msgScript.makeMessage (msgScript.getMessage(83,langId));	
 				}
 
 			} else if (script.shisyaId == 16) {
@@ -273,7 +273,7 @@ public class DoShisya : MonoBehaviour {
 
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(2));	
+					msgScript.makeMessage (msgScript.getMessage(2, langId));	
 				}
 
 			} else if (script.shisyaId == 17) {
@@ -287,7 +287,7 @@ public class DoShisya : MonoBehaviour {
 					Destroy (slot);
 				}else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(84));	
+					msgScript.makeMessage (msgScript.getMessage(84, langId));	
 				}
 
 			} else if (script.shisyaId == 18) {
@@ -303,7 +303,7 @@ public class DoShisya : MonoBehaviour {
 
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(2));	
+					msgScript.makeMessage (msgScript.getMessage(2, langId));	
 				}
 			} else if (script.shisyaId == 19) {
 				//Nanban
@@ -317,7 +317,7 @@ public class DoShisya : MonoBehaviour {
 
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(72));	
+					msgScript.makeMessage (msgScript.getMessage(72, langId));	
 				}
 			} else if (script.shisyaId == 20) {
 				//Tsuji Seppou
@@ -330,7 +330,7 @@ public class DoShisya : MonoBehaviour {
 					Destroy (slot);
 				}else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(7));	
+					msgScript.makeMessage (msgScript.getMessage(7, langId));	
 				}
 
 
@@ -348,11 +348,11 @@ public class DoShisya : MonoBehaviour {
 
                     } else {
 						audioSources [4].Play ();
-						msgScript.makeMessage (msgScript.getMessage(7));	
+						msgScript.makeMessage (msgScript.getMessage(7, langId));	
 					}
 				} else {
 					audioSources [4].Play ();
-					msgScript.makeMessage (msgScript.getMessage(6));	
+					msgScript.makeMessage (msgScript.getMessage(6, langId));	
 				}
 
 
@@ -452,7 +452,7 @@ public class DoShisya : MonoBehaviour {
 			} else if (script.shisyaId == 13) {
 				//Reject Syougun Syounin
 				audioSources [4].Play ();
-				string msg = rejectSyogunApproval (slot);
+				string msg = rejectSyogunApproval (slot,langId);
 				msgScript.makeMessage (msg);
 				AfterShisyaProcess (slot, false);
 				Destroy (slot);
@@ -509,7 +509,7 @@ public class DoShisya : MonoBehaviour {
 			} else if (script.shisyaId == 20) {
 				//Reject Tsuji Seppou
 				audioSources [4].Play ();
-                msgScript.makeMessage(msgScript.getMessage(85));
+                msgScript.makeMessage(msgScript.getMessage(85,langId));
                 PlayerPrefs.DeleteKey ("shisya20");
 
 				AfterShisyaProcess (slot, false);
@@ -525,26 +525,17 @@ public class DoShisya : MonoBehaviour {
                 PlayerPrefs.SetInt("kokuninReject", kokuninReject);
 
                 string text = "";
-                int langId = PlayerPrefs.GetInt("langId");
-                if (langId == 2) {
-                    if (kokuninReject < 2) {
-                        text = " There is very little possibility of rebellion.";
-                    }else if (2 <= kokuninReject && kokuninReject < 5) {
-                        text = " There is a possibility of rebellion.";
-                    }else if (5 <= kokuninReject) {
-                        text = " It is about to occur rebellion.";
-                    }
-                }else {
-                    if (kokuninReject < 2) {
-                        text = " しかし国人衆は心服しており、まだ国一揆の可能性はほぼ有りませぬ。";
-                    }else if (2 <= kokuninReject && kokuninReject < 6) {
-                        text = " 国人衆は当家の治世に疑心暗鬼になっていますぞ。国一揆にならぬことを祈るばかりですな。";
-                    }else if (6 <= kokuninReject) {
-                        text = " 国人衆には怨嗟の声が拡がっており、国一揆に発展しかねないですぞ。";
-                    }
+                
+                if (kokuninReject < 2) {
+                    text = msgScript.getMessage(220,langId);
+                }else if (2 <= kokuninReject && kokuninReject < 6) {
+                    text = msgScript.getMessage(221, langId);
+                }else if (6 <= kokuninReject) {
+                    text = msgScript.getMessage(222, langId);
                 }
                 
-                msgScript.makeMessage (msgScript.getMessage(86)+ text);
+                
+                msgScript.makeMessage (msgScript.getMessage(86, langId) + text);
 				PlayerPrefs.DeleteKey ("shisya21");
 
 				AfterShisyaProcess (slot, false);
@@ -660,7 +651,10 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "You formed alliance with "+daimyoName + ".\n We can choose some strategic options.";
-        }else {
+        }else if(langId==3) {
+            msg = "和" + daimyoName + "大人缔结同盟了，战略视野更开阔了。";
+        }
+        else {
             msg = daimyoName + "殿と同盟締結致しました。\n戦略の幅が拡がりますな。";
         }
 		return msg;
@@ -671,7 +665,9 @@ public class DoShisya : MonoBehaviour {
 
 		string msg = "";
 		ShisyaSelect script = slot.GetComponent<ShisyaSelect> ();
-		string key  = script.key;
+        Message Message = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
+        string key  = script.key;
 
 		//Delete Key
 		string tmp = "shisya8";	
@@ -714,12 +710,8 @@ public class DoShisya : MonoBehaviour {
 
 
 		if (PlayerPrefs.HasKey (key)) {
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                msg = "Enemy army withdrawn. I am filled with resentment...";
-            }else {
-                msg = "脅迫の条件を呑んだことにより、敵軍勢が撤退致しました。無念に御座ります。";
-            }
+            
+            msg = Message.getMessage(223, langId);
 			busyoDama = busyoDama - 100;
 			PlayerPrefs.SetInt ("busyoDama", busyoDama);
 
@@ -746,12 +738,7 @@ public class DoShisya : MonoBehaviour {
 			}
 			PlayerPrefs.SetString ("keyHistory", newKeyHistory);
 		} else {
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                msg = "Oh, battle was already finished. We didn't pay waste of Stone.";
-            }else {
-                msg = "なんと、戦はとうに終わっているようですぞ。無駄な武将珠を渡さずに済みましたな。";
-            }
+            msg = Message.getMessage(224, langId);            
 		}
 		return msg;
 	}
@@ -759,7 +746,8 @@ public class DoShisya : MonoBehaviour {
 
 	public string registerEngun(GameObject slot){
         string msg = "";
-
+        Message Message = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
         reduceMoneyHyoruou ();
 		ShisyaSelect script = slot.GetComponent<ShisyaSelect> ();
 		string key  = script.key;
@@ -841,19 +829,15 @@ public class DoShisya : MonoBehaviour {
 			    newyukoudo = 100;
 		    }
 		    PlayerPrefs.SetInt (tempGaikou, newyukoudo);
-            int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "We sent reinforcement " + myUnitHei + " soldiers to support "+ engunDaimyoName + ". \n Frienship increased " + addPoint + " point.";
-            }else {
+            }else if (langId == 3) {
+                msg = engunDaimyoName + "派出了援军" + myUnitHei + "人，友好度上升了" + addPoint + "。";
+            } else {
                 msg = engunDaimyoName + "救援の兵" + myUnitHei + "を送りました。\n友好度が" + addPoint + "上昇します。";
             }
-        }else {
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                msg = "It's too late. Battle was already finished.";
-            }else {
-                msg = "一足遅かったようですな。戦はすでに終わってしまったようですぞ。";
-            }
+        }else {           
+            msg = Message.getMessage(225, langId);           
         }
 
 		
@@ -881,7 +865,11 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "We gave money and stamina to them. Court point increased " + addPoint + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "响应贵族的无心，进献了金钱和兵粮，朝廷贡献度上升了" + addPoint + "。";
+            }
+            else {
                 msg = "貴族の無心に応え、金と兵糧を提供しました。朝廷貢献度が" + addPoint + "上昇します。";
             }
 		} else {
@@ -904,7 +892,11 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "We gave money and stamina to syogun. Friendship increased " + addPoint + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "响应将军的无心，进献了金钱和兵粮，友好度上升了" + addPoint + "。";
+            }
+            else {
                 msg = "将軍の無心に応え、金と兵糧を提供しました。友好度が" + addPoint + "上昇します。";
             }
 		}
@@ -934,14 +926,22 @@ public class DoShisya : MonoBehaviour {
 			tmp = "shisya17";
             if (langId == 2) {
                 msg = "Became friendly with " + srcDaimyoName + " by royal court request.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "响应贵族的调停，和" + srcDaimyoName + "关系加深了。";
+            }
+            else {
                 msg = "貴族の調停に応え、" + srcDaimyoName + "と誼を深めました。";
             }
 		} else {
 			tmp = "shisya10";
             if (langId == 2) {
                 msg = "Became friendly with " + srcDaimyoName + " by syogun request.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "响应将军的仲裁，和" + srcDaimyoName + "关系加深了。";
+            }
+            else {
                 msg = "将軍の仲裁に応え、" + srcDaimyoName + "と誼を深めました。";
             }
 		}
@@ -984,7 +984,11 @@ public class DoShisya : MonoBehaviour {
 
         if (langId == 2) {
             msg = msg + "Friendship increased " + addPoint  + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = msg + "友好度上升了" + addPoint + "。";
+        }
+        else {
             msg = msg + "友好度が" + addPoint + "上昇します。";
         }
 		return msg;
@@ -1031,7 +1035,10 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "Paied " + busyoDamaQty + " stone. \n Royal court point increased "+addPoint+" point and got letter of introduction.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "为进行宫中形势，进献武将珠" + busyoDamaQty + "个，朝廷贡献度上升了" + addPoint + "，获得宫中介绍状。";
+            } else {
                 msg = "宮中行事のため武将珠" + busyoDamaQty + "を差し出しました。\n朝廷貢献度が" + addPoint + "上昇し、宮中への紹介状を入手。";
             }
 		} else {
@@ -1060,7 +1067,11 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "Paied " + busyoDamaQty + " stone. \n and you got letter of introduction.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "将" + busyoDamaQty + "个武将珠作为介绍费交给商人了，获得豪商介绍状。";
+            }
+            else {
                 msg = "武将珠" + busyoDamaQty + "個を口利き料として商人に差し出しました。豪商への紹介状を入手。";
             }
 
@@ -1127,7 +1138,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg =  srcDaimyoName + " gave you money " + gotMoney +". Friendship increased " + addPoint  + "point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = srcDaimyoName + "进献贡物，收取金钱" + gotMoney + "个，友好度上升了" + addPoint + "。";
+        }
+        else {
             msg = srcDaimyoName + "より貢物、金" + gotMoney + "を受け取りました。友好度が" + addPoint + "上昇します。";
         }
 		return msg;
@@ -1175,7 +1190,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "You agreed with "+srcDaimyoName + "'s threat. Friendship increased " + addPoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "回应了" + srcDaimyoName + "的恫吓，友好度上升了" + addPoint + "。";
+        }
+        else {
             msg = srcDaimyoName + "の恫喝に応じました。友好度が" + addPoint + "上昇します。";
         }
 
@@ -1222,7 +1241,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Citizens delivered " + addQty + " " + itemname + " by street preaching.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "因为行道演法，民众进献" + itemname + addQty + "个。";
+        }
+        else {
             msg = "辻説法によって、民から" + itemname + "が" + addQty + "個、寄贈されました。";
         }
 		PlayerPrefs.DeleteKey ("shisya20");
@@ -1231,8 +1254,8 @@ public class DoShisya : MonoBehaviour {
 
 	public string registerJikiso (GameObject slot){
 		string msg = "";
-
-		int hyourou = PlayerPrefs.GetInt ("hyourou");
+        Message Message = new Message();
+        int hyourou = PlayerPrefs.GetInt ("hyourou");
 		hyourou = hyourou - 30;
 		PlayerPrefs.SetInt ("hyourou",hyourou);
 		int money = PlayerPrefs.GetInt ("money");
@@ -1246,24 +1269,15 @@ public class DoShisya : MonoBehaviour {
 
         string text = "";
         int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
-            if (kokuninReject < 2) {
-                text = " There is very little possibility of rebellion.";
-            }else if (2 <= kokuninReject && kokuninReject < 5) {
-                text = " There is possibility of rebellion.";
-            }else if (5 <= kokuninReject) {
-                text = " It is about to occur rebellion.";
-            }
-        }else {
-            if(kokuninReject < 2) {
-                text = " 国人衆は心服しており、国一揆の可能性はほぼ有りませぬ。";
-            }else if (2 <= kokuninReject && kokuninReject < 6) {
-                text = " しかし国人衆は当家の治世に疑心暗鬼になっていますぞ。国一揆にならぬことを祈るばかりですな。";
-            }else if (6 <= kokuninReject) {
-                text = " しかし国人衆には怨嗟の声が拡がっており、国一揆に発展しかねないですぞ。";
-            }
+        
+        if(kokuninReject < 2) {
+            text = Message.getMessage(226, langId);
+        }else if (2 <= kokuninReject && kokuninReject < 6) {
+            text = Message.getMessage(227, langId);
+        }else if (6 <= kokuninReject) {
+            text = Message.getMessage(228, langId);
         }
-
+        
         Item item = new Item ();
 		int rdmType = UnityEngine.Random.Range (1, 5); //1-4
 		int rdmRank = UnityEngine.Random.Range (1, 4); //1-3
@@ -1271,14 +1285,17 @@ public class DoShisya : MonoBehaviour {
 		string itemname = item.getRandomShigen(rdmType, rdmRank, addQty);
         if (langId == 2) {
             msg = "Citizens delivered " + addQty + " " + itemname + " by your support." + text;
-        }else {
+        }else if(langId==3) {
+            msg = "因受理直诉，民众进献" + itemname + addQty + "个。" + text;
+        }
+        else {
             msg = "直訴受諾によって、民から" + itemname +"が" + addQty + "個、寄贈されました。" + text;
         }
 		PlayerPrefs.DeleteKey ("shisya21");
 		return msg;
 	}
 
-	public string registerSyogunApproval(GameObject slot){
+	public string registerSyogunApproval(GameObject slot, int langId){
 		string msg = "";
 
 		int hyourou = PlayerPrefs.GetInt ("hyourou");
@@ -1290,12 +1307,8 @@ public class DoShisya : MonoBehaviour {
         int myDaimyoId = PlayerPrefs.GetInt("myDaimyo");
 		PlayerPrefs.SetInt ("syogunDaimyoId", myDaimyoId);
 
-        int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
-            msg = "You were assigned to Shogun. \n You are reponsible to manage other clans to keep our peace.";
-        }else {
-            msg = "祝着至極。長い道のりにございましたな。\nこれより征夷大将軍として天下静謐を目指しますぞ。";
-        }
+        Message Message = new Message();
+        msg = Message.getMessage(229, langId);
 		PlayerPrefs.DeleteKey ("shisya13");
 		return msg;
 	}
@@ -1340,7 +1353,9 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "You received syogun's attack order and declared of war against " + targetDaimyoName + ". Now frienship with "+targetDaimyoName+" is 0.";
-        }else {
+        }else if(langId==3) {
+            msg = "已接下将军的讨伐令，向" + targetDaimyoName + "宣战，与" + targetDaimyoName + "的友好度归零。";
+        } else {
             msg = "将軍の討伐令を受諾し、" + targetDaimyoName + "に宣戦を布告しました。" + targetDaimyoName + "との友好度が0となります。";
         }
 		return msg;
@@ -1440,7 +1455,10 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "We sent reinforcement " + myUnitHei + " soldiers to support " + dstDaimyoName + " by syogun's request. \n Frienship increased " + addPoint + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "响应将军的要求，派出" + dstDaimyoName + "人救援" + myUnitHei + "，和" + dstDaimyoName + "的友好度提升了" + addPoint + "。";
+            } else {
                 msg = "将軍の要請に応じ、" + dstDaimyoName +  "救援の兵" + myUnitHei + "を送りました。" + dstDaimyoName + "との友好度が" + addPoint + "上昇します。";
             }
 		} else {
@@ -1462,7 +1480,10 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "My lord. Battle was already finished. Friendship with " + dstDaimyoName + " reduced " + reducePoint + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "主公，胜负已分，和" + dstDaimyoName + "的友好度下降了" + reducePoint + "。";
+            } else {
                 msg = "殿、勝敗は既に決着したようですぞ。" + dstDaimyoName + "殿との友好度が" + reducePoint + "減少します。";
             }
 		}
@@ -1478,7 +1499,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = daimyoName + " renounced alliance with our clan.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = daimyoName + "已经撕毁了和本家的同盟。";
+        }
+        else {
             msg = daimyoName + "が当家との同盟を破棄しました。";
         }
 		PlayerPrefs.DeleteKey ("shisya6");
@@ -1541,7 +1566,10 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "You joined "+srcDaimyoName + "'s tea party. Friendship increased " + addPoint + " point. And you got repuration. Traveller will visit your country to see your tea things.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "参加了" + srcDaimyoName + "大人的茶会，友好度上升了" + addPoint + "，另外入手了名声，为拜见主公的茶道具，旅人们云集城下。";
+        } else {
             msg = srcDaimyoName + "殿の茶会に参加しました。友好度が" + addPoint + "上昇します。また名声を入手致しました。御屋形様の茶道具を見に旅人が集まりますぞ。";
         }
         return msg;
@@ -1586,7 +1614,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "You purchased "+kahouName + ". It's a good item.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已购买" + kahouName + ",真是入手了一个好东西啊。";
+        }
+        else {
             msg = kahouName + "を購入しましたぞ。良い物を手に入れられましたな。";
         }
 		return msg;
@@ -1641,8 +1673,12 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Declined alliance request by "+daimyoName + ". Friendship decreased " + reducePoint + " point.";
-        }else {
-            msg = daimyoName + "からの同盟依頼を断りました。友好度が" + reducePoint + "減少します";
+        }
+        else if (langId == 3) {
+            msg = "已拒绝了" + daimyoName + "的同盟请求，友好度下降了" + reducePoint + "。";
+        }
+        else {
+            msg = daimyoName + "からの同盟依頼を断りました。友好度が" + reducePoint + "減少します。";
         }
             
 		return msg;
@@ -1709,7 +1745,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Declined reinforcement request by "+daimyoName + ". Friendship decreased " + reducePoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝了" + daimyoName + "的援军邀请，友好度下降了" + reducePoint + "。";
+        }
+        else {
             msg = daimyoName + "からの援軍依頼を断りました。\n友好度が" + reducePoint + "減少します。";
         }
         return msg;
@@ -1764,7 +1804,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Rejected threat by " + daimyoName + ". Friendship decreased " + reducePoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝了" + daimyoName + "的恫吓，友好度下降了" + reducePoint + "。";
+        }
+        else {
             msg = daimyoName + "の恫喝を拒絶しました。友好度が" + reducePoint + "減少します。";
         }
         return msg;
@@ -1796,7 +1840,11 @@ public class DoShisya : MonoBehaviour {
         string msg = "";
         if (langId == 2) {
             msg = "Declined trade request by " + shisyaName + ".";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝" + shisyaName + "的交易请求。";
+        }
+        else {
             msg = shisyaName + "からの交易依頼を断りました。";
         }
         
@@ -1850,7 +1898,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg =  "Declined gift by " + srcDaimyoName + ". Friendshio decreased " + reducePoint +" point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝" + srcDaimyoName + "的进贡请求，友好度下降了" + reducePoint + "。";
+        }
+        else {
             msg = srcDaimyoName + "からの貢物を断りました。友好度が、" + reducePoint + "減少します。";
         }
 		return msg;
@@ -1903,7 +1955,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Rejected blackmail from " + srcDaimyoName + ". Let's destroy them in battle.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝" + srcDaimyoName + "的胁迫，家臣们士气高涨，让我们在战场上击败他们吧。";
+        }
+        else {
             msg = srcDaimyoName + "からの脅迫を断りました。家来の士気も高まっています。戦にて撃退しましょうぞ。";
         }
 
@@ -1956,7 +2012,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Declined tea party invitation from " + srcDaimyoName + ". Friendship reduced " + reducePoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝" + srcDaimyoName + "的茶会邀请，友好度下降了" + reducePoint + "。";
+        }
+        else {
             msg = srcDaimyoName + "殿の茶会の誘いを断りました。友好度が" + reducePoint + "減少します。";
         }
 		return msg;
@@ -1982,7 +2042,11 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "Declined mediation of royal court. Royal court point decreased " + reducePoint + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "已拒绝贵族的调停，朝廷贡献度下降了" + reducePoint + "。";
+            }
+            else {
                 msg = "貴族の調停を断りました。朝廷貢献度が" + reducePoint + "減少します。";
             }
 		} else {
@@ -2005,6 +2069,9 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "Declined mediation of syogun. Friendship decreased " + reducePoint + " point.";
+            }
+            else if (langId == 3) {
+                msg = "已拒绝将军的仲裁，与将军的友好度下降了" + reducePoint + "。";
             }
             else {
                 msg = "将軍の仲裁を断りました。将軍との友好度が" + reducePoint + "減少します。";
@@ -2056,7 +2123,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Ignored Syogun's order. Friendship decreased " + reducePoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已无视将军的讨伐令，与将军的友好度下降了" + reducePoint + "。";
+        }
+        else {
             msg = "将軍の討伐令を無視しました。将軍との友好度が" + reducePoint + "減少します。";
         }
 
@@ -2109,7 +2180,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Ignored Syogun's order. Friendship decreased " + reducePoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已无视将军的防卫令，与将军的友好度下降了" + reducePoint + "。";
+        }
+        else {
             msg = "将軍の防衛令を無視しました。将軍との友好度が" + reducePoint + "減少します。";
         }
 
@@ -2153,16 +2228,12 @@ public class DoShisya : MonoBehaviour {
 		return msg;
 	}
 
-	public string rejectSyogunApproval(GameObject slot){
+	public string rejectSyogunApproval(GameObject slot, int langId){
 		string msg = "";
 
         //Shogun        
-        int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
-            msg = "Rejected Shogun assignment.\n Don't you want to conquer other clans as Shogun?";
-        }else {
-            msg = "なんと、征夷大将軍就任を拒否しました。御門の心象も悪くなりましょうぞ。";
-        }
+        Message Message = new Message();
+        msg = Message.getMessage(230, langId);
 		PlayerPrefs.DeleteKey ("shisya13");
 		return msg;
 	}
@@ -2187,7 +2258,10 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "Declined asking for money. Royal Court point decreased " + reducePoint + " point.";
-            }else {
+            }else if(langId==3) {
+                msg = "已拒绝贵族的无心，朝廷贡献度下降了" + reducePoint + "。";
+            }
+            else {
                 msg = "貴族の無心を断りました。朝廷貢献度が" + reducePoint + "減少します。";
             }
 		} else {
@@ -2209,7 +2283,11 @@ public class DoShisya : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 msg = "Declined asking for money. Friendship decreased " + reducePoint + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                msg = "已拒绝将军的无心，与将军的友好度下降了" + reducePoint + "。";
+            }
+            else {
                 msg = "将軍の無心を断りました。将軍との友好度が" + reducePoint + "減少します。";
             }
 		}
@@ -2232,7 +2310,11 @@ public class DoShisya : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             msg = "Declined providing stone to royal court. Royal court point decreased " + reducePoint + " point.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = "已拒绝为朝廷的宫中行事提供金钱，朝廷贡献度下降了" + reducePoint + "。";
+        }
+        else {
             msg = "朝廷への宮中行事費用の提供を断りました。朝廷貢献度が" + reducePoint + "減少します。";
         }
 		return msg;
@@ -2248,7 +2330,7 @@ public class DoShisya : MonoBehaviour {
         
         if (langId == 2) {
             msg = clanName + " clan surrendered to us.";
-        }else {
+        } else {
             msg = clanName + "家が当家に従属し、滅亡しました。天下の趨勢は決したも同然ですな。";
         }
 

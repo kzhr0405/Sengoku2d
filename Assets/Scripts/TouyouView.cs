@@ -116,13 +116,13 @@ public class TouyouView : MonoBehaviour {
 		string heisyu = "";
         Message msg = new Message();
 		if (heisyuType == "KB") {
-            heisyu = msg.getMessage(55);
+            heisyu = msg.getMessage(55, langId);
 		} else if (heisyuType == "YR") {
-			heisyu = msg.getMessage(56);
+			heisyu = msg.getMessage(56, langId);
         } else if (heisyuType == "TP") {
-			heisyu = msg.getMessage(57);
+			heisyu = msg.getMessage(57, langId);
         } else if (heisyuType == "YM") {
-			heisyu = msg.getMessage(58);
+			heisyu = msg.getMessage(58, langId);
         }
 
 		GameObject.Find ("ChildNameValue").GetComponent<Text>().text = heisyu;
@@ -130,7 +130,10 @@ public class TouyouView : MonoBehaviour {
 		int senpouId = busyoMst.param [busyoId-1].senpou_id;
         if (langId == 2) {
             GameObject.Find ("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId-1].nameEng;
-        }else {
+        }else if(langId==3) {
+            GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].nameSChn;
+        }
+        else {
             GameObject.Find("SenpouValue").GetComponent<Text>().text = senpouMst.param[senpouId - 1].name;
         }
 		int senpouStatus = senpouMst.param [senpouId - 1].lv1;
@@ -140,6 +143,8 @@ public class TouyouView : MonoBehaviour {
         string senpouExp = "";
         if (langId == 2) {
             senpouExp = senpouMst.param [senpouId - 1].effectionEng;
+        }else if (langId == 3) {
+            senpouExp = senpouMst.param[senpouId - 1].effectionSChn;
         }else {
             senpouExp = senpouMst.param[senpouId - 1].effection;
         }
@@ -216,7 +221,7 @@ public class TouyouView : MonoBehaviour {
                 }
 
                 if (myBusyoList.Contains(busyoId.ToString())) {
-                    msg.makeMessage(msg.getMessage(137));
+                    msg.makeMessage(msg.getMessage(137, langId));
 
                 }
             }

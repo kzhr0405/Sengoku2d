@@ -84,16 +84,16 @@ public class PopInfo : MonoBehaviour {
 		string heisyuName = "";
         Message msg = new Message();
         if (heisyu == "YR") {
-            heisyuName = msg.getMessage(56);
+            heisyuName = msg.getMessage(56,langId);
         }
         else if (heisyu == "KB") {
-            heisyuName = msg.getMessage(55);
+            heisyuName = msg.getMessage(55,langId);
         }
         else if (heisyu == "YM") {
-            heisyuName = msg.getMessage(58);
+            heisyuName = msg.getMessage(58,langId);
         }
         else if (heisyu == "TP") {
-            heisyuName = msg.getMessage(57);
+            heisyuName = msg.getMessage(57,langId);
         }
 
 		GameObject.Find ("ChildNameValue").GetComponent<Text> ().text = heisyuName;

@@ -27,8 +27,8 @@ public class BusyoStatusButton : MonoBehaviour {
     public void OnClick(){
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 		audioSources [0].Play ();
-
-		busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
+        Message Message = new Message();
+        busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
 		busyoId = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyo;
 
         //commonPopup ();
@@ -36,14 +36,10 @@ public class BusyoStatusButton : MonoBehaviour {
 
         if (name == "kanjyo"){
             commonPopup(16);
-            
-            if (langId == 2) {
-                GameObject.Find ("popText").GetComponent<Text> ().text = "Certificate";
-            }else {
-                GameObject.Find("popText").GetComponent<Text>().text = "感状授与";
-            }
-			//Busyo View
-			string path = "Prefabs/Player/Unit/BusyoUnit";
+            GameObject.Find("popText").GetComponent<Text>().text = Message.getMessage(212,langId);
+
+            //Busyo View
+            string path = "Prefabs/Player/Unit/BusyoUnit";
 			GameObject Busyo = Instantiate (Resources.Load (path)) as GameObject;
 			Busyo.name = busyoId.ToString ();
 			Busyo.transform.SetParent (GameObject.Find ("board(Clone)").transform);
@@ -111,13 +107,10 @@ public class BusyoStatusButton : MonoBehaviour {
 			RectTransform lowKanjyoRect = lowKanjyoItem.transform.Find("Kanjyo").GetComponent<RectTransform>();
 			lowKanjyoRect.sizeDelta = new Vector2 (100, 100);
 			Color lowColor = new Color (86f / 255f, 87f / 255f, 255f / 255f, 255f / 255f);
-			lowKanjyoItem.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "Low";
-            }else {
-                lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "下";
-            }
-			lowKanjyoItem.name = "Kanjyo1";
+			lowKanjyoItem.GetComponent<Image>().color = lowColor;            
+            lowKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = Message.getMessage(181,langId);
+
+            lowKanjyoItem.name = "Kanjyo1";
 
 			//Item Effect
 			int effectForLow =item.getEffect(lowKanjyoItem.name);
@@ -136,12 +129,9 @@ public class BusyoStatusButton : MonoBehaviour {
 			midKanjyoRect.sizeDelta = new Vector2 (100, 100);
 			Color midColor = new Color (236f / 255f, 93f / 255f, 93f / 255f, 255f / 255f);
 			midKanjyoItem.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "Mid";
-            }else {
-                midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "中";
-            }
-			midKanjyoItem.name = "Kanjyo2";
+            midKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = Message.getMessage(182,langId);
+
+            midKanjyoItem.name = "Kanjyo2";
 
 			//Item Effect
 			int effectForMid =item.getEffect(midKanjyoItem.name);
@@ -161,12 +151,9 @@ public class BusyoStatusButton : MonoBehaviour {
 			highKanjyoRect.sizeDelta = new Vector2 (100, 100);
 			Color hightColor = new Color (207f / 255f, 232f / 255f, 95f / 255f, 255f / 255f);
 			highKanjyoItem.GetComponent<Image>().color = hightColor;
-            if (langId == 2) {
-                highKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "High";
-            }else {
-                highKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = "上";
-            }
-			highKanjyoItem.name = "Kanjyo3";
+            highKanjyoItem.transform.Find("KanjyoRank").GetComponent<Text>().text = Message.getMessage(183,langId);
+
+            highKanjyoItem.name = "Kanjyo3";
 
 			//Item Effect
 			int effectForHight =item.getEffect(highKanjyoItem.name);
@@ -187,16 +174,13 @@ public class BusyoStatusButton : MonoBehaviour {
 
 		}else if(name == "ButtonCyouhei"){
             commonPopup(17);
-            cyouheiView(ch_type);
+            cyouheiView(ch_type, langId);
 
 		}else if(name == "ButtonKunren"){
-            commonPopup(18);
-            if (langId == 2) {
-                GameObject.Find ("popText").GetComponent<Text> ().text ="Training";
-            }else {
-                GameObject.Find("popText").GetComponent<Text>().text = "兵卒訓練";
-            }
-			string chigyouPath = "Prefabs/Busyo/Kunren";
+            commonPopup(18);            
+            GameObject.Find("popText").GetComponent<Text>().text = Message.getMessage(213,langId);
+
+            string chigyouPath = "Prefabs/Busyo/Kunren";
 			GameObject chigyo = Instantiate (Resources.Load (chigyouPath)) as GameObject;
 			chigyo.transform.SetParent(GameObject.Find ("board(Clone)").transform);
 			chigyo.transform.localScale = new Vector2 (1, 1);
@@ -424,13 +408,9 @@ public class BusyoStatusButton : MonoBehaviour {
     }
 
 
-	public void cyouheiView(string ch_type){
-        int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
-            GameObject.Find ("popText").GetComponent<Text> ().text ="Recruit";
-        }else {
-            GameObject.Find("popText").GetComponent<Text>().text = "徴兵";
-        }
+	public void cyouheiView(string ch_type, int langId) {
+        Message Message = new Message();
+        GameObject.Find("popText").GetComponent<Text>().text = Message.getMessage(214,langId);        
 		//Cyouhei
 		string chigyouPath = "Prefabs/Busyo/Cyouhei";
 		GameObject chigyo = Instantiate (Resources.Load (chigyouPath)) as GameObject;
@@ -512,13 +492,9 @@ public class BusyoStatusButton : MonoBehaviour {
 		if(requiredItemTyp=="low"){
 			//Blue
 			Color activeColor = new Color (86f / 255f, 87f / 255f, 255f / 255f, 255f / 255f);
-			item.GetComponent<Image>().color = activeColor;
-            if (langId == 2) {
-                item.transform.Find ("CyouheiRank").GetComponent<Text>().text = "Low";              
-            }
-            else {
-                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "下";
-            }
+			item.GetComponent<Image>().color = activeColor;            
+            item.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(181,langId);
+            
             if (Application.loadedLevelName == "tutorialBusyo") {
                 GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = 0.ToString();
             }else {
@@ -534,12 +510,9 @@ public class BusyoStatusButton : MonoBehaviour {
 		}else if(requiredItemTyp=="middle"){
 			//Red
 			Color activeColor = new Color (236f / 255f, 93f / 255f, 93f / 255f, 255f / 255f);
-			item.GetComponent<Image>().color = activeColor;
-            if (langId == 2) {
-                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "Mid";
-            }else {
-                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "中";
-            }
+			item.GetComponent<Image>().color = activeColor;            
+            item.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(182,langId);
+            
 			GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = itemList[1];
 			DoCyouhei.GetComponent<DoCyouhei>().nowItem = int.Parse(itemList[1]);
 			//Shortage
@@ -553,11 +526,8 @@ public class BusyoStatusButton : MonoBehaviour {
 			//Gold
 			Color activeColor = new Color (207f / 255f, 232f / 255f, 95f / 255f, 255f / 255f);
 			item.GetComponent<Image>().color = activeColor;
-            if (langId == 2) {
-                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "High";
-            }else {
-                item.transform.Find("CyouheiRank").GetComponent<Text>().text = "上";
-            }
+            item.transform.Find("CyouheiRank").GetComponent<Text>().text = Message.getMessage(183,langId);
+            
 			GameObject.Find ("CurrentChigyouValue").GetComponent<Text>().text = itemList[2];
 			DoCyouhei.GetComponent<DoCyouhei>().nowItem = int.Parse(itemList[2]);
 			

@@ -53,7 +53,10 @@ public class Ninmei : MonoBehaviour {
 				pop.commonPopup (19);
                 if (langId==2) {
                     GameObject.Find ("popText").GetComponent<Text> ().text = "Feudatory";
-                }else {
+                }else if(langId==3) {
+                    GameObject.Find("popText").GetComponent<Text>().text = "任命城主";
+                }
+                else {
                     GameObject.Find("popText").GetComponent<Text>().text = "城主任命";
                 }
 				//Set Scroll View
@@ -137,7 +140,7 @@ public class Ninmei : MonoBehaviour {
             }else{
 				audioSources [4].Play ();
 				Message msg = new Message();
-				msg.makeMessage(msg.getMessage(119));
+				msg.makeMessage(msg.getMessage(119,langId));
 			}
 		} else {
 			audioSources [0].Play ();
@@ -173,12 +176,18 @@ public class Ninmei : MonoBehaviour {
                 if (langId == 2) {
                     msgText = "My lord, do you want to resign the lord of this country?";
                 }
+                else if (langId == 3) {
+                    msgText = "主公，是否要将自己从城主任上解任？";
+                }
                 else {
                     msgText = "御館様、自らを城主から解任なさいますか？";
                 }
             } else {
                 if (langId == 2) {
                     msgText = "My lord, do you want to remove " + jyosyuName + " from the lord of this country?";
+                }
+                else if (langId == 3) {
+                    msgText = "主公，是否要解任" + jyosyuName + "的城主一职？";
                 }
                 else {
                     msgText = "御館様、" + jyosyuName + "殿を城主から解任なさいますか？";

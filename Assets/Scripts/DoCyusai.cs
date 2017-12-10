@@ -40,7 +40,10 @@ public class DoCyusai : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 OKtext = "Friendship between " + daimyoName + " and " + daimyoName2 + " increased " + upYukoudo.ToString() + " point.";
-            }else {
+            }
+            else if (langId == 3) {
+                OKtext = daimyoName + "大人和" + daimyoName2 + "大人的关系上升了" + upYukoudo.ToString() + "。";
+            } else {
                 OKtext = daimyoName + "殿と" + daimyoName2 + "殿の友好関係が" + upYukoudo.ToString() + "上昇しましたぞ。";
             }
 			msg.makeMessageOnBoard (OKtext);

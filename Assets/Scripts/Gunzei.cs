@@ -118,7 +118,11 @@ public class Gunzei : MonoBehaviour {
                     string syouhai = "";                   
                     if (langId == 2) {
                         syouhai = srcDaimyoName + "\n" + "Conquered " + dstKuniName;
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        syouhai = srcDaimyoName + "\n已攻略" + dstKuniName;
+                    }
+                    else {
                         syouhai = srcDaimyoName + "\n" + dstKuniName + "を攻略";
                     }
 					MsgBack.GetComponent<Image> ().enabled = true;
@@ -133,7 +137,11 @@ public class Gunzei : MonoBehaviour {
                     string syouhai = "";
                     if (langId == 2) {
                         syouhai = dstDaimyoName + "\n" + "Defended " + dstKuniName;
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        syouhai = dstDaimyoName + "\n已防卫" + dstKuniName;
+                    }
+                    else {
                         syouhai = dstDaimyoName + "\n" + dstKuniName + "を防衛";
                     }
                     MsgBack.GetComponent<Image> ().enabled = true;
@@ -156,7 +164,7 @@ public class Gunzei : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 syouhai = srcDaimyoName + " withdrawed";
-            }else {
+            }else { // same as china
                 syouhai = srcDaimyoName + "撤退";
             }
             MsgBack.GetComponent<Image> ().enabled = true;
@@ -289,7 +297,11 @@ public class Gunzei : MonoBehaviour {
                 
                 if (langId == 2) {
                     metsubouText = dstDaimyoName + " was destroyed completly by " + srcDaimyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    metsubouText = dstDaimyoName + "被" + srcDaimyoName + "灭亡了";
+                }
+                else {
                     metsubouText = dstDaimyoName + "は" + srcDaimyoName + "に滅ぼされました";
                 }
 

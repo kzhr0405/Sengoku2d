@@ -13,8 +13,8 @@ public class DoShisyaBack : MonoBehaviour {
 		if (name == "YesButton") {
 			audioSources [0].Play ();
 			PlayerPrefs.DeleteKey("shisyaFlg");
-
-			GameObject content = GameObject.Find ("Content").gameObject;
+            int langId = PlayerPrefs.GetInt("langId");
+            GameObject content = GameObject.Find ("Content").gameObject;
 			DoShisya doShisyaScript = new DoShisya ();
 			foreach (Transform slotObj in content.transform) {
 				int shisyaId = slotObj.GetComponent<ShisyaSelect> ().shisyaId;
@@ -40,7 +40,7 @@ public class DoShisyaBack : MonoBehaviour {
 				} else if (shisyaId == 12) {
 					string msg = doShisyaScript.rejectBoueirei (slotObj.gameObject);
 				} else if (shisyaId == 13) {
-					string msg = doShisyaScript.rejectSyogunApproval (slotObj.gameObject);
+					string msg = doShisyaScript.rejectSyogunApproval (slotObj.gameObject, langId);
 				} else if (shisyaId == 14) {
 					string msg = doShisyaScript.rejectMusin (slotObj.gameObject, true);
 				} else if (shisyaId == 15) {

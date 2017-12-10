@@ -13,7 +13,10 @@ public class TouyouController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		int busyoDama = PlayerPrefs.GetInt("busyoDama");
-		GameObject.Find ("BusyoDamaValue").GetComponent<Text> ().text = busyoDama.ToString();
+        int langId = PlayerPrefs.GetInt("langId");
+        Message msg = new Message();
+
+        GameObject.Find ("BusyoDamaValue").GetComponent<Text> ().text = busyoDama.ToString();
 
 		//QA
 		GameObject.Find("FreeQuestion").GetComponent<QA>().qaId = 9;
@@ -61,8 +64,7 @@ public class TouyouController : MonoBehaviour {
 
 		    } else {
 			    //View Message for only 1st time
-			    Message msg = new Message();
-                string Text = msg.getMessage(53);
+                string Text = msg.getMessage(53,langId);
 			    msg.makeMessage(Text);
 			    GameObject messageObj = GameObject.Find ("MessageObject");
 			    messageObj.transform.SetParent(GameObject.Find ("CenterView").transform);
@@ -73,8 +75,7 @@ public class TouyouController : MonoBehaviour {
 		    }
         }else {
             //View Message for only 1st time
-            Message msg = new Message();
-            string Text = msg.getMessage(53);
+            string Text = msg.getMessage(53,langId);
             msg.makeMessage(Text);
             GameObject messageObj = GameObject.Find("MessageObject");
             messageObj.transform.SetParent(GameObject.Find("CenterView").transform);

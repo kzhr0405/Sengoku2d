@@ -29,6 +29,7 @@ public class PvPTimer : MonoBehaviour {
 
     Text timerTxt;
     public bool engFlg = false;
+    public bool chnFlg = false;
     private bool resetFlag = true;
     
     void Awake() {
@@ -36,8 +37,10 @@ public class PvPTimer : MonoBehaviour {
 
         timerTxt = GameObject.Find("Timer").GetComponent<Text>();
         int langId = PlayerPrefs.GetInt("langId");
-        if (langId == 2) {
+        if (langId == 2 ) {
             engFlg = true;
+        }else if(langId==3){
+            chnFlg = true;
         }
     }
 
@@ -183,7 +186,12 @@ public class PvPTimer : MonoBehaviour {
             if (engFlg) {
                 displayTime = time.Days + "d " + time.Hours + "h " + time.Minutes + "m " + time.Seconds + "s";
             }else {
-                displayTime = time.Days + "日 " + time.Hours + "時間 " + time.Minutes + "分 " + time.Seconds + "秒";
+                if(chnFlg) {
+                    displayTime = time.Days + "日 " + time.Hours + "时 " + time.Minutes + "分 " + time.Seconds + "秒";
+                }
+                else {
+                    displayTime = time.Days + "日 " + time.Hours + "時間 " + time.Minutes + "分 " + time.Seconds + "秒";
+                }
             }
             timerTxt.text = displayTime;
 

@@ -22,12 +22,9 @@ public class DoTsuihouConfirm : MonoBehaviour {
         if (busyoId == daimyoBusyoId.ToString ()) {
 			audioSources [4].Play ();
 			Message msgNoBtn = new Message();
-            string text = "";            
-            if (langId == 2) {
-                text = "My lord, why will you banish yourself?";
-            }else {
-                text = "御屋形様、ご自身を追放されるとは\nどういうおつもりですか。";
-            }
+            string text = "";                        
+            text = msgNoBtn.getMessage(231,langId);
+            
 			msgNoBtn.makeMessage(text);
 
 		} else {
@@ -37,7 +34,7 @@ public class DoTsuihouConfirm : MonoBehaviour {
                 //Error
                 audioSources[4].Play();
                 Message errorMsg = new Message();
-                errorMsg.makeMessage(errorMsg.getMessage(138));
+                errorMsg.makeMessage(errorMsg.getMessage(138,langId));
 
             }else {
                 
@@ -68,7 +65,10 @@ public class DoTsuihouConfirm : MonoBehaviour {
                 //Message Text Mod
                 if (langId == 2) {
                     msgText = "My lord, do you want to banish "+busyoName+"?";
-                }else {
+                }else if(langId==3) {
+                    msgText = "主公，真的要流放" + busyoName + "吗？";
+                }
+                else {
                     msgText = "御屋形様、誠に"+busyoName+"を追放なさるのですか？";
                 }
                 msgObj.GetComponent<Text> ().text = msgText;

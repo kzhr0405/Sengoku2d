@@ -104,7 +104,8 @@ public class StartSimpleKassen : MonoBehaviour {
             audioSources[4].Play();
 
             Message msg = new Message();
-            msg.makeMeshMessage(msg.getMessage(7));
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMeshMessage(msg.getMessage(7,langId));
         }
     }
 }

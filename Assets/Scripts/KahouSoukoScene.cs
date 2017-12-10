@@ -43,6 +43,8 @@ public class KahouSoukoScene : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             itemView.transform.Find ("ItemNameValue").GetComponent<Text> ().text = "Select Item";
+        }else if(langId==3) {
+            itemView.transform.Find("ItemNameValue").GetComponent<Text>().text = "选择家宝";
         }else {
             itemView.transform.Find("ItemNameValue").GetComponent<Text>().text = "家宝選択";
         }

@@ -13,19 +13,19 @@ public class BouryakuMenu : MonoBehaviour {
 
 		//SE
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+        Message msg = new Message();
 
-
-		//Shinobi Check
-		int shinobiGe = PlayerPrefs.GetInt ("shinobiGe");
+        //Shinobi Check
+        int shinobiGe = PlayerPrefs.GetInt ("shinobiGe");
 		int shinobiCyu = PlayerPrefs.GetInt ("shinobiCyu");
 		int shinobiJyo = PlayerPrefs.GetInt ("shinobiJyo");
 
 		int total = shinobiGe + shinobiCyu + shinobiJyo;
+        int langId = PlayerPrefs.GetInt("langId");
 
-		if (total == 0) {
+        if (total == 0) {
 			audioSources [4].Play ();
-			Message msg = new Message ();
-			msg.makeMessage (msg.getMessage(13));
+			msg.makeMessage (msg.getMessage(13, langId));
 
 		}else{
 
@@ -35,16 +35,13 @@ public class BouryakuMenu : MonoBehaviour {
 			int nowHyourou = PlayerPrefs.GetInt ("hyourou");
 			bool hyourouOKflg = false;
 
-			int daimyoId = GameObject.Find ("close").GetComponent<CloseBoard>().daimyoId;
-            int langId = PlayerPrefs.GetInt("langId");
+			int daimyoId = GameObject.Find ("close").GetComponent<CloseBoard>().daimyoId;            
 
             if (name == "Cyouhou") {
-				audioSources [0].Play ();                
-                if (langId == 2) {
-                    GameObject.Find ("kuniName").GetComponent<Text> ().text = "Spy";
-                }else {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "諜報";
-                }
+				audioSources [0].Play ();
+
+                GameObject.Find("kuniName").GetComponent<Text>().text = msg.getMessage(204, langId);
+                
 				OffBouryakuMenuList();
 				
 				string path = "Prefabs/Map/bouryaku/bouryakuObj";
@@ -53,13 +50,8 @@ public class BouryakuMenu : MonoBehaviour {
 				obj.transform.localScale = new Vector3 (1, 1, 1);
 				GameObject btn = obj.transform.Find("DoBouryakuBtn").gameObject;
 				btn.name = "DoCyouhouBtn";
-
-                if (langId == 2) {
-                    btn.transform.Find("Text").GetComponent<Text>().text = "Spy";
-                }
-                else {
-                    btn.transform.Find("Text").GetComponent<Text>().text = "諜報";
-                }
+                
+                btn.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(204, langId);
                 shinobiScroll(obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
 				GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
@@ -70,20 +62,14 @@ public class BouryakuMenu : MonoBehaviour {
 				bool remain1DaimyoFlg = daimyo.checkRemain1DaimyoOnMain (myDaimyo);
 				if (remain1DaimyoFlg) {
 					audioSources [4].Play ();
-
-					Message msg = new Message ();
-					msg.makeMessage (msg.getMessage(14));
+					
+					msg.makeMessage (msg.getMessage(14, langId));
                     close.layer = close.layer - 1;
 
                 } else {
 					audioSources [0].Play ();
 
-
-                    if (langId == 2) {
-                        GameObject.Find("kuniName").GetComponent<Text>().text = "Bad Rumor";
-                    }else {
-                        GameObject.Find("kuniName").GetComponent<Text>().text = "流言";
-                    }
+                    GameObject.Find("kuniName").GetComponent<Text>().text = msg.getMessage(205, langId);
                     OffBouryakuMenuList ();
 
 					string path = "Prefabs/Map/bouryaku/bouryakuObj";
@@ -92,27 +78,16 @@ public class BouryakuMenu : MonoBehaviour {
 					obj.transform.localScale = new Vector3 (1, 1, 1);
 					GameObject btn = obj.transform.Find ("DoBouryakuBtn").gameObject;
 					btn.name = "DoRyugenBtn";
+                    btn.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(205, langId);
 
-                    if (langId == 2) {
-                        btn.transform.Find("Text").GetComponent<Text>().text = "Bad Rumor";
-                    }
-                    else {
-                        btn.transform.Find("Text").GetComponent<Text>().text = "流言";
-                    }
                     shinobiScroll (obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
 					GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
 				}
 			} else if (name == "Goudatsu") {
 				audioSources [0].Play ();
-
-
-                if (langId == 2) {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "Theft";
-                }
-                else {
-                    GameObject.Find("kuniName").GetComponent<Text>().text = "強奪";
-                }
+                
+                GameObject.Find("kuniName").GetComponent<Text>().text = msg.getMessage(206, langId);
                 OffBouryakuMenuList();
 				
 				string path = "Prefabs/Map/bouryaku/bouryakuObj";
@@ -121,13 +96,8 @@ public class BouryakuMenu : MonoBehaviour {
 				obj.transform.localScale = new Vector3 (1, 1, 1);
 				GameObject btn = obj.transform.Find("DoBouryakuBtn").gameObject;
 				btn.name = "DoGoudatsuBtn";
+                btn.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(206, langId);
 
-                if (langId == 2) {
-                    btn.transform.Find("Text").GetComponent<Text>().text = "Theft";
-                }
-                else {
-                    btn.transform.Find("Text").GetComponent<Text>().text = "強奪";
-                }
                 shinobiScroll(obj, shinobiGe, shinobiCyu, shinobiJyo, btn);
 
 				GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
@@ -148,12 +118,8 @@ public class BouryakuMenu : MonoBehaviour {
 					audioSources [0].Play ();
 
                     //Menu Handling
-                    if (langId == 2) {
-                        GameObject.Find("kuniName").GetComponent<Text>().text = "Misreport";
-                    }
-                    else {
-                        GameObject.Find("kuniName").GetComponent<Text>().text = "偽報";
-                    }
+                    GameObject.Find("kuniName").GetComponent<Text>().text = msg.getMessage(207, langId);
+
                     OffBouryakuMenu ();
 
 					string path = "Prefabs/Map/bouryaku/GihouObj";
@@ -168,6 +134,8 @@ public class BouryakuMenu : MonoBehaviour {
 					string kuniName = kuni.getKuniName(dstKuni,langId);
                     if (langId == 2) {
                         obj.transform.Find("GunzeiInfo").transform.Find("DaimyoNameValue").GetComponent<Text>().text = "To "+ kuniName;
+                    }else if (langId == 3) {
+                        obj.transform.Find("GunzeiInfo").transform.Find("DaimyoNameValue").GetComponent<Text>().text = "向" + kuniName + "进军中";
                     }else {
                         obj.transform.Find("GunzeiInfo").transform.Find("DaimyoNameValue").GetComponent<Text>().text = kuniName + "に進軍中";
                     }
@@ -181,10 +149,8 @@ public class BouryakuMenu : MonoBehaviour {
 					GameObject.Find ("return").GetComponent<MenuReturn> ().layer2 = obj;
 
 				}else{
-					audioSources [4].Play ();
-
-					Message msg = new Message();
-					msg.makeMessage (msg.getMessage(15));
+					audioSources [4].Play ();                    
+					msg.makeMessage (msg.getMessage(15, langId));
 					close.layer = close.layer - 1;
 				}
 			}
@@ -192,21 +158,16 @@ public class BouryakuMenu : MonoBehaviour {
 	}
 
 
-	public void makeUnderObject(string btnName){
+	public void makeUnderObject(string btnName, int langId){
 		string path = "Prefabs/Map/bouryaku/bouryakuObj";
 		GameObject obj= Instantiate (Resources.Load (path)) as GameObject;
 		obj.transform.SetParent (GameObject.Find ("smallBoard(Clone)").transform);
 		obj.transform.localScale = new Vector3 (1, 1, 1);
 		GameObject btn = obj.transform.Find("DoBouryakuBtn").gameObject;
 		btn.name = btnName;
-
+        Message msg = new Message();
 		if (btnName == "DoRyugenBtn") {
-            int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                btn.transform.Find ("Text").GetComponent<Text> ().text = "Misreport";
-            }else {
-                btn.transform.Find("Text").GetComponent<Text>().text = "流言";
-            }
+            btn.transform.Find("Text").GetComponent<Text>().text = msg.getMessage(205, langId);            
 		}
 	}
 
@@ -214,8 +175,8 @@ public class BouryakuMenu : MonoBehaviour {
 	public void shinobiScroll(GameObject obj, int shinobiGe, int shinobiCyu, int shinobiJyo, GameObject btn){
 		string slotPath = "Prefabs/Map/common/ShinobiSlot";
 		string shinobiItemPath = "Prefabs/Item/Shinobi/Shinobi";
-		
-		GameObject content = obj.transform.Find("ScrollView").transform.Find("Content").gameObject;
+        Message msg = new Message();
+        GameObject content = obj.transform.Find("ScrollView").transform.Find("Content").gameObject;
 		bool clickFlg = false;
         int langId = PlayerPrefs.GetInt("langId");
         if (shinobiGe!=0){
@@ -230,11 +191,7 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			Color lowColor = new Color (0f / 255f, 0f / 255f, 219f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = lowColor;
-            if (langId == 2) {
-                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Low";
-            } else {
-                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "下";
-            }
+            shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(181, langId);            
 			shinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiGe.ToString();
 
             RectTransform shinobiTransform = shinobi.transform.Find("Shinobi").GetComponent<RectTransform> ();
@@ -264,13 +221,9 @@ public class BouryakuMenu : MonoBehaviour {
 			shinobi.transform.localScale = new Vector3 (1, 1, 1);
 			
 			Color midColor = new Color (94f / 255f, 0f / 255f, 0f / 255f, 255f / 255f);
-			shinobi.GetComponent<Image>().color = midColor;
-            if (langId == 2) {
-                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "Mid";
-            }
-            else {
-                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "中";
-            }
+			shinobi.GetComponent<Image>().color = midColor;            
+            shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(182, langId);
+            
             shinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiCyu.ToString();
 			
 			RectTransform shinobiTransform = shinobi.transform.Find("Shinobi").GetComponent<RectTransform> ();
@@ -302,12 +255,8 @@ public class BouryakuMenu : MonoBehaviour {
 			
 			Color highColor = new Color (84f / 255f, 103f / 255f, 0f / 255f, 255f / 255f);
 			shinobi.GetComponent<Image>().color = highColor;
-            if (langId == 2) {
-                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "High";
-            }
-            else {
-                shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = "上";
-            }
+            shinobi.transform.Find("ShinobiRank").GetComponent<Text>().text = msg.getMessage(183, langId);
+            
             shinobi.transform.Find("Qty").GetComponent<Text>().text = shinobiJyo.ToString();
 			
 			RectTransform shinobiTransform = shinobi.transform.Find("Shinobi").GetComponent<RectTransform> ();

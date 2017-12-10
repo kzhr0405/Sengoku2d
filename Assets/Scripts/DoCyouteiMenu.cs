@@ -18,8 +18,9 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 		int nowPoint = PlayerPrefs.GetInt ("cyouteiPoint");
 		Message msg = new Message ();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		if (name == "DoKenjyoButton") {
+        if (name == "DoKenjyoButton") {
 			audioSources [3].Play ();
 
 			//Reduce Action Qty 
@@ -71,7 +72,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 			GameObject menu = GameObject.Find ("MenuKenjyo").gameObject;
 			menu.transform.Find ("Close").GetComponent<CloseMenu> ().OnClick ();
 
-			serihuScript.mikadoSerihuChanger (msg.getMessage(32));
+			serihuScript.mikadoSerihuChanger (msg.getMessage(32, langId));
 
 		} else if (name == "DoCyouteiButton") {
 
@@ -90,11 +91,11 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 				upYukoudo (addYukoudo);
                 
-				serihuScript.mikadoSerihuChanger (msg.getMessage(33));
+				serihuScript.mikadoSerihuChanger (msg.getMessage(33, langId));
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(34));
+				msg.makeMessage (msg.getMessage(34, langId));
 			}
 
 			GameObject menu = GameObject.Find ("MenuCyoutei").gameObject;
@@ -121,7 +122,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 				
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(34));
+				msg.makeMessage (msg.getMessage(34, langId));
 			}
 
 			GameObject menu = GameObject.Find ("MenuTeisen").gameObject;
@@ -156,7 +157,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 				}
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(34));
+				msg.makeMessage (msg.getMessage(34, langId));
 			}
 			
 			GameObject menu = GameObject.Find ("MenuKanni").gameObject;
@@ -238,10 +239,11 @@ public class DoCyouteiMenu : MonoBehaviour {
 				PlayerPrefs.Flush ();
 
 
-                string OKtext = "";
-                int langId = PlayerPrefs.GetInt("langId");
+                string OKtext = "";                
                 if (langId == 2) {
                     OKtext = "Royal court declared " + targetDaimyoName + " is the enemy.\n friendship with surrounded families decreased.";
+                }else if (langId == 3) {
+                    OKtext = "针对" + targetDaimyoName + "的讨伐敕令已经发出, 其和周边大名的关系显著恶化了。";
                 } else {
                     OKtext = targetDaimyoName + "討伐の勅令が出されました。\n周辺大名との関係が著しく悪化しますぞ。";
                 }
@@ -250,7 +252,7 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(34));
+				msg.makeMessage (msg.getMessage(34, langId));
 			}
 
 			GameObject menu = GameObject.Find ("MenuCyouteki").gameObject;
@@ -273,10 +275,12 @@ public class DoCyouteiMenu : MonoBehaviour {
 				string season = GameObject.Find("SeasonValue").GetComponent<Text>().text;
 				string daimyoBusyoName = GameObject.Find("DaimyoValue").GetComponent<Text>().text;
                 string text = "";
-                int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     text = year + " " + season + "," + daimyoBusyoName + " was assigned syogun.\n You opened shogunate.";
-                }else {
+                }else if(langId==3) {
+                    text = year + "年" + season + "," + daimyoBusyoName + "被任命为征夷大将军，开辟幕府统领天下。";
+                }
+                else {
                     text = year + "年" + season + "," + daimyoBusyoName + "は征夷大将軍に任じられました。\n幕府を開き、天下に号令をかけます。";
                 }
                 msg.makeMessageWithImage(text);
@@ -308,7 +312,7 @@ public class DoCyouteiMenu : MonoBehaviour {
                 
             } else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(34));
+				msg.makeMessage (msg.getMessage(34, langId));
 			}
 
 			GameObject menu = GameObject.Find ("MenuBakuhu").gameObject;
@@ -397,6 +401,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 			PlayerPrefs.SetInt (tempGaikou, newYukoudo);
             if (langId == 2) {
                 cyouteiText = cyouteiText + "Friendship with " + dstDaimyoName + " increased " + addYukoudo + " point\n";
+            }else if(langId==3) {
+                cyouteiText = cyouteiText + "和" + dstDaimyoName + "友好度提升了" + addYukoudo + "。\n";
             }else {
                 cyouteiText = cyouteiText + dstDaimyoName + "との友好度が" + addYukoudo + "上がりました。\n";
             }
@@ -409,7 +415,11 @@ public class DoCyouteiMenu : MonoBehaviour {
         string OKtext = "";
         if (langId == 2) {
             OKtext = "Friendship with surrounded families increased.\n " + cyouteiText;
-        }else {
+        }
+        else if (langId == 3) {
+            OKtext = "和周边大名的友好度会上升。\n " + cyouteiText;
+        }
+        else {
             OKtext = "周辺大名との友好度が上がります。\n " + cyouteiText;
         }
 		msg.makeMessage (OKtext);
@@ -427,8 +437,9 @@ public class DoCyouteiMenu : MonoBehaviour {
 		//Gunzei
 		GameObject gunzeiObj = GameObject.Find ("Teisen").GetComponent<CyouteiMenu> ().targetGunzei;
 		Message msg = new Message ();
+        int langId = PlayerPrefs.GetInt("langId");
 
-		if(percent <= ratio){
+        if (percent <= ratio){
 			//OK
 			audioSources [3].Play ();
 
@@ -463,10 +474,14 @@ public class DoCyouteiMenu : MonoBehaviour {
 			//Message
 			string daimyoName = gunzeiObj.GetComponent<Gunzei>().srcDaimyoName;
             string OKtext = "";
-            int langId = PlayerPrefs.GetInt("langId");
+            
             if (langId == 2) {
                 OKtext = "Royal Court successfully requested a ceasefire.\n " + daimyoName + "'s army was withdrawn.";
-            }else {
+            }
+            else if (langId == 3) {
+                OKtext = "朝廷的停战要求成功了, \n " + daimyoName + "的军队撤退了。";
+            }
+            else {
                 OKtext = "朝廷が停戦要請に成功しました。\n " + daimyoName + "の軍勢が退却します。";
             }
 			msg.makeMessage (OKtext);
@@ -476,14 +491,14 @@ public class DoCyouteiMenu : MonoBehaviour {
 
 			PlayerPrefs.Flush();
 
-			serihuScript.mikadoSerihuChanger(msg.getMessage(35));
+			serihuScript.mikadoSerihuChanger(msg.getMessage(35, langId));
 		}else{
 			//NG
 			audioSources [4].Play ();
 
 			//Message
-			msg.makeMessage (msg.getMessage(36));
-            serihuScript.mikadoSerihuChanger(msg.getMessage(37));
+			msg.makeMessage (msg.getMessage(36, langId));
+            serihuScript.mikadoSerihuChanger(msg.getMessage(37,langId));
 		}
 
 		return successFlg;
@@ -548,8 +563,8 @@ public class DoCyouteiMenu : MonoBehaviour {
 		
 		//Kanni
 		Message msg = new Message ();
-		
-		if(percent <= ratio){
+        int langId = PlayerPrefs.GetInt("langId");
+        if (percent <= ratio){
 			//OK
 			successFlg = true;
 			audioSources [3].Play ();
@@ -563,24 +578,27 @@ public class DoCyouteiMenu : MonoBehaviour {
 
             //Message
             string OKtext = "";
-            int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 OKtext = "Congratulations.\n" + "My lord was assigned " + kanniName + ".";
-            }else {
+            }
+            else if (langId == 3) {
+                OKtext = "恭喜恭喜, 已叙任" + kanniName + "。";
+            }
+            else {
                 OKtext = "祝着至極に存じます。\n" + kanniName + "が叙位されましたぞ。";
             }
 			msg.makeMessage (OKtext);
 			PlayerPrefs.Flush();
 
-			serihuScript.mikadoSerihuChanger(msg.getMessage(38));
+			serihuScript.mikadoSerihuChanger(msg.getMessage(38, langId));
 			
 		}else{
 			//NG
 			audioSources [4].Play ();
 			//Message
-			msg.makeMessage (msg.getMessage(39));
+			msg.makeMessage (msg.getMessage(39, langId));
 
-			serihuScript.mikadoSerihuChanger(msg.getMessage(40));
+			serihuScript.mikadoSerihuChanger(msg.getMessage(40, langId));
 		}
 
 		return successFlg;

@@ -82,8 +82,8 @@ public class JinkeiConfirmButton : MonoBehaviour {
             //Application.LoadLevel("tutorialMain");
             Application.LoadLevel("tutorialKassen");
 
-        } else { 
-        
+        } else {
+            int langId = PlayerPrefs.GetInt("langId");
 
             //Check for Existing
             string busyoQty = GameObject.Find ("jinkeiQtyValue").GetComponent<Text> ().text;
@@ -92,7 +92,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
                 audioSources[4].Play();
 
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(134));
+                msg.makeMessage(msg.getMessage(134, langId));
 
             }else {
                 int busyoLimitQty = int.Parse(GameObject.Find("jinkeiLimitValue").GetComponent<Text>().text);
@@ -102,7 +102,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
                     audioSources[4].Play();
 
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(139));
+                    msg.makeMessage(msg.getMessage(139, langId));
 
                 }else {
                     bool hardFlg = PlayerPrefs.GetBool("hardFlg");
@@ -124,7 +124,7 @@ public class JinkeiConfirmButton : MonoBehaviour {
                         audioSources[4].Play();
 
                         Message msg = new Message();
-                        msg.makeMessage(msg.getMessage(144));
+                        msg.makeMessage(msg.getMessage(144, langId));
 
                     }else {
                         audioSources[5].Play();

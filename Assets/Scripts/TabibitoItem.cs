@@ -13,9 +13,10 @@ public class TabibitoItem : MonoBehaviour {
 
 		if (name == "YesButton") {
 			Message msg = new Message ();
+            int langId = PlayerPrefs.GetInt("langId");
 
-			//check
-			int meiseiItem = PlayerPrefs.GetInt ("meisei");
+            //check
+            int meiseiItem = PlayerPrefs.GetInt ("meisei");
 			if (meiseiItem >= 1) {
 				audioSources [3].Play ();
 
@@ -45,11 +46,11 @@ public class TabibitoItem : MonoBehaviour {
 				MainStageController main = new MainStageController ();
 				main.questExtension ();
 
-				msg.makeMessage (msg.getMessage(121));
+				msg.makeMessage (msg.getMessage(121, langId));
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(120));
+				msg.makeMessage (msg.getMessage(120, langId));
 			}
 		} else {
 			audioSources [1].Play ();

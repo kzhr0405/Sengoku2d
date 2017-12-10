@@ -125,7 +125,11 @@ public class KousakuConfirm : MonoBehaviour {
                     if (langId == 2) {
                         scrollObj.transform.Find("Text").GetComponent<Text>().text = "Win Over";
                         scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "Win Over";
-                    }else {
+                    }else if(langId==3) {
+                        scrollObj.transform.Find("Text").GetComponent<Text>().text = "调略";
+                        scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "调略";
+                    }
+                    else {
                         scrollObj.transform.Find("Text").GetComponent<Text>().text = "調略";
                         scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "調略";
                     }
@@ -135,7 +139,12 @@ public class KousakuConfirm : MonoBehaviour {
                     if (langId == 2) {
                         scrollObj.transform.Find("Text").GetComponent<Text>().text = "Link Cut";
                         scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "Cut";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        scrollObj.transform.Find("Text").GetComponent<Text>().text = "切断联络线";
+                        scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "切断";
+                    }
+                    else {
                         scrollObj.transform.Find("Text").GetComponent<Text>().text = "連絡線遮断";
                         scrollObj.transform.Find("Do").transform.Find("Text").GetComponent<Text>().text = "遮断";
                     }
@@ -144,12 +153,12 @@ public class KousakuConfirm : MonoBehaviour {
 
 			}else{
 				audioSources [4].Play();
-				msg.makeUpperMessageOnBoard (msg.getMessage(8));
+				msg.makeUpperMessageOnBoard (msg.getMessage(8, langId));
 			}
 
 		} else {
 			audioSources [4].Play();
-			msg.makeUpperMessageOnBoard (msg.getMessage(51));
+			msg.makeUpperMessageOnBoard (msg.getMessage(51,langId));
 		}
 	}
 }

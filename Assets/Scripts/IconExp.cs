@@ -38,6 +38,8 @@ public class IconExp : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     text = serihuMst.param[int.Parse(busyoId) - 1].touyouMsgEng;
+                }else if(langId == 3) {
+                    text = serihuMst.param[int.Parse(busyoId) - 1].touyouMsgSChn;
                 }else {
                     text = serihuMst.param[int.Parse(busyoId) - 1].touyouMsg;
                 }
@@ -45,6 +47,8 @@ public class IconExp : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     text = serihuMst.param[int.Parse(busyoId) - 1].senpouMsgEng;
+                }else if (langId == 3) {
+                    text = serihuMst.param[int.Parse(busyoId) - 1].senpouMsgSChn;
                 }else {
                     text = serihuMst.param[int.Parse(busyoId) - 1].senpouMsg;
                 }

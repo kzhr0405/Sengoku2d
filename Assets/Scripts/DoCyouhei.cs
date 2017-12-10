@@ -16,13 +16,14 @@ public class DoCyouhei : MonoBehaviour {
 	public int requiredMoney;
 
 	public void OnClick () {
-		Message msg = new Message(); 
-		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
+		Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
+        AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (itemOK == false || moneyOK == false) {
 			//Error
 			audioSources [4].Play ();
-			msg.makeMessage(msg.getMessage(52));
+			msg.makeMessage(msg.getMessage(52,langId));
 
 		} else {
 			audioSources [3].Play ();
@@ -85,10 +86,12 @@ public class DoCyouhei : MonoBehaviour {
 			//Message
 			string busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
             string OKtext = "";
-            int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 OKtext =busyoName+" recruited new soldiers.";
-            }else {
+            }else if(langId==3) {
+                OKtext = "对" + busyoName + "队实行了征兵。";
+            }
+            else {
                 OKtext = busyoName + "隊にて徴兵を実施しました。";
             }
 			msg.makeMessage(OKtext);

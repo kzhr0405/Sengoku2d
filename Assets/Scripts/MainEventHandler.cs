@@ -388,13 +388,19 @@ public class MainEventHandler : MonoBehaviour {
 									if(!dstEngunFlg){
                                         if (langId==2) {
                                             kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " by " + myHei + " soldiers";
-                                        }else { 
+                                        }else if(langId==3) {
+                                            kassenText = srcDaimyoName + "起兵" + myHei + "讨伐" + dstDaimyoName + "。";
+                                        }
+                                        else { 
                                             kassenText = srcDaimyoName + "が" + dstDaimyoName + "討伐の兵" + myHei + "人を起こしました。";
                                         }
                                     }else{
                                         if (langId==2) {
                                             kassenText = srcDaimyoName + " is attacking " + dstDaimyoName + " by " + myHei + " soldiers. Defender's allianced country is coming to support by " + totalEngunHei + " soldiers"; ;
-                                        }else {
+                                        }
+                                        else if (langId == 3) {
+                                            kassenText = srcDaimyoName + "起兵" + myHei + "讨伐" + dstDaimyoName + "，防守一方的同盟国派出援军" + totalEngunHei + "人防御。";
+                                        } else {
                                             kassenText = srcDaimyoName + "が" + dstDaimyoName + "討伐の兵" + myHei + "人を起こしました。防衛側の同盟国が援軍" + totalEngunHei + "人を派兵しました。";
                                         }
                                     }
@@ -618,7 +624,10 @@ public class MainEventHandler : MonoBehaviour {
                                     string yukouUpText = "";
                                     if (langId == 2) {
                                         yukouUpText = srcDaimyoName + " gave gift to " + dstDaimyoName + ". Friendship increased " + addYukoudo + " point";
-                                    }else {
+                                    }
+                                    else if (langId == 3) {
+                                        yukouUpText = srcDaimyoName + "向" + dstDaimyoName + "进献贡物，友好度上升了" + addYukoudo + "。";
+                                    } else {
                                         yukouUpText = srcDaimyoName + "が" + dstDaimyoName + "に貢物をしました。友好度が" + addYukoudo + "上がります。";
                                     }
                                     upDaimyo1List.Add(srcDaimyoId);
@@ -653,7 +662,10 @@ public class MainEventHandler : MonoBehaviour {
                                     string yukouDownText = "";
                                     if (langId == 2) {
                                         yukouDownText = "Someone spread bad rumor between your country and " + dstDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
-                                    }else {
+                                    }
+                                    else if (langId == 3) {
+                                        yukouDownText = "不知何人在本家和" + dstDaimyoName + "之间散布流言，友好度下降了" + reduceYukoudo + "。";
+                                    } else {
                                         yukouDownText = "何者かが当家と" + dstDaimyoName + "間に流言を流し、友好度が" + reduceYukoudo + "下がりました。";
                                     }
                                     messageList.Add (yukouDownText);
@@ -667,7 +679,10 @@ public class MainEventHandler : MonoBehaviour {
                                     string yukouDownText = "";
                                     if (langId == 2) {
                                         yukouDownText = "Someone spread bad rumor between " + dst1stDaimyoName + " and " + dst2ndDaimyoName + ". Friendship decreased " + reduceYukoudo + " point";
-                                    }else {
+                                    }
+                                    else if (langId == 3) {
+                                        yukouDownText = "不知何人在" + dst1stDaimyoName + "和" + dst2ndDaimyoName + "之间散布流言，友好度下降了" + reduceYukoudo + "。";
+                                    } else {
                                        yukouDownText = "何者かが" + dst1stDaimyoName + "と" + dst2ndDaimyoName + "間に流言を流し、友好度が" + reduceYukoudo + "下がりました。";
                                     }
                                     messageList.Add (yukouDownText);
@@ -847,7 +862,11 @@ public class MainEventHandler : MonoBehaviour {
                                     string yukouUpText = "";
                                     if (langId == 2) {
                                         yukouUpText = maxDaimyoName + " was assigned to shogun. New shogunate has been opened.";
-                                    }else {
+                                    }
+                                    else if (langId == 3) {
+                                        yukouUpText = maxDaimyoName + "大人就任征夷大将军，并开辟了新的幕府。";
+                                    }
+                                    else {
                                         yukouUpText = maxDaimyoName + "殿が征夷大将軍に任命されました。新たな幕府が開かれます。";
                                     }
                                     messageList.Add (yukouUpText);
@@ -856,7 +875,11 @@ public class MainEventHandler : MonoBehaviour {
                                     if (CheckByProbability(50)) {
                                         if (langId == 2) {
                                             messageList = MakeNonDaimyoShisya(13, "Royal Court Senior Messanger", messageList, 0);
-                                        }else {
+                                        }
+                                        else if (langId == 3) {
+                                            messageList = MakeNonDaimyoShisya(13, "自朝廷而来的重要使者", messageList, 0);
+                                        }
+                                        else {
                                             messageList = MakeNonDaimyoShisya(13, "朝廷より重要な使者", messageList, 0);
                                         }
                                     }
@@ -883,6 +906,9 @@ public class MainEventHandler : MonoBehaviour {
                 //Musin
                 if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(15, "Nobleman", messageList, 0);
+                }
+                else if (langId == 3) {
+                    messageList = MakeNonDaimyoShisya(15, "贵族", messageList, 0);
                 } else {
                     messageList = MakeNonDaimyoShisya(15, "貴族", messageList, 0);
                 }
@@ -890,7 +916,11 @@ public class MainEventHandler : MonoBehaviour {
 			} else if (30 < percent && percent <= 70) {
                 if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(16, "Royal Court Messanger", messageList, 0);
-                }else {
+                }
+                else if (langId == 3) {
+                    messageList = MakeNonDaimyoShisya(16, "自朝廷而来的使者", messageList, 0);
+                }
+                else {
                     messageList = MakeNonDaimyoShisya(16, "朝廷より使者", messageList, 0);
                 }
 			} else if (70 < percent && percent <= 100) {
@@ -908,7 +938,11 @@ public class MainEventHandler : MonoBehaviour {
 
                     if (langId == 2) {
                         messageList = MakeNonDaimyoShisya(17, "Royal Court Messanger", messageList, randomDaimyoId);
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        messageList = MakeNonDaimyoShisya(17, "自朝廷而来的使者", messageList, randomDaimyoId);
+                    }
+                    else {
                         messageList = MakeNonDaimyoShisya(17, "朝廷より使者", messageList, randomDaimyoId);
                     }
                 }
@@ -943,14 +977,22 @@ public class MainEventHandler : MonoBehaviour {
             } else if (40 < percent && percent <= 60) {
                 if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(20, "Monk", messageList, 0);
-                }else {
+                }
+                else if (langId == 3) {
+                    messageList = MakeNonDaimyoShisya(20, "游方僧侣", messageList, 0);
+                }
+                else {
                     messageList = MakeNonDaimyoShisya(20, "遊行中の僧侶", messageList, 0);
                 }
             } else if (60 < percent && percent <= 100) {
 
                 if (langId == 2) {
                     messageList = MakeNonDaimyoShisya(21, "Local samurai", messageList, 0);
-                }else {
+                }
+                else if (langId == 3) {
+                    messageList = MakeNonDaimyoShisya(21, "国人众", messageList, 0);
+                }
+                else {
                     messageList = MakeNonDaimyoShisya(21, "国人衆", messageList, 0);
                 }
             }
@@ -1085,7 +1127,10 @@ public class MainEventHandler : MonoBehaviour {
                 string cyouhouMissText = "";
                 if (langId == 2) {
                     cyouhouMissText = "Your ninja who had been hiding in " + kuniName + " was cought. Friendship with " + daimyoName + " decreased " + reduceYukoudo + " point";
-                }else {
+                }
+                else if (langId == 3) {
+                    cyouhouMissText = "发现在" + kuniName + "中潜伏的忍者，与" + daimyoName + "的友好度下降了" + reduceYukoudo + "。";
+                } else {
                     cyouhouMissText = kuniName + "に潜伏中の忍が見つかりました。" + daimyoName + "との友好度が" + reduceYukoudo + "下がりました。";
                 }
 
@@ -1204,7 +1249,10 @@ public class MainEventHandler : MonoBehaviour {
                                 string doumeiClearText = "";
                                 if (langId == 2) {
                                     doumeiClearText = "Alliance was renounced between " + srcDaimyoName + " and " + dstDaimyoName + " due to deterioration of relationship";
-                                }else {
+                                }
+                                else if (langId == 3) {
+                                    doumeiClearText = "因为友好度恶化，" + srcDaimyoName + "和" + dstDaimyoName + "间的同盟关系解除了。";
+                                } else {
                                     doumeiClearText = "友好度悪化により、" + srcDaimyoName + "と" + dstDaimyoName + "間の同盟が解消しました。";
                                 }
                                 messageList.Add (doumeiClearText);
@@ -1310,7 +1358,11 @@ public class MainEventHandler : MonoBehaviour {
                     string messageText = "";
                     if (langId == 2) {
                         messageText = allClanName + " became the allied powers.";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        messageText = allClanName + "促成诸国联合，形成了针对" + yourClanName + "的包围网。";
+                    }
+                    else {
                         messageText = allClanName + "が連合を結成し、" + yourClanName +"包囲網を敷きました。";
                     }
                     messageList.Add(messageText);
@@ -1812,7 +1864,11 @@ public class MainEventHandler : MonoBehaviour {
                     string doumeiText = "";                    
                     if (langId == 2) {
                         doumeiText = dst1stDaimyoName + " and " + dst2ndDaimyoName + " concluded an alliance";
-                    }else {
+                    }
+                    else if (langId == 3) {
+                        doumeiText = dst1stDaimyoName + "和" + dst2ndDaimyoName + "之间缔结同盟了。";
+                    }
+                    else {
                         doumeiText = dst1stDaimyoName + "と" + dst2ndDaimyoName + "間に同盟が成立しました。";
                     }
                     messageList.Add (doumeiText);
@@ -1843,7 +1899,11 @@ public class MainEventHandler : MonoBehaviour {
             string yukouUpText = "";            
             if (langId == 2) {
                 yukouUpText = srcDaimyoName + "'s messenger has come to see you";
-            }else {
+            }
+            else if (langId == 3) {
+                yukouUpText = srcDaimyoName + "的使者来了。";
+            }
+            else {
                 yukouUpText = srcDaimyoName + "殿の使者が参っております。";
             }
             messageList.Add (yukouUpText);
@@ -1868,7 +1928,12 @@ public class MainEventHandler : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             yukouUpText = doumeiDaimyoName + "'s messanger has come to see you";
-        }else {
+        }
+        else if (langId == 3) {
+            yukouUpText = doumeiDaimyoName + "的使者来了。";
+
+        }
+        else {
             yukouUpText = doumeiDaimyoName + "殿の使者が参っております。";
         }
         messageList.Add (yukouUpText);
@@ -1892,7 +1957,12 @@ public class MainEventHandler : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             yukouUpText = enemyDaimyoName + "'s messanger has come to see you";
-        }else {
+        }
+        else if (langId == 3) {
+            yukouUpText = enemyDaimyoName + "的使者来了。";
+
+        }
+        else {
             yukouUpText = enemyDaimyoName + "殿の使者が参っております。";
         }
 		messageList.Add (yukouUpText);
@@ -1917,6 +1987,10 @@ public class MainEventHandler : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             yukouUpText = syogunDaimyoName + "'s messanger has come to see you";
+        }
+        else if (langId == 3) {
+            yukouUpText = syogunDaimyoName + "的使者来了。";
+
         }
         else {
             yukouUpText = syogunDaimyoName + "殿の使者が参っております。";
@@ -1943,7 +2017,11 @@ public class MainEventHandler : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             yukouUpText = name + " has come to see you";
-        }else {
+        }
+        else if (langId == 3) {
+            yukouUpText = name + "来了。";
+        }
+        else {
             yukouUpText = name + "が参っております。";
         }
 		messageList.Add (yukouUpText);
@@ -2173,7 +2251,11 @@ public class MainEventHandler : MonoBehaviour {
         //Msg
         if (langId == 2) {
             msg = "Local samurai raised rebellion against you in " + dstKuniName + " and " + srcDaimyoName + " sent " + myHei + " to support them.";
-        }else {
+        }
+        else if (langId == 3) {
+            msg = dstKuniName + "发生一揆，" + srcDaimyoName + "趁此时机发兵" + myHei + "进攻本家。";
+
+        } else {
             msg = dstKuniName + "で国人衆の一揆が発生。" + srcDaimyoName + "が便乗し" + myHei + "兵を起こしましたぞ。";
         }
 
@@ -2181,7 +2263,11 @@ public class MainEventHandler : MonoBehaviour {
         if (totalEngunHei != 0) {
             if (langId == 2) {
                 AddText = " Your allianced clan has sent supporter.";
-            }else {
+            }
+            else if (langId == 3) {
+                AddText = "幸哉，同盟国的援军来了。";
+            }
+            else {
                 AddText =  "有難いことに同盟国より後詰めが来ております。";
             }
             msg = msg + AddText;

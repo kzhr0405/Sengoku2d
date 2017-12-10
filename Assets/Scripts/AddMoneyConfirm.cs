@@ -49,7 +49,8 @@ public class AddMoneyConfirm : MonoBehaviour {
 		}else {
 			audioSources [4].Play ();
 			Message msg = new Message ();
-			msg.makeMessage (msg.getMessage(2));		
+            int langId = PlayerPrefs.GetInt("langId");
+            msg.makeMessage (msg.getMessage(2,langId));		
 		}
 	}
 }

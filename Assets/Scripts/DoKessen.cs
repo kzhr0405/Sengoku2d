@@ -59,7 +59,11 @@ public class DoKessen : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 kassenName = " Final Battle with " + daimyoName;
-            }else {
+            }
+            else if (langId == 3) {
+                kassenName = daimyoName + "决战";
+            }
+            else {
                 kassenName = daimyoName + "決戦";
             }
 			PlayerPrefs.SetString("activeStageName", kassenName);

@@ -48,7 +48,8 @@ public class QuestReceive : MonoBehaviour {
                 //error
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessageOnBoard(msg.getMessage(152));
+                int langId = PlayerPrefs.GetInt("langId");
+                msg.makeMessageOnBoard(msg.getMessage(152,langId));
             }else {
                 audioSources[3].Play();
                 PlayerPrefs.SetBool(key, true);

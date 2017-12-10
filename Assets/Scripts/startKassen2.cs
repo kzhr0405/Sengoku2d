@@ -35,6 +35,7 @@ public class startKassen2 : MonoBehaviour {
     }
 
     public void OnClick() {
+        int langId = PlayerPrefs.GetInt("langId");
         AudioSource[] audioSources = GameObject.Find("SEController").GetComponents<AudioSource>();
         if(GameObject.Find("GameScene").GetComponent<preKassen>()) {
             busyoQty = GameObject.Find("GameScene").GetComponent<preKassen>().busyoCurrentQty;
@@ -48,7 +49,7 @@ public class startKassen2 : MonoBehaviour {
             audioSources[4].Play();
 
             Message msg = new Message();
-            msg.makeMessage(msg.getMessage(134));
+            msg.makeMessage(msg.getMessage(134,langId));
 
         }else {
             
@@ -56,7 +57,7 @@ public class startKassen2 : MonoBehaviour {
                 //Error
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(139));
+                msg.makeMessage(msg.getMessage(139, langId));
             }else {
 
                 bool hardFlg = PlayerPrefs.GetBool("hardFlg");
@@ -76,7 +77,7 @@ public class startKassen2 : MonoBehaviour {
                 if (diffClanFlg) {
                     audioSources[4].Play();
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(144));
+                    msg.makeMessage(msg.getMessage(144, langId));
 
                 }else {
                     

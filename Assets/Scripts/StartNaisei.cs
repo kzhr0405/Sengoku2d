@@ -32,11 +32,7 @@ public class StartNaisei : MonoBehaviour {
 			Message msg = new Message(); 
 			string OKtext = "";
             int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                OKtext = "You can develop after conquered this country.";
-            }else {
-                OKtext = "城を一つも陥とさない内は\n内政は出来ませぬぞ。";
-            }
+            msg.getMessage(282,langId);
             msg.makeUpperMessageOnBoard(OKtext);
 
 		}

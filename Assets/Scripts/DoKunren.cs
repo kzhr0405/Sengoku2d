@@ -11,12 +11,14 @@ public class DoKunren : MonoBehaviour {
 	
 	public void OnClick () {
         Message msg = new Message();
+        int langId = PlayerPrefs.GetInt("langId");
+
         AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
 
 		if (moneyOK != true) {
 			//Error
 			audioSources [4].Play ();
-			msg.makeMessage(msg.getMessage(6));
+			msg.makeMessage(msg.getMessage(6,langId));
 
 
 		}else{
@@ -78,11 +80,14 @@ public class DoKunren : MonoBehaviour {
 
 			//Message
 			string busyoName = GameObject.Find ("GameScene").GetComponent<NowOnBusyo>().OnBusyoName;
-            string OKtext = "";
-            int langId = PlayerPrefs.GetInt("langId");
+            string OKtext = "";            
             if (langId == 2) {
                 OKtext =busyoName+" trained their soldiers.";
-            }else {
+            }
+            else if (langId == 3) {
+                OKtext = "已对" + busyoName + "队进行了训练。";
+            }
+            else {
                 OKtext = busyoName + "隊にて訓練を実施しました。";
             }
 			msg.makeMessage(OKtext);

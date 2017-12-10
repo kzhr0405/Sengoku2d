@@ -46,7 +46,10 @@ public class EditPvPName : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             board.transform.Find("YesButton").transform.Find("Text").GetComponent<Text>().text = "Edit";
-        }else {
+        }else if (langId == 3) {
+            board.transform.Find("YesButton").transform.Find("Text").GetComponent<Text>().text = "变更";
+        }
+        else {
             board.transform.Find("YesButton").transform.Find("Text").GetComponent<Text>().text = "変更";
         }
 

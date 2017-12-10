@@ -25,8 +25,8 @@ public class DoSyugyo : MonoBehaviour {
 	public void OnClick(){
 		Message msg = new Message ();
 		AudioSource[] audioSources = GameObject.Find ("SEController").GetComponents<AudioSource> ();
-
-		if (itemOKFlg) {
+        int langId = PlayerPrefs.GetInt("langId");
+        if (itemOKFlg) {
 			if (moneyOKFlg) {
 				//Process
 				audioSources [3].Play ();
@@ -81,17 +81,17 @@ public class DoSyugyo : MonoBehaviour {
 				PlayerPrefs.SetBool ("questDailyFlg26",true);
 
 				PlayerPrefs.Flush ();
-				msg.makeMessage(msg.getMessage(65));
+				msg.makeMessage(msg.getMessage(65,langId));
 				Destroy (GameObject.Find ("board(Clone)"));
 				Destroy (GameObject.Find ("Back(Clone)"));
 
 			} else {
 				audioSources [4].Play ();
-				msg.makeMessage (msg.getMessage(6));
+				msg.makeMessage (msg.getMessage(6,langId));
 			}
 		} else {
 			audioSources [4].Play ();
-			msg.makeMessage (msg.getMessage(66));
+			msg.makeMessage (msg.getMessage(66,langId));
 		}
 
 	}

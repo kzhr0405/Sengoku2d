@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NCMB;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class RecoveryDataStore : MonoBehaviour {
 
@@ -122,8 +123,8 @@ public class RecoveryDataStore : MonoBehaviour {
     }
 
     //Old
-    public void GetUserId(string userId) {
-        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("userId");
+    public void GetUserId(string userId, int langId) {
+        NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("userId");        
         query.WhereEqualTo("userId", userId);
         inputUserId = userId;
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -138,26 +139,26 @@ public class RecoveryDataStore : MonoBehaviour {
                         addJinkei3 = System.Convert.ToBoolean(obj["addJinkei3"]);
                         addJinkei4 = System.Convert.ToBoolean(obj["addJinkei4"]);
                         myDaimyo = System.Convert.ToInt32(obj["myDaimyo"]);
-                        GetPvPJinkei(userId);                        
+                        GetPvPJinkei(userId,langId);                        
                     }
                 }else {
                     audioSources[4].Play();
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(148));
+                    msg.makeMessage(msg.getMessage(148,langId));
                     ResetValue();
                 }
             }
             else {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
                 ResetValue();
             }
         });
     }
 
     //New
-    public void GetDataStore(string userId) {
+    public void GetDataStore(string userId, int langId) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("dataStore");
         query.WhereEqualTo("userId", userId);
         inputUserId = userId;
@@ -305,29 +306,29 @@ public class RecoveryDataStore : MonoBehaviour {
                             ArrayList arraylist16 = (ArrayList)obj["questDailyCountReceivedFlg"];
                             foreach (object o in arraylist16) questDailyCountReceivedFlg.Add(System.Convert.ToBoolean(o));
                         }
-                        GetPvPJinkeiMap(userId);
+                        GetPvPJinkeiMap(userId, langId);
                     }
                 }else {
                     //Old
-                    GetUserId(userId);
+                    GetUserId(userId, langId);
                 }
             }else {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
                 ResetValue();
             }
         });
     }
 
-    public void GetDataRecoveryCount(string userId) {
+    public void GetDataRecoveryCount(string userId, int langId) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("dataRecovery");
         query.WhereEqualTo("userId", userId);
         query.CountAsync((int count, NCMBException e) => {
             if (e != null) {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
                 ResetValue();
             }else {
                 //件数取得成功
@@ -335,7 +336,7 @@ public class RecoveryDataStore : MonoBehaviour {
                 if(dataRecoveryCount != 0) {
                     audioSources[4].Play();
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(149));
+                    msg.makeMessage(msg.getMessage(149,langId));
                     ResetValue();
                 }
             }
@@ -343,7 +344,7 @@ public class RecoveryDataStore : MonoBehaviour {
     }
 
     
-    public void GetPvPJinkei(string userId) {
+    public void GetPvPJinkei(string userId, int langId) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpJinkei");
         query.WhereEqualTo("userId", userId);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -382,19 +383,19 @@ public class RecoveryDataStore : MonoBehaviour {
                 }else {
                     audioSources[4].Play();
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(150));
+                    msg.makeMessage(msg.getMessage(150,langId));
                     ResetValue();
                 }
             }else {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
                 ResetValue();
             }
         });
     }
 
-    public void GetPvPJinkeiMap(string userId) {
+    public void GetPvPJinkeiMap(string userId, int langId) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvpJinkei");
         query.WhereEqualTo("userId", userId);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -419,20 +420,20 @@ public class RecoveryDataStore : MonoBehaviour {
                 }else {
                     audioSources[4].Play();
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(150));
+                    msg.makeMessage(msg.getMessage(150,langId));
                     ResetValue();
                 }
             }else {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
                 ResetValue();
             }
         });
     }
 
 
-    public void GetPvP(string userId) {
+    public void GetPvP(string userId, int langId) {
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>("pvp");
         query.WhereEqualTo("userId", userId);
         query.FindAsync((List<NCMBObject> objList, NCMBException e) => {
@@ -445,7 +446,7 @@ public class RecoveryDataStore : MonoBehaviour {
             else {
                 audioSources[4].Play();
                 Message msg = new Message();
-                msg.makeMessage(msg.getMessage(113));
+                msg.makeMessage(msg.getMessage(113,langId));
                 ResetValue();
             }
         });

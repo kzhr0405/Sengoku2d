@@ -40,7 +40,10 @@ public class PlayerHP : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     text = "Player leader was defeated！";
-                }else {
+                }else if(langId==3) {
+                    text = "己方大将，撤退了！";
+                }
+                else {
                     text = "お味方の大将、退却！";
                 }
 				msg.makeKassenMessage (text);

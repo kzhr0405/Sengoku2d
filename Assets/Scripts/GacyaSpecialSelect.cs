@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayerPrefs = PreviewLabs.PlayerPrefs;
 
 public class GacyaSpecialSelect : MonoBehaviour {
 
@@ -51,7 +52,8 @@ public class GacyaSpecialSelect : MonoBehaviour {
                 }else {
                     audioSources[4].Play();
                     Message msg = new Message();
-                    msg.makeMessage(msg.getMessage(156));
+                    int langId = PlayerPrefs.GetInt("langId");
+                    msg.makeMessage(msg.getMessage(156,langId));
                 }
             }
         }

@@ -34,7 +34,11 @@ public class DoTouyou : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 Text = "You have hired max number " + stockLimit.ToString()+ " samurais. You can buy an additional samurai space.";
-            }else {
+            }
+            else if (langId == 3) {
+                Text = "以现在的国力，可登用的武将为" + stockLimit.ToString() + "人。";
+            }
+            else {
                 Text = "現在の国力では登用出来る武将数は" + stockLimit.ToString()+ "人までですぞ。";
             }
 			msg.makeSpaceBuyBoard(Text);
@@ -63,7 +67,11 @@ public class DoTouyou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    touyouuText = "已登用"+busyoName + "。";
+                }
+                else {
                     touyouuText = busyoName + "を登用しました。";
                 }
                 string type = "touyou";
@@ -183,8 +191,12 @@ public class DoTouyou : MonoBehaviour {
                 string msgText = "";
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
-                    msgText = "Max Lv of " + busyoName + " increased.";                    
-                }else {
+                    msgText = "Max Lv of " + busyoName + " increased.";
+                }
+                else if (langId == 3) {
+                    msgText = busyoName + "的最大等级提升了1。";
+                }
+                else {
                     msgText = busyoName + "の最大レベルが1上がりました。";
                 }
                 if (Application.loadedLevelName != "touyouEvent") {
@@ -224,8 +236,12 @@ public class DoTouyou : MonoBehaviour {
                     PlayerPrefs.SetInt("busyoDama", myBusyoDama);
                     int langId = PlayerPrefs.GetInt("langId");
                     if (langId == 2) {
-                        lvUpText = "You got " + busyoDama + " stone.";                        
-                    }else {
+                        lvUpText = "You got " + busyoDama + " stone.";
+                    }
+                    else if (langId == 3) {
+                        lvUpText = "赠送您武将珠" + busyoDama + " 个。";
+                    }
+                    else {
                         lvUpText = "武将珠" + busyoDama + "個を贈呈します。";
                     }
                     if (Application.loadedLevelName != "touyouEvent") {
@@ -245,8 +261,12 @@ public class DoTouyou : MonoBehaviour {
                     newLv = currentLv + 1;
                     int langId = PlayerPrefs.GetInt("langId");
                     if (langId == 2) {
-                        lvUpText = busyoName + " Lv was increased.";                        
-                    }else {
+                        lvUpText = busyoName + " Lv was increased.";
+                    }
+                    else if (langId == 3) {
+                        lvUpText = busyoName + "，等级提升。";
+                    }
+                    else {
                         lvUpText = busyoName + "をレベルアップしました。";
                     }
               
@@ -290,7 +310,11 @@ public class DoTouyou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    touyouuText = "已登用" + busyoName + "。";
+                }
+                else {
                     touyouuText = busyoName + "を登用しました。";
                 }
                 if (Application.loadedLevelName != "touyouEvent") {
@@ -337,7 +361,12 @@ public class DoTouyou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     touyouuText = "We hired " + busyoName + ".";
-                }else {
+                }
+                else if (langId == 3) {
+                    touyouuText = "已登用" + busyoName + "。";
+
+                }
+                else {
                     touyouuText = busyoName + "を登用しました。";
                 }
                 if (Application.loadedLevelName != "touyouEvent") {

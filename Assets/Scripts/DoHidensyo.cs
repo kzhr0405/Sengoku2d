@@ -21,7 +21,9 @@ public class DoHidensyo : MonoBehaviour {
 		if (requiredItem == false || requiredMoney == false) {
 			//Error
 			audioSources [4].Play ();
-			msg.makeMessage (msg.getMessage(52));
+            int langId = PlayerPrefs.GetInt("langId");
+
+            msg.makeMessage (msg.getMessage(52,langId));
 			
 		} else {
 			//OK
@@ -61,7 +63,10 @@ public class DoHidensyo : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 OKtext = "Gave skillbook to " + busyoName+".\n Passive skill Lv increased.";
-            }else {
+            }else if(langId==3) {
+                OKtext = "已授予" + busyoName + "秘传书，战法效果提升。";
+            }
+            else {
                 OKtext = busyoName + "に秘伝書を授与しました。\n戦法効果が上がります。";
             }
 			msg.makeMessage(OKtext);

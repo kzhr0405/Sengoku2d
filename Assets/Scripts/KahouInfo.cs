@@ -117,6 +117,9 @@ public class KahouInfo : MonoBehaviour {
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
+                }else if(langId==3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetSChn;
                 } else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
@@ -125,7 +128,10 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param [kahouId - 1].kahouExpEng;
-                }else {
+                }else if(langId==3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpSChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -135,6 +141,10 @@ public class KahouInfo : MonoBehaviour {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetSChn;
+                }
                 else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
@@ -143,7 +153,11 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpSChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -153,6 +167,10 @@ public class KahouInfo : MonoBehaviour {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
                 }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetSChn;
+                }
                 else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
@@ -161,7 +179,11 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpSChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -170,7 +192,12 @@ public class KahouInfo : MonoBehaviour {
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
                 }
@@ -178,7 +205,11 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpSChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -187,7 +218,12 @@ public class KahouInfo : MonoBehaviour {
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
                 }
@@ -195,7 +231,11 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpSChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -204,7 +244,12 @@ public class KahouInfo : MonoBehaviour {
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
                 }
@@ -212,7 +257,11 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpSChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -221,7 +270,12 @@ public class KahouInfo : MonoBehaviour {
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId - 1].kahouNameEng;
                     kahouTarget = Mst.param[kahouId - 1].kahouTargetEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameChn;
+                    kahouTarget = Mst.param[kahouId - 1].kahouTargetChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                     kahouTarget = Mst.param[kahouId - 1].kahouTarget;
                 }
@@ -229,7 +283,11 @@ public class KahouInfo : MonoBehaviour {
 				kahouUnit = Mst.param [kahouId - 1].unit;
                 if (langId == 2) {
                     kahouExp = Mst.param[kahouId - 1].kahouExpEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouExp = Mst.param[kahouId - 1].kahouExpChn;
+                }
+                else {
                     kahouExp = Mst.param[kahouId - 1].kahouExp;
                 }
 
@@ -292,39 +350,23 @@ public class KahouInfo : MonoBehaviour {
 			GameObject.Find("kahouNameValue").GetComponent<Text>().text = kahouInfoList[0];
 			string kahouTypeName = "";
             int langId = PlayerPrefs.GetInt("langId");
-            if (langId == 2) {
-                if (kahouType=="bugu"){
-				    kahouTypeName = "Arms";
-			    }else if(kahouType=="gusoku"){
-				    kahouTypeName = "Armor";
-			    }else if(kahouType=="kabuto"){
-				    kahouTypeName = "Helmet";
-			    }else if(kahouType=="meiba"){
-				    kahouTypeName = "Horse";
-			    }else if(kahouType=="cyadougu"){
-				    kahouTypeName = "Tea Things";
-			    }else if(kahouType=="chishikisyo"){
-				    kahouTypeName = "Book";
-			    }else if(kahouType=="heihousyo"){
-				    kahouTypeName = "Tactics";		
-			    }
-            }else {
-                if (kahouType == "bugu") {
-                    kahouTypeName = "武具";
-                }else if (kahouType == "gusoku") {
-                    kahouTypeName = "具足";
-                }else if (kahouType == "kabuto") {
-                    kahouTypeName = "兜";
-                }else if (kahouType == "meiba") {
-                    kahouTypeName = "名馬";
-                }else if (kahouType == "cyadougu") {
-                    kahouTypeName = "茶道具";
-                }else if (kahouType == "chishikisyo") {
-                    kahouTypeName = "知識書";
-                }else if (kahouType == "heihousyo") {
-                    kahouTypeName = "兵法書";
-                }
+            Message Message = new Message();
+            if (kahouType == "bugu") {
+                kahouTypeName = Message.getMessage(255,langId);
+            }else if (kahouType == "gusoku") {
+                kahouTypeName = Message.getMessage(256,langId);
+            }else if (kahouType == "kabuto") {
+                kahouTypeName = Message.getMessage(257,langId);
+            }else if (kahouType == "meiba") {
+                kahouTypeName =Message.getMessage(258,langId);
+            }else if (kahouType == "cyadougu") {
+                kahouTypeName = Message.getMessage(259,langId);
+            }else if (kahouType == "chishikisyo") {
+                kahouTypeName =Message.getMessage(260,langId);
+            }else if (kahouType == "heihousyo") {
+                kahouTypeName =Message.getMessage(261,langId);
             }
+            
 			GameObject.Find("kahouTypValue").GetComponent<Text>().text = kahouTypeName;
 			GameObject.Find("EffectTitle").GetComponent<Text>().text = kahouInfoList[2];
 			string effect = "+" + kahouInfoList[3] + kahouInfoList[4];

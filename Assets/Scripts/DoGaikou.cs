@@ -105,7 +105,10 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             OKtext = "Gave money "+ paiedMoney + " to " + daimyoName + ".\n Friendship increased " + addYukoudo + " point";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            OKtext = "已向" + daimyoName + "献上金钱" + paiedMoney + "。\n友好度上升了" + addYukoudo + "。";
+                        } else {
                             OKtext = daimyoName + "に金" + paiedMoney + "の貢物をしました。\n友好度が" + addYukoudo + "上がりますぞ。";
                         }
                         msg.makeMessage (OKtext);
@@ -130,7 +133,10 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             NGtext = daimyoName + " declined our money.\n He doesn't want to build a good relationship with us";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            NGtext = daimyoName + "已拒绝我们的贡物，好像没有想和本家修复关系的打算。";
+                        } else {
                             NGtext = daimyoName + "に貢物を体よく断られ申した。\n当家と関係を修復する気はないようですな。";
                         }
                         msg.makeMessage (NGtext);
@@ -207,7 +213,10 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             OKtext = "Congratulations.\n" + "We concluded an alliance with" + daimyoName + ".\n" + "we got some of strategic options.";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            OKtext = "可喜可贺, 和" + daimyoName + "缔结同盟了, 战略视野更开阔了。";
+                        } else {
                             OKtext = "教悦至極にございます。" + daimyoName + "と同盟を結びましたぞ。\n" + "戦略の幅が広がりますな。";
                         }
                         msg.makeMessage (OKtext);
@@ -241,7 +250,10 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            NGtext = daimyoName + "已拒绝, 友好度下降了" + reduceYukoudo + "。";
+                        } else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                         }
                         msg.makeMessage (NGtext);
@@ -282,7 +294,11 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             OKtext = "Good. " + daimyoName + "will support our party in " + kuniName + " attack";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            OKtext = daimyoName + "大人的军队已加入了我们进攻" + kuniName + "的军队。";
+                        }
+                        else {
                             OKtext = daimyoName + "殿が" + kuniName + "攻めに\n加勢してくれますぞ。百人力ですな。";
                         }
                         msg.makeMessage (OKtext);
@@ -304,7 +320,11 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            NGtext = daimyoName + "已拒绝, 友好度下降了" + reduceYukoudo + "。";
+                        }
+                        else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                         }
                         msg.makeMessage (NGtext);
@@ -479,14 +499,22 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             OKtext = "My lord, successed to threat " + daimyoName;
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            OKtext = "主公，恫吓成功了，" + daimyoName ;
+                        }
+                        else {
                             OKtext = "御屋形様、恫喝に成功しましたぞ。\n" + daimyoName + "が";
                         }
 						string addText = "";
 						if (moneyOrItem == 0) {
                             if (langId == 2) {
                                 addText = " gave money " + getMoney + "to us.\n";
-                            }else {
+                            }
+                            else if (langId == 3) {
+                                addText = "送来了金钱" + getMoney + "。\n";
+                            }
+                            else {
                                 addText = "金" + getMoney + "を送って参りました。\n";
                             }
 						} else {
@@ -494,7 +522,11 @@ public class DoGaikou : MonoBehaviour {
                                 //kahou
                                 if (langId == 2) {
                                     addText = " gave treasure " + kahouName + "to us.\n";
-                                }else {
+                                }
+                                else if (langId == 3) {
+                                    addText = "送来了家宝" + kahouName + "。\n";
+                                }
+                                else {
                                     addText = "家宝、" + kahouName + "を送って参りました。\n";
                                 }
 
@@ -502,7 +534,11 @@ public class DoGaikou : MonoBehaviour {
                                 //shizai＋
                                 if (langId == 2) {
                                     addText = " gave " + addQty  + " " + shigenName + " to us.\n";
-                                }else {
+                                }
+                                else if (langId == 3) {
+                                    addText = "送来了" + shigenName + " " + addQty + "个。\n";
+                                }
+                                else {
                                     addText = shigenName + "を" + addQty + "個送って参りました。\n";
                                 }
 
@@ -518,7 +554,11 @@ public class DoGaikou : MonoBehaviour {
                         string reducceText = "";
                         if (langId == 2) {
                             reducceText = "Friendship decreased " + reduceYukoudo + " point";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            reducceText = "友好度下降了" + reduceYukoudo + "。";
+                        }
+                        else {
                             reducceText = "友好度が" + reduceYukoudo + "下がりますぞ。";
                         }
                              
@@ -545,7 +585,10 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            NGtext = daimyoName + "已拒绝，友好度下降了" + reduceYukoudo + "。";
+                        } else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                         }
                         msg.makeMessage (NGtext);
@@ -707,7 +750,11 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             OKtext = "Lord " + daimyoName + " is sending " + myHei + " soldiers to " + kuniName;
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            OKtext = daimyoName + "起兵" + myHei + "进攻" + kuniName + "。";
+                        }
+                        else {
                             OKtext = daimyoName + "殿が" + kuniName + "攻めのため、\n" + myHei + "人の兵を起こしましたぞ。";
                         }
 
@@ -715,7 +762,11 @@ public class DoGaikou : MonoBehaviour {
                         if(totalEngunHei !=0) {
                             if (langId == 2) {
                                 AddText = targetDaimyoName + " has a support army " + totalEngunHei + " soldiers";
-                            }else {
+                            }
+                            else if (langId == 3) {
+                                AddText = targetDaimyoName + "有援军" + totalEngunHei + "。";
+                            }
+                            else {
                                 AddText = targetDaimyoName + "に" + totalEngunHei + "の援軍がいるようです。";
                             }
                                 
@@ -739,7 +790,10 @@ public class DoGaikou : MonoBehaviour {
                         int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             NGtext = daimyoName + " declined our proposal. \n" + "Friendship decreased " + reduceYukoudo + " point";
-                        }else {
+                        }
+                        else if (langId == 3) {
+                            NGtext = daimyoName + "已拒绝，友好度下降了" + reduceYukoudo + "。";
+                        } else {
                             NGtext = daimyoName + "に体よく断られ申した。\n友好度が" + reduceYukoudo + "下がりますぞ。";
                         }
                         msg.makeMessage (NGtext);
@@ -758,8 +812,8 @@ public class DoGaikou : MonoBehaviour {
 			} else {
 				//Message
 				audioSources [4].Play ();
-
-				string NGtext = msg.getMessage(6);
+                int langId = PlayerPrefs.GetInt("langId");
+                string NGtext = msg.getMessage(6,langId);
 				msg.makeMessage (NGtext);
 			
 			}
