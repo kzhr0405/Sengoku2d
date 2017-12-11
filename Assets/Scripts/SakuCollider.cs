@@ -49,6 +49,8 @@ public class SakuCollider : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
+                }else if(langId==3) {
+                    dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
                 }else {
                     dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
                 }
@@ -377,13 +379,18 @@ public class SakuCollider : MonoBehaviour {
 					} else if (sakuId == 12) {	
 						//ichino tachi
 						bool successFlg = CheckByProbability (sakuEffect);
-						string damagePath = "Prefabs/PreKassen/SakuMessage";
-						GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string damagePath = "";
+                        if (langId==3) {
+						    damagePath = "Prefabs/PreKassen/SakuMessageSChn";
+                        }else {
+                            damagePath = "Prefabs/PreKassen/SakuMessage";
+                        }
+                        GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
 						damageObj.transform.SetParent (gameObject.transform);
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
-
-                        int langId = PlayerPrefs.GetInt("langId");
+                        
                         if (langId == 2) {
                             if (successFlg) {
                                 Destroy(col.gameObject);
@@ -425,12 +432,18 @@ public class SakuCollider : MonoBehaviour {
 								}
 							}
 						}
-						string damagePath = "Prefabs/PreKassen/SakuMessage";
-						GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string damagePath = "";
+                        if (langId == 3) {
+                            damagePath = "Prefabs/PreKassen/SakuMessageSChn";
+                        }else {
+                            damagePath = "Prefabs/PreKassen/SakuMessage";
+                        }
+                        GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
 						damageObj.transform.SetParent (gameObject.transform);
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
-                        int langId = PlayerPrefs.GetInt("langId");
+                        
                         if (langId == 2) {
                             damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffectRandom + " unit";
                         }
@@ -457,12 +470,18 @@ public class SakuCollider : MonoBehaviour {
 								}
 							}
 						}
-						string damagePath = "Prefabs/PreKassen/SakuMessage";
-						GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string damagePath = "";
+                        if (langId == 3) {
+                            damagePath = "Prefabs/PreKassen/SakuMessageSChn";
+                        }else {
+                            damagePath = "Prefabs/PreKassen/SakuMessage";
+                        }
+                        GameObject damageObj = Instantiate (Resources.Load (damagePath)) as GameObject;
 						damageObj.transform.SetParent (gameObject.transform);
 						damageObj.transform.position = new Vector3 (col.transform.position.x, col.transform.position.y, 0);
 						damageObj.transform.localScale = new Vector3 (0.015f, 0.02f, 0);
-                        int langId = PlayerPrefs.GetInt("langId");
+                        
                         if (langId == 2) {
                             damageObj.GetComponent<TextMesh>().text = sakuEffectRandom + " unit betrayed";
                         }
@@ -497,13 +516,18 @@ public class SakuCollider : MonoBehaviour {
                     else if (sakuId == 12) {
                         //ichino tachi
                         bool successFlg = CheckByProbability(sakuEffect);
-                        string damagePath = "Prefabs/PreKassen/SakuMessage";
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string damagePath = "";
+                        if (langId == 3) {
+                            damagePath = "Prefabs/PreKassen/SakuMessageSChn";
+                        }else {
+                            damagePath = "Prefabs/PreKassen/SakuMessage";
+                        }
                         GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
                         damageObj.transform.SetParent(gameObject.transform);
                         damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
                         damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
 
-                        int langId = PlayerPrefs.GetInt("langId");
                         if (langId == 2) {
                             if (successFlg) {
                                 Destroy(col.gameObject);
@@ -546,13 +570,17 @@ public class SakuCollider : MonoBehaviour {
                                 }
                             }
                         }
-
-                        string damagePath = "Prefabs/PreKassen/SakuMessage";
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string damagePath = "";
+                        if (langId == 3) {
+                            damagePath = "Prefabs/PreKassen/SakuMessageSChn";
+                        }else {
+                            damagePath = "Prefabs/PreKassen/SakuMessage";
+                        }
                         GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
                         damageObj.transform.SetParent(gameObject.transform);
                         damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
-                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
-                        int langId = PlayerPrefs.GetInt("langId");
+                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);                        
                         if (langId == 2) {
                             damageObj.GetComponent<TextMesh>().text = "Destroied " + sakuEffectRandom + " unit";
                         }
@@ -579,12 +607,17 @@ public class SakuCollider : MonoBehaviour {
                                 }
                             }
                         }
-                        string damagePath = "Prefabs/PreKassen/SakuMessage";
+                        int langId = PlayerPrefs.GetInt("langId");
+                        string damagePath = "";
+                        if (langId == 3) {
+                            damagePath = "Prefabs/PreKassen/SakuMessageSChn";
+                        }else {
+                            damagePath = "Prefabs/PreKassen/SakuMessage";
+                        }
                         GameObject damageObj = Instantiate(Resources.Load(damagePath)) as GameObject;
                         damageObj.transform.SetParent(gameObject.transform);
                         damageObj.transform.position = new Vector3(col.transform.position.x, col.transform.position.y, 0);
-                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);
-                        int langId = PlayerPrefs.GetInt("langId");
+                        damageObj.transform.localScale = new Vector3(0.015f, 0.02f, 0);                        
                         if (langId == 2) {
                             damageObj.GetComponent<TextMesh>().text = sakuEffectRandom + " unit betrayed";
                         }

@@ -20,7 +20,7 @@ public class DoSelectDaimyo : MonoBehaviour {
             }else {
                 PlayerPrefs.SetBool("hardFlg", false);
             }
-
+            
             PlayerPrefs.Flush();
             audioSources [5].Play ();
 

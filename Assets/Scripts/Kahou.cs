@@ -58,6 +58,8 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
+                }else if(langId==3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
                 }else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
@@ -108,7 +110,11 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
 
@@ -157,7 +163,11 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
 
@@ -206,7 +216,11 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
 			}
@@ -253,7 +267,11 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
 
@@ -301,7 +319,11 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
 			}
@@ -348,7 +370,11 @@ public class Kahou : MonoBehaviour {
                 int langId = PlayerPrefs.GetInt("langId");
                 if (langId == 2) {
                     kahouName = Mst.param[kahouId-1].kahouNameEng;
-                }else {
+                }
+                else if (langId == 3) {
+                    kahouName = Mst.param[kahouId - 1].kahouNameChn;
+                }
+                else {
                     kahouName = Mst.param[kahouId - 1].kahouName;
                 }
 			}
@@ -865,7 +891,38 @@ public class Kahou : MonoBehaviour {
                 Entity_kahou_kabuto_mst Mst = Resources.Load("Data/kahou_kabuto_mst") as Entity_kahou_kabuto_mst;
                 kahouName = Mst.param[kahouId - 1].kahouNameEng;
             }
-        }else {
+        }else if (langId == 3) {
+            if (kahouType == "cyadougu") {
+                Entity_kahou_cyadougu_mst Mst = Resources.Load("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+            }
+            else if (kahouType == "heihousyo") {
+                Entity_kahou_heihousyo_mst Mst = Resources.Load("Data/kahou_heihousyo_mst") as Entity_kahou_heihousyo_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+            }
+            else if (kahouType == "chishikisyo") {
+                Entity_kahou_chishikisyo_mst Mst = Resources.Load("Data/kahou_chishikisyo_mst") as Entity_kahou_chishikisyo_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameChn;
+            }
+            else if (kahouType == "bugu") {
+                Entity_kahou_bugu_mst Mst = Resources.Load("Data/kahou_bugu_mst") as Entity_kahou_bugu_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+            }
+            else if (kahouType == "meiba") {
+                Entity_kahou_meiba_mst Mst = Resources.Load("Data/kahou_meiba_mst") as Entity_kahou_meiba_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+            }
+            else if (kahouType == "gusoku") {
+                Entity_kahou_gusoku_mst Mst = Resources.Load("Data/kahou_gusoku_mst") as Entity_kahou_gusoku_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+            }
+            else if (kahouType == "kabuto") {
+                Entity_kahou_kabuto_mst Mst = Resources.Load("Data/kahou_kabuto_mst") as Entity_kahou_kabuto_mst;
+                kahouName = Mst.param[kahouId - 1].kahouNameSChn;
+            }
+
+        }
+        else {
             if (kahouType == "cyadougu") {
                 Entity_kahou_cyadougu_mst Mst = Resources.Load("Data/kahou_cyadougu_mst") as Entity_kahou_cyadougu_mst;
                 kahouName = Mst.param[kahouId - 1].kahouName;

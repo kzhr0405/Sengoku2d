@@ -523,6 +523,11 @@ public class NewDaimyoDataMaker : MonoBehaviour {
 		}
 		PlayerPrefs.SetString ("doumei",newMyDoumei);
         PlayerPrefs.SetInt("senarioId", senarioId);
+        if (senarioId == 1 && newDaimyo == 1) {
+            PlayerPrefs.SetBool("rengouFlg", true);
+            PlayerPrefs.SetString("rengouDaimyo", "5,6,8,10,13,14,31");
+        }
+
         PlayerPrefs.Flush ();
 
 

@@ -171,6 +171,8 @@ public class EnemyEventHandler : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             commentPath = "Prefabs/Map/stage/spriteEventCommentEng";
+        }else if(langId==3) {
+            commentPath = "Prefabs/Map/stage/spriteEventCommentSChn";
         }else {
             commentPath = "Prefabs/Map/stage/spriteEventComment";
         }

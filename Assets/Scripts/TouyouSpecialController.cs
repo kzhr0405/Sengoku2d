@@ -38,6 +38,8 @@ public class TouyouSpecialController : MonoBehaviour {
             string busyoName = "";           
             if (langId == 2) {
                 busyoName = busyoMst.param[i].nameEng;
+            }else if(langId==3) {
+                busyoName = busyoMst.param[i].nameSChn;
             } else {
                 busyoName = busyoMst.param[i].name;
             }

@@ -145,8 +145,7 @@ public class EnemyInstance : MonoBehaviour {
             string serihu = "";
             if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
-            }else if(langId==3) {
-                Debug.Log(busyoId + ">" + serihu);
+            }else if(langId==3) {                
                 serihu = serihuMst.param[busyoId - 1].senpouMsgSChn;
                 
             }
@@ -676,6 +675,8 @@ public class EnemyInstance : MonoBehaviour {
             string serihu = "";
             if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
+            }else if(langId==3) {
+                serihu = serihuMst.param[busyoId - 1].senpouMsgSChn;
             }else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
             }
@@ -703,7 +704,7 @@ public class EnemyInstance : MonoBehaviour {
         GameObject dtl = Instantiate(Resources.Load(dtlPath)) as GameObject;
         dtl.transform.SetParent(prefab.transform);
         dtl.transform.localPosition = new Vector3(0, 1, -1);
-        dtl.transform.localScale = new Vector3(1, 1, 0);
+        dtl.transform.localScale = new Vector3(0.8f, 0.8f, 0);
         dtl.name = "BusyoDtlEnemy";
 
         //Name

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222000011501267816}
   - component: {fileID: 114000011770851478}
   - component: {fileID: 114000014131427192}
+  - component: {fileID: 114313935510921776}
   m_Layer: 5
   m_Name: Effect
   m_TagString: Untagged
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0.001
   y: 0.001
+  minusX: -0.001
 --- !u!114 &114000011770851478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +149,17 @@ MonoBehaviour:
   divSpeed: 1
   attackBoardflg: 0
   deleteTime: 1
+--- !u!114 &114313935510921776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010466377252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f898219ffb4d9488a59b4a85566867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222000011501267816
 CanvasRenderer:
   m_ObjectHideFlags: 1

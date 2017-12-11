@@ -510,6 +510,8 @@ public class PlayerInstance : MonoBehaviour {
         string dtlPath = "";
         if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
+        }else if (langId == 3) {
+            dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
         }else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
         }
@@ -743,7 +745,10 @@ public class PlayerInstance : MonoBehaviour {
             string serihu = "";            
             if (langId == 2) {
                 serihu = serihuMst.param[busyoId - 1].senpouMsgEng;
-            }else {
+            }else if(langId==3) {
+                serihu = serihuMst.param[busyoId - 1].senpouMsgSChn;
+            }
+            else {
                 serihu = serihuMst.param[busyoId - 1].senpouMsg;
             }
             prefab.GetComponent<SenpouController>().senpouSerihu = serihu;
@@ -801,13 +806,16 @@ public class PlayerInstance : MonoBehaviour {
         string dtlPath = "";
         if (langId == 2) {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
-        }else {
+        }else if(langId==3) {
+            dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
+        }
+        else {
             dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
         }
         GameObject dtl = Instantiate(Resources.Load(dtlPath)) as GameObject;
         dtl.transform.SetParent(prefab.transform);
         dtl.transform.localPosition = new Vector3(0, 1, -1);
-        dtl.transform.localScale = new Vector3(1, 1, 0);
+        dtl.transform.localScale = new Vector3(0.8f, 0.8f, 0);
         dtl.name = "BusyoDtlPlayer";
         //Name
         GameObject nameLabel = dtl.transform.Find("NameLabel").gameObject;

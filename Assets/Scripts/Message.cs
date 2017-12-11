@@ -122,6 +122,8 @@ public class Message : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId==2) {
             Path = "Prefabs/Common/MessageTextMeshEng";
+        }else if(langId==3) {
+            Path = "Prefabs/Common/MessageTextMeshSChn"; 
         }else {
             Path = "Prefabs/Common/MessageTextMesh";
         }

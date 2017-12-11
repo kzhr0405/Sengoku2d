@@ -43,7 +43,10 @@ public class Item : MonoBehaviour {
 			newItemString = itemQty + "," + itemList[1] + "," + itemList[2];
             if (langId == 2) {
                 rankName = "Low ";
-            }else {
+            }else if(langId==3) {
+                rankName = "下级";
+            }
+            else {
                 rankName = "下級";
             }
 
@@ -53,7 +56,11 @@ public class Item : MonoBehaviour {
 			newItemString =  itemList[0] + "," + itemQty + "," + itemList[2];
             if (langId == 2) {
                 rankName = "Mid ";
-            }else {
+            }
+            else if (langId == 3) {
+                rankName = "中级";
+            }
+            else {
                 rankName = "中級";
             }
 		}else if(shigenRank == 3){
@@ -62,7 +69,11 @@ public class Item : MonoBehaviour {
 			newItemString = itemList[0] +  "," + itemList[1] + "," + itemQty;
             if (langId == 2) {
                 rankName = "High ";
-            }else {
+            }
+            else if (langId == 3) {
+                rankName = "上级";
+            }
+            else {
                 rankName = "上級";
             }
 		}

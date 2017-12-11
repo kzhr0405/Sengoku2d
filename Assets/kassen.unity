@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ RectTransform:
   m_GameObject: {fileID: 138902157}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.098092414, y: 0.098092414, z: 0.098092414}
+  m_LocalScale: {x: 0.10446842, y: 0.10446842, z: 0.10446842}
   m_Children:
   - {fileID: 1718120775}
   - {fileID: 690682552}
@@ -929,7 +929,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 979353295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60, y: 220, z: -5}
+  m_LocalPosition: {x: 60, y: 205.35213, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750674465}
@@ -1026,7 +1026,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1697551624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60, y: 220, z: -5}
+  m_LocalPosition: {x: -60, y: 205.35213, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 621033853}
@@ -1041,7 +1041,8 @@ RectTransform:
 --- !u!1 &785172625
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 1037623171223738, guid: ec2366520ea0ffd4e8f525f43f93048b,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
@@ -1057,7 +1058,8 @@ GameObject:
 --- !u!114 &785172626
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 114881427663860662, guid: ec2366520ea0ffd4e8f525f43f93048b,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785172625}
   m_Enabled: 1
@@ -1070,7 +1072,8 @@ MonoBehaviour:
 --- !u!4 &785172627
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 4090969227749392, guid: ec2366520ea0ffd4e8f525f43f93048b,
+    type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785172625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1174,6 +1177,7 @@ MonoBehaviour:
   englishText: Withdraw
   chineseText: 
   englishFontSize: 200
+  chineseFontSize: 0
   arialFg: 1
 --- !u!1 &909602743
 GameObject:
@@ -1574,6 +1578,7 @@ MonoBehaviour:
   timer: 0
   paused: 0
   engunTimerflg: 0
+  langId: 0
   playerEngunFlg: 0
   enemyEngunFlg: 0
   playerEngunList: 
@@ -2246,6 +2251,7 @@ MonoBehaviour:
   wallPrefab: {fileID: 1144109715225824, guid: d76487a37990e0a4cacb129a22dd8ec4, type: 2}
   activeKuniId: 0
   activeStageId: 0
+  langId: 0
   enemySoudaisyo: 0
   totalSenpouLv: 0
   aveSenpouLv: 0
@@ -2394,7 +2400,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1231295165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 220, z: -5}
+  m_LocalPosition: {x: 0, y: 205.35213, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1303322030}

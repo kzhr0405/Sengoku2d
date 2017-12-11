@@ -23,7 +23,10 @@ public class TouyouView : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             GameObject.Find ("popText").GetComponent<Text> ().text = "Samurai Recruitment";
-        }else {
+        }else if(langId==3) {
+            GameObject.Find("popText").GetComponent<Text>().text = "武将登用";
+        }
+        else {
             GameObject.Find("popText").GetComponent<Text>().text = "武将登用";
         }
 		//Kamon

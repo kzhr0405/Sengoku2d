@@ -260,7 +260,10 @@ public class SakuMaker : MonoBehaviour {
             int langId = PlayerPrefs.GetInt("langId");
             if (langId == 2) {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
-            }else {
+            }else if(langId==3) {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
+            }
+            else {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
             }
             GameObject dtl = Instantiate (Resources.Load (dtlPath)) as GameObject;
@@ -415,13 +418,19 @@ public class SakuMaker : MonoBehaviour {
         if (playerFlg) {
             if (langId == 2) {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerEng";
-            }else {
+            }else if(langId==3) {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayerSChn";
+            }
+            else {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlPlayer";
             }
         }else {
             if (langId == 2) {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemyEng";
-            }else {
+            }else if(langId==3) {
+                dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemySChn";
+            }
+            else {
                 dtlPath = "Prefabs/BusyoDtl/BusyoDtlEnemy";
             }
         }

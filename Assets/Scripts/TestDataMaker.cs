@@ -15,6 +15,8 @@ public class TestDataMaker : MonoBehaviour {
         PlayerPrefs.SetString("cyoutei", "100,100,100");
         PlayerPrefs.SetString("koueki", "100,100,100");
         PlayerPrefs.SetString("nanbanItem", "100,100,100");
+        PlayerPrefs.SetString("shiro", "100,100,100,100");
+        PlayerPrefs.SetString("gokuiItem", "100,110,120,130,140");
         /*
         PlayerPrefs.SetInt("movieCount",15000);
         //PlayerPrefs.SetString ("seiryoku","1,1,3,1,1,1,17,1,3,1,1,1,1,1,17,1,1,17,8,17,17,28,8,8,8,8,19,19,19,28,28,28,28,28,28,28,28,1,1,1,1,1,38,38,31,38,38,38,31,38,31,31,31,31,31,38,31,38,45,45,45,45,45,45,41");
@@ -52,7 +54,7 @@ public class TestDataMaker : MonoBehaviour {
         //		PlayerPrefs.SetInt ("saku4",11);
 		PlayerPrefs.SetString ("cyouhou",cyouhou);
         PlayerPrefs.SetString("kanjyo", "100,100,100");
-        PlayerPrefs.SetString("shiro", "100,100,100,100");
+        
         //PlayerPrefs.SetString ("doumei2","3");
         //PlayerPrefs.SetString ("doumei3","2");
         //PlayerPrefs.SetInt ("2gaikou3",100);

@@ -2330,6 +2330,8 @@ public class DoShisya : MonoBehaviour {
         
         if (langId == 2) {
             msg = clanName + " clan surrendered to us.";
+        }else if(langId==3) {
+            msg = clanName + "家从属于本家，灭亡了。天下大势，亦与此同。";
         } else {
             msg = clanName + "家が当家に従属し、滅亡しました。天下の趨勢は決したも同然ですな。";
         }

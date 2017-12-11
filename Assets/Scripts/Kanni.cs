@@ -134,7 +134,10 @@ public class Kanni : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             ikai = kanniMst.param[kanniId - 1].IkaiEng;
-        }else {
+        }else if(langId==3) {
+            ikai = kanniMst.param[kanniId - 1].IkaiSChn;
+        }
+        else {
             ikai = kanniMst.param[kanniId - 1].Ikai;
         }
 		return ikai;	
@@ -145,7 +148,10 @@ public class Kanni : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             effectLabel = kanniMst.param[kanniId - 1].EffectLabelEng;
-        }else {
+        }else if(langId==3) {
+            effectLabel = kanniMst.param[kanniId - 1].EffectLabelSChn;
+        }
+        else {
             effectLabel = kanniMst.param[kanniId - 1].EffectLabel;
         }
 		return effectLabel;	

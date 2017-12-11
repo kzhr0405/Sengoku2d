@@ -24,7 +24,6 @@ public class DataRegister : MonoBehaviour {
 
         int langId = PlayerPrefs.GetInt("langId");
         if(langId == 0) {
-            /*
             if (Application.systemLanguage == SystemLanguage.Japanese) {
                 PlayerPrefs.SetInt("langId",1);
             } else if(Application.systemLanguage == SystemLanguage.English) {
@@ -32,12 +31,13 @@ public class DataRegister : MonoBehaviour {
             }else if(Application.systemLanguage == SystemLanguage.Chinese) {
                 PlayerPrefs.SetInt("langId", 3);
             }
-            */
+            /*
             if (Application.systemLanguage == SystemLanguage.Japanese) {
                 PlayerPrefs.SetInt("langId", 1);
             }else {
                 PlayerPrefs.SetInt("langId", 2);
             }
+            */
             PlayerPrefs.Flush();
         }
 

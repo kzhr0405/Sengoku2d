@@ -72,7 +72,7 @@ public class NaiseiController : MonoBehaviour {
 		GameObject.Find("Question").GetComponent<QA> ().qaId = 8;
 
 
-		if (PlayerPrefs.HasKey (jyosyuTemp) && tutorialDoneFlg) {
+		if (PlayerPrefs.HasKey (jyosyuTemp) && tutorialDoneFlg && Application.loadedLevelName != "tutorialNaisei") {
 			//Jyosyu Exist
 			jyosyuId = PlayerPrefs.GetInt (jyosyuTemp);
             if(jyosyuId!=0) {
@@ -1146,14 +1146,22 @@ public class NaiseiController : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             btn.GetComponent<TabibitoNoticeBtn> ().targetGrp= tabibitoMst.param [targetTabibitoId - 1].GrpEng;
-        }else {
+        }else if(langId==3) {
+            btn.GetComponent<TabibitoNoticeBtn>().targetGrp = tabibitoMst.param[targetTabibitoId - 1].GrpSChn;
+        }
+        else {
             btn.GetComponent<TabibitoNoticeBtn>().targetGrp = tabibitoMst.param[targetTabibitoId - 1].Grp;
         }
 		btn.GetComponent<TabibitoNoticeBtn> ().targetGrpId= grpId;
         if (langId == 2) {
             btn.GetComponent<TabibitoNoticeBtn> ().targetName = tabibitoMst.param [targetTabibitoId - 1].NameEng;
 		    btn.GetComponent<TabibitoNoticeBtn> ().targetExp = tabibitoMst.param [targetTabibitoId - 1].ExpEng;
-        }else {
+        }
+        else if (langId == 3) {
+            btn.GetComponent<TabibitoNoticeBtn>().targetName = tabibitoMst.param[targetTabibitoId - 1].NameSChn;
+            btn.GetComponent<TabibitoNoticeBtn>().targetExp = tabibitoMst.param[targetTabibitoId - 1].ExpSChn;
+        }
+        else {
             btn.GetComponent<TabibitoNoticeBtn>().targetName = tabibitoMst.param[targetTabibitoId - 1].Name;
             btn.GetComponent<TabibitoNoticeBtn>().targetExp = tabibitoMst.param[targetTabibitoId - 1].Exp;
         }

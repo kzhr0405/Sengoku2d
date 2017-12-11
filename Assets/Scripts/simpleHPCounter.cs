@@ -94,7 +94,10 @@ public class simpleHPCounter : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             path = "Prefabs/SimpleBattle/WinLoseTextEng";
-        }else {
+        }else if(langId==3) {
+            path = "Prefabs/SimpleBattle/WinLoseTextSChn";
+        }
+        else {
             path = "Prefabs/SimpleBattle/WinLoseText";
         }
         GameObject textObj = Instantiate(Resources.Load(path)) as GameObject;

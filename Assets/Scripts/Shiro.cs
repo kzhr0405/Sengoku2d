@@ -13,7 +13,10 @@ public class Shiro : MonoBehaviour {
         int langId = PlayerPrefs.GetInt("langId");
         if (langId == 2) {
             name = shiroMst.param[busyoId - 1].NameEng;
-        }else {
+        }else if(langId==3) {
+            name = shiroMst.param[busyoId - 1].NameSChn;
+        }
+        else {
             name = shiroMst.param[busyoId - 1].Name;
         }
         return name;

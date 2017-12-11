@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 222767123751080314}
   - component: {fileID: 114113367143684304}
   - component: {fileID: 114027263698080234}
+  - component: {fileID: 114348199274442100}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0.001
   y: 0.001
+  minusX: -0.001
 --- !u!114 &114027263698080234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   divSpeed: 1
   attackBoardflg: 0
+  deleteTime: 1
 --- !u!114 &114074049064801402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,6 +155,17 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 0.8
   m_Text: "\u7DCF\u6B66\u52C7+100\n\u7DCF\u9632\u5099+100"
+--- !u!114 &114348199274442100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1671948610485704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f898219ffb4d9488a59b4a85566867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114853487915030756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +191,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: "My Lord \ninto battle!"
+  chineseText: 
   englishFontSize: 100
+  chineseFontSize: 0
   arialFg: 1
 --- !u!114 &114983028649688652
 MonoBehaviour:
@@ -237,7 +253,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1671948610485704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 224638682455276936}

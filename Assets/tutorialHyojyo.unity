@@ -309,8 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Total Soldiers
-  chineseText: 
+  chineseText: "\u603B\u5175\u529B"
   englishFontSize: 200
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &100839292
 GameObject:
@@ -685,11 +686,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a48b957b0a96734ea15bf08690516e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishText: 'Form
-
-    1'
-  chineseText: 
-  englishFontSize: 200
+  englishText: Scale
+  chineseText: "\u9C7C\u9CDE"
+  englishFontSize: 180
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &249498305
 GameObject:
@@ -889,11 +889,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a48b957b0a96734ea15bf08690516e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishText: 'Form
-
-    4'
-  chineseText: 
-  englishFontSize: 200
+  englishText: "Flying \nGoose"
+  chineseText: "\u96C1\u884C"
+  englishFontSize: 180
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &268772527
 GameObject:
@@ -1163,8 +1162,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Available Samurai
-  chineseText: 
+  chineseText: "\u53EF\u51FA\u9635\u4EBA\u6570"
   englishFontSize: 200
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &358484975
 GameObject:
@@ -1868,8 +1868,9 @@ MonoBehaviour:
   englishText: 'Confirm
 
     Formation'
-  chineseText: 
+  chineseText: "\u9635\u578B\n\u786E\u5B9A"
   englishFontSize: 35
+  chineseFontSize: 70
   arialFg: 1
 --- !u!1 &486534418
 GameObject:
@@ -2513,11 +2514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a48b957b0a96734ea15bf08690516e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishText: 'Form
+  englishText: 'Crane
 
-    2'
-  chineseText: 
-  englishFontSize: 200
+    Wings'
+  chineseText: "\u9E64\u7FFC"
+  englishFontSize: 180
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &900159932
 GameObject:
@@ -2532,6 +2534,7 @@ GameObject:
   - component: {fileID: 900159936}
   - component: {fileID: 900159935}
   - component: {fileID: 900159934}
+  - component: {fileID: 900159938}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2635,6 +2638,17 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 900159932}
+--- !u!114 &900159938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 900159932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f898219ffb4d9488a59b4a85566867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &980187024
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,11 +3174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a48b957b0a96734ea15bf08690516e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  englishText: 'Form
-
-    3'
-  chineseText: 
-  englishFontSize: 200
+  englishText: Crescent
+  chineseText: "\u5043\u6708"
+  englishFontSize: 180
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &1187421543
 GameObject:
@@ -4751,8 +4764,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Total Attack
-  chineseText: 
+  chineseText: "\u603B\u52C7\u6B66"
   englishFontSize: 200
+  chineseFontSize: 250
   arialFg: 1
 --- !u!1 &1716961324
 GameObject:
@@ -4848,6 +4862,7 @@ MonoBehaviour:
   englishText: Sen no Rikyu
   chineseText: 
   englishFontSize: 200
+  chineseFontSize: 0
   arialFg: 1
 --- !u!1 &1746397925
 GameObject:
@@ -6305,6 +6320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   englishText: Total Defence
-  chineseText: 
+  chineseText: "\u603B\u9632\u5FA1"
   englishFontSize: 200
+  chineseFontSize: 250
   arialFg: 1
